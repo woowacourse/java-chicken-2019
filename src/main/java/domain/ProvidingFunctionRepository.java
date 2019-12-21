@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ProvidingFunctionRepository {
@@ -11,5 +12,9 @@ public class ProvidingFunctionRepository {
         providingFunctions.add(new ProvidingFunction(1, "주문등록"));
         providingFunctions.add(new ProvidingFunction(2, "결제하기"));
         providingFunctions.add(new ProvidingFunction(3, "프로그램 종료"));
+    }
+
+    public static List<ProvidingFunction> providingFunctions() {
+        return Collections.unmodifiableList(providingFunctions);
     }
 }
