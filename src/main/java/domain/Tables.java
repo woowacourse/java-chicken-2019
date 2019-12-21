@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Tables {
 
-    static List<Table> tables;
+    private static List<Table> tables;
 
     public Tables( List<Table> tables ) {
         this.tables = tables;
@@ -34,5 +34,13 @@ public class Tables {
 
     public static int size() {
         return tables.size();
+    }
+
+    public static void payment( int tableNumber ) {
+        for (Table table : tables) {
+            if (table.getNumber() == tableNumber) {
+                table.clearOrder();
+            }
+        }
     }
 }
