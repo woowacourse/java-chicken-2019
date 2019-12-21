@@ -1,8 +1,9 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class MenuRepository {
     private static final List<Menu> menus = new ArrayList<>();
@@ -19,6 +20,21 @@ public class MenuRepository {
     }
 
     public static List<Menu> menus() {
-        return Collections.unmodifiableList(menus);
+        return menus;
+    }
+
+    public static List<Integer> menuValues() {
+        return menus.stream()
+                .map(Menu::getNumber)
+                .collect(Collectors.toList());
+    }
+
+    public static Menu getMenu( int menuNumber ) {
+        for( Menu menu : menus) {
+            if ( menu.getNumber() == menuNumber ) {
+                return menu;
+            }
+        }
+        return null;
     }
 }
