@@ -11,9 +11,10 @@ public class Application {
     private static List<Table> tables = TableRepository.tables();
 
     public static void main(String[] args) {
-        int functionNumber = InputView.inputFunctionNumber();;
-        if (functionNumber != 3) {
+        int functionNumber = InputView.inputFunctionNumber();
+        while (functionNumber != 3) {
             spiltFunction(functionNumber);
+            functionNumber = InputView.inputFunctionNumber();
         }
         System.out.println("프로그램 종료");
     }
