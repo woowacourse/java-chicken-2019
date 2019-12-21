@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
-
+    
     public static int enterApplication() {
 		try {
-	    	System.out.println("## 메인화면\n" + "1 - 주문등록\n" + "2 - 결제하기\n" + "3 - 프로그램 종료");
+			System.out.println("##원하는 기능을 선택하세요");
 			return Integer.parseInt(scanner.nextLine().trim());
 		} catch (IllegalArgumentException e) {
 			System.out.println("1,2,3만 입력해주세요");

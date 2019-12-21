@@ -1,6 +1,7 @@
 package application;
 
 import domain.TableRepository;
+import view.OutputView;
 import domain.MenuRepository;
 
 public class PosMachine {
@@ -9,7 +10,8 @@ public class PosMachine {
 	
 	public PosMachine() {};
 	
-	public void play () {
+	public void oneCycle () {
+		OutputView.showMain();
 		OneTwoThree.askWhichApplication();
 	}
 }
