@@ -1,0 +1,42 @@
+import java.util.InputMismatchException;
+import java.util.List;
+
+import domain.Menu;
+import domain.MenuRepository;
+import domain.Table;
+import domain.TableRepository;
+import view.InputView;
+import view.OutputView;
+
+public class Order {
+	final List<Table> tables;
+	int tableNumber;
+	final List<Menu> menus;
+
+	public Order() {
+		tables = TableRepository.tables();
+		menus = MenuRepository.menus();
+		OutputView.printMenus(menus);
+	}
+
+	public void run() {
+		OutputView.printTables(tables);
+		tableNumber =getTableNumber();
+	}
+
+	private int getTableNumber() {
+		int value;
+		try{
+			value=InputView.inputTableNumber();
+			Validation.chechPositiveRange(value,tables.size());
+		}catch(InputMismatchException e) {
+			System.out.println("숫자를 입력해주세요.");
+			InputView.flush();
+			return getTableNumber();
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+			return getTableNumber();
+		}
+		return value;
+	}
+}

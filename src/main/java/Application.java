@@ -17,18 +17,18 @@ public class Application {
 
 		final List<Menu> menus = MenuRepository.menus();
 		OutputView.printMenus(menus);
-        while(true){
-            MainCommand mainCommand=new MainCommand();
-            mainCommand.getCommand();
-			if(mainCommand.isOrder()){
+		while (true) {
+			MainCommand mainCommand = new MainCommand();
+			mainCommand.getCommand();
+			if (mainCommand.isOrder()) {
+				new Order().run();
+			}
+			if (mainCommand.isBill()) {
 
 			}
-			if(mainCommand.isBill()){
-
-			}
-			if(mainCommand.isExit()){
+			if (mainCommand.isExit()) {
 				break;
 			}
-        }
+		}
 	}
 }
