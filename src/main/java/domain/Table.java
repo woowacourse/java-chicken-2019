@@ -22,6 +22,10 @@ public class Table {
 		//예외처리 필요
 	}
 
+	public boolean isEmpty() {
+		return this.menus.isEmpty();
+	}
+	
 	@Override
 	public String toString() {
 		return Integer.toString(number);
