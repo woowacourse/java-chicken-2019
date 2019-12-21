@@ -29,4 +29,8 @@ public class Menu {
     public int getAmountPrice(int orderAmount) {
         return orderAmount * this.price;
     }
+
+    public boolean isChicken() {
+        return this.category == Category.CHICKEN;
+    }
 }
