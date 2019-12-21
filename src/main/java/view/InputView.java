@@ -3,6 +3,7 @@ package view;
 import java.util.List;
 import java.util.Scanner;
 
+import domain.Menu;
 import domain.Table;
 
 public class InputView {
@@ -24,5 +25,15 @@ public class InputView {
 			throw new IllegalArgumentException("입력한 테이블 번호에 해당하는 테이블이 없습니다.");
 		}
 		return tableNumber;
+	}
+	
+	public static int inputMenuNumber(List<Menu> menus) {
+		System.out.println("## 등록할 메뉴를 선택하세요.");
+		int menuNumber = scanner.nextInt();
+		if (!menus.stream().filter(menu -> menu.getNumber() == menuNumber).findFirst().isPresent()) {
+			throw new IllegalArgumentException("입력한 메뉴 번호에 해당하는 메뉴가 없습니다.");
+		}
+		return menuNumber;
+		
 	}
 }

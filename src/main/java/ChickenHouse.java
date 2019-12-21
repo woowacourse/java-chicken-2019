@@ -9,7 +9,8 @@ import view.OutputView;
 
 public class ChickenHouse {
 	final static List<Table> tables = TableRepository.tables();
-
+	final static List<Menu> menus = MenuRepository.menus();
+	
 	public void execute() {
 		while (true) {
 			OutputView.mainDisplay();
@@ -29,8 +30,8 @@ public class ChickenHouse {
 	private static void order() {
 		OutputView.printTables(tables);
 		final int tableNumber = InputView.inputTableNumber(tables);
-		final List<Menu> menus = MenuRepository.menus();
 		OutputView.printMenus(menus);
+		
 	}
 
 	private static void pay() {
