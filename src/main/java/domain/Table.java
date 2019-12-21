@@ -43,6 +43,9 @@ public class Table {
 	}
 
 	public boolean hasOrder() {
+	    if(orderMap==null){
+	        return false;
+        }
 		return orderMap.values()
 			.stream()
 			.mapToInt(Integer::intValue).
