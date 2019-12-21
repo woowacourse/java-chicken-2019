@@ -43,9 +43,9 @@ public class OutputView {
         System.out.println("## " + table.toString() + "번 테이블의 결제를 진행합니다.");
     }
 
-    public static void printFinalBill(Table table) {
+    public static void printFinalBill(double price) {
         System.out.println("## 최종 결제할 금액");
-        System.out.println("");
+        System.out.println(price + "원");
         System.out.println();
     }
 

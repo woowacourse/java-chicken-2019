@@ -1,5 +1,9 @@
 package view;
 
+import domain.Table;
+
+import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -19,7 +23,7 @@ public class InputView {
         inputMainPrint();
         System.out.println("## 원하는 기능을 선택하세요.");
         String inputFunctionNumber = scanner.nextLine();
-        while (!inputFunctionNumberValidator(inputFunctionNumber)) {
+        while (!functionNumberValidator(inputFunctionNumber) || !isOneTwoThree(Integer.parseInt(inputFunctionNumber))) {
             System.out.println("숫자 1, 2, 3만 가능 합니다.");
             System.out.println("## 원하는 기능을 선택하세요.");
             inputFunctionNumber = scanner.nextLine();
@@ -28,10 +32,10 @@ public class InputView {
         return Integer.parseInt(inputFunctionNumber);
     }
 
-    private static boolean inputFunctionNumberValidator(String inputFunctionNumber) {
+    private static boolean functionNumberValidator(String inputFunctionNumber) {
         try {
-            int number = Integer.parseInt(inputFunctionNumber);
-            return isOneTwoThree(number);
+            Integer.parseInt(inputFunctionNumber);
+            return true;
         }
         catch (NumberFormatException e) {
             return false;
@@ -40,12 +44,27 @@ public class InputView {
     }
 
     private static boolean isOneTwoThree(int number) {
-        return number > MIN_NUMBER && number < MAX_NUMBER;
+        return number >= MIN_NUMBER && number <= MAX_NUMBER;
     }
 
-    public static int inputTableNumber() {
+    public static int inputTableNumber(List<Table> tables) {
         System.out.println("## 주문할 테이블을 선택하세요.");
-        return scanner.nextInt();
+        String inputTableNumber = scanner.nextLine();
+        while (!functionNumberValidator(inputTableNumber) || !isTable(tables, inputTableNumber)) {
+            System.out.println("나와있는 테이블 번호를 입력하세요.");
+            System.out.println("## 주문할 테이블을 선택하세요.");
+            inputTableNumber = scanner.nextLine();
+        }
+        return Integer.parseInt(inputTableNumber);
+    }
+
+    private static boolean isTable(List<Table> tables, String inputTableNumber) {
+        for (Table table: tables) {
+            if (table.toString().equals(inputTableNumber)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static int inputTableBillNumber() {

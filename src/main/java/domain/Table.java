@@ -39,6 +39,14 @@ public class Table {
         return this.bills;
     }
 
+    public int calculateCashBill() {
+        int count = 0;
+        for (Bill bill: this.bills) {
+            count += bill.getPrice();
+        }
+        return count;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

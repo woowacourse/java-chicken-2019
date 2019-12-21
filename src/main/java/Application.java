@@ -8,6 +8,8 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
+    private static final Double CASH_DISCOUNT = 0.95;
+
     private static List<Table> tables = TableRepository.tables();
     private static List<Menu> menus = MenuRepository.menus();
 
@@ -32,7 +34,7 @@ public class Application {
     }
 
     private static void doIfNumberIsOne() {
-        final int tableNumber = InputView.inputTableNumber();
+        final int tableNumber = InputView.inputTableNumber(tables);
         OutputView.printMenus(menus);
         for (Table table: tables) {
             if (table.toString().equals(Integer.toString(tableNumber))) {
@@ -64,7 +66,22 @@ public class Application {
         OutputView.printBill(table);
         OutputView.printTableBill(table);
         int inputCardOrCash = InputView.inputCardOrCash();
+        if (isCash(inputCardOrCash)) {
+            OutputView.printFinalBill(calculateCashBills(table));
+            return;
+        }
+        OutputView.printFinalBill(calculateCardBills(table));
+    }
 
-        OutputView.printFinalBill(table);
+    private static boolean isCash(int number) {
+        return number == 2;
+    }
+
+    private static double calculateCashBills(Table table) {
+        return table.calculateCashBill() * CASH_DISCOUNT;
+    }
+
+    private static double calculateCardBills(Table table) {
+        return table.calculateCashBill();
     }
 }
