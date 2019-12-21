@@ -1,5 +1,5 @@
 /*
- * @(#)OrderFunction.java       0.3 2019.12.21
+ * @(#)OrderFunction.java       0.4 2019.12.21
  *
  * Copyright (c) 2019 lxxjn0
  */
@@ -24,10 +24,20 @@ public class OrderFunction extends Function {
     public void operateFunction() {
         OutputView.printTables(tables);
         final int tableNumber = InputView.inputTableNumber();
+        final Table selectedtable = tables.stream()
+                .filter(table -> table.isSelectedTable(tableNumber))
+                .findFirst()
+                .get();
 
         OutputView.printMenus(menus);
 
         final int menuNumber = InputView.inputMenuNumber();
+        final Menu selectedMenu = menus.stream()
+                .filter(menu -> menu.isSelectedMenu(menuNumber))
+                .findFirst()
+                .get();
 
+        final int menuQuantity = InputView.inputMenuQuantity();
+        selectedtable.addOrderMenu(selectedMenu, menuQuantity);
     }
 }

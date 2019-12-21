@@ -1,3 +1,9 @@
+/*
+ * @(#)Menu.java        0.1 2019.12.21
+ *
+ * Copyright (c) 2019 lxxjn0
+ */
+
 package domain;
 
 public class Menu {
@@ -11,6 +17,10 @@ public class Menu {
         this.name = name;
         this.category = category;
         this.price = price;
+    }
+
+    public boolean isSelectedMenu(final int menuNumber) {
+        return this.number == menuNumber;
     }
 
     @Override
