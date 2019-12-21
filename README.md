@@ -106,3 +106,5 @@
         </li>
     </ol>
 </ul>
+<h3>초기 기능구현 준비</h3>
+<img src="./ready structure.jpg"/>
