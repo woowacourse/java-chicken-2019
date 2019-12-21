@@ -1,32 +1,35 @@
 package domain;
 
 public class Menu {
-    private final int number;
-    private final String name;
+    private final MenuNumber number;
+    private final MenuName name;
     private final Category category;
-    private final int price;
+    private final MenuPrice price;
 
     public Menu(final int number, final String name, final Category category, final int price) {
-        this.number = number;
-        this.name = name;
+        this.number = new MenuNumber(number);
+        this.name = new MenuName(name);
         this.category = category;
-        this.price = price;
+        this.price = new MenuPrice(price);
     }
 
     public boolean isSameMenuNumber(int number) {
-        return this.number == number;
+        return this.number.getNumber() == number;
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getPrice() {
-        return price;
+        return price.getPrice();
     }
 
     @Override
     public String toString() {
-        return category + " " + number + " - " + name + " : " + price + "원";
+        return category + " " +
+                number.getNumber() + " - " +
+                name.getName() + " : " +
+                price.getPrice() + "원";
     }
 }

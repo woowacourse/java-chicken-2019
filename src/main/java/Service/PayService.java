@@ -30,7 +30,7 @@ public class PayService {
         int amount = table.getTotalAmount();
 
         if (amount >= AMOUNT_SALE_CONDITION) {
-            price -= AMOUNT_SALE_PRICE * amount / 10;
+            price -= AMOUNT_SALE_PRICE * (amount / 10);
         }
 
         if (paymentMethod == CASH) {

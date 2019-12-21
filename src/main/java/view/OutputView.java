@@ -63,15 +63,15 @@ public class OutputView {
         StringBuilder sb = new StringBuilder();
 
         sb.append("## 주문 내역\n");
-        sb.append("메뉴\t\t수량\t금액\n");
+        sb.append("메뉴 수량 금액\n");
         printBill(sb, bill);
         System.out.println(sb);
     }
 
     private static void printBill(StringBuilder sb, HashMap<Menu, Integer> bill) {
         for (Map.Entry<Menu, Integer> entry : bill.entrySet()) {
-            sb.append(entry.getKey().getName() + "\t\t");
-            sb.append(entry.getValue() + "\t");
+            sb.append(entry.getKey().getName() + " ");
+            sb.append(entry.getValue() + " ");
             sb.append(entry.getKey().getPrice() * entry.getValue() + "\n");
         }
     }
