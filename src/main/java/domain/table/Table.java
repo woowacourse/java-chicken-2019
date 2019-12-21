@@ -19,4 +19,8 @@ public class Table {
     public boolean equalsNumber(int tableNumber) {
         return this.number == tableNumber;
     }
+
+    public void addOrder(int menuNumber, int menuAmount) {
+        order.add(menuNumber, menuAmount);
+    }
 }

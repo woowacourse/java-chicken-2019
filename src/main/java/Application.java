@@ -31,13 +31,15 @@ public class Application {
         OutputView.printTables(tables);
 
         final int tableNumber = InputView.inputTableNumber();
+        Table table = TableRepository.findTableBy(tableNumber);
 
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
 
         final int menuNumber = InputView.inputMenuToRegister();
-
         final int menuAmount = InputView.inputMenuAmount();
+
+        table.addOrder(menuNumber, menuAmount);
     }
 
     private static void payOrder() {
