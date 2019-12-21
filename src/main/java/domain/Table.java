@@ -6,6 +6,10 @@ public class Table {
     public Table(final int number) {
         this.number = number;
     }
+    
+    public boolean isPresentTable(int tableNum) {
+    	return this.number == tableNum;
+    }
 
     @Override
     public String toString() {

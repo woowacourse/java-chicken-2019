@@ -4,24 +4,29 @@ import domain.Table;
 import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
+import domain.Register;
 
 import java.util.List;
 
 public class Application {
-    // TODO 구현 진행
+    private static final int REGISTER = 1;
+    private static final int PAY = 1;
+    private static final int EXIT_PROGRAM = 1;
+    
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
-        
-        int order;
+        final List<Menu> menus = MenuRepository.menus();
         
         OutputView.printMain();
-        order = InputView.inputOrder();
+        int order = InputView.inputOrder();
         
-        OutputView.printTables(tables);
-        
-        final int tableNumber = InputView.inputTableNumber();
+        if (order == REGISTER) {
+        	Register.startOrder(tables, menus);
+        } else if (order == PAY) {
+        	
+        } else if (order == EXIT_PROGRAM) {
+        	
+        }
 
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
     }
 }
