@@ -40,7 +40,7 @@ public class OutputView {
     }
 
     private static void printTableNumbers(final TableRepository tables) {
-        for (final Table table : tables) {
+        for (final Table table : tables.getTables()) {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();

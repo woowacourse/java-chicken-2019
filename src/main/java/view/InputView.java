@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import domain.Menu;
 import domain.Table;
+import domain.TableRepository;
 
 public class InputView {
 	private static final Scanner scanner = new Scanner(System.in);
@@ -18,10 +19,10 @@ public class InputView {
 		return command;
 	}
 
-	public static int inputTableNumber(List<Table> tables) {
+	public static int inputTableNumber(TableRepository tables) {
 		System.out.println("## 주문할 테이블을 선택하세요.");
 		int tableNumber = scanner.nextInt();
-		if (!tables.stream().filter(table -> table.getNumber() == tableNumber).findFirst().isPresent()) {
+		if (!tables.getTables().stream().filter(table -> table.getNumber() == tableNumber).findFirst().isPresent()) {
 			throw new IllegalArgumentException("입력한 테이블 번호에 해당하는 테이블이 없습니다.");
 		}
 		return tableNumber;
