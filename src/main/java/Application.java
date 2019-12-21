@@ -15,9 +15,10 @@ public class Application {
 
         Application application = new Application();
         application.mainMenu();
-        application.tableMenu(tables);
+        int tableNumber = application.tableMenu(tables);
         application.menuMenu(menus);
         application.quantityMenu();
+        application.paymentTypeMenu(tableNumber);
     }
 
     private int mainMenu() {
@@ -45,5 +46,10 @@ public class Application {
     private int quantityMenu() {
         int quantityNumber = InputView.inputQuantityNumber();
         return quantityNumber;
+    }
+
+    private int paymentTypeMenu(int tableNumber) {
+        int paymentNumber = InputView.inputPaymentTypeNumber(tableNumber);
+        return paymentNumber;
     }
 }
