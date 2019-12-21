@@ -8,6 +8,7 @@ import domain.Orders;
 import domain.Price;
 import domain.Table;
 import domain.TableRepository;
+import util.InputValidator;
 import view.InputView;
 import view.OutputView;
 
@@ -51,13 +52,10 @@ public class Pos {
 
 	private void registerOrder() {
 		OutputView.printTables(TableRepository.tables(), orders);
-		Table table = new Table(InputView.inputTableNumber());
-
+		Table table = createTable();
 		OutputView.printMenus(MenuRepository.menus());
 		Menu menu = MenuRepository.getMenu(InputView.inputMenuNumber());
-
 		MenuAmount menuAmount = new MenuAmount(InputView.inputMenuAmount());
-
 		Order order = new Order(table, menu, menuAmount);
 		orders.add(order);
 	}
@@ -75,4 +73,12 @@ public class Pos {
 		return new Price(orders.getTotalPrice(tableNumber), NO_DISCOUNT);
 	}
 
+	private Table createTable() {
+		int tableNumber = InputView.inputTableNumber();
+		if (!InputValidator.isValidTableNumber(tableNumber)) {
+			OutputView.printReEnter();
+			createTable();
+		}
+		return new Table(tableNumber);
+	}
 }
