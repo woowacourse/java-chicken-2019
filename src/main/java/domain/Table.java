@@ -20,6 +20,10 @@ public class Table {
         menuQuantity.addMenuQuantity(menu, quantity);
     }
 
+    public Boolean isOrderedTable() {
+        return menuQuantity.isOrdered();
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

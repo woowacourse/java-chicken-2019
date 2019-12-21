@@ -32,4 +32,12 @@ public class MenuQuantity {
             menuQuantity.put(menu, menuQuantity.get(menu) + quantity);
         }
     }
+
+    protected Boolean isOrdered() {
+        return menuQuantity.entrySet()
+                .stream()
+                .filter((i) -> i.getValue() != ZERO)
+                .findFirst()
+                .isPresent();
+    }
 }
