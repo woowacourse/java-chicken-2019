@@ -2,6 +2,7 @@ package view;
 
 import domain.Menu;
 import domain.Table;
+import domain.TableRepository;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class OutputView {
     	System.out.println("3 - 프로그램 종료");
 	}
 
-    public static void printTables(final List<Table> tables) {
+    public static void printTables(final TableRepository tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
         printLine(TOP_LINE, size);
