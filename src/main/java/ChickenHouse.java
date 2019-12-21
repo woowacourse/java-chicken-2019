@@ -10,7 +10,8 @@ import view.OutputView;
 public class ChickenHouse {
 	// final static List<Table> tables = TableRepository.tables();
 	final static TableRepository tables = new TableRepository();
-	final static List<Menu> menus = MenuRepository.menus();
+	//final static List<Menu> menus = MenuRepository.menus();
+	final static MenuRepository menus = new MenuRepository();
 
 	public void execute() {
 		while (true) {

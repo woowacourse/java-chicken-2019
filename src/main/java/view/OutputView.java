@@ -1,6 +1,7 @@
 package view;
 
 import domain.Menu;
+import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
 
@@ -26,8 +27,8 @@ public class OutputView {
         printLine(BOTTOM_LINE, size);
     }
 
-    public static void printMenus(final List<Menu> menus) {
-        for (final Menu menu : menus) {
+    public static void printMenus(final MenuRepository menus) {
+        for (final Menu menu : menus.getMenus) {
             System.out.println(menu);
         }
     }

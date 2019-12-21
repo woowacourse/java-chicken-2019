@@ -19,6 +19,7 @@ public class Table {
 		for (int i = 0; i < menuCount; i++) {
 			menus.add(menu);
 		}
+		//예외처리 필요
 	}
 
 	@Override
