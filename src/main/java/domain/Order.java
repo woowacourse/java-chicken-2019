@@ -46,7 +46,6 @@ public class Order implements OrderService {
 
     @Override
     public void changeQuantity(Menu menu, int quantityToAdd) {
-        // TODO: 메뉴 개수 관련 예외처리
         order.put(menu, order.get(menu) + quantityToAdd);
     }
 
