@@ -16,9 +16,9 @@ public class InputView {
     private static final int BIGGIST_ORDER_COUNT = 99;
     private static int inputNumber;
 
-    public static int inputOrderNumber(HashMap<Integer, Integer> orderTable, List<Table> tableList) {
+    public static int inputOrderNumber(List<Table> tableList) {
         OutputView.printOrderPage();
-        while(!isOrderNumber(orderTable, tableList));
+        while(!isOrderNumber(tableList));
         return inputNumber;
     }
 
@@ -111,12 +111,11 @@ public class InputView {
         }
     }
 
-    private static boolean isOrderNumber(HashMap<Integer, Integer> orderTable, List<Table> tableList) {
+    private static boolean isOrderNumber(List<Table> tableList) {
         Scanner scanner = new Scanner(System.in);
         try{
             inputNumber = scanner.nextInt();
             checkOrderNumber(inputNumber);
-            checkAlreadyOrder(inputNumber, orderTable, tableList);
             return true;
         } catch(Exception e) {
             System.out.println(e.getMessage());
@@ -125,21 +124,6 @@ public class InputView {
         }
         return false;
 
-    }
-
-    private static void checkAlreadyOrder(int inputNumber,HashMap<Integer, Integer> orderTable,
-                                          List<Table> tables) throws Exception {
-        boolean alreadyOrder = false;
-        if(inputNumber != MAKE_PAYMENT) { return; }
-        for(Table table : tables) {
-            alreadyOrder = orderTable.containsKey(table.getNumber());
-            if(alreadyOrder) {
-                break;
-            }
-        }
-        if(!alreadyOrder) {
-            throw new Exception("결제할 내역이 없습니다.");
-        }
     }
 
     private static void checkOrderNumber(int inputNumber) throws Exception {
