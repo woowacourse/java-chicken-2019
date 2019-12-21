@@ -26,5 +26,9 @@ public class Menu {
         return price;
     }
 
+    public boolean isForeignKey(int number){
+        return this.number == number;
+    }
+
 
 }
