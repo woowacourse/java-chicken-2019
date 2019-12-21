@@ -16,6 +16,8 @@ public class Order {
     }
 
     public void getOrder() {
+        if (impossibleToOrder())
+            return;
         OutputView.printMenus(MenuRepository.menus());
         int menuNumber = getMenuNumber();
         int menuCount = getMenuCount();
@@ -50,6 +52,13 @@ public class Order {
         return true;
     }
 
+    boolean impossibleToOrder() {
+        if (table.getTableMenuCount() >= MenuRepository.get_MAX_MENU_COUNT()) {
+            System.out.println("주문 가능한 수량을 이미 초과하여 주문할 수 없습니다.\n");
+            return true;
+        }
+        return false;
+    }
     void addOrder(int menuNumber, int menuCount) {
         Menu menu = MenuRepository.getMenu(menuNumber);
         if (menu == null) {
