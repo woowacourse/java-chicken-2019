@@ -10,6 +10,10 @@ public class Table {
         this.number = number;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     public void addMenu(Menu menu) {
         menus.add(menu);
     }

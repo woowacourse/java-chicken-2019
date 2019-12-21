@@ -3,8 +3,10 @@ package view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import domain.Functions;
+import domain.Table;
 
 
 public class InputView {
@@ -26,22 +28,29 @@ public class InputView {
 
     private static int checkFunctionNumber(int functionNumber) throws IOException {
         if(functionNumber != Functions.EXIT.getNumber()
-                || functionNumber != Functions.PAY.getNumber()
-                || functionNumber != Functions.REGISTER.getNumber()){
+                && functionNumber != Functions.PAY.getNumber()
+                && functionNumber != Functions.REGISTER.getNumber()){
             System.out.println(ERROR_NUMBER);
             return inputFunctionNumber();
         }
         return functionNumber;
     }
 
-    public static int inputTableNumber() throws IOException {
+    public static int inputTableNumber(List<Table> tables) throws IOException {
         System.out.println(INPUT_TABLE_NUMBER);
         try {
-            return checkTableNumber(Integer.parseInt(BR.readLine().trim()));
+            return checkTableNumber(Integer.parseInt(BR.readLine().trim()),tables);
         } catch (NumberFormatException e) {
             System.out.println(ERROR_FORMAT);
-            return inputTableNumber();
+            return inputTableNumber(tables);
         }
+    }
+
+    private static int checkTableNumber(int tableNumber, List<Table> tables) throws IOException {
+        if(tables.stream().anyMatch(s->s.getNumber()==tableNumber))
+            return tableNumber;
+        System.out.println(ERROR_NUMBER);
+        return inputTableNumber(tables);
     }
 
 

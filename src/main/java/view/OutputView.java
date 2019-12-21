@@ -1,5 +1,6 @@
 package view;
 
+import domain.Functions;
 import domain.Menu;
 import domain.Table;
 
@@ -36,5 +37,9 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+
+    public static void printMainFunctions() {
+        System.out.println(Functions.REGISTER.toString());
     }
 }

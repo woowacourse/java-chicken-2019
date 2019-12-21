@@ -5,15 +5,13 @@ import java.util.List;
 
 import domain.Menu;
 import domain.MenuRepository;
-import view.InputView;
-import view.OutputView;
+import domain.Table;
+import model.ChickenModel;
 
 public class ChickenController {
-    public static void playPos() throws IOException {
-        InputView.inputFunctionNumber();
-        final int tableNumber = InputView.inputTableNumber();
-
+    public static void playPos(List<Table> tables) throws IOException {
         final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+        ChickenModel model = new ChickenModel(tables,menus);
+        model.startPos();
     }
 }
