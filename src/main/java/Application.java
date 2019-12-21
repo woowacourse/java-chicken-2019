@@ -2,6 +2,10 @@ import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
+import service.Biller;
+import service.OrderRegistor;
+import service.ProgramFinisher;
+import service.ServiceRepository;
 import view.InputView;
 import view.OutputView;
 
@@ -10,6 +14,9 @@ import java.util.List;
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
+        final ServiceRepository serviceRepository = new ServiceRepository();
+        OutputView.printServices(serviceRepository.services());
+
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 

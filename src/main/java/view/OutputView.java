@@ -2,6 +2,7 @@ package view;
 
 import domain.Menu;
 import domain.Table;
+import service.Service;
 
 import java.util.List;
 
@@ -34,6 +35,13 @@ public class OutputView {
     private static void printTableNumbers(final List<Table> tables) {
         for (final Table table : tables) {
             System.out.printf(TABLE_FORMAT, table);
+        }
+        System.out.println();
+    }
+
+    public static void printServices(final List<Service> services){
+        for (final Service service : services) {
+            System.out.println(service.toString());
         }
         System.out.println();
     }
