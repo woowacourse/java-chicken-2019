@@ -4,12 +4,14 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import domain.Menu;
 import domain.Table;
 
 public class ExceptionHandler {
 	private static final int ORDER = 1;
 	private static final int PAYMENT = 2;
 	private static final int EXIT = 3;
+	private static final int MAXIMUM_ORDER_COUNT = 99;
 	private static Scanner scanner = new Scanner(System.in);
 
 	public static int inputSelectWorkHandler() {
@@ -40,16 +42,52 @@ public class ExceptionHandler {
 	}
 
 	private static int checkInputSelectTableHandler(List<Table> tables, int input) {
-		boolean isExistTableNumber = false;
 		for (Table table : tables) {
 			if (table.getNumber() == input) {
-				isExistTableNumber = true;
+				return input;
 			}
 		}
-		if (isExistTableNumber == true) {
-			return input;
+		throw new IllegalArgumentException();
+	}
+
+	public static int inputSelectMenuHandler(List<Menu> menus) {
+		try {
+			return checkInputSelectMenuHandler(menus, scanner.nextInt());
+		} catch (InputMismatchException | IllegalArgumentException e) {
+			System.out.println("입력값을 확인해주세요.");
+			scanner = new Scanner(System.in);
+			return inputSelectMenuHandler(menus);
+		}
+	}
+
+	private static int checkInputSelectMenuHandler(List<Menu> menus, int input) {
+		for (Menu menu : menus) {
+			if (menu.getNumber() == input) {
+				return input;
+			}
 		}
 		throw new IllegalArgumentException();
+	}
+
+	public static int inputSelectMenuCountHandler(Table table) {
+		try {
+			return checkInputSelectMenuCountHandler(table,scanner.nextInt());
+		} catch (InputMismatchException | IllegalArgumentException e) {
+			System.out.println("입력값을 확인해주세요.");
+			scanner = new Scanner(System.in);
+			return inputSelectMenuCountHandler(table);
+		}
+	}
+
+	private static int checkInputSelectMenuCountHandler(Table table, int input) {
+		if (input<=0) {
+			throw new IllegalArgumentException();
+		}
+		if (table.getOrderCount() + input > MAXIMUM_ORDER_COUNT) {
+			System.out.println("주문 수량이 99를 초과했습니다.");
+			throw new IllegalArgumentException();
+		}
+		return input;
 	}
 
 }

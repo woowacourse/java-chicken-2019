@@ -3,6 +3,7 @@ package view;
 import java.util.List;
 import java.util.Scanner;
 
+import domain.Menu;
 import domain.Table;
 import util.ExceptionHandler;
 
@@ -23,5 +24,14 @@ public class InputView {
 		return ExceptionHandler.inputSelectTableHandler(tables);
 	}
 
+	public static int inputSelectMenu(List<Menu> menus) {
+        System.out.println("## 등록할 메뉴를 선택하세요.");
+		return ExceptionHandler.inputSelectMenuHandler(menus);
+	}
+
+	public static int inputSelectMenuCount(Table table) {
+        System.out.println("## 메뉴의 수량을 입력하세요.");
+		return ExceptionHandler.inputSelectMenuCountHandler(table);
+	}
 
 }

@@ -15,6 +15,10 @@ public class Menu {
 
     @Override
     public String toString() {
-        return category + " " + number + " - " + name + " : " + price + "ì›";
+        return category + " " + number + " - " + name + " : " + price + "¿ø";
     }
+    
+	public int getNumber() {
+		return number;
+	}
 }

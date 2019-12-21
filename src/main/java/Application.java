@@ -12,6 +12,7 @@ public class Application {
 	private static final int PAYMENT = 2;
 	private static final int EXIT = 3;
 	private static final List<Table> tables = TableRepository.tables();
+	private static final List<Menu> menus = MenuRepository.menus();
 	
 	public static void main(String[] args) {
 		int nowWork;
@@ -24,7 +25,6 @@ public class Application {
 //
 //			final int tableNumber = InputView.inputTableNumber();
 //
-//			final List<Menu> menus = MenuRepository.menus();
 //			OutputView.printMenus(menus);
 		} while (nowWork != EXIT);
 	}
@@ -43,8 +43,13 @@ public class Application {
 
 	private static void doOrder() {
 		int nowTable;
+		int nowMenu;
+		int nowMenuCount;
 		OutputView.printTables(tables);
 		nowTable = InputView.inputSelectTable(tables);
+		OutputView.printMenus(menus);
+		nowMenu = InputView.inputSelectMenu(menus);
+		nowMenuCount = InputView.inputSelectMenuCount(tables.get(nowTable));
 	}
 	private static void doPayment() {
 		// TODO Auto-generated method stub
