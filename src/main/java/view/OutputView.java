@@ -1,5 +1,6 @@
 package view;
 
+import domain.Amount;
 import domain.Menu;
 import domain.Table;
 
@@ -59,7 +60,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printOrderHistory(HashMap<Menu, Integer> bill) {
+    public static void printOrderHistory(HashMap<Menu, Amount> bill) {
         StringBuilder sb = new StringBuilder();
 
         sb.append("## 주문 내역\n");
@@ -68,11 +69,11 @@ public class OutputView {
         System.out.println(sb);
     }
 
-    private static void printBill(StringBuilder sb, HashMap<Menu, Integer> bill) {
-        for (Map.Entry<Menu, Integer> entry : bill.entrySet()) {
+    private static void printBill(StringBuilder sb, HashMap<Menu, Amount> bill) {
+        for (Map.Entry<Menu, Amount> entry : bill.entrySet()) {
             sb.append(entry.getKey().getName() + " ");
             sb.append(entry.getValue() + " ");
-            sb.append(entry.getKey().getPrice() * entry.getValue() + "\n");
+            sb.append(entry.getKey().getPrice() * entry.getValue().getAmount() + "\n");
         }
     }
 

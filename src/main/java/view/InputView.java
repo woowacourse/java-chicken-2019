@@ -22,7 +22,7 @@ public class InputView {
         return inputInt();
     }
 
-    public static int inputMenuMount() {
+    public static int inputMenuAmount() {
         System.out.println("## 메뉴의 수량을 입력하세요.");
         return inputInt();
     }

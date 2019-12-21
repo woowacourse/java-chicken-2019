@@ -1,5 +1,6 @@
 package Service;
 
+import domain.Amount;
 import domain.Menu;
 import domain.Table;
 import view.InputView;
@@ -15,7 +16,7 @@ public class PayService {
     private static final int AMOUNT_SALE_PRICE = 10000;
 
     public void pay(Table table) {
-        HashMap<Menu, Integer> bill = table.getBill();
+        HashMap<Menu, Amount> bill = table.getBill();
         OutputView.printOrderHistory(bill);
 
         int paymentMethod = InputView.inputPaymentMethod(table.getNumber());

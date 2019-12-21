@@ -7,7 +7,7 @@ public class Table {
     private static final int ZERO = 0;
 
     private final TableNumber number;
-    private final HashMap<Menu, Integer> bill = new HashMap<>();
+    private final HashMap<Menu, Amount> bill = new HashMap<>();
 
     public Table(final int number) {
         this.number = new TableNumber(number);
@@ -17,12 +17,12 @@ public class Table {
         return this.number.getNumber() == number;
     }
 
-    public void addMenu(Menu menu, int mount) {
+    public void addMenu(Menu menu, int amount) {
         if (isOrderMenu(menu)) {
-            bill.replace(menu, mount);
+            bill.replace(menu, new Amount(amount));
             return;
         }
-        bill.put(menu, mount);
+        bill.put(menu, new Amount(amount));
     }
 
     private boolean isOrderMenu(Menu menu) {
@@ -33,7 +33,7 @@ public class Table {
         return bill.size() != ZERO;
     }
 
-    public HashMap<Menu, Integer> getBill() {
+    public HashMap<Menu, Amount> getBill() {
         return bill;
     }
 
@@ -43,16 +43,16 @@ public class Table {
 
     public int getTotalPrice() {
         int price = 0;
-        for (Map.Entry<Menu, Integer> entry : bill.entrySet()) {
-            price += entry.getKey().getPrice() * entry.getValue();
+        for (Map.Entry<Menu, Amount> entry : bill.entrySet()) {
+            price += entry.getKey().getPrice() * entry.getValue().getAmount();
         }
         return price;
     }
 
     public int getTotalAmount() {
         int amount = 0;
-        for (int entry : bill.values()) {
-            amount += entry;
+        for (Amount entry : bill.values()) {
+            amount += entry.getAmount();
         }
         return amount;
     }

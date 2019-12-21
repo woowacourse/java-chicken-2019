@@ -16,8 +16,8 @@ public class OrderService {
         int menuNumber = InputView.inputMenuNumber();
         Menu selectedMenu = selectMenu(menus, menuNumber);
 
-        int menuMount = InputView.inputMenuMount();
-        table.addMenu(selectedMenu, menuMount);
+        int menuAmount = InputView.inputMenuAmount();
+        table.addMenu(selectedMenu, menuAmount);
     }
 
     private Menu selectMenu(List<Menu> menus, int number) {
