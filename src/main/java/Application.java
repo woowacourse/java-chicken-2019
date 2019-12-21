@@ -11,39 +11,36 @@ public class Application {
 
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
-        int currentTableNumber = 0;
+        int tableNumber = 0;
 
         Choice posChoice;
         do {
-            // 메인 메뉴 출력
             OutputView.printPosMenu();
             posChoice = validatePosChoice();
 
-
-            // 주문 등록 로직
             if (posChoice == Choice.ORDER) {
-                OutputView.printTables(tables, currentTableNumber);
-                final int tableNumber = validateTableNumber(tables, currentTableNumber);
-                currentTableNumber = tableNumber;
+                OutputView.printTables(tables, tableNumber);
+                tableNumber = validateTableNumber(tables, tableNumber);
                 OutputView.printMenus(menus);
                 int foodNumber = validateFoodNumber(menus);
-                Menu selectedMenu = menus.stream().filter(m -> m.isMatchNumber(foodNumber)).findAny().get();
+                Menu selectedMenu = menus.stream()
+                        .filter(m -> m.isMatchNumber(foodNumber))
+                        .findAny()
+                        .get();
                 Basket.addToOrderList(selectedMenu, validateFoodCount());
             }
 
-            // 결제 로직
-            if (posChoice == Choice.PAY){
-                OutputView.printTables(tables, currentTableNumber);
-                final int tableNumber = validatePayableTableNumber(currentTableNumber);
+            if (posChoice == Choice.PAY) {
+                OutputView.printTables(tables, tableNumber);
+                tableNumber = validatePayableTableNumber(tableNumber);
                 OutputView.printOrderList(Basket.showOrderList());
                 OutputView.printPayingStartMessage(tableNumber);
-
-                int totalPrice = Basket.calculateTotalPrice();
                 Payment payment = validatePaymentChoice();
-                double finalPaymentPrice = payment.calculateFinalDiscountedPrice(totalPrice);
+                double finalPaymentPrice = payment.calculateFinalDiscountedPrice(Basket.calculateTotalPrice());
                 OutputView.printFinalPaymentPrice(finalPaymentPrice);
             }
-        } while(posChoice != Choice.EXIT);
+
+        } while (posChoice != Choice.EXIT);
 
     }
 
@@ -78,16 +75,11 @@ public class Application {
         }
     }
 
-    /** 조건 분리 */
     private static int validateFoodCount() {
         try {
             int foodCount = InputView.inputFoodCount();
-            if (foodCount <= 0) {
-                throw new IllegalArgumentException("1개 이상 주문해 주세요");
-            }
-            if (foodCount > 99) {
-                throw new IllegalArgumentException("최대 주문 가능 수량을 초과했습니다.");
-            }
+            validateOverOneCount(foodCount);
+            validateUnderMaxCount(foodCount);
             return foodCount;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -95,17 +87,33 @@ public class Application {
         return validateFoodCount();
     }
 
+    private static void validateUnderMaxCount(int foodCount) {
+        if (foodCount > 99) {
+            throw new IllegalArgumentException("최대 주문 가능 수량을 초과했습니다.");
+        }
+    }
+
+    private static void validateOverOneCount(int foodCount) {
+        if (foodCount <= 0) {
+            throw new IllegalArgumentException("1개 이상 주문해 주세요");
+        }
+    }
+
     private static int validateFoodNumber(List<Menu> menus) {
         try {
             int foodNumber = InputView.inputFoodNumber();
-            if (menus.stream().filter(m -> m.isMatchNumber(foodNumber)).count() == 0){
-                throw new IllegalArgumentException("선택 가능한 메뉴가 아닙니다.");
-            }
+            validateExistedMenu(menus, foodNumber);
             return foodNumber;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
         return validateFoodNumber(menus);
+    }
+
+    private static void validateExistedMenu(List<Menu> menus, int foodNumber) {
+        if (menus.stream().filter(m -> m.isMatchNumber(foodNumber)).count() == 0) {
+            throw new IllegalArgumentException("선택 가능한 메뉴가 아닙니다.");
+        }
     }
 
     private static int validateTableNumber(List<Table> tables, int currentTableNumber) {
@@ -128,13 +136,13 @@ public class Application {
     }
 
     private static void validateExistedTables(List<Table> tables, int tableNumber) {
-        if (tables.stream().filter(table -> table.isMatchNumber(tableNumber)).count() == 0){
+        if (tables.stream().filter(table -> table.isMatchNumber(tableNumber)).count() == 0) {
             throw new IllegalArgumentException("존재하는 테이블 번호가 아닙니다.");
         }
     }
 
     private static void validateCurrentOrderingTable(int currentTableNumber, int tableNumber) {
-        if (currentTableNumber != 0 && tableNumber != currentTableNumber){
+        if (currentTableNumber != 0 && tableNumber != currentTableNumber) {
             throw new IllegalArgumentException("현재 주문 중인 테이블이 아닙니다.");
         }
     }
@@ -142,13 +150,17 @@ public class Application {
     public static Choice validatePosChoice() {
         try {
             int posChoice = InputView.inputPosChoice();
-            if (posChoice < 0 | posChoice > 3) {
-                throw new IllegalArgumentException("선택 가능한 범위가 아닙니다.");
-            }
+            validateChoiceRange(posChoice);
             return Arrays.stream(Choice.values()).filter(c -> c.getPosNumber() == posChoice).findAny().get();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
         return validatePosChoice();
+    }
+
+    private static void validateChoiceRange(int posChoice) {
+        if (posChoice <= 0 | posChoice > 3) {
+            throw new IllegalArgumentException("선택 가능한 범위가 아닙니다.");
+        }
     }
 }
