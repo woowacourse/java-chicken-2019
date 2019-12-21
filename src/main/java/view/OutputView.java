@@ -15,7 +15,7 @@ public class OutputView {
         System.out.println("##메인화면");
         List<String> programCategory = ProgramCategory.getProgramCategory();
         for (int i = 0; i < programCategory.size(); i++) {
-            System.out.println((i + 1) + programCategory.get(i));
+            System.out.println((i + 1) + "-" + programCategory.get(i));
         }
     }
 
@@ -47,15 +47,20 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printTotalPayPrice(int totalPrice) {
+    public static void printFinalPrice(int finalPrice) {
         System.out.println("최종 결제할 금액");
-        System.out.println(totalPrice + "원\n");
+        System.out.println(finalPrice + "원");
+    }
+
+    public static void printDiscountInfo(int chickenDiscount, int cashDiscount) {
+        System.out.println("치킨 할인: "+chickenDiscount+"원, 현금 할인: "+cashDiscount+"원이 적용된 금액입니다.\n");
     }
 
     public static void printOrderedMenuInfo(){
         System.out.println("## 주문 내역");
         System.out.println("메뉴 수량 금액");
     }
+
     public static void printOrderedMenu(Menu menu, int count) {
         System.out.println(menu.getName() + " " + count + " " + menu.getPrice() * count);
     }

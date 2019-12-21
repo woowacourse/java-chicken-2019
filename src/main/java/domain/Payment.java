@@ -9,6 +9,8 @@ public class Payment {
     static final int DISCOUNT_PER_10CHICKEN = 10000;
     Table table;
     int paymentMethod; // 1: 신용카드, 2: 현금
+    int chickenDiscount = 0;
+    int cashDiscount = 0;
 
     public Payment(Table table) {
         if (table == null)
@@ -25,15 +27,19 @@ public class Payment {
         int finalPrice = getFinalPrice();
         if (!validateFinalPrice(finalPrice))
             return;
-        OutputView.printTotalPayPrice(finalPrice);
+        OutputView.printFinalPrice(finalPrice);
+        OutputView.printDiscountInfo(chickenDiscount, cashDiscount);
         table.clearMenus();
     }
 
     public int getFinalPrice(){
         int finalPrice  = table.getTotalPrice();
-        finalPrice -= getChickenDiscount();
-        if (paymentMethod == 2)
-            finalPrice = getCashDiscount(finalPrice);
+        setChickenDsicount();
+        finalPrice -= chickenDiscount;
+        if (paymentMethod == 2) {
+            setCashDiscount(finalPrice);
+            finalPrice -= cashDiscount;
+        }
         return finalPrice;
     }
 
@@ -54,14 +60,14 @@ public class Payment {
         return false;
     }
 
-    public int getChickenDiscount() {
+    public void setChickenDsicount() {
         int chickenCount = table.getChickenCount();
         int discount = chickenCount / 10;
-        return discount * DISCOUNT_PER_10CHICKEN;
+        chickenDiscount = discount * DISCOUNT_PER_10CHICKEN;
     }
 
-    private int getCashDiscount(int totalPrice) {
-        return  (int) (totalPrice * 0.95);
+    private void setCashDiscount(int totalPrice) {
+        cashDiscount =  (int) (totalPrice * 0.05);
     }
 
     private boolean validateOrderedMenu() {
