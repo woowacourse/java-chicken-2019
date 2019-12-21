@@ -30,13 +30,13 @@ public class Application {
         OutputView.printMainScreen();
         OutputView.printFunctions(functions);
         input = getFunctionNumber();
-        if (input == functions.indexOf(REGISTER_ORDER)) {
+        if (input == functions.indexOf(REGISTER_ORDER) + 1) {
             order.getOrder();
         }
-        if (input == functions.indexOf(DO_PAYMENT)) {
+        if (input == functions.indexOf(DO_PAYMENT) + 1) {
             System.out.println("구현 중입니다. 잠시만 기다려 주세요^^");
         }
-        if (input == functions.indexOf(EXIT_PROGRAM)) {
+        if (input == functions.indexOf(EXIT_PROGRAM) + 1) {
             System.exit(0);
         }
     }
