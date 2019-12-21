@@ -53,7 +53,7 @@ public class Application {
         final int tableNumber = InputView.inputTableNumber();
         
         OutputView.printTableOrder(TableRepository.getTableByNumber(tableNumber));
-        OutputView.printTablepay(TableRepository
+        OutputView.printTablePay(TableRepository
                 .getTableByNumber(tableNumber), InputView.inputPayment());
         
     }
