@@ -1,6 +1,7 @@
 package view;
 
 import domain.Menu;
+import domain.Order;
 import domain.Table;
 
 import java.util.List;
@@ -37,4 +38,7 @@ public class OutputView {
         }
         System.out.println();
     }
+
+
+
 }
