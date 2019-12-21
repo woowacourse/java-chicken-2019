@@ -18,11 +18,11 @@ public class Application {
 			int userInput = InputView.validMainViewInput(); // 사용자 입력을 받아서
 			if (userInput == 1) { // 주문등록
 				OutputView.printTables(tables); // 테이블 목록 출력
-				Table targetTable = findTable(tables);
+				Table targetTable = findTable(tables); // 선택된 테이블 저장
 				OutputView.printMenus(menus); // 메뉴 목록 출력
-				Menu targetMenu = findMenu(menus);
-				int quantity = InputView.inputQuantity();
-				targetTable.addMenu(targetMenu, quantity);
+				Menu targetMenu = findMenu(menus); // 선택된 메뉴 저장
+				int quantity = InputView.inputQuantity(); // 선택된 수량 저장
+				targetTable.addMenu(targetMenu, quantity); // 선택된 테이블에 메뉴와 수량 저장
 			}
 			if (userInput == 2) { // 결제
 				
