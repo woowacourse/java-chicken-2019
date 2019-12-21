@@ -12,16 +12,18 @@ public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
         Tables tables = new Tables(TableRepository.tables());
+        int mainMenuNumber;
+        do {
+            final List<MainMenu> mainMenus = MainMenuRepository.mainMenus();
+            OutputView.printMainMenu(mainMenus);
 
-        final List<MainMenu> mainMenus = MainMenuRepository.mainMenus();
-        OutputView.printMainMenu(mainMenus);
+            mainMenuNumber = InputView.inputMainMenuNumber();
 
-        final int mainMenuNumber = InputView.inputMainMenuNumber();
-
-        if (mainMenuNumber == 1) {
-            OrderController orderController = new OrderController(tables);
-            orderController.run();
-        }
+            if (mainMenuNumber == 1) {
+                OrderController orderController = new OrderController(tables);
+                orderController.run();
+            }
+        } while (mainMenuNumber != 3);
 
     }
 }
