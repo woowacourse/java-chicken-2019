@@ -14,6 +14,10 @@ import java.util.ArrayList;
 
 public class InputView {
     private static final String NOT_NUMBER_PATTERN = "^[0-9]*$";
+    private static final String START_PAYMENT = "번 테이블의 결제를 진행합니다.";
+    private static final String CHOOSE_PAYMENT_WAY = "## 신용카드는 1번, 현금은 2번";
+    private static final int CARD = 1;
+    private static final int CASH = 2;
     private static final Scanner scanner = new Scanner(System.in);
     
     
@@ -101,5 +105,24 @@ public class InputView {
     		status = status || table.isOverQuantity(orderQuantity);
     	}
     	return status;
+    }
+    
+    public static int inputPaymentWay(List<Table> tables, int tableNumber) {
+    	System.out.println(tableNumber + START_PAYMENT);
+    	System.out.println(CHOOSE_PAYMENT_WAY);
+    	String paymentWay = scanner.nextLine();
+    	if (!Pattern.matches(NOT_NUMBER_PATTERN, paymentWay)) {
+    		System.err.println("결제수단을 숫자로 입력해주세요.");
+    		return inputPaymentWay(tables, tableNumber);
+    	} else if (!isPresentWay(Integer.parseInt(paymentWay))) {
+    		System.err.println("결제수단을 1(신용카드), 2(현금) 중에 하나를 택하여 입력해주세요.");
+    		return inputPaymentWay(tables, tableNumber);
+    	}
+    	
+    	return Integer.parseInt(paymentWay);
+    }
+    
+    private static boolean isPresentWay(int paymentWay) {
+    	return paymentWay == CARD || paymentWay == CASH;
     }
 }

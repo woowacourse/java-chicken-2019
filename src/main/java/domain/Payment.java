@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import java.util.ArrayList;
 
 public class Payment {
+	private static int paymentWay;
 	public static void startPayment(List<Table> tables, List<Menu> menus) {
 		if (tables.stream()
 				.map(Table::isOrderedTable)
@@ -22,5 +23,6 @@ public class Payment {
 		}
 		final int tableNumber = InputView.inputTableNumber();
 		OutputView.printOrderedList(tables, tableNumber, menus);
+		paymentWay = InputView.inputPaymentWay(tables, tableNumber);
 	}
 }
