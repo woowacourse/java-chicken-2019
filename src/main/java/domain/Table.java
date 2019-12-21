@@ -20,6 +20,10 @@ public class Table {
         this.bill.addOrder(order);
     }
 
+    public Bill getBill() {
+        return bill;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

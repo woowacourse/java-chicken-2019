@@ -11,8 +11,9 @@ public class OutputView {
     private static final String EXIT_FUNCTION_MESSAGE = "3 - 프로그램 종료";
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
-    private static final String BOTTOM_LINE = "└ ─ ┘";
-    private static final String HYPHEN = " - ";
+    private static final String BOTTOM_LINE_FORMAT = "└ %s ┘";
+    private static final String LINE = "─";
+    private static final String ORDERED = "₩";
     private static final String EXIT_PROGRAM_MESSAGE = "프로그램이 종료됩니다.";
 
     public static void printMain() {
@@ -26,9 +27,9 @@ public class OutputView {
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
-        printLine(TOP_LINE, size);
+        printTopLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLine(BOTTOM_LINE_FORMAT, size, tables);
         System.out.println();
     }
 
@@ -38,11 +39,21 @@ public class OutputView {
         }
     }
 
-    private static void printLine(final String line, final int count) {
+    private static void printTopLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
         }
         System.out.println();
+    }
+
+    private static void printBottomLine(final String line, final int count, List<Table> tables) {
+        for (Table table : tables) {
+            if (table.getBill().hasOrder()) {
+                System.out.printf(BOTTOM_LINE_FORMAT, ORDERED);
+                continue;
+            }
+            System.out.printf(BOTTOM_LINE_FORMAT, LINE);
+        }
     }
 
     private static void printTableNumbers(final List<Table> tables) {

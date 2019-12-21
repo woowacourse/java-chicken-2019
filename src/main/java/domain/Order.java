@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-	private static final int ZERO = 0;
+	static final int ZERO = 0;
 	private static final int MAX_MENU_COUNT = 99;
 
 	private Menu menu;

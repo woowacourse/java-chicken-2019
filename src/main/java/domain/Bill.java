@@ -13,6 +13,10 @@ public class Bill {
 		this.orders = new ArrayList<>();
 	}
 
+	public boolean hasOrder() {
+		return orders.size() > ZERO;
+	}
+
 	public void addOrder(Order order) {
 		this.orders.add(order);
 	}
