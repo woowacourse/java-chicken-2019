@@ -5,7 +5,6 @@ import domain.TableRepository;
 
 import java.util.List;
 
-// 모든 예약을 가지고 있다.
 public class OrderStatement {
     private final List<Table> tables = TableRepository.tables();
 

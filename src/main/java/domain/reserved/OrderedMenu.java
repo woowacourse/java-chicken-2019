@@ -1,19 +1,13 @@
 package domain.reserved;
 
 import domain.Capacity;
-import domain.Category;
 import domain.Menu;
 
-/*예약된 메뉴 하나를 가지고 있다.*/
 public class OrderedMenu extends Menu {
+    private static final int ZERO = 0;
     private final Capacity capacity;
 
-    public OrderedMenu(Menu menu) {
-        super(menu.getNumber(), menu.getName(), menu.getCategory(), menu.getPrice());
-        this.capacity = new Capacity(0);
-    }
-
-    public OrderedMenu(Menu menu, int capacity) {
+    OrderedMenu(Menu menu, int capacity) {
         super(menu.getNumber(), menu.getName(), menu.getCategory(), menu.getPrice());
         this.capacity = new Capacity(capacity);
     }
@@ -29,7 +23,7 @@ public class OrderedMenu extends Menu {
         return orderCapacity;
     }
 
-    public int getTotalPrice() {
+    int getTotalPrice() {
         return getPrice() * getCapacity().getCapacity();
     }
 
@@ -37,16 +31,7 @@ public class OrderedMenu extends Menu {
         return capacity;
     }
 
-    public int calcuratePrice(OrderedMenu otherOrderedMenu) {
-        return otherOrderedMenu.getPrice() + this.getPrice();
-    }
-
-    public boolean isChicken() {
+    boolean isChicken() {
         return getCategory().isChicken();
-    }
-
-    public int calcurateCapacity(OrderedMenu otherOrderedMenu) {
-        return otherOrderedMenu.getCapacity().getCapacity()
-                + this.getCapacity().getCapacity();
     }
 }

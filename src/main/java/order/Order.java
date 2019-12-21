@@ -2,8 +2,6 @@ package order;
 
 import domain.Menu;
 import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
 import domain.reserved.OrderStatement;
 import domain.reserved.OrderedMenu;
 import view.InputView;
@@ -16,7 +14,7 @@ public class Order {
         inputOrder(orderStatement);
     }
 
-    public void inputOrder(OrderStatement orderStatement) {
+    private void inputOrder(OrderStatement orderStatement) {
         final List<Menu> menus = MenuRepository.menus();
         int tableNumber = inputTableNumber(orderStatement);
         int menuId = inputMenuId(menus);
@@ -24,22 +22,22 @@ public class Order {
         orderStatement.addTableOrderStatement(tableNumber, careateOrderedMenu(menuId, capacitiy));
     }
 
-    public OrderedMenu careateOrderedMenu(int menuId, int capacity) {
+    private OrderedMenu careateOrderedMenu(int menuId, int capacity) {
         Menu menu = MenuRepository.getMenuBy(menuId);
         return OrderedMenu.createMenu(menu, capacity);
     }
 
-    public int inputTableNumber(OrderStatement orderStatement) {
+    private int inputTableNumber(OrderStatement orderStatement) {
         OutputView.printTables(orderStatement.getTables());
         return InputView.inputTableNumber(orderStatement);
     }
 
-    public int inputMenuId(List<Menu> menus) {
+    private int inputMenuId(List<Menu> menus) {
         OutputView.printMenus(menus);
         return InputView.inputMenuNumber();
     }
 
-    public int inputCapacity(OrderStatement orderStatement, int tableNumber, int menuId) {
+    private int inputCapacity(OrderStatement orderStatement, int tableNumber, int menuId) {
         if (orderStatement.isExist(tableNumber, menuId)) {
             OrderedMenu orderedMenu = orderStatement
                     .getTableOrderStatementBy(tableNumber)

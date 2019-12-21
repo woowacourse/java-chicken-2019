@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/* 한 테이블의 예약을 가지 있다.*/
 public class OrderedMenus {
-    List<OrderedMenu> orderedMenus = new ArrayList<>();
+    private static final int ZERO = 0;
+    private final List<OrderedMenu> orderedMenus = new ArrayList<>();
 
     public boolean isExistMenu() {
-        return orderedMenus.size() > 0;
+        return orderedMenus.size() > ZERO;
     }
 
     public OrderedMenu getMenuBy(int menuId) {
@@ -26,10 +26,7 @@ public class OrderedMenus {
         Optional<OrderedMenu> targetOrderedMenu = orderedMenus.stream()
                 .filter(orderedMenu -> orderedMenu.isMatch(menuId))
                 .findFirst();
-        if (targetOrderedMenu.isPresent()) {
-            return true;
-        }
-        return false;
+        return targetOrderedMenu.isPresent();
     }
 
     public void addMenu(Menu menu, int capacity) {
@@ -50,7 +47,7 @@ public class OrderedMenus {
 
     public int calcurateChickenCount() {
         return orderedMenus.stream()
-                .filter(orderedMenu -> orderedMenu.isChicken())
+                .filter(OrderedMenu::isChicken)
                 .map(orderedMenu -> orderedMenu.getCapacity().getCapacity())
                 .reduce(Integer::sum)
                 .get();

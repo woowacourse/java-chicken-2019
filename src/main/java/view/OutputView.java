@@ -78,4 +78,8 @@ public class OutputView {
         System.out.println("## 최종 결제할 금액");
         System.out.println(price + WON);
     }
+
+    public static void printClose() {
+        System.out.println("종료");
+    }
 }

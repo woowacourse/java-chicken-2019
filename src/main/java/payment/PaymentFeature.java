@@ -7,6 +7,11 @@ import view.OutputView;
 import view.dto.PaymentType;
 
 public class PaymentFeature {
+    private static final int ZERO = 0;
+    private static final int TEN = 10;
+    private static final double MONEY_DISCOUTN_RATE = 0.05;
+    private static final int MILLION = 10000;
+
     public void startPayment(OrderStatement orderStatement) {
         int tableNumber = inputTableNumber(orderStatement);
         Table table = orderStatement.getTableOrderStatementBy(tableNumber);
@@ -21,7 +26,7 @@ public class PaymentFeature {
         boolean isExistMenu = orderStatement
                 .getTableOrderStatementBy(tableNumber)
                 .isExistMenu();
-        if (isExistMenu == false) {
+        if (!isExistMenu) {
             OutputView.printNoExistTablePayment();
             tableNumber = InputView.inputTableNumber(orderStatement);
         }
@@ -33,7 +38,6 @@ public class PaymentFeature {
         int noneDiscountTotalPrice = getNoneDiscountTotalPrice(table);
         int chickenDiscountTotalPrice = discountChickenNumber(table, noneDiscountTotalPrice);
         if (paymentType.isTypeMoney()) {
-            // 현금 금액 생성
             return (int) discountMoney(chickenDiscountTotalPrice);
         }
         return chickenDiscountTotalPrice;
@@ -47,16 +51,16 @@ public class PaymentFeature {
 
     private int discountChickenNumber(Table table, int noneDiscountTotalPrice) {
         int chickenCount = table.getOrderedMenus().calcurateChickenCount();
-        while (chickenCount > 0) {
-            if (chickenCount >= 10) {
-                noneDiscountTotalPrice -= 10000;
+        while (chickenCount > ZERO) {
+            if (chickenCount >= TEN) {
+                noneDiscountTotalPrice -= MILLION;
             }
-            chickenCount -= 10;
+            chickenCount -= TEN;
         }
         return noneDiscountTotalPrice;
     }
 
     private double discountMoney(int noneDiscountMoneyPrice) {
-        return noneDiscountMoneyPrice - (noneDiscountMoneyPrice * 0.05);
+        return noneDiscountMoneyPrice - (noneDiscountMoneyPrice * MONEY_DISCOUTN_RATE);
     }
 }

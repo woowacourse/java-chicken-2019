@@ -1,29 +1,24 @@
 package view.dto;
 
 public class FeatureType {
+    private static final int ONE = 1;
+    private static final int TWO = 1;
+    private static final int THREE = 1;
     int type;
 
     public FeatureType(int featureType) {
-        if (featureType == 1 || featureType == 2 || featureType == 3) {
+        if (featureType == ONE || featureType == TWO || featureType == THREE) {
             this.type = featureType;
             return;
         }
         throw new IllegalArgumentException();
     }
 
-    public int getType() {
-        return type;
-    }
-
     public boolean isTypeOrder() {
-        return type == 1;
+        return type == ONE;
     }
 
     public boolean isTypePayment() {
-        return type == 2;
-    }
-
-    public boolean isTypeEnd() {
-        return type == 3;
+        return type == TWO;
     }
 }

@@ -1,6 +1,7 @@
 package domain;
 
 public class Capacity {
+    private static final int HUNDREAD = 100;
     int capacity;
 
     public Capacity(int capacity) {
@@ -12,7 +13,7 @@ public class Capacity {
     }
 
     public boolean isPossibleOrder(int orderCapacity) {
-        return capacity + orderCapacity > 100;
+        return capacity + orderCapacity > HUNDREAD;
     }
 
     public void addCapacity(int orderCapacity) {
