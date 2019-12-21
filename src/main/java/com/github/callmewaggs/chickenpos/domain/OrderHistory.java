@@ -1,25 +1,48 @@
 package com.github.callmewaggs.chickenpos.domain;
 
 import com.github.callmewaggs.chickenpos.service.MenuService;
+import com.github.callmewaggs.chickenpos.service.TableService;
+import com.github.callmewaggs.chickenpos.view.OutputView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class OrderHistory {
-  Map<Integer, List<Order>> orders;
-  MenuService menuService;
+  private Map<Integer, List<Order>> ordersByTable;
+  private MenuService menuService;
+  private TableService tableService;
 
   public OrderHistory() {
-    this.orders = new HashMap<>();
+    this.ordersByTable = new HashMap<>();
     this.menuService = new MenuService();
+    this.tableService = new TableService();
   }
 
   public void addNewOrder(int tableNumber, int menuNumber, int menuAmount) {
     Order order = new Order(menuService.getMenu(menuNumber), menuAmount);
-    if (orders.containsKey(tableNumber)) {
-      orders.put(tableNumber, new ArrayList<>());
+    if (!ordersByTable.containsKey(tableNumber)) {
+      ordersByTable.put(tableNumber, new ArrayList<>());
+      // TODO : table 에 order가 들어있다는 ₩ 표시 해줘야함
     }
-    orders.get(tableNumber).add(order);
+    ordersByTable.get(tableNumber).add(order);
+  }
+
+  public void showOrdersByTable(int tableNumber) {
+    try {
+      List<Order> orders = ordersByTable.get(tableNumber);
+      OutputView.printOrders(orders);
+    } catch (Exception e) {
+      OutputView.printMessage(e.getMessage());
+    }
+  }
+
+  public List<Order> getOrdersByTable(int tableNumber) {
+    try {
+      return ordersByTable.get(tableNumber);
+    } catch (Exception e) {
+      OutputView.printMessage(e.getMessage());
+    }
+    throw new IllegalArgumentException("테이블 번호가 잘못됐습니다.");
   }
 }

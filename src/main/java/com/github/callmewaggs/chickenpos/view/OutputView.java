@@ -1,6 +1,7 @@
 package com.github.callmewaggs.chickenpos.view;
 
 import com.github.callmewaggs.chickenpos.domain.Menu;
+import com.github.callmewaggs.chickenpos.domain.Order;
 import com.github.callmewaggs.chickenpos.domain.Table;
 import java.util.List;
 
@@ -35,5 +36,17 @@ public class OutputView {
       System.out.printf(TABLE_FORMAT, table);
     }
     System.out.println();
+  }
+  public static void printMessage(String message) {
+    System.out.println(message);
+    System.out.println();
+  }
+
+  public static void printOrders(List<Order> orders) {
+    System.out.println("## 주문 내역");
+    System.out.println("메뉴 수량 금액");
+    for(Order order : orders) {
+      System.out.println(order);
+    }
   }
 }

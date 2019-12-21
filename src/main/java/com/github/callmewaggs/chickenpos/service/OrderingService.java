@@ -3,12 +3,14 @@ package com.github.callmewaggs.chickenpos.service;
 import com.github.callmewaggs.chickenpos.domain.OrderHistory;
 
 public class OrderingService {
-  OrderHistory orderHistory;
+  private OrderHistory orderHistory;
   private TableService tableService;
   private MenuService menuService;
 
   public OrderingService(OrderHistory orderHistory) {
     this.orderHistory = orderHistory;
+    tableService = new TableService();
+    menuService = new MenuService();
   }
 
   public void startOrdering() {
