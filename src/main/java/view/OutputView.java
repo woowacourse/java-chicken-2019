@@ -13,7 +13,7 @@ public class OutputView {
     private static final String LINE = "\n";
 
     public static void printMains(final List<Main> mains) {
-        System.out.println("## 메인화면");
+        System.out.println(LINE + "## 메인화면");
         mains.stream().forEach(main -> System.out.println(main.toString()));
     }
 

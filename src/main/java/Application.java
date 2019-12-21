@@ -8,11 +8,9 @@ import java.util.List;
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
-        final List<Main> mains = MainRepository.mains();
         boolean isProgress = true;
 
         do {
-            OutputView.printMains(mains);
             int mainNumber = InputView.inputMainNumber();
             if (mainNumber == 1) {
                 orderSelect();

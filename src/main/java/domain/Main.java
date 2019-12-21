@@ -16,8 +16,8 @@ public class Main {
 
     public boolean mainInputCheck(int number) {
         if(this.number == number){
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 }
