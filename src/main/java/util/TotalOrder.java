@@ -19,6 +19,7 @@ import domain.Menu;
  * @author HyungjuAn
  */
 public class TotalOrder {
+	private static final int ZERO = 0;
 	private static final int ONE = 1;
 	private static final String TOTAL_ORDER = "메뉴 수량 금액\n";
 	private static final String SPACE = " ";
@@ -36,6 +37,16 @@ public class TotalOrder {
 			}
 			totalMenus.put(menu, ONE);
 		}
+	}
+
+	public int getTotalPay() {
+		int totalPay = 0;
+
+		for (Menu menu : totalMenus.keySet()) {
+			int menuCount = totalMenus.get(menu);
+			totalPay += menu.getPrice() * menuCount;
+		}
+		return totalPay;
 	}
 
 	@Override

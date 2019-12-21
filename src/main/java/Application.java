@@ -101,6 +101,7 @@ public class Application {
 
 		OutputView.printOrderedList(totalOrder.toString());
 		int payMethod = getPayMethod();
+		OutputView.printTotalPay(totalOrder.getTotalPay());
 	}
 
 	private static int getPayMethod() {

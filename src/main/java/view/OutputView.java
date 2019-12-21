@@ -11,6 +11,7 @@ public class OutputView {
 	private static final String BOTTOM_LINE = "└ - ┘";
 	private static final String BOTTOM_LINE_FORMAT = "└ %s ┘";
 	private static final String WON = "￦";
+	private static final String TOTAL = "## 최종 결제할 금액\n";
 
 	public static void printMainMenu() {
 		System.out.println("## 메인화면\n"
@@ -60,5 +61,9 @@ public class OutputView {
 
 	public static void printOrderedList(String totalOrder) {
 		System.out.println(totalOrder);
+	}
+
+	public static void printTotalPay(int totalPay) {
+		System.out.println(TOTAL + totalPay);
 	}
 }
