@@ -12,6 +12,9 @@ public class InputView {
     private static final int MIN_CHOICE_NUMBER = 1;
     private static final int MAX_COUNT_NUMBER = 99;
     private static final int MIN_COUNT_NUMBER = 1;
+    private static final int CARD_NUMBER = 1;
+    private static final int CASH_NUMBER = 2;
+
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void inputMainPrint() {
@@ -118,6 +121,16 @@ public class InputView {
 
     public static int inputCardOrCash() {
         System.out.println("## 신용카드는 1번 ,현금은 2번");
-        return scanner.nextInt();
+        String inputCardOrCash = scanner.nextLine();
+        while (!functionNumberValidator(inputCardOrCash) || !isOneOrTwo(Integer.parseInt(inputCardOrCash))) {
+            System.out.println("올바른 숫자 입력을 하세요.(1 Or 2)");
+            System.out.println("## 메뉴의 수량을 입력하세요.");
+            inputCardOrCash = scanner.nextLine();
+        }
+        return Integer.parseInt(inputCardOrCash);
+    }
+
+    private static boolean isOneOrTwo(int inputCardOrCash) {
+        return inputCardOrCash == CARD_NUMBER || inputCardOrCash == CASH_NUMBER;
     }
 }
