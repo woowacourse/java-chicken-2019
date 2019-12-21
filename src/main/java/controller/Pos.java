@@ -1,8 +1,8 @@
 package controller;
 
 import domain.Menu;
-import domain.Order;
-import domain.Pay;
+import domain.OrderProcess;
+import domain.PayProcess;
 import domain.Table;
 import java.util.List;
 import view.InputView;
@@ -15,14 +15,14 @@ public class Pos {
 
   private final List<Table> tables;
   private final List<Menu> menus;
-  private final Order order;
-  private final Pay pay = new Pay();
+  private final OrderProcess orderProcess;
+  private final PayProcess payProcess = new PayProcess();
 
   public Pos(List<Table> tables, List<Menu> menus) {
     this.tables = tables;
     this.menus = menus;
 
-    order = new Order(tables, menus);
+    orderProcess = new OrderProcess(tables, menus);
   }
 
   public void start() {
@@ -37,12 +37,12 @@ public class Pos {
 
   private void runProcess(int process) {
     if (process == ORDER) {
-      order.start();
+      orderProcess.start();
       return;
     }
 
     if (process == PAY) {
-      pay.start();
+      payProcess.start();
       return;
     }
 

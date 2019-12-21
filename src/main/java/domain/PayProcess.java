@@ -1,6 +1,6 @@
 package domain;
 
-public class Pay {
+public class PayProcess {
   public void start(){
 
   }

@@ -5,7 +5,7 @@ import java.util.List;
 import view.InputView;
 import view.OutputView;
 
-public class Order {
+public class OrderProcess {
 
   private final List<Table> tables;
   private final List<Menu> menus;
@@ -13,7 +13,7 @@ public class Order {
   private final HashMap<Integer, Integer> tableNumbers = new HashMap<>();
   private final HashMap<Integer, Integer> menuNumbers = new HashMap<>();
 
-  public Order(List<Table> tables, List<Menu> menus) {
+  public OrderProcess(List<Table> tables, List<Menu> menus) {
     this.tables = tables;
     this.menus = menus;
 
