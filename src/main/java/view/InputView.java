@@ -55,16 +55,16 @@ public class InputView {
         return (inputValue == 0);
     }
 
-    public static int inputTableNumber(List<Integer> tableNames) {
+    public static int inputTableNumber(List<Integer> tableNumbers) {
         int input;
 
         do {
             input = getInteger(Message.INPUT_TABLE_NUMBER);
-        } while (!checkTableNumber(tableNames, input));
+        } while (!checkTableNumber(tableNumbers, input));
         return input;
     }
 
-    private static boolean checkTableNumber(List<Integer> tableNames, int inputValue) {
+    private static boolean checkTableNumber(List<Integer> tableNumbers, int inputValue) {
         if (isMinus(inputValue)) {
             System.out.println(ErrorMessage.IS_MINUS);
             return false;
@@ -73,7 +73,7 @@ public class InputView {
             System.out.println(ErrorMessage.IS_ZERO);
             return false;
         }
-        if (!tableNames.contains(inputValue)) {
+        if (!tableNumbers.contains(inputValue)) {
             System.out.println(ErrorMessage.THAT_INPUT_IS_NOT_EXIST);
             return false;
         }
