@@ -21,6 +21,10 @@ public class InputView {
         return inputInteger("## 메뉴의 수량을 입력하세요.");
     }
 
+    public static int inputPaymentChoice() {
+        return inputInteger( "## 신용 카드는 1번, 현금은 2번");
+    }
+
     public static int inputInteger(String text) {
         System.out.println(text);
         String input = scanner.nextLine();
@@ -40,5 +44,6 @@ public class InputView {
             throw new IllegalArgumentException("숫자가 아닙니다.");
         }
     }
+
 
 }

@@ -31,32 +31,26 @@ public class Application {
                 OutputView.printMenus(menus);
                 int foodNumber = validateFoodNumber(menus);
                 Menu selectedMenu = menus.stream().filter(m -> m.isMatchNumber(foodNumber)).findAny().get();
-                addToOrderList(orderList, selectedMenu, validateFoodCount());
+                Basket.addToOrderList(selectedMenu, validateFoodCount());
             }
 
             // 결제 로직
             if (posChoice == Choice.PAY){
                 OutputView.printTables(tables, currentTableNumber);
                 final int tableNumber = validatePayableTableNumber(currentTableNumber);
-                OutputView.printOrderList(orderList);
+                OutputView.printOrderList(Basket.showOrderList());
                 OutputView.printPayingStartMessage(tableNumber);
-                int totalPrice = calculateTotalPrice(orderList);
 
+                int totalPrice = Basket.calculateTotalPrice();
                 Payment paymentChoice = validatePaymentChoice();
             }
         } while(posChoice != Choice.EXIT);
 
     }
 
-    private static int calculateTotalPrice(List<Order> orderList) {
-        return orderList.stream()
-                .mapToInt(order -> order.getMenuPriceByCount())
-                .sum();
-    }
-
     private static Payment validatePaymentChoice() {
         try {
-            int paymentChoice = InputView.inputPosChoice();
+            int paymentChoice = InputView.inputPaymentChoice();
             if (paymentChoice < 0 | paymentChoice > 2) {
                 throw new IllegalArgumentException("선택 가능한 범위가 아닙니다.");
             }
@@ -65,18 +59,6 @@ public class Application {
             System.out.println(e.getMessage());
         }
         return validatePaymentChoice();
-    }
-
-    private static void addToOrderList(List<Order> orderList, Menu menu, int foodCount) {
-        if (orderList.stream().anyMatch(order -> order.isEqualMenu(menu))){
-            orderList.stream()
-                    .filter(order -> order.isEqualMenu(menu))
-                    .findAny()
-                    .get()
-                    .increaseFoodCount(foodCount);
-            return;
-        }
-        orderList.add(new Order(menu, foodCount));
     }
 
     private static int validatePayableTableNumber(int currentTableNumber) {

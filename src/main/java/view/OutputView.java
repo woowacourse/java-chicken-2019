@@ -59,12 +59,9 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printOrderList(List<Order> orderList) {
+    public static void printOrderList(String orderList) {
         System.out.println("\n## 주문 내역 \n메뉴 수량 금액");
-        for (Order order : orderList) {
-            System.out.println(order);
-        }
-        System.out.println();
+        System.out.println(orderList + "\n");
     }
 
     public static void printPayingStartMessage(int tableNumber) {
