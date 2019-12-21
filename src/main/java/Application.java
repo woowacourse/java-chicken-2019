@@ -24,13 +24,6 @@ public class Application {
 		do {
 			nowWork = InputView.inputSelectWork();
 			doWork(nowWork);
-
-//			final List<Table> tables = TableRepository.tables();
-//			OutputView.printTables(tables);
-//
-//			final int tableNumber = InputView.inputTableNumber();
-//
-//			OutputView.printMenus(menus);
 		} while (nowWork != EXIT);
 	}
 
@@ -81,6 +74,7 @@ public class Application {
 
 	private static void doPayment() {
 		int nowTable;
+		int howToPay;
 		OutputView.printTables(tables);
 		nowTable = InputView.inputSelectTable(tables);
 		if (tables.get(getTableIndex(nowTable)).getOrderCount() == MINIMUM_ORDER_COUNT) {
@@ -88,7 +82,8 @@ public class Application {
 			return;
 		}
 		OutputView.printOrders(tables.get(getTableIndex(nowTable)), menus);
-		nowTable = InputView.inputSelectHowToPay(nowTable);
+		howToPay = InputView.inputSelectHowToPay(nowTable);
+		OutputView.printTotalPayAmount(tables.get(getTableIndex(nowTable)), menus, howToPay);
 	}
 
 }

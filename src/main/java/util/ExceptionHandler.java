@@ -73,7 +73,7 @@ public class ExceptionHandler {
 
 	public static int inputSelectMenuCountHandler(Table table) {
 		try {
-			return checkInputSelectMenuCountHandler(table,scanner.nextInt());
+			return checkInputSelectMenuCountHandler(table, scanner.nextInt());
 		} catch (InputMismatchException | IllegalArgumentException e) {
 			System.out.println("입력값을 확인해주세요.");
 			scanner = new Scanner(System.in);
@@ -82,7 +82,7 @@ public class ExceptionHandler {
 	}
 
 	private static int checkInputSelectMenuCountHandler(Table table, int input) {
-		if (input<=0) {
+		if (input <= 0) {
 			throw new IllegalArgumentException();
 		}
 		if (table.getOrderCount() + input > MAXIMUM_ORDER_COUNT) {
@@ -103,7 +103,7 @@ public class ExceptionHandler {
 	}
 
 	private static int checkInputSelectHowToPayHandler(int input) {
-		if (input ==CREDIT_CARD || input == CASH) {
+		if (input == CREDIT_CARD || input == CASH) {
 			return input;
 		}
 		throw new IllegalArgumentException();

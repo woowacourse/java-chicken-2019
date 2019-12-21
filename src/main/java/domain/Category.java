@@ -12,6 +12,6 @@ public enum Category {
 
     @Override
     public String toString() {
-        return "[" + name + "]";
-    }
+		return "[" + name + "]";
+	}
 }

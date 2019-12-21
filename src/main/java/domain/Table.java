@@ -33,14 +33,14 @@ public class Table {
 			orderedMenu.add(newOrder);
 		}
 	}
-	
+
 	public Map<String, Integer> makeResult() {
 		orderedMenuCount.clear();
-		for(Menu menu : orderedMenu) {
-			if(orderedMenuCount.containsKey(menu.getName()) == true) {
+		for (Menu menu : orderedMenu) {
+			if (orderedMenuCount.containsKey(menu.getName()) == true) {
 				orderedMenuCount.put(menu.getName(), orderedMenuCount.get(menu.getName()) + 1);
 			}
-			if(orderedMenuCount.containsKey(menu.getName()) == false) {
+			if (orderedMenuCount.containsKey(menu.getName()) == false) {
 				orderedMenuCount.put(menu.getName(), 1);
 			}
 		}
