@@ -40,9 +40,19 @@ public class Table {
     	}
     	if(orderedMenu.containsKey(menuName)) {
     		//이미 주문한 메뉴일 경우에
+    		if((numberOfMenu+orderedMenu.get(menuName))>99) {
+    			System.out.println("99개 이상 주문을 불가합니다. 주문 수량이 99로 조정됩니다");
+    			orderedMenu.put(menuName, 99);
+    			return;
+    		}
     		orderedMenu.put(menuName, numberOfMenu+orderedMenu.get(menuName));
     		return;
     	}
+    	if((numberOfMenu)>99) {
+			System.out.println("99개 이상 주문을 불가합니다. 주문 수량이 99로 조정됩니다");
+			orderedMenu.put(menuName, 99);
+			return;
+		}
     	orderedMenu.put(menuName, numberOfMenu);
     }
     public void printReceipt() {
