@@ -60,4 +60,16 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public static void eachPayment(Menu menu, int menuCount) {
+        System.out.println(menu.getName() +" "+ menuCount + " " + menu.getPrice()*menuCount);
+    }
+
+    public static void moneyPayment(int allPayment) {
+        System.out.println("최종 결제할 금액 " + allPayment * 0.95);
+    }
+
+    public static void cardPayMent(int allPayment) {
+        System.out.println("최종 결제할 금액 " + allPayment);
+    }
 }

@@ -34,13 +34,14 @@ public class Application {
             return true;
         }
         if(orderState == 2){
-            calculatePayMent(reservedTable,orderMenuInTable,tables);
+            calculatePayMent(reservedTable,orderMenuInTable,tables, menus);
             return true;
         }
         return false;
     }
 
-    private static void calculatePayMent(HashMap<Integer, Integer> reservedTable,int[][] orderMenuInTable, List<Table> tables) {
+    private static void calculatePayMent(HashMap<Integer, Integer> reservedTable,int[][] orderMenuInTable,
+                                         List<Table> tables, List<Menu> menus) {
         if(reservedTable.isEmpty()) {
             System.out.println("결제할 테이블이 없습니다");
             return;
@@ -48,10 +49,43 @@ public class Application {
         OutputView.printOrderTable(reservedTable,tables);
         int paymentTable = InputView.inputTableNumber(tables);
         isWrongTable(reservedTable, paymentTable);
+        int allPayment = paymentOrderMenu(orderMenuInTable,paymentTable,menus);
+        checkDiscount(allPayment, orderMenuInTable, paymentTable);
 
 
     }
 
+    private static void checkDiscount(int allPayment,int[][] orderMenuInTable, int paymentTable) {
+        InputView.inputPaymentMethod();
+
+    }
+
+    private static int paymentOrderMenu(int[][] orderMenuInTable, int paymentTable, List<Menu> menus) {
+        int allPayment = 0;
+        for(int orderTableMenu = 0; orderTableMenu < orderMenuInTable[paymentTable].length; orderTableMenu++) {
+            if(orderMenuInTable[paymentTable][orderTableMenu] != 0) {
+                allPayment += orderPrice(orderMenuInTable[paymentTable][orderTableMenu],orderTableMenu, menus);
+            }
+        }
+        return allPayment;
+    }
+
+    private static int orderPrice(int menuCount, int orderTableMenu, List<Menu> menus) {
+        System.out.println("##주문내역");
+        System.out.println("메뉴 수량 금액");
+        for(Menu menu : menus) {
+            if(menu.getNumber() == orderTableMenu){
+                OutputView.eachPayment(menu, menuCount);
+                return menu.getPrice() * menuCount - paymentDiscount(menuCount);
+            }
+        }
+        return 0;
+    }
+
+    private static int paymentDiscount(int menuCount) {
+        return menuCount/10 * 10000;
+
+    }
 
     private static void isWrongTable(HashMap<Integer, Integer> reservedTable, int paymentTable) {
         if(!reservedTable.containsKey(paymentTable)) {

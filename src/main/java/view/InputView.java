@@ -3,7 +3,6 @@ package view;
 import domain.Menu;
 import domain.Table;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -130,5 +129,29 @@ public class InputView {
         if(inputNumber != REGIST_MENU && inputNumber != MAKE_PAYMENT && inputNumber != END_PROGRAM) {
             throw new IllegalAccessException("메인 화면에 있는 값만 입력해주세요");
        }
+    }
+
+    public static int inputPaymentMethod() {
+        while(!isPaymentMethodNumber());
+        return inputNumber;
+    }
+
+    private static boolean isPaymentMethodNumber() {
+        Scanner scanner = new Scanner(System.in);
+        try{
+            inputNumber = scanner.nextInt();
+            checkPaymentMethod(inputNumber);
+            return true;
+        } catch(Exception e) {
+            System.out.println("결제 수을 다시 입력해주세요");
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    private static void checkPaymentMethod(int inputNumber) throws Exception {
+        if(inputNumber != 1 && inputNumber != 2) {
+            throw new Exception("제대로된 결제 방법을 입력해주세요");
+        }
     }
 }
