@@ -8,27 +8,45 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
-    // TODO 구현 진행
-    public static void main(String[] args) {
-        final List<Table> tables = TableRepository.tables();
-        final List<Menu> menus = MenuRepository.menus();
+    static final List<Table> tables = TableRepository.tables();
+    static final List<Menu> menus = MenuRepository.menus();
 
+    public static void main(String[] args) {
         Application application = new Application();
         application.mainMenu();
-        int tableNumber = application.tableMenu(tables);
-        application.menuMenu(menus);
-        application.quantityMenu();
-        application.paymentTypeMenu(tableNumber);
     }
 
-    private int mainMenu() {
+    private void processOrder() {
+        int tableNumber = tableMenu(tables);
+        menuMenu(menus);
+        quantityMenu();
+        mainMenu();
+    }
+
+    private void processPayment() {
+        int tableNumber = tableMenu(tables);
+        // 주문내역보여주기
+        paymentTypeMenu(tableNumber);
+        // 최종결제내역보여주기
+        mainMenu();
+    }
+
+    private void processEnd() {
+        System.out.println("\n## POS 프로그램을 종료합니다.");
+        System.exit(0);
+    }
+
+    private void mainMenu() {
         OutputView.printMainMenu();
         int mainMenuNumber = InputView.inputMainMenuNumber();
-        if (mainMenuNumber == 3) {
-            System.out.println("\nPOS 프로그램을 종료합니다.");
-            System.exit(0);
+        if (mainMenuNumber == 1) {
+            processOrder();
+            return;
+        } else if (mainMenuNumber == 2) {
+            processPayment();
+            return;
         }
-        return mainMenuNumber;
+        processEnd();
     }
 
     private int tableMenu(List<Table> tables) {
