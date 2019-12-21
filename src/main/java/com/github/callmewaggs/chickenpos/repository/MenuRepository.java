@@ -23,4 +23,13 @@ public class MenuRepository {
   public static List<Menu> menus() {
     return Collections.unmodifiableList(menus);
   }
+
+  public static Menu getMenuByNumber(int number) {
+    for(Menu menu : menus) {
+      if(menu.getNumber() == number) {
+        return menu;
+      }
+    }
+    throw new IllegalArgumentException("없는 메뉴 번호입니다.");
+  }
 }

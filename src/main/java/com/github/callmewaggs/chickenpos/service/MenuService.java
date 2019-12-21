@@ -13,6 +13,10 @@ public class MenuService {
     OutputView.printMenus(menus);
   }
 
+  public Menu getMenu(int number) {
+    return MenuRepository.getMenuByNumber(number);
+  }
+
   public int inputMenuNumber() {
     return InputView.inputMenuNumber();
   }
