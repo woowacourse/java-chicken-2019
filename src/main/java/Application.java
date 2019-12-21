@@ -33,18 +33,19 @@ public class Application {
 
     private void order() {
         OutputView.printTables(tables);
-        int tableNumber = InputView.inputTableNumber();
-
+        int tableNumber = InputView.inputTableNumber() - 1;
         OutputView.printMenus(menus);
-        int menuNumber = InputView.inputMenuNumber();
+        int menuNumber = InputView.inputMenuNumber() - 1;
+        int menuAmount = InputView.inputMenuAmount();
+        TableRepository.order(tableNumber, menus.get(menuNumber), menuAmount);
     }
 
     private void pay() {
         OutputView.printTables(tables);
-        int tableNumber = InputView.inputPayTableNumber();
-        
+        int tableNumber = InputView.inputPayTableNumber() - 1;
+
         OutputView.printOrderMenus(tables, menus, tableNumber);
-        InputView.inputPayNumber(tableNumber);
+        InputView.inputPayNumber(tableNumber + 1);
         OutputView.printMoney(tables, tableNumber);
     }
 
