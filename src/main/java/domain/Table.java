@@ -22,6 +22,10 @@ public class Table {
         return !orders.orderNothing();
     }
 
+    public boolean isEqaul( int tableNumber ) {
+        return this.number == tableNumber;
+    }
+
     public int getNumber() {
         return number;
     }

@@ -17,7 +17,7 @@ public class Tables {
     public Table getTable( int tableNumber ) {
         Table current = null;
         for (Table table : tables) {
-            if (table.getNumber() == tableNumber) {
+            if (table.isEqaul(tableNumber)) {
                 current = table;
             }
         }
@@ -26,7 +26,7 @@ public class Tables {
 
     public static void addOrder( int tableNumber, Order order ) {
         for (Table table : tables) {
-            if (table.getNumber() == tableNumber) {
+            if (table.isEqaul(tableNumber)) {
                 table.addOrder(order);
             }
         }
@@ -38,7 +38,7 @@ public class Tables {
 
     public static void payment( int tableNumber ) {
         for (Table table : tables) {
-            if (table.getNumber() == tableNumber) {
+            if (table.isEqaul(tableNumber)) {
                 table.clearOrder();
             }
         }

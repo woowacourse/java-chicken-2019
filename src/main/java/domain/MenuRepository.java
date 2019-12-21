@@ -23,15 +23,9 @@ public class MenuRepository {
         return menus;
     }
 
-    public static List<Integer> menuValues() {
-        return menus.stream()
-                .map(Menu::getNumber)
-                .collect(Collectors.toList());
-    }
-
     public static Menu getMenu( int menuNumber ) {
         for( Menu menu : menus) {
-            if ( menu.getNumber() == menuNumber ) {
+            if ( menu.isEqual(menuNumber)) {
                 return menu;
             }
         }

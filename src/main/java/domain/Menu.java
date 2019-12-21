@@ -13,8 +13,8 @@ public class Menu {
         this.price = price;
     }
 
-    public int getNumber() {
-        return number;
+    public boolean isEqual( int menuNumber ) {
+        return this.number == menuNumber;
     }
 
     public int getPrice( int quantity ) {
