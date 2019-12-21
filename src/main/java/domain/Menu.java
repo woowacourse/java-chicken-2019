@@ -25,6 +25,10 @@ public class Menu {
 		return this.price;
 	}
 	
+	public Category getCategory() {
+		return this.category;
+	}
+	
 	@Override
 	public String toString() {
 		return category + " " + number + " - " + name + " : " + price + "원";

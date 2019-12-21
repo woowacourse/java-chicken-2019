@@ -10,6 +10,7 @@
  */
 
 import java.util.List;
+import java.util.Map;
 
 import domain.Menu;
 import domain.MenuRepository;
@@ -87,7 +88,13 @@ public class ChickenHouse {
 	}
 
 	private static void creditCardCalculate(Table table) {
-		
+		int chickenCount = 0;
+		for (Map.Entry<Menu, Integer> menu : table.getMenus.entrySet()) {
+			if(menu.getKey().getCategory() == "치킨") {
+				chickenCount += menu.getValue();
+			}
+		}
+
 		
 	}
 
