@@ -27,6 +27,10 @@ public class Table {
         return this.menuList;
     }
 
+    public void deleteMenuList(){
+        this.menuList.clear();
+    }
+
     public int getCategoryIsChickenCount(){
         int chickenCount = 0;
         for(int i = 0 ; i < menuList.size() ; i++){
