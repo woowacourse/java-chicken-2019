@@ -12,15 +12,29 @@ public class Application {
     public static void main(String[] args) {
 
         OutputView.printMain();
-        final int mainDecision = InputView.inputMain();
 
         final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
-
-
-        final int tableNumber = InputView.inputTableNumber();
-
         final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+
+        while(true) {
+            final int mainDecision = InputView.inputMain();
+            if (mainDecision == 1) {
+                OutputView.printTables(tables);
+                final int tableNumber = InputView.inputTableNumberForOrder();
+                OutputView.printMenus(menus);
+                continue;
+            }
+            if (mainDecision == 2) {
+                continue;
+            }
+            if (mainDecision == 3) {
+                continue;
+            }
+
+            System.out.println("원하는 기능은 1,2,3 중에 선택 가능합니다.");
+            continue;
+        }
+
+
     }
 }

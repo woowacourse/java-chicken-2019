@@ -1,5 +1,6 @@
 package view;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class InputView {
@@ -10,8 +11,13 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public static int inputTableNumber() {
+    public static int inputTableNumberForOrder() {
         System.out.println("## 주문할 테이블을 선택하세요.");
+        return scanner.nextInt();
+    }
+
+    public static int inputTableNumberForCharge() {
+        System.out.println("## 결제할 테이블을 선택하세요.");
         return scanner.nextInt();
     }
 }
