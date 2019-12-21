@@ -21,8 +21,8 @@ public class Table {
         return chickens;
     }
 
-    public void addChickens() {
-        chickens++;
+    public void addChickens(int input) {
+        chickens += input;
     }
 
     public boolean isOrder() {
@@ -49,6 +49,10 @@ public class Table {
         if (!orderExist(menu)) {
             orders.put(name, quantity);
         }
+    }
+
+    public void checkOut() {
+        orders.clear();
     }
 
     @Override

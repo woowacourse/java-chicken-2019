@@ -17,6 +17,10 @@ public class Menu {
         return number;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
     public boolean matchNumber(int input) {
         return input == number;
     }

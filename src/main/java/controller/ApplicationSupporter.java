@@ -1,9 +1,6 @@
 package controller;
 
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import domain.*;
 import view.InputView;
 import view.OutputView;
 
@@ -15,6 +12,9 @@ public class ApplicationSupporter {
     private static final int ADD_MENU = 1;
     private static final int CHECK_OUT = 2;
     private static final int END_PROGRAM = 3;
+    private static final int CASH = 2;
+    private static final int CHICKEN_DISCOUNT = 10000;
+    private static final int CHICKEN_COUNT = 10;
 
     private static MenuRepository menu = new MenuRepository();
     private static List<Menu> menuList;
@@ -44,7 +44,7 @@ public class ApplicationSupporter {
     public void addMenuPhase() {
         OutputView.printTables(tableList);
 
-        final int tableNumber = InputView.tableChecker(tableList); // 테이블 번호 유효 검사
+        final int tableNumber = InputView.tableChecker(tableList);
         OutputView.printMenus(menuList);
 
         final int menuNumber = InputView.inputAddMenu();
@@ -52,6 +52,7 @@ public class ApplicationSupporter {
         Menu choiceMenu = choiceMenuTrans(menuNumber);
         Table choiceTable = findTable(tableNumber);
         choiceTable.makeOrder(choiceMenu, menuQuantity);
+        chickenCount(choiceMenu, choiceTable, menuQuantity);
 
         mainOptionPhase();
     }
@@ -66,14 +67,22 @@ public class ApplicationSupporter {
                 .findAny().orElseThrow(Error::new);
     }
 
+    public void chickenCount(Menu choiceMenu, Table choiceTable, int quantity) {
+        if (choiceMenu.getCategory() == Category.CHICKEN) {
+            choiceTable.addChickens(quantity);
+        }
+    }
+
     public void checkOutPhase() {
         OutputView.printTables(tableList);
         final int tableNumber = InputView.tableChecker(tableList);
         Table choiceTable = findTable(tableNumber);
-        orderCheck(choiceTable);
-        orderResult(choiceTable.getOrder(), menuList);
 
-        // 최종 결제, 할인, 객체 클리어
+        orderCheck(choiceTable);
+        int tempCost = orderResult(choiceTable.getOrder(), menuList);
+        calculateOrder(tempCost, choiceTable.getChickens(), tableNumber);
+        choiceTable.checkOut();
+
         mainOptionPhase();
     }
 
@@ -84,17 +93,34 @@ public class ApplicationSupporter {
         }
     }
 
-    public void orderResult(HashMap<String, Integer> order, List<Menu> tableMenu) {
+    public int orderResult(HashMap<String, Integer> order, List<Menu> tableMenu) {
         OutputView.printOrderForCheckOut();
-        int total = 0;
+        int totalCost = 0;
         for (String key : order.keySet()) {
             Menu thisMenu = tableMenu.stream().filter(x -> x.matchName(key))
                     .findFirst().orElseThrow(Error::new);
             System.out.println(key + " " + order.get(key)
                     + " " + thisMenu.getPrice() * order.get(key));
-            total += thisMenu.getPrice() * order.get(key);
+            totalCost += thisMenu.getPrice() * order.get(key);
         }
-        OutputView.printResult(total);
+        return totalCost;
     }
 
+    public void calculateOrder(int input, int chickens, int tableNumber) {
+        OutputView.howToCheckOut(tableNumber);
+        final int choice = InputView.inputHowToCheckOut();
+
+        input = chickenDiscount(input, chickens);
+        if (choice == CASH) {
+            input = (int)(input * 0.95);
+        }
+        OutputView.printResult(input);
+    }
+
+    public int chickenDiscount(int input, int chickens) {
+        for(int i = chickens; i >= 10; i -= CHICKEN_COUNT) {
+            input -= CHICKEN_DISCOUNT;
+        }
+        return input;
+    }
 }

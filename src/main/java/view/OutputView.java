@@ -20,7 +20,7 @@ public class OutputView {
     }
 
     public static void printTables(final List<Table> tables) {
-        System.out.println("## 테이블 목록");
+        System.out.println("\n## 테이블 목록");
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
@@ -28,7 +28,7 @@ public class OutputView {
     }
 
     public static void printTableChoiceError() {
-        System.out.println("주문이 없는 테이블 입니다.");
+        System.out.println("\n주문이 없는 테이블 입니다.");
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -63,7 +63,7 @@ public class OutputView {
     }
 
     public static void printOrderForCheckOut() {
-        System.out.println("## 주문 내역");
+        System.out.println("\n## 주문 내역");
         System.out.println("메뉴  수량  주문");
     }
 
@@ -72,7 +72,11 @@ public class OutputView {
         System.out.println(total + "원\n");
     }
 
+    public static void howToCheckOut(int number) {
+        System.out.println("\n# " + number + "번 테이블의 결제를 진행합니다.");
+    }
+
     public static void printEndMessage() {
-        System.out.println("프로그램을 종료합니다.");
+        System.out.println("\n프로그램을 종료합니다.");
     }
 }
