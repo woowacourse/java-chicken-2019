@@ -1,9 +1,32 @@
 package com.github.callmewaggs.chickenpos.discount;
 
-public class AmountDiscount implements Discount {
+import com.github.callmewaggs.chickenpos.domain.Order;
+import java.util.List;
+
+public class AmountDiscount extends Discount {
+  private static final int MINIMUM_DISCOUNT_AMOUNT = 10;
+  private static final int DISCOUNT_PRICE = 10000;
+
+  public int countChickens() {
+    int chickens = 0;
+    for (Order order : orders) {
+      chickens += order.getAmountIfMenuIsChicken();
+    }
+    return chickens;
+  }
 
   @Override
   public double afterDiscount() {
-    return 0;
+    int discountPrice = countChickens() % MINIMUM_DISCOUNT_AMOUNT * DISCOUNT_PRICE;
+    return totalPrice() - discountPrice;
+  }
+
+  @Override
+  public boolean isDiscountable(List<Order> orders, int method) {
+    super.orders = orders;
+    if (countChickens() >= MINIMUM_DISCOUNT_AMOUNT) {
+      return true;
+    }
+    return false;
   }
 }
