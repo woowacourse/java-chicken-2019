@@ -1,12 +1,11 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class Table {
 
   private final int number;
-  private List<Order> orderList = new ArrayList<>();
+  private HashMap<Menu, Integer> order = new HashMap<>();
 
   public Table(final int number) {
     this.number = number;
@@ -21,8 +20,14 @@ public class Table {
     return number;
   }
 
-  public void addOrder(Order order) {
-    orderList.add(order);
+  public void addOrder(Menu menu, int amount){
+    if(order.containsKey(menu)){
+      order.put(menu,amount);
+      return ;
+    }
+    amount += order.get(menu);
+    order.put(menu, amount);
   }
+
 
 }
