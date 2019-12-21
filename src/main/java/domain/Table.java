@@ -23,4 +23,9 @@ public class Table {
     public boolean isOrdered() {
         return menus.isEmpty();
     }
+
+    public boolean isSame(int number) {
+        return this.number == number;
+    }
+
 }

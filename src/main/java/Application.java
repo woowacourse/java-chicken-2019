@@ -1,17 +1,10 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import view.ErrorDetect;
 import view.InputView;
-import view.OutputView;
-
-import java.util.List;
 
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
         final int action = InputView.inputMain();
-        ErrorDetect.mainInputError(action);
         actionLogic(action);
     }
 
