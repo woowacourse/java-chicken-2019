@@ -1,3 +1,5 @@
+package domain;
+
 public class PosPower {
     private boolean power;
 
@@ -7,5 +9,9 @@ public class PosPower {
 
     public void turnOff() {
         this.power = false;
+    }
+
+    public boolean isOn() {
+        return this.power == true;
     }
 }
