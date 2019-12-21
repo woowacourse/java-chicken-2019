@@ -47,5 +47,15 @@ public class InputView {
 	}
 	return tmpNum;
     }
+    
+    public static int inputPay(int tableNum) {
+	System.out.println("## "+tableNum+"번 테이블의 결제를 진행합니다.");
+	System.out.println("## 신용카드는 1번, 현금은 2번");
+	int tmpNum=SelectControl.checkPay(scanner.nextLine());
+	while(tmpNum==-1) {
+	    tmpNum=SelectControl.checkPay(scanner.nextLine());
+	}
+	return tmpNum;
+    }
 
 }

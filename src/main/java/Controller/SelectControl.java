@@ -69,6 +69,28 @@ public class SelectControl {
 	
     }
     
+    public static int checkPay(String pay) {
+	if(isStringInt(pay)==false) {
+	    OutputView.printPayInputError();
+	    return -1;
+	}
+	if(isOneTwo(Integer.parseInt(pay))==false) {
+	    OutputView.printPayInputError();
+	    return -1;
+	}
+	return Integer.parseInt(pay);
+    }
+    
+    public static boolean isOneTwo(int p) {
+	if(p==1) {
+	    return true;
+	}
+	if(p==2) {
+	    return true;
+	}
+	return false;
+    }
+    
     public static boolean isPositiveInteger(int num) {
 	if(num>=0) {
 	    return true;

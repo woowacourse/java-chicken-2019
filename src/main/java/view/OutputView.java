@@ -102,4 +102,8 @@ public class OutputView {
 	    }
 	}
     }
+    
+    public static void printPayInputError() {
+	System.out.println("결제방식 입력이 잘못되었습니다. 1또는 2만 입력해주세요.");
+    }
 }

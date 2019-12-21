@@ -24,6 +24,10 @@ public class Table {
 	return false;
     }
     
+    public int getNumber() {
+	return this.number;
+    }
+    
     public int getNumberSum() {
 	int sum=0;
 	for(int i=0;i<6;i++) {
