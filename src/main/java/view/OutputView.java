@@ -52,5 +52,6 @@ public class OutputView {
         System.out.println("## 주문내역");
         System.out.println("메뉴 수량 금액");
         table.printOrders();
+        System.out.println();
     }
 }

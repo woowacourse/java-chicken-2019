@@ -4,6 +4,7 @@ import Constant.ConstantNumber;
 import domain.MenuRepository;
 import domain.TableRepository;
 
+import javax.smartcardio.Card;
 import java.util.Scanner;
 
 public class InputView {
@@ -73,5 +74,15 @@ public class InputView {
 
         return order;
 
+    }
+
+    public static int inputHowToPay(){
+        System.out.println("## 신용카드는 1번, 현금은 2번");
+        int Card_or_Cash = scanner.nextInt();
+        if(Card_or_Cash <= 0 || Card_or_Cash > 2){
+            Card_or_Cash = inputHowToPay();
+        }
+
+        return Card_or_Cash;
     }
 }

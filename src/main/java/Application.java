@@ -36,12 +36,13 @@ public class Application {
     }
 
     public static void pay(){
-        int tableNumber;
+        int tableNumber, howToPay;
         OutputView.printTables(tables);
         if(!TableRepository.hasTableToPay()){
             return;
         }
         tableNumber = InputView.inputTableNumber_Pay();
         OutputView.printOrders(TableRepository.getTablebyNumber(tableNumber));
+        howToPay = InputView.inputHowToPay();
     }
 }
