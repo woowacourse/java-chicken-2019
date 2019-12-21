@@ -26,7 +26,7 @@ public class Application {
             // 주문 등록 로직
             if (posChoice == Choice.ORDER) {
                 OutputView.printTables(tables, currentTableNumber);
-                final int tableNumber = validateTableNumber(currentTableNumber); // currentTable 변동 불가 추가
+                final int tableNumber = validateTableNumber(currentTableNumber);
                 currentTableNumber = tableNumber;
                 OutputView.printMenus(menus);
                 int foodNumber = validateFoodNumber(menus);
@@ -40,11 +40,18 @@ public class Application {
                 final int tableNumber = validatePayableTableNumber(currentTableNumber);
                 OutputView.printOrderList(orderList);
                 OutputView.printPayingStartMessage(tableNumber);
+                int totalPrice = calculateTotalPrice(orderList);
 
                 Payment paymentChoice = validatePaymentChoice();
             }
         } while(posChoice != Choice.EXIT);
 
+    }
+
+    private static int calculateTotalPrice(List<Order> orderList) {
+        return orderList.stream()
+                .mapToInt(order -> order.getMenuPriceByCount())
+                .sum();
     }
 
     private static Payment validatePaymentChoice() {

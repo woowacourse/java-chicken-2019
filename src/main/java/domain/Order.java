@@ -17,6 +17,10 @@ public class Order {
         this.foodCount += foodCount;
     }
 
+    public int getMenuPriceByCount() {
+        return menu.getPrice() * foodCount;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
