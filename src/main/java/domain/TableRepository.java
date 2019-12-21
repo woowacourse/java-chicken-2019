@@ -19,4 +19,13 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static Boolean isMatchingTableExist(int tableNumber) {
+        for (Table table : TableRepository.tables()) {
+            if (table.isMatchingTable(tableNumber)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

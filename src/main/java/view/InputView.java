@@ -19,8 +19,15 @@ public class InputView {
         }
     }
 
-    public static int inputTableNumber() {
+    public static int getInputOfTableNumber() {
         System.out.println("## 주문할 테이블을 선택하세요.");
-        return scanner.nextInt();
+        String inputOfTableNumber = scanner.nextLine();
+        try {
+            Validator.checkInputOfTableNumber(inputOfTableNumber);
+            return Integer.parseInt(inputOfTableNumber);
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e);
+            return getInputOfTableNumber();
+        }
     }
 }

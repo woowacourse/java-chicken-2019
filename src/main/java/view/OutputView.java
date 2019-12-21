@@ -10,10 +10,6 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
 
-    public static void printErrorMessage(IllegalArgumentException e) {
-        System.out.println(e.getMessage());
-    }
-
     public static void printMainUI() {
         System.out.println("## 메인화면");
         System.out.println("1. 주문하기");
@@ -33,6 +29,10 @@ public class OutputView {
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
+    }
+
+    protected static void printErrorMessage(IllegalArgumentException e) {
+        System.out.println(e.getMessage());
     }
 
     private static void printLine(final String line, final int count) {

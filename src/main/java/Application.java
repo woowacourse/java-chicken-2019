@@ -8,14 +8,33 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
-    // TODO 구현 진행
+    private static final int ORDER = 1;
+    private static final int PAYMENT = 2;
+    private static final int EXIT = 3;
+
+    private static final List<Table> tables = TableRepository.tables();
+//    private static final int tableNumber = InputView.inputTableNumber();
+    private static final List<Menu> menus = MenuRepository.menus();
+
     public static void main(String[] args) {
-        final List<Table> tables = TableRepository.tables();
+        doMainService();
+    }
+
+    private static int doMainService() {
+        OutputView.printMainUI();
+        int choice = InputView.getInputOfMainUI();
+        if (choice == ORDER) {
+            doOrder();
+            return ORDER;
+        }
+        if (choice == PAYMENT) {
+            return PAYMENT;
+        }
+        return EXIT;
+    }
+
+    private static void doOrder() {
         OutputView.printTables(tables);
-
-        final int tableNumber = InputView.inputTableNumber();
-
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+        int tableNumber = InputView.getInputOfTableNumber();
     }
 }

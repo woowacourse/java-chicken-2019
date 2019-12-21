@@ -7,6 +7,10 @@ public class Table {
         this.number = number;
     }
 
+    public Boolean isMatchingTable(int tableNumber) {
+        return this.number == tableNumber;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);
