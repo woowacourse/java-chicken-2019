@@ -51,6 +51,7 @@ public class ApplicationSupporter {
         final int menuQuantity = InputView.inputCountMenu();
         Menu choiceMenu = choiceMenuTrans(menuNumber);
         Table choiceTable = findTable(tableNumber);
+
         choiceTable.makeOrder(choiceMenu, menuQuantity);
         chickenCount(choiceMenu, choiceTable, menuQuantity);
 
@@ -112,13 +113,13 @@ public class ApplicationSupporter {
 
         input = chickenDiscount(input, chickens);
         if (choice == CASH) {
-            input = (int)(input * 0.95);
+            input = (int) (input * 0.95);
         }
         OutputView.printResult(input);
     }
 
     public int chickenDiscount(int input, int chickens) {
-        for(int i = chickens; i >= 10; i -= CHICKEN_COUNT) {
+        for (int i = chickens; i >= 10; i -= CHICKEN_COUNT) {
             input -= CHICKEN_DISCOUNT;
         }
         return input;
