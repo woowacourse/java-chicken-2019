@@ -42,7 +42,14 @@ public class Table {
 		getOrderMap().put(menuChoice, value + menuQuantity);
 	}
 
-	public Integer getNumber(){
-	    return number;
-    }
+	public boolean hasOrder() {
+		return orderMap.values()
+			.stream()
+			.mapToInt(Integer::intValue).
+				sum() > 0;
+	}
+
+	public Integer getNumber() {
+		return number;
+	}
 }
