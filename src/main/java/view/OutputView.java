@@ -85,4 +85,8 @@ public class OutputView {
         System.out.println();
     }
 
+    public static void printExitMessage() {
+        System.out.println("## 치킨집이 닫았습니다 내일 와주세요 (✪‿✪)ノ");
+    }
+
 }
