@@ -19,10 +19,6 @@ public class Order {
         return new Order(menus);
     }
 
-    public boolean isEmpty() {
-        return this.menus.isEmpty();
-    }
-
     public Price PriceInfo() {
         Price price = new Price(ZERO);
         Iterator<Menu> menuIterator = menus.keySet().iterator();
