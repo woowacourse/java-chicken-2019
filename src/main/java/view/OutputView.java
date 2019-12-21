@@ -18,6 +18,18 @@ public class OutputView {
         printLine(BOTTOM_LINE, size);
     }
 
+    public static void printMainMenu() {
+        System.out.println("## 메인화면");
+        System.out.println("1 - 주문등록");
+        System.out.println("2 - 결제하기");
+        System.out.println("3 - 프로그램 종료");
+    }
+
+    public static void printOrderHistory() {
+        System.out.println("## 주문내역");
+        System.out.println("메뉴 수량 금액");
+    }
+
     public static void printMenus(final List<Menu> menus) {
         for (final Menu menu : menus) {
             System.out.println(menu);
