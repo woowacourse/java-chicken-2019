@@ -46,5 +46,6 @@ public class OutputView {
             }
             System.out.printf(BOTTOM_LINE, "-");
         }
+        System.out.println();
     }
 }

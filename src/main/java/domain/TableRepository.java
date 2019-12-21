@@ -1,5 +1,6 @@
 package domain;
 
+import Constant.ConstantNumber;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -34,6 +35,16 @@ public class TableRepository {
             if(tables.get(i).getTableNumber() == number){
                 return true;
             }
+        }
+        return false;
+    }
+
+    public static boolean hasTableToPay(){
+        for(int i = 0; i < tables.size(); i++){
+            if(tables.get(i).getOrderedMenuNumber() == ConstantNumber.ZERO){
+                continue;
+            }
+            return true;
         }
         return false;
     }

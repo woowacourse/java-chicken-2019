@@ -1,15 +1,13 @@
 package view;
 
+import Constant.ConstantNumber;
 import domain.MenuRepository;
 import domain.TableRepository;
-import domain.Menu;
 
 import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
-    private static final int MAX_ORDER = 99;
-    private static final int EXIT = 0;
 
     public static int inputAction(){
         System.out.println("1 - 주문등록");
@@ -28,9 +26,24 @@ public class InputView {
         if(!TableRepository.contains(tableNumber)){
             tableNumber = inputTableNumber();
         }else if(TableRepository.getTablebyNumber(tableNumber).getOrderedMenuNumber()
-                >= MAX_ORDER){
+                >= ConstantNumber.MAX_ORDER){
             System.out.println("더 이상 주문할 수 없습니다.");
-            return EXIT;
+            return ConstantNumber.EXIT;
+        }
+
+        return tableNumber;
+    }
+
+    public static int inputTableNumber_Pay(){
+        int tableNumber;
+
+        System.out.println("## 테이블을 선택하세요.");
+        tableNumber = scanner.nextInt();
+        if(!TableRepository.contains(tableNumber)){
+            tableNumber = inputTableNumber();
+        }else if(TableRepository.getTablebyNumber(tableNumber).getOrderedMenuNumber()
+                == ConstantNumber.ZERO){
+            tableNumber = inputTableNumber();
         }
 
         return tableNumber;
