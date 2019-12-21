@@ -1,21 +1,42 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import domain.MainOptions;
+import util.InputValidator;
 import view.InputView;
 import view.OutputView;
 
-import java.util.List;
-
 public class Application {
-    // TODO 구현 진행
+    private static final int OPTION_BEGIN = 1;
+    private MainOptions[] options = new MainOptions[]{
+            MainOptions.ADD_ORDER,
+            MainOptions.PAYMENT,
+            MainOptions.EXIT
+    };
+
     public static void main(String[] args) {
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
+        Application pos = new Application();
+        pos.startPost();
+        pos.exit();
+    }
 
-        final int tableNumber = InputView.inputTableNumber();
+    private void startPost() {
+        MainOptions option = MainOptions.NONE;
+        OutputView.printMain(options);
 
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+        while (!option.isStop()) {
+            option = options[selectOption()];
+        }
+    }
+
+    private int selectOption() {
+        String input = "";
+
+        do {
+            input = InputView.inputMainOption();
+        } while (!InputValidator.isNumberInRange(input, OPTION_BEGIN, options.length));
+
+        return Integer.parseInt(input) - 1;
+    }
+
+    private void exit() {
+        InputView.closeView();
     }
 }
