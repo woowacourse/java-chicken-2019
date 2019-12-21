@@ -37,4 +37,8 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    private static void printFunciton() {
+        System.out.println("## rl");
+    }
 }

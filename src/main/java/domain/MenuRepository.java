@@ -21,4 +21,14 @@ public class MenuRepository {
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
     }
+
+    public static Menu getMenu(int menuNumber) {
+        if (menuNumber < 7) {
+            return menus.get(menuNumber - 1);
+        } else if (menuNumber > 21 && menuNumber < 23) {
+            return menus.get(menuNumber - 16);
+        } else {
+            return null;
+        }
+    }
 }
