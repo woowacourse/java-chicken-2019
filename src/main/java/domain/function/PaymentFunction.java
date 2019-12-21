@@ -43,6 +43,7 @@ public class PaymentFunction extends Function {
 
         final double finalOrderAmount = selectedTable.getOrderAmount(chickenAmount, paymentMethod);
         OutputView.printFinalOrderAmount(finalOrderAmount);
+        selectedTable.resetTable();
     }
 
     private PaymentMethod getInputPaymentMethod() {

@@ -66,4 +66,10 @@ public class Table {
     public String toString() {
         return Integer.toString(number);
     }
+
+    public void resetTable() {
+        orderAmount = OrderAmount.ZERO;
+        paymentStatus = true;
+        menuStatus = new HashMap<>();
+    }
 }
