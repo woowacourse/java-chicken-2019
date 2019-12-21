@@ -45,4 +45,8 @@ public class Ordered {
                 .reduce(Integer::sum)
                 .orElse(0) - chickensDiscount();
     }
+
+    public boolean isNotEmpty() {
+        return !orderedMenus.isEmpty();
+    }
 }
