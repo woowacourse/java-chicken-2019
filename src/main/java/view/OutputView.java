@@ -2,6 +2,7 @@ package view;
 
 import domain.Menu;
 import domain.Table;
+import domain.TableRepository;
 import org.w3c.dom.ls.LSOutput;
 
 import java.util.ArrayList;
@@ -68,5 +69,11 @@ public class OutputView {
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
         System.out.println("3 - 프로그램 종료");
+    }
+
+    public static void printReceipt(int tableNumber) {
+        System.out.println("## 주문 내역");
+        System.out.println("메뉴  수량  금액");
+        TableRepository.getTableMenu().get(tableNumber).getMenu().toString();
     }
 }

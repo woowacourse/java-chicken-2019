@@ -10,7 +10,7 @@ public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static int inputTableNumber() {
-        System.out.println(NEWLINE + "## 주문할 테이블을 선택하세요.");
+        System.out.println(NEWLINE + "## 테이블을 선택하세요.");
         try {
             int value = scanner.nextInt();
 

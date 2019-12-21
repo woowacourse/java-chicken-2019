@@ -25,4 +25,8 @@ public class Table {
             menu.add(MenuRepository.menus().get(type));
         }
     }
+
+    public List<Menu> getMenu() {
+        return menu;
+    }
 }
