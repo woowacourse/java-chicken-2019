@@ -47,6 +47,10 @@ public class Table {
         return orders.toString();
     }
 
+    public int targetOrderSize( int menuNumber ) {
+        return orders.getMenuSize(menuNumber);
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);
