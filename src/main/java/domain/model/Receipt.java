@@ -4,11 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Receipt {
-    private static final String RECEIPT_TITLE = "주문내역\n메뉴, 수량, 금액";
+    private static final String RECEIPT_TITLE = "메뉴, 수량, 금액";
     private List<Order> orderList = new ArrayList<>();
+    private int tableNumber;
 
-    public void addOrder(Menu menu, int conut) {
-        orderList.add(new Order(menu, conut));
+    public Receipt(int tableNumber) {
+        this.tableNumber = tableNumber;
+    }
+
+    public int getTableNumber() {
+        return tableNumber;
+    }
+
+    public void addOrder(Order order) {
+        orderList.add(order);
     }
 
     public int getTotalPrice() {
@@ -22,5 +31,9 @@ public class Receipt {
             builder.append(order.toString()).append("\n");
         }
         return builder.toString();
+    }
+
+    public boolean hasOrder() {
+        return !orderList.isEmpty();
     }
 }
