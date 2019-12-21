@@ -16,6 +16,7 @@ public class OutputView {
     private static final String NEW_LINE = "\n";
     private static final String FINAL_MONEY_TO_PAY = "최종 결제 금액은, " + NEW_LINE;
     private static final String HERE = "입니다.";
+    private static final String ERROR_AMOUNT = "99마리까지만 주문 할 수 있습니다."+NEW_LINE;
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
@@ -26,6 +27,7 @@ public class OutputView {
     }
 
     public static void printMenus(final List<Menu> menus) {
+        System.out.println();
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
@@ -58,5 +60,9 @@ public class OutputView {
     public static void printTotalMoney(double totalMoney) {
         System.out.println(FINAL_MONEY_TO_PAY);
         System.out.println(totalMoney + HERE);
+    }
+
+    public static void printAmountError() {
+        System.out.println(ERROR_AMOUNT);
     }
 }

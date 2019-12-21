@@ -3,6 +3,8 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import view.OutputView;
+
 public class Table {
     private static final int DISCOUNT_AMOUNT = 10000;
     private static final int DISCOUNT_MEASURE = 10;
@@ -23,8 +25,25 @@ public class Table {
         return menus;
     }
 
-    public void addMenu(Table table, Menu menu, int howMany) {
-        menus.add(new OrderedMenu(table, menu, howMany));
+    public boolean addMenu(Table table, Menu menu, int howMany) {
+        OrderedMenu orderMenu = new OrderedMenu(table, menu, howMany);
+        if(menus.stream().anyMatch(s->s.equals(orderMenu))){
+            return alreadyHasTheMenu(howMany, orderMenu);   //  이미, 주문 한 상품의 경우
+        }
+        menus.add(orderMenu);   // 처음 주문하는 상품의 경우
+        return false;
+    }
+
+    private boolean alreadyHasTheMenu(int howMany, OrderedMenu orderMenu) {
+        OrderedMenu existMenu = menus.stream()
+                .filter(s -> s.equals(orderMenu)).findFirst().get();
+        if(existMenu.canOrder(howMany)){
+            existMenu.addJustCount(howMany);
+        }
+        if(!existMenu.canOrder(howMany)){
+            OutputView.printAmountError();
+        }
+        return true;
     }
 
     private double sumOfMenus() {

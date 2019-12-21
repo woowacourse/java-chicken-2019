@@ -12,13 +12,6 @@ public class Menu {
         this.category = category;
         this.price = price;
     }
-
-    public boolean isExist(int menuNumber) {
-        if (number == menuNumber)
-            return true;
-        return false;
-    }
-
     public int getNumber() {
         return number;
     }
@@ -29,6 +22,12 @@ public class Menu {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isExist(int menuNumber) {
+        if (number == menuNumber)
+            return true;
+        return false;
     }
 
     @Override
