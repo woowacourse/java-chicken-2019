@@ -1,9 +1,9 @@
 package domain;
 
-import view.OutputView;
-
-import java.security.InvalidParameterException;
 import java.util.List;
+import java.security.InvalidParameterException;
+
+import view.OutputView;
 
 public class MenuServiceImpl implements MenuService {
 
@@ -24,7 +24,7 @@ public class MenuServiceImpl implements MenuService {
     public Menu getMenuByNumber(int menuNumber) {
         for (Menu menu : menus) {
             if (menu.isTarget(menuNumber)) {
-                return  menu;
+                return menu;
             }
         }
 

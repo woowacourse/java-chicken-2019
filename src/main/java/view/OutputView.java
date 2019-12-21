@@ -1,11 +1,11 @@
 package view;
 
-import domain.Menu;
-import domain.Table;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+import domain.Menu;
+import domain.Table;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
@@ -18,8 +18,6 @@ public class OutputView {
         System.out.println("2 - 결제하기");
         System.out.println("3 - 프로그램 종료");
     }
-
-
 
 
     public void printTables(final List<Table> tables) {
@@ -91,7 +89,7 @@ public class OutputView {
         System.out.println(String.format("%.0f원", moneyToPay));
     }
 
-    public void printError(RuntimeException e) {
+    void printError(RuntimeException e) {
         System.out.println(String.format("다음과 같은 오류가 발생했습니다: %s", e.getMessage()));
     }
 

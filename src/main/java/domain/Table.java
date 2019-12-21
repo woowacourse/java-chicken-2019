@@ -1,11 +1,6 @@
 package domain;
 
-import view.OutputView;
-
-import java.security.InvalidParameterException;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Table {
@@ -40,7 +35,7 @@ public class Table {
 
     //todo: do other logic
     public void getSettled() {
-        tableStatus =  TableStatus.Wating;
+        tableStatus = TableStatus.Wating;
     }
 
     private void addMenu(Menu menu) {
@@ -73,7 +68,7 @@ public class Table {
 
         int menuSize = calculateMenuSize();
         int numToDiscount = menuSize / 10;
-        for (int i = 0; i < numToDiscount; i++ ) {
+        for (int i = 0; i < numToDiscount; i++) {
             moneyToPay -= MenuConfig.DISCOUNT_AMOUNT;
         }
 

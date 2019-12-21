@@ -1,8 +1,8 @@
+import java.util.List;
+
 import domain.*;
 import view.InputView;
 import view.OutputView;
-
-import java.util.List;
 
 public class Application {
     // TODO 구현 진행

@@ -1,12 +1,11 @@
 package domain;
 
+import java.util.List;
+import java.util.Map;
+import java.security.InvalidParameterException;
 
 import view.InputView;
 import view.OutputView;
-
-import java.security.InvalidParameterException;
-import java.util.List;
-import java.util.Map;
 
 public class TableServiceImpl implements TableService {
     private List<Table> tables;
@@ -72,7 +71,7 @@ public class TableServiceImpl implements TableService {
         outputView.printResult(moneyToPay);
     }
 
-    public void showOrderHistory(Map<Menu, Integer> menus) {
+    private void showOrderHistory(Map<Menu, Integer> menus) {
         outputView.printOrderHistory(menus);
     }
 

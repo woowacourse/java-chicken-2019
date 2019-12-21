@@ -18,7 +18,7 @@ public class Menu {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
 
-    public boolean isTarget(int menuNumber) {
+    boolean isTarget(int menuNumber) {
         return number == menuNumber;
     }
 

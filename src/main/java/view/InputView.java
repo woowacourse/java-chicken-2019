@@ -21,7 +21,7 @@ public class InputView {
         System.out.println("## 테이블을 선택하세요.");
         try {
             int tableNumber = Integer.parseInt(scanner.nextLine());
-            if (Arrays.stream(TableConfig.TABLES_NUMBERS).parallel().noneMatch(number -> number == tableNumber )) {
+            if (Arrays.stream(TableConfig.TABLES_NUMBERS).parallel().noneMatch(number -> number == tableNumber)) {
                 throw new InvalidInputException("테이블에 속하지 않는 번호입니다.");
             }
             return tableNumber;
@@ -37,7 +37,7 @@ public class InputView {
         System.out.println("## 등록할 메뉴를 선택하세요.");
         try {
             int menuNumber = Integer.parseInt(scanner.nextLine());
-            if (Arrays.stream(MenuConfig.MENU_NUMBERS).parallel().noneMatch(number -> number == menuNumber )) {
+            if (Arrays.stream(MenuConfig.MENU_NUMBERS).parallel().noneMatch(number -> number == menuNumber)) {
                 throw new InvalidInputException("존재하지 않는 메뉴입니다.");
             }
             return menuNumber;
@@ -78,7 +78,7 @@ public class InputView {
     public int inputPaymentWay() {
         System.out.println("## 신용카드는 1번, 현금은 2번");
         try {
-            int paymentWay =  Integer.parseInt(scanner.nextLine());
+            int paymentWay = Integer.parseInt(scanner.nextLine());
             if (Arrays.stream(WayToPay.values()).map(WayToPay::getValue).noneMatch(way -> way == paymentWay)) {
                 throw new InvalidInputException("존재하지 않는 결제 수단입니다.");
             }
