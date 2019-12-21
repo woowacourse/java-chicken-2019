@@ -34,6 +34,12 @@ public class TableServiceImpl implements TableService {
 
         int menuAmount = inputView.inputMenuAmount();
 
+        if (MenuConfig.MENU_LIMIT_NUM < table.calculateMenuSize() + menuAmount) {
+            outputView.printRessonOfOrder(MenuConfig.MENU_LIMIT_NUM);
+            register();
+            return;
+        }
+
         for (int i = 0; i < menuAmount; i++) {
             table.takeOrder(menu);
         }

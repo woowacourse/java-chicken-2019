@@ -26,16 +26,11 @@ public class Table {
 
     //todo: do other logic
     public void takeOrder(Menu menu) {
-        //todo: refac
-        if (MenuConfig.MENU_LIMIT_NUM <= calculateMenuSize()) {
-            throw new InvalidParameterException("더이상 메뉴를 추가할 수 없습니다.");
-        }
-
         tableStatus = TableStatus.Registered;
         addMenu(menu);
     }
 
-    private int calculateMenuSize() {
+    public int calculateMenuSize() {
         int size = 0;
         for (Menu menu : menus.keySet()) {
             size += menus.get(menu);

@@ -82,4 +82,8 @@ public class OutputView {
     public void printError(RuntimeException e) {
         System.out.println(String.format("다음과 같은 오류가 발생했습니다: %s", e.getMessage()));
     }
+
+    public void printRessonOfOrder(int menuLimitNum) {
+        System.out.println(String.format("한 테이블에서 %d보다 많이 주문할 수 없습니다.", menuLimitNum));
+    }
 }
