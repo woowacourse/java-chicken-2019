@@ -27,6 +27,7 @@ public class OutputView {
 	private static final String ORDER_LIST_GUIDE_MESSAGE = "## 주문 내역";
 	private static final String MENU_COUNT_PRICE_GUIDE_MESSAGE = "메뉴 수량 금액";
 	private static final String FINAL_PAYMENT_MESSAGE = "## 최종 결제할 금액";
+	private static final String WON = "원";
 
 	// 묵시적 생성자 방지
 	private OutputView() {}
@@ -102,6 +103,6 @@ public class OutputView {
 
 	public static void printPaymentPrice(int price) {
 		System.out.println(FINAL_PAYMENT_MESSAGE);
-		System.out.println(price);
+		System.out.println(price + WON);
 	}
 }
