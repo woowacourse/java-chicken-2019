@@ -13,6 +13,22 @@ public class Menu {
         this.price = price;
     }
 
+    public boolean isExist(int menuNumber){
+        if(number == menuNumber)
+            return true;
+        return false;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public Menu getMenu(int menuNumber){
+        if(menuNumber == number)
+            return this;
+        throw new IllegalArgumentException("그런메뉴는 존재하지 않습니다.");
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
