@@ -1,3 +1,5 @@
+import Constant.ConstantNumber;
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
@@ -44,5 +46,17 @@ public class Application {
         tableNumber = InputView.inputTableNumber_Pay();
         OutputView.printOrders(TableRepository.getTablebyNumber(tableNumber));
         howToPay = InputView.inputHowToPay();
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(discountCalculator(TableRepository.getTablebyNumber(tableNumber), howToPay));
+    }
+
+    private static double discountCalculator(Table table, int Card_or_Cash){
+        double price = table.getTotalPrice();
+        price -= table.getTotalChicken() / ConstantNumber.TEN * ConstantNumber.TEN_THOUSAND;
+        if(Card_or_Cash == ConstantNumber.CASH){
+            price *= ConstantNumber.FIVE_PERSENT_DISCOUNT;
+        }
+
+        return price;
     }
 }

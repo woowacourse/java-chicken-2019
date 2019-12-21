@@ -4,7 +4,7 @@ public class Menu {
     private final int number;
     private final String name;
     private final Category category;
-    private final int price;
+    private final double price;
 
     public Menu(final int number, final String name, final Category category, final int price) {
         this.number = number;
@@ -17,7 +17,7 @@ public class Menu {
         return this.number;
     }
 
-    public int getPrice(){
+    public double getPrice(){
         return this.price;
     }
 

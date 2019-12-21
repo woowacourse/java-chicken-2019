@@ -1,5 +1,6 @@
 package view;
 
+import Constant.ConstantNumber;
 import domain.Menu;
 import domain.Table;
 import java.util.List;
@@ -54,4 +55,6 @@ public class OutputView {
         table.printOrders();
         System.out.println();
     }
+
+
 }

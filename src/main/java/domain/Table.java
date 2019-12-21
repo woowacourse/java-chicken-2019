@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Table {
     private final int number;
     private static int numberOfChicken;
+    private static int totalPrice;
     private List<Menu> menus = new ArrayList<>();
     private List<Integer> orders = new ArrayList<>();
 
@@ -37,8 +38,18 @@ public class Table {
 
     public void printOrders(){
         for(int i = 0; i < menus.size(); i++){
-            System.out.printf("%s %d %d", menus.get(i).getName(), orders.get(i), menus.get(i).getPrice()*orders.get(i));
+            System.out.printf("%s %d %d",
+                    menus.get(i).getName(),
+                    orders.get(i),
+                    menus.get(i).getPrice()*orders.get(i));
         }
+    }
+
+    public double getTotalPrice(){
+        for(int i = 0; i < menus.size(); i++){
+            totalPrice += menus.get(i).getPrice() * orders.get(i);
+        }
+        return totalPrice;
     }
 
     public int getTotalChicken(){
