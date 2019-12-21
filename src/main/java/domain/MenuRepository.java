@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class MenuRepository {
@@ -20,5 +21,16 @@ public class MenuRepository {
 
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
+    }
+
+    public static boolean isInMenus(int number) {
+        Iterator itr = menus.iterator();
+        while (itr.hasNext()) {
+            Menu menu = (Menu) itr.next();
+            if (menu.isSameNumber(number)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
