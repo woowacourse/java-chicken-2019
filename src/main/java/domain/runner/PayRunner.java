@@ -10,8 +10,6 @@ import java.util.List;
 
 public class PayRunner extends Runner {
 
-    public static final int SELECT_NUMBER = 2;
-
     public static List<Table> tables = TableRepository.tables();
 
     public static void runPay() {
@@ -23,10 +21,8 @@ public class PayRunner extends Runner {
 
     private static void payProcessing(Table table) {
         OutputView.printTablePayProcessing(table);
-        int paymentMethodNumber = InputView.inputPaymentMethodNumber();
-        PayMethod payMethod = PayMethod.findPayMethod(paymentMethodNumber);
-        int paymentResult = payMethod.getResultPayAccount(table);
-        OutputView.printResultPayAccount(paymentResult);
+        PayMethod payMethod = PayMethod.findPayMethod(InputView.inputPaymentMethodNumber());
+        OutputView.printResultPayAccount(payMethod.getResultPayAccount(table));
         table.successPayProcessing();
     }
 

@@ -12,7 +12,6 @@ import java.util.List;
 
 public class OrderRunner extends Runner {
 
-    public static final int SELECT_NUMBER = 1;
     public static List<Table> tables = TableRepository.tables();
     public static List<Menu> menus = MenuRepository.menus();
 

@@ -1,4 +1,4 @@
 package exception;
 
-public class ExitException {
+public class ExitException extends RuntimeException {
 }
