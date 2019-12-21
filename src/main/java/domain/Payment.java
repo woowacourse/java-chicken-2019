@@ -21,4 +21,8 @@ public class Payment {
         this.paymentAmount = paymentAmount;
         this.chickenAmount = chickenAmount;
     }
+
+    public Payment addPaymentAmount(int paymentAmount, int chickenAmount) {
+        return new Payment(this.paymentAmount + paymentAmount, this.chickenAmount + chickenAmount);
+    }
 }
