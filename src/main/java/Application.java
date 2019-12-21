@@ -22,5 +22,6 @@ public class Application {
         OutputView.printMenus(menus);
 
         final int inputOrder = InputView.inputOrder();
+        final int inputCount = InputView.inputCount();
     }
 }
