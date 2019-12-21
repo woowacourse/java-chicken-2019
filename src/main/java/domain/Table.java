@@ -23,11 +23,11 @@ public class Table {
 	}
 
 	public void add(Menu inputMenu, int menuCount) {
-		for(Menu menu : menus) {
-			if(menu == inputMenu) {
-				
-			}
+		if(menus.get(inputMenu)!= null) {
+			menus.put(inputMenu, menus.get(inputMenu)+menuCount);
+			return;
 		}
+		menus.put(inputMenu, menuCount);
 		// 예외처리 필요
 	}
 
