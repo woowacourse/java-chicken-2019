@@ -60,7 +60,6 @@ public class Application {
             OutputView.nonePaymentTable();
             return NONE_PRICE;
         }
-
         OutputView.printTables(reservedTable, tables);
         int paymentTable = InputView.inputTableNumber(tables);
         OutputView.isWrongTable(reservedTable, paymentTable);
@@ -73,7 +72,6 @@ public class Application {
             removeTable(orderMenuInTable, paymentTable);
             return;
         }
-
         OutputView.cardPayMent(allPayment);
         removeTable(orderMenuInTable, paymentTable);
     }
