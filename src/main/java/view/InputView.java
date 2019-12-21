@@ -24,6 +24,7 @@ public class InputView {
 		return ExceptionHandler.inputSelectTableHandler(tables);
 	}
 
+
 	public static int inputSelectMenu(List<Menu> menus) {
         System.out.println("## 등록할 메뉴를 선택하세요.");
 		return ExceptionHandler.inputSelectMenuHandler(menus);

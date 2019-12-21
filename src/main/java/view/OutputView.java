@@ -55,4 +55,9 @@ public class OutputView {
 		System.out.println("해당 테이블은 더 이상 주문할 수 없습니다.");
 	}
 
+	public static void printCanNotPayment() {
+		System.out.println("해당 테이블은 결제할 수 없습니다.");
+		
+	}
+
 }
