@@ -19,4 +19,8 @@ public class Table {
     public HashMap<Menu, Integer> getOrderMenu() {
         return orderMenu;
     }
+
+    public int getMoney() {
+        return money;
+    }
 }
