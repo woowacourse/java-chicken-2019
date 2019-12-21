@@ -14,7 +14,7 @@ public class Application {
         final List<Order> orderList = new ArrayList<>();
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
-        int tempTableNumber = 0;
+        int currentTableNumber = 0;
 
         Choice posChoice;
         do {
@@ -25,9 +25,9 @@ public class Application {
 
             // 주문 등록 로직
             if (posChoice == Choice.ORDER) {
-                OutputView.printTables(tables, tempTableNumber);
+                OutputView.printTables(tables, currentTableNumber);
                 final int tableNumber = validateTableNumber();
-                tempTableNumber = tableNumber;
+                currentTableNumber = tableNumber;
                 OutputView.printMenus(menus);
                 int foodNumber = validateFoodNumber(menus);
                 Menu selectedMenu = menus.stream().filter(m -> m.isMatchNumber(foodNumber)).findAny().get();
@@ -36,13 +36,33 @@ public class Application {
 
             // 결제 로직
             if (posChoice == Choice.PAY){
-                OutputView.printTables(tables, tempTableNumber);
-                final int tableNumber = validatePayableTableNumber();
-                tempTableNumber = tableNumber;
+                OutputView.printTables(tables, currentTableNumber);
+                final int tableNumber = validatePayableTableNumber(currentTableNumber);
+                System.out.println(tableNumber);
             }
             OutputView.printOrderList(orderList);
         } while(posChoice != Choice.EXIT);
 
+    }
+
+    private static int validatePayableTableNumber(int currentTableNumber) {
+        try {
+            int tableNumber = InputView.inputTableNumber();
+            if (tableNumber < 0 | tableNumber > 8) {
+                throw new IllegalArgumentException("선택 가능한 범위가 아닙니다.");
+            }
+            validateCurrentTableNumber(currentTableNumber, tableNumber);
+            return tableNumber;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        return validatePayableTableNumber(currentTableNumber);
+    }
+
+    private static void validateCurrentTableNumber(int currentTableNumber, int tableNumber) {
+        if (tableNumber != currentTableNumber) {
+            throw new IllegalArgumentException("결제 가능한 테이블이 아닙니다.");
+        }
     }
 
     /** 조건 분리 */

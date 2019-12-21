@@ -10,7 +10,7 @@ public class InputView {
     }
 
     public static int inputTableNumber() {
-        return inputInteger("## 주문할 테이블을 선택하세요.");
+        return inputInteger("## 테이블을 선택하세요.");
     }
 
     public static int inputFoodNumber() {
