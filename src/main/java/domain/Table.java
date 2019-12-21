@@ -41,7 +41,7 @@ public class Table {
             System.out.printf("%s %d %d",
                     menus.get(i).getName(),
                     orders.get(i),
-                    menus.get(i).getPrice()*orders.get(i));
+                    (int)menus.get(i).getPrice() * orders.get(i));
         }
     }
 

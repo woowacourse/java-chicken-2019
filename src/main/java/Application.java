@@ -1,5 +1,4 @@
 import Constant.ConstantNumber;
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
@@ -12,14 +11,17 @@ import java.util.List;
 public class Application {
     private static final List<Table> tables = TableRepository.tables();
     private static final List<Menu> menus = MenuRepository.menus();
-    private static final int FULL_ORDER = 0;
-    private static final int ORDER = 1;
-    private static final int PAY = 2;
-    private static final int EXIT = 0;
     public static void main(String[] args) {
-        InputView.inputAction();
-        order();
-        pay();
+        while(true){
+            int Action = InputView.inputAction();
+            if(Action == ConstantNumber.EXIT){
+                break;
+            }else if(Action == ConstantNumber.ORDER){
+                order();
+            }else if(Action == ConstantNumber.PAY){
+                pay();
+            }
+        }
     }
 
     public static void order(){
@@ -27,7 +29,7 @@ public class Application {
 
         OutputView.printTables(tables);
         tableNumber = InputView.inputTableNumber();
-        if(tableNumber == FULL_ORDER){
+        if(tableNumber == 0){
             return;
         }
         OutputView.printMenus(menus);
@@ -48,15 +50,16 @@ public class Application {
         howToPay = InputView.inputHowToPay();
         System.out.println("## 최종 결제할 금액");
         System.out.println(discountCalculator(TableRepository.getTablebyNumber(tableNumber), howToPay));
+        System.out.println();
     }
 
-    private static double discountCalculator(Table table, int Card_or_Cash){
+    private static int discountCalculator(Table table, int Card_or_Cash){
         double price = table.getTotalPrice();
         price -= table.getTotalChicken() / ConstantNumber.TEN * ConstantNumber.TEN_THOUSAND;
         if(Card_or_Cash == ConstantNumber.CASH){
             price *= ConstantNumber.FIVE_PERSENT_DISCOUNT;
         }
 
-        return price;
+        return (int)price;
     }
 }

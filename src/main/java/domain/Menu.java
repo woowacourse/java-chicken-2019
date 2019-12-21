@@ -34,6 +34,6 @@ public class Menu {
 
     @Override
     public String toString() {
-        return category + " " + number + " - " + name + " : " + price + "원";
+        return category + " " + number + " - " + name + " : " + (int)price + "원";
     }
 }
