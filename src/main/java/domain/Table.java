@@ -23,6 +23,15 @@ public class Table {
         orderMenu.put(menu, amount);
     }
     
+    public int getTotalAmount() {
+        int sum = 0;
+        
+        for (Map.Entry<Menu, Integer> order : orderMenu.entrySet()) {
+            sum += order.getValue();
+        }
+        return sum;
+    }
+
     public int getTotalMoney() {
         int sum = 0;
         

@@ -25,16 +25,17 @@ public class TableRepository {
         if (tables.get(tableNumber).getOrderMenu().containsKey(menu))
             amount += tables.get(tableNumber).getOrderMenu().get(menu);
 
-        if (!checkAmount(amount))
+        if (!checkAmount(tableNumber, amount))
             return false;
 
         tables.get(tableNumber).order(menu, amount);
         return true;
     }
 
-    private static boolean checkAmount(int amount) {
+    private static boolean checkAmount(int tableNumber, int amount) {
         if (amount > MAX_AMOUNT) {
-            System.out.println("\n!!!!주문량이 너무 많습니다. 다시 주문해주세요!!!!");
+            System.out.println("\n!!!!주문량이 너무 많습니다. 99이하가 되도록 다시 주문해주세요!!!!");
+            System.out.println("현재 주문량 : " + tables.get(tableNumber).getTotalAmount());
             return false;
         }
         return true;
