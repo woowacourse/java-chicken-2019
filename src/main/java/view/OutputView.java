@@ -49,4 +49,8 @@ public class OutputView {
     public static void printIsNotNumberError() {
         System.out.println("입력된 데이터는 숫자가 아닙니다.\n");
     }
+
+    public static void printIsNotFeatureNumberError() {
+        System.out.println("입력된 숫자는 기능목록에 포함되지 않습니다.\n");
+    }
 }
