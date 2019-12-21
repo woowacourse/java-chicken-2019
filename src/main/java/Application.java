@@ -28,6 +28,7 @@ public class Application {
             order();
         if (action == 2)
             pay();
+        System.exit(0);
     }
 
     /**
