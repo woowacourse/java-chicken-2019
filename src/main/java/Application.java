@@ -1,7 +1,5 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import domain.*;
+
 import view.InputView;
 import view.OutputView;
 
@@ -14,24 +12,33 @@ public class Application {
     private static final String EXIT_PROGRAM = "프로그램 종료";
 
     private ArrayList<String> functions;
+    private Order order;
 
     public Application() {
         initializeFunctions();
+        order = new Order();
     }
 
     public static void main(String[] args) {
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
-
-        final int tableNumber = InputView.inputTableNumber();
-
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+        Application application = new Application();
+        application.run();
     }
 
     private void run() {
+        int input;
+
         OutputView.printMainScreen();
         OutputView.printFunctions(functions);
+        input = getFunctionNumber();
+        if (input == functions.indexOf(REGISTER_ORDER)) {
+            order.getOrder();
+        }
+        if (input == functions.indexOf(DO_PAYMENT)) {
+            System.out.println("구현 중입니다. 잠시만 기다려 주세요^^");
+        }
+        if (input == functions.indexOf(EXIT_PROGRAM)) {
+            System.exit(0);
+        }
     }
 
     private void initializeFunctions() {
@@ -42,6 +49,6 @@ public class Application {
     }
 
     private int getFunctionNumber() {
-        return InputView.getFuctionNumber(functions.size());
+        return InputView.inputFuctionNumber(functions.size());
     }
 }
