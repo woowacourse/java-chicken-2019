@@ -50,6 +50,7 @@ public class Pos {
     public void pay(int tableNumber) {
         OutputView.printReceipt(tableNumber);
         InputView.printPay(tableNumber);
+        OutputView.printTotalPayment(tableNumber);
     }
 
     public static void orderManagement(int tableNumber, int inputOrder, int inputCount) {

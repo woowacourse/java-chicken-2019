@@ -7,6 +7,7 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -42,20 +43,20 @@ public class OutputView {
     }
 
     private static String printPayLine(int index, List<Integer> orderCheck) {
-        String order = "";
+        StringBuilder order = new StringBuilder();
         boolean empty = true;
 
-        for (int i = 0; i < orderCheck.size(); i++) {
-            if (orderCheck.get(i).equals(index)) {
-                order += TABLE_HAVE_TO_PAY;
+        for (Integer integer : orderCheck) {
+            if (integer.equals(index)) {
+                order.append(TABLE_HAVE_TO_PAY);
                 empty = false;
             }
         }
         if (empty) {
-            order += BOTTOM_LINE;
+            order.append(BOTTOM_LINE);
         }
 
-        return order;
+        return order.toString();
     }
 
     private static void printTableNumbers(final List<Table> tables) {
@@ -76,5 +77,14 @@ public class OutputView {
         System.out.println(NEW_LINE + "## 주문 내역");
         System.out.println("메뉴  수량  금액");
         TableRepository.getTableMenu().get(tableNumber).getMenu().toString();
+    }
+
+    public static void printTotalPayment(int tableNumber) {
+        System.out.println(NEW_LINE + "## 최종 결제할 금액");
+        try {
+            System.out.println((TableRepository.totalPayment(TableRepository.getTableMenu().get(tableNumber)) + "원"));
+        } catch (NoSuchElementException e) {
+            System.out.println("결제할 금액이 없습니다.");
+        }
     }
 }

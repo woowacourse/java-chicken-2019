@@ -47,4 +47,8 @@ public class TableRepository {
     public static List<Table> getTableMenu() {
         return tableMenu;
     }
+
+    public static int totalPayment(Table table) {
+        return table.getMenu().stream().mapToInt(Menu::getPrice).reduce(Integer::sum).getAsInt();
+    }
 }
