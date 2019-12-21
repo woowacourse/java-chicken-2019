@@ -53,11 +53,18 @@ public class Application {
     }
 
     private static void runPayment() {
+        if(tables.hallIsEmpty()) {
+            System.out.println("================");
+            System.out.println("주문이 없습니다");
+            System.out.println("================");
+            return ;
+        }
         OutputView.printTables(tables);
-        final int tableNumber = InputView.inputTableNumber();
+        final int tableNumber = InputView.inputPaymentTableNumber();
         final int paymentMethod = InputView.inputPaymentMethod(tableNumber);
         double amount = calculateFinalPayment(tableNumber, paymentMethod);
         OutputView.printOrderAmount(amount);
+        tables.payment(tableNumber);
     }
 
     private static double calculateFinalPayment( int tableNumber, int paymentMethod ) {
@@ -76,4 +83,5 @@ public class Application {
     private static boolean hasManyOrder( Table table ) {
         return table.getOrderSize() >= MANY_ORDER_BOUNDARY;
     }
+
 }
