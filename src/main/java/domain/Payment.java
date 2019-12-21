@@ -1,15 +1,10 @@
 package domain;
 
-import domain.TableRepository;
-import view.InputView;
-import view.OutputView;
-import domain.Table;
-import domain.Menu;
-import domain.MenuRepository;
-
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.ArrayList;
+
+import view.InputView;
+import view.OutputView;
 
 public class Payment {
 	private static int paymentWay;
