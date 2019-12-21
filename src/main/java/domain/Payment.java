@@ -14,5 +14,10 @@ public class Payment {
         this.select = select;
     }
 
-   
+    public int calculateBySelect(int amount) {
+        if (select == CASH_VALUE) {
+            return amount - (int) (amount * CASH_DISCOUNT_RATE);
+        }
+        return amount;
+    }
 }
