@@ -37,4 +37,39 @@ public class TableRepository {
             }
         }
     }
+
+    public static boolean isNotUnpaidTableNumber(int tableNumber) {
+        for (Table table : tables) {
+            if (table.isSameTableNumber(tableNumber) && table.isUnpaidTable()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static String getUnpaidTableOrderedMenuList(TableNumber tableNumber) {
+        for (Table table : tables) {
+            if (table.isSameTableNumber(tableNumber.get())) {
+                return table.getOrderedMenuList();
+            }
+        }
+        return "";
+    }
+
+    public static double getUnpaidTableOrderedMenuPriceSum(TableNumber unpaidTableNumber, PaymentMethod paymentMethod) {
+        for (Table table : tables) {
+            if (table.isSameTableNumber(unpaidTableNumber.get())) {
+                return table.calculateOrderedMenuPriceSum(paymentMethod);
+            }
+        }
+        return 0;
+    }
+
+    public static void clearOrderedMenuList(TableNumber unpaidTableNumber) {
+        for (Table table : tables) {
+            if (table.isSameTableNumber(unpaidTableNumber.get())) {
+                table.clearOrderedMenuList();
+            }
+        }
+    }
 }

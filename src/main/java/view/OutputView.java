@@ -3,6 +3,7 @@ package view;
 import domain.Menu;
 import domain.MainFeatureNumber;
 import domain.Table;
+import domain.TableNumber;
 
 import java.util.List;
 
@@ -52,5 +53,16 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+
+    public static void printOrderedMenuList(String unpaidTableOrderedList) {
+        System.out.println("## 주문 내역");
+        System.out.println("메뉴 수량 금액");
+        System.out.println(unpaidTableOrderedList);
+    }
+
+    public static void printOrderedMenuPriceSum(double orderedMenuPriceSum) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(orderedMenuPriceSum+"원");
     }
 }

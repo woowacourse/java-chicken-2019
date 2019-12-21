@@ -18,6 +18,10 @@ public class MenuNumber {
         this.menuNumber = menuNumber;
     }
 
+    public int get() {
+        return menuNumber;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

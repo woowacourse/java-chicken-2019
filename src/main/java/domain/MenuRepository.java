@@ -30,4 +30,32 @@ public class MenuRepository {
         }
         return true;
     }
+
+    public static String getMenuName(MenuNumber menuNumber) {
+        for (Menu menu : menus) {
+            if (menu.isSameMenuNumber(menuNumber.get())) {
+                return menu.getName();
+            }
+        }
+        return "";
+    }
+
+    public static int getMenuPrice(MenuNumber menuNumber) {
+        for (Menu menu : menus) {
+            if (menu.isSameMenuNumber(menuNumber.get())) {
+                return menu.getPrice();
+            }
+        }
+        return 0;
+    }
+
+    public static int getChickenCount(MenuNumber menuNumber) {
+        int chickenCount = 0;
+        for (Menu menu : menus) {
+            if (menu.isSameMenuNumber(menuNumber.get()) && menu.isChicken()) {
+                chickenCount++;
+            }
+        }
+        return chickenCount;
+    }
 }

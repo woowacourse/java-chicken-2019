@@ -17,6 +17,18 @@ public class Menu {
         return number == menuNumber;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public boolean isChicken() {
+        return category == Category.CHICKEN;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
