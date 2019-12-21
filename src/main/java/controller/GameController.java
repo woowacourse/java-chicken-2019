@@ -46,9 +46,9 @@ public class GameController {
 
     private void tableOrder() {
         OutputView.printTables(tables, orderList);
-        final Table table = getTable(InputView.inputTableNumber());
+        final Table table = getTable(InputView.inputTableNumber(tables));
                 OutputView.printMenus(menus);
-        final Menu menu = foreignKeyGetMenu(InputView.inputMenuNumber());
+        final Menu menu = foreignKeyGetMenu(InputView.inputMenuNumber(menus));
         final int quantityNumber = InputView.inputMenuQuantityNumber();
         orderList.get(table).addMenu(menu, quantityNumber);
     }
@@ -58,7 +58,6 @@ public class GameController {
             if(table.getNumber() == tableNumber)
                 return table;
         }
-        // 예외처리해줘야함
         return null;
     }
 
@@ -72,7 +71,7 @@ public class GameController {
 
     private void tablePayment() {
         OutputView.printTables(tables, orderList);
-        final Table table = getTable(InputView.inputTableNumber());
+        final Table table = getTable(InputView.inputTableNumber(tables));
         OutputView.printOrderHistory(orderList.get(table).orderListToStringArray());
         final int paymentType = InputView.inputCardOrCash(table.getNumber());
         final int resultPrice = Calculate.amountCalculation(orderList.get(table).getTotalPrice()
