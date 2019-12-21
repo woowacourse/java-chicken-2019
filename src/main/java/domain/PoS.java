@@ -32,12 +32,14 @@ public class PoS {
     }
 
     private int calcFinalPrice(List<Menu> orderList, boolean isCash) {
-        int quantityDiscountPrice = calcTotalPrice(orderList) -
-                policy.QuantityDiscount(orderList);
-        if (quantityDiscountPrice < 0)
+        int originalPrice = calcTotalPrice(orderList);
+        int quantityDiscount = policy.QuantityDiscount(orderList);
+        int totalPrice =
+                Math.round((originalPrice - quantityDiscount) * policy.cashDiscount(isCash));
+        if (totalPrice < 0)
             throw new IllegalArgumentException("결제액이 음수입니다.");
-
-        return Math.round(quantityDiscountPrice * policy.cashDiscount(isCash));
+        System.out.println("## 할인액: " + (originalPrice - totalPrice));
+        return totalPrice;
     }
 
 
