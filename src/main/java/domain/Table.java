@@ -15,6 +15,10 @@ public class Table {
         return Integer.toString(number);
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     public HashMap<Menu, Integer> getOrderMenu() {
         return orderMenu;
     }

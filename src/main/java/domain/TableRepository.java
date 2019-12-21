@@ -44,4 +44,12 @@ public class TableRepository {
     public HashMap<Menu, Integer> getOrderMenuList(int tableNumber) {
         return tables.get(tableNumber).getOrderMenu();
     }
+
+    public static boolean checkTable(int tableNumber) {
+        for (Table table : tables) {
+            if (table.getNumber() == tableNumber)
+                return true;
+        }
+        return false;
+    }
 }

@@ -2,6 +2,10 @@ package view;
 
 import java.util.Scanner;
 
+import domain.MenuRepository;
+import domain.Table;
+import domain.TableRepository;
+
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -23,17 +27,43 @@ public class InputView {
 
     public static int inputMainNumber() {
         System.out.println("## 원하는 기능을 선택하세요.");
-        return execptionInput();
+        return execptionInputMainNumber(execptionInput());
+    }
+
+    private static int execptionInputMainNumber(int input) {
+        while (input < ORDER || input > CLOSE) {
+            System.out.println("\n!!잘못 입력하셨습니다. 다시 입력해주세요.");
+            input = scanner.nextInt();
+        }
+        return input;
     }
 
     public static int inputTableNumber() {
         System.out.println("## 주문할 테이블을 선택하세요.");
-        return execptionInput();
+        return execptionInputTableNumber(execptionInput());
+    }
+
+    private static int execptionInputTableNumber(int input) {
+        if (!TableRepository.checkTable(input)) {
+            System.out.println("\n!!잘못 입력하셨습니다. 다시 입력해주세요.");
+            input = scanner.nextInt();
+            return execptionInputTableNumber(input);
+        }
+        return input;
     }
 
     public static int inputMenuNumber() {
         System.out.println("## 등록할 메뉴를 선택하세요.");
-        return execptionInput();
+        return execptionInputMenuNumber(execptionInput());
+    }
+
+    private static int execptionInputMenuNumber(int input) {
+        if (!MenuRepository.checkMenu(input)) {
+            System.out.println("\n!!잘못 입력하셨습니다. 다시 입력해주세요.");
+            input = scanner.nextInt();
+            return execptionInputTableNumber(input);
+        }
+        return input;
     }
 
     public static int inputMenuAmount() {

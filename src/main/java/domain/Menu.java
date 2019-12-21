@@ -18,6 +18,10 @@ public class Menu {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     public String getName() {
         return name;
     }
