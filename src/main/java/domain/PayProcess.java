@@ -3,6 +3,9 @@ package domain;
 import java.awt.image.ShortLookupTable;
 import java.util.HashMap;
 import java.util.List;
+import javafx.scene.control.Tab;
+import view.InputView;
+import view.OutputView;
 
 public class PayProcess {
 
@@ -20,11 +23,42 @@ public class PayProcess {
     this.menuNumbers = menuNumbers;
   }
 
+  private Table getTable(int tableNumber) {
+    return this.tables.get(this.tableNumbers.get(tableNumber));
+  }
+
+  private Menu getMenu(int menuNumber) {
+    return this.menus.get(this.menuNumbers.get(menuNumber));
+  }
+
   public void start() {
     if(!hasOrdered()){
       System.out.println("주문이 존재하지 않습니다.");
       return;
     }
+
+    int tableNumber = getTableNumber();
+  }
+
+  private int getTableNumber() {
+    OutputView.printTables(tables);
+    return validateTableNumber(InputView.inputTableNumber());
+  }
+
+  private int validateTableNumber(int tableNumber){
+    try{
+     return hasOrdered(tableNumber);
+    }catch (Exception e){
+      System.out.println(e.getMessage());
+      return getTableNumber();
+    }
+  }
+  private int hasOrdered(int tableNumber) throws Exception {
+    Table table = getTable(tableNumber);
+    if(!table.hasOrdered()){
+      throw new Exception("주문이 존재하지 않습니다.");
+    }
+    return tableNumber;
   }
 
   private boolean hasOrdered(){
