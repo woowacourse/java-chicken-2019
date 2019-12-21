@@ -6,7 +6,7 @@ import java.util.List;
 public class Table {
     private final int number;
     private boolean isTable;
-    private final List<Bill> bills = new ArrayList<>();
+    private List<Bill> bills = new ArrayList<>();
 
     public Table(final int number) {
         this.number = number;
@@ -32,6 +32,7 @@ public class Table {
 
     public void setResetTable() {
         this.isTable = false;
+        bills = new ArrayList<>();
     }
 
     public List<Bill> getBill() {

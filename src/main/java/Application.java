@@ -71,6 +71,7 @@ public class Application {
             return;
         }
         OutputView.printFinalBill(calculateCardBills(table));
+        table.setResetTable();
     }
 
     private static boolean isCash(int number) {
