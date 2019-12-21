@@ -15,6 +15,11 @@ public class OutputView {
     public static void printProvidingFunctions(final List<ProvidingFunction> providingFunctions) {
         System.out.println("## 메인화면");
 
+        for (ProvidingFunction providingFunction : providingFunctions) {
+            printProvidingFunction(providingFunction);
+            System.out.println();
+        }
+
     }
 
     private static void printProvidingFunction(final ProvidingFunction providingFunction) {
