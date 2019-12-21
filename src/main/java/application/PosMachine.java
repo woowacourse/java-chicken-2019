@@ -3,8 +3,11 @@ package application;
 import domain.TableRepository;
 import view.OutputView;
 import domain.MenuRepository;
+import domain.TableNumber;
 
 public class PosMachine {
+	private TableRepository tables = new TableRepository();
+	
 	public PosMachine() {};
 	
 	public void oneCycle () {
@@ -14,6 +17,8 @@ public class PosMachine {
 		if (oneTwoThree.isTerminate()) {
 			return;
 		}
-		OutputView.printTables(TableRepository.tables());
+		OutputView.printTables(tables.tables());
+		TableNumber tableNum = new TableNumber();
+		tableNum.enterNum();
 	}
 }
