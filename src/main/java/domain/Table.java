@@ -38,6 +38,30 @@ public class Table {
         return orders;
     }
 
+    public void cleanOrders() {
+        orders.clear();
+    }
+
+    public int getTotalPayment() {
+        int totalPayment = 0;
+
+        for (Order order : orders) {
+            totalPayment += getPaymentAboutOneProduct(order);
+        }
+
+        return totalPayment;
+    }
+
+    private int getPaymentAboutOneProduct(Order order) {
+        int payment = 0;
+
+        for (int i = 0; i < order.getOrderQuantity(); i++) {
+            payment += order.getMenu().getPrice();
+        }
+
+        return payment;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

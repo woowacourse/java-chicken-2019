@@ -24,6 +24,18 @@ public class TableRepository {
         tables.get(getTableIndex(table)).addOrder(order);
     }
 
+    public static List<Order> getOrders(int tableNumber) {
+        return Collections.unmodifiableList(tables.get(getTableIndex(tableNumber)).getOrders());
+    }
+
+    public static int getTotalPayment(int tableNumber) {
+        return tables.get(getTableIndex(tableNumber)).getTotalPayment();
+    }
+
+    public static void deleteAllOrders(int tableNumber) {
+        tables.get(getTableIndex(tableNumber)).cleanOrders();
+    }
+
     private static int getTableIndex(int tableNumber) {
         int tableIndex = 0;
 
@@ -32,9 +44,5 @@ public class TableRepository {
         }
 
         return tableIndex;
-    }
-
-    public static List<Order> getOrders(int tableNumber) {
-        return Collections.unmodifiableList(tables.get(getTableIndex(tableNumber)).getOrders());
     }
 }
