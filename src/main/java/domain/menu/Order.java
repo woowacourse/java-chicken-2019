@@ -1,5 +1,6 @@
 package domain.menu;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,6 +56,16 @@ public class Order {
         public boolean isSameMenu(Menu menu){
             return this.menu == menu;
         }
+
+        /**
+         * getNumber는 number 변수에 대한 getter이다.
+         * 내부 클래스이고 외부의 Order 클래스가 보호하므로 선언에 큰 문제는 없다.
+         *
+         * @return 이 객체의 number 값을 반환한다.
+         */
+        public int getNumber(){
+            return number;
+        }
     }
 
     /**
@@ -65,26 +76,47 @@ public class Order {
 
     /**
      * 생성자 호출 시 메뉴의 목록(Store에서 만든 메뉴 목록)을 받는다.
-     * 이 목록에 맞춰서 orderList를 만드는데, 단 모두 개수를 0으로 설정하여 주문되지 않은 메뉴에 대해서는 0개로 표시한다.
+     * 이 목록에 맞춰서 orderList를 만든다.
      *
      * @param menus 새로 만들 주문리스트에서 사용할 총 메뉴의 목록
      */
     public Order(List<Menu> menus){
-        for(Menu menu : menus) {
-            orderList.add(new MenuWithNumber(menu,0));
-        }
+        orderList = new ArrayList<>();
     }
 
     /**
      * orderMenu는 어떤 메뉴를 주문하는 동작을 수행하는 메서드이다.
      * 입력받은 메뉴를 orderList에서 검색하여, 조회가 되면 숫자를 추가해준다.
+     * 조회가 되지 않는다면, 새롭게 리스트에 추가해준다.
      *
      * @param menu 주문할 메뉴의 정보를 담은 객체
      * @param number 주문할 갯수
      */
     public void orderMenu(Menu menu, int number){
         for(MenuWithNumber order : orderList) {
-            order.addMenuNumber(menu, number);
+            if(order.isSameMenu(menu)){
+                order.addMenuNumber(menu, number);
+                return;
+            }
         }
+        orderList.add(new MenuWithNumber(menu, number));
+    }
+
+    /**
+     * findNumberWithMenu는 메뉴를 통해 orderList에서 그 메뉴가 주문된 적 있는지 검색하고,
+     * 만약 주문된 이력이 있다면 몇 개 주문되었는지 조회한다.
+     * 만약 검색 결과가 없다면 예외처리한다.
+     *
+     * @param menu 검색할 메뉴의 객체
+     * @return 찾은 메뉴의 갯수를 반환한다.
+     * @throws AssertionError 만약 검색 결과가 없다면, 논리적 에러를 반환한다. 추후 이에 대해 수정할 예정이다.(임시)
+     */
+    public int findNumberWithMenu(Menu menu) {
+        for(MenuWithNumber order : orderList) {
+            if(order.isSameMenu(menu)){
+                return order.getNumber();
+            }
+        }
+        throw new AssertionError("검색 결과, 찾을 수 없는 값입니다.");
     }
 }
