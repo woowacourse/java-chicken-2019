@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pay {
-    private int countMenu;
+    private int countMenu = 0;
     private final int tableNumber;
     private int tablePay = 0;
     private static final List<String> orderedMenu = new ArrayList<>();
@@ -26,11 +26,16 @@ public class Pay {
     }
 
     public void plusCount() {
-        countMenu++;
+        countMenu += 1;
     }
 
     public List<String> getOrderedMenu() {
         return orderedMenu;
     }
 
+    public void resetTable() {
+        tablePay = 0;
+        countMenu = 0;
+        orderedMenu.clear();
+    }
 }

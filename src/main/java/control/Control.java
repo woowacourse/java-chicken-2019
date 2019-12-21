@@ -62,17 +62,24 @@ public class Control {
         int payHow = InputView.inputPayNumber(tableNumber);
         // 나중에 결제 수단 할인
         OutputView.printPay(payList.get(tableNumber - 1).getTablePay());
+        payList.get(tableNumber -1).resetTable();
     }
 
-    private static void discount(int tableNumber) {
-        //
+    private static void discount(int tableNumber, int payHow) {
+        if (payHow == 1) {
+
+        } else if (payHow == 2) {
+
+        } else {
+
+        }
     }
 
     private static int convertMenuNumber(int menuNumber) {
         if (menuNumber < 7) {
             return menuNumber - 1;
-        } else if (menuNumber > 21 && menuNumber < 23) {
-            return menuNumber - 16;
+        } else if (menuNumber > 20 && menuNumber < 23) {
+            return menuNumber - 15;
         } else {
             return 100;
         }
