@@ -1,8 +1,10 @@
-package domain;
+package domain.table;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static util.ErrorMessage.INVALID_TABLE_NUMBER;
 
 /**
  * 데이터를 조회하는 DB역할
@@ -24,5 +26,14 @@ public class TableRepository {
 
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
+    }
+
+    public static Table findByTableNumber(final Integer tableNumber) {
+        return tables().stream()
+                .filter(c -> c.getNumber().equals(tableNumber))
+                .findFirst()
+                .orElseThrow(() -> {
+                    throw new IllegalArgumentException(INVALID_TABLE_NUMBER);
+                });
     }
 }

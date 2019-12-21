@@ -1,8 +1,10 @@
-package domain;
+package domain.menu;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static util.ErrorMessage.INVALID_MENU_NUMBER;
 
 /**
  * 데이터를 조회하는 DB역할
@@ -26,5 +28,14 @@ public class MenuRepository {
 
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
+    }
+
+    public static Menu findByMenuNumber(final Integer menuNumber) {
+        return menus().stream()
+                .filter(c -> c.getNumber().equals(menuNumber))
+                .findFirst()
+                .orElseThrow(() -> {
+                    throw new IllegalArgumentException(INVALID_MENU_NUMBER);
+                });
     }
 }

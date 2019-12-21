@@ -1,7 +1,8 @@
 package view;
 
-import domain.Menu;
-import domain.Table;
+import domain.menu.Menu;
+import domain.table.Table;
+import domain.table.order.Basket;
 
 import java.util.List;
 
@@ -34,6 +35,19 @@ public class OutputView {
     private static void printTableNumbers(final List<Table> tables) {
         for (final Table table : tables) {
             System.out.printf(TABLE_FORMAT, table);
+        }
+        System.out.println();
+    }
+
+    public static void printOrderStatus(Table table) {
+        System.out.println("## 주문 내역");
+        printOrders(table);
+    }
+
+    private static void printOrders(Table table) {
+        System.out.println("메뉴 수량 금액");
+        for (final Basket basket : table.getBaskets()) {
+            System.out.println(basket);
         }
         System.out.println();
     }
