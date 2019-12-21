@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Table {
     private static final int ZERO = 0;
@@ -38,6 +39,22 @@ public class Table {
 
     public int getNumber() {
         return number;
+    }
+
+    public int getTotalPrice() {
+        int price = 0;
+        for (Map.Entry<Menu, Integer> entry : bill.entrySet()) {
+            price += entry.getKey().getPrice() * entry.getValue();
+        }
+        return price;
+    }
+
+    public int getTotalAmount() {
+        int amount = 0;
+        for (int entry : bill.values()) {
+            amount += entry;
+        }
+        return amount;
     }
 
     @Override

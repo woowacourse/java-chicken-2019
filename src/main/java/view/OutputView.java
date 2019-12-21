@@ -75,4 +75,9 @@ public class OutputView {
             sb.append(entry.getKey().getPrice() * entry.getValue() + "\n");
         }
     }
+
+    public static void printTotalPrice(int price) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(price + "원");
+    }
 }
