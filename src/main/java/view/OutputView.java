@@ -10,7 +10,8 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
     private static final String MAIN_PAGE = "## 메인화면";
-    private static final String PRINT_MAIN_MENU = "1 - 주문등록 \n2 - 결제하기 \n3 - 프로그램 종료";
+    private static final String PRINT_MAIN_FUNCTION = "1 - 주문등록 \n2 - 결제하기 \n3 - 프로그램 종료";
+    private static final String ASK_TO_CHOOSE_MAIN_FUNCTION = "\n## 원하는 기능을 선택하세요.";
     private static final String ASK_REENTER_ONLY_INTEGER = "입력이 정수가 아닙니다. 다시 입력하세요.";
     private static final String ASK_PUT_ONLY_MAIN_FUNC_MENU_NUMBER = "1, 2, 3 중에 입력하세요.";
 
@@ -47,8 +48,9 @@ public class OutputView {
         System.out.println(MAIN_PAGE);
     }
 
-    public static void printMainMenu() {
-        System.out.println(PRINT_MAIN_MENU);
+    public static void printMainFunction() {
+        System.out.println(PRINT_MAIN_FUNCTION);
+        System.out.println(ASK_TO_CHOOSE_MAIN_FUNCTION);
     }
 
     public static void askReenterOnlyInteger() {

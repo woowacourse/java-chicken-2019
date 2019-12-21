@@ -15,7 +15,7 @@ public class InputView {
     public static int getMainFunctionNumber() {
         int inputInt;
         do {
-            OutputView.printMainMenu();
+            OutputView.printMainFunction();
             inputInt = getInputInt();
         } while (!InputValidator.inputMainFunctionValidator(inputInt));
         return inputInt;
