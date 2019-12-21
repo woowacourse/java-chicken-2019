@@ -50,5 +50,6 @@ public class OutputView {
     public static void printOrders(int tableNumber) {
         StringBuilder sb = new StringBuilder("메뉴 수량 금액\n");
         // TODO: tableNumber 로 테이블을 찾고 Order 출력
+        System.out.println(sb.toString());
     }
 }

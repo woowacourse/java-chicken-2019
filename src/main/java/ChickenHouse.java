@@ -9,18 +9,39 @@ import view.OutputView;
 
 public class ChickenHouse {
     public void start() {
-        int feature = InputView.inputMain();
+        int selectedFeature = InputView.inputMain();
+        if (selectedFeature == 3) {
+            return;
+        }
+        progress(selectedFeature, selectTable());
+    }
 
+    private int selectTable() {
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
+        return InputView.inputTableNumber();
+    }
 
-        final int tableNumber = InputView.inputTableNumber();
+    private void progress(int selectedFeature, int tableNumber) {
+        if (selectedFeature == 1) {
+            order(tableNumber);
+        }
+        if (selectedFeature == 2) {
+            pay(tableNumber);
+        }
+    }
 
+    private void order(int tableNumber) {
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
-
         int menuNumber = InputView.inputMenuNumber();
         int menuQuantity = InputView.inputMenuQuantity();
-        int payMethod = InputView.inputPayMethod(1);
+        start();
+    }
+
+    private void pay(int tableNumber) {
+        OutputView.printOrders(tableNumber);
+        int payMethod = InputView.inputPayMethod(tableNumber);
+        start();
     }
 }
