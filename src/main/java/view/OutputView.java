@@ -51,9 +51,16 @@ public class OutputView {
         System.out.println("## "+table.getNumber()+"번 테이블의 결제를 진행합니다.");
     }
 
-    public static void printSumOfMoney(Table table) {
+    public static void printSumOfMoneyInstruction () {
         System.out.println("최종 결제할 금액");
-        System.out.println(table.getMoneyCharged());
+    }
+
+    public static void printSumOfMoney(Table table) {
+        System.out.println(table.getMoneyCharged()+"원");
+        System.out.println();
+    }
+    public static void printSumOfMoneyCash(Table table) {
+        System.out.println(table.getMoneyCharged()*0.95+"원");
         System.out.println();
     }
 

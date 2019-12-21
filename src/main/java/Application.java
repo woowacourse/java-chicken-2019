@@ -67,10 +67,19 @@ public class Application {
     public static void pay(List<Table> tables) {
         OutputView.printTables(tables);
         int tableNumber = InputView.inputTableNumberForCharge();
-        OutputView.printMenusOrdered(selectTableWithNumber(tables, tableNumber));
-        OutputView.printPayment(selectTableWithNumber(tables,tableNumber));
+        Table table = selectTableWithNumber(tables, tableNumber);
+        OutputView.printMenusOrdered(table);
+        OutputView.printPayment(table);
         int paymentMethod = InputView.inputPaymentMethod();
-        OutputView.printSumOfMoney(selectTableWithNumber(tables,tableNumber));
+        OutputView.printSumOfMoneyInstruction();
+        if (paymentMethod==1) {
+            OutputView.printSumOfMoney(table);
+            return;
+        }
+        if (paymentMethod==2) {
+            OutputView.printSumOfMoneyCash(table);
+            return;
+        }
     }
 
 }
