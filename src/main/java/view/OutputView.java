@@ -44,7 +44,11 @@ public class OutputView {
 
     public static void printTotalOrder(Table orderTable, int paymentType) {
         System.out.println("\n## 최종 결제할 금액");
-        System.out.println(orderTable.orderPriceTotal());
+        int price = orderTable.orderPriceTotal();
+        if (paymentType == 2) {
+            price -= price / 20;
+        }
+        System.out.println(price + "원");
     }
 
     public static void printTableNoOrder(int tableNumber) {
