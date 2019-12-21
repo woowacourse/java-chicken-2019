@@ -16,12 +16,12 @@ public class ChichenPoS implements PoS {
     public void handle() {
         showMain();
 
-
         final int funcNumber = InputView.inputFunctionNumber();
 
         if (funcNumber == Requests.Register.getValue()) {
             tableService.register();
-
+            handle();
+            return;
         }
 
         if (funcNumber == Requests.Pay.getValue()) {
@@ -29,7 +29,8 @@ public class ChichenPoS implements PoS {
         }
 
         if (funcNumber == Requests.Exit.getValue()) {
-
+            OutputView.printExit();
+            System.exit(0);
         }
 
     }
