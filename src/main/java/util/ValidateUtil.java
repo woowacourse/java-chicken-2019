@@ -1,7 +1,7 @@
 package util;
 
-import domain.Menu;
-import domain.TableOrder;
+import domain.food.Menu;
+import domain.order.TableOrder;
 
 public class ValidateUtil {
 	private static final int MIN_ORDER_QUANTITY = 1;

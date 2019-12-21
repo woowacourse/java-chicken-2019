@@ -1,4 +1,4 @@
-package domain;
+package domain.food;
 
 import java.util.ArrayList;
 import java.util.Collections;

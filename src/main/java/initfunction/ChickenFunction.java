@@ -2,13 +2,13 @@ package initfunction;
 
 import java.util.List;
 
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Order;
-import domain.Table;
-import domain.TableOrder;
-import domain.TableRepository;
-import domain.TotalOrders;
+import domain.food.Menu;
+import domain.food.MenuRepository;
+import domain.order.Order;
+import domain.food.Table;
+import domain.order.TableOrder;
+import domain.food.TableRepository;
+import domain.order.TotalOrders;
 import view.OutputView;
 
 public abstract class ChickenFunction {

@@ -1,4 +1,7 @@
-package domain;
+package domain.order;
+
+import domain.purchase.Cost;
+import domain.food.Menu;
 
 public class Order {
 	private final Menu menu;

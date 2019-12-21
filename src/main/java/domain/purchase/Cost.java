@@ -1,4 +1,6 @@
-package domain;
+package domain.purchase;
+
+import domain.order.TableOrder;
 
 public class Cost {
 	public static final Cost ZERO = new Cost(0);

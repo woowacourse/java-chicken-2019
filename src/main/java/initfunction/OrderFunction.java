@@ -1,8 +1,8 @@
 package initfunction;
 
-import domain.Order;
-import domain.Table;
-import domain.TableOrder;
+import domain.order.Order;
+import domain.food.Table;
+import domain.order.TableOrder;
 import view.InputView;
 
 public class OrderFunction extends ChickenFunction {

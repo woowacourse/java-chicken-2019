@@ -1,4 +1,4 @@
-package domain;
+package domain.food;
 
 public enum Category {
 	CHICKEN("치킨"),

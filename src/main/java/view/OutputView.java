@@ -1,9 +1,9 @@
 package view;
 
-import domain.Cost;
-import domain.Menu;
-import domain.Table;
-import domain.TableOrder;
+import domain.purchase.Cost;
+import domain.food.Menu;
+import domain.food.Table;
+import domain.order.TableOrder;
 
 import java.util.List;
 

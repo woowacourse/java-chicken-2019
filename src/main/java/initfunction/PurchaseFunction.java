@@ -1,9 +1,9 @@
 package initfunction;
 
-import domain.Payment;
-import domain.Purchase;
-import domain.Table;
-import domain.TableOrder;
+import domain.payment.Payment;
+import domain.purchase.Purchase;
+import domain.food.Table;
+import domain.order.TableOrder;
 import view.InputView;
 import view.OutputView;
 

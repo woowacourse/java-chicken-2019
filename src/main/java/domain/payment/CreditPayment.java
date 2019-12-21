@@ -1,4 +1,6 @@
-package domain;
+package domain.payment;
+
+import domain.purchase.Cost;
 
 public class CreditPayment implements Payment {
 	@Override

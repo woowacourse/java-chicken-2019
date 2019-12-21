@@ -1,4 +1,6 @@
-package domain;
+package domain.food;
+
+import domain.purchase.Cost;
 
 public class Menu {
 	private final int number;

@@ -1,8 +1,11 @@
-package domain;
+package domain.order;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import domain.purchase.Cost;
+import domain.food.Menu;
 
 public class Orders {
 	private static final int MAX_ORDER_COUNT = 99;

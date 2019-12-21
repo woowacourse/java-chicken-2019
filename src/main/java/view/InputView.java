@@ -2,14 +2,14 @@ package view;
 
 import java.util.Scanner;
 
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Order;
-import domain.Payment;
-import domain.PaymentFactory;
-import domain.Table;
-import domain.TableOrder;
-import domain.TableRepository;
+import domain.food.Menu;
+import domain.food.MenuRepository;
+import domain.order.Order;
+import domain.payment.Payment;
+import domain.payment.PaymentFactory;
+import domain.food.Table;
+import domain.order.TableOrder;
+import domain.food.TableRepository;
 import initfunction.ChickenFunction;
 import initfunction.FunctionFactory;
 import util.ValidateUtil;

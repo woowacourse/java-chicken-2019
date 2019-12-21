@@ -1,4 +1,6 @@
-package domain;
+package domain.payment;
+
+import domain.purchase.Cost;
 
 public class CashPayment implements Payment {
 	private static final int CASH_DISCOUNT_RATE = 5;

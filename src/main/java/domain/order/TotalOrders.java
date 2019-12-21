@@ -1,8 +1,11 @@
-package domain;
+package domain.order;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import domain.food.Table;
+import domain.food.TableRepository;
 
 public class TotalOrders {
 	private final List<TableOrder> totalOrders = new ArrayList<>();

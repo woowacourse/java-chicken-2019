@@ -1,4 +1,4 @@
-package domain;
+package domain.food;
 
 import java.util.Objects;
 

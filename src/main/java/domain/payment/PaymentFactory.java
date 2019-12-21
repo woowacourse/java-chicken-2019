@@ -1,4 +1,4 @@
-package domain;
+package domain.payment;
 
 public class PaymentFactory {
 	private static final int CREDIT_CODE = 1;

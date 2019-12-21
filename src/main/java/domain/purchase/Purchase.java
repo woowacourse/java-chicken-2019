@@ -1,5 +1,7 @@
-package domain;
+package domain.purchase;
 
+import domain.order.TableOrder;
+import domain.payment.Payment;
 import view.OutputView;
 
 public class Purchase {

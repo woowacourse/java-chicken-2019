@@ -1,4 +1,8 @@
-package domain;
+package domain.order;
+
+import domain.purchase.Cost;
+import domain.food.Menu;
+import domain.food.Table;
 
 public class TableOrder {
 	private final Table table;
