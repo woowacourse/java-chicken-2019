@@ -12,8 +12,7 @@ public class PosService {
 	static final int MENU_END = 3;
 
 	MenuRepository menuBoard = new MenuRepository();
-	TableRepository tableStatus = new TableRepository();
-
+	TableRepository tables = new TableRepository();
 
 	public Boolean startPos() {
 		Integer featureSelect;
@@ -21,7 +20,24 @@ public class PosService {
 		OutputView.printInitialMenu();
 		featureSelect = InputView.inputMainFeature();
 
+		if (featureSelect == MENU_ADD_ORDER) {
+			addOrder();
+		} else if (featureSelect == MENU_PAYMENT) {
+
+		}
+
 		return setRepeat(featureSelect);
+	}
+
+	private void addOrder() {
+		Integer tableNumber = InputView.inputTableNumber();
+		if (!tableNumber.equals(0)) {
+			System.out.println(tableNumber);
+			Integer menuNumber = InputView.inputMenuNumber();
+
+			tables.addOrder(tableNumber
+					, menuBoard.getMenuByMenuNumber(menuNumber));
+		}
 	}
 
 	private Boolean setRepeat(Integer featureSelect) {

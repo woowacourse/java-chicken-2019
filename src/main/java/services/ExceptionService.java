@@ -3,6 +3,7 @@ package services;
 import domain.MenuRepository;
 import domain.TableRepository;
 import exceptions.OutOfNumberException;
+import view.OutputView;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -13,6 +14,8 @@ public class ExceptionService {
 
 	public static Integer handleExceptionOfMenuNumber() {
 		Integer input = INITIAL_VALUE;
+
+		OutputView.printMenus(MenuRepository.menus());
 		try {
 			input = scanner.nextInt();
 			MenuRepository.isIntInMenus(input);
@@ -26,6 +29,8 @@ public class ExceptionService {
 
 	public static Integer handleExceptionOfTableNumber() {
 		Integer input = INITIAL_VALUE;
+
+		OutputView.printTables(TableRepository.tables());
 		try {
 			input = scanner.nextInt();
 			TableRepository.isIntInTables(input);
