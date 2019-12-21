@@ -6,12 +6,12 @@ import domain.Table;
 import java.util.List;
 
 public class OutputView {
-    private static final String TOP_LINE = "â”Œ â”€ â”";
+    private static final String TOP_LINE = "¦£ ¦¡ ¦¤";
     private static final String TABLE_FORMAT = "| %s |";
-    private static final String BOTTOM_LINE = "â”” â”€ â”˜";
+    private static final String BOTTOM_LINE = "¦¦ ¦¡ ¦¥";
 
     public static void printTables(final List<Table> tables) {
-        System.out.println("## í…Œì´ë¸” ëª©ë¡");
+        System.out.println("## Å×ÀÌºí ¸ñ·Ï");
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);

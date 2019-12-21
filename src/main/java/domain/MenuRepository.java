@@ -8,14 +8,14 @@ public class MenuRepository {
     private static final List<Menu> menus = new ArrayList<>();
 
     static {
-        menus.add(new Menu(1, "í›„ë¼ì´ë“œ", Category.CHICKEN, 16_000));
-        menus.add(new Menu(2, "ì–‘ë…ì¹˜í‚¨", Category.CHICKEN, 16_000));
-        menus.add(new Menu(3, "ë°˜ë°˜ì¹˜í‚¨", Category.CHICKEN, 16_000));
-        menus.add(new Menu(4, "í†µêµ¬ì´", Category.CHICKEN, 16_000));
-        menus.add(new Menu(5, "ê°„ì¥ì¹˜í‚¨", Category.CHICKEN, 17_000));
-        menus.add(new Menu(6, "ìˆœì‚´ì¹˜í‚¨", Category.CHICKEN, 17_000));
-        menus.add(new Menu(21, "ì½œë¼", Category.BEVERAGE, 1_000));
-        menus.add(new Menu(22, "ì‚¬ì´ë‹¤", Category.BEVERAGE, 1_000));
+        menus.add(new Menu(1, "ÈÄ¶óÀÌµå", Category.CHICKEN, 16_000));
+        menus.add(new Menu(2, "¾ç³äÄ¡Å²", Category.CHICKEN, 16_000));
+        menus.add(new Menu(3, "¹İ¹İÄ¡Å²", Category.CHICKEN, 16_000));
+        menus.add(new Menu(4, "Åë±¸ÀÌ", Category.CHICKEN, 16_000));
+        menus.add(new Menu(5, "°£ÀåÄ¡Å²", Category.CHICKEN, 17_000));
+        menus.add(new Menu(6, "¼ø»ìÄ¡Å²", Category.CHICKEN, 17_000));
+        menus.add(new Menu(21, "Äİ¶ó", Category.BEVERAGE, 1_000));
+        menus.add(new Menu(22, "»çÀÌ´Ù", Category.BEVERAGE, 1_000));
     }
 
     public static List<Menu> menus() {
