@@ -26,7 +26,7 @@ public class Menu {
     }
 
     public int isChickenOneReturn() {
-        if(category.toString().equals("[치킨]")) {
+        if (category.toString().equals("[치킨]")) {
             return 1;
         }
         return 0;

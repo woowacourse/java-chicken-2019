@@ -57,7 +57,7 @@ public class Table {
     }
 
     private int orderPriceCal(int price, int chickenCount) {
-        if(chickenCount >= 10) {
+        if (chickenCount >= 10) {
             price -= chickenCount / 10 * 10_000;
         }
         return price;

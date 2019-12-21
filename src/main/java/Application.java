@@ -4,7 +4,6 @@ import domain.Table;
 import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
-
 import java.util.List;
 
 public class Application {

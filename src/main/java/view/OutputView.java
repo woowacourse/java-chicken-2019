@@ -2,7 +2,6 @@ package view;
 
 import domain.Menu;
 import domain.Table;
-
 import java.util.List;
 
 public class OutputView {
@@ -52,7 +51,7 @@ public class OutputView {
     }
 
     public static void printTableNoOrder(int tableNumber) {
-        System.out.println("\n## " + tableNumber +"번 테이블은 주문내역이 없습니다.");
+        System.out.println("\n## " + tableNumber + "번 테이블은 주문내역이 없습니다.");
         System.out.println("## 메인 화면으로 돌아갑니다.");
     }
 
@@ -63,9 +62,9 @@ public class OutputView {
         System.out.println();
     }
 
-    private static void printLine(final String line, final String line_order, Table table) {
-        if(table.getOrderTF()) {
-            System.out.print(line_order);
+    private static void printLine(final String line, final String lineOrder, Table table) {
+        if (table.getOrderTF()) {
+            System.out.print(lineOrder);
             return;
         }
         System.out.print(line);
