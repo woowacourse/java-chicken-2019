@@ -49,7 +49,7 @@ public class OutputView {
 
     public static void printOrderedMenu(final List<OrderedMenu> orderedMenus){
         System.out.println("## 주문내역");
-        System.out.println("메뉴 가격 수량");
+        System.out.println("메뉴 수량 가격");
         for(OrderedMenu menu : orderedMenus){
             System.out.println(menu.toString());
         }

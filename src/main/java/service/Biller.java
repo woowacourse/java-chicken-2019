@@ -1,5 +1,7 @@
 package service;
 
+import domain.Menu;
+import domain.OrderedMenu;
 import domain.Table;
 import view.InputView;
 import view.OutputView;
@@ -17,7 +19,8 @@ public class Biller extends Service {
 
         OutputView.printTables(tables);
         table = getTable(tables, InputView.inputTableNumber());
-        OutputView.printOrderedMenu(table.getOrderedMenu());
+        table.printOrderedMenu();
+        caculateTotalPrice(table);
     }
 
     private Table getTable(List<Table> tables, int tableNumber) {
@@ -27,6 +30,10 @@ public class Biller extends Service {
             }
         }
         return null;
+    }
+
+    private int caculateTotalPrice(Table table) {
+        return table.getSumOfPrice();
     }
 
 }

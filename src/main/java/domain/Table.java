@@ -1,5 +1,7 @@
 package domain;
 
+import view.OutputView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +30,15 @@ public class Table {
         return false;
     }
 
-    public List<OrderedMenu> getOrderedMenu(){
-        return menuList;
+    public void printOrderedMenu() {
+        OutputView.printOrderedMenu(menuList);
+    }
+
+    public int getSumOfPrice() {
+        int price = 0;
+        for (OrderedMenu menu : menuList) {
+            price += menu.multiplyMenuPriceAndAuantity();
+        }
+        return price;
     }
 }

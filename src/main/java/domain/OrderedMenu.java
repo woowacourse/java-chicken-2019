@@ -9,8 +9,12 @@ public class OrderedMenu {
         this.menuQuantity = menuQuantity;
     }
 
-    public String toString(){
-        return menu.toStringOnlyNameAndPrice() +" "+ menuQuantity;
+    public String toString() {
+        return menu.getName() + " " + menuQuantity + " " + menu.getPrice();
+    }
+
+    public int multiplyMenuPriceAndAuantity() {
+        return menu.getPrice() * menuQuantity;
     }
 
 }
