@@ -6,7 +6,6 @@ import view.OutputView;
 public class ChichenPoS implements PoS {
 
     private TableService tableService;
-    private MenuService menuService;
 
     public ChichenPoS(TableService tableService) {
         this.tableService = tableService;
@@ -14,9 +13,9 @@ public class ChichenPoS implements PoS {
 
     @Override
     public void handle() {
-        showMain();
+        OutputView.printMain();
 
-        final int funcNumber = InputView.inputFunctionNumber();
+        int funcNumber = InputView.inputFunctionNumber();
 
         if (funcNumber == Requests.Register.getValue()) {
             tableService.register();
@@ -35,9 +34,5 @@ public class ChichenPoS implements PoS {
             System.exit(0);
         }
 
-    }
-
-    private void showMain() {
-        OutputView.printMain();
     }
 }

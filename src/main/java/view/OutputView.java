@@ -19,10 +19,6 @@ public class OutputView {
         System.out.println("3 - 프로그램 종료");
     }
 
-    public static void printRequestForTable() {
-        System.out.println("## 테이블을 선택하세요.");
-    }
-
 
 
 

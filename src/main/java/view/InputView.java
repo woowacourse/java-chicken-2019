@@ -21,11 +21,12 @@ public class InputView {
     }
 
     public static int inputFunctionNumber() {
-        System.out.println("## 원하는 기능을 선택하세요.");
+        System.out.println("## 원하는 기능을 선택하세요.\n");
         return scanner.nextInt();
     }
 
     public static int inputPaymentWay() {
+        System.out.println("## 신용카드는 1번, 현금은 2번");
         return scanner.nextInt();
     }
 }

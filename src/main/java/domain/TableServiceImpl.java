@@ -18,7 +18,7 @@ public class TableServiceImpl implements TableService {
 
     @Override
     public void register() {
-        showTables();
+        OutputView.printTables(tables);
         int tableNumber = InputView.inputTableNumber();
         Table table = getTableByNumber(tableNumber);
 
@@ -46,14 +46,8 @@ public class TableServiceImpl implements TableService {
     }
 
     @Override
-    public void showTables() {
-        OutputView.printTables(tables);
-
-    }
-
-    @Override
     public void pay() {
-        showTables();
+        OutputView.printTables(tables);
 
         int tableNumber = InputView.inputTableNumber();
         Table table = getTableByNumber(tableNumber);
