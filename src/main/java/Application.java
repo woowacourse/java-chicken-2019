@@ -2,6 +2,7 @@ import domain.Table;
 import domain.TableRepository;
 import service.*;
 import view.InputView;
+import view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class Application {
         final List<Table> tables = TableRepository.tables();
 
         while(true) {
+            OutputView.printServices(services);
             Service selectedService = serviceSelector.selectService(InputView.inputServiceNumber());
             selectedService.run(tables);
         }
