@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import view.InputView;
 import view.OutputView;
@@ -10,8 +11,8 @@ public class Order {
   private final List<Table> tables;
   private final List<Menu> menus;
 
-  private final List<Integer> tableNumbers = new ArrayList<>();
-  private final List<Integer> menuNumbers = new ArrayList<>();
+  private final HashMap<Integer, Integer> tableNumbers = new HashMap<>();
+  private final HashMap<Integer, Integer> menuNumbers = new HashMap<>();
 
   public Order(List<Table> tables, List<Menu> menus) {
     this.tables = tables;
@@ -22,20 +23,21 @@ public class Order {
   }
 
   private void getMenuNumberList() {
-    for (Menu menu : menus) {
-      menuNumbers.add(menu.getNumber());
+    for(int i = 0; i < this.menus.size(); i++){
+      menuNumbers.put(this.menus.get(i).getNumber(),i);
     }
   }
 
   private void getTableNumberList() {
-    for (Table table : tables) {
-      tableNumbers.add(table.getNumber());
+    for(int i = 0; i < this.tables.size(); i++){
+      tableNumbers.put(this.tables.get(i).getNumber(),i);
     }
   }
 
   public void start() {
     final int tableNumber = getTableNumber();
     final int menuNumber = getMenuNumber();
+
 
   }
 
@@ -60,14 +62,14 @@ public class Order {
   }
 
   private int isInMenuList(int menuNumber) throws Exception {
-    if (menuNumbers.contains(menuNumber)) {
+    if (menuNumbers.containsKey(menuNumber)) {
       return menuNumber;
     }
     throw new Exception("메뉴가 존재하지 않습니다.");
   }
 
   private int isInTableList(int tableNumber) throws Exception {
-    if (tableNumbers.contains(tableNumber)) {
+    if (tableNumbers.containsKey(tableNumber)) {
       return tableNumber;
     }
     throw new Exception("테이블이 존재하지 않습니다.");
