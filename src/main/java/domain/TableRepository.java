@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class TableRepository {
@@ -18,5 +19,16 @@ public class TableRepository {
 
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
+    }
+
+    public static boolean isInTable(int number) {
+        Iterator itr = tables.iterator();
+        while (itr.hasNext()) {
+            Table table = (Table) itr.next();
+            if (table.isSameNumber(number)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
