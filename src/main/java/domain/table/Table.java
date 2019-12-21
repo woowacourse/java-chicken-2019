@@ -21,7 +21,7 @@ public class Table {
         return this.number == tableNumber;
     }
 
-    public void addOrder(Menu menu, int menuAmount) {
+    public void addOrder(Menu menu, int menuAmount) throws IllegalArgumentException {
         order.add(menu, menuAmount);
     }
 

@@ -8,7 +8,7 @@ public class InputView {
     public static int inputFunctionNumber() {
         try {
             System.out.println("## 원하는 기능을 선택하세요.");
-            return scanner.nextInt();
+            return Integer.parseInt(input());
         } catch (NumberFormatException e) {
             System.out.println("숫자만 입력해주세요.");
             return inputFunctionNumber();
@@ -16,17 +16,36 @@ public class InputView {
     }
 
     public static int inputTableNumber() {
-        System.out.println("## 주문할 테이블을 선택하세요.");
-        return scanner.nextInt();
+        try {
+            System.out.println("## 주문할 테이블을 선택하세요.");
+            return Integer.parseInt(input());
+        } catch (NumberFormatException e) {
+            System.out.println("숫자만 입력해주세요.");
+            return inputTableNumber();
+        }
     }
 
     public static int inputMenuToRegister() {
-        System.out.println("## 등록할 메뉴를 선택하세요.");
-        return scanner.nextInt();
+        try {
+            System.out.println("## 등록할 메뉴를 선택하세요.");
+            return Integer.parseInt(input());
+        } catch (NumberFormatException e) {
+            System.out.println("숫자만 입력해주세요.");
+            return inputMenuToRegister();
+        }
     }
 
     public static int inputMenuAmount() {
-        System.out.println("## 메뉴의 수량을 입력하세요.");
-        return scanner.nextInt();
+        try {
+            System.out.println("## 메뉴의 수량을 입력하세요.");
+            return Integer.parseInt(input());
+        } catch (NumberFormatException e) {
+            System.out.println("숫자만 입력해주세요.");
+            return inputMenuAmount();
+        }
+    }
+
+    private static String input() {
+        return scanner.nextLine();
     }
 }

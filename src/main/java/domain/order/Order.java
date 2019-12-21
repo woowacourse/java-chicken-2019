@@ -11,7 +11,7 @@ public class Order {
         this.order = new HashMap<>();
     }
 
-    public void add(Menu menu, int menuAmount) {
+    public void add(Menu menu, int menuAmount) throws IllegalArgumentException {
         if (orderedBefore(menu)) {
             Amount amount = order.get(menu);
             amount.add(menuAmount);

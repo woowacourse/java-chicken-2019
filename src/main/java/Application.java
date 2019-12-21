@@ -46,9 +46,17 @@ public class Application {
     private static void registerOrder() {
         Table table = askTable();
         Menu menu = askMenu();
-        final int menuAmount = InputView.inputMenuAmount();
+        askMenuAmountAndOrder(table, menu);
+    }
 
-        table.addOrder(menu, menuAmount);
+    private static void askMenuAmountAndOrder(Table table, Menu menu) {
+        try {
+            final int menuAmount = InputView.inputMenuAmount();
+            table.addOrder(menu, menuAmount);
+        } catch (IllegalArgumentException e) {
+            OutputView.printMessage(e.getMessage());
+            askMenuAmountAndOrder(table, menu);
+        }
     }
 
     private static Table askTable() {
