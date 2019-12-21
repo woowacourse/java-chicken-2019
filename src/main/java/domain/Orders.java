@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class Orders {
@@ -51,5 +52,9 @@ public class Orders {
 			totalPrice -= DISCOUNT_AMOUNT_OF_CHICKEN * discountTimes;
 		}
 		return totalPrice;
+	}
+
+	public void deleteOrder(int tableNumber) {
+		orders.removeIf(order -> order.isTableEquals(tableNumber));
 	}
 }

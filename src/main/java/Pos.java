@@ -39,7 +39,9 @@ public class Pos {
 		}
 		if (functionNumber == PAYMENT_NUMBER) {
 			OutputView.printTables(TableRepository.tables(), orders);
-			OutputView.printTotalPayment(getPayAmount(InputView.inputTableNumber()));
+			int tableNumber = InputView.inputTableNumber();
+			OutputView.printTotalPayment(getPayAmount(tableNumber));
+			orders.deleteOrder(tableNumber);
 		}
 	}
 
