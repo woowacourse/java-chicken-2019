@@ -12,9 +12,11 @@ public class Menu {
         this.category = category;
         this.price = price;
     }
+
     public boolean isRightMenuNumber(int menuCode) {
         return menuCode == number;
     }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";

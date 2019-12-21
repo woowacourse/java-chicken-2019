@@ -14,7 +14,7 @@ public class Order {
      * 생성자 호출 이후에는 메뉴를 재할당할 수 없지만, 개수는 추가(삭제는 로직상 필요없음)할 수 있다.
      * 메뉴 추가와 메뉴 검사 등의 메서드를 가지고 있다.
      */
-    private class MenuWithNumber{
+    private class MenuWithNumber {
         /**
          * menu는 이 객체를 통해 관리할 메뉴 객체이다. 재할당이 불가하다.
          */
@@ -26,10 +26,11 @@ public class Order {
 
         /**
          * 생성자를 호출하면 메뉴와 넘버를 할당해준다.
-         * @param menu 입력된 메뉴
+         *
+         * @param menu   입력된 메뉴
          * @param number 입력된 개수
          */
-        public MenuWithNumber(Menu menu, int number){
+        public MenuWithNumber(Menu menu, int number) {
             this.menu = menu;
             this.number = number;
         }
@@ -38,11 +39,11 @@ public class Order {
          * addMenuNumber는 메뉴와 숫자를 받아, 만약 이 객체의 메뉴가 맞다면
          * 숫자만큼 개수를 늘려주는(더 주문하는) 메서드이다.
          *
-         * @param menu 확인할 메뉴 객체이다.
+         * @param menu   확인할 메뉴 객체이다.
          * @param number 추가할 개수를 전달하는 정수형 변수이다.
          */
-        public void addMenuNumber(Menu menu, int number){
-            if(isSameMenu(menu)) {
+        public void addMenuNumber(Menu menu, int number) {
+            if (isSameMenu(menu)) {
                 this.number += number;
             }
         }
@@ -53,7 +54,7 @@ public class Order {
          * @param menu 검사할 메뉴 객체
          * @return 같으면 true를, 아니라면 false를 반환한다.
          */
-        public boolean isSameMenu(Menu menu){
+        public boolean isSameMenu(Menu menu) {
             return this.menu == menu;
         }
 
@@ -63,12 +64,13 @@ public class Order {
          *
          * @return 이 객체의 number 값을 반환한다.
          */
-        public int getNumber(){
+        public int getNumber() {
             return number;
         }
 
         /**
          * toString을 Override하여, 주문한 내역을 출력하도록 한다.
+         *
          * @return
          */
         @Override
@@ -87,7 +89,7 @@ public class Order {
      * 생성자 호출 시 메뉴의 목록(Store에서 만든 메뉴 목록)을 받는다.
      * 이 목록에 맞춰서 orderList를 만든다.
      */
-    public Order(){
+    public Order() {
         orderList = new ArrayList<>();
     }
 
@@ -96,12 +98,12 @@ public class Order {
      * 입력받은 메뉴를 orderList에서 검색하여, 조회가 되면 숫자를 추가해준다.
      * 조회가 되지 않는다면, 새롭게 리스트에 추가해준다.
      *
-     * @param menu 주문할 메뉴의 정보를 담은 객체
+     * @param menu   주문할 메뉴의 정보를 담은 객체
      * @param number 주문할 갯수
      */
-    public void addOrder(Menu menu, int number){
-        for(MenuWithNumber order : orderList) {
-            if(order.isSameMenu(menu)){
+    public void addOrder(Menu menu, int number) {
+        for (MenuWithNumber order : orderList) {
+            if (order.isSameMenu(menu)) {
                 order.addMenuNumber(menu, number);
                 return;
             }
@@ -119,8 +121,8 @@ public class Order {
      * @throws AssertionError 만약 검색 결과가 없다면, 논리적 에러를 반환한다. 추후 이에 대해 수정할 예정이다.(임시)
      */
     public int findNumberWithMenu(Menu menu) {
-        for(MenuWithNumber order : orderList) {
-            if(order.isSameMenu(menu)){
+        for (MenuWithNumber order : orderList) {
+            if (order.isSameMenu(menu)) {
                 return order.getNumber();
             }
         }
@@ -130,10 +132,9 @@ public class Order {
     /**
      * printOrder는 실제 구현에는 필요 없는 메서드로, 주문이 성공적으로 진행되는지 확인하기 위한 테스트 코드이다.
      * 별도로 TDD를 할 시간이 안되어 이렇게 구현한 점이 아쉽다.
-     *
      */
-    public void printOrder(){
-        for(MenuWithNumber order : orderList){
+    public void printOrder() {
+        for (MenuWithNumber order : orderList) {
             System.out.println(order.toString());
         }
     }

@@ -253,7 +253,7 @@ public class Store {
     /**
      * deliveryOrderToTable은 주문받은 정보를 테이블에 전달하는(즉, 음식을 테이블에 배달하는 것과 같은 동작) 메서드이다.
      */
-    private void deliveryOrderToTable(int tableNumber, Menu menu, int number){
+    private void deliveryOrderToTable(int tableNumber, Menu menu, int number) {
         findTableToNumber(tableNumber).makeNewOrder(menu, number);
     }
 
@@ -265,13 +265,14 @@ public class Store {
      * @throws IllegalArgumentException 테이블을 찾을 수 없다면 예외처리한다.
      */
     private Table findTableToNumber(int tableNumber) {
-        for(Table table : tables) {
-            if(table.isRightTableNumber(tableNumber)) {
+        for (Table table : tables) {
+            if (table.isRightTableNumber(tableNumber)) {
                 return table;
             }
         }
         throw new IllegalArgumentException();
     }
+
     /**
      * order는 주문을 받는 일련의 동작을 수행하는 메서드이다.
      * 수행해야 할 로직은 다음과 같다.
@@ -288,7 +289,7 @@ public class Store {
         OutputView.printMenus(menus);
         menu = getMenuCode();
         menuNumber = getMenuNumber();
-        deliveryOrderToTable(tableNumber,menu,menuNumber);
+        deliveryOrderToTable(tableNumber, menu, menuNumber);
         findTableToNumber(tableNumber).printOrder();
     }
 
