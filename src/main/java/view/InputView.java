@@ -1,6 +1,8 @@
 package view;
 
-import org.graalvm.compiler.debug.CSVUtil;
+import domain.MenuRepository;
+import exceptions.OutOfNumberException;
+import services.ExceptionService;
 
 import java.util.Scanner;
 
@@ -9,12 +11,12 @@ public class InputView {
 
     public static int inputTableNumber() {
         System.out.println("## 주문할 테이블을 선택하세요.");
-        return scanner.nextInt();
+        input = scanner.nextInt();
     }
 
     public static int inputMenuNumber() {
         System.out.println("## 주문할 메뉴를 선택하세요.");
-        return scanner.nextInt();
+        return ExceptionService.handleExceptionOfMenuNumber();
     }
 
     public static int inputMenuQuantity() {
