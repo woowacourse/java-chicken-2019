@@ -56,4 +56,8 @@ public class Table {
         
         return sum - chicken * 10000;
     }
+
+    public void clearTable() {
+        orderMenu = new HashMap<>();
+    }
 }
