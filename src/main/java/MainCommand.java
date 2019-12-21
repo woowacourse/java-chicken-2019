@@ -10,7 +10,7 @@ public class MainCommand {
 		int value;
 		try{
 			value=InputView.inputMainCommand();
-			checkValid(value);
+			Validation.checkPositiveRange(value,COMMAND_NAMES.length);
 			this.command =value;
 		}catch(InputMismatchException e){
 			System.out.println("숫자를 입력해주세요.");
@@ -32,11 +32,5 @@ public class MainCommand {
 
 	public boolean isExit() {
 		return command == 3;
-	}
-
-	private void checkValid(int value) {
-		if (value < 0 || value > COMMAND_NAMES.length) {
-			throw new IllegalArgumentException(String.format("입력 명령은 1 ~ %d까지 가능합니다.", COMMAND_NAMES.length));
-		}
 	}
 }

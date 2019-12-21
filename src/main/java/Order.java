@@ -17,18 +17,19 @@ public class Order {
 		tables = TableRepository.tables();
 		menus = MenuRepository.menus();
 		OutputView.printMenus(menus);
+		OutputView.printTables(tables);
 	}
 
 	public void run() {
-		OutputView.printTables(tables);
 		tableNumber =getTableNumber();
+
 	}
 
 	private int getTableNumber() {
 		int value;
 		try{
 			value=InputView.inputTableNumber();
-			Validation.chechPositiveRange(value,tables.size());
+			Validation.checkPositiveRange(value,tables.size());
 		}catch(InputMismatchException e) {
 			System.out.println("숫자를 입력해주세요.");
 			InputView.flush();
