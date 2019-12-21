@@ -11,6 +11,8 @@ public class InputView {
     public static final int ORDER = 1;
     public static final int PAY = 2;
     public static final int CLOSE = 3;
+    public static final int CARD = 1;
+    public static final int CASH = 2;
 
     private static int execptionInput() {
         while (true) {
@@ -78,6 +80,15 @@ public class InputView {
     public static int inputPayNumber(int tableNumber) {
         System.out.println("## " + tableNumber + "번 테이블의 결제를 진행합니다.");
         System.out.println("## 신용 카드는 1번, 현금은 2번");
-        return execptionInput();
+        return execptionInputPayNumber(execptionInput());
     }
+
+    private static int execptionInputPayNumber(int input) {
+        while (input < CARD || input > CASH) {
+            System.out.println("\n!!잘못 입력하셨습니다. 다시 입력해주세요.");
+            input = scanner.nextInt();
+        }
+        return input;
+    }
+
 }
