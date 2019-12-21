@@ -17,8 +17,16 @@ import java.util.List;
  * 입력에 따라 프로그램이 종료되면, 매장의 운영을 종료한다.
  */
 public class Store {
+    /**
+     * tables는 테이블 객체를 모은 리스트이다.
+     * tableRepository객체를 통해 생성된다.
+     */
     private final List<Table> tables;
 
+    /**
+     * menus는 메뉴 객체를 모은 리스트이다.
+     * menuRepository객체를 통해 생성된다.
+     */
     private final List<Menu> menus;
 
     /**
@@ -129,5 +137,24 @@ public class Store {
                 break;
             }
         }
+    }
+
+    /**
+     * order는 주문을 받는 일련의 동작을 수행하는 메서드이다.
+     * 수행해야 할 로직은 다음과 같다.
+     * 테이블 목록 출력, 테이블 선택,
+     * 메뉴 목록 출력, 메뉴 선택, 메뉴 수량 입력,
+     * 종료(테이블에 메뉴 가져다주기->글자 표시해주기)
+     */
+    private void order(){
+        OutputView.printTables(tables);
+        OutputView.printMenus(menus);
+    }
+
+    /**
+     * pay는 결제를 하는 일련의 동작을 수행하는 메서드이다.
+     */
+    private void pay(){
+
     }
 }
