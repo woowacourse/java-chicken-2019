@@ -14,6 +14,15 @@ public class Menu {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (o instanceof Integer) {
+            Integer number = (Integer) o;
+            return this.number == number;
+        }
+        return false;
+    }
+
+    @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
