@@ -7,11 +7,11 @@ public class Calculator {
     public static final int CASH_PAYMENT = 2;
     private static final double CASH_DISCOUNT = 0.95;
 
-    public static int cashAndCard(int charge) {
-
+    public static int cashAndCard(Table table) {
+        System.out.println("## " + table.getNumber() + " 번 테이블의 결제를 진행합니다.");
         if (InputView.inputPaymentMethod() == CARD_PAYMENT) {
-            return charge;
+            return table.allPrices();
         }
-        return (int) (charge * CASH_DISCOUNT);
+        return (int) (table.allPrices() * CASH_DISCOUNT);
     }
 }

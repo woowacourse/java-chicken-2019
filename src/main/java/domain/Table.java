@@ -11,6 +11,10 @@ public class Table {
         this.number = number;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     public void addMenu(Menu menu, int amount) {
         ordered.addMenu(menu, amount);
     }

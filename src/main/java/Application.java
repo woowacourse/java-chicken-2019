@@ -38,6 +38,6 @@ public class Application {
         Table inputTable = tables.findTable(InputView.inputTableNumber(tables));
         OutputView.printTableOrderedList(inputTable.allMenu());
         OutputView.printTablePrices(inputTable);
-        int finalMoney = Calculator.cashAndCard(inputTable.allPrices());
+        OutputView.printFinalPrice(Calculator.cashAndCard(inputTable));
     }
 }

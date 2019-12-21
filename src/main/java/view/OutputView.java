@@ -59,11 +59,16 @@ public class OutputView {
         System.out.println(table.allPrices());
     }
 
-    public static void showSelectTableAsOrder(){
+    public static void showSelectTableAsOrder() {
         System.out.println("## 주문할 테이블을 선택하세요.");
     }
 
-    public static void showSelectTableAsPayment(){
+    public static void showSelectTableAsPayment() {
         System.out.println("## 결제할 테이블을 선택하세요.");
     }
+
+    public static void printFinalPrice(int price) {
+        System.out.println("## 최종 결제할 금액\n" + price + "원\n");
+    }
+
 }
