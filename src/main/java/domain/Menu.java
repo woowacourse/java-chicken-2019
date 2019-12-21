@@ -13,10 +13,6 @@ public class Menu {
         this.price = price;
     }
 
-    public String printMenu(int count) {
-        return name + " " + count + " " + (price * count);
-    }
-
     public int totalPay(int count) {
         return price * count;
     }
@@ -26,6 +22,10 @@ public class Menu {
             return 1;
         }
         return 0;
+    }
+
+    public String printMenu(int count) {
+        return name + " " + count + " " + (price * count);
     }
 
     @Override

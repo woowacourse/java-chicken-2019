@@ -45,17 +45,17 @@ public class Table {
         }
         return 0;
     }
+    
+    public void printTableNumber() {
+        System.out.println(number + "번 테이블의 결제를 진행합니다.");
+    }
 
-    public void printBill() {
+    public void printBill() {                               //주문한 내역을 출력하는 함수
         Iterator itr = bills.entrySet().iterator();
         while(itr.hasNext()) {
             Map.Entry<Menu, Integer> e = (Map.Entry<Menu, Integer>)itr.next();
             System.out.println(e.getKey().printMenu(e.getValue()));
         }
-    }
-
-    public void printTableNumber() {
-        System.out.println(number + "번 테이블의 결제를 진행합니다.");
     }
 
     public int totalPay(int payment) {                                              //총 금액을 반환
