@@ -6,7 +6,7 @@ public class Table {
     private int chickenPrice=0;
     private int[] drink=new int[2];
     private int drinkPrice=0;
-    
+    private boolean order=false;
 
     public Table(final int number) {
         this.number = number;
@@ -51,13 +51,19 @@ public class Table {
 	return this.drinkPrice;
     }
     
+    public boolean getOrderd() {
+	return this.order;
+    }
+    
     public void setChickenPrice(int menuNum,int chickenNum,int chickenPrice) {
 	this.chicken[menuNum-1]+=chickenNum;
 	this.chickenPrice+= chickenNum*chickenPrice;
+	this.order=true;
     }
     
     public void setDrinkPrice(int menuNum,int drinkNum,int drinkPrice) {
 	this.drink[menuNum-21]+=drinkNum;
 	this.drinkPrice+=drinkNum*drinkPrice;
+	this.order=true;
     }
 }

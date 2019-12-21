@@ -24,8 +24,8 @@ public class Application {
 	    return QuitFunction();
 	}
 	OutputView.printTables(tables);
-	final int tableNumber = InputView.inputTableNumber(tables);
-	OutputView.printMenus(menus);
+	int tableNumber = InputView.inputTableNumber(tables);
+	tableNumber=setTableNumberIndex(tableNumber);
 	if (functionNumber == 1) {
 	    OrderFunction(tables, menus, tableNumber);
 	}
@@ -35,18 +35,33 @@ public class Application {
 	return true;
     }
 
+    public static int setTableNumberIndex(int t) {
+	if (t==5) {
+	    return 4;
+	}
+	if(t==6) {
+	    return 5;
+	}
+	if(t==8) {
+	    return 6;
+	}
+	return t;
+    }
+    
     public static void OrderFunction(List<Table> tables, List<Menu> menus, int tableNumber) {
+	OutputView.printMenus(menus);
 	int menuNumber = InputView.inputMenu(menus);
-	int menuAmount = InputView.inputMenuAmount(tables.get(tableNumber));
+	int menuAmount = InputView.inputMenuAmount(tables.get(tableNumber-1));
 	if (menuNumber<=6) {
-	    tables.get(tableNumber).setChickenPrice(menus.get(menuNumber-1).getNumber(),menuAmount,menus.get(menuNumber-1).getPrice());
+	    tables.get(tableNumber-1).setChickenPrice(menus.get(menuNumber-1).getNumber(),menuAmount,menus.get(menuNumber-1).getPrice());
 	    return;
 	}
-	tables.get(tableNumber).setDrinkPrice(menus.get(menuNumber-15).getNumber(),menuAmount,menus.get(menuNumber-15).getPrice());
+	tables.get(tableNumber-1).setDrinkPrice(menus.get(menuNumber-15).getNumber(),menuAmount,menus.get(menuNumber-15).getPrice());
     }
 
     public static void PayFunction(List<Table> tables, List<Menu> menus, int tableNumber) {
-	OutputView.printOrderList(tables.get(tableNumber),menus);
+	OutputView.printMenus(menus);
+	OutputView.printOrderList(tables.get(tableNumber-1),menus);
     }
 
     public static boolean QuitFunction() {
