@@ -31,10 +31,6 @@ public class PayProcess {
     return this.tables.get(this.tableNumbers.get(tableNumber));
   }
 
-  private Menu getMenu(int menuNumber) {
-    return this.menus.get(this.menuNumbers.get(menuNumber));
-  }
-
   public void start() {
     if (!hasOrdered()) {
       System.out.println("주문이 존재하지 않습니다.");
@@ -52,7 +48,12 @@ public class PayProcess {
     int paymentMethod = getPaymentMethod();
 
     int price = calculatePrice(getTable(tableNumber), paymentMethod);
+    confirmPay(tableNumber, price);
+  }
 
+  private void confirmPay(int tableNumber, int price){
+    OutputView.printPrice(price);
+    getTable(tableNumber).pay();
   }
 
   private int addPrice(Table table) {
