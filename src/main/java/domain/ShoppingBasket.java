@@ -5,6 +5,7 @@ import java.util.Queue;
 
 public class ShoppingBasket {
     private static final int ONE_CHICKEN_DISCOUNT = 10000;
+
     private Queue<Order> orderQueue;
 
     public ShoppingBasket() {
@@ -16,7 +17,7 @@ public class ShoppingBasket {
     }
 
     /**
-     * @return 할인을 포함한 가격을 반환한다.
+     * @return 치킨 10마리당 할인을 포함한 가격을 반환한다.
      */
     public int sum() {
         int sum = 0;

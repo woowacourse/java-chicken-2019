@@ -15,7 +15,7 @@ public class Application {
             roof = actionQuery(actionNumber);
         }
     }
-
+    
     /**
      * @return 프로그램을 종료할 시 false 를 반환한다.
      */

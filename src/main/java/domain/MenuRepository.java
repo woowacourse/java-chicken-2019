@@ -35,10 +35,7 @@ public class MenuRepository {
     }
 
     public static Menu getMenuByNum(int num) {
-        if (num < 1 || num > 22) {
-            throw new IllegalArgumentException("메뉴는 1,2,3,4,5,6,21,22번 이어야합니다.");
-        }
-        if (num > 6 && num < 21) {
+        if (!isInMenu(num)) {
             throw new IllegalArgumentException("메뉴는 1,2,3,4,5,6,21,22번 이어야합니다.");
         }
 
