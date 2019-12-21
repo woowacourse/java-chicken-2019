@@ -9,7 +9,7 @@ import java.util.List;
 public class TableService {
 
   public void showTables() {
-    final List<Table> tables = TableRepository.tables();
+    final List<Table> tables = TableRepository.getTables();
     OutputView.printTables(tables);
   }
 

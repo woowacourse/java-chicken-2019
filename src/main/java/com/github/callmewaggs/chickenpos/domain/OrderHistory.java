@@ -21,16 +21,12 @@ public class OrderHistory {
 
   public void addNewOrder(int tableNumber, int menuNumber, int menuAmount) {
     Order order;
-    try {
-      order = new Order(menuService.getMenu(menuNumber), menuAmount);
-      if (!ordersByTable.containsKey(tableNumber)) {
-        ordersByTable.put(tableNumber, new ArrayList<>());
-        tableService.markTable(tableNumber);
-      }
-      ordersByTable.get(tableNumber).add(order);
-    } catch (Exception e) {
-      OutputView.printMessage(e.getMessage());
+    order = new Order(menuService.getMenu(menuNumber), menuAmount);
+    if (!ordersByTable.containsKey(tableNumber)) {
+      ordersByTable.put(tableNumber, new ArrayList<>());
+      tableService.markTable(tableNumber);
     }
+    ordersByTable.get(tableNumber).add(order);
   }
 
   public void showOrdersByTable(int tableNumber) {

@@ -4,6 +4,7 @@ import com.github.callmewaggs.chickenpos.domain.Operation;
 import com.github.callmewaggs.chickenpos.service.OrderingService;
 import com.github.callmewaggs.chickenpos.service.PaymentService;
 import com.github.callmewaggs.chickenpos.view.InputView;
+import com.github.callmewaggs.chickenpos.view.OutputView;
 
 public class ChickenPOS {
   private OrderingService orderingService;
@@ -28,7 +29,7 @@ public class ChickenPOS {
       if (Operation.EXIT.equals(operation)) {
         break;
       }
-      // TODO : 잘못된 입력값입니다.
+      OutputView.printMessage("다시 입력해주세요.");
     }
   }
 }

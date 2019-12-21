@@ -1,6 +1,7 @@
 package com.github.callmewaggs.chickenpos.service;
 
 import com.github.callmewaggs.chickenpos.domain.OrderHistory;
+import com.github.callmewaggs.chickenpos.view.OutputView;
 
 public class OrderingService {
   private OrderHistory orderHistory;
@@ -14,12 +15,19 @@ public class OrderingService {
   }
 
   public void startOrdering() {
-    tableService.showTables();
-    int tableNumber = tableService.inputTableNumber();
-    menuService.showMenus();
-    int menuNumber = menuService.inputMenuNumber();
-    int menuAmount = menuService.inputMenuAmount();
+    while (true) {
+      tableService.showTables();
+      int tableNumber = tableService.inputTableNumber();
+      menuService.showMenus();
+      int menuNumber = menuService.inputMenuNumber();
+      int menuAmount = menuService.inputMenuAmount();
 
-    orderHistory.addNewOrder(tableNumber, menuNumber, menuAmount);
+      try {
+        orderHistory.addNewOrder(tableNumber, menuNumber, menuAmount);
+        break;
+      } catch (Exception e) {
+        OutputView.printMessage(e.getMessage());
+      }
+    }
   }
 }

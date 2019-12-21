@@ -28,4 +28,8 @@ public class TableRepository {
       }
     }
   }
+
+  public static List<Table> getTables() {
+    return tables;
+  }
 }
