@@ -30,12 +30,19 @@ public class Table {
         return this.menuOrdered;
     }
 
-    public void orderMenu(Menu menu, int quantity) {
-        this.menuOrdered.put(menu, menuOrdered.getOrDefault(menu, 0)+quantity);
-        addMoneyCharged(quantity*menu.getPrice());
+    public boolean isOrderPossible(Menu menu, int quantity) {
+        if (menuOrdered.getOrDefault(menu,0)+quantity>=100) {
+            return false;
+        }
+        return true;
     }
 
+    public void orderMenu(Menu menu, int quantity) {
 
+        this.menuOrdered.put(menu, menuOrdered.getOrDefault(menu, 0) + quantity);
+        addMoneyCharged(quantity * menu.getPrice());
+
+    }
 
     public boolean hasOrdered() {
         if (menuOrdered.isEmpty()) return false;

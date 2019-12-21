@@ -38,10 +38,18 @@ public class Application {
     public static void order(List<Table> tables, List<Menu> menus) {
         OutputView.printTables(tables);
         int tableNumber = InputView.inputTableNumberForOrder();
+        Table table = selectTableWithNumber(tables, tableNumber);
         OutputView.printMenus(menus);
-        int menuNumber = InputView.inputMenuNumber();
-        int menuQuantity = InputView.inputMenuQuantity();
-        selectTableWithNumber(tables, tableNumber).orderMenu(orderMenuWithNumber(menus, menuNumber), menuQuantity);
+        while (true) {
+            int menuNumber = InputView.inputMenuNumber();
+            int menuQuantity = InputView.inputMenuQuantity();
+            Menu menu = orderMenuWithNumber(menus, menuNumber);
+            if (table.isOrderPossible(menu, menuQuantity)) { // 주문 가능하면 break;
+                table.orderMenu(menu, menuQuantity);
+                break;
+            }
+            System.out.println("한 테이블에서 주문할 수 있는 한 메뉴의 최대 수량은 99개입니다.");
+        }
     }
 
     public static Table selectTableWithNumber(List<Table> tables, int number) {
