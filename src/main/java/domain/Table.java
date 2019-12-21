@@ -13,6 +13,10 @@ public class Table {
         this.number = number;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     public int getChickens() {
         return chickens;
     }

@@ -1,5 +1,9 @@
 package view;
 
+import domain.Table;
+import domain.TableRepository;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -13,6 +17,14 @@ public class InputView {
     public static int inputTableNumber() {
         System.out.println("## 주문할 테이블을 선택하세요.");
         return scanner.nextInt();
+    }
+
+    public static int tableChecker(List<Table> tableList) {
+        int tableNumber = inputTableNumber();
+        if (tableList.stream().anyMatch(x -> x.getNumber() == tableNumber)) {
+            return tableNumber;
+        }
+        return tableChecker(tableList);
     }
 
     public static int inputAddMenu() {

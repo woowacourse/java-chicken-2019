@@ -41,12 +41,10 @@ public class ApplicationSupporter {
     }
 
     public void addMenuPhase() {
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
+        OutputView.printTables(tableList);
 
-        final int tableNumber = InputView.inputTableNumber(); // 테이블 번호 유효 검사
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+        final int tableNumber = InputView.tableChecker(tableList); // 테이블 번호 유효 검사
+        OutputView.printMenus(menuList);
 
         final int menuNumber = InputView.inputAddMenu();
         final int menuQuantity = InputView.inputCountMenu();
@@ -54,7 +52,6 @@ public class ApplicationSupporter {
         Table choiceTable = findTable(tableNumber);
         choiceTable.makeOrder(choiceMenu, menuQuantity);
 
-        System.out.println(choiceTable.getOrder());
         mainOptionPhase();
     }
 
