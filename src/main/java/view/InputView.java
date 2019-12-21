@@ -1,10 +1,10 @@
 package view;
 
 import domain.MenuRepository;
-import domain.TableRepository;
 import domain.reserved.OrderStatement;
 import domain.reserved.OrderedMenu;
 import view.dto.FeatureType;
+import view.dto.PaymentType;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -57,5 +57,17 @@ public class InputView {
             System.out.println("올바르지 않은 입력입니다.");
             return inputCapacity(orderedMenu);
         }
+    }
+
+    public static PaymentType inputPaymentType() {
+        try {
+            System.out.println("## 1번 테이블의 결제를 진행합니다.");
+            System.out.println("## 신용 카드는 1번, 현금은 2번");
+            return new PaymentType(Integer.parseInt(scanner.nextLine().trim()));
+        } catch (IllegalArgumentException e) {
+            System.out.println("올바르지 않은 입력입니다.");
+            return inputPaymentType();
+        }
+
     }
 }
