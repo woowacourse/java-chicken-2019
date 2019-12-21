@@ -1,18 +1,30 @@
+/*
+ * Pay
+ *
+ * ver 1.0
+ *
+ * 2019.12.21
+ *
+ * CopyRight
+ *
+ */
 package domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 public class Pay {
-    private int countMenu = 0;
-    private final int tableNumber;
-    private int tablePay = 0;
-    private static final List<String> orderedMenu = new ArrayList<>();
-    private static final List<Integer> orderedMenuCount = new ArrayList<>();
-    private static final List<Integer> orderedMenuCost = new ArrayList<>();
-
+    private int countMenu = 0; // 총 치킨을 시킨 카운트
+    private final int tableNumber; // 테이블 번호
+    private int tablePay = 0; // 테이블 총 금액
+    private static final List<String> orderedMenu = new ArrayList<>(); // 주문한 메뉴의 이름
+    private static final List<Integer> orderedMenuCount = new ArrayList<>(); // 주문한 메뉴의 카운트
+    private static final List<Integer> orderedMenuCost = new ArrayList<>(); // 주문한 해당 메뉴의 총 금액
+    /*
+     * Pay 클래스 입니다.
+     * 테이블당 유저가 주문한 금액 및 데이터들을 모두 저장해서 가지고 있는 클래스입니다.
+     */
     public Pay(int tableNumber) {
         this.tableNumber = tableNumber;
     }
@@ -26,6 +38,7 @@ public class Pay {
     }
 
     public void setMenus(String menu, int cost) {
+        System.out.println(tableNumber + "b");
         int index = orderedMenu.indexOf(menu);
         if(index != -1) {
             orderedMenuCount.set(index,orderedMenuCount.get(index)+1);
@@ -60,7 +73,7 @@ public class Pay {
         return count;
     }
 
-    public List<String> getOrderedMenu() {
+    public List<String> getOrderedMenu() { // 메뉴의 현 상황을 돌려 받는다.
         List<String> finalMenu = new ArrayList<>();
         for (int index = 0; index < orderedMenu.size(); index++) {
             String result = orderedMenu.get(index) + " " + orderedMenuCount.get(index) + " " + orderedMenuCost.get(index);
@@ -69,9 +82,11 @@ public class Pay {
         return finalMenu;
     }
 
-    public void resetTable() {
+    public void resetTable() { // 결제 완료후 리셋을 시킨다.
         tablePay = 0;
         countMenu = 0;
         orderedMenu.clear();
+        orderedMenuCost.clear();
+        orderedMenuCount.clear();
     }
 }

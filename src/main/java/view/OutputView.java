@@ -1,3 +1,13 @@
+/*
+ * OutputView
+ *
+ * ver 1.0
+ *
+ * 2019.12.21
+ *
+ * CopyRight
+ *
+ */
 package view;
 
 import domain.Menu;
@@ -28,7 +38,7 @@ public class OutputView {
     private static void printLine(final String line, final int count, List<Pay> payList) {
         for (int index = 0; index < count; index++) {
             if (payList.get(index).getCount() > 0) {
-                System.out.print("- $ -");
+                System.out.print("- $ -"); // 만약 주문이 한건이라도 있다면 출력으로 표시해준다.
             } else {
                 System.out.print(line);
             }

@@ -1,12 +1,23 @@
+/*
+ * InputView
+ *
+ * ver 1.0
+ *
+ * 2019.12.21
+ *
+ * CopyRight
+ *
+ */
 package view;
 
 import domain.Pay;
-
 import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
-
+    /*
+     * input 클래스 입니다.
+     */
     public static int inputTableNumber() {
         System.out.println("## 테이블을 선택하세요.");
         return scanner.nextInt();
