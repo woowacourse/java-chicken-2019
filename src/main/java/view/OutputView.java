@@ -32,6 +32,17 @@ public class OutputView {
         }
     }
 
+    public static void printOrderHistory(int tableNumber) {
+        System.out.println("\n## 주문 내역");
+        System.out.println("메뉴 수량 금액");
+        // 출력하기 메뉴 수량 금액
+    }
+
+    public static void printTotalOrder(int tableNumber, int paymentType) {
+        System.out.println("\n최종 결제할 금액");
+        // 출력하기 최종 결제 금액
+    }
+
     private static void printLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);

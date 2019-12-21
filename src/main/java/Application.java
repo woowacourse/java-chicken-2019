@@ -25,9 +25,9 @@ public class Application {
 
     private void processPayment() {
         int tableNumber = tableMenu(tables);
-        // 주문내역보여주기
-        paymentTypeMenu(tableNumber);
-        // 최종결제내역보여주기
+        OutputView.printOrderHistory(tableNumber);
+        int paymentType = paymentTypeMenu(tableNumber);
+        OutputView.printTotalOrder(tableNumber, paymentType);
         mainMenu();
     }
 
