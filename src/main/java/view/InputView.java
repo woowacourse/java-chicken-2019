@@ -24,6 +24,11 @@ public class InputView {
         return scanner.nextInt();
     }
 
+    public static int inputMenuAmount() {
+        System.out.println("## 메뉴의 수량을 입력하세요.");
+        return scanner.nextInt();
+    }
+
     public static int inputPayTableNumber() {
         System.out.println("## 테이블을 선택하세요.");
         return scanner.nextInt();
