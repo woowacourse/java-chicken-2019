@@ -1,5 +1,6 @@
 import java.util.List;
 
+import domain.Cashier;
 import domain.Menu;
 import domain.MenuRepository;
 import domain.Restaurant;
@@ -39,12 +40,25 @@ public class ChickenHouse {
         OutputView.printMenus(menus);
         int menuNumber = InputView.inputMenuNumber();
         int menuQuantity = InputView.inputMenuQuantity();
+        restaurant.orderMenu(TableRepository.findByNumber(tableNumber), menuNumber, menuQuantity);
+        System.out.println(restaurant);
         start();
     }
 
     private void pay(int tableNumber) {
+        Table table = TableRepository.findByNumber(tableNumber);
+        Cashier cashier = new Cashier(restaurant.getOrder(table));
         OutputView.printOrders(tableNumber);
         int payMethod = InputView.inputPayMethod(tableNumber);
+        int total = 0;
+        if (payMethod == 1) {
+            total = cashier.discountByChickenQuantity().getAmount();
+        }
+        if (payMethod == 2) {
+            total = cashier.discountByCash().getAmount();
+        }
+        System.out.println(total + "원");
+        restaurant.clearTable(table);
         start();
     }
 }
