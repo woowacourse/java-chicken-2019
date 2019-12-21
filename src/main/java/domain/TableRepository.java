@@ -1,5 +1,7 @@
 package domain;
 
+import exceptions.OutOfNumberException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,5 +20,17 @@ public class TableRepository {
 
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
+    }
+
+    public static Boolean isIntInTables(Integer target) throws OutOfNumberException {
+        Boolean itsInTable = false;
+
+        for (Table table : tables) {
+            itsInTable = table.isItInt(target);
+        }
+        if (itsInTable.equals(false)) {
+            throw new OutOfNumberException();
+        }
+        return itsInTable;
     }
 }

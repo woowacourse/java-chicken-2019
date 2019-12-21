@@ -1,5 +1,7 @@
 package domain;
 
+import exceptions.OutOfNumberException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,5 +22,17 @@ public class MenuRepository {
 
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
+    }
+
+    public static Boolean isIntInMenus(Integer target) throws OutOfNumberException {
+        Boolean itsInMenu = false;
+
+        for (Menu menu : menus) {
+            itsInMenu = menu.isItInt(target);
+        }
+        if (itsInMenu.equals(false)) {
+            throw new OutOfNumberException();
+        }
+        return itsInMenu;
     }
 }
