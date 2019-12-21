@@ -47,7 +47,16 @@ public class InputView {
 
     public int inputMenuAmount() {
         System.out.println("## 메뉴의 수량을 입력하세요.");
-        return Integer.parseInt(scanner.nextLine());
+        try {
+            int menuAmount = Integer.parseInt(scanner.nextLine());
+            if (menuAmount < MenuConfig.MIN_MENU_AMOUNT) {
+                throw new InvalidInputException(String.format("%d이상의 정수를 입력해야 합니다.", MenuConfig.MIN_MENU_AMOUNT));
+            }
+            return menuAmount;
+        } catch (RuntimeException e) {
+            outputView.printError(e);
+            return inputMenuAmount();
+        }
     }
 
     public int inputFunctionNumber() {
