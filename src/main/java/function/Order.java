@@ -10,18 +10,20 @@ import view.OutputView;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 주문등록 기능을 할때 해당클레스를 사용합니다.
  */
 public class Order {
     static final List<Table> TABLES = TableRepository.tables();
-    static Map<Table,Integer> tableMoney= new HashMap<>();
+    static final List<Menu> MENUS = MenuRepository.menus();
+    static Map<Table, Integer> tableMoney = new HashMap<>();
 
     /**
      * 생성자로 table과 table의 계산 금액을 갖는 hashMap을 초기화 합니다.
      */
-    public Order(){
+    public Order() {
         for (Table table : TABLES) {
             tableMoney.put(table, 0);
         }
@@ -32,14 +34,13 @@ public class Order {
      */
     public static void orderTable() {
         OutputView.printTables(TABLES);
-
         final int tableNumber = InputView.inputTableNumber();
 
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
-
+        OutputView.printMenus(MENUS);
         final int menuNumber = InputView.InputMenu();
+
         final int MenuQuantity = InputView.MenuQuantity();
+
     }
 
 }

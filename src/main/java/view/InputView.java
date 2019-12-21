@@ -39,7 +39,7 @@ public class InputView {
     public static void exceptionInputMain() {
         try {
             caseNumber = scanner.nextInt();
-            if ((caseNumber < 1) || (caseNumber > 4)) {
+            if ((caseNumber < 1) || (caseNumber > 3)) {
                 throw new IllegalArgumentException("1,2,3중 하나 입력");
             }
         } catch (IllegalArgumentException e) {
