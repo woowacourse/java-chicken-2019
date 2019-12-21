@@ -10,6 +10,16 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
 
+//    public static void printFunctions(final List<String> functions) {
+//        System.out.println("## 메인화면");
+//        for (final String names : functions) {
+//            System.out.println(functions);
+//        }
+//        printLine(TOP_LINE, size);
+//        printTableNumbers(tables);
+//        printLine(BOTTOM_LINE, size);
+//    }
+
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
