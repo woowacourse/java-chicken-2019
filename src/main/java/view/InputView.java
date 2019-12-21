@@ -5,8 +5,7 @@ import java.util.Scanner;
 import exception.InvalidInputException;
 
 public class InputView {
-    // private static final Scanner scanner = new Scanner(System.in);
-    private static final Scanner scanner = new Scanner("5\n1\n19\n11\n2\n1\n1\n3\n");
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static int inputMain() {
         OutputView.printFeatures();

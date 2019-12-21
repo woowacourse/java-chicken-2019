@@ -3,9 +3,11 @@ import java.util.List;
 import domain.Cashier;
 import domain.Menu;
 import domain.MenuRepository;
+import domain.Order;
 import domain.Restaurant;
 import domain.Table;
 import domain.TableRepository;
+import exception.EmptyOrderException;
 import view.InputView;
 import view.OutputView;
 
@@ -51,11 +53,22 @@ public class ChickenHouse {
 
     private void pay(int tableNumber) {
         Table table = TableRepository.findByNumber(tableNumber);
-        Cashier cashier = new Cashier(restaurant.getOrder(table));
-        OutputView.printOrders(restaurant.getOrder(table));
-        OutputView.printTotal(payBy(cashier, InputView.inputPayMethod(tableNumber)));
-        restaurant.clearTable(table);
+        try {
+            Order order = validateOrderIsNotEmpty(restaurant.getOrder(table));
+            Cashier cashier = new Cashier(order);
+            OutputView.printOrders(order);
+            OutputView.printTotal(payBy(cashier, InputView.inputPayMethod(tableNumber)));
+            restaurant.clearTable(table);
+        } catch (Exception e) {
+        }
         start();
+    }
+
+    private Order validateOrderIsNotEmpty(Order order) throws EmptyOrderException {
+        if (order.isOrderEmpty()) {
+            throw new EmptyOrderException();
+        }
+        return order;
     }
 
     private double payBy(Cashier cashier, int payMethod) {

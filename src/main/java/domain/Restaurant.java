@@ -26,11 +26,4 @@ public class Restaurant implements RestaurantService {
     public void clearTable(Table table) {
         restaurant.put(table, new Order());
     }
-
-    @Override
-    public String toString() {
-        return "Restaurant{" +
-            "restaurant=" + restaurant +
-            '}';
-    }
 }

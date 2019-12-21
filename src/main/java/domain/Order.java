@@ -40,6 +40,10 @@ public class Order implements OrderService {
         return order.keySet().stream().filter(this::isOrdered).collect(Collectors.toList());
     }
 
+    public boolean isOrderEmpty() {
+        return filteredNonZeroMenu().size() == 0;
+    }
+
     private boolean isOrdered(Menu menu) {
         return order.get(menu) != ZERO;
     }

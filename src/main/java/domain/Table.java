@@ -22,9 +22,7 @@ public class Table {
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-
         Table table = (Table)o;
-
         return number == table.number;
     }
 
