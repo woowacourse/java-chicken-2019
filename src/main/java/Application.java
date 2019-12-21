@@ -1,4 +1,3 @@
-import view.ErrorDetect;
 import view.InputView;
 
 public class Application {

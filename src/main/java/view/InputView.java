@@ -1,7 +1,9 @@
 package view;
 
+import domain.Menu;
+import domain.MenuRepository;
+
 import java.util.Scanner;
-import java.*;
 
 public final class InputView {
     private static final Scanner scanner = new Scanner(System.in);
@@ -11,12 +13,18 @@ public final class InputView {
         System.out.println("1 - 주문하기");
         System.out.println("2 - 결제하기");
         System.out.println("3 - 프로그램 종료");
-    return ErrorDetect.mainInputError(scanner.nextInt());
+    return ExceptionDetect.mainInputException(scanner.nextInt());
 
     }
 
     public static int inputTableNumber() {
         System.out.println("## 주문할 테이블을 선택하세요.");
-        return ErrorDetect.tableInputError(scanner.nextInt());
+        return ExceptionDetect.tableInputException(scanner.nextInt());
+    }
+
+    public static Menu inputOrderMenu() {
+        System.out.println("## 등록할 메뉴를 선택하세요.");
+        int number = ExceptionDetect.orderMenuException(scanner.nextInt());
+        return MenuRepository.getMenu(number);
     }
 }

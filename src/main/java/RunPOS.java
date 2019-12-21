@@ -9,10 +9,14 @@ import java.util.List;
 
 public class RunPOS {
 
+    private final List<Table> tables;
+    private final List<Menu> menus;
     private final int tableNumber;
 
     public RunPOS(int action) {
-        final List<Table> tables = TableRepository.tables();
+        tables = TableRepository.tables();
+        menus = MenuRepository.menus();
+
         OutputView.printTables(tables);
 
         tableNumber = InputView.inputTableNumber();
@@ -25,9 +29,10 @@ public class RunPOS {
      * 주문등록 담당
      */
     public void order() {
-
-        final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
+
+        Menu menu = InputView.inputOrderMenu();
+
     }
 
     /**
@@ -35,5 +40,7 @@ public class RunPOS {
      */
     public void pay() {
     }
+
+
 
 }
