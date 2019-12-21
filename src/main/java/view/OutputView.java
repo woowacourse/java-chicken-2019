@@ -26,7 +26,10 @@ public class OutputView {
 		final int size = tables.size();
 		printLine(TOP_LINE, size);
 		printTableNumbers(tables);
-		printLine(BOTTOM_LINE, size);
+		for (Table table: tables) {
+			System.out.print(table.convertStateToSTring());
+		}
+		System.out.println();
 	}
 
 	public static void printMenus(final List<Menu> menus) {

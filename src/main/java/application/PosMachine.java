@@ -25,5 +25,6 @@ public class PosMachine {
 		tableNum.enterNum();
 		tables.enterOrderAt(tableNum);
 		tables.showTableStates();
+		OutputView.printTables(tables.tables());
 	}
 }

@@ -33,12 +33,12 @@ public class TableNumber {
 	
 	public int convertNumberToIndex() {
 		if (this.value == FIVE || this.value == SIX) {
-			return this.value - 1;
-		}
-		if (this.value == EIGHT) {
 			return this.value - 2;
 		}
-		return this.value;
+		if (this.value == EIGHT) {
+			return this.value - 3;
+		}
+		return this.value - 1;
 	}
 	
 	public int getValue() {

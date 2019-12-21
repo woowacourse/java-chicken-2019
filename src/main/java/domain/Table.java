@@ -22,4 +22,11 @@ public class Table {
     public OrderStorage getOrders() {
     	return this.orders;
     }
+    
+    public String convertStateToSTring() {
+    	if (this.isOrdered) {
+    		return "└ \\ ┘";
+    	}
+    	return "└ ─ ┘";
+    }
 }
