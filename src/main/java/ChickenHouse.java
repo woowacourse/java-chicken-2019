@@ -13,8 +13,7 @@ public class ChickenHouse {
 	public void execute() {
 		while (true) {
 			OutputView.mainDisplay();
-			OutputView.chooseCommandMessage();
-			int command = InputView.inputTableNumber();
+			int command = InputView.inputCommand();
 			if (command == 1) {
 				order();
 			}
