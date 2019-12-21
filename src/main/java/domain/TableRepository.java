@@ -4,8 +4,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class TableRepository {
+    private static final int FIRST_ORDER = -1;
     private static final List<Table> tables = new ArrayList<>();
     private static List<Integer> orderCheck = new ArrayList<>();
+    private static List<Table> tableMenu = tables;
 
     static {
         tables.add(new Table(1));
@@ -31,5 +33,18 @@ public class TableRepository {
 
     public static List<Integer> getOrderCheck() {
         return orderCheck;
+    }
+
+    public static void addNewOrder(Table table, int type, int count) {
+        Table orderedTable = table;
+        table.addMenu(type, count);
+
+        tableMenu = tableMenu.stream().filter(x -> x.getNumber() != table.getNumber()).collect(Collectors.toList());
+        tableMenu.add(table);
+        tableMenu.stream().sorted();
+    }
+
+    public static List<Table> getTableMenu() {
+        return tableMenu;
     }
 }

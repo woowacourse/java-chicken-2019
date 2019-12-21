@@ -26,6 +26,15 @@ public class Pos {
 
         final int inputOrder = InputView.inputOrder();
         final int inputCount = InputView.inputCount();
+        orderManagement(tableNumber, inputOrder, inputCount);
+
         return inputMenu;
+    }
+
+    public static void orderManagement(int tableNumber, int inputOrder, int inputCount) {
+        TableRepository.addNewOrder(TableRepository.getTableMenu()
+                .stream()
+                .filter(x -> x.getNumber() == tableNumber)
+                .findFirst().get(), inputOrder, inputCount);
     }
 }
