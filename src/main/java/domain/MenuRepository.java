@@ -31,4 +31,10 @@ public class MenuRepository {
         }
         return null;
     }
+
+    public static List<Integer> menuValues() {
+        return menus.stream()
+                .map(Menu::menuNumber)
+                .collect(Collectors.toList());
+    }
 }

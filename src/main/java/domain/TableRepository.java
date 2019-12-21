@@ -20,4 +20,10 @@ public class TableRepository {
         return tables;
     }
 
+    public static List<Integer> tableValues() {
+        return tables.stream()
+                .map(Table::tableNumber)
+                .collect(Collectors.toList());
+    }
+
 }

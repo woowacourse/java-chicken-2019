@@ -17,6 +17,14 @@ public class Menu {
         return this.number == menuNumber;
     }
 
+    public int menuNumber() {
+        return getNumber();
+    }
+
+    private int getNumber(){
+        return this.number;
+    }
+
     public int getPrice( int quantity ) {
         return price * quantity;
     }

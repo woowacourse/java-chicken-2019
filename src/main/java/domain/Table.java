@@ -26,7 +26,11 @@ public class Table {
         return this.number == tableNumber;
     }
 
-    public int getNumber() {
+    public int tableNumber() {
+        return getNumber();
+    }
+
+    private int getNumber() {
         return number;
     }
 
