@@ -15,11 +15,19 @@ public class PosService {
         OutputView.printTables(tables);
 
         final int tableNumber = InputView.inputTableNumber();
+        Table selectedTable = selectTable(tables, tableNumber);
 
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
 
         int menuNumber = InputView.inputMenuNumber();
         int menuMount = InputView.inputMenuMount();
+    }
+
+    private Table selectTable(List<Table> tables, int number) {
+        return tables.stream()
+                .filter(table -> table.isSameTableNumber(number))
+                .findFirst()
+                .get();
     }
 }
