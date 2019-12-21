@@ -10,7 +10,7 @@ public class Menus {
     }
     
     public void addMenuByNumber(int menuNumber, int count) {
-        menus.put(MenuRepository.getMenuByNumber(menuNumber),count);
+        Menu menu = MenuRepository.getMenuByNumber(menuNumber);
+        menus.put(menu, menus.get(menu) + count);
     }
-
 }
