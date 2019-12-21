@@ -40,8 +40,13 @@ public class OutputView {
     }
 
     public static void printTableBill(Table table) {
-        System.out.println("##" + table.toString() + "번 테이블의 결제를 진행합니다.");
-        System.out.println("## 신용카드는 1번 ,현금은 2번");
+        System.out.println("## " + table.toString() + "번 테이블의 결제를 진행합니다.");
+    }
+
+    public static void printFinalBill(Table table) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println("");
+        System.out.println();
     }
 
     private static void printTopLine(final String line, final int count) {

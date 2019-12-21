@@ -63,5 +63,8 @@ public class Application {
     private static void setBill(Table table) {
         OutputView.printBill(table);
         OutputView.printTableBill(table);
+        int inputCardOrCash = InputView.inputCardOrCash();
+
+        OutputView.printFinalBill(table);
     }
 }
