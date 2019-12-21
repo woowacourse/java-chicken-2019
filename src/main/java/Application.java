@@ -27,11 +27,17 @@ public class Application {
     final static List<Menu> menus = MenuRepository.menus();
 
     public static void main(String[] args) {
-
         while (true) {
             OutputView.printAction();
             actionNumber = InputView.inputActionNumber();
-            chooseAction(actionNumber);
+            if (actionNumber == ORDER_KEY) {
+                orderProcess();
+                continue;
+            }
+            if (actionNumber == PAY_KEY) {
+                payProcess();
+                continue;
+            }
             if (actionNumber == QUIT_KEY) {
                 System.out.println("시스템을 종료합니다.");
                 break;
@@ -104,12 +110,5 @@ public class Application {
         return (totalPay - (totalChickenCount / CHICKEN_SALE_COUNT) * CHICKEN_SALE) * CASH_SALE_RATE;
     }
 
-    public static void chooseAction(int actionNumber) {
-        if (actionNumber == ORDER_KEY) {
-            orderProcess();
-        }
-        if (actionNumber == PAY_KEY) {
-            payProcess();
-        }
-    }
+
 }
