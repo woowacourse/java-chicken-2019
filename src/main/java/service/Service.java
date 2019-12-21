@@ -13,4 +13,12 @@ public class Service {
     public String toString() {
         return number + "-" + name;
     }
+
+    public boolean isCalled(int number){
+        return this.number == number;
+    }
+
+    public void run(){
+
+    }
 }
