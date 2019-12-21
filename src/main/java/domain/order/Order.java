@@ -1,6 +1,5 @@
 package domain.order;
 
-import domain.Exception.MenuDoesNotExistExeption;
 import domain.menu.Menu;
 
 import java.util.HashMap;
@@ -12,7 +11,7 @@ public class Order {
         this.order = new HashMap<>();
     }
 
-    public void add(Menu menu, int menuAmount) throws MenuDoesNotExistExeption {
+    public void add(Menu menu, int menuAmount) {
         Amount amount = new Amount(menuAmount);
 
         order.put(menu, amount);

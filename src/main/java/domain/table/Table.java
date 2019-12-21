@@ -1,6 +1,5 @@
 package domain.table;
 
-import domain.Exception.MenuDoesNotExistExeption;
 import domain.menu.Menu;
 import domain.order.Order;
 
@@ -22,7 +21,7 @@ public class Table {
         return this.number == tableNumber;
     }
 
-    public void addOrder(Menu menu, int menuAmount) throws MenuDoesNotExistExeption {
+    public void addOrder(Menu menu, int menuAmount) {
         order.add(menu, menuAmount);
     }
 
