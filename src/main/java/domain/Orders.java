@@ -43,6 +43,14 @@ public class Orders {
         this.orders.addAll(orders);
     }
 
+    public void clear() {
+        this.orders.clear();
+    }
+
+    public boolean isEmpty() {
+        return this.orders.isEmpty();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

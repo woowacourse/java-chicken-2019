@@ -11,16 +11,24 @@ public class Table {
         this.number = number;
     }
 
-    @Override
-    public String toString() {
-        return Integer.toString(number);
-    }
-
     public boolean equalId(int id) {
         return number == id;
     }
 
     public void addOrders(List<Menu> list) {
         this.orders.addMenu(list);
+    }
+
+    public boolean hasNotOrders() {
+        return orders.isEmpty();
+    }
+
+    public void clear() {
+        this.orders.clear();
+    }
+
+    @Override
+    public String toString() {
+        return Integer.toString(number);
     }
 }

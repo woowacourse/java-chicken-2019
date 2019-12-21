@@ -5,6 +5,7 @@ import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class ChickenPos {
@@ -36,13 +37,24 @@ public class ChickenPos {
         Table table = getTable();
 
         if (selectMenu(select)) {
-            Menu menu = getMenu();
-            int menuSize = InputView.inputMenuAmount();
-            table.addOrders(menu.list(menuSize));
+            doOrder(table);
             return;
         }
-        //테이블 가격계산하기
+        doPayment(table);
+    }
 
+    private void doOrder(Table table) {
+        List<Menu> orders = getMenu();
+        table.addOrders(orders);
+    }
+
+    private void doPayment(Table table) {
+        if (table.hasNotOrders()) {
+            OutputView.printNoOrders();
+            doSelection(PAYMENT);
+        }
+
+        table.clear();
     }
 
     private Table getTable() {
@@ -55,11 +67,14 @@ public class ChickenPos {
         }
     }
 
-    private Menu getMenu() {
+    private List<Menu> getMenu() {
         OutputView.printMenus(MenuRepository.menus());
         int menuNumber = InputView.inputMenuNumber();
         try {
-            return MenuRepository.findById(menuNumber);
+            Menu menu = MenuRepository.findById(menuNumber);
+            int menuSize = InputView.inputMenuAmount();
+
+            return menu.list(menuSize);
         } catch (NoSuchElementException e) {
             return getMenu();
         }
