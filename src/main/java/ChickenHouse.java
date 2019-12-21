@@ -1,3 +1,4 @@
+
 /* 
  * 클래스 이름 : ChickenHouse
  * 
@@ -20,7 +21,7 @@ import view.OutputView;
 public class ChickenHouse {
 	// final static List<Table> tables = TableRepository.tables();
 	final static TableRepository tables = new TableRepository();
-	//final static List<Menu> menus = MenuRepository.menus();
+	// final static List<Menu> menus = MenuRepository.menus();
 	final static MenuRepository menus = new MenuRepository();
 
 	public void execute() {
@@ -43,7 +44,7 @@ public class ChickenHouse {
 		int tableNumber;
 		int MenuNumber;
 		int MenuCount;
-		
+
 		OutputView.printTables(tables);
 		tableNumber = InputView.inputTableNumber(tables, true);
 		OutputView.printMenus(menus);
@@ -60,7 +61,24 @@ public class ChickenHouse {
 		int tableNumber;
 		OutputView.printTables(tables);
 		tableNumber = InputView.inputTableNumber(tables, false);
+		calculate(InputView.inputPaymentMethod(tableNumber), TableRepository.getByNumber(tableNumber));
+	}
+	
+	private static void calculate(int paymentMethod, Table table) {
+		if(paymentMethod == 1) {
+			creditCardCalculate(table);
+			return;
+		}
+		cashCalculate(table);
+	}
+
+	private static void creditCardCalculate(Table table) {
+		// TODO Auto-generated method stub
 		
 	}
 
+	private static void cashCalculate(Table table) {
+		// TODO Auto-generated method stub
+		
+	}
 }
