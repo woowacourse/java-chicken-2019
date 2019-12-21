@@ -27,10 +27,10 @@ public class OutputView {
 
   private static void printLine(final String line, final int count, List<Table> tables) {
     for (int index = 0; index < count; index++) {
-      if(!tables.get(index).isAvailable()) {
-        System.out.println(SPECIAL_BOTTOM_LINE);
-        continue;
-      }
+//      if(!tables.get(index).isAvailable()) {
+//        System.out.println(SPECIAL_BOTTOM_LINE);
+//        continue;
+//      }
       System.out.print(line);
     }
     System.out.println();
