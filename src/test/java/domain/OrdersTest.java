@@ -3,10 +3,6 @@ package domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -19,7 +15,8 @@ class OrdersTest {
         Menu beverage = aMenu(Category.BEVERAGE, 100);
 
         Orders orders = Orders.emptyOrders();
-        orders.addMenu(Arrays.asList(chicken, beverage));
+        orders.addMenu(chicken.toOrder(1));
+        orders.addMenu(beverage.toOrder(1));
 
         assertThat(orders.chickenSize()).isEqualTo(1);
     }
@@ -31,7 +28,8 @@ class OrdersTest {
         Menu beverage = aMenu(Category.BEVERAGE, 200);
 
         Orders orders = Orders.emptyOrders();
-        orders.addMenu(Arrays.asList(chicken, beverage));
+        orders.addMenu(chicken.toOrder(1));
+        orders.addMenu(beverage.toOrder(1));
 
         assertThat(orders.getPrice()).isEqualTo(300);
     }
@@ -39,14 +37,11 @@ class OrdersTest {
     @DisplayName("주문 수량이 99개가 넘어갈 경우 예외발생")
     @Test
     void validateMaximumSize() {
-        List<Menu> menus = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            menus.add(aMenu(Category.CHICKEN, 1));
-        }
-
         Orders order = Orders.emptyOrders();
+        order.addMenu(aMenu(Category.CHICKEN, 1).toOrder(99));
 
-        assertThatThrownBy(() -> order.addMenu(menus))
+
+        assertThatThrownBy(() -> order.addMenu(aMenu(Category.CHICKEN, 1).toOrder(1)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

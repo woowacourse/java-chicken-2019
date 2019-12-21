@@ -36,6 +36,10 @@ public class Menu {
         return orders;
     }
 
+    public Order toOrder(int amount) {
+        return new Order(this, amount);
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";

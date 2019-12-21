@@ -48,4 +48,8 @@ public class OutputView {
     public static void printNoOrders() {
         System.out.println("계산할 주문이 없습니다.");
     }
+
+    public static void printOrders() {
+        System.out.println("## 주문 내역");
+    }
 }

@@ -1,11 +1,11 @@
 import domain.Menu;
 import domain.MenuRepository;
+import domain.Order;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 
 public class ChickenPos {
@@ -44,8 +44,8 @@ public class ChickenPos {
     }
 
     private void doOrder(Table table) {
-        List<Menu> orders = getMenu();
-        table.addOrders(orders);
+        Order order = getOrder();
+        table.addOrder(order);
     }
 
     private void doPayment(Table table) {
@@ -67,16 +67,16 @@ public class ChickenPos {
         }
     }
 
-    private List<Menu> getMenu() {
+    private Order getOrder() {
         OutputView.printMenus(MenuRepository.menus());
         int menuNumber = InputView.inputMenuNumber();
         try {
             Menu menu = MenuRepository.findById(menuNumber);
             int menuSize = InputView.inputMenuAmount();
 
-            return menu.list(menuSize);
+            return menu.toOrder(menuSize);
         } catch (NoSuchElementException e) {
-            return getMenu();
+            return getOrder();
         }
     }
 

@@ -1,14 +1,15 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 public class Orders {
     private static final int MAXIMUM_ORDERS_SIZE = 99;
-    private final List<Menu> orders;
+    private final List<Order> orders;
 
-    private Orders(List<Menu> orders) {
+    private Orders(List<Order> orders) {
         this.orders = orders;
     }
 
@@ -16,9 +17,11 @@ public class Orders {
         return new Orders(new ArrayList<>());
     }
 
-    private void validateAmount(List<Menu> orders) {
-        int inputOrdersSize = orders.size();
-        int presentSize = this.orders.size();
+    private void validateAmount(Order order) {
+        int inputOrdersSize = order.getAmount();
+        int presentSize = this.orders.stream()
+                .map(Order::getAmount)
+                .reduce(0, Integer::sum);
         int totalSize = presentSize + inputOrdersSize;
 
         if (totalSize > MAXIMUM_ORDERS_SIZE) {
@@ -28,19 +31,19 @@ public class Orders {
 
     public int chickenSize() {
         return (int) orders.stream()
-                .filter(Menu::isChicken)
+                .filter(Order::isChicken)
                 .count();
     }
 
     public int getPrice() {
         return orders.stream()
-                .map(Menu::getPrice)
+                .map(Order::getPrice)
                 .reduce(0, Integer::sum);
     }
 
-    public void addMenu(List<Menu> orders) {
-        validateAmount(orders);
-        this.orders.addAll(orders);
+    public void addMenu(Order order) {
+        validateAmount(order);
+        this.orders.add(order);
     }
 
     public void clear() {
@@ -49,6 +52,10 @@ public class Orders {
 
     public boolean isEmpty() {
         return this.orders.isEmpty();
+    }
+
+    public List<Order> getOrders() {
+        return Collections.unmodifiableList(this.orders);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.List;
-
 public class Table {
     private final int number;
 
@@ -15,8 +13,8 @@ public class Table {
         return number == id;
     }
 
-    public void addOrders(List<Menu> list) {
-        this.orders.addMenu(list);
+    public void addOrder(Order order) {
+        this.orders.addMenu(order);
     }
 
     public boolean hasNotOrders() {
