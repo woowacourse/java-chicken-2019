@@ -11,12 +11,12 @@
  *
  */
 
+import java.util.List;
+
 import domain.*;
 import util.PosRule;
 import view.InputView;
 import view.OutputView;
-
-import java.util.List;
 
 public class Application {
 
@@ -43,6 +43,7 @@ public class Application {
             order(table);
         }
         if (actionNumber == PosRule.PAY) {
+            pay(table);
         }
     }
 
@@ -55,5 +56,15 @@ public class Application {
         Order order = new Order(menu, menuCount);
         table.order(order);
         OutputView.printTables(TableRepository.tables());
+    }
+
+    private static void pay(Table table) {
+        OutputView.printOrders(table.getOrders());
+        OutputView.printPayMethod(table);
+        int payMethod = InputView.inputPayMethod();
+        Payment payMent = new Payment(table, payMethod);
+        payMent.pay();
+        OutputView.printPayment(payMent.toString());
+        table.completePayment();
     }
 }

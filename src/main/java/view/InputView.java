@@ -56,4 +56,12 @@ public class InputView {
         } while (!InputExceptionHandler.validateMenuCount(menuCount));
         return Integer.parseInt(menuCount);
     }
+
+    public static int inputPayMethod() {
+        String payMethod;
+        do {
+            payMethod = scanner.nextLine();
+        } while (!InputExceptionHandler.validatePayMethod(payMethod));
+        return Integer.parseInt(payMethod);
+    }
 }

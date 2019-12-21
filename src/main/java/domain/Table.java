@@ -16,13 +16,17 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import util.PosRule;
+
 public class Table {
     private final int number;
     private List<Order> orders;
+    private int countOfChicken;
 
     public Table(final int number) {
         this.number = number;
         orders = new ArrayList<>();
+        countOfChicken = 0;
     }
 
     @Override
@@ -31,10 +35,25 @@ public class Table {
     }
 
     public void order(Order order) {
+        if (order.getMenu().getCategory().equals(PosRule.CHICKEN)) {
+            countOfChicken++;
+        }
         orders.add(order);
     }
 
     public boolean hasOrder() {
         return (orders.size() > 0);
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public int getCountOfChicken() {
+        return countOfChicken;
+    }
+
+    public void completePayment() {
+        orders.clear();
     }
 }

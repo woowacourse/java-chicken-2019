@@ -16,6 +16,7 @@ package view;
 import java.util.List;
 
 import domain.Menu;
+import domain.Order;
 import domain.Table;
 
 public class OutputView {
@@ -68,4 +69,24 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public static void printOrders(final List<Order> orders) {
+        System.out.println("## 주문 내역");
+        System.out.println("메뉴 수량 금액");
+        for (final Order order : orders) {
+            System.out.println(order.getMenu().toString());
+        }
+    }
+
+    public static void printPayMethod(Table table) {
+        System.out.println("## " + table.toString() + "번 테이블의 결제를 진행합니다.");
+        System.out.println("## 신용 카드는 1번, 현금은 2번");
+    }
+
+    public static void printPayment(String price) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(price);
+    }
+
+
 }

@@ -34,6 +34,10 @@ public class InputExceptionHandler {
         return (isNumber(inputMenuCount)) && (isRangeOfMenuCount(inputMenuCount));
     }
 
+    public static boolean validatePayMethod(String inputPayMethod) {
+        return (isNumber(inputPayMethod)) && (isRangeOfPayMethod(inputPayMethod));
+    }
+
     private static boolean isNumber(String inputString) {
         try {
             Integer.parseInt(inputString);
@@ -79,4 +83,12 @@ public class InputExceptionHandler {
         return false;
     }
 
+    private static boolean isRangeOfPayMethod(String inputString) {
+        int payMethod = Integer.parseInt(inputString);
+        if ((payMethod == PosRule.CARD) || (payMethod == PosRule.CASH)) {
+            return true;
+        }
+        System.out.println(Message.PAY_METHOD_RANGE_ERROR.getMessage());
+        return false;
+    }
 }
