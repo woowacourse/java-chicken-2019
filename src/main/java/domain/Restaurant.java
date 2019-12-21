@@ -13,6 +13,10 @@ public class Restaurant implements RestaurantService {
         }
     }
 
+    public Order getOrder(Table table) {
+        return restaurant.get(table);
+    }
+
     public void orderMenu(Table table, int menuNumber, int quantityToAdd) {
         Order order = restaurant.get(table);
         order.changeQuantity(MenuRepository.findByNumber(menuNumber), quantityToAdd);
