@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class Table {
     private final int number;
-    private static int orderedMenuNumber;
     private static int numberOfChicken;
     private List<Menu> menus = new ArrayList<>();
     private List<Integer> orders = new ArrayList<>();
@@ -20,10 +19,6 @@ public class Table {
             total_Order += orders.get(i);
         }
         return total_Order;
-    }
-
-    public int getOrderSize(){
-        return orders.size();
     }
 
     public int getTableNumber(){
@@ -44,6 +39,15 @@ public class Table {
         for(int i = 0; i < menus.size(); i++){
             System.out.printf("%s %d %d", menus.get(i).getName(), orders.get(i), menus.get(i).getPrice()*orders.get(i));
         }
+    }
+
+    public int getTotalChicken(){
+        for(int i = 0; i < menus.size(); i++){
+            if(menus.get(i).isChicken()){
+                numberOfChicken += orders.get(i);
+            }
+        }
+        return numberOfChicken;
     }
 
     @Override
