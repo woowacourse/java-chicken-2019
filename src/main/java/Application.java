@@ -12,6 +12,8 @@ public class Application {
     public static void main(String[] args) {
 
     	OutputView.printMainScreen();
+    	InputView.inputMainProcess();
+
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 
