@@ -8,6 +8,9 @@ import domain.PosMenuType;
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
+    // 묵시적 생성자 방지
+    private InputView() {}
+
     public static PosMenuType inputPosMenu() {
         System.out.println("## 메인화면\n1: 주문등록\n2: 결제하기\n3: 프로그램 종료\n");
         try {

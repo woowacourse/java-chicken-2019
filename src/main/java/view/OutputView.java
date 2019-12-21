@@ -13,6 +13,9 @@ public class OutputView {
     private static final String BOTTOM_LINE = "└ ─ ┘";
     private static final String BOTTOM_CASH_LINE = "└ $ ┘";
 
+    // 묵시적 생성자 방지
+    private OutputView() {}
+
     public static void printEndPos() {
         System.out.println("## 포스기를 종료합니다.");
     }
