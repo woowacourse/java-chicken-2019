@@ -64,13 +64,58 @@ public class Pos {
       return;
     }
 
-    if (process == PAY) {
-      payProcess.start();
+    try {
+      if (process == PAY) {
+        validatePay();
+        payProcess.start();
+        return;
+      }
+      endPos();
+      return;
+
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
       return;
     }
+  }
 
-    OutputView.printEndPos();
-    return;
+  private void endPos(){
+    try {
+      validateEnd();
+      OutputView.printEndPos();
+    }catch (Exception e){
+      System.out.println(e.getMessage());
+      start();
+      return;
+    }
+  }
+
+  private boolean hasOrdered(Table table) {
+    return table.hasOrdered();
+  }
+
+  private void validatePay(Table table) throws Exception {
+    if (!hasOrdered(table)) {
+      throw new Exception("주문이 존재하지 않습니다.");
+    }
+  }
+
+  private void validatePay() throws Exception {
+    for (Table table : tables) {
+      validatePay(table);
+    }
+  }
+
+  private void validateEnd() throws Exception {
+    for (Table table : tables) {
+      validateEnd(table);
+    }
+  }
+
+  private void validateEnd(Table table) throws Exception {
+    if (hasOrdered(table)) {
+      throw new Exception("결제하지 않은 주문이 존재합니다.");
+    }
   }
 
 

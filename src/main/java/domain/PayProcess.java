@@ -32,11 +32,6 @@ public class PayProcess {
   }
 
   public void start() {
-    if (!hasOrdered()) {
-      System.out.println("주문이 존재하지 않습니다.");
-      return;
-    }
-
     int tableNumber = getTableNumber();
     pay(tableNumber);
   }
@@ -51,7 +46,7 @@ public class PayProcess {
     confirmPay(tableNumber, price);
   }
 
-  private void confirmPay(int tableNumber, int price){
+  private void confirmPay(int tableNumber, int price) {
     OutputView.printPrice(price);
     getTable(tableNumber).pay();
   }
@@ -118,14 +113,5 @@ public class PayProcess {
       throw new Exception("주문이 존재하지 않습니다.");
     }
     return tableNumber;
-  }
-
-  private boolean hasOrdered() {
-    for (int i = 0; i < tables.size(); i++) {
-      if (tables.get(i).hasOrdered()) {
-        return true;
-      }
-    }
-    return false;
   }
 }
