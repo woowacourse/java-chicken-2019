@@ -21,6 +21,14 @@ public class OutputView {
         System.out.println("종료되었습니다.");
     }
 
+    public static void printTotal() {
+        System.out.println("##최종 결제할 금액");
+    }
+
+    public static void printSelectPayment(int tableNumber) {
+        System.out.println("##" + tableNumber + "번 테이블의 결제를 진행합니다.");
+    }
+
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();

@@ -56,4 +56,9 @@ public class Order {
 
         return information[0] + " " + information[1] + " " + information[2];
     }
+
+    public int price() {
+        Menu menu = MenuRepository.search(this.menuNumber);
+        return menu.getPrice() * this.menuQuantity;
+    }
 }
