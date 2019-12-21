@@ -22,12 +22,18 @@ public class Payment {
         printOrderdList();
 
         paymentMethod = getPaymentMethod();
-        int totalPrice = table.getTotalPrice();
-        totalPrice -= getChickenDiscount();
-        if (paymentMethod == 2)
-            totalPrice = getCashDiscount(totalPrice);
-        OutputView.printTotalPayPrice(totalPrice);
+        int finalPrice = getFinalPrice();
+
+        OutputView.printTotalPayPrice(finalPrice);
         table.clearMenus();
+    }
+
+    public int getFinalPrice(){
+        int finalPrice  = table.getTotalPrice();
+        finalPrice -= getChickenDiscount();
+        if (paymentMethod == 2)
+            finalPrice = getCashDiscount(finalPrice);
+        return finalPrice;
     }
 
     public int getPaymentMethod() {
