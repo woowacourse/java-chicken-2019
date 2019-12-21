@@ -51,7 +51,7 @@ public class InputView {
     }
 
     public static int inputPaymentTableNumberErr(){
-        System.out.println("결제할 것이 없는 테이블입니다. 다시 입력해주세요");
+        System.out.println("결제할 것이 없는 테이블이거나 null 입니다. 다시 입력해주세요");
         return scanner.nextInt();
     }
 

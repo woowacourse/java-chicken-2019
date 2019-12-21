@@ -3,10 +3,12 @@ import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
 import jdk.internal.util.xml.impl.Input;
+import org.omg.CORBA.OBJECT_NOT_EXIST;
 import view.InputView;
 import view.OutputView;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
 
@@ -81,7 +83,7 @@ public class Application {
     }
 
     public static int isPayPossibleTable(int tableNumber){
-        while(!OutputView.checkOrder[TableRepository.getTableListIndex(tableNumber)]){
+        while(!OutputView.checkOrder[TableRepository.getTableListIndex(tableNumber)] || Objects.isNull(TableRepository.getSelectTable(tableNumber))){
             tableNumber = InputView.inputPaymentTableNumberErr();
         }
         return tableNumber;
