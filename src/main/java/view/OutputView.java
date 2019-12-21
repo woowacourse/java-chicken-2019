@@ -41,8 +41,8 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printMainScreen(){
+    public static int printMainScreen(){
         System.out.println("##메인 화면\n1 - 주문등록\n2 - 결제하기\n3 - 프로그램 종료");
-        new InputView().inputFunction();
+        return new InputView().inputFunction();
     }
 }
