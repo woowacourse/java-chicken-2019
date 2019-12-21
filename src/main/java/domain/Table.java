@@ -36,5 +36,9 @@ public class Table {
     return 0;
   }
 
+  public Boolean hasOrdered(){
+    return !order.isEmpty();
+  }
+
 
 }
