@@ -41,4 +41,8 @@ public class Table {
 		}
 		getOrderMap().put(menuChoice, value + menuQuantity);
 	}
+
+	public Integer getNumber(){
+	    return number;
+    }
 }
