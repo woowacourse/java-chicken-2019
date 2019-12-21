@@ -30,7 +30,7 @@ public class Menu {
         return name;
     }
 
-    public boolean isForeignKey(int number){
+    public boolean isForeignKey(int number) {
         return this.number == number;
     }
 
