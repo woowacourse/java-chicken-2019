@@ -26,6 +26,7 @@ public class InputView {
      * @return 해당 번호가 리턴됩니다.
      */
     public static int inputMainFunction() {
+        OutputView.printMain();
         System.out.println("## 원하는 기능을 선택해해주세요");
         exceptionInputMain();
         return caseNumber;
