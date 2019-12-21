@@ -12,6 +12,8 @@ public class Application {
     public static void main(String[] args) {
         OutputView.printFunctions();
 
+        final int functionNumber = InputView.inputFunctionNumber();
+
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 
