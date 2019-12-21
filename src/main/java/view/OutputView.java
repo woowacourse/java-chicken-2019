@@ -15,7 +15,7 @@ public class OutputView {
         System.out.println("\n##메인화면");
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
-        System.out.println("3 - 프로그램 종료");
+        System.out.println("3 - 프로그램 종료\n");
     }
 
     public static void printTables(final List<Table> tables) {
