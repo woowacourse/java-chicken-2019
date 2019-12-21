@@ -7,22 +7,45 @@ public class OneTwoThree {
 	private static final int TWO = 2;
 	private static final int THREE = 3;
 	
+	private int value;
+	
 	public OneTwoThree() {}
 		
-	public static int askWhichApplication() {
+	public void enterOneTwoThree() {
 		try {
 			int input = InputView.enterApplication();
 			checkValidInt(input);
-			return input;
+			this.value = input;
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
-			return askWhichApplication();
+			enterOneTwoThree();
 		}
 	}
 		
-	private static void checkValidInt(int input) {
+	private void checkValidInt(int input) {
 		if (input != ONE && input != TWO && input != THREE) {
 			throw new IllegalArgumentException("1,2,3만 입력해주세요");
 		}
+	}
+	
+	public boolean isTerminate() {
+		if (this.value == THREE) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isGetOrder() {
+		if (this.value == ONE) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isPay() {
+		if (this.value == TWO) {
+			return true;
+		}
+		return false;
 	}
 }
