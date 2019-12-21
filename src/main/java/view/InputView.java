@@ -7,12 +7,13 @@ import java.util.List;
 
 import domain.Functions;
 import domain.Menu;
+import domain.Payment;
 import domain.Table;
 
 
 public class InputView {
     private static final BufferedReader BR = new BufferedReader(new InputStreamReader(System.in));
-    private static final String INPUT_TABLE_NUMBER = "## 주문할 테이블을 입력하세요.";
+    private static final String INPUT_TABLE_NUMBER = "## 테이블을 선택 해 주세요.";
     private static final String ERROR_FORMAT = "잘못된 입력입니다. 숫자로 입력해주세요.";
     private static final String INPUT_FUNCTION_NUMBER = "##원하는 기능을 입력하세요.";
     private static final String ERROR_NUMBER = "잘못된 번호입니다. 다시 입력해주세요.";
@@ -21,6 +22,11 @@ public class InputView {
     private static final int MIN_AMOUNT = 0;
     private static final int MAX_AMOUNT = 99;
     private static final String ERROR_AMOUNT = "제품은 최소 1개부터 99개까지 등록가능합니다.";
+    private static final String CONTINUE_PAYMENT = "결제를 진행합니다.";
+    private static final String INPUT_PAYMENT = "##신용카드는 1번, 현금은 2번(현금 사용시 5프로 할인)";
+    private static final String ERROR_PAYMENT = "1번 또는 2번을 입력해주세요.";
+    private static final int CREDIT_CARD = 1;
+    private static final int CASH = 2;
 
     public static int inputFunctionNumber() throws IOException {
         System.out.println(INPUT_FUNCTION_NUMBER);
@@ -93,5 +99,26 @@ public class InputView {
             return inputHowMany();
         }
         return howManyNumber;
+    }
+
+    public static Payment inputPayment() throws IOException {
+        System.out.println(CONTINUE_PAYMENT);
+        System.out.println(INPUT_PAYMENT);
+        try {
+            return checkPayment(Integer.parseInt(BR.readLine().trim()));
+        } catch (NumberFormatException e){
+            System.out.println(ERROR_FORMAT);
+            return inputPayment();
+        }
+    }
+
+    private static Payment checkPayment(int payment) throws IOException {
+        if(payment != CREDIT_CARD && payment != CASH){
+            System.out.println(ERROR_PAYMENT);
+            return inputPayment();
+        }
+        if(payment == CREDIT_CARD)
+            return Payment.CREDIT_CARD;
+        return Payment.CASH;
     }
 }

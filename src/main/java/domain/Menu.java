@@ -23,10 +23,12 @@ public class Menu {
         return number;
     }
 
-    public Menu getMenu(int menuNumber){
-        if(menuNumber == number)
-            return this;
-        throw new IllegalArgumentException("그런메뉴는 존재하지 않습니다.");
+    public int getPrice() {
+        return price;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

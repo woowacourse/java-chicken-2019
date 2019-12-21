@@ -37,10 +37,12 @@ public class ChickenModel {
 
     private void userWantToPay(int function) throws IOException {
         if(function==PAY){
-            OutputView.printTables(tables);
             int tableNumber = inputTableNumber();
-            OutputView.printTableBill(chickenManager.getTableByTableNumber(tableNumber));
+            Table table = chickenManager.getTableByTableNumber(tableNumber);
+            OutputView.printTableBill(table);
             Payment payment = InputView.inputPayment();
+            double totalMoney = table.getTotalMoneyWithPayment(payment);
+            OutputView.printTotalMoney(totalMoney);
         }
     }
 
@@ -56,11 +58,7 @@ public class ChickenModel {
     private void setMenu(int tableNumber, int menuNumber, int howMany) {
         Table table = chickenManager.getTableByTableNumber(tableNumber);
         Menu menu = chickenManager.getMenuByMenuNumber(menuNumber);
-        System.out.println(table.toString());
-        System.out.println(menu.toString());
-        for(int i=0; i<howMany; i++){
-            table.addMenu(menu);
-        }
+        table.addMenu(table,menu,howMany);
     }
 
     private int inputHowMany() throws IOException {
