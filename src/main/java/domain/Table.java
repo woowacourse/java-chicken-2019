@@ -8,13 +8,13 @@ public class Table {
     private static final int ORDER_NOTHING = 0;
 
     private final int number;
-    private static final Orders orders = new Orders();
+    private final Orders orders = new Orders();
 
     public Table(final int number) {
         this.number = number;
     }
 
-    public static void addOrder( Order order) {
+    public void addOrder( Order order) {
         orders.addOrder(order);
     }
 
@@ -33,6 +33,15 @@ public class Table {
     public int getOrderSize() {
         return orders.getOrderSize();
     }
+
+    public void clearOrder() {
+        orders.clearOrder();
+    }
+
+    public String orderToString() {
+        return orders.toString();
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);
