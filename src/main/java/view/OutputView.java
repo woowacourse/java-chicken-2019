@@ -47,9 +47,9 @@ public class OutputView {
     }
 
     public static void printOrderList(List<Order> tableOrders, int tableNumber){
-        System.out.println("메뉴 수량 금액");
+        System.out.println(LINE + "메뉴 수량 금액");
         tableOrders.stream().forEach(tableOrder -> System.out.println(tableOrder.toString()));
-        System.out.println("## " + tableNumber + "번 테이블의 결제를 진행합니다.");
+        System.out.println(LINE + "## " + tableNumber + "번 테이블의 결제를 진행합니다.");
     }
 
     public static void printProgramExit(){

@@ -46,10 +46,19 @@ public class InputView {
     }
 
     public static int inputMenuQuantity() {
-        do{
+        do {
             System.out.println(LINE + "## 메뉴의 수량을 입력하세요.");
             inputNumberString = scanner.nextLine();
-        }while(inputCheck.numberCheck(inputNumberString));
+        } while (inputCheck.numberCheck(inputNumberString));
+
+        return Integer.parseInt(inputNumberString);
+    }
+
+    public static int inputPayment() {
+        do {
+            System.out.println(LINE + "## 신용 카드는 1번, 현금은 2번");
+            inputNumberString = scanner.nextLine();
+        } while (inputCheck.numberCheck(inputNumberString));
 
         return Integer.parseInt(inputNumberString);
     }

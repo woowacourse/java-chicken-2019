@@ -47,5 +47,7 @@ public class Application {
         List<Order> tableOrders = orders.stream().filter(order -> order.orderCheck(tableNumber)).collect(Collectors.toList());
 
         OutputView.printOrderList(tableOrders, tableNumber);
+
+        final int paymentSelect = InputView.inputPayment();
     }
 }

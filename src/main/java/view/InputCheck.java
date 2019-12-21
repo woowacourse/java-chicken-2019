@@ -64,4 +64,6 @@ public class InputCheck {
         System.out.println("메뉴를 다시 확인해주세요.");
         return true;
     }
+
 }
+
