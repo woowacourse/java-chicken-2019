@@ -52,7 +52,12 @@ public class Application {
 
         final int tableNumber = InputView.inputTableNumber();
         
-        OutputView.printTableOrder(TableRepository.getTableByNumber(tableNumber));
+        try {
+            OutputView.printTableOrder(TableRepository.getTableByNumber(tableNumber));
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+            return;
+        }
         OutputView.printTablePay(TableRepository
                 .getTableByNumber(tableNumber), InputView.inputPayment());
         

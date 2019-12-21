@@ -1,6 +1,7 @@
 package view;
 
 import domain.MenuRepository;
+import domain.Table;
 import domain.TableRepository;
 
 public class Validator {
@@ -41,6 +42,12 @@ public class Validator {
         if (Integer.parseInt(string) > MAX_PAYMENT_NUM
                 || Integer.parseInt(string) <=  MIN_NUM) {
             throw new IllegalArgumentException("신용카드(1), 현금(2) 중 하나만 선택하세요.");
+        }
+    }
+    
+    public static void validateNullMenus(Table table) {
+        if (table.isEmptyMenus()) {
+            throw new IllegalArgumentException("테이블에 결제할 목록이 없습니다.");
         }
     }
 }

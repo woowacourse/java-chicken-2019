@@ -58,6 +58,8 @@ public class OutputView {
     }
     
     public static void printTableOrder(final Table table) {
+        Validator.validateNullMenus(table);
+        
         System.out.println("## 주문내역 \n메뉴 수량 금액");
         System.out.println(table.getMenusString());
     }
