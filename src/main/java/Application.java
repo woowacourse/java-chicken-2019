@@ -37,7 +37,8 @@ public class Application {
         OutputView.printMenus(menus);
         int menuNumber = InputView.inputMenuNumber() - 1;
         int menuAmount = InputView.inputMenuAmount();
-        TableRepository.order(tableNumber, menus.get(menuNumber), menuAmount);
+        if (!TableRepository.order(tableNumber, menus.get(menuNumber), menuAmount))
+            order();
     }
 
     private void pay() {
