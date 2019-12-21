@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author : Kim SeYun
+ * @ClassName : MenuRepository
+ * @ClassExplanation : 이용가능한 메뉴 목록
+ * @Date : 2019. 12. 21
+ * @Copyright (c) 2019 SeYun Kim
+ */
 public class MenuRepository {
     private static final List<Menu> menus = new ArrayList<>();
 

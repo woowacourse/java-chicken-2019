@@ -8,6 +8,13 @@ import domain.Table;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * @author : Kim SeYun
+ * @ClassName : InputView
+ * @ClassExplanation : 입력 UI
+ * @Date : 2019. 12. 21
+ * @Copyright (c) 2019 SeYun Kim
+ */
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
     private static final String LINE = "\n";

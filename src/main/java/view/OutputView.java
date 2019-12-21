@@ -7,6 +7,13 @@ import domain.Table;
 
 import java.util.List;
 
+/**
+ * @author : Kim SeYun
+ * @ClassName : OutputView
+ * @ClassExplanation : 출력 UI
+ * @Date : 2019. 12. 21
+ * @Copyright (c) 2019 SeYun Kim
+ */
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";

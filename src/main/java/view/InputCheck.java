@@ -4,6 +4,13 @@ import domain.*;
 
 import java.util.List;
 
+/**
+ * @author : Kim SeYun
+ * @ClassName : InputCheck
+ * @ClassExplanation : 정상적인 입력값 확인
+ * @Date : 2019. 12. 21
+ * @Copyright (c) 2019 SeYun Kim
+ */
 public class InputCheck {
 
     private int checkNumber;

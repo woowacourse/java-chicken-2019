@@ -6,6 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author : Kim SeYun
+ * @ClassName : Application
+ * @ClassExplanation : 실질적인 게임을 진행하는 곳
+ * @Date : 2019. 12. 21
+ * @Copyright (c) 2019 SeYun Kim
+ */
 public class Application {
     // TODO 구현 진행
 

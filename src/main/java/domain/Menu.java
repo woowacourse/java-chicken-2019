@@ -1,5 +1,12 @@
 package domain;
 
+/**
+ * @author : Kim SeYun
+ * @ClassName : Menu
+ * @ClassExplanation : 메뉴 객체
+ * @Date : 2019. 12. 21
+ * @Copyright (c) 2019 SeYun Kim
+ */
 public class Menu {
     private final int number;
     private final String name;

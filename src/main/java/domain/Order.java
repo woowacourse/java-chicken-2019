@@ -1,5 +1,12 @@
 package domain;
 
+/**
+ * @author : Kim SeYun
+ * @ClassName : Order
+ * @ClassExplanation : 주문 내역
+ * @Date : 2019. 12. 21
+ * @Copyright (c) 2019 SeYun Kim
+ */
 public class Order {
     private final Table table;
     private final Menu menu;

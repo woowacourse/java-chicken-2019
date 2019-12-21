@@ -1,5 +1,12 @@
 package domain;
 
+/**
+ * @author : Kim SeYun
+ * @ClassName : Table
+ * @ClassExplanation : 테이블 객체
+ * @Date : 2019. 12. 17
+ * @Copyright (c) 2019 SeYun Kim
+ */
 public class Table {
     private final int number;
 

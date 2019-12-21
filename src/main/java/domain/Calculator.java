@@ -3,6 +3,13 @@ package domain;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author : Kim SeYun
+ * @ClassName : Calculator
+ * @ClassExplanation : 주문 금액 계산기
+ * @Date : 2019. 12. 21
+ * @Copyright (c) 2019 SeYun Kim
+ */
 public class Calculator {
 
     private final List<Order> tableOrders;
