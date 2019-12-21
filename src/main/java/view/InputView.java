@@ -1,5 +1,6 @@
 package view;
 
+import java.util.InputMismatchException;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -10,57 +11,69 @@ public class InputView {
 
     public static int inputTableNumber() {
         System.out.println(NEWLINE + "## 주문할 테이블을 선택하세요.");
-        int value = scanner.nextInt();
+        try {
+            int value = scanner.nextInt();
 
-        if (Objects.isNull(value)) {
-            throw new IllegalArgumentException("테이블 번호는 'null'이 될 수 없습니다.");
+            if (Objects.isNull(value)) {
+                throw new IllegalArgumentException("테이블 번호는 'null'이 될 수 없습니다.");
+            }
+            if (value < VALUE_MIN) {
+                throw new IllegalArgumentException("테이블 번호는 0보다 커야합니다.");
+            }
+            return value;
+        } catch (InputMismatchException e){
+            throw new InputMismatchException("양의 정수의 숫자를 입력해야 합니다.");
         }
-        if (value < VALUE_MIN) {
-            throw new IllegalArgumentException("테이블 번호는 0보다 커야합니다.");
-        }
-
-        return value;
     }
 
     public static int inputMenu() {
         System.out.println(NEWLINE + "원하는 기능을 선택하세요.");
-        int value = scanner.nextInt();
+        try {
+            int value = scanner.nextInt();
 
-        if (Objects.isNull(value)) {
-            throw new IllegalArgumentException("원하는 기능 번호는 'null'이 될 수 없습니다.");
+            if (Objects.isNull(value)) {
+                throw new IllegalArgumentException("원하는 기능 번호는 'null'이 될 수 없습니다.");
+            }
+            if (value < VALUE_MIN) {
+                throw new IllegalArgumentException("원하는 기능 번호는 0보다 커야합니다.");
+            }
+            return value;
+        } catch (InputMismatchException e) {
+            throw new InputMismatchException("양의 정수의 숫자를 입력해야 합니다.");
         }
-        if (value < VALUE_MIN) {
-            throw new IllegalArgumentException("테이블 번호는 0보다 커야합니다.");
-        }
-
-        return value;
     }
 
     public static int inputOrder() {
         System.out.println(NEWLINE + "등록할 메뉴를 선택하세요.");
-        int value = scanner.nextInt();
+        try {
+            int value = scanner.nextInt();
 
-        if (Objects.isNull(value)) {
-            throw new IllegalArgumentException("메뉴는 'null'이 될 수 없습니다.");
+            if (Objects.isNull(value)) {
+                throw new IllegalArgumentException("메뉴는 'null'이 될 수 없습니다.");
+            }
+            if (value < VALUE_MIN) {
+                throw new IllegalArgumentException("메뉴는 0보다 커야합니다.");
+            }
+            return value;
+        } catch (InputMismatchException e) {
+            throw new InputMismatchException("양의 정수의 숫자를 입력해야 합니다.");
         }
-        if (value < VALUE_MIN) {
-            throw new IllegalArgumentException("테이블 번호는 0보다 커야합니다.");
-        }
-
-        return value;
     }
 
     public static int inputCount() {
         System.out.println(NEWLINE + "메뉴의 수량을 입력하세요.");
-        int value = scanner.nextInt();
+        try {
+            int value = scanner.nextInt();
 
-        if (Objects.isNull(value)) {
-            throw new IllegalArgumentException("수량은 'null'이 될 수 없습니다.");
+            if (Objects.isNull(value)) {
+                throw new IllegalArgumentException("수량은 'null'이 될 수 없습니다.");
+            }
+            if (value < VALUE_MIN) {
+                throw new IllegalArgumentException("수량은 0보다 커야합니다.");
+            }
+            return value;
+        } catch (InputMismatchException e) {
+            throw new InputMismatchException("양의 정수의 숫자를 입력해야 합니다.");
         }
-        if (value < VALUE_MIN) {
-            throw new IllegalArgumentException("테이블 번호는 0보다 커야합니다.");
-        }
-
-        return value;
     }
 }
