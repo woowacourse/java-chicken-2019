@@ -12,6 +12,8 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ %s ┘";
+    private static final String NO_ORDER = "-";
+    private static final String HAS_ORDER = "₩";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
@@ -36,9 +38,9 @@ public class OutputView {
 
     private static String getOrderStatus(Table table) {
         if (table.hasNotOrders()) {
-            return "-";
+            return NO_ORDER;
         }
-        return "₩";
+        return HAS_ORDER;
     }
 
     private static void printTableNumbers(final List<Table> tables) {
