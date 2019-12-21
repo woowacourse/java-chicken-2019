@@ -7,6 +7,15 @@ public class Table {
         this.number = number;
     }
 
+    public boolean existTableNumber(int tableNumber) {
+        if (tableNumber == (int) this.number) {
+            return true;
+        }
+
+        return false;
+    }
+
+
     @Override
     public String toString() {
         return Integer.toString(number);

@@ -47,4 +47,15 @@ public class OutputView {
         }
         System.out.println();
     }
+
+
+    /*예외처리 문장들*/
+    public static void printNonexistTableNumbers() {
+        System.out.println("존재하지 않는 테이블입니다. 다시 입력해주세요");
+    }
+
+    public static void printNonexistMenuNumbers() {
+        System.out.println("존재하지 않는 메뉴입니다. 다시 입력해주세요");
+    }
+
 }
