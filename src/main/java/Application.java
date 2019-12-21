@@ -87,6 +87,13 @@ public class Application {
         clearPay();
     }
 
+    /* 현재 테이블 안에 존재하는 메뉴 카테고리를 바탕으로
+     * 계산하는 caculateTotalPay의 경우는
+     * 현재 테이블의 카테고리 리스트에 저장된 메뉴를 순차적으로 구하고
+     * 이를 바탕으로 최종 결제금액과 할인에 필요한 치킨의 수량을 구하는 함수이다.
+     * calculatePrice 의 경우는 현재 입력된 메뉴의 가격과 테이블리스트에 저장된 menuCount(수량)를
+     * 이용하여 계산하는 메서드이다.
+     */
     public static void calculateTotalPay() {
         for (int i = 0; i < tables.get(nowTableNumber).menuCategory.size(); i++) {
             getMenuIndex(tables.get(nowTableNumber).menuCategory.get(i));
@@ -106,10 +113,8 @@ public class Application {
 
     public static double getTotalPay() {
         if (payMethod == CARD_KEY) {
-            System.out.println(totalChickenCount);
             return totalPay - ((totalChickenCount / CHICKEN_SALE_COUNT) * CHICKEN_SALE);
         }
-        System.out.println(totalChickenCount);
         return (totalPay - (totalChickenCount / CHICKEN_SALE_COUNT) * CHICKEN_SALE) * CASH_SALE_RATE;
     }
 
