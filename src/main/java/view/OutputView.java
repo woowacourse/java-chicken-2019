@@ -85,4 +85,8 @@ public class OutputView {
     public static void printFinalPrice(int price) {
         System.out.println("## 최종 결제할 금액\n" + price + "원\n");
     }
+
+    public static void showNothingOrdered() {
+        System.out.println("주문한 메뉴가 없는 테이블 입니다.");
+    }
 }

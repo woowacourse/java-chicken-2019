@@ -27,17 +27,24 @@ public class Application {
 
     private static void orderMain(Tables tables, Menus menus) {
         OutputView.showSelectTableAsOrder();
+
         Table inputTable = tables.findTable(InputView.inputTableNumber(tables));
         Menu inputMenu = menus.findMenu(InputView.inputMenuNumber(menus));
         int menuAmount = InputView.inputMenuAmount(inputTable, inputMenu);
+
         inputTable.addMenu(inputMenu, menuAmount);
     }
 
     private static void paymentMain(Tables tables) {
         OutputView.showSelectTableAsPayment();
         Table inputTable = tables.findTable(InputView.inputTableNumber(tables));
+
+        if (!inputTable.isOrdered()) {
+            OutputView.showNothingOrdered();
+            return;
+        }
+
         OutputView.printTableOrderedList(inputTable.allMenu());
-        OutputView.printTablePrices(inputTable);
         OutputView.printFinalPrice(Calculator.cashAndCard(inputTable));
     }
 }
