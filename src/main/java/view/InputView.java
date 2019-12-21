@@ -24,4 +24,9 @@ public class InputView {
         System.out.println("메뉴의 수량을 입력하세요.");
         return scanner.nextInt();
     }
+
+    public static int inputPayMethod() {
+        System.out.println("##신용카드는1번,현금은2번.");
+        return scanner.nextInt();
+    }
 }

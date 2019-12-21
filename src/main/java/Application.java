@@ -46,6 +46,7 @@ public class Application {
                 for (Table table : tables) {
                     if (table.equals(tableNumber)) {
                         table.showOrders();
+                        table.pay();
                     }
                 }
             }

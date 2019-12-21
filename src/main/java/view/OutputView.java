@@ -66,4 +66,8 @@ public class OutputView {
     public static void printOrder(Order order){
         System.out.println(order);
     }
+
+    public static void startPayment(int number){
+        System.out.println("##" + number + "번테이블의결제를진행합니다. ");
+    }
 }

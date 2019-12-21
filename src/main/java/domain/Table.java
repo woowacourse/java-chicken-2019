@@ -1,5 +1,6 @@
 package domain;
 
+import view.InputView;
 import view.OutputView;
 
 public class Table {
@@ -36,5 +37,10 @@ public class Table {
     public void showOrders(){
         OutputView.printOrders();
         bill.showOrders();
+    }
+
+    public void pay() {
+        OutputView.startPayment(number);
+        int paymentMethod = InputView.inputPayMethod();
     }
 }
