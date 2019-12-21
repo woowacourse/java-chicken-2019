@@ -17,6 +17,10 @@ public class InputView {
         return inputInteger( "## 등록할 메뉴를 선택하세요.");
     }
 
+    public static int inputFoodCount() {
+        return inputInteger("## 메뉴의 수량을 입력하세요.");
+    }
+
     public static int inputInteger(String text) {
         System.out.println(text);
         String input = scanner.nextLine();
@@ -36,7 +40,5 @@ public class InputView {
             throw new IllegalArgumentException("숫자가 아닙니다.");
         }
     }
-
-
 
 }
