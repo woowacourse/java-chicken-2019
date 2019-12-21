@@ -10,8 +10,8 @@ import java.util.List;
 
 public class Application {
     private static final int REGISTER = 1;
-    private static final int PAY = 1;
-    private static final int EXIT_PROGRAM = 1;
+    private static final int PAY = 2;
+    private static final int EXIT_PROGRAM = 3;
     
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
@@ -20,12 +20,15 @@ public class Application {
         OutputView.printMain();
         int order = InputView.inputOrder();
         
-        if (order == REGISTER) {
-        	Register.startOrder(tables, menus);
-        } else if (order == PAY) {
-        	
-        } else if (order == EXIT_PROGRAM) {
-        	
+        while (order != EXIT_PROGRAM) {
+        	 OutputView.printTables(tables);
+        	if (order == REGISTER) {
+            	Register.startOrder(tables, menus);
+            } else if (order == PAY) {
+            	
+            }
+        	OutputView.printMain();
+        	order = InputView.inputOrder();
         }
 
     }

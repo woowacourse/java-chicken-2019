@@ -18,6 +18,7 @@ public class InputView {
     
     
     public static int inputOrder() {
+    	System.out.println("## 원하는 기능을 선택하세요.");
     	String order = scanner.nextLine();
     	if (!Pattern.matches(NOT_NUMBER_PATTERN, order)) {
     		System.err.println("명령을 숫자로만 입력해주세요.");
@@ -88,7 +89,7 @@ public class InputView {
     		System.err.println("주문할 음식의 수량을 숫자로 입력해주세요.");
     		return inputOrderQuantity(tables);
     	} else if (isOverQuantity(Integer.parseInt(orderQuantity), tables)) {
-    		System.err.println("해당 음식을 주문할 수 있는 최대 수량(99개)을 넘겼습니다. 다시 입력해주세요.");
+    		System.err.println("해당 음식을 주문할 수 있는 최대 수량(99개)을 넘겼습니다. 다시 입력해주세요");
     		return inputOrderQuantity(tables);
     	}
     	return Integer.parseInt(orderQuantity);
