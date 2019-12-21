@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class InputView {
 	private static final int PAYMENT_CREDITCARD = 1;
 	private static final int PAYMENT_CASH = 2;
-	
+
 	private static final Scanner scanner = new Scanner(System.in);
 
 	public static int inputTableNumber() throws Exception {
@@ -35,7 +35,7 @@ public class InputView {
 		int menuNumber = 0;
 		try {
 			menuNumber = Integer.parseInt(scanner.nextLine());
-			if(menuNumber != PAYMENT_CASH && menuNumber != PAYMENT_CREDITCARD) {
+			if (menuNumber != PAYMENT_CASH && menuNumber != PAYMENT_CREDITCARD) {
 				throw new Exception("잘못된 입력입니다.");
 			}
 		} catch (Exception e) {
