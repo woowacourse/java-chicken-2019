@@ -36,9 +36,10 @@ public class Bills {
 
         for (Map.Entry<Menu, Integer> entry : bills.entrySet()) {
             Menu menu = entry.getKey();
-            sumAmount += (entry.getValue() * menu.getPrice());
+            int quantity = entry.getValue();
+            sumAmount += (quantity * menu.getPrice());
             if (menu.isChicken()) {
-                chickenCount += entry.getValue();
+                chickenCount += quantity;
             }
         }
         return giveDiscountByChickenCount(sumAmount, chickenCount);
