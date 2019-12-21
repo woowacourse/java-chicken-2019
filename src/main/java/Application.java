@@ -17,6 +17,5 @@ public class Application {
             System.out.println(PROGRAM_ERROR);
             e.printStackTrace();
         }
-
     }
 }

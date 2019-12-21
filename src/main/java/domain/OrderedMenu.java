@@ -17,6 +17,10 @@ public class OrderedMenu {
         this.count = count;
     }
 
+    public int getCount() {
+        return count;
+    }
+
     public boolean canOrder(int howMany) {
         return count + howMany <= MAX_ORDER;
     }

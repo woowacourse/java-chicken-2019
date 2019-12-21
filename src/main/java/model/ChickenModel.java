@@ -26,24 +26,34 @@ public class ChickenModel {
     }
 
 
-    public void startPos() throws IOException {
+    public boolean startPos() throws IOException {
         int function;
         do {
             function = inputFunctionNumber();
             userWantToRegister(function);
             userWantToPay(function);
         } while (function != EXIT);
+        return false;
     }
 
     private void userWantToPay(int function) throws IOException {
         if (function == PAY) {
             int tableNumber = inputTableNumber();
             Table table = chickenManager.getTableByTableNumber(tableNumber);
+            checkNoMenuTable(table);
             OutputView.printTableBill(table);
             Payment payment = InputView.inputPayment();
             double totalMoney = table.getTotalMoneyWithPayment(payment);
             OutputView.printTotalMoney(totalMoney);
         }
+    }
+
+    private boolean checkNoMenuTable(Table table) throws IOException {
+        if(!table.hasMenu()){
+            OutputView.printNoMenu();
+            return startPos();
+        }
+        return true;
     }
 
     private void userWantToRegister(int function) throws IOException {
