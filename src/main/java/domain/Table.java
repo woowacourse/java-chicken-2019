@@ -11,4 +11,11 @@ public class Table {
     public String toString() {
         return Integer.toString(number);
     }
+
+    public int getNumber() {
+        return this.number;
+    }
+
+
+
 }

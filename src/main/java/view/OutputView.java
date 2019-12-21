@@ -14,6 +14,11 @@ public class OutputView {
     private static final String ASK_TO_CHOOSE_MAIN_FUNCTION = "\n## 원하는 기능을 선택하세요.";
     private static final String ASK_REENTER_ONLY_INTEGER = "입력이 정수가 아닙니다. 다시 입력하세요.";
     private static final String ASK_PUT_ONLY_MAIN_FUNC_MENU_NUMBER = "1, 2, 3 중에 입력하세요.";
+    private static final String ASK_TO_CHOOSE_TABLE_NUMBER = "## 테이블을 선택하세요.";
+    private static final String ASK_REENTER_NUMBER_IN_LIST = "목록에 있는 번호만 입력하세요.";
+    private static final String ASK_TO_CHOOSE_MENU_NUMBER = "\n## 등록할 메뉴를 선택하세요.";
+    private static final String ASK_TO_CHOOSE_QUANTITY = "\n## 메뉴의 수량을 입력하세요.";
+    private static final String ASK_REENTER_ORDER_QUANTITY = "주문은 1개 이상 99개 이하만 가능합니다.";
 
 
     public static void printTables(final List<Table> tables) {
@@ -59,5 +64,25 @@ public class OutputView {
 
     public static void askPutOnlyMainFuncMenuNumber() {
         System.out.println(ASK_PUT_ONLY_MAIN_FUNC_MENU_NUMBER);
+    }
+
+    public static void askToChooseTableNumber() {
+        System.out.println(ASK_TO_CHOOSE_TABLE_NUMBER);
+    }
+
+    public static void askReenterNumberInList() {
+        System.out.println(ASK_REENTER_NUMBER_IN_LIST);
+    }
+
+    public static void askToChooseMenuNumber() {
+        System.out.println(ASK_TO_CHOOSE_MENU_NUMBER);
+    }
+
+    public static void askToChooseQuantity() {
+        System.out.println(ASK_TO_CHOOSE_QUANTITY);
+    }
+
+    public static void askReenterOrderQuantity() {
+        System.out.println(ASK_REENTER_ORDER_QUANTITY);
     }
 }

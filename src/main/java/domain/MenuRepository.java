@@ -21,4 +21,12 @@ public class MenuRepository {
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
     }
+
+    public static boolean hasThisNumberOfMenu(int inputNumber) {
+        List<Integer> menuNumberList = new ArrayList<>();
+        for (Menu menu : menus) {
+            menuNumberList.add(menu.getNumber());
+        }
+        return menuNumberList.contains(inputNumber);
+    }
 }

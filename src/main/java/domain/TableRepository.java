@@ -19,4 +19,12 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static boolean hasThisNumberOfTable(int inputNumber) { // TODO refactor needed.
+        List<Integer> tableNumberList = new ArrayList<>();
+        for (Table table : tables) {
+            tableNumberList.add(table.getNumber());
+        }
+        return tableNumberList.contains(inputNumber);
+    }
 }

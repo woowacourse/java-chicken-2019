@@ -12,6 +12,10 @@ public class OrderedTable {
         putOrder(order);
     }
 
+    public int getTableNumber() {
+        return orderedTable.getNumber();
+    }
+
     public void putOrder(Order inputOrder) {
         for (Order order : orders) {
             if (order.isSameOrder(inputOrder.getOrderNumber())){
@@ -20,6 +24,10 @@ public class OrderedTable {
             }
         }
         orders.add(inputOrder);
-        return;
     }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
 }
