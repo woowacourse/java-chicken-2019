@@ -8,7 +8,6 @@ public class Table {
     }
 
     @Override
-    public String toString() {
-        return Integer.toString(number);
+    public String toString() { return Integer.toString(number);
     }
 }

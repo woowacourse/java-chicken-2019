@@ -37,4 +37,8 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public static void printProgramEnding(){
+        System.out.println("프로그램 종료");
+    }
 }
