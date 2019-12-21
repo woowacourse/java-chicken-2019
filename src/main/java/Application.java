@@ -80,6 +80,7 @@ public class Application {
                 OutputView.printPayment(tableNumber);
                 int paymentNumber = InputView.inputPaymentNumber();
                 int totalPayment = calcPayment(tableNumber, paymentNumber);
+                OutputView.printTotalPayment(totalPayment);
             }
 
 
