@@ -21,4 +21,8 @@ public class Order {
     public boolean isEmpty() {
         return this.menus.isEmpty();
     }
+
+    public String PriceInfo() {
+
+    }
 }

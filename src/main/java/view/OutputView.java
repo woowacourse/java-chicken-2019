@@ -18,7 +18,7 @@ public class OutputView {
     private static final String BOTTOM_LINE = "└ ─ ┘";
 
     public static void printMainMenu() {
-        System.out.println("\n##메인화면");
+        System.out.println("\n## 메인화면");
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
         System.out.println("3 - 프로그램 종료");

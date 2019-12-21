@@ -1,18 +1,14 @@
-import domain.Menu;
-import domain.MenuRepository;
 import utils.ErrorHandeler;
-import utils.OrderController;
 import utils.SelectionHandeler;
 import view.OutputView;
-
-import java.util.List;
 
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
+        boolean isContinue = true;
         do {
-
-        } while (!mainMenu());
+            isContinue = mainMenu();
+        } while (isContinue);
     }
 
     private static boolean mainMenu() {
@@ -21,9 +17,10 @@ public class Application {
         if (menuNumber == 1) {
             ErrorHandeler.makeOrderController();
         }
-        if(menuNumber == 2) {
+        if (menuNumber == 2) {
+            ErrorHandeler.makePaymentController();
         }
-        if(menuNumber == 3) {
+        if (menuNumber == 3) {
             return false;
         }
         return true;
