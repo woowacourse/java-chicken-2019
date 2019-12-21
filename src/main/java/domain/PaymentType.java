@@ -21,10 +21,6 @@ public enum PaymentType {
 				.orElseThrow(() -> new IllegalArgumentException(TYPE_ERROR));
 	}
 
-	public boolean isCreditCard() {
-		return this == CREDIT_CARD;
-	}
-
 	public boolean isCash() {
 		return this == CASH;
 	}
