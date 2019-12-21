@@ -11,6 +11,11 @@ public class Menus {
     
     public void addMenuByNumber(int menuNumber, int count) {
         Menu menu = MenuRepository.getMenuByNumber(menuNumber);
-        menus.put(menu, menus.get(menu) + count);
+        if (menus.containsKey(menu)) {
+            menus.put(menu, menus.get(menu) + count);
+            return;
+        }
+        
+        menus.put(menu, count);
     }
 }
