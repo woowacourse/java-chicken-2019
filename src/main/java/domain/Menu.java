@@ -22,7 +22,19 @@ public class Menu {
     	return Integer.parseInt(menu) == this.number;
     }
     
+    public String getName() {
+    	return this.name;
+    }
+    
     public int getNumber() {
     	return this.number;
+    }
+    
+    public int getPrice() {
+    	return this.price;
+    }
+    
+    public String getCategory() {
+    	return this.category.getValue();
     }
 }

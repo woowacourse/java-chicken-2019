@@ -14,4 +14,8 @@ public enum Category {
     public String toString() {
         return "[" + name + "]";
     }
+    
+    public String getValue() {
+    	return this.name;
+    }
 }

@@ -1,7 +1,9 @@
 package view;
 
 import constant.FunctionNumber;
+import constant.ProjectConstant;
 import constant.TableNumber;
+import constant.PaymentMethodNumber;
 
 import java.util.Scanner;
 
@@ -53,7 +55,7 @@ public class InputView {
 		String tableNumber = "";
 
 		try {
-			System.out.println("## 주문할 테이블을 선택하세요.");
+			System.out.println("## 테이블을 선택하세요.");
 			tableNumber = scanner.next();
 			checkValidationTableNumber(tableNumber);
 		} catch (RuntimeException e) {
@@ -61,15 +63,15 @@ public class InputView {
 		}
 		return tableNumber;
 	}
-	
+
 	private static void checkValidationTableNumber(String tableNumber) {
 		checkLength(tableNumber.length());
 		checkIsTableNumber(tableNumber);
 	}
-	
+
 	private static void checkIsTableNumber(String tableNumber) {
 		boolean check = false;
-		
+
 		for (TableNumber t : TableNumber.values()) {
 			if (check == true) {
 				break;
@@ -83,14 +85,40 @@ public class InputView {
 			throw new RuntimeException();
 		}
 	}
-	
+
 	public static String inputMenuNumber() {
 		System.out.println("## 등록할 메뉴를 선택하세요.");
 		return scanner.next();
 	}
-	
+
 	public static String inputMenuCount() {
 		System.out.println("\r\n## 메뉴의 수량을 입력하세요.");
 		return scanner.next();
+	}
+
+	public static String inputPaymentMethod() {
+		String method = ProjectConstant.EMPTY;
+
+		try {
+			System.out.println("## 신용 카드는 1번, 현금은 2번");
+			method = scanner.next();
+			checkMethodValidation(method);
+		} catch (RuntimeException e) {
+			method = inputPaymentMethod();
+		}
+		return method;
+	}
+	
+	private static void checkMethodValidation(String method) {
+		checkLength(method.length());
+		checkIsPaymentMethod(method);
+	}
+	
+	private static void checkIsPaymentMethod(String method) {
+		if (!(method.equals(PaymentMethodNumber.One.getValue()) 
+				|| method.equals(PaymentMethodNumber.Two.getValue()))) {
+			System.out.println("다시 선택해 주세요.");
+			throw new RuntimeException();
+		}
 	}
 }

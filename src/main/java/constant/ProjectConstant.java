@@ -12,5 +12,8 @@ public class ProjectConstant {
 	public final static int ASCII_NINE = 57;
 	public final static int NINETYNINE = 99;
 	
+	public final static double DISCOUNT = 0.95d; 
+	
 	public final static String EMPTY = "";
+	public final static String CHICKEN = "치킨";
 }

@@ -6,6 +6,7 @@ import view.InputView;
 import view.OutputView;
 import constant.FunctionNumber;
 import constant.ProjectConstant;
+import constant.PaymentMethodNumber;
 
 import java.util.List;
 
@@ -155,7 +156,43 @@ public class Application {
 	}
 
 	public static void pay() {
-
+		System.out.println();
+		OutputView.printTables(tables);
+		tableNumber = convertTableNumber(Integer.parseInt(InputView.inputTableNumber()));
+		if (!tableHasOrder()) {
+			OutputView.printSelectOrderedTable();
+			pay();
+			return;
+		}
+		doPay();
+	}
+	
+	private static boolean tableHasOrder() {
+		if (tables.get(tableNumber).getMenuListSize() == 0) {
+			return false;
+		}
+		return true;
+	}
+	
+	private static void doPay() {
+		tables.get(tableNumber).printMenu();
+		System.out.println("## " + tables.get(tableNumber).toString() + "번 테이블의 결제를 진행합니다.");
+		int paymentMethod = Integer.parseInt(InputView.inputPaymentMethod());
+		double amount = setAmount(paymentMethod);
+		OutputView.printAmount(amount);
+	}
+	
+	private static double setAmount(int paymentMethod) {
+		double amount = 0d;
+		
+		if (paymentMethod == Integer.parseInt(PaymentMethodNumber.One.getValue())) {
+			amount = tables.get(tableNumber).getAllMenuSum();
+		}
+		if (paymentMethod == Integer.parseInt(PaymentMethodNumber.Two.getValue())) {
+			amount = tables.get(tableNumber).discountForCash();
+		}
+		tables.get(tableNumber).clear();
+		return amount;
 	}
 
 	public static void main(String[] args) {
