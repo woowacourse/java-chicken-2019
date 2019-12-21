@@ -12,4 +12,8 @@ public class Bill {
     public void updateBill(Order order) {
         orders.add(order);
     }
+
+    public boolean hasOrders() {
+        return orders.size() > 0;
+    }
 }
