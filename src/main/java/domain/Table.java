@@ -25,6 +25,14 @@ public class Table {
         this.orders.clear();
     }
 
+    public Orders getOrders() {
+        return this.orders;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

@@ -62,4 +62,8 @@ public class OutputView {
             System.out.println(orderDTO.toString());
         }
     }
+
+    public static void printPaymentPolicy(int number) {
+        System.out.println(String.format("## %d번 테이블의 결제를 진행합니다.", number));
+    }
 }

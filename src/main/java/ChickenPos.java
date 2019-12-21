@@ -5,6 +5,7 @@ import domain.Table;
 import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
+import view.dto.PaymentPolicyDTO;
 
 import java.util.NoSuchElementException;
 
@@ -53,8 +54,19 @@ public class ChickenPos {
             OutputView.printNoOrders();
             doSelection(PAYMENT);
         }
+        PaymentPolicyDTO paymentPolicyDTO = getPaymentPolicyDTO(table);
 
         table.clear();
+    }
+
+    private PaymentPolicyDTO getPaymentPolicyDTO(Table table) {
+        OutputView.printOrders(table.getOrders());
+        OutputView.printPaymentPolicy(table.getNumber());
+        try {
+            return new PaymentPolicyDTO(InputView.inputPaymentPolicy());
+        } catch (IllegalArgumentException e) {
+            return getPaymentPolicyDTO(table);
+        }
     }
 
     private Table getTable() {
