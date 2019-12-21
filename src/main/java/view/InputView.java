@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 2019 Seungwan Park,
+ * All rights reserved.
+ */
+
 package view;
 
 import validation.InputValidator;

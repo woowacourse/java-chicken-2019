@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2019 Seungwan Park,
+ * All rights reserved.
+ */
 package domain;
 
 public enum Category {

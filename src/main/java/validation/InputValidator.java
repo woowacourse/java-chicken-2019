@@ -1,11 +1,12 @@
+/**
+ * Copyright (c) 2019 Seungwan Park,
+ * All rights reserved.
+ */
 package validation;
 
 import domain.MenuRepository;
 import domain.TableRepository;
 import view.OutputView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class InputValidator {
     private static final int ZERO = 0;

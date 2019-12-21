@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2019 Seungwan Park,
+ * All rights reserved.
+ */
 package controller;
 
 import domain.*;
@@ -31,12 +35,6 @@ public class PosController {
 
     public void chooseOrderOrPay(int inputNumber) {
         if (inputNumber == THREE) {
-//            for (OrderedTable orderedTable : orderedTables) {
-//                for (Order order : orderedTable.getOrders()) {
-//                    System.out.println("!!!");
-//                    System.out.println(order.getOrderNumber());
-//                }
-//            }
             return;
         }
 
