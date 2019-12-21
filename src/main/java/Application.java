@@ -14,6 +14,7 @@ public class Application {
         final List<Order> orderList = new ArrayList<>();
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
+        int tempTableNumber = 0;
 
         Choice posChoice;
         do {
@@ -21,12 +22,12 @@ public class Application {
             OutputView.printPosMenu();
             posChoice = validatePosChoice();
 
-            // 테이블 상태 출력
-            OutputView.printTables(tables);
 
             // 주문 등록 로직
             if (posChoice == Choice.ORDER) {
+                OutputView.printTables(tables, tempTableNumber);
                 final int tableNumber = validateTableNumber();
+                tempTableNumber = tableNumber;
                 OutputView.printMenus(menus);
                 int foodNumber = validateFoodNumber(menus);
                 Menu selectedMenu = menus.stream().filter(m -> m.isMatchNumber(foodNumber)).findAny().get();
@@ -34,7 +35,11 @@ public class Application {
             }
 
             // 결제 로직
-            if (posChoice == Choice.PAY){}
+            if (posChoice == Choice.PAY){
+                OutputView.printTables(tables, tempTableNumber);
+                final int tableNumber = validatePayableTableNumber();
+                tempTableNumber = tableNumber;
+            }
             OutputView.printOrderList(orderList);
         } while(posChoice != Choice.EXIT);
 
