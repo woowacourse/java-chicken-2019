@@ -19,4 +19,18 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+    
+    public void enterOrderAt(TableNumber tableNum) {
+    	tables.get(tableNum.getValue()).enterOrder();
+    }
+    
+    //테스트용
+    public void showTableStates() {
+    	int i = 0;
+    	for (Table table:tables) {
+    		System.out.println("테이블 번호: " + i);
+    		table.getOrders().showOrders();
+    		i++;
+    	}
+    }
 }

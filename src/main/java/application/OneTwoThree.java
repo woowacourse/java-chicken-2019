@@ -14,7 +14,7 @@ public class OneTwoThree {
 	public void enterOneTwoThree() {
 		try {
 			int input = InputView.enterApplication();
-			checkValidInt(input);
+			checkValidInput(input);
 			this.value = input;
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
@@ -22,7 +22,7 @@ public class OneTwoThree {
 		}
 	}
 		
-	private void checkValidInt(int input) {
+	private void checkValidInput(int input) {
 		if (input != ONE && input != TWO && input != THREE) {
 			throw new IllegalArgumentException("1,2,3만 입력해주세요");
 		}

@@ -29,4 +29,24 @@ public class InputView {
 			return enterTableNumber();
 		}
 	}
+	
+	public static int enterNumOfMenu() {
+		try {
+			System.out.println("##등록할 메뉴를 선택하세요");
+			return Integer.parseInt(scanner.nextLine().trim());
+		} catch (IllegalArgumentException e) {
+			System.out.println("적절한 번호를 입력해주세요");
+			return enterTableNumber();
+		}
+	}
+	
+	public static int enterAmountOfMenu() {
+		try {
+			System.out.println("##메뉴의 수량을 입력하세요");
+			return Integer.parseInt(scanner.nextLine().trim());
+		} catch (IllegalArgumentException e) {
+			System.out.println("적절한 숫자를 입력해주세요");
+			return enterTableNumber();
+		}
+	}
 }

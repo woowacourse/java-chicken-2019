@@ -1,5 +1,8 @@
 package application;
 
+import java.util.List;
+
+import domain.Table;
 import domain.TableRepository;
 import view.OutputView;
 import domain.MenuRepository;
@@ -20,5 +23,7 @@ public class PosMachine {
 		OutputView.printTables(tables.tables());
 		TableNumber tableNum = new TableNumber();
 		tableNum.enterNum();
+		tables.enterOrderAt(tableNum);
+		tables.showTableStates();
 	}
 }
