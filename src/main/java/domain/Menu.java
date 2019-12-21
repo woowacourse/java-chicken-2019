@@ -29,4 +29,9 @@ public class Menu {
     public int getPrice(){
         return price;
     }
+
+    public String getCategoryName(){
+        return category.name();
+    }
+
 }

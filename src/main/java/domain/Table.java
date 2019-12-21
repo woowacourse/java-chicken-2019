@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class Table {
 
+  private final String CHICKEN = "CHICKEN";
   private final int number;
   private HashMap<Menu, Integer> order = new HashMap<>();
 
@@ -46,6 +47,24 @@ public class Table {
       result += menu.getName() + " " + order.get(menu) + " " + menu.getPrice() + "\n";
     }
     return result;
+  }
+
+  public int getChickenAmount(){
+    int amount = 0;
+    for(Menu menu : order.keySet()){
+      if(menu.getCategoryName().equals(CHICKEN)){
+        amount += order.get(menu);
+      }
+    }
+    return amount;
+  }
+
+  public int getAllPrice(){
+    int price = 0;
+    for(Menu menu : order.keySet()){
+      price += (menu.getPrice()*order.get(menu));
+    }
+    return price;
   }
 
 }
