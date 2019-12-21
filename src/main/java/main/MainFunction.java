@@ -27,8 +27,13 @@ public class MainFunction {
 
         caseNumber = InputView.inputMainFunction();
         while (caseNumber != EXIT) {
-            order.orderTable();
-            caseNumber = InputView.inputMainFunction();
+            if(caseNumber == ORDER) {
+                order.orderTable();
+                caseNumber = InputView.inputMainFunction();
+            }
+            if(caseNumber == PAY){
+
+            }
         }
     }
 }

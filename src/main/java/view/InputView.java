@@ -7,17 +7,21 @@ import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
-    protected static final int MENU_CHICKEN_MIN = 1;
-    protected static final int MENU_CHICKEN_MAX = 6;
-    protected static final int MENU_BEVERAGE_MIN = 21;
-    protected static final int MENU_BEVERAGE_MAX = 22;
+    private static final int MENU_CHICKEN_MIN = 1;
+    private static final int MENU_CHICKEN_MAX = 6;
+    private static final int MENU_BEVERAGE_MIN = 21;
+    private static final int MENU_BEVERAGE_MAX = 22;
+    private static final int TABLE_MAX_NUMBER=8;
+    private static final int TABLE_MIDDLE_NUMBER=7;
     private static int caseNumber;
-    private static int MenuNumber;
-    private static int MenuQuantity;
+    private static int tableNumber;
+    private static int menuNumber;
+    private static int menuQuantity;
 
     public static int inputTableNumber() {
         System.out.println("## 주문할 테이블을 선택하세요.");
-        return scanner.nextInt();
+        exceptionInputTable();
+        return tableNumber;
     }
 
     /**
@@ -60,7 +64,7 @@ public class InputView {
     public static int InputMenu() {
         System.out.println("## 등록할 메뉴를 선택하세요");
         exceptionInputMenu();
-        return MenuNumber;
+        return menuNumber;
     }
 
     /**
@@ -70,10 +74,10 @@ public class InputView {
     */
     public static void exceptionInputMenu() {
         try {
-            MenuNumber = scanner.nextInt();
-            if ((MenuNumber < MENU_CHICKEN_MIN)
-                    || (MenuNumber > MENU_CHICKEN_MAX) && (MenuNumber < MENU_BEVERAGE_MIN)
-                    || (MenuNumber > MENU_BEVERAGE_MAX)) {
+            menuNumber = scanner.nextInt();
+            if ((menuNumber < MENU_CHICKEN_MIN)
+                    || (menuNumber > MENU_CHICKEN_MAX) && (menuNumber < MENU_BEVERAGE_MIN)
+                    || (menuNumber > MENU_BEVERAGE_MAX)) {
                 throw new IllegalArgumentException("해당 번호만 입력!!");
             }
         } catch (IllegalArgumentException e) {
@@ -89,13 +93,13 @@ public class InputView {
     public static int MenuQuantity(){
         System.out.println("## 메뉴의 수량을 입력하세요");
         exceptionINputMenuQuantity();
-        return MenuQuantity;
+        return menuQuantity;
     }
 
     public static void exceptionINputMenuQuantity(){
         try {
-            MenuQuantity = scanner.nextInt();
-            if ((MenuQuantity < 0) || (MenuQuantity > 99)) {
+            menuQuantity = scanner.nextInt();
+            if ((menuQuantity < 0) || (menuQuantity > 99)) {
                 throw new IllegalArgumentException("수량은 0이상,99를 초과할수 없습니다.");
             }
         } catch (IllegalArgumentException e) {
@@ -107,5 +111,36 @@ public class InputView {
             exceptionInputMain();
         }
     }
+
+    /**
+     * 계산할 테이블의 번호를 입력하는 메소드입니다.
+     *
+     * @return 테이블의 번호
+     */
+    public static int inputPaymentTable() {
+        System.out.println("## 테이블을 선택하세요.");
+        exceptionInputTable();
+        return tableNumber;
+    }
+
+    /**
+     * 테이블 번호에 대한 예외처리
+     */
+    public static void exceptionInputTable(){
+        try {
+            tableNumber = scanner.nextInt();
+            if ((tableNumber < 0) || (tableNumber > TABLE_MAX_NUMBER)||(tableNumber == TABLE_MIDDLE_NUMBER)) {
+                throw new IllegalArgumentException("해당 테이블 번호만 입력!");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.toString());
+            exceptionInputMain();
+        } catch (InputMismatchException e) {
+            System.out.println("정수만 입력");
+            scanner.nextLine();
+            exceptionInputMain();
+        }
+    }
+
 
 }

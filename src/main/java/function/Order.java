@@ -40,7 +40,7 @@ public class Order {
         final int menuNumber = InputView.InputMenu();
 
         final int MenuQuantity = InputView.MenuQuantity();
-        calculateTableMoney(tableNumber,menuNumber,MenuQuantity);
+        calculateTableMoney(tableNumber, menuNumber, MenuQuantity);
     }
 
     /**
@@ -54,8 +54,6 @@ public class Order {
 
         MoneySum = temp.get(0).calculate(MenuQuantity);
 
-        tableMoney.put(TABLES.get(tableNumber),MoneySum+previousPrice);
-
-        System.out.println(tableMoney.get(TABLES.get(tableNumber)));
+        tableMoney.put(TABLES.get(tableNumber), MoneySum + previousPrice);
     }
 }
