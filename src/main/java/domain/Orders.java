@@ -13,4 +13,12 @@ public class Orders {
 		orders.add(order);
 	}
 
+	public boolean isOrderIn(int tableNumber) {
+		for (Order order : orders) {
+			if (order.isTableEquals(tableNumber)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

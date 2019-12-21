@@ -33,14 +33,15 @@ public class Pos {
 	}
 
 	private void registerOrder() {
-		final List<Table> tables = TableRepository.tables();
-		OutputView.printTables(tables);
-		final int tableNumber = InputView.inputTableNumber();
-		final List<Menu> menus = MenuRepository.menus();
-		OutputView.printMenus(menus);
-		final int menuNumber = InputView.inputMenuNumber();
+		OutputView.printTables(TableRepository.tables(), orders);
+		Table table = new Table(InputView.inputTableNumber());
+
+		OutputView.printMenus(MenuRepository.menus());
+		Menu menu = MenuRepository.getMenu(InputView.inputMenuNumber());
+
 		MenuAmount menuAmount = new MenuAmount(InputView.inputMenuAmount());
-		Order order = new Order(tableNumber, menuNumber, menuAmount);
+
+		Order order = new Order(table, menu, menuAmount);
 		orders.add(order);
 	}
 }

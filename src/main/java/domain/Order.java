@@ -1,13 +1,17 @@
 package domain;
 
 public class Order {
-	private final int tableNumber;
-	private final int menuNumber;
+	private final Table table;
+	private final Menu menu;
 	private final MenuAmount menuAmount;
 
-	public Order(int tableNumber, int menuNumber, MenuAmount menuAmount) {
-		this.tableNumber = tableNumber;
-		this.menuNumber = menuNumber;
+	public Order(Table table, Menu menu, MenuAmount menuAmount) {
+		this.table = table;
+		this.menu = menu;
 		this.menuAmount = menuAmount;
+	}
+
+	public boolean isTableEquals(int tableNumber) {
+		return table.getNumber() == tableNumber;
 	}
 }
