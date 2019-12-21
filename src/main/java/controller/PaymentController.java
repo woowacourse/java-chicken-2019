@@ -1,8 +1,17 @@
 package controller;
 
-public class PaymentController {
+import domain.OrderedTable;
 
-    public void paymentController() {
-        System.out.println("PAYMENT!");
+import java.util.ArrayList;
+import java.util.List;
+
+public class PaymentController {
+    public List<OrderedTable> orderedTables = new ArrayList<>();
+
+
+    public void paymentController(List<OrderedTable> inputOrderedTables) {
+        orderedTables = inputOrderedTables;
+
+
     }
 }

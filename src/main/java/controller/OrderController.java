@@ -6,10 +6,12 @@ import view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
-import static validation.InputValidator.inputTableNumberValidator;
+import static domain.MenuRepository.getMenu;
 import static view.InputView.*;
 
 public class OrderController {
+
+
     public List<OrderedTable> orderedTables = new ArrayList<>();
 
     public List<OrderedTable> orderController(List<Table> tables, List<Menu> menus) {
@@ -17,8 +19,11 @@ public class OrderController {
         int tableNumber = controlTableChoose();
         OutputView.printMenus(menus);
         int menuNumber = controlMenuChoose();
+        Menu newMenu = getMenu(menuNumber);
+
         int orderQuantity = controlQuantityChoose();
-        Order order = makeOrder(menuNumber, orderQuantity);
+
+        Order order = makeOrder(newMenu, orderQuantity);
         orderedTables.add(makeOrderedTable(tableNumber, order));
         return orderedTables;
     }
@@ -38,8 +43,8 @@ public class OrderController {
         return getOrderQuantity();
     }
 
-    public Order makeOrder(int menuNumber, int orderQuantity) {
-        Order order = new Order(menuNumber, orderQuantity);
+    public Order makeOrder(Menu newMenu, int orderQuantity) {
+        Order order = new Order(newMenu, orderQuantity);
         return order;
     }
 

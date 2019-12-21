@@ -48,7 +48,7 @@ public class PosController {
         }
 
         PaymentController paymentController = new PaymentController();
-        paymentController.paymentController();
+        paymentController.paymentController(orderedTables);
 
 
     }

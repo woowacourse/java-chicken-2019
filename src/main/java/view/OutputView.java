@@ -1,8 +1,10 @@
 package view;
 
 import domain.Menu;
+import domain.OrderedTable;
 import domain.Table;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OutputView {
@@ -19,15 +21,30 @@ public class OutputView {
     private static final String ASK_TO_CHOOSE_MENU_NUMBER = "\n## 등록할 메뉴를 선택하세요.";
     private static final String ASK_TO_CHOOSE_QUANTITY = "\n## 메뉴의 수량을 입력하세요.";
     private static final String ASK_REENTER_ORDER_QUANTITY = "주문은 1개 이상 99개 이하만 가능합니다.";
+    private static final String TABLE_LIST = "## 테이블 목록";
 
 
     public static void printTables(final List<Table> tables) {
-        System.out.println("## 테이블 목록");
+        System.out.println(TABLE_LIST);
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
         printLine(BOTTOM_LINE, size);
     }
+
+    public static void printOrderedTables(List<OrderedTable> orderedTables, List<Table> tables) {
+        List<Integer> orderedTableNumbers = new ArrayList<>();
+        for (OrderedTable orderedTable : orderedTables) {
+            orderedTableNumbers.add(orderedTable.getTableNumber());
+        }
+        System.out.println(TABLE_LIST);
+        final int size = tables.size();
+        printLine(TOP_LINE, size);
+        printTableNumbers(tables);
+        printLine(BOTTOM_LINE, size);
+
+    }
+
 
     public static void printMenus(final List<Menu> menus) {
         for (final Menu menu : menus) {

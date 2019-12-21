@@ -22,6 +22,15 @@ public class MenuRepository {
         return Collections.unmodifiableList(menus);
     }
 
+    public static Menu getMenu(int inputNumber) {
+        for (Menu menu : menus) {
+            if (menu.getNumber() == inputNumber) {
+                return menu;
+            }
+        }
+        return null;
+    }
+
     public static boolean hasThisNumberOfMenu(int inputNumber) {
         List<Integer> menuNumberList = new ArrayList<>();
         for (Menu menu : menus) {
@@ -29,4 +38,5 @@ public class MenuRepository {
         }
         return menuNumberList.contains(inputNumber);
     }
+
 }
