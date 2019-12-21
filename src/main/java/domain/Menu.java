@@ -17,4 +17,12 @@ public class Menu {
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
+    
+    public boolean checkIsMenuNumber(String menu) {
+    	return Integer.parseInt(menu) == this.number;
+    }
+    
+    public int getNumber() {
+    	return this.number;
+    }
 }
