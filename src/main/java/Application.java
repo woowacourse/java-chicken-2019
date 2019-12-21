@@ -68,16 +68,15 @@ public class Application {
                 }
 
                 for(int i = 0 ; i < menuCount ; i++){
-                    System.out.println(MenuRepository.getMenu(menuNumber));
-                    tables.get(tableNumber).addMenu(MenuRepository.getMenu(menuNumber));
+                    TableRepository.getSelectTable(tableNumber).addMenu(MenuRepository.getMenu(menuNumber));
                 }
-
                 OutputView.checkOrder[TableRepository.getTableListIndex(tableNumber)] = true;
             }
 
             if(funcNumber == 2){
                 OutputView.printTables(tables);
                 int tableNumber = InputView.inputTableNumber();
+
                 OutputView.printOrderHistory(tableNumber);
                 OutputView.printPayment(tableNumber);
                 int paymentNumber = InputView.inputPaymentNumber();

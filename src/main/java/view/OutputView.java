@@ -70,7 +70,6 @@ public class OutputView {
     public static void printOrderHistory(int tableNumber){
         System.out.println("## 주문내역");
         System.out.println("메뉴 | 메뉴번호 | 수량 | 금액");
-        System.out.println(TableRepository.getSelectTable(tableNumber));
         System.out.println(TableRepository.getSelectTable(tableNumber).getMenuHistoryStr());
     }
 
@@ -81,6 +80,7 @@ public class OutputView {
     public static void printTotalPayment(int totalPayment){
         System.out.println("## 최종 결제할 금액");
         System.out.println(totalPayment + "원");
+        System.out.println(totalPayment + "원이 결제되었습니다");
     }
 
 }
