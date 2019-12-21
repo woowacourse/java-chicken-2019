@@ -11,7 +11,7 @@ public class OutputView {
 	private static final String TABLE_FORMAT = "| %s |";
 	private static final String BOTTOM_LINE = "└ ─ ┘";
 	private static final String ORDER_BOTTOM_LINE = "└ W ┘";
-	private static final String ORDER_FORMAT = "%s %d %d";
+	private static final String ORDER_FORMAT = "%s %d %d\n";
 
 	public static void printTables(final List<Table> tables) {
 		System.out.println("## 테이블 목록");
