@@ -13,11 +13,10 @@ public class Application {
     private static final int EXIT = 3;
 
     private static final List<Table> tables = TableRepository.tables();
-//    private static final int tableNumber = InputView.inputTableNumber();
     private static final List<Menu> menus = MenuRepository.menus();
 
     public static void main(String[] args) {
-        doMainService();
+        while (doMainService() != EXIT) ;
     }
 
     private static int doMainService() {
@@ -38,5 +37,6 @@ public class Application {
         Table table = TableRepository.findTableByNumber(InputView.getInputOfTableNumber());
         OutputView.printMenus(menus);
         Menu menu = MenuRepository.findMenuByNumber(InputView.getInputOfMenuNumber());
+        table.addMenuQuantity(menu, InputView.getInputOfMenuQuantity(table, menu));
     }
 }

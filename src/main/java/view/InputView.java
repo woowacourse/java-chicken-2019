@@ -1,5 +1,7 @@
 package view;
 
+import domain.Menu;
+import domain.Table;
 import exceptions.Validator;
 
 import java.util.Scanner;
@@ -40,6 +42,19 @@ public class InputView {
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e);
             return getInputOfMenuNumber();
+        }
+    }
+
+    public static int getInputOfMenuQuantity(Table table, Menu menu) {
+        System.out.println("## 메뉴의 수량을 입력하세요.");
+        String inputOfMenuQuantity = scanner.nextLine();
+        try {
+            Validator.checkInputOfMenuQuantity(inputOfMenuQuantity);
+            Validator.checkQuantityExceed(table, menu, Integer.parseInt(inputOfMenuQuantity));
+            return Integer.parseInt(inputOfMenuQuantity);
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e);
+            return getInputOfMenuQuantity(table, menu);
         }
     }
 }
