@@ -20,14 +20,6 @@ public class OutputView {
         System.out.println("## 3 - 프로그램 종료");
     }
 
-//    public static void printTables(final List<Table> tables) {
-//        System.out.println("## 테이블 목록");
-//        final int size = tables.size();
-//        printLine(TOP_LINE, size);
-//        printTableNumbers(tables);
-//        printLine(BOTTOM_LINE, size);
-//    }
-
     public static void printTables(final List<Table> tables, int tableNumber){
         System.out.println("## 테이블 목록");
         final int size = tables.size();
