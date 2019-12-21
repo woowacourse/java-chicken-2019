@@ -70,4 +70,20 @@ public class OutputView {
         System.out.println("최종 결제할 금액");
         System.out.println(price + "원");
     }
+
+    public static void printAmountWarning() {
+        System.out.println("한 메뉴의 수량은 1개 이상 99개 이하여야 합니다.");
+    }
+
+    public static void printTableNumWarning() {
+        System.out.println("테이블은 1,2,3,5,6,8 중에서 가능합니다.");
+    }
+
+    public static void printMenuNumWarning() {
+        System.out.println("메뉴판에 있는 번호 중에서 골라야 합니다.");
+    }
+
+    public static void printActionNumWarning() {
+        System.out.println("1,2,3 중에서 골라야 합니다.");
+    }
 }

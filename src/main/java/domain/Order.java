@@ -1,6 +1,8 @@
 package domain;
 
 public class Order {
+    public static final int MAX = 99;
+    public static final int MIN = 1;
     private final Menu menu;
     private final int amount; // 수량
 
