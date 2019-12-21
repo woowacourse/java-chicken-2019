@@ -21,8 +21,12 @@ public class OrderController {
 
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
-        final int menuNumber = InputView.inputMenuNumber();
 
+        final Menu menu = MenuRepository.getMenu(InputView.inputMenuNumber());
+
+        final int menuQuantity = InputView.inputMenuQuantity();
+
+        tables.addMenu(tableNumber, menu, menuQuantity);
     }
 
 }

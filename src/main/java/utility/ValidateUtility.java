@@ -2,7 +2,7 @@ package utility;
 
 import view.OutputView;
 
-public class validateUtility {
+public class ValidateUtility {
     public static boolean checkInteger(String inputString) {
         try {
             Integer.parseInt(inputString);
@@ -11,5 +11,9 @@ public class validateUtility {
             OutputView.printNotInteger();
             return false;
         }
+    }
+
+    public static boolean validateMenuQuantity(int menuQuantityNumber) {
+        return menuQuantityNumber > 0 && menuQuantityNumber < 100;
     }
 }

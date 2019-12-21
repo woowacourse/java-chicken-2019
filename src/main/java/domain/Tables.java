@@ -3,6 +3,7 @@ package domain;
 import view.OutputView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static view.OutputView.*;
 
@@ -43,4 +44,17 @@ public class Tables {
             }
         }
     }
+
+    public void addMenu(int tableNumber, Menu menu, int menuQuantity) {
+        for (int i = 0; i < menuQuantity; i++) {
+            getTable(tableNumber).addMenu(menu);
+        }
+    }
+
+    private Table getTable(int tableNumber) {
+        List<Table> table;
+        table = tables.stream().filter(p -> p.isEqualNumber(tableNumber)).collect(Collectors.toList());
+        return table.get(0);
+    }
+
 }

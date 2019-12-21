@@ -25,4 +25,8 @@ public class Table {
         return menus.size() > 0;
     }
 
+    public void addMenu(Menu menu) {
+        menus.add(menu);
+    }
+
 }

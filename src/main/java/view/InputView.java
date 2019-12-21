@@ -2,7 +2,7 @@ package view;
 
 import domain.MenuRepository;
 import domain.Tables;
-import utility.validateUtility;
+import utility.ValidateUtility;
 
 import java.util.Scanner;
 
@@ -39,11 +39,21 @@ public class InputView {
         return mainMenuNumber;
     }
 
+    public static int inputMenuQuantity() {
+        int menuQuantityNumber = 0;
+        System.out.println("## 메뉴의 수량을 선택하세요");
+        do {
+            menuQuantityNumber = inputInteger();
+        } while (!ValidateUtility.validateMenuQuantity(menuQuantityNumber));
+
+        return menuQuantityNumber;
+    }
+
     private static int inputInteger() {
         String input;
         do {
             input = scanner.nextLine();
-        } while (!validateUtility.checkInteger(input));
+        } while (!ValidateUtility.checkInteger(input));
         return Integer.parseInt(input);
     }
 

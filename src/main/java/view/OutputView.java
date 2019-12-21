@@ -45,6 +45,22 @@ public class OutputView {
         System.out.println("화면에 출력된 테이블 정보에 있는 숫자를 입력해주세요.");
     }
 
+    public static void printOrderedFormat() {
+        System.out.print(TABLE_ORDERED_FORMAT);
+    }
+
+    public static void printBottomLine() {
+        System.out.print(BOTTOM_LINE);
+    }
+
+    public static void printNotInteger() {
+        System.out.println(MESSAGE_NOT_INTEGER);
+    }
+
+    public static void printTableNumber(Table table) {
+        System.out.printf(TABLE_FORMAT, table);
+    }
+
     private static void printLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
@@ -58,24 +74,9 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printTableNumber(Table table) {
-        System.out.printf(TABLE_FORMAT, table);
-    }
-
     private static void printBottomLine(Tables tables) {
         tables.orderPrintBottomState();
         System.out.println();
     }
 
-    public static void printOrderedFormat() {
-        System.out.print(TABLE_ORDERED_FORMAT);
-    }
-
-    public static void printBottomLine() {
-        System.out.print(BOTTOM_LINE);
-    }
-
-    public static void printNotInteger() {
-        System.out.println(MESSAGE_NOT_INTEGER);
-    }
 }

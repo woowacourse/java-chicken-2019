@@ -5,6 +5,7 @@ import view.OutputView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MenuRepository {
 
@@ -33,5 +34,11 @@ public class MenuRepository {
         }
         OutputView.printInputMenuNumberException();
         return false;
+    }
+
+    public static Menu getMenu(int menuNumber) {
+        List<Menu> menu;
+        menu = menus.stream().filter(p -> p.isEqualNumber(menuNumber)).collect(Collectors.toList());
+        return menu.get(0);
     }
 }
