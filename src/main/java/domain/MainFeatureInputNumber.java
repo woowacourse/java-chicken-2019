@@ -17,4 +17,8 @@ public class MainFeatureInputNumber {
         } while (!isValid(inputString));
         return Integer.parseInt(inputString);
     }
+
+    private static boolean isValid(String inputString) {
+        return isNumeric(inputString) && isFeatureNumber(inputString);
+    }
 }
