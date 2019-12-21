@@ -21,6 +21,11 @@ public class InputView {
                 .orElseGet(InputView::inputMainMenu);
     }
 
+    public static int inputMenuNumber() {
+        System.out.println("## 등록할 메뉴를 선택하세요.");
+        return inputAsNumber();
+    }
+
     public static boolean isMainInputValid(int input) {
         return input == ONE || input == TWO || input == THREE;
     }
