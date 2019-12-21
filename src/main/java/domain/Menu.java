@@ -17,4 +17,13 @@ public class Menu {
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public boolean isChicken() {
+        return category.isChicken(this.category);
+    }
+
 }
