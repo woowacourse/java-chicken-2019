@@ -7,6 +7,7 @@ import domain.Table;
 import java.util.HashMap;
 import java.util.List;
 import view.InputView;
+import view.OutputView;
 
 public class Pos {
 
@@ -68,6 +69,7 @@ public class Pos {
       return;
     }
 
+    OutputView.printEndPos();
     return;
   }
 
