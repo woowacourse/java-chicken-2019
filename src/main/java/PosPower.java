@@ -1,11 +1,7 @@
 public class PosPower {
     private boolean power;
 
-    public PosPower(boolean power) {
-        this.power = power;
-    }
-
-    public void turnOn() {
+    public PosPower() {
         this.power = true;
     }
 
