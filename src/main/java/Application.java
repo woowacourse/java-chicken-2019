@@ -4,6 +4,7 @@ import sun.tools.jconsole.Tab;
 import view.InputView;
 import view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -16,15 +17,20 @@ public class Application {
             int programIndex = getProgramIndex();
             if (programIndex == 3)
                 break;
-            int tableIndex = getTableNumber();
-            if (programIndex == 1) {
-                Order order = new Order(TableRepository.getTable(tableIndex));
-                order.getOrder();
-            }
-            if (programIndex == 2) {
-                Payment payment = new Payment(TableRepository.getTable(tableIndex));
-                payment.pay();
-            }
+            OrderOrPay(programIndex);
+        }
+        System.out.println("프로그램을 종료합니다.");
+    }
+
+    public static void OrderOrPay(int programIndex) {
+        int tableIndex = getTableNumber();
+        if (programIndex == 1) {
+            Order order = new Order(TableRepository.getTable(tableIndex));
+            order.getOrder();
+        }
+        if (programIndex == 2) {
+            Payment payment = new Payment(TableRepository.getTable(tableIndex));
+            payment.pay();
         }
     }
 
