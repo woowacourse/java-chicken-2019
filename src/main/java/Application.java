@@ -11,7 +11,7 @@ public class Application {
     }
 
     public static void actionLogic(int action) {
-        RunPOS runPOS = new RunPOS(action);
+        RunPOS runPOS = new RunPOS();
         if (action == 1) runPOS.order();
         if (action == 2) runPOS.pay();
     }

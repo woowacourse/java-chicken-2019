@@ -11,7 +11,7 @@ public class RunPOS {
 
     private final Table table;
 
-    public RunPOS(int action) {
+    public RunPOS() {
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 
@@ -29,13 +29,13 @@ public class RunPOS {
         Menu menu = InputView.inputOrderMenu();
         int count = InputView.inputOrderCount();
         table.addMenus(menu, count);
-
     }
 
     /**
      * 결제하기 담당
      */
     public void pay() {
+        OutputView.printOrderedMenus(table);
     }
 
 

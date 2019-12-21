@@ -19,7 +19,7 @@ public final class ExceptionDetect {
 
     public static final int tableInputException(int number) {
         while (!TableRepository.isExists(number)) {
-            System.out.println("없는 테이블 번호입니다. 테이블 중 다시 선택하세요.");
+            System.out.println("없는 테이블 번호입니다. 위의 테이블 중 다시 선택하세요.");
             number = scanner.nextInt();
         }
         return number;
@@ -27,7 +27,7 @@ public final class ExceptionDetect {
 
     public static final int orderMenuException(int number) {
         while (!MenuRepository.isExists(number)) {
-            System.out.println("없는 메뉴 번호입니다. 위 목록 중 다시 선택하세요.");
+            System.out.println("없는 메뉴 번호입니다. 위의 메뉴 목록 중 다시 선택하세요.");
             number = scanner.nextInt();
         }
         return number;

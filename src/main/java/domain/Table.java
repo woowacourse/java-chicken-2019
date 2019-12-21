@@ -31,4 +31,17 @@ public class Table {
     public boolean isSame(int number) {
         return this.number == number;
     }
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public void printOrderList() {
+        for (int i = 0 ; i < menus.size() ; i++) {
+            String name = menus.get(i).getName();
+            int count = counts.get(i);
+            int sum = menus.get(i).getPrice() * count;
+            System.out.println(name + '\t'+ count + '\t' + sum);
+        }
+    }
 }

@@ -26,10 +26,6 @@ public class OutputView {
     }
 
     private static void printLine(final String line, final int count, final List<Table> tables) {
-//        for (int index = 0; index < count; index++) {
-//            System.out.print(line);
-//        }
-
         for (Table table : tables) {
             if (line == BOTTOM_LINE && table.isOrdered()) {
                 System.out.print(ORDERED_BOTTOM_LINE);
@@ -45,5 +41,11 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+
+    public static void printOrderedMenus(final Table table) {
+        System.out.println("## 주문 내역");
+        System.out.println("메뉴 \t수량 \t금액");
+        table.printOrderList();
     }
 }
