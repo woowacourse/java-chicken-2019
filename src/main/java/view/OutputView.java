@@ -11,14 +11,13 @@ import java.util.stream.Collectors;
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
-    private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BOTTOM_LINE = "└ %s ┘";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
-        final int size = tables.size();
-        printLine(TOP_LINE, size);
+        printLine(TOP_LINE, tables);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printLine(BOTTOM_LINE, tables);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -27,11 +26,19 @@ public class OutputView {
         }
     }
 
-    private static void printLine(final String line, final int count) {
-        for (int index = 0; index < count; index++) {
-            System.out.print(line);
+    private static void printLine(final String line, final List<Table> tables) {
+        for (Table table : tables) {
+            String noOrder = getOrderStatus(table);
+            System.out.print(String.format(line, noOrder));
         }
         System.out.println();
+    }
+
+    private static String getOrderStatus(Table table) {
+        if (table.hasNotOrders()) {
+            return "-";
+        }
+        return "₩";
     }
 
     private static void printTableNumbers(final List<Table> tables) {
