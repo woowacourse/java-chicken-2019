@@ -13,4 +13,8 @@ public class Menus {
         }
         this.menus = menus;
     }
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
 }

@@ -1,7 +1,4 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import domain.*;
 import view.InputView;
 import view.OutputView;
 
@@ -20,6 +17,10 @@ public class Application {
 
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
+
+        Menus orderedMenus = InputView.inputMenus();
+        OutputView.printMenus(orderedMenus.getMenus());
+
     }
 
     public static void placeOrder() {
