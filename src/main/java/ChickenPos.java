@@ -23,17 +23,16 @@ public class ChickenPos {
         return new ChickenPos();
     }
 
-    public void on() {
+    public void mainMenu() {
         int selectNumber = InputView.inputMainMenu();
 
         if (selectNumber < MENU || selectNumber > OFF) {
-            on();
+            mainMenu();
             return;
         }
 
         while (untilOff(selectNumber)) {
             doSelection(selectNumber);
-
             selectNumber = InputView.inputMainMenu();
         }
     }
@@ -99,7 +98,7 @@ public class ChickenPos {
             int menuSize = InputView.inputMenuAmount();
 
             return menu.toOrder(menuSize);
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException | IllegalArgumentException e) {
             OutputView.printErrorLog(e.getMessage());
             return getOrder();
         }
