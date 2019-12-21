@@ -7,15 +7,12 @@ import view.OutputView;
 public class Application {
 
     public static void main(String[] args) {
-        int selectRunner = selectRunner();
         while (true) {
-            RunnerType runnerType = RunnerType.findRunnerType(selectRunner);
             try {
-                runnerType.runByRunnerType();
+                findRunnerTypeWithInput().runByRunnerType();
             } catch (ExitException e) {
                 break;
             }
-            selectRunner = selectRunner();
         }
     }
 
@@ -23,5 +20,15 @@ public class Application {
         OutputView.printMain();
         return InputView.inputRunnerNumber();
     }
+
+    private static RunnerType findRunnerTypeWithInput() {
+        try {
+            return RunnerType.findRunnerType(selectRunner());
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorRetryMessage(e);
+            return findRunnerTypeWithInput();
+        }
+    }
+
 
 }
