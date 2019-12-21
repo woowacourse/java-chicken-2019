@@ -21,6 +21,10 @@ public class Menu {
         return price;
     }
 
+    public boolean isChicken() {
+        return category == Category.CHICKEN;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o instanceof Integer) {

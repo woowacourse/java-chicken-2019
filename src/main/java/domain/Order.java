@@ -15,6 +15,13 @@ public class Order {
         return menu.getPrice() * quantity;
     }
 
+    public int countChicken() {
+        if (menu.isChicken()) {
+            return quantity;
+        }
+        return 0;
+    }
+
     @Override
     public String toString() {
         return menu.getName() + " " + quantity + " " + menu.getPrice();
