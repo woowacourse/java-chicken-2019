@@ -5,6 +5,7 @@ import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
 import domain.Register;
+import domain.Payment;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class Application {
         	if (order == REGISTER) {
             	Register.startOrder(tables, menus);
             } else if (order == PAY) {
-            	
+            	Payment.startPayment();
             }
         	OutputView.printMain();
         	order = InputView.inputOrder();
