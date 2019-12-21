@@ -32,7 +32,6 @@ public class Application {
                 int menuCount = InputView.inputMenuCount();
 
 
-
             }
 
 //            final int tableNumber = InputView.inputTableNumber();
