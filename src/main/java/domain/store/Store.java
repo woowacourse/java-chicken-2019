@@ -192,6 +192,43 @@ public class Store {
     }
 
     /**
+     * getMenuNumber는 주문할 메뉴의 개수를 입력받아 반환하는 메서드이다.
+     * checkMenuCodeException을 통해 메뉴 개수에 문제가 있는지 검사한다.
+     *
+     * @return 입력받은 메뉴 개수를 반환한다.
+     */
+    private int getMenuNumber() {
+        int menuNumber;
+
+        try {
+            menuNumber = InputView.inputMenuNumber();
+            checkMenuNumberException(menuNumber);
+        } catch (IllegalArgumentException e) {
+            System.out.println("잘못된 값입니다. 값을 다시 입력해주세요");
+            return getMenuNumber();
+        }
+        return menuNumber;
+    }
+
+    /**
+     * checkMenuNumberException은 메뉴 개수에 문제가 있는지 확인하여 예외처리하는 메서드이다.
+     * 여기서 생길 수 있는 문제는 다음 세 가지이다.
+     * 1. 만약 주문 개수가 양수가 아니라면?
+     * 2. 만약 주문을 한번에 99개 넘게 하면?
+     * 3. 이전에 했던 주문과 합쳐봤더니 주문한 메뉴가 99개가 넘으면?
+     * 단, 3번 문제는 테이블쪽의 구현이 끝난 후에 구현이 가능하므로
+     * 1,2번 문제에 대해서만 구현하였다.
+     *
+     * @param menuCode 입력된 메뉴 개수이다.
+     * @throws IllegalArgumentException 잘못된 개수를 전달하였다면 예외처리를 한다.
+     */
+    private void checkMenuNumberException(int menuNumber) {
+        if (menuNumber > 99 || menuNumber <= 0) {
+            throw new IllegalArgumentException("확인할 수 없는 메뉴입니다.");
+        }
+    }
+
+    /**
      * sales는 매장을 운영하는 메서드이다.
      * 이 메서드가 호출되면, 매장이 문을 닫을때까지 영업을 진행한다.
      */
@@ -224,7 +261,7 @@ public class Store {
         tableNumber = getOrderTableNumber();
         OutputView.printMenus(menus);
         menuCode = getMenuCode();
-        //menuNumber = getMenuNumber();
+        menuNumber = getMenuNumber();
     }
 
     /**
