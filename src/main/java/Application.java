@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Application {
     private static List<Table> tables = TableRepository.tables();
+    private static List<Menu> menus = MenuRepository.menus();
 
     public static void main(String[] args) {
         int functionNumber = InputView.inputFunctionNumber();
@@ -25,23 +26,22 @@ public class Application {
             doIfNumberIsOne();
         }
         if (functionNumber == 2) {
-            final int tableBillNumber = InputView.inputTableBillNumber();
+            doIfNumberIsTwo();
         }
 
     }
 
     private static void doIfNumberIsOne() {
         final int tableNumber = InputView.inputTableNumber();
-        final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
         for (Table table: tables) {
             if (table.toString().equals(Integer.toString(tableNumber))) {
-                setMenu(menus, table);
+                setMenu(table);
             }
         }
     }
 
-    private static void setMenu(List<Menu> menus, Table table) {
+    private static void setMenu(Table table) {
         final int menuNumber = InputView.inputMenuNumber();
         final int MenuCount =  InputView.inputMenuCount();
         for (Menu menu: menus) {
@@ -49,5 +49,18 @@ public class Application {
                 table.setMenu(menu.getName(), MenuCount, menu.getPrice());
             }
         }
+    }
+
+    private static void doIfNumberIsTwo() {
+        final int tableBillNumber = InputView.inputTableBillNumber();
+        for (Table table: tables) {
+            if (table.toString().equals(Integer.toString(tableBillNumber))) {
+                setBill(table);
+            }
+        }
+    }
+
+    private static void setBill(Table table) {
+        
     }
 }

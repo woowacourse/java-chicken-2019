@@ -28,6 +28,11 @@ public class OutputView {
         }
     }
 
+    public static void printBill(Table table) {
+        System.out.println("## 주문 내역");
+
+    }
+
     private static void printTopLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);

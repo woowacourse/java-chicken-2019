@@ -1,20 +1,29 @@
 package domain;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Table {
     private final int number;
     private boolean isTable;
-    private String name;
-    private int menuNumber;
-    private int price;
+    private final List<Bill> bills = new ArrayList<>();
 
     public Table(final int number) {
         this.number = number;
     }
 
     public void setMenu(String name, int menuNumber, int price) {
-        this.name = name;
-        this.menuNumber = menuNumber;
-        this.price = price;
+        boolean newBill = true;
+        for (Bill bill: bills) {
+            if (bill.isName(name)) {
+                bill.setBill(menuNumber, price);
+                newBill = false;
+            }
+        }
+        if (newBill) {
+            this.bills.add(new Bill(name));
+        }
         this.isTable = true;
     }
 
