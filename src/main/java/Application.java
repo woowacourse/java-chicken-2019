@@ -1,3 +1,4 @@
+import domain.FunctionCaller;
 import domain.Menu;
 import domain.MenuRepository;
 import domain.ProvidingFunction;
@@ -12,16 +13,19 @@ import java.util.List;
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
+        int functionNumber;
+
         final List<ProvidingFunction> providingFunctions
                 = ProvidingFunctionRepository.providingFunctions();
+
         OutputView.printProvidingFunctions(providingFunctions);
+        functionNumber = InputView.inputProvidingFunctionNumber();
 
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
+        while (!ProvidingFunctionRepository.isExit(functionNumber)) {
+            FunctionCaller.callFunction(functionNumber);
 
-        final int tableNumber = InputView.inputTableNumber();
-
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+            OutputView.printProvidingFunctions(providingFunctions);
+            functionNumber = InputView.inputProvidingFunctionNumber();
+        }
     }
 }
