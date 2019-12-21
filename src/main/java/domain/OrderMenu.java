@@ -18,6 +18,10 @@ public class OrderMenu extends Menu {
 		return orderTable.containTableNumber(tableNumber);
 	}
 
+	public int getTotalPrice() {
+		return super.getPrice() * numberOfMenu;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

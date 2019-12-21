@@ -15,9 +15,11 @@ public class Pay {
 		printOrderList(orderMenuList);
 		printTableNumber(tableNumber);
 		int paymentType = InputView.inputPaymentType();
+		int payMoney = getTotalMoneyToPay(orderMenuList);
+		printPaymentResult(paymentType, payMoney);
 	}
 
-	private static double getPayment(int paymentType, double payMoney) {
+	private static double getPayment(int paymentType, int payMoney) {
 		double payment = 0;
 
 		if (paymentType == CREDIT_CARD) {
@@ -32,6 +34,10 @@ public class Pay {
 		return payment;
 	}
 
+	private static int getTotalMoneyToPay(List<OrderMenu> orderMenuList) {
+		return orderMenuList.stream().map(orderMenu -> orderMenu.getTotalPrice()).reduce(Integer::sum).get();
+	}
+
 	private static void printOrderList(List<OrderMenu> orderMenuList) {
 		System.out.println("## 주문 내역");
 		System.out.println("메뉴 수량 금액");
@@ -44,7 +50,7 @@ public class Pay {
 		System.out.println(tableNumber + "번 테이블의 결제를 진행합니다.");
 	}
 
-	private static void printPaymentResult(int paymentType, double payMoney) {
+	private static void printPaymentResult(int paymentType, int payMoney) {
 		double payment = getPayment(paymentType, payMoney);
 		System.out.println("최종 결제한 금액은 " + (int)payment + "원 입니다.");
 	}
