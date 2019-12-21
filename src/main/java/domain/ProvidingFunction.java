@@ -11,4 +11,12 @@ public class ProvidingFunction {
         this.id = id;
         this.description = description;
     }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
 }
