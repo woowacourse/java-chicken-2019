@@ -8,6 +8,6 @@ public class Price {
 	}
 
 	public double getPrice() {
-		return price;
+		return Math.round(price);
 	}
 }

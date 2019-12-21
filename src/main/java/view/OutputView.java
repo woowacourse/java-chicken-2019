@@ -78,7 +78,7 @@ public class OutputView {
 
 	public static void printTotalPayment(Price price) {
     	System.out.println(TOTAL_PAYMENT_MESSAGE);
-    	System.out.println(price.getPrice() + WON);
+    	System.out.println(Math.round(price.getPrice()) + WON);
 	}
 
 	public static void printReEnter() {
