@@ -61,6 +61,7 @@ public class OutputView {
     }
 
     public static void printTableOrderHistory(final Table table) {
+        System.out.println(" 메뉴  수량 금액");
         System.out.println(table.getOrderHistory());
     }
 
