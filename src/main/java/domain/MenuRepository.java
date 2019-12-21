@@ -23,12 +23,7 @@ public class MenuRepository {
     }
 
     public static boolean validateMenuInput(String input) {
-        int menuNumber = -1;
-        try {
-            menuNumber = Integer.parseInt(input);
-        } catch (Exception e) {
-            menuNumber = -1;
-        }
+        int menuNumber = Validate.validateNumber(input);
         return validateMenuNumber(menuNumber);
     }
 

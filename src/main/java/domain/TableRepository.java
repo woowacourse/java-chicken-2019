@@ -21,12 +21,7 @@ public class TableRepository {
     }
 
     public static boolean validateTableInput(String input) {
-        int tableNumber = -1;
-        try {
-            tableNumber = Integer.parseInt(input);
-        } catch (Exception e) {
-            tableNumber = -1;
-        }
+        int tableNumber = Validate.validateNumber(input);
         return validateTableNumber(tableNumber);
     }
 
