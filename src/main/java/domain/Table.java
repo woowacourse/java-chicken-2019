@@ -27,4 +27,22 @@ public class Table {
     public void addMenu(Menu selectedMenu, int quantity) {
     	this.menu.put(selectedMenu, +quantity);
     }
+    
+    public int getTotalPrice() {
+    	int totalPrice = 0;
+    	for (Menu eachMenu: menu.keySet()) {
+    		totalPrice += eachMenu.getPrice() * menu.get(eachMenu); // 메뉴의 가격과 수량을 곱한다.
+    	}
+    	return totalPrice;
+    }
+    
+    public int numberOfChickenQty() {
+    	int chickenQuantity = 0;
+    	for (Menu eachMenu: menu.keySet()) {
+    		if (eachMenu.getCategory() == Category.CHICKEN) { // 치킨이면 주문수량만큼 더한다
+    			chickenQuantity += menu.get(eachMenu);
+    		}
+    	}
+    	return chickenQuantity;
+    }
 }

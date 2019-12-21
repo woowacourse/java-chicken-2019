@@ -44,6 +44,11 @@ public class InputView {
 		return userInput;
 	}
 
+	public static int choosePaymentMethod() {
+		System.out.println("## 신용카드는 1번, 현금은 2번");
+		return scanner.nextInt();
+	}
+	
 	public static void selectFeature() {
 		mainView();
 		int userInput = validMainViewInput();

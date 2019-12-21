@@ -21,4 +21,12 @@ public class Menu {
     public boolean isSame(int userInput) {
     	return this.number == userInput;
     }
+    
+    public int getPrice() {
+    	return this.price;
+    }
+    
+    public Category getCategory() {
+    	return this.category;
+    }
 }
