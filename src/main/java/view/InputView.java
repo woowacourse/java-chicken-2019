@@ -11,10 +11,17 @@ public class InputView {
     }
 
     public static int inputMenuNumber() {
-        return 0;
+        System.out.println("## 등록할 메뉴를 선택하세요.");
+        return scanner.nextInt();
     }
 
     public static int inputMenuAmount() {
-        return 0;
+        System.out.println("## 메뉴의 수량을 입력하세요.");
+        return scanner.nextInt();
+    }
+
+    public static int inputFunctionNumber() {
+        System.out.println("## 원하는 기능을 선택하세요.");
+        return scanner.nextInt();
     }
 }

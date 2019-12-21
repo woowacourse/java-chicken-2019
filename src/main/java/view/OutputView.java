@@ -21,9 +21,7 @@ public class OutputView {
         System.out.println("## 테이블을 선택하세요.");
     }
 
-    public static void printRequestForMenu() {
-        System.out.println("## 등록할 메뉴를 선택하세요.");
-    }
+
 
 
     public static void printTables(final List<Table> tables) {
@@ -53,4 +51,7 @@ public class OutputView {
         }
         System.out.println();
     }
+
+
+
 }

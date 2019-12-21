@@ -15,23 +15,20 @@ public class ChichenPoS implements PoS {
     @Override
     public void handle() {
         showMain();
-        final int tableNumber = InputView.inputTableNumber();
 
-        if (tableNumber == Requests.Register.getValue()) {
-            tableService.showTables();
-            OutputView.printRequestForTable();
-            menuService.showMenues();
-            OutputView.printRequestForMenu();
-            int menuNumber = InputView.inputMenuNumber();
-            int menuAmount = InputView.inputMenuAmount();
+
+        final int funcNumber = InputView.inputFunctionNumber();
+
+        if (funcNumber == Requests.Register.getValue()) {
+            tableService.register();
 
         }
 
-        if (tableNumber == Requests.Pay.getValue()) {
+        if (funcNumber == Requests.Pay.getValue()) {
 
         }
 
-        if (tableNumber == Requests.Exit.getValue()) {
+        if (funcNumber == Requests.Exit.getValue()) {
 
         }
 
