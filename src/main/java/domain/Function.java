@@ -21,7 +21,7 @@ public class Function {
     public boolean isRegisterOrder() {
         return select == REGISTER_ORDER_VALUE;
     }
-"Function 클래스에서 기능 입력에 따른 상태를 나타내는 기능 추가"
+
     public boolean isPayment() {
         return select == PAYMENT_VALUE;
     }
