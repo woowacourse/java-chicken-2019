@@ -42,10 +42,12 @@ public class Table {
             String menuInfo = menus.get(i).toString();
             int order = Integer.parseInt(menuInfo.split("-")[0].trim());
             int orderCount = orderNumberArray[order];
+            if(orderCount == 0) continue;
             String orderName = menuInfo.split("-")[1].split(":")[0].trim();
             int orderPrice = Integer.parseInt(menuInfo.split(":")[1].split("원")[0].trim());
-            System.out.println(orderName + "\t" + orderCount + "\t" + orderPrice);
             totalPrice += orderCount * orderPrice;
+            System.out.println(orderName + "\t" + orderCount + "\t" + (orderPrice * orderCount));
+            orderNumberArray[order] = 0;
         }
         return totalPrice;
     }

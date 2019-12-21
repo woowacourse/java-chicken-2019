@@ -8,7 +8,6 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
-    // TODO 구현 진행
     private final List<Table> tables = TableRepository.tables();
     private final List<Menu> menus = MenuRepository.menus();
 

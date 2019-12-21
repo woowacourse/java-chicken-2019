@@ -11,7 +11,7 @@ public class OutputView {
     private static final String BOTTOM_LINE = "└ ─ ┘";
     private static final String BOTTOM_LINE_WHEN_PAYMENT_TOBE_DONE = "└ ₩ ┘";
     private static final int card = 1;
-    private static final int cash = 0;
+    private static final int cash = 2;
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
@@ -66,9 +66,10 @@ public class OutputView {
     public static void printFinalPrice(int cardOrCash, int totalPrice) {
         System.out.println("## 최종 결제할 금액");
         if (cardOrCash == cash) {
-            System.out.printf("%d원\n", totalPrice * 0.95);
+            System.out.println("현금결제:" + totalPrice * 0.95 + "원");
             return;
         }
-        System.out.println(totalPrice + "원");
+        System.out.println("카드결제: " + totalPrice + "원");
+        return;
     }
 }
