@@ -39,6 +39,16 @@ public class Application {
                     }
                 }
             }
+
+            if (function == PAY) {
+                OutputView.printTables(tables);
+                int tableNumber = InputView.inputTableNumber();
+                for (Table table : tables) {
+                    if (table.equals(tableNumber)) {
+                        table.showOrders();
+                    }
+                }
+            }
         } while (function != PROGRAM_END);
     }
 }

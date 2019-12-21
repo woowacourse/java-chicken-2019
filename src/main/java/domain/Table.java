@@ -1,5 +1,7 @@
 package domain;
 
+import view.OutputView;
+
 public class Table {
     private final int number;
     private Bill bill;
@@ -29,5 +31,10 @@ public class Table {
 
     public boolean hasOrders() {
         return bill.hasOrders();
+    }
+
+    public void showOrders(){
+        OutputView.printOrders();
+        bill.showOrders();
     }
 }

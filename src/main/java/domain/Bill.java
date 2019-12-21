@@ -1,5 +1,7 @@
 package domain;
 
+import view.OutputView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,5 +17,11 @@ public class Bill {
 
     public boolean hasOrders() {
         return orders.size() > 0;
+    }
+
+    public void showOrders() {
+        for (Order order : orders) {
+            OutputView.printOrder(order);
+        }
     }
 }

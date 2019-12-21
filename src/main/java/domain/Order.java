@@ -10,4 +10,9 @@ public class Order {
         this.menu = menu;
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return menu.getName() + " " + quantity + " " + menu.getPrice();
+    }
 }
