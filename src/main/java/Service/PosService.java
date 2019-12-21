@@ -13,6 +13,7 @@ public class PosService {
 
     public void run(int nextStep) {
         OrderService orderService = new OrderService();
+        PayService payService = new PayService();
 
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
@@ -24,12 +25,7 @@ public class PosService {
             orderService.order(selectedTable);
         }
         if (nextStep == PAY) {
-            // 테이블 목록 출력
-            // 테이블 선택
-            // 주문내역 출력
-            // 결제 방식 선택
-            // 결제할 금액 출력
-            // 결제되었습니다 메시지 출력
+            payService.pay(selectedTable);
         }
     }
 
