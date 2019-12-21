@@ -72,4 +72,8 @@ public class OutputView {
         System.out.println(TableRepository.getSelectTable(tableNumber).getMenuHistoryStr());
     }
 
+    public static void printPayment(int tableNumber){
+        System.out.println(tableNumber + "번 테이블의 결제를 진행합니다.");
+    }
+
 }

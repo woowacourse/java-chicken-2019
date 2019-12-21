@@ -15,7 +15,21 @@ public class Table {
     }
 
     public void addMenu(Menu menu){
-        menuList.add(menu);
+        this.menuList.add(menu);
+    }
+
+    public List<Menu> getMenuList(){
+        return this.menuList;
+    }
+
+    public int getCategoryIsChickenCount(){
+        int chickenCount = 0;
+        for(int i = 0 ; i < menuList.size() ; i++){
+            if(menuList.get(i).getCategory() == Category.CHICKEN){
+                chickenCount++;
+            }
+        }
+        return chickenCount;
     }
 
     public String getMenuHistoryStr(){

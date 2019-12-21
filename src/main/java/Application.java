@@ -10,6 +10,25 @@ import java.util.List;
 
 public class Application {
 
+    public static int calcPayment(int tableNumber, int paymentNumber){
+        int total = 0;
+        Table table = TableRepository.getSelectTable(tableNumber);
+        List<Menu> menuList = table.getMenuList();
+        for(int i = 0 ; i < menuList.size() ; i++){
+            total += menuList.get(i).getPrice();
+        }
+        int chickenCount = table.getCategoryIsChickenCount();
+        if(chickenCount > 10){
+            total -= ((chickenCount / 10) * 10000);
+        }
+
+        if(paymentNumber == 2){
+            total = (int) (total * 0.95);
+        }
+
+        return total;
+    }
+
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
@@ -58,9 +77,9 @@ public class Application {
                 OutputView.printTables(tables);
                 int tableNumber = InputView.inputTableNumber();
                 OutputView.printOrderHistory(tableNumber);
-
-
-
+                OutputView.printPayment(tableNumber);
+                int paymentNumber = InputView.inputPaymentNumber();
+                int totalPayment = calcPayment(tableNumber, paymentNumber);
             }
 
 

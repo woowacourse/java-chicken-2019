@@ -40,4 +40,14 @@ public class InputView {
         return scanner.nextInt();
     }
 
+    public static int inputPaymentNumber(){
+        System.out.println("## 신용카드는 1번, 현금은 2번");
+        return scanner.nextInt();
+    }
+
+    public static int inputPaymentNumberErr(){
+        System.out.println("존재하지 않는 결제 수단 번호입니다. 다시 입력해주세요");
+        return scanner.nextInt();
+    }
+
 }
