@@ -1,18 +1,16 @@
 package domain;
 
 public class FunctionCaller {
-    public static void callFunction(final int functionNumber) {
+    public static void callFunction(int functionNumber) {
 
         if (ProvidingFunctionRepository.isOrderRegistration(functionNumber)) {
-            new OrderRegistration().resgistOrder();
+            new OrderRegistration().controlOrderRegistration();
+            return;
         }
 
         if (ProvidingFunctionRepository.isPayment(functionNumber)) {
             new Payment().pay();
-        }
-
-        if (ProvidingFunctionRepository.isExit(functionNumber)) {
-
+            return;
         }
 
     }
