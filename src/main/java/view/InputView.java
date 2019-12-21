@@ -18,4 +18,25 @@ public class InputView {
 		System.out.println("## 원하는 기능을 선택하세요");
 		return scanner.nextInt();
 	}
+	public static int validMainViewInput() {
+		int userInput = 0;
+		try {
+			userInput = mainViewInput();
+			if (userInput != 1 && userInput != 2 && userInput != 3) {
+				throw new Exception();
+			}
+		} catch (Exception e) {
+			scanner = new Scanner(System.in);
+			System.out.println("[잘못된 입력] 1, 2, 3 중 하나를 입력하세요");
+			userInput = validMainViewInput(); // 오류시 재귀
+		}
+		return userInput;
+	}
+
+	public static void main(String[] args) {
+		// ValidateMainView test
+		mainView();
+		int a = validMainViewInput();
+		System.out.println(a);
+	}
 }
