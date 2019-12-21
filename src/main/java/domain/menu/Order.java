@@ -152,9 +152,9 @@ public class Order {
      *
      * @return 누적된 총 금액을 반환한다.
      */
-    public int getPrice(){
+    public int getPrice() {
         int price = 0;
-        for(MenuWithNumber order : orderList) {
+        for (MenuWithNumber order : orderList) {
             price += order.getPrice();
         }
         return price;

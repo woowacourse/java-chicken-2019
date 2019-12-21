@@ -27,10 +27,12 @@ public class Table {
     public void makeNewOrder(Menu menu, int number) {
         order.addOrder(menu, number);
     }
-    public boolean isOrderEmpty(){
+
+    public boolean isOrderEmpty() {
         return order.isEmpty();
     }
-    public int getPrice(){
+
+    public int getPrice() {
         return order.getPrice();
     }
 

@@ -2,13 +2,11 @@ package domain.store;
 
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
-import domain.menu.Order;
 import domain.table.Table;
 import domain.table.TableRepository;
 import view.InputView;
 import view.OutputView;
 
-import java.util.InputMismatchException;
 import java.util.List;
 
 /**
@@ -300,7 +298,7 @@ public class Store {
      */
     private void pay() {
         System.out.println("TEST : 각 테이블의 주문 가격");
-        for(Table table : tables) {
+        for (Table table : tables) {
             System.out.println(table.getPrice());
         }
     }
