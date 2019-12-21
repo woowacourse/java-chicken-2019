@@ -26,4 +26,12 @@ public class Order {
 		return menu.getPrice() * amount();
 	}
 
+	public int realPrice() {
+		if (menu.isChicken()) {
+			int saleUnit = amount() / CHICKEN_SALE_UNIT;
+			int salePrice = saleUnit * CHICKEN_SALE_PRICE;
+			return price() - salePrice;
+		}
+		return price();
+	}
 }

@@ -14,4 +14,8 @@ public enum Category {
     public String toString() {
         return "[" + name + "]";
     }
+
+    public boolean isChicken() {
+        return this == CHICKEN;
+    }
 }
