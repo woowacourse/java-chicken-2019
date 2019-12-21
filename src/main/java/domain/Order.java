@@ -8,6 +8,7 @@ import java.util.List;
 public class Order {
 	static final int ZERO = 0;
 	private static final int MAX_MENU_COUNT = 99;
+	private static final String ORDER_FORMAT = "%s %d %d";
 
 	private Menu menu;
 	private int count;
@@ -32,6 +33,11 @@ public class Order {
 		}
 
 		throw new IllegalArgumentException(INVALID_MENU_NUMBER);
+	}
+
+	@Override
+	public String toString() {
+		return String.format(ORDER_FORMAT, menu.getName(), count, menu.getPrice() * count);
 	}
 
 }

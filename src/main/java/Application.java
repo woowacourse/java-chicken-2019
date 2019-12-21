@@ -48,6 +48,12 @@ public class Application {
 	}
 
 	private static void pay(int tableNumber, List<Table> tables, List<Menu> menus) {
+		try {
+			Table selectTable = findTable(tableNumber, tables);
+			OutputView.printBill(selectTable);
+		} catch (IllegalArgumentException exception) {
+			pay(tableNumber, tables, menus);
+		}
 	}
 
 	private static void order(int tableNumber, List<Table> tables, List<Menu> menus) {

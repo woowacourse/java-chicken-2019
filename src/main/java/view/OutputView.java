@@ -1,6 +1,8 @@
 package view;
 
+import domain.Bill;
 import domain.Menu;
+import domain.Order;
 import domain.Table;
 
 import java.util.List;
@@ -9,6 +11,7 @@ public class OutputView {
     private static final String ORDER_FUNCTION_MESSAGE = "1 - 주문등록";
     private static final String PAY_FUNCTION_MESSAGE = "2 - 결제하기";
     private static final String EXIT_FUNCTION_MESSAGE = "3 - 프로그램 종료";
+    private static final String MENU_COUNT_PRICE = "메뉴 수량 금액";
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE_FORMAT = "└ %s ┘";
@@ -59,6 +62,15 @@ public class OutputView {
     private static void printTableNumbers(final List<Table> tables) {
         for (final Table table : tables) {
             System.out.printf(TABLE_FORMAT, table);
+        }
+        System.out.println();
+    }
+
+    public static void printBill(Table table) {
+        Bill bill = table.getBill();
+        System.out.println(MENU_COUNT_PRICE);
+        for (Order order : bill.getOrders()) {
+            System.out.println(order);
         }
         System.out.println();
     }
