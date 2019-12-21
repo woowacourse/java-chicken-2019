@@ -1,6 +1,7 @@
 package view;
 
 import domain.MenuConfig;
+import domain.Requests;
 import domain.TableConfig;
 import domain.errors.InvalidInputException;
 
@@ -61,7 +62,15 @@ public class InputView {
 
     public int inputFunctionNumber() {
         System.out.println("## 원하는 기능을 선택하세요.\n");
-        return Integer.parseInt(scanner.nextLine());
+        try {
+            int funcNumber = Integer.parseInt(scanner.nextLine());
+            if (Arrays.stream(Requests.values()).map(Requests::getValue).noneMatch(request -> request == funcNumber)) {
+                throw new InvalidInputException("존재하지 않는 기능입니다.");
+            }
+        } catch (RuntimeException e) {
+            outputView.printError(e);
+            return inputFunctionNumber();
+        }
     }
 
     public int inputPaymentWay() {
