@@ -42,7 +42,7 @@ public class ChickenHouse {
 	}
 
 	private static void add(int tableNumber, int menuNumber, int menuCount) {
-		tables.getByNumber(tableNumber).add(menuNumber, menuCount);
+		tables.getByNumber(tableNumber).add(menus.getByNumber(menuNumber), menuCount);
 
 	}
 
