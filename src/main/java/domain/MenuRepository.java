@@ -1,5 +1,7 @@
 package domain;
 
+import view.OutputView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,5 +23,15 @@ public class MenuRepository {
 
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
+    }
+
+    public static boolean hasMenuNumber(int menuNumber) {
+        for (Menu menu : menus) {
+            if (menu.isEqualNumber(menuNumber)) {
+                return true;
+            }
+        }
+        OutputView.printInputMenuNumberException();
+        return false;
     }
 }

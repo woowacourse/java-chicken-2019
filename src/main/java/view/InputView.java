@@ -1,7 +1,8 @@
 package view;
 
-import domain.MainMenuRepository;
+import domain.MenuRepository;
 import domain.Tables;
+import utility.validateUtility;
 
 import java.util.Scanner;
 
@@ -12,20 +13,38 @@ public class InputView {
         int tableNumber = 0;
         System.out.println("## 주문할 테이블을 선택하세요.");
         do {
-            tableNumber = scanner.nextInt();
+            tableNumber = inputInteger();
         } while (!tables.hasTableNumber(tableNumber));
 
         return tableNumber;
     }
 
     public static int inputMainMenuNumber() {
-        int mainMenuNumber = 0;
+        int menuNumber = 0;
         System.out.println("## 원하는 기능을 선택하세요");
         do {
-            mainMenuNumber = scanner.nextInt();
-        } while (!MainMenuRepository.isRightInput(mainMenuNumber));
+            menuNumber = inputInteger();
+        } while (!MenuRepository.hasMenuNumber(menuNumber));
+
+        return menuNumber;
+    }
+
+    public static int inputMenuNumber() {
+        int mainMenuNumber = 0;
+        System.out.println("## 등록할 메뉴를 선택하세요");
+        do {
+            mainMenuNumber = inputInteger();
+        } while (!MenuRepository.hasMenuNumber(mainMenuNumber));
 
         return mainMenuNumber;
+    }
+
+    private static int inputInteger() {
+        String input;
+        do {
+            input = scanner.nextLine();
+        } while (!validateUtility.checkInteger(input));
+        return Integer.parseInt(input);
     }
 
 }

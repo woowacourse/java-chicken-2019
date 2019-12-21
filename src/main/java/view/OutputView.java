@@ -12,6 +12,7 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String TABLE_ORDERED_FORMAT = "└ ￦ ┘";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    public static final String MESSAGE_NOT_INTEGER = "정수가 아닙니다. 다시 입력해주세요";
 
     public static void printTables(final Tables tables) {
         System.out.println("## 테이블 목록");
@@ -74,5 +75,7 @@ public class OutputView {
         System.out.print(BOTTOM_LINE);
     }
 
-
+    public static void printNotInteger() {
+        System.out.println(MESSAGE_NOT_INTEGER);
+    }
 }
