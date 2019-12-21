@@ -45,7 +45,7 @@ public class Bills {
         return giveDiscountByChickenCount(sumAmount, chickenCount);
     }
 
-    public int giveDiscountByChickenCount(int amount, int chickenCount) {
+    private int giveDiscountByChickenCount(int amount, int chickenCount) {
         chickenCount /= CHICKEN_DISCOUNT_BASE_COUNT;
         return amount - (DISCOUNT_AMOUNT_PER_TEN * chickenCount);
     }

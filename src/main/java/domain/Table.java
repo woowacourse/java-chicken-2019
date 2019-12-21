@@ -11,6 +11,10 @@ public class Table  extends StoreTool{
         bills.add(menu, quantity);
     }
 
+    public int calculateAmount() {
+        return bills.calculateAmount();
+    }
+
     public boolean isNoOrder() {
         return bills.isEmpty();
     }
