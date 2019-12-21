@@ -32,11 +32,11 @@ public class ChickenModel {
             function = inputFunctionNumber();
             userWantToRegister(function);
             userWantToPay(function);
-        }while (function != EXIT);
+        } while (function != EXIT);
     }
 
     private void userWantToPay(int function) throws IOException {
-        if(function==PAY){
+        if (function == PAY) {
             int tableNumber = inputTableNumber();
             Table table = chickenManager.getTableByTableNumber(tableNumber);
             OutputView.printTableBill(table);
@@ -47,18 +47,18 @@ public class ChickenModel {
     }
 
     private void userWantToRegister(int function) throws IOException {
-        if(function==REGISTER){
+        if (function == REGISTER) {
             int tableNumber = inputTableNumber();
             int menuNumber = inputMenuNumber();
             int howMany = inputHowMany();
-            setMenu(tableNumber,menuNumber,howMany);
+            setMenu(tableNumber, menuNumber, howMany);
         }
     }
 
     private void setMenu(int tableNumber, int menuNumber, int howMany) {
         Table table = chickenManager.getTableByTableNumber(tableNumber);
         Menu menu = chickenManager.getMenuByMenuNumber(menuNumber);
-        table.addMenu(table,menu,howMany);
+        table.addMenu(table, menu, howMany);
     }
 
     private int inputHowMany() throws IOException {

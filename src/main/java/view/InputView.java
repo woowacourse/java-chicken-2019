@@ -87,14 +87,14 @@ public class InputView {
         System.out.println(INPUT_HOW_MANY);
         try {
             return checkHowManyNumber(Integer.parseInt(BR.readLine().trim()));
-        } catch (NumberFormatException e ){
+        } catch (NumberFormatException e) {
             System.out.println(ERROR_FORMAT);
             return inputHowMany();
         }
     }
 
     private static int checkHowManyNumber(int howManyNumber) throws IOException {
-        if(howManyNumber < MIN_AMOUNT || howManyNumber > MAX_AMOUNT){
+        if (howManyNumber < MIN_AMOUNT || howManyNumber > MAX_AMOUNT) {
             System.out.println(ERROR_AMOUNT);
             return inputHowMany();
         }
@@ -106,18 +106,18 @@ public class InputView {
         System.out.println(INPUT_PAYMENT);
         try {
             return checkPayment(Integer.parseInt(BR.readLine().trim()));
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println(ERROR_FORMAT);
             return inputPayment();
         }
     }
 
     private static Payment checkPayment(int payment) throws IOException {
-        if(payment != CREDIT_CARD && payment != CASH){
+        if (payment != CREDIT_CARD && payment != CASH) {
             System.out.println(ERROR_PAYMENT);
             return inputPayment();
         }
-        if(payment == CREDIT_CARD)
+        if (payment == CREDIT_CARD)
             return Payment.CREDIT_CARD;
         return Payment.CASH;
     }

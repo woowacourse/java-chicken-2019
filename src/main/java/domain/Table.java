@@ -24,10 +24,10 @@ public class Table {
     }
 
     public void addMenu(Table table, Menu menu, int howMany) {
-        menus.add(new OrderedMenu(table,menu,howMany));
+        menus.add(new OrderedMenu(table, menu, howMany));
     }
 
-    private double sumOfMenus(){
+    private double sumOfMenus() {
         int chickenCount = ZERO;
         for (OrderedMenu menu : menus) {
             chickenCount = getChickenCount(chickenCount, menu);
@@ -38,7 +38,7 @@ public class Table {
     }
 
     private int getChickenCount(int chickenCount, OrderedMenu menu) {
-        if(menu.isChicken(menu.getMenuId()))
+        if (menu.isChicken(menu.getMenuId()))
             chickenCount++;
         return chickenCount;
     }

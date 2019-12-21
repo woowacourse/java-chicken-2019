@@ -13,8 +13,8 @@ public class Menu {
         this.price = price;
     }
 
-    public boolean isExist(int menuNumber){
-        if(number == menuNumber)
+    public boolean isExist(int menuNumber) {
+        if (number == menuNumber)
             return true;
         return false;
     }
