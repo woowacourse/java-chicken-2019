@@ -8,11 +8,12 @@ public class Table {
 	private static final int MAX_COUNT = 99;
 
 	private final int number;
-	private static Map<Integer, Integer> menuList = new HashMap<>();
+	private Map<Integer, Integer> menuList;
 	private boolean hasCustomer;
 
 	public Table(final int number) {
 		this.number = number;
+		this.menuList = new HashMap<>();
 		this.hasCustomer = false;
 	}
 
@@ -49,7 +50,7 @@ public class Table {
 		return Integer.toString(number);
 	}
 
-	public static int getPrice() {
+	public int getPrice() {
 		int price = 0;
 		for (int menuNumber : menuList.keySet()) {
 			Menu menu = MenuRepository.getMenu(menuNumber);

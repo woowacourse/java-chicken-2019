@@ -79,7 +79,7 @@ public class Application {
 	private static void calculateAll(int tableNumber, Table table) {
 		try {
 			OutputView.printTableMenu(tableNumber);
-			int price = Discount.discountByChickenCount(Table.getPrice(), table);
+			int price = Discount.discountByChickenCount(table.getPrice(), table);
 			if (InputView.inputPaymentMenuNumber() == PAYMENT_CASH) {
 				price = Discount.discountByCash(price);
 			}
