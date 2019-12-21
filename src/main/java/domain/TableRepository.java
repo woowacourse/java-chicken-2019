@@ -19,4 +19,11 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static boolean existTableNumber(int tableNumber){
+        if(tables.get(tableNumber) == null){
+            return false;
+        }
+        return true;
+    }
 }

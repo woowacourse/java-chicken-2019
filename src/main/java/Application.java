@@ -27,6 +27,11 @@ public class Application {
             if(funcNumber == 1){
                 OutputView.printTables(tables);
                 int tableNumber = InputView.inputTableNumber();
+                while(!TableRepository.existTableNumber(tableNumber)){
+                    System.out.println("존재하지 않는 테이블 번호입니다. 다시 입력해주세요");
+                    tableNumber = InputView.inputTableNumber();
+                }
+
                 OutputView.printMenus(menus);
                 int menuNumber = InputView.inputMenuNumber();
                 int menuCount = InputView.inputMenuCount();
