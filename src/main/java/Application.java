@@ -51,6 +51,8 @@ public class Application {
         OutputView.printTables(tables);
 
         final int tableNumber = InputView.inputTableNumber();
+
+        OutputView.printBills(tables.get(tableNumber));
     }
 
 }

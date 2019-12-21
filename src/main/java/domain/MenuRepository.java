@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MenuRepository {
+public class MenuRepository{
     private static final List<Menu> menus = new ArrayList<>();
 
     static {
@@ -23,6 +23,12 @@ public class MenuRepository {
     }
 
     public static Menu selectMenu(int menuNumber) {
-        return menus.get(menuNumber);
+        if (menuNumber == 21) {
+            return menus.get(6);
+        }
+        else if (menuNumber == 22) {
+            return menus.get(7);
+        }
+        return menus.get(menuNumber - 1);
     }
 }

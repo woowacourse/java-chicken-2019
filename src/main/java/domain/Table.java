@@ -15,6 +15,14 @@ public class Table {
 
         bills.put(menu, count);
     }
+
+    public void printBill() {
+        Iterator itr = bills.entrySet().iterator();
+        while(itr.hasNext()) {
+            Map.Entry<Menu, Integer> e = (Map.Entry<Menu, Integer>)itr.next();
+            System.out.println(e.getKey().printMenu(e.getValue()));
+        }
+    }
     @Override
     public String toString() {
         return Integer.toString(number);
