@@ -30,7 +30,7 @@ public class Application {
 	    OrderFunction(tables, menus, tableNumber);
 	}
 	if (functionNumber == 2) {
-	    PayFunction();
+	    PayFunction(tables,menus,tableNumber);
 	}
 	return true;
     }
@@ -39,13 +39,14 @@ public class Application {
 	int menuNumber = InputView.inputMenu(menus);
 	int menuAmount = InputView.inputMenuAmount(tables.get(tableNumber));
 	if (menus.get(menuNumber).getCategoryName().equals("치킨")) {
-	    tables.get(tableNumber).setChickenPrice(menuAmount,menus.get(menuNumber).getPrice());
+	    tables.get(tableNumber).setChickenPrice(menus.get(menuNumber).getNumber(),menuAmount,menus.get(menuNumber).getPrice());
 	    return;
 	}
-	tables.get(tableNumber).setDrinkPrice(menuAmount,menus.get(menuNumber).getPrice());
+	tables.get(tableNumber).setDrinkPrice(menus.get(menuNumber).getNumber(),menuAmount,menus.get(menuNumber).getPrice());
     }
 
-    public static void PayFunction() {
+    public static void PayFunction(List<Table> tables, List<Menu> menus, int tableNumber) {
+	OutputView.printOrderList(tables.get(tableNumber),menus);
     }
 
     public static boolean QuitFunction() {
