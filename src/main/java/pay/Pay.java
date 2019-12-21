@@ -1,7 +1,6 @@
 package pay;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import domain.OrderMenu;
 import view.InputView;
@@ -15,7 +14,6 @@ public class Pay {
 	public static void pay(List<OrderMenu> orderMenuList, int tableNumber) {
 		printOrderList(orderMenuList);
 		printTableNumber(tableNumber);
-		// int chickenDiscountMoney = discountMoneyChickenMoreThanTen(orderMenuList);
 		int paymentType = InputView.inputPaymentType();
 		int payMoney = getTotalMoneyToPay(orderMenuList);
 		printPaymentResult(paymentType, payMoney);
@@ -35,24 +33,6 @@ public class Pay {
 		}
 		return payment;
 	}
-
-	// private static int discountMoneyChickenMoreThanTen(List<OrderMenu> orderMenuList) {
-	// 	int totalChickenNumber = getNumberOfChicken(orderMenuList);
-	// 	int discountNumber = totalChickenNumber / 10;
-	// 	System.out.println("치킨 개수" + totalChickenNumber);
-	// 	System.out.println("할인 받을 개수" + discountNumber);
-	// 	if (discountNumber > 0) {
-	// 		System.out.println("할인 받을 금액" + CHICKEN_DISCOUNT * discountNumber);
-	// 		return CHICKEN_DISCOUNT * discountNumber;
-	// 	}
-	// 	return 0;
-	// }
-
-	// private static void getNumberOfChicken(List<OrderMenu> orderMenuList) {
-	// 	return orderMenuList.stream()
-	// 		.filter(orderMenu -> orderMenu.isChicken())
-	// 		.map(orderMenu -> orderMenu.getNumber())
-	// }
 
 	private static int getTotalMoneyToPay(List<OrderMenu> orderMenuList) {
 		return orderMenuList.stream().map(orderMenu -> orderMenu.getTotalPrice()).reduce(Integer::sum).get();
