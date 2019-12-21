@@ -50,13 +50,16 @@ public class Application {
         int paymentTable = InputView.inputTableNumber(tables);
         isWrongTable(reservedTable, paymentTable);
         int allPayment = paymentOrderMenu(orderMenuInTable,paymentTable,menus);
-        checkDiscount(allPayment, orderMenuInTable, paymentTable);
+        checkDiscount(allPayment);
 
 
     }
 
-    private static void checkDiscount(int allPayment,int[][] orderMenuInTable, int paymentTable) {
-        InputView.inputPaymentMethod();
+    private static void checkDiscount(int allPayment) {
+        if(InputView.inputPaymentMethod() == 2) {
+            OutputView.moneyPayment(allPayment);
+        }
+        OutputView.cardPayMent(allPayment);
 
     }
 

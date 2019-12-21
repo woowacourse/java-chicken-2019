@@ -66,7 +66,7 @@ public class OutputView {
     }
 
     public static void moneyPayment(int allPayment) {
-        System.out.println("최종 결제할 금액 " + allPayment * 0.95);
+        System.out.println("최종 결제할 금액 " + (int)(allPayment * 0.95));
     }
 
     public static void cardPayMent(int allPayment) {
