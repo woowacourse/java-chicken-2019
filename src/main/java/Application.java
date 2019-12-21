@@ -1,6 +1,8 @@
 import domain.Menu;
 import domain.MenuRepository;
 import domain.Order;
+import domain.Payment;
+import domain.PaymentFactory;
 import domain.Purchase;
 import domain.Table;
 import domain.TableOrder;
@@ -38,7 +40,8 @@ public class Application {
             //결제의 경우.
             Table table2 = InputView.inputTable();
             TableOrder tableOrder = totalOrders.getTableOrderByTable(table2);
-            Purchase purchase = new Purchase(tableOrder);
+            Payment howToPay = InputView.inputPayment();
+            Purchase purchase = new Purchase(tableOrder, howToPay);
             purchase.calculate();
             //해당 테이블의 주문 내역 가져온다.
             //메뉴,수량,금액\n

@@ -5,6 +5,8 @@ import java.util.Scanner;
 import domain.Menu;
 import domain.MenuRepository;
 import domain.Order;
+import domain.Payment;
+import domain.PaymentFactory;
 import domain.Table;
 import domain.TableRepository;
 import util.ValidateUtil;
@@ -57,15 +59,14 @@ public class InputView {
         }
     }
 
-    public static int inputCreditOrCash() {
+    public static Payment inputPayment() {
         try {
             System.out.println("## 1번 테이블의 결제를 진행합니다.\n## 신용 카드는 1번, 현금은 2번");
-            int data = inputInt();
-            ValidateUtil.validatePaymentCode(data);
-            return data;
+            int code = inputInt();
+            return PaymentFactory.getInstance(code);
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            return inputCreditOrCash();
+            return inputPayment();
         }
     }
 
