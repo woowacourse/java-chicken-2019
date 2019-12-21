@@ -8,8 +8,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
-    private static final int MAX_NUMBER = 3;
-    private static final int MIN_NUMBER = 1;
+    private static final int MAX_CHOICE_NUMBER = 3;
+    private static final int MIN_CHOICE_NUMBER = 1;
+    private static final int MAX_COUNT_NUMBER = 99;
+    private static final int MIN_COUNT_NUMBER = 1;
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void inputMainPrint() {
@@ -45,7 +47,7 @@ public class InputView {
     }
 
     private static boolean isOneTwoThree(int number) {
-        return number >= MIN_NUMBER && number <= MAX_NUMBER;
+        return number >= MIN_CHOICE_NUMBER && number <= MAX_CHOICE_NUMBER;
     }
 
     public static int inputTableNumber(List<Table> tables) {
@@ -101,7 +103,17 @@ public class InputView {
 
     public static int inputMenuCount() {
         System.out.println("## 메뉴의 수량을 입력하세요.");
-        return scanner.nextInt();
+        String inputMenuCount = scanner.nextLine();
+        while (!functionNumberValidator(inputMenuCount) || !isMaxNumber(Integer.parseInt(inputMenuCount))) {
+            System.out.println("올바른 숫자 입력을 하세요.(최소 1, 최대 99)");
+            System.out.println("## 메뉴의 수량을 입력하세요.");
+            inputMenuCount = scanner.nextLine();
+        }
+        return Integer.parseInt(inputMenuCount);
+    }
+
+    private static boolean isMaxNumber(int inputMenuCount) {
+        return inputMenuCount >= MIN_COUNT_NUMBER && inputMenuCount <= MAX_COUNT_NUMBER;
     }
 
     public static int inputCardOrCash() {
