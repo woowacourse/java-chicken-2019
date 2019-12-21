@@ -21,14 +21,14 @@ public class TableRepository {
     }
     
     public void enterOrderAt(TableNumber tableNum) {
-    	tables.get(tableNum.getValue()).enterOrder();
+    	tables.get(tableNum.convertNumberToIndex()).enterOrder();
     }
     
     //테스트용
     public void showTableStates() {
     	int i = 0;
     	for (Table table:tables) {
-    		System.out.println("테이블 번호: " + i);
+    		System.out.println("테이블 인덱스: " + i);
     		table.getOrders().showOrders();
     		i++;
     	}
