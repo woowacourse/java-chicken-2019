@@ -13,6 +13,7 @@
 
 package util;
 
+import domain.MenuRepository;
 import domain.TableRepository;
 
 public class InputExceptionHandler {
@@ -23,6 +24,14 @@ public class InputExceptionHandler {
 
     public static boolean validateTableNumber(String inputTableNumber) {
         return (isNumber(inputTableNumber)) && (isRangeOfTableNumber(inputTableNumber));
+    }
+
+    public static boolean validateMenuNumber(String inputMenuNumber) {
+        return (isNumber(inputMenuNumber)) && (isRangeOfMenuNumber(inputMenuNumber));
+    }
+
+    public static boolean validateMenuCount(String inputMenuCount) {
+        return (isNumber(inputMenuCount)) && (isRangeOfMenuCount(inputMenuCount));
     }
 
     private static boolean isNumber(String inputString) {
@@ -52,4 +61,22 @@ public class InputExceptionHandler {
         System.out.println(Message.TABLE_NUMBER_RANGE_ERROR.getMessage());
         return false;
     }
+
+    private static boolean isRangeOfMenuNumber(String inputString) {
+        if (MenuRepository.hasMenuNumber(inputString)) {
+            return true;
+        }
+        System.out.println(Message.MENU_NUMBER_RANGE_ERROR.getMessage());
+        return false;
+    }
+
+    private static boolean isRangeOfMenuCount(String inputString) {
+        int menuCount = Integer.parseInt(inputString);
+        if ((menuCount > PosRule.ZERO) && (menuCount <= PosRule.MAX_MENU_ORDER_COUNT)) {
+            return true;
+        }
+        System.out.println(Message.MENU_COUNT_RANGE_ERROR.getMessage());
+        return false;
+    }
+
 }

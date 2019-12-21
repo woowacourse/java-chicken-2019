@@ -21,7 +21,8 @@ import domain.Table;
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
-    private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BOTTOM_LINE_OF_EMPTY_TABLE = "└ ─ ┘";
+    private static final String BOTTOM_LINE_OF_ORDER_TABLE = "└ \\ ┘";
 
     public static void printActionList() {
         System.out.println("1 - 주문등록");
@@ -34,7 +35,25 @@ public class OutputView {
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printTableBottom(tables);
+    }
+
+    private static void printTableNumbers(final List<Table> tables) {
+        for (final Table table : tables) {
+            System.out.printf(TABLE_FORMAT, table);
+        }
+        System.out.println();
+    }
+
+    private static void printTableBottom(final List<Table> tables) {
+        for (Table table : tables) {
+            if (table.hasOrder()) {
+                System.out.printf(BOTTOM_LINE_OF_ORDER_TABLE, table);
+                continue;
+            }
+            System.out.printf(BOTTOM_LINE_OF_EMPTY_TABLE, table);
+        }
+        System.out.println();
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -46,13 +65,6 @@ public class OutputView {
     private static void printLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
-        }
-        System.out.println();
-    }
-
-    private static void printTableNumbers(final List<Table> tables) {
-        for (final Table table : tables) {
-            System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
     }

@@ -38,4 +38,22 @@ public class InputView {
         } while (!InputExceptionHandler.validateTableNumber(tableNumber));
         return Integer.parseInt(tableNumber);
     }
+
+    public static int inputMenuNumber() {
+        String menuNumber;
+        do {
+            System.out.println(Message.MENU_NUMBER_MESSAGE.getMessage());
+            menuNumber = scanner.nextLine();
+        } while (!InputExceptionHandler.validateMenuNumber(menuNumber));
+        return Integer.parseInt(menuNumber);
+    }
+
+    public static int inputMenuCount() {
+        String menuCount;
+        do {
+            System.out.println(Message.MENU_COUNT_MESSAGE.getMessage());
+            menuCount = scanner.nextLine();
+        } while (!InputExceptionHandler.validateMenuCount(menuCount));
+        return Integer.parseInt(menuCount);
+    }
 }

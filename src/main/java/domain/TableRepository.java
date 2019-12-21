@@ -3,7 +3,7 @@
  * All rights reserved.
  *
  * TableRepository.java
- * 데이터를 조회하는 DB역할을 하는 객체
+ * 테이블 데이터를 조회하는 DB역할을 하는 객체
  *
  * @author      Sorin Jin
  * @version     1.0
@@ -41,4 +41,16 @@ public class TableRepository {
         }
         return false;
     }
+
+    public static Table getTableByNumber(int number) {
+
+        for (Table table : tables()) {
+            if (table.toString().equals(Integer.toString(number))) {
+                return table;
+            }
+        }
+        return null;
+    }
+
+
 }

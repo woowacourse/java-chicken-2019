@@ -11,10 +11,7 @@
  *
  */
 
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import domain.*;
 import util.PosRule;
 import view.InputView;
 import view.OutputView;
@@ -24,19 +21,39 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-        OutputView.printActionList();
-        final int actionNumber = InputView.inputActionNumber();
+        int actionNumber;
 
-        if (actionNumber == PosRule.TERMINATION) {
-            System.exit(1);
-        }
+        do {
+            OutputView.printActionList();
+            actionNumber = InputView.inputActionNumber();
+            action(actionNumber);
+        } while (actionNumber != PosRule.TERMINATION);
 
+        System.exit(1);
+    }
+
+    private static void action(int actionNumber) {
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 
         final int tableNumber = InputView.inputTableNumber();
+        Table table = TableRepository.getTableByNumber(tableNumber);
 
+        if (actionNumber == PosRule.ORDER) {
+            order(table);
+        }
+        if (actionNumber == PosRule.PAY) {
+        }
+    }
+
+    private static void order(Table table) {
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
+        final int menuNumber = InputView.inputMenuNumber();
+        final int menuCount = InputView.inputMenuCount();
+        Menu menu = MenuRepository.getMenuByNumber(menuNumber);
+        Order order = new Order(menu, menuCount);
+        table.order(order);
+        OutputView.printTables(TableRepository.tables());
     }
 }

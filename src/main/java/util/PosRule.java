@@ -14,7 +14,9 @@
 package util;
 
 public class PosRule {
-    static final int ORDER = 1;
-    static final int PAY = 2;
-    static final int TERMINATION = 3;
+    public static final int ORDER = 1;
+    public static final int PAY = 2;
+    public static final int TERMINATION = 3;
+    public static final int ZERO = 0;
+    public static final int MAX_MENU_ORDER_COUNT = 99;
 }

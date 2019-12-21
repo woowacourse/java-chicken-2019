@@ -1,3 +1,16 @@
+/*
+ * Copyright (c) 2019 by SorinJin
+ * All rights reserved.
+ *
+ * MenuRepository.java
+ * 메뉴 데이터를 조회하는 DB역할을 하는 객체
+ *
+ * @author      Sorin Jin
+ * @version     1.0
+ * @date        21 Dec 2019
+ *
+ */
+
 package domain;
 
 import java.util.ArrayList;
@@ -21,4 +34,24 @@ public class MenuRepository {
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
     }
+
+    public static boolean hasMenuNumber(String inputMenuNumber) {
+        int menuNumber = Integer.parseInt(inputMenuNumber);
+        for (Menu menu : menus()) {
+            if (menu.getNumber() == menuNumber) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static Menu getMenuByNumber(int number) {
+        for (Menu menu : menus) {
+            if (menu.getNumber() == number) {
+                return menu;
+            }
+        }
+        return null;
+    }
+
 }
