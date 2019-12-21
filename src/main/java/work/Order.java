@@ -33,7 +33,7 @@ public class Order extends TableWork {
 				.map(menu -> menu.getNumber())
 				.collect(Collectors.toList()));
 		} catch (InputMismatchException e) {
-			System.out.println("숫자를 입력해주세요.");
+			System.out.println(NUMBER_WARNING);
 			InputView.flush();
 			return getMenuChoice();
 		} catch (Exception e) {
@@ -51,11 +51,11 @@ public class Order extends TableWork {
 				.findFirst().orElse(new Table(-1)).getOrderQuantity(menuChoice);
 			Validation.checkPositiveRange(value, MAX_QUANTITY- orderedQuantity);
 		} catch (InputMismatchException e) {
-			System.out.println("숫자를 입력해주세요.");
+			System.out.println(NUMBER_WARNING);
 			InputView.flush();
 			return getMenuQuantity(tableNumber, menuChoice);
 		} catch (Exception e) {
-			System.out.println();
+			System.out.println(QUANTITY_WARNING);
 			return 0;
 		}
 		return value;

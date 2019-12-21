@@ -10,7 +10,7 @@ import domain.Table;
 import domain.TableRepository;
 import view.InputView;
 
-public class TableWork {
+public class TableWork implements Work{
 	final List<Table> tables;
 	final List<Menu> menus;
 
@@ -24,7 +24,7 @@ public class TableWork {
 			value= InputView.inputTableNumber();
 			Validation.checkInList(value,tables.stream().map(table -> table.getNumber()).collect(Collectors.toList()));
 		}catch(InputMismatchException e) {
-			System.out.println("숫자를 입력해주세요.");
+			System.out.println(NUMBER_WARNING);
 			InputView.flush();
 			return getTableNumber();
 		}catch (Exception e){
