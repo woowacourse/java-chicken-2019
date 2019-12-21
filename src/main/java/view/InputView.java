@@ -1,14 +1,15 @@
 package view;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import domain.PaymentType;
 import domain.PosMenuType;
+import domain.Table;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
-    // 묵시적 생성자 방지
+	// 묵시적 생성자 방지
     private InputView() {}
 
     public static PosMenuType inputPosMenu() {
@@ -20,6 +21,18 @@ public class InputView {
         } catch (IllegalArgumentException e) {
             System.out.println("## 잘못된 입력입니다. 다시 입력해주세요");
             return inputPosMenu();
+        }
+    }
+
+    public static PaymentType inputPaymentType(Table table) {
+        System.out.println("## " + table.getNumber() + "번 테이블의 결제를 진행합니다.");
+        try {
+            System.out.println("## 신용카드는 1번, 현금은 2번");
+            String input = scanner.nextLine();
+            return PaymentType.of(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println("## 잘못된 입력입니다. 다시 입력해주세요");
+            return inputPaymentType(table);
         }
     }
 
