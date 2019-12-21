@@ -27,26 +27,26 @@ public class ChickenPos {
         }
 
         while (selectNumber.isNotOff()) {
-            doSelection(selectNumber);
-            selectNumber = new SelectNumber(InputView.inputMainMenu());
+            selectNumber = doSelection(selectNumber);
         }
     }
 
-    private void doSelection(SelectNumber selectNumber) {
+    private SelectNumber doSelection(SelectNumber selectNumber) {
         Table table;
         try {
             table = getTable();
         } catch (NoSuchElementException e) {
             OutputView.printErrorLog(e.getMessage());
             mainMenu();
-            return;
+            return SelectNumber.Off();
         }
 
         if (selectNumber.isMenu()) {
             doOrder(table);
-            return;
+            return SelectNumber.Off();
         }
         doPayment(table);
+        return new SelectNumber(InputView.inputMainMenu());
     }
 
     private void doOrder(Table table) {

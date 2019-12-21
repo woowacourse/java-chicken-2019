@@ -7,6 +7,10 @@ public class SelectNumber {
 
     private final int selectNumber;
 
+    public static SelectNumber Off() {
+        return new SelectNumber(OFF);
+    }
+
     public SelectNumber(int selectNumber) {
         this.selectNumber = selectNumber;
     }
