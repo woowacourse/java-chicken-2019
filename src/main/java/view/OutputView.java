@@ -9,7 +9,7 @@ import java.util.List;
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
-    private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BOTTOM_LINE_FORMAT = "└ %s ┘";
 
     public static void printMain() {
         System.out.println();
@@ -23,9 +23,9 @@ public class OutputView {
         System.out.println();
         System.out.println("## 테이블 목록");
         final int size = tables.size();
-        printLine(TOP_LINE, size);
+        printTopLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLine(tables);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -49,7 +49,7 @@ public class OutputView {
         System.out.printf("%d원\n", table.calculateTablePrice());
     }
 
-    private static void printLine(final String line, final int count) {
+    private static void printTopLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
         }
@@ -61,6 +61,19 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+
+    private static void printBottomLine(final List<Table> tables) {
+        for (final Table table : tables) {
+            System.out.print(makeBottomLine(table));
+        }
+    }
+
+    private static String makeBottomLine(final Table table) {
+        if (table.hasOrder()) {
+            return String.format(BOTTOM_LINE_FORMAT, "₩");
+        }
+        return String.format(BOTTOM_LINE_FORMAT, "-");
     }
 
     private static void printTableMenu(final TableMenu tableMenu) {
