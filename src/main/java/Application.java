@@ -2,24 +2,23 @@ import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
+import order.Order;
 import view.InputView;
 import view.OutputView;
 
 import java.util.List;
 
 public class Application {
-    // TODO 구현 진행
-    public static void main(String[] args) {
+	// TODO 구현 진행
+	public static void main(String[] args) {
 
-    	OutputView.printMainScreen();
-    	InputView.inputMainProcess();
+		OutputView.printMainScreen();
+		int process = InputView.inputMainProcess();
+		Order order = new Order();
 
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
+		if (process == 1) {
+			order.orderMenu();
+		}
 
-        final int tableNumber = InputView.inputTableNumber();
-
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
-    }
+	}
 }
