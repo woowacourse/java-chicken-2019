@@ -16,9 +16,9 @@ import java.util.stream.Collectors;
  * 주문등록 기능을 할때 해당클레스를 사용합니다.
  */
 public class Order {
-    static final List<Table> TABLES = TableRepository.tables();
+    static public final List<Table> TABLES = TableRepository.tables();
     static final List<Menu> MENUS = MenuRepository.menus();
-    static Map<Table, Integer> tableMoney = new HashMap<>();
+    static public Map<Table, Integer> tableMoney = new HashMap<>();
 
     /**
      * 생성자로 table과 table의 계산 금액을 갖는 hashMap을 초기화 합니다.
@@ -34,12 +34,14 @@ public class Order {
      */
     public void orderTable() {
         OutputView.printTables(TABLES);
-        final int tableNumber = InputView.inputTableNumber();
+        int tableNumber = InputView.inputTableNumber();
 
         OutputView.printMenus(MENUS);
         final int menuNumber = InputView.InputMenu();
 
         final int MenuQuantity = InputView.MenuQuantity();
+
+        tableNumber = tableNumber - 1;
         calculateTableMoney(tableNumber, menuNumber, MenuQuantity);
     }
 

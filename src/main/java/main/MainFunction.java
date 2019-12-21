@@ -5,6 +5,7 @@ import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
 import function.Order;
+import function.Payment;
 import view.InputView;
 import view.OutputView;
 
@@ -24,6 +25,7 @@ public class MainFunction {
 
     public void mainFunction() {
         Order order = new Order();
+        Payment pay = new Payment();
 
         caseNumber = InputView.inputMainFunction();
         while (caseNumber != EXIT) {
@@ -32,7 +34,7 @@ public class MainFunction {
                 caseNumber = InputView.inputMainFunction();
             }
             if(caseNumber == PAY){
-
+                pay.payment();
             }
         }
     }
