@@ -19,7 +19,7 @@ public class Table {
         return !orders.orderNothing();
     }
 
-    public boolean isEqaul( int tableNumber ) {
+    public boolean isEqual( int tableNumber ) {
         return this.number == tableNumber;
     }
 
