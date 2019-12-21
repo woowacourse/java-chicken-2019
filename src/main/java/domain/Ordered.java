@@ -26,8 +26,12 @@ public class Ordered {
     public int chickensDiscount() {
         Map<Category, List<Menu>> categoryGroupedMenu = orderedMenus.stream()
                 .collect(Collectors.groupingBy(Menu::getCategory));
-        int chickenAmount = categoryGroupedMenu.get(Category.CHICKEN).size();
-        return (chickenAmount / CHICKEN_DISCOUNT_MIN_SIZE) * CHICKEN_DISCOUNT_VALUE;
+        try {
+            int chickenAmount = categoryGroupedMenu.get(Category.CHICKEN).size();
+            return (chickenAmount / CHICKEN_DISCOUNT_MIN_SIZE) * CHICKEN_DISCOUNT_VALUE;
+        } catch (NullPointerException e) {
+            return 0;
+        }
     }
 
     public int allPrices() {
