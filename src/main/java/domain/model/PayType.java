@@ -16,4 +16,12 @@ public enum PayType {
     public String toString() {
         return typeNumber + ". " + typeName;
     }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public boolean isSame(int typeNumber) {
+        return this.typeNumber == typeNumber;
+    }
 }
