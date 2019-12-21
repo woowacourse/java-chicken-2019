@@ -3,8 +3,6 @@ package view;
 import domain.MenuRepository;
 import domain.TableRepository;
 import domain.reserved.OrderedMenu;
-import domain.reserved.OrderedMenus;
-import domain.reserved.TableOrderStatement;
 
 import java.util.Objects;
 import java.util.Scanner;

@@ -10,6 +10,10 @@ import java.util.Optional;
 public class OrderedMenus {
     List<OrderedMenu> orderedMenus = new ArrayList<>();
 
+    public boolean isExistMenu() {
+        return orderedMenus.size() > 0;
+    }
+
     public OrderedMenu getMenuBy(int menuId) {
         return orderedMenus.stream()
                 .filter(orderedMenu -> orderedMenu.isMatch(menuId))

@@ -1,23 +1,24 @@
 package domain.reserved;
 
+import domain.Table;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 // 모든 예약을 가지고 있다.
 public class OrderStatement {
-    List<TableOrderStatement> tableOrderStatements = new ArrayList<>();
+    List<Table> tables = new ArrayList<>();
 
-    public TableOrderStatement getTableOrderStatementBy(int id) {
-        return tableOrderStatements.stream()
-                .filter(tableOrderStatement -> tableOrderStatement.isMatch(id))
+    public Table getTableOrderStatementBy(int id) {
+        return tables.stream()
+                .filter(table -> table.isMatch(id))
                 .findFirst()
                 .get();
     }
 
     public boolean isExistTableOrder(int tableNumber) {
-        return tableOrderStatements.stream()
-                .filter(tableOrderStatement -> tableOrderStatement.isMatch(tableNumber))
+        return tables.stream()
+                .filter(table -> table.isMatch(tableNumber))
                 .count() > 0;
     }
 
@@ -32,13 +33,13 @@ public class OrderStatement {
     }
 
     public void addTableOrderStatement(int tableNumber, OrderedMenu menu) {
-        TableOrderStatement tableOrderStatement;
+        Table table;
         if (!isExistTableOrder(tableNumber)) {
-            tableOrderStatement = new TableOrderStatement(tableNumber);
-            tableOrderStatement.addMenu(menu);
+            table = new Table(tableNumber);
+            table.addMenu(menu);
             return;
         }
-        
+
         getTableOrderStatementBy(tableNumber).addMenu(menu);
     }
 }
