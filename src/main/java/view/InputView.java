@@ -13,4 +13,9 @@ public class InputView {
 	public static void mainView() {
 		System.out.println("## 메인화면\n1 - 주문등록\n2 - 결제하기\n3 - 프로그램 종료\n");
 	}
+	
+	public static int mainViewInput() {
+		System.out.println("## 원하는 기능을 선택하세요");
+		return scanner.nextInt();
+	}
 }
