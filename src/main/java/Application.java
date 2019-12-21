@@ -1,4 +1,5 @@
 import domain.*;
+import jdk.internal.util.xml.impl.Input;
 import view.InputView;
 import view.OutputView;
 
@@ -27,9 +28,8 @@ public class Application {
 
     public static void orderSelect() {
         final int tableNumber = InputView.inputTableNumber();
-
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+        final int menuNumber = InputView.inputMenuNumber();
+        final int QuantityNumber = InputView.inputMenuQuantity();
     }
 
     public static void paymentSelect() {

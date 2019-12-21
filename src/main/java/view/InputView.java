@@ -1,10 +1,8 @@
 package view;
 
-import domain.Main;
-import domain.MainRepository;
-import domain.Table;
-import domain.TableRepository;
+import domain.*;
 
+import javax.print.attribute.standard.PrinterIsAcceptingJobs;
 import java.util.List;
 import java.util.Scanner;
 
@@ -40,13 +38,23 @@ public class InputView {
     }
 
     public static int inputMenuNumber() {
-        System.out.println(LINE + "## 등록할 메뉴를 선택하세요.");
-        return scanner.nextInt();
+        do {
+            final List<Menu> menus = MenuRepository.menus();
+            OutputView.printMenus(menus);
+            System.out.println(LINE + "## 등록할 메뉴를 선택하세요.");
+            inputNumberString = scanner.nextLine();
+        } while (inputCheck.tableInputCheck(inputNumberString));
+
+        return Integer.parseInt(inputNumberString);
     }
 
     public static int inputMenuQuantity() {
-        System.out.println(LINE + "## 메뉴의 수량을 입력하세요.");
-        return scanner.nextInt();
+        do{
+            System.out.println(LINE + "## 메뉴의 수량을 입력하세요.");
+            inputNumberString = scanner.nextLine();
+        }while(inputCheck.numberCheck(inputNumberString));
+
+        return Integer.parseInt(inputNumberString);
     }
 
 

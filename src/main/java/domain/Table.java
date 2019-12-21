@@ -13,9 +13,6 @@ public class Table {
     }
 
     public boolean TableInputCheck(int number) {
-        if(this.number == number){
-            return true;
-        }
-        return false;
+        return this.number == number;
     }
 }
