@@ -17,4 +17,8 @@ public class InputUtil {
 	public static OneOrTwoOrThree checkMainMenuNumber(String mainMenuInput) {
 		return new OneOrTwoOrThree(mainMenuInput);
 	}
+
+	public static TableNumber checkTableNumber(String tableNumberInput) {
+		return new TableNumber(tableNumberInput);
+	}
 }

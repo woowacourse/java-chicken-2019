@@ -17,6 +17,7 @@ import java.util.Objects;
  */
 public class OneOrTwoOrThree {
 	private static final int ONE = 1;
+	private static final int TWO = 2;
 	private static final int THREE = 3;
 
 	private final int value;
@@ -29,16 +30,20 @@ public class OneOrTwoOrThree {
 			throw new IllegalArgumentException("입력이 2 자 이상이 될 수 없습니다.");
 		}
 		this.value = Integer.parseInt(value);
-		if (this.value >= ONE || this.value <= THREE) {
+		if (this.value < ONE || this.value > THREE) {
 			throw new IllegalArgumentException("입력은 1 or 2 or 3이여야 합니다");
 		}
 	}
 
-	public boolean isThree() {
-		return value == THREE;
+	public boolean isOne() {
+		return value == ONE;
 	}
 
-	public int getValue() {
-		return value;
+	public boolean isTwo() {
+		return value == TWO;
+	}
+
+	public boolean isThree() {
+		return value == THREE;
 	}
 }

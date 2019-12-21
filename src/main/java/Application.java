@@ -6,25 +6,31 @@ import domain.Table;
 import domain.TableRepository;
 import util.InputUtil;
 import util.OneOrTwoOrThree;
+import util.TableNumber;
 import view.InputView;
 import view.OutputView;
 
 public class Application {
 	// TODO 구현 진행
 	public static void main(String[] args) {
-		OneOrTwoOrThree mainMenuNumber;
+		while (true) {
+			OneOrTwoOrThree mainMenuNumber = getMainMenuNumber();
+			if (mainMenuNumber.isThree()) {
+				System.exit(0);
+			}
 
-		do {
-			mainMenuNumber = getMainMenuNumber();
-		} while (!mainMenuNumber.isThree());
+			final List<Table> tables = TableRepository.tables();
+			int tableNumber = getTableNumber(tables);
+			if (mainMenuNumber.isOne()) {
 
-		final List<Table> tables = TableRepository.tables();
-		OutputView.printTables(tables);
+			}
+			if (mainMenuNumber.isTwo()) {
 
-		final int tableNumber = InputView.inputTableNumber();
+			}
 
-		final List<Menu> menus = MenuRepository.menus();
-		OutputView.printMenus(menus);
+			final List<Menu> menus = MenuRepository.menus();
+			OutputView.printMenus(menus);
+		}
 	}
 
 	private static OneOrTwoOrThree getMainMenuNumber() {
@@ -38,5 +44,18 @@ public class Application {
 			return getMainMenuNumber();
 		}
 		return mainMenuNumber;
+	}
+
+	private static int getTableNumber(List<Table> tables) {
+		TableNumber tableNumber;
+
+		try {
+			OutputView.printTables(tables);
+			tableNumber = InputUtil.checkTableNumber(InputView.inputTableNumber());
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+			return getTableNumber(tables);
+		}
+		return tableNumber.getValue();
 	}
 }
