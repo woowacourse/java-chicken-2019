@@ -6,7 +6,7 @@ import java.util.List;
 public class Table {
 	private static final int LEFT_MENU_END = 0;
 	private final int number;
-	private static List<Menu> orderedMenu = new ArrayList<>();
+	private final List<Menu> orderedMenu = new ArrayList<>();
 
 	public Table(final int number) {
 		this.number = number;

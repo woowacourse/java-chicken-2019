@@ -6,18 +6,19 @@ import domain.Table;
 import java.util.List;
 
 public class OutputView {
-	private static final String TOP_LINE = "¶£ ¶° ¶§";
+	private static final String TOP_LINE = "‚îå ‚îÄ ‚îê";
 	private static final String TABLE_FORMAT = "| %s |";
-	private static final String BOTTOM_LINE = "¶¶ ¶° ¶•";
+	private static final String BOTTOM_LINE = "‚îî ‚îÄ ‚îò";
+	private static final String BOTTOM_LINE_WITH_ORDER = "‚îî(W)‚îò";
 
 
 
 	public static void printTables(final List<Table> tables) {
-		System.out.println("## ≈◊¿Ã∫Ì ∏Ò∑œ");
+		System.out.println("## ÌÖåÏù¥Î∏î Î™©Î°ù");
 		final int size = tables.size();
 		printLine(TOP_LINE, size);
 		printTableNumbers(tables);
-		printLine(BOTTOM_LINE, size);
+		printLine(size, tables);
 	}
 
 	public static void printMenus(final List<Menu> menus) {
@@ -29,6 +30,18 @@ public class OutputView {
 	private static void printLine(final String line, final int count) {
 		for (int index = 0; index < count; index++) {
 			System.out.print(line);
+		}
+		System.out.println();
+	}
+	
+	private static void printLine(final int count, final List<Table> tables) {
+		for (int index = 0; index < count; index++) {
+			if(tables.get(index).getOrderCount() > 0) {
+				System.out.print(BOTTOM_LINE_WITH_ORDER);	
+			}
+			if(tables.get(index).getOrderCount() == 0 ) {
+				System.out.print(BOTTOM_LINE);	
+			}
 		}
 		System.out.println();
 	}
