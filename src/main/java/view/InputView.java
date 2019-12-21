@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
+
     private static final int REGIST_MENU = 1;
     private static final int MAKE_PAYMENT = 2;
     private static final int END_PROGRAM = 3;
@@ -71,8 +72,9 @@ public class InputView {
             checkMenuNumber(inputNumber, menus);
             return true;
         } catch(Exception e) {
-            System.out.println("올바른 메 번호를 입력해주세요");
+            System.out.println("올바른 메뉴 번호를 입력해주세요");
         }
+        System.out.println();
         return false;
     }
 
@@ -97,19 +99,18 @@ public class InputView {
         } catch(Exception e) {
             System.out.println("올바른 테이블 번호를 입력해주세요");
         }
+        System.out.println();
         return false;
     }
 
     private static void checkTableNumber(int inputNumber, List<Table> tables) throws Exception {
-        int unCorrectTable = 0;
+
         for(Table table : tables) {
             if(table.getNumber() == inputNumber) {
                 return;
             }
         }
-        if(unCorrectTable != tables.size()) {
-            throw new Exception("올바른 테이블 번호를 입력해주시기 바랍니다.");
-        }
+        throw new Exception("올바른 테이블 번호를 입력해주시기 바랍니다.");
     }
 
     private static boolean isOrderNumber() {
@@ -123,6 +124,7 @@ public class InputView {
             System.out.printf("다시 입력해주세요\n\n");
             OutputView.printOrderPage();
         }
+        System.out.println();
         return false;
 
     }
@@ -140,7 +142,7 @@ public class InputView {
 
     private static boolean isPaymentMethodNumber() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("신용카드는 1번, 금은 2번 ");
+        System.out.println("신용카드는 1번, 현금은 2번 ");
         try{
             inputNumber = scanner.nextInt();
             checkPaymentMethod(inputNumber);
@@ -149,6 +151,7 @@ public class InputView {
             System.out.println("결제 수단을 다시 입력해주세요");
             System.out.println(e.getMessage());
         }
+        System.out.println();
         return false;
     }
 
@@ -156,5 +159,6 @@ public class InputView {
         if(inputNumber != CARD && inputNumber != MONEY) {
             throw new Exception("제대로된 결제 방법을 입력해주세요");
         }
+        System.out.println();
     }
 }
