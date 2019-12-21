@@ -22,7 +22,7 @@ public class Application {
 
 		int tableNumberToPay = InputView.inputTableNumberToPay();
 		List<OrderMenu> orderMenuList = order.getTableToPay(tableNumberToPay);
-		Pay.pay(orderMenuList);
+		Pay.pay(orderMenuList, tableNumberToPay);
 
 	}
 }

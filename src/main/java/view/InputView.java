@@ -9,6 +9,8 @@ public class InputView {
 	private static final Scanner scanner = new Scanner(System.in);
 	private static final int PROCESS_SELECTION_RANGE = 3;
 	private static final int MAX_ORDER_NUMBER = 99;
+	private static final int CREDIT_CARD = 1;
+	private static final int CASH = 2;
 
 	public static int inputTableNumber() {
 		System.out.println("## 주문할 테이블을 선택하세요.");
@@ -70,6 +72,18 @@ public class InputView {
 		}
 	}
 
+	public static int inputPaymentType() {
+		System.out.println("신용카드는 1번, 현금은 2");
+		try {
+			int paymentType = validateNumber(scanner.nextLine().trim());
+			validatePaymentType(paymentType);
+			return paymentType;
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			return inputPaymentType();
+		}
+	}
+
 	private static void validateRangeOfMenus(int menuNumber) {
 		if (!MenuRepository.isAvailableMenu(menuNumber)) {
 			throw new IllegalArgumentException("메뉴판에 없는 메뉴입니다.");
@@ -79,6 +93,12 @@ public class InputView {
 	private static void validateTableNumber(int tableNumber) {
 		if (!TableRepository.isAvailableTable(tableNumber)) {
 			throw new IllegalArgumentException("유효하지 않은 테이블 번호 입니다.");
+		}
+	}
+
+	private static void validatePaymentType(int paymentType) {
+		if (paymentType != CREDIT_CARD && paymentType != CASH) {
+			throw new IllegalArgumentException("올바른 입력값이 아닙니다.");
 		}
 	}
 
