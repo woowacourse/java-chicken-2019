@@ -10,6 +10,7 @@ import java.util.List;
 public class MenuQuantity {
     private static final int ZERO = 0;
     private static final int MAXIMUM_QUANTITY = 99;
+    private static final int MIN_QUANTITY = 1;
 
     private final HashMap<Menu, Integer> menuQuantity;
 
@@ -31,6 +32,10 @@ public class MenuQuantity {
         if (canAddMenuQuantity(menu, quantity)) {
             menuQuantity.put(menu, menuQuantity.get(menu) + quantity);
         }
+    }
+
+    protected Boolean IsAlreadyFullyOrdered(Menu menu) {
+        return !canAddMenuQuantity(menu, MIN_QUANTITY);
     }
 
     protected Boolean isOrdered() {

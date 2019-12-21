@@ -31,7 +31,7 @@ public class OutputView {
         }
     }
 
-    protected static void printErrorMessage(IllegalArgumentException e) {
+    public static void printErrorMessage(IllegalArgumentException e) {
         System.out.println(e.getMessage());
     }
 

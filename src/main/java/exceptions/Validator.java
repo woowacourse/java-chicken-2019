@@ -5,6 +5,8 @@ import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
 
+import java.util.regex.Pattern;
+
 public class Validator {
     private static final String VALID_INPUT_OF_MAIN_UI = "[1-3]";
     private static final String VALID_INTEGER = "[0-9]+";
@@ -43,6 +45,12 @@ public class Validator {
     public static void checkQuantityExceed(Table table, Menu menu, int menuQuantity) {
         if (!table.canAddMenuQuantity(menu, menuQuantity)) {
             throwException(CustomException.OVER_MAX_MENU_QUANTITY);
+        }
+    }
+
+    public static void checkAlreadyFullyOrdered(Table table, Menu menu) {
+        if (table.IsAlreadyFullyOrdered(menu)) {
+            throwException(CustomException.ALREADY_FULLY_ORDERED_MENU);
         }
     }
 

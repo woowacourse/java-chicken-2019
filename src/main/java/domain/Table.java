@@ -24,6 +24,10 @@ public class Table {
         return menuQuantity.isOrdered();
     }
 
+    public Boolean IsAlreadyFullyOrdered(Menu menu) {
+        return menuQuantity.IsAlreadyFullyOrdered(menu);
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

@@ -2,6 +2,7 @@ import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
+import exceptions.Validator;
 import view.InputView;
 import view.OutputView;
 
@@ -37,6 +38,11 @@ public class Application {
         Table table = TableRepository.findTableByNumber(InputView.getInputOfTableNumber());
         OutputView.printMenus(menus);
         Menu menu = MenuRepository.findMenuByNumber(InputView.getInputOfMenuNumber());
-        table.addMenuQuantity(menu, InputView.getInputOfMenuQuantity(table, menu));
+        try {
+            Validator.checkAlreadyFullyOrdered(table, menu);
+            table.addMenuQuantity(menu, InputView.getInputOfMenuQuantity(table, menu));
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e);
+        }
     }
 }
