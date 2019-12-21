@@ -7,8 +7,12 @@ public class Table {
         this.number = number;
     }
 
-    @Override
+	@Override
     public String toString() {
         return Integer.toString(number);
     }
+	
+	public boolean isSame(Table compare) {
+		return Integer.toString(number).equals(compare.toString());
+	}
 }

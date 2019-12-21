@@ -19,4 +19,13 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+    
+    public static void isExist(Table input) throws Exception {
+    	if (!tables.stream()
+    				.filter(table -> table.isSame(input))
+    				.findFirst()
+    				.isPresent()) {
+    		throw new Exception("존재하지 않는 테이블입니다.");
+    	}
+    }
 }

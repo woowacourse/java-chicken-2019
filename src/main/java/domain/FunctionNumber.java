@@ -12,7 +12,7 @@ public class FunctionNumber {
 			throw new IllegalArgumentException("입력된 값이 없습니다.");
 		}
 		if (value.length() > charLength) {
-			throw new IllegalArgumentException("입력 문자가 두 자 이상이 될 수 없습니다.");
+			throw new IllegalArgumentException("입력 숫자가 두 자 이상이 될 수 없습니다.");
 		}
 		
 		this.value = Character.toLowerCase(value.charAt(0));
