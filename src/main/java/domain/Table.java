@@ -2,7 +2,9 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map.Entry;
+
+import static domain.Category.CHICKEN;
 
 public class Table {
     private final int number;
@@ -38,10 +40,8 @@ public class Table {
     }
 
     public void orderMenu(Menu menu, int quantity) {
-
         this.menuOrdered.put(menu, menuOrdered.getOrDefault(menu, 0) + quantity);
         addMoneyCharged(quantity * menu.getPrice());
-
     }
 
     public boolean hasOrdered() {
@@ -51,6 +51,18 @@ public class Table {
 
     public void addMoneyCharged(int money) {
         this.moneyCharged+=money;
+    }
+
+    public void quantityDiscount() {
+        int totalChicken = 0;
+        int discountNumber = 0;
+        for (Entry<Menu, Integer> menu: getMenuOrdered().entrySet()) {
+            if (menu.getKey().getCategory()==CHICKEN) {
+                totalChicken += menu.getValue();
+            }
+        }
+        discountNumber = totalChicken/10;
+        addMoneyCharged((-10000)*discountNumber);
     }
 
 

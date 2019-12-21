@@ -69,8 +69,17 @@ public class OutputView {
     }
 
     public static void printInvalidMainInput() {
-        System.out.println("잘못된 입력값입니다.");
+        System.out.println("원하는 기능은 1,2,3 중에 선택하여 주십시오.");
     }
+
+    public static void printQuantityLimit() {
+        System.out.println("한 테이블에서 주문할 수 있는 한 메뉴의 최대 수량은 99개입니다.");
+    }
+
+    public static void printInputMisMatchException() {
+        System.out.println("입력값이 유효하지 않습니다.");
+    }
+
 
     private static void printTopLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {

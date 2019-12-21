@@ -14,24 +14,27 @@ public class Application {
 
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
-
-        while(true) {
-            OutputView.printMain();
-            int mainDecision = InputView.inputMain();
-            if (mainDecision == 1) {
-                order(tables, menus);
+        try {
+            while (true) {
+                OutputView.printMain();
+                int mainDecision = InputView.inputMain();
+                if (mainDecision == 1) {
+                    order(tables, menus);
+                    continue;
+                }
+                if (mainDecision == 2) {
+                    pay(tables);
+                    continue;
+                }
+                if (mainDecision == 3) {
+                    OutputView.printTerminatingProgram();
+                    return;
+                }
+                OutputView.printInvalidMainInput();
                 continue;
             }
-            if (mainDecision == 2) {
-                pay(tables);
-                continue;
-            }
-            if (mainDecision == 3) {
-                OutputView.printTerminatingProgram();
-                return;
-            }
-            OutputView.printInvalidMainInput();
-            continue;
+        } catch(InputMismatchException e) {
+            OutputView.printInputMisMatchException();
         }
     }
 
@@ -44,11 +47,11 @@ public class Application {
             int menuNumber = InputView.inputMenuNumber();
             int menuQuantity = InputView.inputMenuQuantity();
             Menu menu = orderMenuWithNumber(menus, menuNumber);
-            if (table.isOrderPossible(menu, menuQuantity)) { // 주문 가능하면 break;
+            if (table.isOrderPossible(menu, menuQuantity)) {
                 table.orderMenu(menu, menuQuantity);
                 break;
             }
-            System.out.println("한 테이블에서 주문할 수 있는 한 메뉴의 최대 수량은 99개입니다.");
+            OutputView.printQuantityLimit();
         }
     }
 
@@ -77,6 +80,7 @@ public class Application {
         int tableNumber = InputView.inputTableNumberForCharge();
         Table table = selectTableWithNumber(tables, tableNumber);
         OutputView.printMenusOrdered(table);
+        table.quantityDiscount();
         OutputView.printPayment(table);
         int paymentMethod = InputView.inputPaymentMethod();
         OutputView.printSumOfMoneyInstruction();
