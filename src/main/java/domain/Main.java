@@ -13,4 +13,11 @@ public class Main {
     public String toString() {
         return number + " - " + name;
     }
+
+    public boolean mainInputCheck(int number) {
+        if(this.number == number){
+            return false;
+        }
+        return true;
+    }
 }
