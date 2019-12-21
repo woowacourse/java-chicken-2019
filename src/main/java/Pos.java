@@ -6,6 +6,7 @@ import domain.MenuAmount;
 import domain.MenuRepository;
 import domain.Order;
 import domain.Orders;
+import domain.Price;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
@@ -14,6 +15,10 @@ import view.OutputView;
 public class Pos {
 	private static final int ORDER_REGISTER_NUMBER = 1;
 	private static final int PAYMENT_NUMBER = 2;
+	private static final int CREDIT_CARD = 1;
+	private static final int CASH = 2;
+	private static final double CASH_DISCOUNT_AMOUNT = 0.05;
+	private static final double NO_DISCOUNT = 0.0;
 
 	private final Orders orders;
 
@@ -34,7 +39,7 @@ public class Pos {
 		}
 		if (functionNumber == PAYMENT_NUMBER) {
 			OutputView.printTables(TableRepository.tables(), orders);
-			int payAmount = getPayAmount(InputView.inputTableNumber());
+			OutputView.printTotalPayment(getPayAmount(InputView.inputTableNumber()));
 		}
 	}
 
@@ -51,9 +56,17 @@ public class Pos {
 		orders.add(order);
 	}
 
-	private int getPayAmount(int tableNumber) {
+	private Price getPayAmount(int tableNumber) {
 		OutputView.printMenuAccounts(tableNumber, orders);
 		int paymentWayNumber = InputView.inputPaymentWayNumber(tableNumber);
-		return 0;
+		return calculatePaymentPrice(paymentWayNumber, tableNumber);
 	}
+
+	private Price calculatePaymentPrice(int paymentWayNumber, int tableNumber) {
+		if (paymentWayNumber == CASH) {
+			return new Price(orders.getTotalPrice(tableNumber), CASH_DISCOUNT_AMOUNT);
+		}
+		return new Price(orders.getTotalPrice(tableNumber), NO_DISCOUNT);
+	}
+
 }

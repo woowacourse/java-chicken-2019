@@ -25,4 +25,12 @@ public class Order {
 		stringBuilder.append("\n");
 		return stringBuilder.toString();
 	}
+
+	public int getPrice() {
+		return menu.getPrice() * menuAmount.getAmount();
+	}
+
+	public boolean isCategoryEquals(String name) {
+		return menu.getCategory().toString().equals(name);
+	}
 }

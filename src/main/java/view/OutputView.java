@@ -2,6 +2,7 @@ package view;
 
 import domain.Menu;
 import domain.Orders;
+import domain.Price;
 import domain.Table;
 import domain.TableRepository;
 
@@ -15,6 +16,8 @@ public class OutputView {
     private static final String MAIN_SCREEN_MESSAGE = "## 메인화면";
     private static final String[] FUNCTION_LINES = {"1 - 주문등록", "2 - 결제하기", "3 - 프로그램 종료"};
     private static final String[] MENU_ACCOUNTS_MESSAGES = {"## 주문내역", "메뉴\t수량\t금액"};
+    private static final String TOTAL_PAYMENT_MESSAGE = "## 최종 결제할 금액";
+    private static final String WON = "원";
 
     public static void printTables(final List<Table> tables, Orders orders) {
         System.out.println("## 테이블 목록");
@@ -70,5 +73,10 @@ public class OutputView {
 			throw new IllegalArgumentException("주문이 없습니다.");
 		}
 		System.out.println(orders.getMenuAccounts(tableNumber));
+	}
+
+	public static void printTotalPayment(Price price) {
+    	System.out.println(TOTAL_PAYMENT_MESSAGE);
+    	System.out.println(price.getPrice() + WON);
 	}
 }

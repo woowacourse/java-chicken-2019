@@ -3,6 +3,10 @@ package domain;
 import java.util.List;
 
 public class Orders {
+	private static final String CATEGORY_NAME_OF_CHICKEN = "[치킨]";
+	private static int DISCOUNT_BOUNDARY = 10;
+	private static int DISCOUNT_AMOUNT_OF_CHICKEN = 10000;
+
 	private final List<Order> orders;
 
 	public Orders(List<Order> orders) {
@@ -29,5 +33,23 @@ public class Orders {
 			}
 		}
 		return null;
+	}
+
+	public int getTotalPrice(int tableNumber) {
+		int totalPrice = 0;
+		int chickenCount = 0;
+		for (Order order : orders) {
+			if (order.isTableEquals(tableNumber)) {
+				totalPrice += order.getPrice();
+			}
+			if (order.isCategoryEquals(CATEGORY_NAME_OF_CHICKEN)) {
+				chickenCount++;
+			}
+		}
+		if (chickenCount >= DISCOUNT_BOUNDARY) {
+			int discountTimes = chickenCount / DISCOUNT_BOUNDARY;
+			totalPrice -= DISCOUNT_AMOUNT_OF_CHICKEN * discountTimes;
+		}
+		return totalPrice;
 	}
 }
