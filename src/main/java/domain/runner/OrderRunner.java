@@ -12,14 +12,15 @@ import java.util.List;
 
 public class OrderRunner {
 
-    public static void runOrder(final List<Table> tables, List<Menu> menus) {
+    public static final int SELECT_NUMBER = 1;
+    public static List<Table> tables = TableRepository.tables();
+    public static List<Menu> menus = MenuRepository.menus();
 
+    public static void runOrder() {
         OutputView.printTables(tables);
         Table table = inputTableInfo();
         OutputView.printOrderStatus(table);
-
         Basket basket = generateBasket(menus);
-
         addBasketToTable(table, basket);
     }
 
