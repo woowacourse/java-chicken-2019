@@ -1,3 +1,16 @@
+/*
+ * Copyright (c) 2019 by SorinJin
+ * All rights reserved.
+ *
+ * TableRepository.java
+ * 데이터를 조회하는 DB역할을 하는 객체
+ *
+ * @author      Sorin Jin
+ * @version     1.0
+ * @date        21 Dec 2019
+ *
+ */
+
 package domain;
 
 import java.util.ArrayList;
@@ -18,5 +31,14 @@ public class TableRepository {
 
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
+    }
+
+    public static boolean hasTableNumber(String inputTableNumber) {
+        for (Table table : tables()) {
+            if (table.toString().equals(inputTableNumber)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

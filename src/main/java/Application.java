@@ -15,6 +15,7 @@ import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
+import util.PosRule;
 import view.InputView;
 import view.OutputView;
 
@@ -23,9 +24,12 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-
         OutputView.printActionList();
         final int actionNumber = InputView.inputActionNumber();
+
+        if (actionNumber == PosRule.TERMINATION) {
+            System.exit(1);
+        }
 
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);

@@ -13,10 +13,16 @@
 
 package util;
 
+import domain.TableRepository;
+
 public class InputExceptionHandler {
 
     public static boolean validateActionNumber(String inputActionNumber) {
         return (isNumber(inputActionNumber)) && (isRangeOfActionNumber(inputActionNumber));
+    }
+
+    public static boolean validateTableNumber(String inputTableNumber) {
+        return (isNumber(inputTableNumber)) && (isRangeOfTableNumber(inputTableNumber));
     }
 
     private static boolean isNumber(String inputString) {
@@ -36,6 +42,14 @@ public class InputExceptionHandler {
             return true;
         }
         System.out.println(Message.ACTION_NUMBER_RANGE_ERROR.getMessage());
+        return false;
+    }
+
+    private static boolean isRangeOfTableNumber(String inputString) {
+        if (TableRepository.hasTableNumber(inputString)) {
+            return true;
+        }
+        System.out.println(Message.TABLE_NUMBER_RANGE_ERROR.getMessage());
         return false;
     }
 }

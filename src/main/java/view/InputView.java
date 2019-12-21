@@ -31,7 +31,11 @@ public class InputView {
     }
 
     public static int inputTableNumber() {
-        System.out.println(Message.TABLE_NUMBER_MESSAGE.getMessage());
-        return scanner.nextInt();
+        String tableNumber;
+        do {
+            System.out.println(Message.TABLE_NUMBER_MESSAGE.getMessage());
+            tableNumber = scanner.nextLine();
+        } while (!InputExceptionHandler.validateTableNumber(tableNumber));
+        return Integer.parseInt(tableNumber);
     }
 }
