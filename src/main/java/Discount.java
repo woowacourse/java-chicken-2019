@@ -19,7 +19,7 @@ public class Discount {
             number = INITIALIZE_TO_ZERO;
         }
 
-        return payment - ((number % 10) * 10000);
+        return payment - ((number / 10) * 10000);
     }
 
     public static int calculateDiscountByMethod(int number, int payment) {
