@@ -19,6 +19,8 @@ public class Payment {
     public void pay() {
         if (!validateOrderedMenu())
             return;
+        printOrderdList();
+
         paymentMethod = getPaymentMethod();
         int totalPrice = table.getTotalPrice();
         totalPrice -= getChickenDiscount();
@@ -61,5 +63,15 @@ public class Payment {
             return false;
         }
         return true;
+    }
+
+    private void printOrderdList() {
+        OutputView.printOrderedMenuInfo();
+        final List<Menu> menus = MenuRepository.menus();
+        for (int i = 0; i < menus.size(); i++)
+            if (table.getMenus().contains(menus.get(i))){
+                int menuCount = table.getMenuCount(menus.get(i));
+                OutputView.printOrderedMenu(menus.get(i), menuCount);
+            }
     }
 }

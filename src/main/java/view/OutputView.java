@@ -11,11 +11,11 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
 
-    public static void printProgramCategory(){
+    public static void printProgramCategory() {
         System.out.println("##메인화면");
         List<String> programCategory = ProgramCategory.getProgramCategory();
-        for(int i = 0; i < programCategory.size(); i++){
-            System.out.println((i+1) + programCategory.get(i));
+        for (int i = 0; i < programCategory.size(); i++) {
+            System.out.println((i + 1) + programCategory.get(i));
         }
     }
 
@@ -47,8 +47,16 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printTotalPayPrice(int totalPrice){
+    public static void printTotalPayPrice(int totalPrice) {
         System.out.println("최종 결제할 금액");
-        System.out.println(totalPrice+"원\n");
+        System.out.println(totalPrice + "원\n");
+    }
+
+    public static void printOrderedMenuInfo(){
+        System.out.println("## 주문 내역");
+        System.out.println("메뉴 수량 금액");
+    }
+    public static void printOrderedMenu(Menu menu, int count) {
+        System.out.println(menu.getName() + " " + count + " " + menu.getPrice() * count);
     }
 }

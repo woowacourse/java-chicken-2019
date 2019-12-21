@@ -20,12 +20,21 @@ public class Table {
         return number;
     }
 
-    public int getTableMenuCount() {
-        return menus.size();
-    }
-
     public void addMenu(Menu menu) {
         menus.add(menu);
+    }
+
+    public int getMenuCount(Menu menu) {
+        int count = 0;
+        for (int i = 0; i < menus.size(); i++) {
+            if (menus.get(i) == menu)
+                count++;
+        }
+        return count;
+    }
+
+    public int getTableMenuCount() {
+        return menus.size();
     }
 
     public int getChickenCount() {
@@ -47,5 +56,9 @@ public class Table {
 
     public void clearMenus() {
         menus.clear();
+    }
+
+    public List<Menu> getMenus(){
+        return menus;
     }
 }
