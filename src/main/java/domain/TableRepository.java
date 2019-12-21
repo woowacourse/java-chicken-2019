@@ -19,4 +19,18 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static void takeOrder(int table, Order order) {
+        tables.get(getTableIndex(table)).addOrder(order);
+    }
+
+    private static int getTableIndex(int tableNumber) {
+        int tableIndex = 0;
+
+        while (!tables.get(tableIndex).isTableNumberSame(tableNumber)) {
+            tableIndex++;
+        }
+
+        return tableIndex;
+    }
 }
