@@ -61,4 +61,11 @@ public class OutputView {
     public static void printMenuSelectError() {
 	System.out.println("메뉴 입력이 잘못되었습니다. 가능한 메뉴 목록만 입력해주세요.");
     }
+    
+    public static void printMenutAmountError() {
+	System.out.println("수량 입력이 잘못되었습니다. 0이상의 숫자만 입력해주세요.");
+    }
+    public static void printMenuAmountInputError() {
+	System.out.println("주문 가능한 수량을 넘어섰습니다. 총 주문량이 99개 이하가 되도록 주문해주세요.");
+    }
 }

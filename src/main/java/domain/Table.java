@@ -3,7 +3,9 @@ package domain;
 public class Table {
     private final int number;
     private int chickenNumber;
+    private int chickenPrice;
     private int drinkNumber;
+    private int drinkPrice;
 
     public Table(final int number) {
         this.number = number;
@@ -20,4 +22,9 @@ public class Table {
 	}
 	return false;
     }
+    
+    public int getNumberSum() {
+    	return chickenNumber+drinkNumber;
+    }
+    
 }

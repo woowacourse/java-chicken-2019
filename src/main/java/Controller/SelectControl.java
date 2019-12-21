@@ -52,6 +52,30 @@ public class SelectControl {
 	return Integer.parseInt(m);
     }
     
+    public static int checkMenuAmount(String amount,Table table) {
+	if(isStringInt(amount)==false) {
+	    OutputView.printMenutAmountError();
+	    return -1;
+	}
+	if(isPositiveInteger(Integer.parseInt(amount))==false) {
+	    OutputView.printMenutAmountError();
+	    return -1;
+	}
+	if(table.getNumberSum()+Integer.parseInt(amount)>99) {
+	    OutputView.printMenuAmountInputError();
+	    return -1;
+	}
+	return Integer.parseInt(amount);
+	
+    }
+    
+    public static boolean isPositiveInteger(int num) {
+	if(num>=0) {
+	    return true;
+	}
+	return false;
+    }
+    
     public static boolean isInMenu(int m,final List<Menu> menus) {
 	for(final Menu menu : menus) {
 	    if(menu.getNumber()==m) {
