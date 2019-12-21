@@ -15,7 +15,7 @@ public class InputView {
 
         do {
             input = getInteger(Message.INPUT_FUNCTION);
-        } while (checkFunctionNumber(maxValue, input));
+        } while (!checkFunctionNumber(maxValue, input));
         return input;
     }
 
