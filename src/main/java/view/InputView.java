@@ -1,15 +1,12 @@
 package view;
 
 import java.util.List;
-import java.util.Scanner;
 
 import domain.Menu;
 import domain.Table;
 import util.ExceptionHandler;
 
 public class InputView {
-	private static final Scanner scanner = new Scanner(System.in);
-
 	public static int inputSelectWork() {
 		System.out.println("## 메인화면");
 		System.out.println("1 - 주문등록");
@@ -38,5 +35,4 @@ public class InputView {
 		System.out.println("\n## 신용 카드는 1번, 현금은 2번");
 		return ExceptionHandler.inputSelectHowToPayHandler();
 	}
-
 }

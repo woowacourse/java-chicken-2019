@@ -108,5 +108,4 @@ public class ExceptionHandler {
 		}
 		throw new IllegalArgumentException();
 	}
-
 }
