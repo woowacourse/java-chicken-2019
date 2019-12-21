@@ -5,7 +5,7 @@ public enum Choice {
     PAY(2),
     EXIT(3);
 
-    private int posNumber;
+    private final int posNumber;
 
     Choice(int posNumber){
         this.posNumber = posNumber;
