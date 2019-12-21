@@ -15,14 +15,14 @@ public class InputView {
     private static final int BIGGIST_ORDER_COUNT = 99;
     private static int inputNumber;
 
-    public static int inputOrderNumber(List<Table> tableList) {
+    public static int inputOrderNumber() {
         OutputView.printOrderPage();
-        while(!isOrderNumber(tableList));
+        while(!isOrderNumber());
         return inputNumber;
     }
 
     public static int inputTableNumber(List<Table> tables) {
-        System.out.println("## 주문할 테이블을 선택하세요.");
+        System.out.println("## 테이블을 선택하세요.");
         while(!isTableNumber(tables));
         System.out.println(inputNumber);
         return inputNumber;
@@ -36,7 +36,7 @@ public class InputView {
     }
 
     public static int inputChooseMenuCount() {
-        System.out.println("## 메뉴 수량을 입력해주세");
+        System.out.println("## 메뉴 수량을 입력해주세요");
         while(!isChooseMenuNumber());
         System.out.println(inputNumber);
         return inputNumber;
@@ -69,7 +69,7 @@ public class InputView {
             checkMenuNumber(inputNumber, menus);
             return true;
         } catch(Exception e) {
-            System.out.println("올바른 테이블 번호를 입력해주세요");
+            System.out.println("올바른 메 번호를 입력해주세요");
         }
         return false;
     }
@@ -82,7 +82,7 @@ public class InputView {
             }
         }
         if(unCorrectTable != menus.size()) {
-            throw new Exception("올바른 apsb 번호를 입력해주시기 바랍니다.");
+            throw new Exception();
         }
     }
 
@@ -110,7 +110,7 @@ public class InputView {
         }
     }
 
-    private static boolean isOrderNumber(List<Table> tableList) {
+    private static boolean isOrderNumber() {
         Scanner scanner = new Scanner(System.in);
         try{
             inputNumber = scanner.nextInt();
@@ -138,6 +138,7 @@ public class InputView {
 
     private static boolean isPaymentMethodNumber() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("신용카드는 1번, 현금은 2번 ");
         try{
             inputNumber = scanner.nextInt();
             checkPaymentMethod(inputNumber);

@@ -28,7 +28,7 @@ public class Application {
     }
 
     private static boolean operationChickenHouse(List<Table> tables, List<Menu> menus) {
-        int orderState = InputView.inputOrderNumber(tables);
+        int orderState = InputView.inputOrderNumber();
         if(orderState == 1){
             orderMenu(tables);
             return true;
@@ -50,17 +50,24 @@ public class Application {
         int paymentTable = InputView.inputTableNumber(tables);
         isWrongTable(reservedTable, paymentTable);
         int allPayment = paymentOrderMenu(orderMenuInTable,paymentTable,menus);
-        checkDiscount(allPayment);
+        checkDiscount(allPayment, orderMenuInTable, paymentTable);
 
 
     }
 
-    private static void checkDiscount(int allPayment) {
+    private static void checkDiscount(int allPayment,int[][] orderMenuInTable, int paymentTable) {
         if(InputView.inputPaymentMethod() == 2) {
             OutputView.moneyPayment(allPayment);
         }
         OutputView.cardPayMent(allPayment);
+        removeTable(orderMenuInTable, paymentTable);
+    }
 
+    private static void removeTable(int[][] orderMenuInTable, int paymentTable) {
+        for(int removeMenuNumber = 0; removeMenuNumber < orderMenuInTable[paymentTable][removeMenuNumber]; removeMenuNumber++) {
+            orderMenuInTable[paymentTable][removeMenuNumber] = 0;
+        }
+        reservedTable.remove(paymentTable);
     }
 
     private static int paymentOrderMenu(int[][] orderMenuInTable, int paymentTable, List<Menu> menus) {
@@ -97,7 +104,7 @@ public class Application {
     }
 
     private static void orderMenu(List<Table> tables) {
-        OutputView.printTables(tables);
+        OutputView.printOrderTable(reservedTable,tables);
         final int tableNumber = InputView.inputTableNumber(tables);
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
