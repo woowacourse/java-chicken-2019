@@ -11,6 +11,8 @@ public class PaymentFeature {
         int tableNumber = inputTableNumber(orderStatement);
         Table table = orderStatement.getTableOrderStatementBy(tableNumber);
         table.getOrderedMenus().printOrderedMenu();
+        inputPaymentType(table);
+
     }
 
     private int inputTableNumber(OrderStatement orderStatement) {
@@ -26,17 +28,32 @@ public class PaymentFeature {
         return tableNumber;
     }
 
-    private void inputPaymentType() {
+    private void inputPaymentType(Table table) {
         PaymentType paymentType = InputView.inputPaymentType();
+        int noneDiscountTotalPrice = getNoneDiscountTotalPrice(table);
+        int chickenDiscountTotalPrice = discountChickenNumber(table, noneDiscountTotalPrice);
         if (paymentType.isTypeCard()) {
             // 카드 금액 생성
         }
         if (paymentType.isTypeMoney()) {
-            // 현금 금액 생
+            // 현금 금액 생성
         }
     }
 
-    private void discountChickenNumber() {
+    private int getNoneDiscountTotalPrice(Table table) {
+        return table
+                .getOrderedMenus()
+                .calcurateTotalPrice();
+    }
 
+    private int discountChickenNumber(Table table, int noneDiscountTotalPrice) {
+        int chickenCount = table.getOrderedMenus().calcurateChickenCount();
+        while (chickenCount > 0) {
+            if (chickenCount >= 10) {
+                noneDiscountTotalPrice -= 10000;
+            }
+            chickenCount -= 10;
+        }
+        return noneDiscountTotalPrice;
     }
 }

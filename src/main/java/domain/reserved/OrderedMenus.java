@@ -39,7 +39,7 @@ public class OrderedMenus {
 
     public int calcurateTotalPrice() {
         return orderedMenus.stream()
-                .map(orderedMenu -> orderedMenu.getPrice())
+                .map(OrderedMenu::getTotalPrice)
                 .reduce(Integer::sum)
                 .get();
     }

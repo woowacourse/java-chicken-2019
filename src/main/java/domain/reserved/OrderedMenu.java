@@ -29,6 +29,10 @@ public class OrderedMenu extends Menu {
         return orderCapacity;
     }
 
+    public int getTotalPrice() {
+        return getPrice() * getCapacity().getCapacity();
+    }
+
     public Capacity getCapacity() {
         return capacity;
     }
