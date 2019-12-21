@@ -12,4 +12,8 @@ public class Menus {
     public List<Menu> getMenus() {
         return menus;
     }
+
+    public boolean isMenuExist(int number) {
+        return menus.stream().anyMatch(x -> x.isMenuNumberSame(number));
+    }
 }
