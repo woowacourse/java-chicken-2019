@@ -74,6 +74,7 @@ public class ChickenHouse {
 		int tableNumber;
 		OutputView.printTables(tables);
 		tableNumber = InputView.inputTableNumber(tables, false);
+		OutputView.printAllMenuesOfTable(tables.getByNumber(tableNumber));
 		calculate(InputView.inputPaymentMethod(tableNumber), TableRepository.getByNumber(tableNumber));
 	}
 	
