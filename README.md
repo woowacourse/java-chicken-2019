@@ -45,6 +45,7 @@
 ### Table
 
 - [x] table 번호 비교하여 맞는지 확인해주는 기능
+- [x] table 내 Ordered 로 부터 최종 가격 반환하는 기능
 
 ### Menus
 

@@ -16,10 +16,12 @@ public class Table {
         return this.number == number;
     }
 
+    public int allPrices() {
+        return ordered.allPrices();
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);
     }
-
-
 }
