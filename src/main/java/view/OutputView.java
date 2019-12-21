@@ -1,9 +1,6 @@
 package view;
 
-import domain.Main;
-import domain.Menu;
-import domain.Order;
-import domain.Table;
+import domain.*;
 
 import java.util.List;
 
@@ -50,6 +47,11 @@ public class OutputView {
         System.out.println(LINE + "메뉴 수량 금액");
         tableOrders.stream().forEach(tableOrder -> System.out.println(tableOrder.toString()));
         System.out.println(LINE + "## " + tableNumber + "번 테이블의 결제를 진행합니다.");
+    }
+
+    public static void printFinalPayment(int paymentPrice){
+        System.out.println(LINE + "## 최종 결제할 금액");
+        System.out.println(paymentPrice);
     }
 
     public static void printProgramExit(){

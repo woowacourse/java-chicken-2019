@@ -16,7 +16,15 @@ public class Order {
         return menu.toString();
     }
 
-    public boolean orderCheck(int number){
+    public boolean orderCheck(int number) {
         return table.toString().equals(Integer.toString(number));
+    }
+
+    public int totalPrice() {
+        return menu.getPrice() * quantity;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 }

@@ -43,11 +43,15 @@ public class Application {
 
     public static void paymentSelect(List<Table> tables, List<Order> orders) {
         final int tableNumber = InputView.inputTableNumber(tables);
-
         List<Order> tableOrders = orders.stream().filter(order -> order.orderCheck(tableNumber)).collect(Collectors.toList());
 
         OutputView.printOrderList(tableOrders, tableNumber);
 
         final int paymentSelect = InputView.inputPayment();
+
+        Calculator calculator = new Calculator(paymentSelect, tableOrders);
+        int paymentPrice = calculator.getTotalPrice();
+
+        OutputView.printFinalPayment(paymentPrice);
     }
 }
