@@ -12,9 +12,8 @@ public class Order {
     }
 
     public Order addNewOrder(Menu menu, int amount) {
-        if(menus.get(menu) != null) {
-            menus.put(menu, menus.get(menu)+amount);
-            System.out.println("새 메뉴 "+menu.getNameTest()+" "+menus.get(menu));
+        if (menus.get(menu) != null) {
+            menus.put(menu, menus.get(menu) + amount);
         }
         menus.put(menu, amount);
         return new Order(menus);
@@ -27,10 +26,23 @@ public class Order {
     public Price PriceInfo() {
         Price price = new Price(ZERO);
         Iterator<Menu> menuIterator = menus.keySet().iterator();
-        while(menuIterator.hasNext()) {
+        while (menuIterator.hasNext()) {
             Menu oneMenu = menuIterator.next();
             price = price.addPrice(oneMenu, menus.get(oneMenu));
         }
         return price;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("메뉴  수량  금액");
+        Iterator<Menu> menuIterator = menus.keySet().iterator();
+        while (menuIterator.hasNext()) {
+            Menu oneMenu = menuIterator.next();
+            int onePrice = menus.get(oneMenu);
+            sb.append("\n" + oneMenu.getName() + " " + onePrice + " " + oneMenu.getPrice() * onePrice);
+        }
+        String menuString = sb.toString();
+        return menuString;
     }
 }

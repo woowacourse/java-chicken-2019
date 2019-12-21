@@ -21,18 +21,27 @@ public class TableRepository {
     }
 
     public static void orderToTable(int tableNumber, Menu menu, int amount) {
-        tables.stream()
-                .filter(x -> x.isCorrectTable(tableNumber))
-                .findFirst()
-                .get()
+        findTable(tableNumber)
                 .addOrder(menu, amount);
     }
 
+    public static String printMenus(int tableNumber) {
+        return findTable(tableNumber).orderToString();
+    }
+
     public static Price checkOutTable(int tableNumber) {
-        return tables.stream()
-                .filter(x-> x.isCorrectTable(tableNumber))
-                .findFirst()
-                .get()
+        return findTable(tableNumber)
                 .calculatePrice();
+    }
+
+    public static void clearTable(int tableNumber) {
+        findTable(tableNumber).clearTable();
+    }
+
+    private static Table findTable(int tableNumber) {
+        return tables.stream()
+                .filter(x -> x.isCorrectTable(tableNumber))
+                .findFirst()
+                .get();
     }
 }

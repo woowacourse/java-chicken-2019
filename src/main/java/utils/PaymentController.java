@@ -8,7 +8,6 @@ import java.util.List;
 
 public class PaymentController {
     private final List<Table> tables = TableRepository.tables();
-    private final List<Menu> menus = MenuRepository.menus();
     private final int tableNumber;
 
 
@@ -27,7 +26,9 @@ public class PaymentController {
     }
 
     private void checkOutTable() {
+        System.out.println(TableRepository.printMenus(tableNumber));
         Price price = TableRepository.checkOutTable(tableNumber);
-        System.out.println(price.getPrice(false));
+        TableRepository.clearTable(tableNumber);
+        System.out.println("## 최종 결제할 금액\n"+price.getPrice(SelectionHandeler.selectCardorCash())+"원");
     }
 }

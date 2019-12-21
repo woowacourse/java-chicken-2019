@@ -22,7 +22,7 @@ public class Menu {
         return this.category.equals("CHICKEN");
     }
 
-    protected String getNameTest() {
+    protected String getName() {
         return name;
     }
 

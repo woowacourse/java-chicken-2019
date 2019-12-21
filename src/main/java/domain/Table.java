@@ -28,7 +28,7 @@ public class Table {
         return this.number == tableNumber;
     }
 
-    private boolean hasOrder() {
+    public boolean hasOrder() {
         return !(order == null);
     }
 
@@ -36,8 +36,16 @@ public class Table {
         return order.PriceInfo();
     }
 
+    public void clearTable() {
+        order = null;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);
+    }
+
+    public String orderToString() {
+        return order.toString();
     }
 }

@@ -42,6 +42,18 @@ public class SelectionHandeler {
         return selectAmount();
     }
 
+    public static boolean selectCardorCash() {
+        System.out.println("## 1번 테이블의 결제를 진행합니다.\n## 신용 카드는 1번, 현금은 2번");
+        int selectedNumber = selectInt();
+        if( selectedNumber == 1 ) {
+            return false;
+        }
+        if( selectedNumber == 2 ) {
+            return true;
+        }
+        return selectCardorCash();
+    }
+
     private static int selectInt() {
         try {
             return InputView.inputSelectNumber();
