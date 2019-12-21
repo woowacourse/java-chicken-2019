@@ -82,6 +82,6 @@
 
 ## 프로그램 실행 스크린샷 
 <div>
-<img width="673" alt="chi" src="https://user-images.githubusercontent.com/49060374/71305296-f5ccb180-2414-11ea-8ecc-044ac1468f04.png">
 <img width="637" alt="ken" src="https://user-images.githubusercontent.com/49060374/71305297-f5ccb180-2414-11ea-857d-dec87c11a1e3.png">
+<img width="673" alt="chi" src="https://user-images.githubusercontent.com/49060374/71305296-f5ccb180-2414-11ea-8ecc-044ac1468f04.png">
 </div>    
