@@ -10,4 +10,8 @@ public class Order {
         this.quantity = quantity;
     }
 
+    @Override
+    public String toString() {
+        return number + " : " + quantity;
+    }
 }

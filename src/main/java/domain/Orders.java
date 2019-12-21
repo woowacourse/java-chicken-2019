@@ -3,14 +3,16 @@ package domain;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Orders {
 
     private static final int ORDER_NOTHING = 0;
 
-    private static final List<Order> orders = new ArrayList<>();
+    private List<Order> orders;
 
     public Orders() {
+        this.orders = new ArrayList<>();
     }
 
     public void addOrder( Order order ) {
@@ -31,6 +33,15 @@ public class Orders {
     }
 
     public boolean orderNothing() {
-        return orders == null;
+        return orders.isEmpty();
+    }
+
+    public void clearOrder() {
+        this.orders = new ArrayList<>();
+    }
+
+    @Override
+    public String toString() {
+        return orders.stream().map(Order::toString).collect(Collectors.joining(", "));
     }
 }
