@@ -19,6 +19,16 @@ public class InputView {
         return scanner.nextInt();
     }
 
+    public static int inputMenuNumber() {
+        println("## 등록할 메뉴를 선택하세요.");
+        return scanner.nextInt();
+    }
+
+    public static int inputMenuAmount() {
+        println("## 메뉴의 수량을 입력하세요.");
+        return scanner.nextInt();
+    }
+
     private static void println(String message) {
         System.out.println("\n" + message);
     }

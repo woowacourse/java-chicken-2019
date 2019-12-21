@@ -28,18 +28,21 @@ public class Application {
         }
     }
 
-    private static final int selectTable() {
+    private static int selectTable() {
         OutputView.printTables(tables);
         return InputView.inputTableNumber();
     }
 
     private static void SelectOneOption() {
-        selectTable();
-        OutputView.printMenus(menus);
+       final int tableNumber = selectTable();
+       OutputView.printMenus(menus);
+       final int menuNumber = InputView.inputMenuNumber();
+       final int menuAmount = InputView.inputMenuAmount();
+       tables.get(tableNumber).addMenu(menuNumber, menuAmount);
     }
 
     private static void SelectTwoOption() {
-        selectTable();
+        final int tableNumber = selectTable();
     }
 
     private static void SelectThreeOption() {
