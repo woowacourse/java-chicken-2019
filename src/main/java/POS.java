@@ -15,11 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class POS {
-    private final List<Table> tables;
     private final List<Function> functions = new ArrayList<>();
 
     public POS(List<Table> tables, List<Menu> menus) {
-        this.tables = tables;
         this.functions.add(new OrderFunction(tables, menus));
         this.functions.add(new PaymentFunction(tables));
         this.functions.add(new TerminateFunction(tables));
