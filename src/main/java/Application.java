@@ -1,21 +1,10 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
-import view.InputView;
-import view.OutputView;
-
-import java.util.List;
+import controller.Pos;
 
 public class Application {
-    // TODO 구현 진행
-    public static void main(String[] args) {
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
 
-        final int tableNumber = InputView.inputTableNumber();
+  public static void main(String[] args) {
+    Pos pos = new Pos();
 
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
-    }
+    pos.start();
+  }
 }
