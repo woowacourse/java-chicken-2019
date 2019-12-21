@@ -8,14 +8,14 @@ import java.util.List;
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
-    private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BOTTOM_LINE = "└ %s ┘";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printTableOrdered(tables);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -36,5 +36,15 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+
+    private static void printTableOrdered(final List<Table> tables){
+        for(final Table table : tables) {
+            if(table.getOrderedMenuNumber() > 0){
+                System.out.printf(BOTTOM_LINE, "|");
+                continue;
+            }
+            System.out.printf(BOTTOM_LINE, "-");
+        }
     }
 }

@@ -21,6 +21,12 @@ public class Table {
         return this.number;
     }
 
+    public void addOrder(Menu menu, int order){
+        this.menus.add(menu);
+        this.order.add(order);
+        orderedMenuNumber += order;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

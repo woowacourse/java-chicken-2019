@@ -41,7 +41,7 @@ public class InputView {
 
         System.out.println("## 등록할 메뉴를 선택하세요.");
         menu = scanner.nextInt();
-        if(!MenuRepository.contains(menu)){
+        if(!MenuRepository.contains(menu)) {
             menu = inputMenu();
         }
 
