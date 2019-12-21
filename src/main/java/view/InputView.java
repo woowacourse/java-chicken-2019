@@ -1,5 +1,6 @@
 package view;
 
+import domain.Menu;
 import domain.Table;
 
 import java.util.HashMap;
@@ -7,11 +8,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
-    private static final Scanner scanner = new Scanner(System.in);
     private static final int REGIST_MENU = 1;
     private static final int MAKE_PAYMENT = 2;
     private static final int END_PROGRAM = 3;
+    private static final int OFFSET = 0;
     private static int inputNumber;
+
+    public static int inputOrderNumber(HashMap<Integer, Integer> orderTable, List<Table> tableList) {
+        OutputView.printOrderPage();
+        while(!isOrderNumber(orderTable, tableList));
+        return inputNumber;
+    }
 
     public static int inputTableNumber(List<Table> tables) {
         System.out.println("## 주문할 테이블을 선택하세요.");
@@ -20,7 +27,40 @@ public class InputView {
         return inputNumber;
     }
 
+    public static int inputMenuNumber(List<Menu> menus) {
+        System.out.println("## 등록할 메뉴를 선택해주세요");
+        while(!isMenuNumber(menus));
+        System.out.println(inputNumber);
+        return inputNumber;
+    }
+
+
+    private static boolean isMenuNumber(List<Menu> menus) {
+        Scanner scanner = new Scanner(System.in);
+        try{
+            inputNumber = scanner.nextInt();
+            checkMenuNumber(inputNumber, menus);
+            return true;
+        } catch(Exception e) {
+            System.out.println("올바른 테이블 번호를 입력해주세요");
+        }
+        return false;
+    }
+
+    private static void checkMenuNumber(int inputNumber, List<Menu> menus) throws Exception {
+        int unCorrectTable = OFFSET;
+        for(Menu menu : menus) {
+            if(menu.getNumber() == inputNumber) {
+                return;
+            }
+        }
+        if(unCorrectTable != menus.size()) {
+            throw new Exception("올바른 apsb 번호를 입력해주시기 바랍니다.");
+        }
+    }
+
     private static boolean isTableNumber(List<Table> tables) {
+        Scanner scanner = new Scanner(System.in);
         try{
             inputNumber = scanner.nextInt();
             checkTableNumber(inputNumber, tables);
@@ -29,7 +69,6 @@ public class InputView {
             System.out.println("올바른 테이블 번호를 입력해주세요");
         }
         return false;
-
     }
 
     private static void checkTableNumber(int inputNumber, List<Table> tables) throws Exception {
@@ -44,13 +83,8 @@ public class InputView {
         }
     }
 
-    public static int inputOrderNumber(HashMap<Integer, Integer> orderTable, List<Table> tableList) {
-        OutputView.printOrderPage();
-        while(!isOrderNumber(orderTable, tableList));
-        return inputNumber;
-    }
-
     private static boolean isOrderNumber(HashMap<Integer, Integer> orderTable, List<Table> tableList) {
+        Scanner scanner = new Scanner(System.in);
         try{
             inputNumber = scanner.nextInt();
             checkOrderNumber(inputNumber);

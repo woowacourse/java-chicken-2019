@@ -2,6 +2,7 @@ import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
+import jdk.internal.util.xml.impl.Input;
 import view.InputView;
 import view.OutputView;
 
@@ -18,12 +19,13 @@ public class Application {
 
     private static void orderChicken() {
         final List<Table> tables = TableRepository.tables();
-        int orderState = InputView.inputOrderNumber(alreadyOrder, tables);
-        while(operationChickenHouse(orderState, tables));
+        final List<Menu> menus = MenuRepository.menus();
+        while(operationChickenHouse(tables, menus));
 
     }
 
-    private static boolean operationChickenHouse(int orderState, List<Table> tables) {
+    private static boolean operationChickenHouse(List<Table> tables, List<Menu> menus) {
+        int orderState = InputView.inputOrderNumber(alreadyOrder, tables);
         if(orderState == 1){
             orderMenu(tables);
             return true;
@@ -40,6 +42,8 @@ public class Application {
         final int tableNumber = InputView.inputTableNumber(tables);
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
+        final int menuNumer = InputView.inputMenuNumber(menus);
+
 
     }
 }
