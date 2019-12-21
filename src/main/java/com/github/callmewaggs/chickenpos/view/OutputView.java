@@ -49,4 +49,9 @@ public class OutputView {
       System.out.println(order);
     }
   }
+
+  public static void printPrice(double totalPrice) {
+    System.out.println("## 최종 결제할 금액");
+    System.out.println(totalPrice + "원");
+  }
 }

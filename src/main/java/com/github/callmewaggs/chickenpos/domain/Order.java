@@ -22,6 +22,6 @@ public class Order {
 
   @Override
   public String toString() {
-    return menu.getName() + " " + amount + menu.getPrice();
+    return menu.getName() + " " + amount + " " + menu.getPrice();
   }
 }

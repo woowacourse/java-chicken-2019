@@ -4,6 +4,7 @@ import com.github.callmewaggs.chickenpos.discountpolicy.DefaultDiscountPolicy;
 import com.github.callmewaggs.chickenpos.domain.Order;
 import com.github.callmewaggs.chickenpos.domain.OrderHistory;
 import com.github.callmewaggs.chickenpos.view.InputView;
+import com.github.callmewaggs.chickenpos.view.OutputView;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,10 +23,10 @@ public class PaymentService {
     tableService.showTables();
     int tableNumber = tableService.inputTableNumber();
     orderHistory.showOrdersByTable(tableNumber);
-    paymentWithPolicy(tableNumber);
+    paymentWithDiscountPolicy(tableNumber);
   }
 
-  private void paymentWithPolicy(int tableNumber) {
+  private void paymentWithDiscountPolicy(int tableNumber) {
     double totalPrice = orderHistory.getTotalPriceByTable(tableNumber);
     int paymentMethod = InputView.inputPaymentMethod(tableNumber);
     List<Order> orders = orderHistory.getOrdersByTable(tableNumber);
@@ -35,5 +36,6 @@ public class PaymentService {
         totalPrice = defaultDiscountPolicy.afterDiscount(totalPrice);
       }
     }
+    OutputView.printPrice(totalPrice);
   }
 }

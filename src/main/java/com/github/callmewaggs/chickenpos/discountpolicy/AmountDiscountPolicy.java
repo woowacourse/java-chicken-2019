@@ -3,7 +3,7 @@ package com.github.callmewaggs.chickenpos.discountpolicy;
 import com.github.callmewaggs.chickenpos.domain.Order;
 import java.util.List;
 
-public class AmountDefaultDiscountPolicy extends DefaultDiscountPolicy {
+public class AmountDiscountPolicy extends DefaultDiscountPolicy {
   private static final int MINIMUM_DISCOUNT_AMOUNT = 10;
   private static final int DISCOUNT_PRICE = 10000;
 
