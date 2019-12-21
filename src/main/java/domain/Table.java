@@ -22,8 +22,22 @@ public class Table {
         return Integer.toString(number);
     }
 
+    public void addMenuOrder(final int menuNumber, final int orderAmount) {
+        Menu menu = MenuRepository.getMenu(menuNumber);
+        this.orderHistory += menu.getOrderString(orderAmount);
+        if (menu.isChicken()) {
+            this.paymentAmount = this.paymentAmount.addPaymentAmount(menu.getAmountPrice(orderAmount), orderAmount);
+            return;
+        }
+        this.paymentAmount = this.paymentAmount.addPaymentAmount(menu.getAmountPrice(orderAmount), 0);
+    }
+
     public boolean isSameNumber(final int number) {
         return this.number == number;
+    }
+
+    public String getOrderHistory() {
+        return this.orderHistory;
     }
 
     public boolean isBeforePayment() {
