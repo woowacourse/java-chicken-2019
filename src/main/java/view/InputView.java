@@ -17,5 +17,4 @@ public class InputView {
         System.out.println("3 - 프로그램 종료");
         return scanner.nextInt();
     }
-
 }

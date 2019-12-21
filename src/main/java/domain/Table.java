@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Table {
     private final int number;
-    private final List<Menu> orders = new ArrayList<>();
+    private final List<Menu> menus = new ArrayList<>();
 
     public Table(final int number) {
         this.number = number;
@@ -16,7 +16,11 @@ public class Table {
         return Integer.toString(number);
     }
 
+    public void addMenus(Menu menu) {
+        menus.add(menu);
+    }
+
     public boolean isOrdered() {
-        return orders.isEmpty();
+        return menus.isEmpty();
     }
 }
