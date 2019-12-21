@@ -49,4 +49,8 @@ public class OutputView {
     public static void printFuctionSelectError() {
 	System.out.println("기능 입력이 잘못되었습니다. 1,2,3 중 하나의 숫자만 입력해주세요.");
     }
+    
+    public static void printTaleSelectError() {
+	System.out.println("테이블 입력이 잘못되었습니다. 가능한 테이블 목록만 입력해주세요.");
+    }
 }
