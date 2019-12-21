@@ -2,6 +2,7 @@ package view;
 
 import domain.Menu;
 import domain.Table;
+import domain.TableRepository;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
     private static final String REGISTER_BOTTOM_LINE = "└ \\ ┘";
+    public static boolean[] checkOrder;
 
     public static void printMain(){
         System.out.println("## 메인화면");
@@ -38,6 +40,20 @@ public class OutputView {
             System.out.print(line);
         }
         System.out.println();
+    }
+
+    private static void printBottomLine(final int count){
+        for (int index = 0; index < count; index++) {
+            System.out.println(checkOrderFunc(index));
+        }
+        System.out.println();
+    }
+
+    private static String checkOrderFunc(int index){
+        if(checkOrder[index]){
+            return REGISTER_BOTTOM_LINE;
+        }
+        return BOTTOM_LINE;
     }
 
     private static void printTableNumbers(final List<Table> tables) {

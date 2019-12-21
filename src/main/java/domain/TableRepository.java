@@ -20,6 +20,10 @@ public class TableRepository {
         return Collections.unmodifiableList(tables);
     }
 
+    public static int getTableSize(){
+        return tables.size();
+    }
+
     public static boolean existTableNumber(int tableNumber){
 
         for(int i = 0 ; i < tables.size() ; i++){
