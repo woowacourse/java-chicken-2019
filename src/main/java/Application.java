@@ -56,10 +56,19 @@ public class Application {
     private static void doIfNumberIsTwo() {
         final int tableBillNumber = InputView.inputTableBillNumber(tables);
         for (Table table: tables) {
-            if (table.toString().equals(Integer.toString(tableBillNumber))) {
+            if (table.toString().equals(Integer.toString(tableBillNumber)) && isExistBillTable(table)) {
                 setBill(table);
             }
         }
+    }
+
+    private static boolean isExistBillTable(Table table) {
+        if (!table.isTable()) {
+            System.out.println("빈 테이블입니다.");
+            System.out.println();
+            return false;
+        }
+        return true;
     }
 
     private static void setBill(Table table) {

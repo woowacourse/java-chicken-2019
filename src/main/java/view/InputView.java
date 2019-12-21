@@ -3,7 +3,6 @@ package view;
 import domain.Menu;
 import domain.Table;
 
-import java.lang.invoke.MutableCallSite;
 import java.util.List;
 import java.util.Scanner;
 
@@ -79,7 +78,7 @@ public class InputView {
         String inputTableBillNumber = scanner.nextLine();
         while (!isNumberValidator(inputTableBillNumber) || !isExistTable(tables, inputTableBillNumber)) {
             System.out.println("나와있는 테이블 번호를 입력하세요.");
-            System.out.println("## 주문할 테이블을 선택하세요.");
+            System.out.println("## 계산할 테이블을 선택하세요.");
             inputTableBillNumber = scanner.nextLine();
         }
         System.out.println();
