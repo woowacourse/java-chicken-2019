@@ -18,11 +18,17 @@ public class Menu {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
 
-    public boolean isMenu(int value){
+    public boolean isMenu(int value) {
         return this.number == value;
     }
 
-    public int calculate(int MenuQuantity){
-        return MenuQuantity*(this.price);
+    /**
+     * 주문양에 대한 금액을 계산합니다.
+     *
+     * @param MenuQuantity 주문수량
+     * @return 주문에 대한 총금액
+     */
+    public int calculate(int MenuQuantity) {
+        return MenuQuantity * (this.price);
     }
 }

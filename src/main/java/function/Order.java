@@ -40,7 +40,18 @@ public class Order {
         final int menuNumber = InputView.InputMenu();
 
         final int MenuQuantity = InputView.MenuQuantity();
-
+        calculateTableMoney(tableNumber,menuNumber,MenuQuantity);
     }
 
+    /**
+     * 테이블의 계산금액을 저장합니다.
+     */
+    public static void calculateTableMoney(int tableNumber, int menuNumber, int MenuQuantity) {
+        int MoneySum = 0;
+        List<Menu> temp = MENUS.stream().filter(key -> key.isMenu(menuNumber)).collect(Collectors.toList());
+
+        MoneySum = temp.get(0).calculate(MenuQuantity);
+
+        tableMoney.put(TABLES.get(tableNumber),MoneySum);
+    }
 }
