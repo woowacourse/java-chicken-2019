@@ -17,18 +17,26 @@ public class OrderRunner extends Runner {
 
     public static void runOrder() {
         OutputView.printTables(tables);
-        Table table = inputTableInfo();
+        Table table = getTableByNumber();
         Basket basket = generateBasket(menus);
         addBasketToTable(table, basket);
     }
 
     private static Basket generateBasket(List<Menu> menus) {
         OutputView.printMenus(menus);
-        int menuNumber = InputView.inputMenuNumber();
-        int countMenuNumber = InputView.inputCountMenuNumber();
 
-        Menu menu = MenuRepository.findByMenuNumber(menuNumber);
+        Menu menu = getMenuByNumber();
+        int countMenuNumber = InputView.inputCountMenuNumber();
         return new Basket(menu, countMenuNumber);
+    }
+
+    protected static Menu getMenuByNumber() {
+        try {
+            return MenuRepository.findByMenuNumber(InputView.inputMenuNumber());
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorRetryMessage(e);
+            return getMenuByNumber();
+        }
     }
 
     private static void addBasketToTable(Table table, Basket basket) {

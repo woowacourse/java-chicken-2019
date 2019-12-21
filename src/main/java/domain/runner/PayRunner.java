@@ -14,7 +14,7 @@ public class PayRunner extends Runner {
 
     public static void runPay() {
         OutputView.printTables(tables);
-        Table table = inputTableInfo();
+        Table table = getTableByNumber();
         OutputView.printOrderStatus(table);
         payProcessing(table);
     }
