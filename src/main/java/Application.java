@@ -2,6 +2,7 @@ import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
+import jdk.internal.util.xml.impl.Input;
 import view.InputView;
 import view.OutputView;
 
@@ -12,16 +13,25 @@ public class Application {
 
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
-
-        OutputView.printMain();
-
-        OutputView.printTables(tables);
-
-        final int tableNumber = InputView.inputTableNumber();
-
-
-
         final List<Menu> menus = MenuRepository.menus();
+
+        while(true){
+            OutputView.printMain();
+            int chooseNumber = InputView.inputChooseFunc();
+
+            if(chooseNumber == 3){
+                OutputView.printExitProgram();
+                break;
+            }
+
+
+
+            OutputView.printTables(tables);
+            final int tableNumber = InputView.inputTableNumber();
+
+
+        }
+
         OutputView.printMenus(menus);
     }
 }
