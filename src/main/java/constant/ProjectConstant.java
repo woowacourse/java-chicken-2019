@@ -1,5 +1,10 @@
 package constant;
 
+/**
+ * 프로젝트에 전반적으로 사용되는 상수
+ * @author giantim
+ *
+ */
 public class ProjectConstant {
 	public final static int ZERO = 0;
 	public final static int ONE = 1;

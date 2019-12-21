@@ -16,6 +16,9 @@ public class Application {
 	private final static List<Menu> menus = MenuRepository.menus();
 	private static int tableNumber;
 
+	/**
+	 * 포스기를 실행하는 함수.
+	 */
 	private void run() {
 		InputView.showMainView();
 		String functionNumber = InputView.inputFunctionNumber();
@@ -23,7 +26,12 @@ public class Application {
 			run();
 		}
 	}
-
+	
+	/**
+	 * 입력된 포스기 값에 따라서 주문, 결제, 종료를 실행한다.
+	 * @param number 사용자의 입력값
+	 * @return 포스기 동작 여부
+	 */
 	public static boolean selectFunction(int number) {
 		if (number == Integer.parseInt(FunctionNumber.Three.getValue())) {
 			return false;
@@ -36,7 +44,10 @@ public class Application {
 		}
 		return true;
 	}
-
+	
+	/**
+	 * 주문을 진행한다.
+	 */
 	private static void doOrder() {
 		System.out.println();
 		OutputView.printTables(tables);
@@ -47,7 +58,10 @@ public class Application {
 		int menuCount = Integer.parseInt(inputMenuCount());
 		tables.get(tableNumber).addMenu(myMenu, menuCount);
 	}
-
+	
+	/**
+	 * 사용자가 입력한 메뉴가 어떤 메뉴인지 찾는다.
+	 */
 	private static Menu findMenu(int menuNumber) {
 		Menu tempMenu = menus.get(ProjectConstant.ZERO);
 		for (Menu m : menus) {
@@ -57,7 +71,11 @@ public class Application {
 		}
 		return tempMenu;
 	}
-
+	
+	/**
+	 * 입력한 메뉴가 유효한 메뉴인지 검사한다.
+	 * @return 유효한 메뉴 번호
+	 */
 	private static String inputOrderMenu() {
 		String menu = ProjectConstant.EMPTY;
 
@@ -107,7 +125,11 @@ public class Application {
 			}
 		}
 	}
-
+	
+	/**
+	 * 사용자가 입력한 메뉴 수량이 유효한지 검사한다.
+	 * @return 유요한 메뉴 수량
+	 */
 	private static String inputMenuCount() {
 		String count = ProjectConstant.EMPTY;
 
@@ -120,7 +142,7 @@ public class Application {
 		}
 		return count;
 	}
-
+	
 	private static void checkMenuCountValidation(String count) {
 		checkCountLength(count.length());
 		checkStringIsNum(count);
@@ -140,9 +162,16 @@ public class Application {
 			throw new RuntimeException();
 		}
 	}
-
+	
+	/**
+	 * 사용자가 입력한 테이블 숫자는 컴퓨터에서 사용하는 배열의 인덱스와 다르므로
+	 * 인덱스를 수정해준다.
+	 * @param number 사용자가 입력한 숫자
+	 * @return 배열의 인덱스
+	 */
 	private static int convertTableNumber(int number) {
 		int convert = ProjectConstant.ZERO;
+		
 		if (number >= ProjectConstant.ONE && number <= ProjectConstant.THREE) {
 			convert = number - ProjectConstant.ONE;
 		}
@@ -154,7 +183,10 @@ public class Application {
 		}
 		return convert;
 	}
-
+	
+	/**
+	 * 결제 기능 함수
+	 */
 	public static void pay() {
 		System.out.println();
 		OutputView.printTables(tables);
@@ -167,6 +199,10 @@ public class Application {
 		doPay();
 	}
 	
+	/**
+	 * 주문이 있는 테이블인지 확인한다
+	 * @return 주문이 있는 테이블인지 확인
+	 */
 	private static boolean tableHasOrder() {
 		if (tables.get(tableNumber).getMenuListSize() == 0) {
 			return false;
@@ -174,6 +210,9 @@ public class Application {
 		return true;
 	}
 	
+	/**
+	 * 결제를 완료하는 함수
+	 */
 	private static void doPay() {
 		tables.get(tableNumber).printMenu();
 		System.out.println("## " + tables.get(tableNumber).toString() + "번 테이블의 결제를 진행합니다.");
@@ -182,9 +221,14 @@ public class Application {
 		OutputView.printAmount(amount);
 	}
 	
+	/**
+	 * 최종 결제 금액을 계산한다.
+	 * @param paymentMethod 결제 수단
+	 * @return 최종 결제 금액
+	 */
 	private static double setAmount(int paymentMethod) {
 		double amount = 0d;
-		
+
 		if (paymentMethod == Integer.parseInt(PaymentMethodNumber.One.getValue())) {
 			amount = tables.get(tableNumber).getAllMenuSum();
 		}
