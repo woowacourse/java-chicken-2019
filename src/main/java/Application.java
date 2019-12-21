@@ -80,6 +80,13 @@ public class Application {
         return paymentNumber;
     }
 
+    public static int isPayPossibleTable(int tableNumber){
+        while(!OutputView.checkOrder[TableRepository.getTableListIndex(tableNumber)]){
+            tableNumber = InputView.inputPaymentTableNumberErr();
+        }
+        return tableNumber;
+    }
+
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
@@ -89,7 +96,6 @@ public class Application {
         while(true){
             OutputView.printMain();
             int funcNumber = InputView.inputFuncNumber();
-
             if(funcNumber == EXIT_PROGRAM){
                 OutputView.printExitProgram();
                 break;
@@ -111,6 +117,7 @@ public class Application {
             if(funcNumber == PAYMENT){
                 OutputView.printTables(tables);
                 int tableNumber = InputView.inputTableNumber();
+                tableNumber = isPayPossibleTable(tableNumber);
                 OutputView.printOrderHistory(tableNumber);
                 OutputView.printPayment(tableNumber);
                 int paymentNumber = InputView.inputPaymentNumber();
