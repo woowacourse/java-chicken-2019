@@ -1,5 +1,6 @@
 package view;
 
+import domain.Calculator;
 import domain.Menus;
 import domain.Tables;
 
@@ -55,7 +56,7 @@ public class InputView {
     }
 
     public static boolean isPaymentInputValid(int input) {
-        return input == ONE || input == TWO;
+        return input == Calculator.CARD_PAYMENT || input == Calculator.CASH_PAYMENT;
     }
 
     public static boolean isMainInputValid(int input) {
