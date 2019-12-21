@@ -34,6 +34,10 @@ public class Table {
         
         return menus.calculatePrice();
     }
+    
+    public void clearMenus() {
+        menus.clear();
+    }
 
     @Override
     public String toString() {

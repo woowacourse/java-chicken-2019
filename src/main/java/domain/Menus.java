@@ -53,6 +53,10 @@ public class Menus {
         return menus.size() == 0;
     }
     
+    public void clear() {
+        menus.clear();
+    }
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
