@@ -11,7 +11,6 @@ public class Order {
     public static void order(List<Table> tables, List<Menu> menus) {
 
         OutputView.printTables(tables);
-
         final int tableNumber = InputView.inputTableNumber();
         OutputView.printMenus(menus);
 

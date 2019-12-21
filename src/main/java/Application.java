@@ -31,7 +31,7 @@ public class Application {
         }
 
         if (isPayment(mainMenu)) {
-            payment(tables);
+            Payment.payment(tables);
         }
 
         if (isExit(mainMenu)) {
@@ -49,9 +49,5 @@ public class Application {
 
     private static boolean isExit(int mainMenu) {
         return mainMenu == EXIT;
-    }
-
-    private static void payment(List<Table> tables) {
-        // TODO
     }
 }
