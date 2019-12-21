@@ -13,7 +13,7 @@ public class FunctionNumber {
     }
 
     private void validateFunctionNumber(int functionNumber) {
-        if (isValidValue(functionNumber)) {
+        if (!isValidValue(functionNumber)) {
             throw new IllegalArgumentException("유효하지 않은 값입니다.");
         }
     }
