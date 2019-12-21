@@ -1,6 +1,7 @@
 package domain;
 
 public class OrderedMenu {
+    private final static int NO_CHICKEN = 0;
     private Menu menu;
     private int menuQuantity;
 
@@ -15,6 +16,13 @@ public class OrderedMenu {
 
     public int multiplyMenuPriceAndAuantity() {
         return menu.getPrice() * menuQuantity;
+    }
+
+    public int countChicken(){
+       if(menu.isChicken()){
+           return menuQuantity;
+       }
+       return NO_CHICKEN;
     }
 
 }

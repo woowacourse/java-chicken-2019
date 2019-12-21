@@ -45,4 +45,12 @@ public class Table {
         }
         return price;
     }
+
+    public int countTotalChicken(){
+        int count = 0;
+        for(OrderedMenu m : menuList){
+            count += m.countChicken();
+        }
+        return count;
+    }
 }

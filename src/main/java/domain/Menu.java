@@ -32,4 +32,11 @@ public class Menu {
     public int getPrice() {
         return price;
     }
+
+    public boolean isChicken(){
+        if(this.category == Category.CHICKEN){
+            return true;
+        }
+        return false;
+    }
 }
