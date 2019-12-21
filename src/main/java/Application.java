@@ -7,11 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Application {
-    // TODO 구현 진행
     public static void main(String[] args) {
 
-        // 장바구니, 테이블 , 메뉴
-        final List<Order> orderList = new ArrayList<>();
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
         int currentTableNumber = 0;
@@ -42,8 +39,9 @@ public class Application {
                 OutputView.printPayingStartMessage(tableNumber);
 
                 int totalPrice = Basket.calculateTotalPrice();
-                Payment paymentChoice = validatePaymentChoice();
-                System.out.println(totalPrice);
+                Payment payment = validatePaymentChoice();
+                double finalPaymentPrice = payment.calculateFinalDiscountedPrice(totalPrice);
+                OutputView.printFinalPaymentPrice(finalPaymentPrice);
             }
         } while(posChoice != Choice.EXIT);
 

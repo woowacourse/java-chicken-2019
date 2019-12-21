@@ -4,8 +4,8 @@ public enum Payment {
     CARD(1, 0),
     CASH(2, 0.05);
 
-    private int paymentNumber;
-    private double discountRatio;
+    private final int paymentNumber;
+    private final double discountRatio;
 
     Payment(int paymentNumber, double discountRatio) {
         this.paymentNumber = paymentNumber;
@@ -16,7 +16,7 @@ public enum Payment {
         return this.paymentNumber == paymentNumber;
     }
 
-    public double calculateTotalDiscountedPrice(int totalPrice){
+    public double calculateFinalDiscountedPrice(int totalPrice){
         if (this.paymentNumber == 2) {
             return totalPrice - totalPrice * discountRatio;
         }

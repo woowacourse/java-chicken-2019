@@ -67,4 +67,9 @@ public class OutputView {
     public static void printPayingStartMessage(int tableNumber) {
         System.out.println(tableNumber + "번 테이블의 결제를 진행합니다.");
     }
+
+    public static void printFinalPaymentPrice(double finalPaymentPrice) {
+        System.out.println("\n## 최종 결제할 금액");
+        System.out.println(finalPaymentPrice + "원 \n");
+    }
 }
