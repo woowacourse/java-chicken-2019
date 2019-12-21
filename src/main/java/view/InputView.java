@@ -21,7 +21,7 @@ public class InputView {
 	}
 
 	public static int inputTableNumber(TableRepository tables) {
-		System.out.println("## 주문할 테이블을 선택하세요.");
+		System.out.println("## 테이블을 선택하세요.");
 		int tableNumber = scanner.nextInt();
 		if (!tables.getTables().stream().filter(table -> table.getNumber() == tableNumber).findFirst().isPresent()) {
 			throw new IllegalArgumentException("입력한 테이블 번호에 해당하는 테이블이 없습니다.");

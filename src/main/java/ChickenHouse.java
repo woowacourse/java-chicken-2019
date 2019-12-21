@@ -1,3 +1,13 @@
+/* 
+ * 클래스 이름 : ChickenHouse
+ * 
+ * 버전 정보 : 1
+ * 
+ * 날짜 : 2019.12.21
+ * 
+ * 저작권 주의
+ */
+
 import java.util.List;
 
 import domain.Menu;
@@ -33,6 +43,7 @@ public class ChickenHouse {
 		int tableNumber;
 		int MenuNumber;
 		int MenuCount;
+		
 		OutputView.printTables(tables);
 		tableNumber = InputView.inputTableNumber(tables);
 		OutputView.printMenus(menus);
@@ -43,11 +54,13 @@ public class ChickenHouse {
 
 	private static void add(int tableNumber, int menuNumber, int menuCount) {
 		tables.getByNumber(tableNumber).add(menus.getByNumber(menuNumber), menuCount);
-
 	}
 
 	private static void pay() {
-
+		int tableNumber;
+		OutputView.printTables(tables);
+		tableNumber = InputView.inputTableNumber(tables);
+		
 	}
 
 }
