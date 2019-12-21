@@ -17,7 +17,7 @@ public class Menu {
         return number == menuNumber;
     }
 
-    public boolean isChickin() {
+    public boolean ischicken() {
         return Category.CHICKEN.equals(category);
     }
 

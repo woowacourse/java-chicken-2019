@@ -21,17 +21,17 @@ import view.OutputView;
  * @author KSKIM
  * @since 2019-12-21
  */
-public class ChickinPos {
+public class ChickenPos {
 	private static final int EMPTY_TABLE = 0;
-	private static final int DISCOUNT_CHICKIN_COUNT = 10;
-	private static final int DISCOUNT_CHICKIN_PRICE = 10_000;
+	private static final int DISCOUNT_chicken_COUNT = 10;
+	private static final int DISCOUNT_chicken_PRICE = 10_000;
 	private static final int PURCHASE_NOT_DECIDED = -1;
 
 	private final List<Table> tables;
 	private final List<Menu> menus;
 	private final Map<Table, List<Order>> tableOrders;
 
-	public ChickinPos(final List<Table> tables, final List<Menu> menus) {
+	public ChickenPos(final List<Table> tables, final List<Menu> menus) {
 		this.tables = tables;
 		this.menus = Objects.requireNonNull(menus);
 		this.tableOrders = initializeOrdersByTable(tables);
@@ -179,9 +179,9 @@ public class ChickinPos {
 
 	private int calculatePaymentPrice(List<Order> orders, Table table) {
 		int fullPrice = calculateFullPrice(orders);
-		int chickinDiscountedPrice = calculateChickinDiscountedPrice(fullPrice, orders);
+		int chickenDiscountedPrice = calculatechickenDiscountedPrice(fullPrice, orders);
 		PaymentType paymentType = InputView.inputPaymentType(table);
-		return calculateCashDiscountedPrice(paymentType, chickinDiscountedPrice);
+		return calculateCashDiscountedPrice(paymentType, chickenDiscountedPrice);
 	}
 
 	private int calculateFullPrice(List<Order> orders) {
@@ -190,14 +190,14 @@ public class ChickinPos {
 				.sum();
 	}
 
-	private int calculateChickinDiscountedPrice(int price, List<Order> orders) {
-		int chickinCount = calculateChickinCount(orders);
-		return price - chickinCount / DISCOUNT_CHICKIN_COUNT * DISCOUNT_CHICKIN_PRICE;
+	private int calculatechickenDiscountedPrice(int price, List<Order> orders) {
+		int chickenCount = calculatechickenCount(orders);
+		return price - chickenCount / DISCOUNT_chicken_COUNT * DISCOUNT_chicken_PRICE;
 	}
 
-	private int calculateChickinCount(List<Order> orders) {
+	private int calculatechickenCount(List<Order> orders) {
 		return orders.stream()
-				.filter(order -> order.isChickin())
+				.filter(order -> order.ischicken())
 				.mapToInt(Order::getOrderCount)
 				.sum();
 	}
