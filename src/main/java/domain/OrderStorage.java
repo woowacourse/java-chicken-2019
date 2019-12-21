@@ -6,6 +6,9 @@ import java.util.List;
 import view.InputView;
 
 public class OrderStorage {
+	private static final int CHIKEN_DISCOUNT_THRESHOLD = 10;
+	private static final int CHIKEN_DISCOUNT_MONEY = 10000;
+	
 	private List<Order> orders = new ArrayList<Order>();
 	
 	public void enterNewOrder() {
@@ -46,6 +49,30 @@ public class OrderStorage {
 		orders.stream()
 			.forEach(order -> message.append(order.toString() + "\n"));
 		return message.toString();
+	}
+	
+	public int calculateFinalPrice(boolean isCache) {
+		int price = calculatePrice();
+		if (isCache) {
+			return (int) ((double) (price * 0.95));
+		}
+		return price;
+	}
+	
+	private int calculatePrice() {
+		return orders.stream()
+			.map(order -> MenuRepository.numToPrice(order.getNum()) * order.getAmount())
+			.mapToInt(i -> i)
+			.sum() - calculateChikenDiscount();
+	}
+	
+	private int calculateChikenDiscount() {
+		int chikenAmount = orders.stream()
+			.filter(order -> order.isChiken())
+			.map(order -> order.getAmount())
+			.mapToInt(i -> i)
+			.sum();
+		return (chikenAmount / CHIKEN_DISCOUNT_THRESHOLD) * CHIKEN_DISCOUNT_MONEY;
 	}
 	
 	//테스트용

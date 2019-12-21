@@ -54,7 +54,12 @@ public class OutputView {
 	}
 	
 	public static void printOrders(OrderStorage orderStorage) {
-		System.out.println("##주문 내역");
-		System.out.println(orderStorage.toString());
+		System.out.println("##주문 내역\n" 
+				+ orderStorage.toString());
+	}
+	
+	public static void printFinalPrice(int price) {
+		System.out.println("##최종 결제할 금액\n"
+				+ price + "원");
 	}
 }

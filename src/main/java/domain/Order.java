@@ -60,4 +60,11 @@ public class Order {
 				+ amount + " "
 				+ MenuRepository.numToPrice(this.menuNum);
 	}
+	
+	public boolean isChiken() {
+		if (this.menuNum <= SIX) {
+			return true;
+		}
+		return false;
+	}
 }

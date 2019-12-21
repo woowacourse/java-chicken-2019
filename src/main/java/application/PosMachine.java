@@ -27,5 +27,6 @@ public class PosMachine {
 		tables.showTableStates();
 		OutputView.printTables(tables.tables());
 		OutputView.printOrders(tables.tableAt(tableNum).getOrders());
+		OutputView.printFinalPrice(tables.tableAt(tableNum).getOrders().calculateFinalPrice(true));
 	}
 }
