@@ -1,8 +1,5 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Table {
 
     private static final int ORDER_NOTHING = 0;
@@ -10,11 +7,11 @@ public class Table {
     private final int number;
     private final Orders orders = new Orders();
 
-    public Table(final int number) {
+    public Table( final int number ) {
         this.number = number;
     }
 
-    public void addOrder( Order order) {
+    public void addOrder( Order order ) {
         orders.addOrder(order);
     }
 

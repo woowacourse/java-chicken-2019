@@ -1,6 +1,5 @@
 package domain;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +24,7 @@ public class Orders {
 
     public int getAmount() {
         int amount = 0;
-        for( Order order : orders) {
+        for (Order order : orders) {
             Menu current = MenuRepository.getMenu(order.number);
             amount += current.getPrice(order.quantity);
         }

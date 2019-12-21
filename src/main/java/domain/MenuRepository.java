@@ -2,7 +2,6 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class MenuRepository {
@@ -24,8 +23,8 @@ public class MenuRepository {
     }
 
     public static Menu getMenu( int menuNumber ) {
-        for( Menu menu : menus) {
-            if ( menu.isEqual(menuNumber)) {
+        for (Menu menu : menus) {
+            if (menu.isEqual(menuNumber)) {
                 return menu;
             }
         }

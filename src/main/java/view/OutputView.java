@@ -20,13 +20,13 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printTables(final Tables tables) {
+    public static void printTables( final Tables tables ) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        for( Table table : tables.tables()) {
-            if(table.hasOrder()) {
+        for (Table table : tables.tables()) {
+            if (table.hasOrder()) {
                 System.out.print(OPTIONAL_BOTTOM_LINE);
                 continue;
             }
@@ -35,20 +35,20 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printMenus(final List<Menu> menus) {
+    public static void printMenus( final List<Menu> menus ) {
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
     }
 
-    private static void printLine(final String line, final int count) {
+    private static void printLine( final String line, final int count ) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
         }
         System.out.println();
     }
 
-    private static void printTableNumbers(final Tables tables) {
+    private static void printTableNumbers( final Tables tables ) {
         for (final Table table : tables.tables()) {
             System.out.printf(TABLE_FORMAT, table);
         }
@@ -57,7 +57,7 @@ public class OutputView {
 
     public static void printOrderAmount( double amount ) {
         System.out.println("## 최종 결제할 금액");
-        System.out.println(amount +"원");
+        System.out.println(amount + "원");
     }
 
     public static void printEndProgram() {

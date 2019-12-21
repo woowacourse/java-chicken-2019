@@ -53,11 +53,11 @@ public class Application {
     }
 
     private static void runPayment() {
-        if(tables.hallIsEmpty()) {
+        if (tables.hallIsEmpty()) {
             System.out.println("================");
             System.out.println("주문이 없습니다");
             System.out.println("================");
-            return ;
+            return;
         }
         OutputView.printTables(tables);
         final int tableNumber = InputView.inputPaymentTableNumber();
