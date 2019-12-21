@@ -12,6 +12,7 @@
 import java.util.List;
 import java.util.Map;
 
+import domain.Category;
 import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
@@ -80,22 +81,24 @@ public class ChickenHouse {
 	}
 	
 	private static void calculate(int paymentMethod, Table table) {
-		if(paymentMethod == 1) {
-			creditCardCalculate(table);
-			return;
+		int totalPrice = creditCardCalculate(table);
+		if(paymentMethod == 2) {
+			cashCalculate(table);
 		}
-		cashCalculate(table);
+		
 	}
 
-	private static void creditCardCalculate(Table table) {
+	private static int creditCardCalculate(Table table) {
 		int chickenCount = 0;
-		for (Map.Entry<Menu, Integer> menu : table.getMenus.entrySet()) {
-			if(menu.getKey().getCategory() == "치킨") {
+		int totalPrice = 0;
+		for (Map.Entry<Menu, Integer> menu : table.getMenus().entrySet()) {
+			totalPrice = menu.getKey().getPrice() * menu.getValue();
+			if (menu.getKey().getCategory() == Category.CHICKEN) {
 				chickenCount += menu.getValue();
 			}
 		}
-
-		
+		totalPrice -= (chickenCount / 10) * 10000;
+		return totalPrice;
 	}
 
 	private static void cashCalculate(Table table) {
