@@ -43,8 +43,6 @@ public enum RunnerType {
                 });
     }
 
-    public void runByRunnerType() {
-    }
-
+    abstract public void runByRunnerType();
 
 }

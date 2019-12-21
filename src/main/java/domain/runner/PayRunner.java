@@ -21,9 +21,18 @@ public class PayRunner extends Runner {
 
     private static void payProcessing(Table table) {
         OutputView.printTablePayProcessing(table);
-        PayMethod payMethod = PayMethod.findPayMethod(InputView.inputPaymentMethodNumber());
+        PayMethod payMethod = getPayMethod();
         OutputView.printResultPayAccount(payMethod.getResultPayAccount(table));
         table.successPayProcessing();
+    }
+
+    private static PayMethod getPayMethod() {
+        try {
+            return PayMethod.findPayMethod(InputView.inputPaymentMethodNumber());
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorRetryMessage(e);
+            return getPayMethod();
+        }
     }
 
 }

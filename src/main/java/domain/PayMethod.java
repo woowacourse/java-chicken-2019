@@ -14,7 +14,6 @@ public enum PayMethod {
         }
     },
     CASH(2) {
-
         private final static double CASH_DISCOUNT_RATE = 0.95;
 
         @Override
@@ -31,6 +30,10 @@ public enum PayMethod {
         this.selectNumber = selectNumber;
     }
 
+    public int getResultPayAccount(Table table) {
+        return table.getTableCharge();
+    }
+
     public static PayMethod findPayMethod(int selectNumber) {
         return Arrays.stream(PayMethod.values())
                 .filter(s -> s.selectNumber == selectNumber)
@@ -40,7 +43,5 @@ public enum PayMethod {
                 });
     }
 
-    public int getResultPayAccount(Table table) {
-        return table.getTableCharge();
-    }
+
 }

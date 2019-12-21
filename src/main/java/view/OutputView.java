@@ -89,4 +89,9 @@ public class OutputView {
         System.out.println("## 치킨집이 닫았습니다 내일 와주세요 (✪‿✪)ノ");
     }
 
+    public static void printErrorRetryMessage(Exception e) {
+        System.out.println(e.getMessage());
+        System.out.println("다시 입력해주세요 :)");
+    }
+
 }
