@@ -38,8 +38,8 @@ public class Application {
             if (posChoice == Choice.PAY){
                 OutputView.printTables(tables, currentTableNumber);
                 final int tableNumber = validatePayableTableNumber(currentTableNumber);
-                System.out.println(tableNumber);
                 OutputView.printOrderList(orderList);
+                OutputView.printPayingStartMessage(tableNumber);
             }
         } while(posChoice != Choice.EXIT);
 
