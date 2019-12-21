@@ -42,7 +42,14 @@ public class ChickenPos {
     }
 
     private void doSelection(int select) {
-        Table table = getTable();
+        Table table;
+        try {
+            table = getTable();
+        } catch (NoSuchElementException e) {
+            OutputView.printErrorLog(e.getMessage());
+            mainMenu();
+            return;
+        }
 
         if (selectMenu(select)) {
             doOrder(table);
@@ -52,8 +59,14 @@ public class ChickenPos {
     }
 
     private void doOrder(Table table) {
-        Order order = getOrder();
-        table.addOrder(order);
+        Order order;
+        try {
+            order = getOrder();
+            table.addOrder(order);
+        } catch (NoSuchElementException | IllegalArgumentException e) {
+            OutputView.printErrorLog(e.getMessage());
+            mainMenu();
+        }
     }
 
     private void doPayment(Table table) {
@@ -61,47 +74,48 @@ public class ChickenPos {
             OutputView.printNoOrders();
             doSelection(PAYMENT);
         }
-        PaymentPolicyDTO paymentPolicyDTO = getPaymentPolicyDTO(table);
-        Payment payment = table.toPayment(paymentPolicyDTO);
 
+        PaymentPolicyDTO paymentPolicyDTO = inputPaymentPolicy(table);
+        if (paymentPolicyDTO == null) {
+            return;
+        }
+
+        Payment payment = table.toPayment(paymentPolicyDTO);
         OutputView.printFinalPrice(DiscountGroup.getDiscountPrice(payment));
         table.clear();
+    }
+
+    private PaymentPolicyDTO inputPaymentPolicy(Table table) {
+        PaymentPolicyDTO paymentPolicyDTO;
+        try {
+            paymentPolicyDTO = getPaymentPolicyDTO(table);
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorLog(e.getMessage());
+            mainMenu();
+            return null;
+        }
+        return paymentPolicyDTO;
     }
 
     private PaymentPolicyDTO getPaymentPolicyDTO(Table table) {
         OutputView.printOrders(table.getOrders());
         OutputView.printPaymentPolicy(table.getNumber());
-        try {
-            return new PaymentPolicyDTO(InputView.inputPaymentPolicy());
-        } catch (IllegalArgumentException e) {
-            OutputView.printErrorLog(e.getMessage());
-            return getPaymentPolicyDTO(table);
-        }
+        return new PaymentPolicyDTO(InputView.inputPaymentPolicy());
     }
 
     private Table getTable() {
         OutputView.printTables(TableRepository.tables());
         int tableNumber = InputView.inputTableNumber();
-        try {
-            return TableRepository.findById(tableNumber);
-        } catch (NoSuchElementException e) {
-            OutputView.printErrorLog(e.getMessage());
-            return getTable();
-        }
+        return TableRepository.findById(tableNumber);
     }
 
     private Order getOrder() {
         OutputView.printMenus(MenuRepository.menus());
         int menuNumber = InputView.inputMenuNumber();
-        try {
-            Menu menu = MenuRepository.findById(menuNumber);
-            int menuSize = InputView.inputMenuAmount();
+        Menu menu = MenuRepository.findById(menuNumber);
+        int menuSize = InputView.inputMenuAmount();
 
-            return menu.toOrder(menuSize);
-        } catch (NoSuchElementException | IllegalArgumentException e) {
-            OutputView.printErrorLog(e.getMessage());
-            return getOrder();
-        }
+        return menu.toOrder(menuSize);
     }
 
     private boolean selectMenu(int select) {
