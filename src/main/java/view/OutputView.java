@@ -2,6 +2,7 @@ package view;
 
 import domain.Menu;
 import domain.Table;
+import domain.Bill;
 
 import java.util.List;
 
@@ -29,8 +30,18 @@ public class OutputView {
     }
 
     public static void printBill(Table table) {
+        List<Bill> bills = table.getBill();
         System.out.println("## 주문 내역");
+        System.out.println("메뉴 수량 금액");
+        for (Bill bill: bills) {
+            System.out.println(bill.getName() + " " + bill.getMenuNumber() + " " + bill.getPrice());
+        }
+        System.out.println();
+    }
 
+    public static void printTableBill(Table table) {
+        System.out.println("##" + table.toString() + "번 테이블의 결제를 진행합니다.");
+        System.out.println("## 신용카드는 1번 ,현금은 2번");
     }
 
     private static void printTopLine(final String line, final int count) {

@@ -22,7 +22,7 @@ public class Table {
             }
         }
         if (newBill) {
-            this.bills.add(new Bill(name));
+            this.bills.add(new Bill(name, menuNumber, price));
         }
         this.isTable = true;
     }
@@ -33,6 +33,10 @@ public class Table {
 
     public void setResetTable() {
         this.isTable = false;
+    }
+
+    public List<Bill> getBill() {
+        return this.bills;
     }
 
     @Override
