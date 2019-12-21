@@ -25,7 +25,7 @@ public class Cashier implements CashierService {
 
     @Override
     public Money discountByChickenQuantity() {
-        int amountToDiscount = (getChickenQuantity() % TEN) * TEN_THOUSAND;
+        double amountToDiscount = Math.floor(getChickenQuantity() / TEN) * TEN_THOUSAND;
         return getTotalOriginal().discountByAmount(amountToDiscount);
     }
 }
