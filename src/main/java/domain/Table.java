@@ -57,6 +57,9 @@ public class Table {
         return number;
     }
 
+    /**
+     * 계산 금액을 정산합니다.
+     */
     public double settle(int wayToPay) {
         double moneyToPay = 0;
         for (Menu menu : menus.keySet()) {
@@ -68,13 +71,13 @@ public class Table {
 
     private double discount(double moneyToPay, int wayToPay) {
         int menuSize = calculateMenuSize();
-        int numToDiscount = menuSize / 10;
+        int numToDiscount = menuSize / MenuConfig.STANDARD_NUMBER_TO_DISCOUNT;
         for (int i = 0; i < numToDiscount; i++) {
             moneyToPay -= MenuConfig.DISCOUNT_AMOUNT;
         }
 
         if (wayToPay == WayToPay.cash.getValue()) {
-            moneyToPay *= 0.95;
+            moneyToPay *= MenuConfig.DISCOUNT_RATE;
         }
 
         return moneyToPay;

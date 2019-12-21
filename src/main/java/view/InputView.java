@@ -42,7 +42,7 @@ public class InputView {
             return menuNumber;
         } catch (RuntimeException e) {
             outputView.printError(e);
-            return inputTableNumber();
+            return inputMenuNumber();
         }
     }
 
