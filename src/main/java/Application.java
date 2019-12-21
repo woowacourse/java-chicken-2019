@@ -28,18 +28,24 @@ public class Application {
                 OutputView.printTables(tables);
                 int tableNumber = InputView.inputTableNumber();
                 while(!TableRepository.existTableNumber(tableNumber)){
-                    System.out.println("존재하지 않는 테이블 번호입니다. 다시 입력해주세요");
-                    tableNumber = InputView.inputTableNumber();
+                    tableNumber = InputView.inputTableNumberErr();
                 }
                 OutputView.printMenus(menus);
                 int menuNumber = InputView.inputMenuNumber();
 
                 while(!MenuRepository.existMenuNumber(menuNumber)){
-                    System.out.println("존재하지 않는 메뉴 번호입니다. 다시 입력해주세요");
-                    menuNumber = InputView.inputMenuNumber();
+                    menuNumber = InputView.inputMenuNumberErr();
                 }
 
                 int menuCount = InputView.inputMenuCount();
+                while(true){
+                    if(menuCount <= 0 || menuCount > 99){
+                        menuCount = InputView.inputMenuCountErr();
+                        continue;
+                    }
+                    break;
+                }
+
 
 
             }
