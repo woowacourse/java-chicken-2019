@@ -7,6 +7,10 @@ public class Table {
         this.number = number;
     }
 
+    public boolean isRightNumber(int number) {
+        return this.number == number;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

@@ -19,4 +19,13 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static Table getTableByNumber(int tableNumber) {
+        for (Table table : tables) {
+            if (table.isRightNumber(tableNumber)) {
+                return table;
+            }
+        }
+        throw new IllegalArgumentException("유효하지 않는 테이블 번호입니다.");
+    }
 }

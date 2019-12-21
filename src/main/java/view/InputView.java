@@ -7,7 +7,7 @@ import util.ValidateUtil;
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int inputTodoSelect() {
+    public static int inputFunctionId() {
         try {
             System.out.println("## 원하는 기능을 선택하세요.");
             int data = inputInt();
@@ -15,7 +15,7 @@ public class InputView {
             return data;
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            return inputTodoSelect();
+            return inputFunctionId();
         }
     }
 
@@ -27,7 +27,7 @@ public class InputView {
             return data;
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            return inputTodoSelect();
+            return inputTableNumber();
         }
     }
     public static int inputMenuNumber() {
@@ -38,7 +38,7 @@ public class InputView {
             return data;
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            return inputTodoSelect();
+            return inputMenuNumber();
         }
     }
 
@@ -50,7 +50,7 @@ public class InputView {
             return data;
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            return inputTodoSelect();
+            return inputMenuQuantity();
         }
     }
 
@@ -62,7 +62,7 @@ public class InputView {
             return data;
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            return inputTodoSelect();
+            return inputCreditOrCash();
         }
     }
 
