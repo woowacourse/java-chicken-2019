@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Order {
+    public static final int MAX_COUNT = 99;
 
     private List<Table> tables;
     private List<Menu> menus;
@@ -24,7 +25,7 @@ public class Order {
     public void getOrder() {
         int tableNumber = getTableNumber();
         int menuNumber = getMenuNumber();
-
+        
     }
 
     private int getTableNumber() {
