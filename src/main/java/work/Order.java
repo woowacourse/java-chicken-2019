@@ -25,6 +25,23 @@ public class Order {
 		tableNumber =getTableNumber();
 		OutputView.printMenus(menus);
 		int menuChoice= getMenuChoice();
+		int menuQuantity=getMenuQuantity();
+	}
+
+	private int getMenuQuantity() {
+		int value;
+		try{
+			value=InputView.inputMenuQuantity();
+			Validation.checkPositiveRange(value,menus.size());
+		}catch(InputMismatchException e) {
+			System.out.println("숫자를 입력해주세요.");
+			InputView.flush();
+			return getMenuQuantity();
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+			return getMenuQuantity();
+		}
+		return value;
 	}
 
 	private int getTableNumber() {
@@ -51,10 +68,10 @@ public class Order {
 		}catch(InputMismatchException e) {
 			System.out.println("숫자를 입력해주세요.");
 			InputView.flush();
-			return getTableNumber();
+			return getMenuChoice();
 		}catch (Exception e){
 			System.out.println(e.getMessage());
-			return getTableNumber();
+			return getMenuChoice();
 		}
 		return value;
 	}
