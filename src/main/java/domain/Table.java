@@ -24,6 +24,7 @@ public class Table {
 
     public void addMenuOrder(final int menuNumber, final int orderAmount) {
         Menu menu = MenuRepository.getMenu(menuNumber);
+        assert menu != null; // 입력에서 체크를 하고 받아오기에 Null이 나올 수 없으나 warning이 발생하여 추가.
         this.orderHistory += menu.getOrderString(orderAmount);
         if (menu.isChicken()) {
             this.paymentAmount = this.paymentAmount.addPaymentAmount(menu.getAmountPrice(orderAmount), orderAmount);
