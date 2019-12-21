@@ -40,9 +40,24 @@ public class Application {
                 final int tableNumber = validatePayableTableNumber(currentTableNumber);
                 OutputView.printOrderList(orderList);
                 OutputView.printPayingStartMessage(tableNumber);
+
+                Payment paymentChoice = validatePaymentChoice();
             }
         } while(posChoice != Choice.EXIT);
 
+    }
+
+    private static Payment validatePaymentChoice() {
+        try {
+            int paymentChoice = InputView.inputPosChoice();
+            if (paymentChoice < 0 | paymentChoice > 2) {
+                throw new IllegalArgumentException("선택 가능한 범위가 아닙니다.");
+            }
+            return Arrays.stream(Payment.values()).filter(p -> p.isMatchPaymentNumber(paymentChoice)).findAny().get();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        return validatePaymentChoice();
     }
 
     private static void addToOrderList(List<Order> orderList, Menu menu, int foodCount) {
