@@ -1,7 +1,9 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Pay {
     private int countMenu = 0;
@@ -11,6 +13,10 @@ public class Pay {
 
     public Pay(int tableNumber) {
         this.tableNumber = tableNumber;
+    }
+
+    public int getTableNumber() {
+        return tableNumber;
     }
 
     public int getTablePay() {
@@ -25,8 +31,14 @@ public class Pay {
         tablePay += morePay;
     }
 
-    public void plusCount() {
-        countMenu += 1;
+    public void plusCount(int menuNumber) {
+        if (menuNumber < 7) {
+            countMenu += 1;
+        }
+    }
+
+    public int getCount() {
+        return countMenu;
     }
 
     public List<String> getOrderedMenu() {

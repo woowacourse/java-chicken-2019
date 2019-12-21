@@ -3,7 +3,10 @@ package control;
 import domain.*;
 import view.InputView;
 import view.OutputView;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Control {
     private static final List<Table> tables = TableRepository.tables();
@@ -42,10 +45,11 @@ public class Control {
         OutputView.printMenus(menus);
         int menuNumber = InputView.inputMenuNumber();
         menuNumber = convertMenuNumber(menuNumber);
+        tableNumber = convertTableNumber(tableNumber);
         if (menuNumber != 100) {
             payList.get(tableNumber - 1).setMenus(menus.get(menuNumber).toString());
             payList.get(tableNumber - 1).setTablePay(menus.get(menuNumber).getPrice());
-            payList.get(tableNumber - 1).plusCount();
+            payList.get(tableNumber - 1).plusCount(menuNumber);
         } else {
             System.out.println("주문할수 없습니다.");
         }
@@ -54,25 +58,28 @@ public class Control {
     private static void selectPayTable() {
         OutputView.printTables(tables);
         int tableNumber = InputView.inputTableNumber();
+        tableNumber = convertTableNumber(tableNumber);
         payLoad(tableNumber);
     }
 
     private static void payLoad(int tableNumber) {
         OutputView.printResults(payList.get(tableNumber - 1).getOrderedMenu());
-        int payHow = InputView.inputPayNumber(tableNumber);
-        // 나중에 결제 수단 할인
-        OutputView.printPay(payList.get(tableNumber - 1).getTablePay());
+        int payHow = InputView.inputPayNumber(payList.get(tableNumber - 1));
+        int totalPay = discount(tableNumber, payHow);
+        OutputView.printPay(totalPay);
         payList.get(tableNumber -1).resetTable();
     }
 
-    private static void discount(int tableNumber, int payHow) {
-        if (payHow == 1) {
-
-        } else if (payHow == 2) {
-
-        } else {
-
+    private static int discount(int tableNumber, int payHow) {
+        int totalPay = payList.get(tableNumber - 1).getTablePay();
+        int totalCount = payList.get(tableNumber - 1).getCount();
+        if (payHow == 2) {
+            totalPay -= totalPay * 0.05;
         }
+        if (totalCount / 10 > 0) {
+            totalPay -= (totalCount / 10) * 10000;
+        }
+        return totalPay;
     }
 
     private static int convertMenuNumber(int menuNumber) {
@@ -80,9 +87,19 @@ public class Control {
             return menuNumber - 1;
         } else if (menuNumber > 20 && menuNumber < 23) {
             return menuNumber - 15;
-        } else {
-            return 100;
         }
+        return 100;
+    }
+
+    private static int convertTableNumber(int tableNumber) {
+        if (tableNumber == 5) {
+            return 4;
+        } else if (tableNumber == 6) {
+            return 5;
+        } else if (tableNumber == 8) {
+            return 6;
+        }
+        return tableNumber;
     }
 
 }
