@@ -28,10 +28,12 @@ public class ChickenHouse {
 	}
 
 	private static void order() {
+		int tableNumber;
+		int MenuNumber;
 		OutputView.printTables(tables);
-		final int tableNumber = InputView.inputTableNumber(tables);
+		tableNumber = InputView.inputTableNumber(tables);
 		OutputView.printMenus(menus);
-		
+		MenuNumber = InputView.inputMenuNumber(menus);
 	}
 
 	private static void pay() {

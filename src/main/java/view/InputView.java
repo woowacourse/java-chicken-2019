@@ -34,6 +34,5 @@ public class InputView {
 			throw new IllegalArgumentException("입력한 메뉴 번호에 해당하는 메뉴가 없습니다.");
 		}
 		return menuNumber;
-		
 	}
 }
