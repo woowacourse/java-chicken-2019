@@ -19,6 +19,10 @@ public class Table {
         orderMenu.put(menuNumber, asIsQuantityNumber + quantityNumber);
     }
 
+    public void clearOrderMenu() {
+        orderMenu.clear();
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

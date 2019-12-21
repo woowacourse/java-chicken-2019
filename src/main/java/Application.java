@@ -30,7 +30,8 @@ public class Application {
         OutputView.printOrderHistory(tableNumber);
         int paymentType = paymentTypeMenu(tableNumber);
         OutputView.printTotalOrder(tableNumber, paymentType);
-        // 테이블 클리어
+        Table orderTable = TableRepository.selectTable(tableNumber);
+        orderTable.clearOrderMenu();
         mainMenu();
     }
 
