@@ -26,4 +26,13 @@ public class Application {
             }
         }
     }
+
+    public static void order() {
+        OutputView.printTables(tables);
+        final Table table = TableRepository.getTable(InputView.inputTableNumber());
+        OutputView.printMenus(menus);
+        final int menuNumber = InputView.inputMenuNumber();
+        final int orderAmount = InputView.inputAmount();
+        table.addMenuOrder(menuNumber, orderAmount);
+    }
 }
