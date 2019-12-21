@@ -16,5 +16,8 @@ public class ValidateUtil {
 	}
 
 	public static void validateMenu(Menu menu, TableOrder tableOrder) {
+		if (!tableOrder.isAbleToOrderMenu(menu, 0)) {
+			throw new IllegalArgumentException("해당 메뉴는 선택하실 수 없어요. 이미 주문 꽉찼어요.");
+		}
 	}
 }
