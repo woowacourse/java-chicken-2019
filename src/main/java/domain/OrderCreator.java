@@ -13,6 +13,7 @@ import java.util.List;
  * 주방에 전달할 주문을 생성하는 역할의 클래스
  */
 public class OrderCreator {
+    private static final int ORDER_MIN_COUNT = 1;
     private List<Menu> menuList = MenuRepository.menus();
 
     private int inputMenuNumber() {
@@ -29,8 +30,8 @@ public class OrderCreator {
         String input = "";
 
         do {
-            input = InputView.inputMenu();
-        } while (!InputValidator.isNumber(input));
+            input = InputView.inputCount();
+        } while (!InputValidator.isNumberInRange(input, ORDER_MIN_COUNT, Integer.MAX_VALUE));
 
         return Integer.parseInt(input);
     }
