@@ -2,12 +2,15 @@ import java.util.List;
 
 import domain.Menu;
 import domain.MenuRepository;
+import domain.Restaurant;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
 
 public class ChickenHouse {
+    private Restaurant restaurant = new Restaurant();
+
     public void start() {
         int selectedFeature = InputView.inputMain();
         if (selectedFeature == 3) {

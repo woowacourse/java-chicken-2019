@@ -17,4 +17,21 @@ public class Menu {
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Menu menu = (Menu)o;
+
+        return number == menu.number;
+    }
+
+    @Override
+    public int hashCode() {
+        return number;
+    }
 }
