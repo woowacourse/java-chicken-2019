@@ -1,5 +1,6 @@
 package view;
 
+import domain.MenuConfig;
 import domain.TableConfig;
 import domain.errors.InvalidInputException;
 
@@ -32,7 +33,16 @@ public class InputView {
 
     public int inputMenuNumber() {
         System.out.println("## 등록할 메뉴를 선택하세요.");
-        return Integer.parseInt(scanner.nextLine());
+        try {
+            int menuNumber = Integer.parseInt(scanner.nextLine());
+            if (Arrays.stream(MenuConfig.MENU_NUMBERS).parallel().noneMatch(number -> number == menuNumber )) {
+                throw new InvalidInputException("존재하지 않는 메뉴입니다.");
+            }
+            return menuNumber;
+        } catch (RuntimeException e) {
+            outputView.printError(e);
+            return inputTableNumber();
+        }
     }
 
     public int inputMenuAmount() {
