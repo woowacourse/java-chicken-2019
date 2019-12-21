@@ -45,4 +45,8 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public static void printExitProgram(){
+        System.out.println("프로그램을 종료합니다.");
+    }
 }

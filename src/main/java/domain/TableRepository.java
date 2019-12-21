@@ -19,4 +19,13 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static boolean isThereTable(Table anotherTable){
+        for(Table table : tables){
+            if(table.isSameTable(anotherTable)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

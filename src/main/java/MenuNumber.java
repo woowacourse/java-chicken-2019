@@ -8,7 +8,8 @@ public class MenuNumber {
     private final int numberOfMenu;
 
     public MenuNumber(int menuNumber, int numberOfMenu) {
-        if (MenuRepository.isThereMenu(new Menu(menuNumber))) {
+        if (MenuRepository.isThereMenu(new Menu(menuNumber, null,
+                null, 0))) {
             throw new IllegalArgumentException("입력한 메뉴가 메뉴 목록에 없습니다.");
         }
         if(numberOfMenu>MAX_NUMBER_OF_MENU){

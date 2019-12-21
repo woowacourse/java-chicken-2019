@@ -11,4 +11,10 @@ public class Table {
     public String toString() {
         return Integer.toString(number);
     }
+
+
+    public boolean isSameTable(Table anotherTable){
+        return this.number == anotherTable.number;
+    }
+
 }
