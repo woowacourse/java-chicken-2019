@@ -28,9 +28,9 @@ public class Application {
                 continue;
             }
             if (mainDecision == 3) {
-                continue;
+                System.out.println("## 프로그램을 종료합니다.");
+                return;
             }
-
             System.out.println("원하는 기능은 1,2,3 중에 선택 가능합니다.");
             continue;
         }
