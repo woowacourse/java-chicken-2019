@@ -27,4 +27,8 @@ public class Table {
         }
         return false;
     }
+
+    public List<OrderedMenu> getOrderedMenu(){
+        return menuList;
+    }
 }

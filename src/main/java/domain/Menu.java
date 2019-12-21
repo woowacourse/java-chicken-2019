@@ -24,4 +24,8 @@ public class Menu {
         }
         return false;
     }
+
+    public String toStringOnlyNameAndPrice(){
+        return name + " " + price;
+    }
 }

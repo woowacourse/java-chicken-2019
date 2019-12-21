@@ -1,6 +1,7 @@
 package view;
 
 import domain.Menu;
+import domain.OrderedMenu;
 import domain.Table;
 import service.Service;
 
@@ -44,5 +45,13 @@ public class OutputView {
             System.out.println(service.toString());
         }
         System.out.println();
+    }
+
+    public static void printOrderedMenu(final List<OrderedMenu> orderedMenus){
+        System.out.println("## 주문내역");
+        System.out.println("메뉴 가격 수량");
+        for(OrderedMenu menu : orderedMenus){
+            System.out.println(menu.toString());
+        }
     }
 }

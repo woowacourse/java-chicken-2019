@@ -9,4 +9,8 @@ public class OrderedMenu {
         this.menuQuantity = menuQuantity;
     }
 
+    public String toString(){
+        return menu.toStringOnlyNameAndPrice() +" "+ menuQuantity;
+    }
+
 }

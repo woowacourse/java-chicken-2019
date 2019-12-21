@@ -17,6 +17,7 @@ public class Biller extends Service {
 
         OutputView.printTables(tables);
         table = getTable(tables, InputView.inputTableNumber());
+        OutputView.printOrderedMenu(table.getOrderedMenu());
     }
 
     private Table getTable(List<Table> tables, int tableNumber) {
