@@ -2,8 +2,8 @@ package view;
 
 import Constant.ConstantNumber;
 import domain.MenuRepository;
-import domain.TableRepository;
 import domain.Table;
+import domain.TableRepository;
 
 import java.util.Scanner;
 
