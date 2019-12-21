@@ -22,6 +22,13 @@ public class MenuRepository {
         return Collections.unmodifiableList(menus);
     }
     
+    public static Menu getMenuByNumber(int number) {
+        return menus().stream()
+                .filter(menu -> menu.isTheMenu(number))
+                .findFirst()
+                .get();
+    }
+    
     public static boolean isExist(int number) {
         for (Menu menu : menus) {
             if (menu.isTheMenu(number)) {

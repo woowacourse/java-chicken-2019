@@ -29,4 +29,15 @@ public class TableRepository {
         
         return false;
     }
+    
+    public static Table getTableByNumber(int number) {
+        return tables().stream()
+                .filter(table -> table.isTheTable(number))
+                .findFirst()
+                .get();
+    }
+    
+    public static void addMenuToTable(int tableNumber, int menuNumber, int count) {
+        getTableByNumber(tableNumber).addMenu(menuNumber, count);
+    }
 }

@@ -1,6 +1,7 @@
 package domain;
 
 public class Menu {
+    private static final int CHICKEN_NUMBER = 6;
     private final int number;
     private final String name;
     private final Category category;
@@ -15,6 +16,10 @@ public class Menu {
     
     public boolean isTheMenu(int number) {
         return this.number == number;
+    }
+    
+    public boolean isChicken() {
+        return this.number <= CHICKEN_NUMBER;
     }
 
     @Override
