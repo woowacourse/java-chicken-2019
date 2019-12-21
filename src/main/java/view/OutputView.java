@@ -1,5 +1,6 @@
 package view;
 
+import domain.MainOptions;
 import domain.Menu;
 import domain.Table;
 
@@ -9,6 +10,9 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String MAIN_TITLE = "## 메인 화면";
+    private static final String NUMBER_FORMAT_ERR = "유효한 숫자가 아닙니다.";
+    private static final String NUMBER_RANGE_ERR = "범위 내의 숫자가 아닙니다.";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
@@ -36,5 +40,20 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+
+    public static void printMain(MainOptions[] options) {
+        System.out.println(MAIN_TITLE);
+        for (MainOptions option : options) {
+            System.out.println(option);
+        }
+    }
+
+    public static void printNumberError() {
+        System.out.println(NUMBER_FORMAT_ERR);
+    }
+
+    public static void printRangeError() {
+        System.out.println(NUMBER_RANGE_ERR);
     }
 }
