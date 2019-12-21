@@ -26,10 +26,6 @@ public class Table {
         return bill.containsKey(menu);
     }
 
-    public String getCurrentOrder() {
-        return bill.toString();
-    }
-
     @Override
     public String toString() {
         return Integer.toString(number);

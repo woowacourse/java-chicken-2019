@@ -1,7 +1,5 @@
 package Service;
 
-import domain.Menu;
-import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
@@ -10,34 +8,34 @@ import view.OutputView;
 import java.util.List;
 
 public class PosService {
-    public void run() {
+    private static final int ORDER = 1;
+    private static final int PAY = 2;
+
+    public void run(int nextStep) {
+        OrderService orderService = new OrderService();
+
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 
         final int tableNumber = InputView.inputTableNumber();
         Table selectedTable = selectTable(tables, tableNumber);
 
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
-
-        int menuNumber = InputView.inputMenuNumber();
-        Menu selectedMenu = selectMenu(menus, menuNumber);
-        System.out.println("here : " + selectedMenu.toString());
-
-        int menuMount = InputView.inputMenuMount();
-        selectedTable.addMenu(selectedMenu, menuMount);
+        if (nextStep == ORDER) {
+            orderService.order(selectedTable);
+        }
+        if (nextStep == PAY) {
+            // 테이블 목록 출력
+            // 테이블 선택
+            // 주문내역 출력
+            // 결제 방식 선택
+            // 결제할 금액 출력
+            // 결제되었습니다 메시지 출력
+        }
     }
 
     private Table selectTable(List<Table> tables, int number) {
         return tables.stream()
                 .filter(table -> table.isSameTableNumber(number))
-                .findFirst()
-                .get();
-    }
-
-    private Menu selectMenu(List<Menu> menus, int number) {
-        return menus.stream()
-                .filter(menu -> menu.isSameMenuNumber(number))
                 .findFirst()
                 .get();
     }
