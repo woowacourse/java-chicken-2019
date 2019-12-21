@@ -20,6 +20,5 @@ public class Order {
         OutputView.printMenus(menus);
 
         InputView.InputMenu();
-        OutputView.printInputMenu();
     }
 }

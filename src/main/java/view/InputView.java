@@ -13,6 +13,7 @@ public class InputView {
     protected static final int MENU_BEVERAGE_MAX = 22;
     private static int caseNumber;
     private static int MenuNumber;
+    private static int MenuQuantity;
 
     public static int inputTableNumber() {
         System.out.println("## 주문할 테이블을 선택하세요.");
@@ -26,7 +27,7 @@ public class InputView {
      */
     public static int inputMainFunction() {
         System.out.println("## 원하는 기능을 선택해해주세요");
-        exceptionInput();
+        exceptionInputMain();
         return caseNumber;
     }
 
@@ -34,7 +35,7 @@ public class InputView {
      * 1.주문등록, 2.결제하기, 3.프로그램종료 중 이외의 입력에 대해 예외처리를 합니다.
      * 예외처리는 1,2,3 외의 숫자, 숫자가 아닌 input에 대해 예외처리 합니다.
      */
-    public static void exceptionInput() {
+    public static void exceptionInputMain() {
         try {
             caseNumber = scanner.nextInt();
             if ((caseNumber < 0) || (caseNumber > 4)) {
@@ -42,20 +43,30 @@ public class InputView {
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e.toString());
-            exceptionInput();
+            exceptionInputMain();
         } catch (InputMismatchException e) {
             System.out.println("정수만 입력");
             scanner.nextLine();
-            exceptionInput();
+            exceptionInputMain();
         }
     }
 
+    /**
+     * 메뉴를 고르는 메소드입니다.
+     *
+     * @return 해당 매뉴번호를 리턴합니다.
+     */
     public static int InputMenu() {
         System.out.println("## 등록할 메뉴를 선택하세요");
         exceptionInputMenu();
         return MenuNumber;
     }
 
+    /**
+     * 메뉴 번호에 대한 예외처리입니다.
+     *
+     * 1.매뉴번호 이외의 입력 2.숫자이외의 입력에 대해 예외처리합니다
+     */
     public static void exceptionInputMenu() {
         try {
             MenuNumber = scanner.nextInt();
@@ -66,11 +77,11 @@ public class InputView {
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e.toString());
-            exceptionInput();
+            exceptionInputMenu();
         } catch (InputMismatchException e) {
             System.out.println("정수만 입력");
             scanner.nextLine();
-            exceptionInput();
+            exceptionInputMenu();
         }
     }
 
