@@ -15,6 +15,7 @@ public class Application {
 	private static final int ORDER_FUNCTION = 1;
 	private static final int PAY_FUNCTION = 2;
 	private static final int EXIT_PROGRAM = 3;
+
 	// TODO 구현 진행
 	public static void main(String[] args) {
 		final List<Table> tables = TableRepository.tables();
@@ -47,7 +48,6 @@ public class Application {
 	}
 
 	private static void pay(int tableNumber, List<Table> tables, List<Menu> menus) {
-
 	}
 
 	private static void order(int tableNumber, List<Table> tables, List<Menu> menus) {
@@ -55,11 +55,11 @@ public class Application {
 		try {
 			int menuNumber = InputView.inputMenuNumber();
 			int menuCount = InputView.inputMenuCount();
-			Table table = findTable(tableNumber, tables);
+			Table selectTable = findTable(tableNumber, tables);
 
-			table.addOrder(new Order(menuNumber, menuCount, menus));
-		} catch (IllegalArgumentException e) {
-			pay(tableNumber, tables, menus);
+			selectTable.addOrder(new Order(menuNumber, menuCount, menus));
+		} catch (IllegalArgumentException exception) {
+			order(tableNumber, tables, menus);
 		}
 	}
 
