@@ -49,4 +49,14 @@ public class InputView {
 			return enterTableNumber();
 		}
 	}
+	
+	public static boolean enterCacheOrCard() {
+		try {
+			System.out.println("##신용카드는 1번, 현금은 2번");
+			return new CacheOrCard(Integer.parseInt(scanner.nextLine().trim())).isCache();
+		} catch (IllegalArgumentException e) {
+			System.out.println("1또는 2를 입력해주세요");
+			return enterCacheOrCard();
+		}
+	}
 }

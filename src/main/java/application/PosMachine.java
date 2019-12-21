@@ -4,6 +4,7 @@ import java.util.List;
 
 import domain.Table;
 import domain.TableRepository;
+import view.InputView;
 import view.OutputView;
 import domain.MenuRepository;
 import domain.TableNumber;
@@ -27,6 +28,6 @@ public class PosMachine {
 		tables.showTableStates();
 		OutputView.printTables(tables.tables());
 		OutputView.printOrders(tables.tableAt(tableNum).getOrders());
-		OutputView.printFinalPrice(tables.tableAt(tableNum).getOrders().calculateFinalPrice(true));
+		OutputView.printFinalPrice(tables.tableAt(tableNum).getOrders().calculateFinalPrice(InputView.enterCacheOrCard()));
 	}
 }
