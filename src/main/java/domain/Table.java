@@ -3,6 +3,8 @@ package domain;
 import java.util.HashMap;
 
 public class Table {
+    private static final int ZERO = 0;
+
     private final int number;
     private final HashMap<Menu, Integer> bill = new HashMap<>();
 
@@ -15,15 +17,19 @@ public class Table {
     }
 
     public void addMenu(Menu menu, int mount) {
-        if (hasMenu(menu)) {
+        if (isOrderMenu(menu)) {
             bill.replace(menu, mount);
             return;
         }
         bill.put(menu, mount);
     }
 
-    private boolean hasMenu(Menu menu) {
+    private boolean isOrderMenu(Menu menu) {
         return bill.containsKey(menu);
+    }
+
+    public boolean hasMenu() {
+        return bill.size() != ZERO;
     }
 
     @Override
