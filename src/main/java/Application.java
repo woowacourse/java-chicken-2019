@@ -11,38 +11,14 @@ public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
         final int action = InputView.inputMain();
-        ErrorDetect.mainSelectError(action);
+        ErrorDetect.mainInputError(action);
         actionLogic(action);
-
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
-
-        final int tableNumber = InputView.inputTableNumber();
-
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
     }
 
     public static void actionLogic(int action) {
-        if (action == 1)
-            order();
-        if (action == 2)
-            pay();
-        System.exit(0);
-    }
-
-    /**
-     * 주문등록 담당
-     */
-    public static void order() {
-
-    }
-
-    /**
-     * 결제하기 담당
-     */
-    public static void pay() {
-
+        if (action == 3)
+            System.exit(0);
+        RunPOS runPOS = new RunPOS(action);
     }
 
 }
