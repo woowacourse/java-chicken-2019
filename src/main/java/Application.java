@@ -8,14 +8,22 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
-    // TODO 구현 진행
+    final static List<Table> tables = TableRepository.tables();
+    final static List<Menu> menus = MenuRepository.menus();
+
     public static void main(String[] args) {
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
-
-        final int tableNumber = InputView.inputTableNumber();
-
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+        while (true) {
+            OutputView.printMainScreen();
+            final int mainFunction = InputView.inputFunctionNumber();
+            if (mainFunction == 1) {
+                order();
+            }
+            if (mainFunction == 2) {
+                pay();
+            }
+            if (mainFunction == 3) {
+                return;
+            }
+        }
     }
 }
