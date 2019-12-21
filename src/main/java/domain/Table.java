@@ -1,11 +1,10 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Table {
     private final int number;
-    private static final List<Menu> menus = new ArrayList<>();
+    private List<Menu> menus = new ArrayList<>();
 
     public Table(final int number) {
         this.number = number;
@@ -21,7 +20,7 @@ public class Table {
     }
 
     public void addMenu(Menu menu) {
-        menus.add(menu);
+        this.menus.add(menu);
     }
 
     public int getMenuCount(Menu menu) {
