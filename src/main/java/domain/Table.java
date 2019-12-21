@@ -42,6 +42,6 @@ public class Table {
     public void pay() {
         OutputView.startPayment(number);
         int paymentMethod = InputView.inputPayMethod();
-        bill.calTotal();
+        bill.calTotal(paymentMethod);
     }
 }
