@@ -12,6 +12,8 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
     private static final String BOTTOM_LINE_ORDER = "└ \\ ┘";
+    private static final int CASH = 2;
+    private static final double CASH_DISCOUNT = 0.05;
 
     public static void printMain() {
         System.out.println("## 메인화면");
@@ -73,8 +75,13 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printMoney(final List<Table> tables, final int tableNumber) {
+    public static void printMoney(final List<Table> tables, final int tableNumber, final int payNumber) {
+        int totalMoney = tables.get(tableNumber).getTotalMoney();
+        
+        if (payNumber == CASH)
+            totalMoney -= totalMoney * CASH_DISCOUNT;
+
         System.out.println("## 최종 결제할 금액");
-        System.out.println(tables.get(tableNumber).getTotalMoney() + "원");
+        System.out.println(totalMoney + "원");
     }
 }
