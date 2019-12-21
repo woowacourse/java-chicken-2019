@@ -5,10 +5,24 @@ import domain.Table;
 
 import java.util.List;
 
+/**
+ * OutputView.java
+ * 화면에 글자를 출력하는 클래스
+ * 우아한테크코스 최종 오프라인 테스트
+ * (c) hothead factory. 정회형
+ */
+
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+
+    public static void printMainMenu() {
+        System.out.println("##메인화면");
+        System.out.println("1 - 주문등록");
+        System.out.println("2 - 결제하기");
+        System.out.println("3 - 프로그램 종료");
+    }
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
@@ -37,4 +51,5 @@ public class OutputView {
         }
         System.out.println();
     }
+
 }
