@@ -23,8 +23,8 @@ public class InputView {
     }
 
     public static int inputTableNumber() {
-        System.out.println("\n## 주문할 테이블을 선택하세요.");
-        String printErrorMessage = "\n## 주문할 테이블을 테이블 번호로 다시 선택해주세요.";
+        System.out.println("\n## 테이블을 선택하세요.");
+        String printErrorMessage = "\n## 테이블을 테이블 번호로 다시 선택해주세요.";
         return inputNumber(printErrorMessage, TABLE_NUMBERS);
     }
 
