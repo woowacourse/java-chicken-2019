@@ -10,7 +10,7 @@ import view.OutputView;
 public class Application {
 	// TODO 구현 진행
 	public static void main(String[] args) {
-		OutputView.printMainMenu();
+		final int mainMenuNumber = getMainMenuNumber();
 		final List<Table> tables = TableRepository.tables();
 		OutputView.printTables(tables);
 
@@ -18,5 +18,17 @@ public class Application {
 
 		final List<Menu> menus = MenuRepository.menus();
 		OutputView.printMenus(menus);
+	}
+
+	private static int getMainMenuNumber() {
+		int mainMenuNumber;
+
+		try {
+			OutputView.printMainMenu();
+			mainMenuNumber = InputView.inputMainMenuNumber();
+		} catch (IllegalArgumentException e) {
+			return getMainMenuNumber();
+		}
+		return mainMenuNumber;
 	}
 }
