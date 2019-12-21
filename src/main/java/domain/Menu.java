@@ -20,6 +20,10 @@ public class Menu {
     public boolean isChicken() {
         return this.category == Category.CHICKEN;
     }
+    
+    public int getPrice() {
+        return this.price;
+    }
 
     @Override
     public String toString() {
