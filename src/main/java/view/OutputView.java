@@ -10,14 +10,13 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
-    private static final String BOTTOM_PAY_LINE = "└ ₩ ┘";
 
-    public static void printTables(final List<Table> tables) {
+    public static void printTables(final List<Table> tables, List<Pay> payList) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
-        printLine(TOP_LINE, size);
+        printLine(TOP_LINE, size, payList);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printLine(BOTTOM_LINE, size, payList);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -26,9 +25,13 @@ public class OutputView {
         }
     }
 
-    private static void printLine(final String line, final int count) {
+    private static void printLine(final String line, final int count, List<Pay> payList) {
         for (int index = 0; index < count; index++) {
-            System.out.print(line);
+            if (payList.get(index).getCount() > 0) {
+                System.out.print("- $ -");
+            } else {
+                System.out.print(line);
+            }
         }
         System.out.println();
     }

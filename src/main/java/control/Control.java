@@ -3,7 +3,6 @@ package control;
 import domain.*;
 import view.InputView;
 import view.OutputView;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +35,7 @@ public class Control {
     }
 
     private static void selectTable() {
-        OutputView.printTables(tables);
+        OutputView.printTables(tables, payList);
         int tableNumber = InputView.inputTableNumber();
         registMenu(tableNumber);
     }
@@ -56,7 +55,7 @@ public class Control {
     }
 
     private static void selectPayTable() {
-        OutputView.printTables(tables);
+        OutputView.printTables(tables, payList);
         int tableNumber = InputView.inputTableNumber();
         tableNumber = convertTableNumber(tableNumber);
         payLoad(tableNumber);
