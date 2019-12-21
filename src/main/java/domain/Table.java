@@ -57,6 +57,10 @@ public class Table {
         return amount;
     }
 
+    public void clearBill() {
+        bill.clear();
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

@@ -22,6 +22,7 @@ public class PayService {
         int price = calculatePrice(table, paymentMethod);
 
         OutputView.printTotalPrice(price);
+        table.clearBill();
     }
 
     private int calculatePrice(Table table, int paymentMethod) {
