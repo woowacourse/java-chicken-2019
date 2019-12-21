@@ -41,7 +41,6 @@ public class Application {
     public static void order(List<Table> tables, List<Menu> menus) {
         Table table = tableListingAndSelectingForOrdering(tables);
         Menu menu = menuListingAndSelecting(menus);
-
         while (true) {
             int menuQuantity = InputView.inputMenuQuantity();
             if (table.isOrderPossible(menu, menuQuantity)) {
@@ -66,8 +65,8 @@ public class Application {
 
     public static boolean isContainingSpecificTable(List<Table> tables, int number) {
         boolean flag = false;
-        for (Table table: tables) {
-            if (table.getNumber()==number) {
+        for (Table table : tables) {
+            if (table.getNumber() == number) {
                 flag = true;
                 break;
             }
@@ -89,8 +88,8 @@ public class Application {
 
     public static boolean isContainingSpecificMenu(List<Menu> menus, int number) {
         boolean flag = false;
-        for (Menu menu: menus) {
-            if (menu.getNumber()==number) {
+        for (Menu menu : menus) {
+            if (menu.getNumber() == number) {
                 flag = true;
                 break;
             }
@@ -151,7 +150,4 @@ public class Application {
             return selectTableWithNumber(tables, tableNumber);
         }
     }
-
-
-
 }

@@ -40,27 +40,28 @@ public class OutputView {
         System.out.println("## 주문 내역");
         System.out.println("메뉴 수량 금액");
         for (Entry<Menu, Integer> menuOrdered : table.getMenuOrdered().entrySet()) {
-            System.out.print(menuOrdered.getKey().getName()+" ");
-            System.out.print(menuOrdered.getValue()+" ");
-            System.out.println(menuOrdered.getKey().getPrice()*menuOrdered.getValue());
+            System.out.print(menuOrdered.getKey().getName() + " ");
+            System.out.print(menuOrdered.getValue() + " ");
+            System.out.println(menuOrdered.getKey().getPrice() * menuOrdered.getValue());
         }
         System.out.println();
     }
 
     public static void printPayment(Table table) {
-        System.out.println("## "+table.getNumber()+"번 테이블의 결제를 진행합니다.");
+        System.out.println("## " + table.getNumber() + "번 테이블의 결제를 진행합니다.");
     }
 
-    public static void printSumOfMoneyInstruction () {
+    public static void printSumOfMoneyInstruction() {
         System.out.println("최종 결제할 금액");
     }
 
     public static void printSumOfMoney(Table table) {
-        System.out.println(table.getMoneyCharged()+"원");
+        System.out.println(table.getMoneyCharged() + "원");
         System.out.println();
     }
+
     public static void printSumOfMoneyCash(Table table) {
-        System.out.println(table.getMoneyCharged()*0.95+"원");
+        System.out.println(table.getMoneyCharged() * 0.95 + "원");
         System.out.println();
     }
 
@@ -102,7 +103,7 @@ public class OutputView {
 
     private static void printBottomLine(List<Table> tables, final int count) {
         String line = "";
-        for (Table table: tables) {
+        for (Table table : tables) {
             if (table.hasOrdered() == false) {
                 System.out.print(BOTTOM_LINE);
                 continue;
