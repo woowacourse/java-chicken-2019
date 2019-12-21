@@ -57,4 +57,8 @@ public class OutputView {
     public static void printSelectTableNumber() {
         System.out.println("테이블 번호를 선택하세요.");
     }
+
+    public static void printNotExistTableNumber() {
+        System.out.println("존재하지 않는 테이블 번호입니다.");
+    }
 }
