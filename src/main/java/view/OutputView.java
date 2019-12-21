@@ -37,4 +37,16 @@ public class OutputView {
         }
         System.out.println();
     }
+    
+    public static void printMainScreen() {
+	System.out.println("## 메인화면");
+	System.out.println("1 - 주문등록");
+	System.out.println("2 - 결제하기");
+	System.out.println("3 - 프로그램 종료");
+	
+    }
+    
+    public static void printFuctionSelectError() {
+	System.out.println("기능 입력이 잘못되었습니다. 1,2,3 중 하나의 숫자만 입력해주세요.");
+    }
 }
