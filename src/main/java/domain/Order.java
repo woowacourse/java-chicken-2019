@@ -1,23 +1,28 @@
 package domain;
 
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
-import domain.Order;
+import java.util.ArrayList;
+import java.util.List;
+
 import view.InputView;
 import view.OutputView;
 
-import java.util.List;
 
 public class Order {
     private static final String name = "주문하기";
+    private int tableNumber;
+    private int[] menu;
 
     public Order() {
-        System.out.println(tmp);
+        menu = new int[2];
+
+        this.tableNumber = selectTable();
+        this.menu[0] = selectMenu();
+        this.menu[1] = selectMenuQuantity();
+
+        System.out.println(toString());
     }
 
-    public int SelectTable() {
+    public int selectTable() {
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 
@@ -25,8 +30,24 @@ public class Order {
         return tableNumber;
     }
 
-    public String getName() {
-        return name;
+    public int selectMenu() {
+        final List<Menu> menus = MenuRepository.menus();
+        OutputView.printMenus(menus);
+
+        final int menuNumber = InputView.inputMenuNumber();
+
+        return menuNumber;
+    }
+
+    public int selectMenuQuantity() {
+        int quantity = InputView.inputMenuQuantity();
+
+        return quantity;
+    }
+
+    @Override
+    public String toString() {
+        return tableNumber + " " + menu[0] + " " + menu[1];
     }
 
 }

@@ -8,7 +8,6 @@ public class Functions {
     Order order = new Order();
     private static final List<String> functions = new ArrayList<>();
 
-    String orderName = order.getName();
 
 
     public static List<String> functions() {
