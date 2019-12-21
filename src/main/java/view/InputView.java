@@ -2,6 +2,7 @@ package view;
 
 import domain.MenuRepository;
 import exceptions.OutOfNumberException;
+import jdk.internal.vm.compiler.collections.EconomicMap;
 import services.ExceptionService;
 
 import java.util.Scanner;
@@ -21,7 +22,7 @@ public class InputView {
 
     public static int inputMenuQuantity() {
         System.out.println("## 메뉴의 갯수를 입력하세요.");
-        return scanner.nextInt();
+        return ExceptionService.handleExceptionOfMenuQuantity();
     }
 
     public static int inputMainFeature() {
