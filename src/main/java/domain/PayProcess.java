@@ -1,17 +1,17 @@
 package domain;
 
-import java.awt.image.ShortLookupTable;
 import java.util.HashMap;
 import java.util.List;
-import javafx.scene.control.Tab;
 import view.InputView;
 import view.OutputView;
 
 public class PayProcess {
 
+  private final int CARD = 1;
+  private final int CASH = 2;
+
   private final List<Table> tables;
   private final List<Menu> menus;
-
   private final HashMap<Integer, Integer> tableNumbers;
   private final HashMap<Integer, Integer> menuNumbers;
 
@@ -41,8 +41,32 @@ public class PayProcess {
     pay(tableNumber);
   }
 
-  private void pay(int tableNumber){
+  private void pay(int tableNumber) {
     OutputView.printOrderResult(getTable(tableNumber));
+
+    System.out.println("## "+getTable(tableNumber).getNumber()+"번 테이블의 결제를 진행힙니다.");
+    int paymentMethod = getPaymentMethod();
+
+  }
+
+  private int getPaymentMethod() {
+    return validatePaymentMethod(InputView.inputPaymentMethod());
+  }
+
+  private int isInMethod(int method) throws Exception {
+    if(method != CARD && method != CASH){
+      throw new Exception("1과 2만 입력할수 있습니다.");
+    }
+    return method;
+  }
+
+  private int validatePaymentMethod(int paymentMethod){
+    try {
+      return isInMethod(paymentMethod);
+    }catch (Exception e){
+      System.out.println(e.getMessage());
+      return getPaymentMethod();
+    }
   }
 
   private int getTableNumber() {
