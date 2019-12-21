@@ -14,4 +14,12 @@ public class Function {
         this.select = select;
     }
 
+    public boolean isTermination() {
+        return select == TERMINATION_VALUE;
+    }
+
+    public boolean isRegisterOrder() {
+        return select == REGISTER_ORDER_VALUE;
+    }
+
 }
