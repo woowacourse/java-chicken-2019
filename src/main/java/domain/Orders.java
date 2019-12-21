@@ -14,6 +14,10 @@ public class Orders {
         this.orders = new ArrayList<>();
     }
 
+    public List<Order> orders() {
+        return orders;
+    }
+
     public void addOrder( Order order ) {
         orders.add(order);
     }
@@ -41,6 +45,16 @@ public class Orders {
 
     public void clearOrder() {
         this.orders = new ArrayList<>();
+    }
+
+    public int getMenuSize( int menuNumber ) {
+        int size = 0;
+        for( Order order : orders) {
+            if(order.isEqual(menuNumber)){
+                size += order.getQuantity();
+            }
+        }
+        return size;
     }
 
     @Override
