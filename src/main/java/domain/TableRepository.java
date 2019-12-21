@@ -28,4 +28,8 @@ public class TableRepository {
 		}
 		throw new IllegalArgumentException("해당하는 테이블을 찾을 수 없습니다.");
 	}
+	
+	public static int size() {
+		return tables.size();
+	}
 }
