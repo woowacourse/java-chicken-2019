@@ -21,4 +21,23 @@ public class MenuRepository {
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
     }
+
+    public static boolean validateMenuInput(String input) {
+        int menuNumber = -1;
+        try {
+            menuNumber = Integer.parseInt(input);
+        } catch (Exception e) {
+            menuNumber = -1;
+        }
+        return validateMenuNumber(menuNumber);
+    }
+
+    public static boolean validateMenuNumber(int menuNumber) {
+        for (int i = 0; i < menus().size(); i++) {
+            if (menus.get(i).getNumber() == menuNumber)
+                return true;
+        }
+        System.out.println("메뉴 번호가 잘못되었습니다.\n");
+        return false;
+    }
 }

@@ -15,6 +15,8 @@ public class Application {
             if (programIndex == 3)
                 break;
             int tableIndex = getTableNumber();
+            if (programIndex == 1)
+                Order.getOrder(tableIndex);
         }
     }
 
