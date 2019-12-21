@@ -14,10 +14,14 @@ public class TotalOrders {
 	}
 
 	public void addOrder(Table table, Order order) {
+		TableOrder tableOrder = getTableOrderByTable(table);
+		tableOrder.add(order);
+	}
+
+	public TableOrder getTableOrderByTable(Table table) {
 		for (TableOrder tableOrder : totalOrders) {
 			if (tableOrder.isEqualTable(table)) {
-				tableOrder.add(order);
-				return;
+				return tableOrder;
 			}
 		}
 		throw new IllegalArgumentException("해당하는 테이블이 존재하지 않습니다.");
