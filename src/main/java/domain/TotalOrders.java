@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TotalOrders {
 	private final List<TableOrder> totalOrders = new ArrayList<>();
@@ -15,6 +16,7 @@ public class TotalOrders {
 
 	public void addOrder(Table table, Order order) {
 		TableOrder tableOrder = getTableOrderByTable(table);
+		System.out.println(tableOrder);
 		tableOrder.add(order);
 	}
 
@@ -25,5 +27,12 @@ public class TotalOrders {
 			}
 		}
 		throw new IllegalArgumentException("해당하는 테이블이 존재하지 않습니다.");
+	}
+
+	@Override
+	public String toString() {
+		return totalOrders.stream()
+			.map(TableOrder::toString)
+			.collect(Collectors.joining("\n"));
 	}
 }

@@ -3,6 +3,7 @@ package view;
 import domain.Cost;
 import domain.Menu;
 import domain.Table;
+import domain.TableOrder;
 
 import java.util.List;
 
@@ -46,5 +47,11 @@ public class OutputView {
     public static void printPurchaseInfo(Cost cost) {
         System.out.println("## 최종 결제할 금액");
         System.out.println(cost);
+    }
+
+    public static void printTableOrderToPay(TableOrder tableOrder) {
+        System.out.println("## 주문 내역");
+        System.out.println("메뉴 수량 금액");
+        System.out.println(tableOrder);
     }
 }

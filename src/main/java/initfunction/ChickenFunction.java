@@ -12,25 +12,27 @@ import domain.TotalOrders;
 import view.OutputView;
 
 public abstract class ChickenFunction {
-	private final List<Table> tables = TableRepository.tables();
-	private final List<Menu> menus = MenuRepository.menus();
-	private final TotalOrders totalOrders = new TotalOrders();
+	private static final List<Table> TABLES = TableRepository.tables();
+	private static final List<Menu> MENUS = MenuRepository.menus();
+	private static final TotalOrders TOTAL_ORDERS = new TotalOrders();
 
 	public abstract void run();
 
 	protected TableOrder getTableOrderByTable(Table table) {
-		return totalOrders.getTableOrderByTable(table);
+		return TOTAL_ORDERS.getTableOrderByTable(table);
 	}
 
 	protected void addOrderToTotalOrder(Table table, Order order) {
-		totalOrders.addOrder(table, order);
+		TOTAL_ORDERS.addOrder(table, order);
+		System.out.println(table);
+		System.out.println(order);
 	}
 
 	protected void printAllTable() {
-		OutputView.printTables(tables);
+		OutputView.printTables(TABLES);
 	}
 
 	protected void printAllMenus() {
-		OutputView.printMenus(menus);
+		OutputView.printMenus(MENUS);
 	}
 }

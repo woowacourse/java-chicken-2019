@@ -24,4 +24,9 @@ public class Order {
 	public boolean isChicken() {
 		return menu.isChicken();
 	}
+
+	@Override
+	public String toString() {
+		return menu.getName() + " " + quantity + " " + menu.getPrice();
+	}
 }

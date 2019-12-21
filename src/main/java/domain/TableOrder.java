@@ -1,8 +1,6 @@
 package domain;
 
 public class TableOrder {
-	private static final int MAX_ORDER_COUNT_PER_MENU = 99;
-
 	private final Table table;
 	private final Orders orders = new Orders();
 
@@ -11,7 +9,7 @@ public class TableOrder {
 	}
 
 	public boolean isEqualTable(Table table) {
-		return this.table == table;
+		return this.table.equals(table);
 	}
 
 	public void add(Order order) {
@@ -33,4 +31,11 @@ public class TableOrder {
 	public int getCountOfChickenOrder() {
 		return orders.getCountOfChickenOrder();
 	}
+
+	@Override
+	public String toString() {
+		return orders.toString();
+	}
+
+
 }

@@ -13,6 +13,7 @@ public class OrderFunction extends ChickenFunction {
 
 		printAllMenus();
 		TableOrder tableOrder = getTableOrderByTable(table);
+		System.out.println(tableOrder + " ");
 		Order order = InputView.inputOrderIn(tableOrder);
 		addOrderToTotalOrder(table, order);
 

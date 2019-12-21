@@ -19,6 +19,7 @@ public class InputView {
 
 	public static ChickenFunction inputFunction() {
 		try {
+			OutputView.printInitialFunction();
 			System.out.println("## 원하는 기능을 선택하세요.");
 			return FunctionFactory.getInstance(inputInt());
 		} catch (IllegalArgumentException ex) {

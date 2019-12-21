@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Orders {
 	private static final int MAX_ORDER_COUNT = 99;
@@ -10,13 +11,14 @@ public class Orders {
 
 	public void add(Order order) {
 		orders.add(order);
+		System.out.println(orders);
+		System.out.println(order);
 	}
 
 	public void removeAll() {
 		for (int i = orders.size() - 1; i >= 0; i--) {
 			orders.remove(i);
 		}
-		System.out.println("<<<<<<<<<<<<<<삭제 되면 사이즈 값 0 나와야해  " + orders.size());
 	}
 
 	public Cost getAllCost() {
@@ -40,12 +42,16 @@ public class Orders {
 	}
 
 	public int getCountOfChickenOrder() {
-		// order 각각 메뉴 , 수량 함휴 하고 있다.
-		// order 한테 니가 갖고 있는 메뉴 치킨이냐 묻고 필터
-		// 걔네들의 갯수
 		return orders.stream()
 			.filter(order -> order.isChicken())
 			.mapToInt(Order::getQuantity)
 			.sum();
+	}
+
+	@Override
+	public String toString() {
+		return orders.stream()
+			.map(Order::toString)
+			.collect(Collectors.joining("\n"));
 	}
 }
