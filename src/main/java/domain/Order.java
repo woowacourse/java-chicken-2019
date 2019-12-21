@@ -33,4 +33,20 @@ public class Order {
 	public int getOrderCount() {
 		return orderCount;
 	}
+
+	public int calculateTotalPrice() {
+		return menu.calculatePrice(orderCount);
+	}
+
+	public String toPrintString() {
+		return menu.getName() + " " + orderCount + " " + menu.getPrice();
+	}
+
+	@Override
+	public String toString() {
+		return "Order{" +
+				"menu=" + menu +
+				", orderCount=" + orderCount +
+				'}';
+	}
 }
