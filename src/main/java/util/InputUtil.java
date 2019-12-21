@@ -25,4 +25,8 @@ public class InputUtil {
 	public static MenuNumber checkMenuNumber(String menuNumberInput) {
 		return new MenuNumber(menuNumberInput);
 	}
+
+	public static MenuCount checkMenuCount(String menuCountInput) {
+		return new MenuCount(menuCountInput);
+	}
 }

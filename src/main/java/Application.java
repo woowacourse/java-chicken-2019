@@ -58,6 +58,7 @@ public class Application {
 	private static void orderByTable(int tableNumber) {
 		final List<Menu> menus = MenuRepository.menus();
 		int menuNumber = getMenuNumber(menus);
+		int menuCount = getMenuCount(menuNumber);
 	}
 
 	private static int getMenuNumber(List<Menu> menus) {
@@ -68,6 +69,17 @@ public class Application {
 			menuNumber = InputUtil.checkMenuNumber(InputView.inputMenuNumber()).getValue();
 		} catch (IllegalArgumentException e) {
 			return getMenuNumber(menus);
+		}
+		return menuNumber;
+	}
+
+	private static int getMenuCount(int menuNumber) {
+		int menuCount;
+
+		try {
+			menuCount = InputUtil.checkMenuCount(InputView.inputMenuCount()).getValue();
+		} catch (IllegalArgumentException e) {
+			return getMenuCount(menuNumber);
 		}
 		return menuNumber;
 	}

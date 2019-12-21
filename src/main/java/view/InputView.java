@@ -19,4 +19,9 @@ public class InputView {
 		System.out.println("## 등록할 메뉴를 선택하세요.");
 		return scanner.nextLine();
 	}
+
+	public static String inputMenuCount() {
+		System.out.println("## 메뉴의 수량을 입력하세요.");
+		return scanner.nextLine();
+	}
 }
