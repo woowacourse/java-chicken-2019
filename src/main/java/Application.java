@@ -43,7 +43,7 @@ public class Application {
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
         final int menuNumer = InputView.inputMenuNumber(menus);
-
+        final int menuCountNumber = InputView.inputChooseMenuCount();
 
     }
 }

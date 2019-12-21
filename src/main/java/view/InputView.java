@@ -12,6 +12,8 @@ public class InputView {
     private static final int MAKE_PAYMENT = 2;
     private static final int END_PROGRAM = 3;
     private static final int OFFSET = 0;
+    private static final int LEAST_ORDER_COUNT = 1;
+    private static final int BIGGIST_ORDER_COUNT = 99;
     private static int inputNumber;
 
     public static int inputOrderNumber(HashMap<Integer, Integer> orderTable, List<Table> tableList) {
@@ -34,6 +36,32 @@ public class InputView {
         return inputNumber;
     }
 
+    public static int inputChooseMenuCount() {
+        System.out.println("## 메뉴 수량을 입력해주세");
+        while(!isChooseMenuNumber());
+        System.out.println(inputNumber);
+        return inputNumber;
+    }
+
+    private static boolean isChooseMenuNumber() {
+        Scanner scanner = new Scanner(System.in);
+        try{
+            inputNumber = scanner.nextInt();
+            checkChooseMenuNumber(inputNumber);
+            return true;
+        } catch(Exception e) {
+            System.out.println("수량을 다시 입력해주세요");
+            System.out.println(e.getMessage());
+        }
+        return false;
+
+    }
+
+    private static void checkChooseMenuNumber(int inputNumber) throws Exception {
+        if(inputNumber < LEAST_ORDER_COUNT || inputNumber > BIGGIST_ORDER_COUNT) {
+            throw new Exception("수량은 1~99까지 가능합니다");
+        }
+    }
 
     private static boolean isMenuNumber(List<Menu> menus) {
         Scanner scanner = new Scanner(System.in);
