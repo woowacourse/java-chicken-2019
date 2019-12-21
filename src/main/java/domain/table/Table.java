@@ -7,11 +7,6 @@ import java.util.List;
 
 import static util.ErrorMessage.INVALID_MENU_NUMBER;
 
-/**
- * 기본생성자 추가 불가능
- * 필드 private
- * Note : 여기서는 필드를 추가해도 된다.
- */
 public class Table {
     private final Integer number;
     private List<Basket> baskets = new ArrayList<>();

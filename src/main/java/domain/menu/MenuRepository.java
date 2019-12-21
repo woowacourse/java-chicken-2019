@@ -6,12 +6,6 @@ import java.util.List;
 
 import static util.ErrorMessage.INVALID_MENU_NUMBER;
 
-/**
- * 데이터를 조회하는 DB역할
- * 기존 코드 수정 불가능
- * 기존 코드에서 추가는 가능
- */
-
 public class MenuRepository {
     private static final List<Menu> menus = new ArrayList<>();
 
