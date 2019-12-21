@@ -13,6 +13,26 @@ public class Menu {
         this.price = price;
     }
 
+    public boolean isSameNumber(int menuNumber) {
+        return number == menuNumber;
+    }
+
+    public boolean isChickin() {
+        return Category.CHICKEN.equals(category);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int calculatePrice(int count) {
+        return price * count;
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
