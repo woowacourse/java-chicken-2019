@@ -9,11 +9,16 @@ public class Table {
     private List<Menu> menus;
 
     public Table(final int number) {
+        System.out.println(number+" 테이블 생성됨");
         this.number = number;
     }
 
     public void addMenu(Menu menu) {
         menus.add(menu);
+    }
+
+    public boolean isCorrectTable(int tableNumber) {
+        return this.number == tableNumber;
     }
 
     @Override

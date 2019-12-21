@@ -8,4 +8,9 @@ public class InputView {
     public static int inputSelectNumber() {
         return scanner.nextInt();
     }
+
+    // 입력 버그 방지용 nextLine()
+    public static String scanNextLine() {
+        return scanner.nextLine();
+    }
 }
