@@ -1,5 +1,6 @@
 import domain.Exception.MenuDoesNotExistExeption;
 import domain.Exception.TableDoesNotExistExeption;
+import domain.PosPower;
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
 import domain.table.Table;
@@ -10,6 +11,13 @@ import view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
+        PosPower posPower = new PosPower();
+        do {
+            executeFunction(posPower);
+        } while (posPower.isOn());
+    }
+
+    private static void executeFunction(PosPower posPower) {
         FunctionNumber functionNumber = askFunctionNumber();
 
         if (functionNumber.isRegisterOrder()) {
@@ -21,7 +29,7 @@ public class Application {
         }
 
         if (functionNumber.isExit()) {
-            exit();
+            posPower.turnOff();
         }
     }
 
@@ -76,8 +84,5 @@ public class Application {
     }
 
     private static void payOrder() {
-    }
-
-    private static void exit() {
     }
 }
