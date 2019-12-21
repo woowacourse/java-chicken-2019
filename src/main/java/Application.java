@@ -50,6 +50,7 @@ public class Application {
 		OutputView.printMenus(menus);
 		nowMenu = InputView.inputSelectMenu(menus);
 		nowMenuCount = InputView.inputSelectMenuCount(tables.get(nowTable));
+		tables.get(nowTable).addToOrderedMenu(menus.get(nowMenu),nowMenuCount);
 	}
 	private static void doPayment() {
 		// TODO Auto-generated method stub
