@@ -26,7 +26,9 @@ public class Application {
         do {
             OutputView.printActionList();
             actionNumber = InputView.inputActionNumber();
-            action(actionNumber);
+            if (actionNumber != PosRule.TERMINATION) {
+                action(actionNumber);
+            }
         } while (actionNumber != PosRule.TERMINATION);
 
         System.exit(1);
