@@ -32,6 +32,14 @@ public class Table {
         return bill.size() != ZERO;
     }
 
+    public HashMap<Menu, Integer> getBill() {
+        return bill;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);
