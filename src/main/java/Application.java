@@ -1,7 +1,4 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import domain.*;
 import view.InputView;
 import view.OutputView;
 
@@ -17,5 +14,16 @@ public class Application {
 
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
+    }
+
+    public static int getProgramIndex() {
+        OutputView.printProgramCategory();
+        String inputProgramCategory = InputView.inputProgramCategory();
+        int index = ProgramCategory.getProgramIndex(inputProgramCategory);
+        if (index == -1) {
+            System.out.println();
+            return getProgramIndex();
+        }
+        return index;
     }
 }
