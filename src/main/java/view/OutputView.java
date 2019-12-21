@@ -1,9 +1,12 @@
 package view;
 
 import domain.Menu;
+import domain.Orders;
 import domain.Table;
+import view.dto.OrderDTO;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
@@ -49,7 +52,14 @@ public class OutputView {
         System.out.println("계산할 주문이 없습니다.");
     }
 
-    public static void printOrders() {
+    public static void printOrders(Orders orders) {
         System.out.println("## 주문 내역");
+        List<OrderDTO> orderDTOs = orders.getOrders().stream()
+                .map(OrderDTO::from)
+                .collect(Collectors.toList());
+
+        for (OrderDTO orderDTO : orderDTOs) {
+            System.out.println(orderDTO.toString());
+        }
     }
 }

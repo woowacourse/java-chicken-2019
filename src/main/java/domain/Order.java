@@ -20,4 +20,8 @@ public class Order {
     public boolean isChicken() {
         return menu.isChicken();
     }
+
+    public String getName() {
+        return menu.getName();
+    }
 }

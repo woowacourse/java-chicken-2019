@@ -40,6 +40,10 @@ public class Menu {
         return new Order(this, amount);
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
