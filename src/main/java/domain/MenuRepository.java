@@ -29,10 +29,22 @@ public class MenuRepository {
 
         for (Menu menu : menus) {
             itsInMenu = menu.isItInt(target);
+            return itsInMenu;
         }
         if (itsInMenu.equals(false)) {
             throw new OutOfNumberException();
         }
         return itsInMenu;
+    }
+
+    public Menu getMenuByMenuNumber(Integer menuNumber) {
+        Menu chosenMenu = new Menu(0, "주문실패", Category.FAILURE, 0);
+
+        for(Menu menu : menus) {
+            if(menu.isItInt(menuNumber)) {
+                chosenMenu = menu.getMenu();
+            }
+        }
+        return chosenMenu;
     }
 }

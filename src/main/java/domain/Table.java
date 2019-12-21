@@ -2,6 +2,7 @@ package domain;
 
 public class Table {
     private final int number;
+    private OrderList orderList = new OrderList();
 
     public Table(final int number) {
         this.number = number;
@@ -13,9 +14,13 @@ public class Table {
     }
 
     public Boolean isItInt(Integer input) {
-        if (this.number == input) {
+        if (input.equals(this.number)) {
             return true;
         }
         return false;
+    }
+
+    public void setOrder(Menu menu) {
+        orderList.setOrder(menu);
     }
 }
