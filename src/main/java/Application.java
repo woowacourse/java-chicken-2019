@@ -7,11 +7,19 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Application {
+    private static final int ZERO = 0;
+    private static final int MIN_COUNT = 0;
+    private static final int MAX_COUNT = 99;
+    private static final int MIN_POS_CHOICE = 0;
+    private static final int MAX_POS_CHOICE = 3;
+    private static final int MIN_PAYMENT_CHOICE = 0;
+    private static final int MAX_PAYMENT_CHOICE = 2;
+
     public static void main(String[] args) {
 
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
-        int tableNumber = 0;
+        int tableNumber = ZERO;
 
         Choice posChoice;
         do {
@@ -47,12 +55,12 @@ public class Application {
     private static Payment validatePaymentChoice() {
         try {
             int paymentChoice = InputView.inputPaymentChoice();
-            if (paymentChoice < 0 | paymentChoice > 2) {
+            if (paymentChoice < MIN_PAYMENT_CHOICE | paymentChoice > MAX_PAYMENT_CHOICE) {
                 throw new IllegalArgumentException("선택 가능한 범위가 아닙니다.");
             }
             return Arrays.stream(Payment.values()).filter(p -> p.isMatchPaymentNumber(paymentChoice)).findAny().get();
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            OutputView.printException(e);
         }
         return validatePaymentChoice();
     }
@@ -64,7 +72,7 @@ public class Application {
             validateCurrentPayableTable(currentTableNumber, tableNumber);
             return tableNumber;
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            OutputView.printException(e);
         }
         return validatePayableTableNumber(currentTableNumber);
     }
@@ -82,19 +90,19 @@ public class Application {
             validateUnderMaxCount(foodCount);
             return foodCount;
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            OutputView.printException(e);
         }
         return validateFoodCount();
     }
 
     private static void validateUnderMaxCount(int foodCount) {
-        if (foodCount > 99) {
+        if (foodCount > MAX_COUNT) {
             throw new IllegalArgumentException("최대 주문 가능 수량을 초과했습니다.");
         }
     }
 
     private static void validateOverOneCount(int foodCount) {
-        if (foodCount <= 0) {
+        if (foodCount <= MIN_COUNT) {
             throw new IllegalArgumentException("1개 이상 주문해 주세요");
         }
     }
@@ -105,13 +113,13 @@ public class Application {
             validateExistedMenu(menus, foodNumber);
             return foodNumber;
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            OutputView.printException(e);
         }
         return validateFoodNumber(menus);
     }
 
     private static void validateExistedMenu(List<Menu> menus, int foodNumber) {
-        if (menus.stream().filter(m -> m.isMatchNumber(foodNumber)).count() == 0) {
+        if (menus.stream().filter(m -> m.isMatchNumber(foodNumber)).count() == ZERO) {
             throw new IllegalArgumentException("선택 가능한 메뉴가 아닙니다.");
         }
     }
@@ -124,25 +132,25 @@ public class Application {
             validateCurrentOrderingTable(currentTableNumber, tableNumber);
             return tableNumber;
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            OutputView.printException(e);
         }
         return validateTableNumber(tables, currentTableNumber);
     }
 
     private static void validateOverOne(int tableNumber) {
-        if (tableNumber <= 0) {
+        if (tableNumber <= ZERO) {
             throw new IllegalArgumentException("선택 가능한 범위가 아닙니다.");
         }
     }
 
     private static void validateExistedTables(List<Table> tables, int tableNumber) {
-        if (tables.stream().filter(table -> table.isMatchNumber(tableNumber)).count() == 0) {
+        if (tables.stream().filter(table -> table.isMatchNumber(tableNumber)).count() == ZERO) {
             throw new IllegalArgumentException("존재하는 테이블 번호가 아닙니다.");
         }
     }
 
     private static void validateCurrentOrderingTable(int currentTableNumber, int tableNumber) {
-        if (currentTableNumber != 0 && tableNumber != currentTableNumber) {
+        if (currentTableNumber != ZERO && tableNumber != currentTableNumber) {
             throw new IllegalArgumentException("현재 주문 중인 테이블이 아닙니다.");
         }
     }
@@ -153,13 +161,13 @@ public class Application {
             validateChoiceRange(posChoice);
             return Arrays.stream(Choice.values()).filter(c -> c.getPosNumber() == posChoice).findAny().get();
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            OutputView.printException(e);
         }
         return validatePosChoice();
     }
 
     private static void validateChoiceRange(int posChoice) {
-        if (posChoice <= 0 | posChoice > 3) {
+        if (posChoice <= MIN_POS_CHOICE | posChoice > MAX_POS_CHOICE) {
             throw new IllegalArgumentException("선택 가능한 범위가 아닙니다.");
         }
     }
