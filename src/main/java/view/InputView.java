@@ -29,16 +29,16 @@ public class InputView {
         inputMainPrint();
         System.out.println("## 원하는 기능을 선택하세요.");
         String inputFunctionNumber = scanner.nextLine();
-        while (!functionNumberValidator(inputFunctionNumber) || !isOneTwoThree(Integer.parseInt(inputFunctionNumber))) {
+        while (!isNumberValidator(inputFunctionNumber) || !isOneTwoThree(Integer.parseInt(inputFunctionNumber))) {
             System.out.println("숫자 1, 2, 3만 가능 합니다.");
             System.out.println("## 원하는 기능을 선택하세요.");
             inputFunctionNumber = scanner.nextLine();
         }
-
+        System.out.println();
         return Integer.parseInt(inputFunctionNumber);
     }
 
-    private static boolean functionNumberValidator(String inputFunctionNumber) {
+    private static boolean isNumberValidator(String inputFunctionNumber) {
         try {
             Integer.parseInt(inputFunctionNumber);
             return true;
@@ -56,15 +56,16 @@ public class InputView {
     public static int inputTableNumber(List<Table> tables) {
         System.out.println("## 주문할 테이블을 선택하세요.");
         String inputTableNumber = scanner.nextLine();
-        while (!functionNumberValidator(inputTableNumber) || !isTable(tables, inputTableNumber)) {
+        while (!isNumberValidator(inputTableNumber) || !isExistTable(tables, inputTableNumber)) {
             System.out.println("나와있는 테이블 번호를 입력하세요.");
             System.out.println("## 주문할 테이블을 선택하세요.");
             inputTableNumber = scanner.nextLine();
         }
+        System.out.println();
         return Integer.parseInt(inputTableNumber);
     }
 
-    private static boolean isTable(List<Table> tables, String inputTableNumber) {
+    private static boolean isExistTable(List<Table> tables, String inputTableNumber) {
         for (Table table: tables) {
             if (table.toString().equals(inputTableNumber)) {
                 return true;
@@ -76,22 +77,24 @@ public class InputView {
     public static int inputTableBillNumber(List<Table> tables) {
         System.out.println("## 계산할 테이블을 선택하세요.");
         String inputTableBillNumber = scanner.nextLine();
-        while (!functionNumberValidator(inputTableBillNumber) || !isTable(tables, inputTableBillNumber)) {
+        while (!isNumberValidator(inputTableBillNumber) || !isExistTable(tables, inputTableBillNumber)) {
             System.out.println("나와있는 테이블 번호를 입력하세요.");
             System.out.println("## 주문할 테이블을 선택하세요.");
             inputTableBillNumber = scanner.nextLine();
         }
+        System.out.println();
         return Integer.parseInt(inputTableBillNumber);
     }
 
     public static int inputMenuNumber(List<Menu> menus) {
         System.out.println("## 등록할 메뉴를 선택하세요.");
         String inputMenuNumber = scanner.nextLine();
-        while (!functionNumberValidator(inputMenuNumber) || !isMenus(menus, Integer.parseInt(inputMenuNumber))) {
+        while (!isNumberValidator(inputMenuNumber) || !isMenus(menus, Integer.parseInt(inputMenuNumber))) {
             System.out.println("나와있는 메뉴를 입력하세요.");
             System.out.println("## 주문할 테이블을 선택하세요.");
             inputMenuNumber = scanner.nextLine();
         }
+        System.out.println();
         return Integer.parseInt(inputMenuNumber);
     }
 
@@ -107,11 +110,12 @@ public class InputView {
     public static int inputMenuCount() {
         System.out.println("## 메뉴의 수량을 입력하세요.");
         String inputMenuCount = scanner.nextLine();
-        while (!functionNumberValidator(inputMenuCount) || !isMaxNumber(Integer.parseInt(inputMenuCount))) {
+        while (!isNumberValidator(inputMenuCount) || !isMaxNumber(Integer.parseInt(inputMenuCount))) {
             System.out.println("올바른 숫자 입력을 하세요.(최소 1, 최대 99)");
             System.out.println("## 메뉴의 수량을 입력하세요.");
             inputMenuCount = scanner.nextLine();
         }
+        System.out.println();
         return Integer.parseInt(inputMenuCount);
     }
 
@@ -120,13 +124,14 @@ public class InputView {
     }
 
     public static int inputCardOrCash() {
-        System.out.println("## 신용카드는 1번 ,현금은 2번");
+        System.out.println("## 신용카드는 1번, 현금은 2번(현금 결제시 5% 할인)");
         String inputCardOrCash = scanner.nextLine();
-        while (!functionNumberValidator(inputCardOrCash) || !isOneOrTwo(Integer.parseInt(inputCardOrCash))) {
+        while (!isNumberValidator(inputCardOrCash) || !isOneOrTwo(Integer.parseInt(inputCardOrCash))) {
             System.out.println("올바른 숫자 입력을 하세요.(1 Or 2)");
-            System.out.println("## 메뉴의 수량을 입력하세요.");
+            System.out.println("## 신용카드는 1번, 현금은 2번(현금 결제시 5% 할인)");
             inputCardOrCash = scanner.nextLine();
         }
+        System.out.println();
         return Integer.parseInt(inputCardOrCash);
     }
 

@@ -16,12 +16,12 @@ public class Table {
         boolean newBill = true;
         for (Bill bill: bills) {
             if (bill.isName(name)) {
-                bill.setBill(menuNumber, price);
+                bill.setBill(menuNumber, price * menuNumber);
                 newBill = false;
             }
         }
         if (newBill) {
-            this.bills.add(new Bill(name, menuNumber, price));
+            this.bills.add(new Bill(name, menuNumber, price * menuNumber));
         }
         this.isTable = true;
     }
