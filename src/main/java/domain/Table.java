@@ -13,4 +13,8 @@ public class Table {
     public String toString() {
         return Integer.toString(number);
     }
+
+    public boolean equalId(int id) {
+        return number == id;
+    }
 }

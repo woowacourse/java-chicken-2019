@@ -30,7 +30,4 @@ public class MenuRepository {
                 .orElseThrow(() -> new NoSuchElementException(id + "는 존재하지 않는 메뉴 번호입니다."));
     }
 
-    private boolean eqaulId(Menu menu, int id) {
-        return menu.equalId(id);
-    }
 }
