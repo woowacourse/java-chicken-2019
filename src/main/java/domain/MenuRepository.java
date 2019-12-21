@@ -25,4 +25,14 @@ public class MenuRepository {
 	public List<Menu> getMenus() {
 		return menus;
 	}
+	
+	public static Menu getByNumber(int number) {
+		for (Menu menu : menus) {
+			if (menu.getNumber() == number) {
+				return menu;
+			}
+		}
+		throw new IllegalArgumentException("해당하는 테이블을 찾을 수 없습니다.");
+	}
+
 }
