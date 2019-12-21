@@ -2,7 +2,6 @@ package view;
 
 import domain.Menu;
 import domain.Table;
-
 import java.util.List;
 
 public class OutputView {
@@ -41,11 +40,17 @@ public class OutputView {
     private static void printTableOrdered(final List<Table> tables){
         for(final Table table : tables) {
             if(table.getOrderedMenuNumber() > 0){
-                System.out.printf(BOTTOM_LINE, "|");
+                System.out.printf(BOTTOM_LINE, "₩");
                 continue;
             }
             System.out.printf(BOTTOM_LINE, "-");
         }
         System.out.println();
+    }
+
+    public static void printOrders(Table table){
+        System.out.println("## 주문내역");
+        System.out.println("메뉴 수량 금액");
+        table.printOrders();
     }
 }

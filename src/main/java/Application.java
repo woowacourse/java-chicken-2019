@@ -17,6 +17,7 @@ public class Application {
     public static void main(String[] args) {
         InputView.inputAction();
         order();
+        pay();
     }
 
     public static void order(){
@@ -35,10 +36,12 @@ public class Application {
     }
 
     public static void pay(){
+        int tableNumber;
         OutputView.printTables(tables);
         if(!TableRepository.hasTableToPay()){
             return;
         }
-        InputView.inputTableNumber_Pay();
+        tableNumber = InputView.inputTableNumber_Pay();
+        OutputView.printOrders(TableRepository.getTablebyNumber(tableNumber));
     }
 }
