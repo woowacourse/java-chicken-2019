@@ -27,6 +27,9 @@ public class Table {
     public void makeNewOrder(Menu menu, int number) {
         order.addOrder(menu, number);
     }
+    public boolean isOrderEmpty(){
+        return order.isEmpty();
+    }
 
     @Override
     public String toString() {
@@ -36,6 +39,7 @@ public class Table {
     /**
      * 테스트용 코드. 주문된 양을 확인한다. 추후 삭제.
      * TDD할 시간이 없어 아쉬웠다.
+     * 나중에 지울 수 있게...Override 아래에 뒀다. 컨벤션 문제가 될 수 있다.
      */
     public void printOrder() {
         order.printOrder();

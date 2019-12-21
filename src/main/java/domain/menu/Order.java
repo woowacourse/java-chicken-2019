@@ -130,6 +130,14 @@ public class Order {
     }
 
     /**
+     * isEmpty는 주문이 있는지 없는지(비었는지) 확인하여 반환한다.
+     * @return 주문이 없다면 true를 반환한다.
+     */
+    public boolean isEmpty() {
+        return orderList.isEmpty();
+    }
+
+    /**
      * printOrder는 실제 구현에는 필요 없는 메서드로, 주문이 성공적으로 진행되는지 확인하기 위한 테스트 코드이다.
      * 별도로 TDD를 할 시간이 안되어 이렇게 구현한 점이 아쉽다.
      */
