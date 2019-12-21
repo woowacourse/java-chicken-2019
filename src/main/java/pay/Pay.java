@@ -6,7 +6,7 @@ import domain.OrderMenu;
 import view.InputView;
 
 public class Pay {
-	private static final double CASH_DISCOUNT = 0.98;
+	private static final double CASH_DISCOUNT = 0.95;
 	private static final int CHICKEN_DISCOUNT = 10000;
 	private static final double CREDIT_CARD = 1;
 	private static final double CASH = 2;
