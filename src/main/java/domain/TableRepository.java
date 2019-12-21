@@ -19,4 +19,22 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static boolean doesNotExistTableNumber(int tableNumber) {
+        for (Table table : tables) {
+            if (table.isSameTableNumber(tableNumber)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void addOrderToTable(TableNumber tableNumber, MenuNumber menuNumber, MenuCount menuCount) {
+        for (Table table : tables) {
+            if (table.isSameTableNumber(tableNumber.get())) {
+                table.getOrderedMenu(menuNumber, menuCount);
+                break;
+            }
+        }
+    }
 }

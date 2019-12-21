@@ -13,13 +13,13 @@ public class MainFeatureNumber {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("※ 숫자만 입력 가능합니다.");
         }
-        if (isNotExistMainFeatureNumber(mainFeatureNumber)) {
+        if (doesNotExistMainFeatureNumber(mainFeatureNumber)) {
             throw new IllegalArgumentException("※ 1, 2, 3 중에서 입력 가능합니다.");
         }
         this.mainFeatureNumber = mainFeatureNumber;
     }
 
-    private boolean isNotExistMainFeatureNumber(int mainFeatureNumber) {
+    private boolean doesNotExistMainFeatureNumber(int mainFeatureNumber) {
         return !(mainFeatureNumber == ORDER || mainFeatureNumber == PAY || mainFeatureNumber == EXIT);
     }
 

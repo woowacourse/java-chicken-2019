@@ -21,4 +21,13 @@ public class MenuRepository {
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
     }
+
+    public static boolean doesNotExistMenuNumber(int menuNumber) {
+        for (Menu menu : menus) {
+            if (menu.isSameMenuNumber(menuNumber)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
