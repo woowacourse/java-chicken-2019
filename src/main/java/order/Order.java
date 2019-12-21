@@ -10,11 +10,11 @@ import view.OutputView;
 import java.util.List;
 
 public class Order {
-    public void startOrder(OrderStatement orderStatement) {
+    public static void startOrder(OrderStatement orderStatement) {
         inputOrder(orderStatement);
     }
 
-    private void inputOrder(OrderStatement orderStatement) {
+    private static void inputOrder(OrderStatement orderStatement) {
         final List<Menu> menus = MenuRepository.menus();
         int tableNumber = inputTableNumber(orderStatement);
         int menuId = inputMenuId(menus);
@@ -22,22 +22,22 @@ public class Order {
         orderStatement.addTableOrderStatement(tableNumber, careateOrderedMenu(menuId, capacitiy));
     }
 
-    private OrderedMenu careateOrderedMenu(int menuId, int capacity) {
+    private static OrderedMenu careateOrderedMenu(int menuId, int capacity) {
         Menu menu = MenuRepository.getMenuBy(menuId);
         return OrderedMenu.createMenu(menu, capacity);
     }
 
-    private int inputTableNumber(OrderStatement orderStatement) {
+    private static int inputTableNumber(OrderStatement orderStatement) {
         OutputView.printTables(orderStatement.getTables());
         return InputView.inputTableNumber(orderStatement);
     }
 
-    private int inputMenuId(List<Menu> menus) {
+    private static int inputMenuId(List<Menu> menus) {
         OutputView.printMenus(menus);
         return InputView.inputMenuNumber();
     }
 
-    private int inputCapacity(OrderStatement orderStatement, int tableNumber, int menuId) {
+    private static int inputCapacity(OrderStatement orderStatement, int tableNumber, int menuId) {
         if (orderStatement.isExist(tableNumber, menuId)) {
             OrderedMenu orderedMenu = orderStatement
                     .getTableOrderStatementBy(tableNumber)

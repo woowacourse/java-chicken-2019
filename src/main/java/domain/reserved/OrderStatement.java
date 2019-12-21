@@ -3,13 +3,14 @@ package domain.reserved;
 import domain.Table;
 import domain.TableRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 public class OrderStatement {
     private final List<Table> tables = TableRepository.tables();
 
     public List<Table> getTables() {
-        return tables;
+        return Collections.unmodifiableList(tables);
     }
 
     public Table getTableOrderStatementBy(int id) {

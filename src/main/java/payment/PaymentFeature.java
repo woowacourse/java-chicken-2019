@@ -8,7 +8,7 @@ import view.dto.PaymentType;
 
 public class PaymentFeature {
 
-    public void startPayment(OrderStatement orderStatement) {
+    public static void startPayment(OrderStatement orderStatement) {
         int tableNumber = inputTableNumber(orderStatement);
         Table table = orderStatement.getTableOrderStatementBy(tableNumber);
         table.getOrderedMenus().printOrderedMenu();
@@ -16,7 +16,7 @@ public class PaymentFeature {
         OutputView.printPrice(price);
     }
 
-    private int inputTableNumber(OrderStatement orderStatement) {
+    private static int inputTableNumber(OrderStatement orderStatement) {
         OutputView.printTables(orderStatement.getTables());
         int tableNumber = InputView.inputTableNumber(orderStatement);
         boolean isExistMenu = orderStatement
@@ -29,7 +29,7 @@ public class PaymentFeature {
         return tableNumber;
     }
 
-    private int inputPaymentType(Table table) {
+    private static int inputPaymentType(Table table) {
         PaymentType paymentType = InputView.inputPaymentType();
         int noneDiscountTotalPrice = getNoneDiscountTotalPrice(table);
         int chickenDiscountTotalPrice =
@@ -40,7 +40,7 @@ public class PaymentFeature {
         return chickenDiscountTotalPrice;
     }
 
-    private int getNoneDiscountTotalPrice(Table table) {
+    private static int getNoneDiscountTotalPrice(Table table) {
         return table
                 .getOrderedMenus()
                 .calcurateTotalPrice();

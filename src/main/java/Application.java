@@ -26,12 +26,10 @@ public class Application {
     }
 
     private static void runOrder(OrderStatement orderStatement) {
-        Order oder = new Order();
-        oder.startOrder(orderStatement);
+        Order.startOrder(orderStatement);
     }
 
     private static void runPayment(OrderStatement orderStatement) {
-        PaymentFeature paymentFeature = new PaymentFeature();
-        paymentFeature.startPayment(orderStatement);
+        PaymentFeature.startPayment(orderStatement);
     }
 }
