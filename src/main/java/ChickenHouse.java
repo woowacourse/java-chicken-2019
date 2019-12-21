@@ -25,19 +25,32 @@ public class ChickenHouse {
 	final static MenuRepository menus = new MenuRepository();
 
 	public void execute() {
-		while (true) {
+		boolean finished = false;
+		while (!finished) {
+			try {
+				finished = whileLoop();
+			} catch (Exception e) {
+				System.err.println(e);
+				System.out.println();
+			}
+		}
+	}
+	
+	private static boolean whileLoop() {
 			OutputView.mainDisplay();
 			int command = InputView.inputCommand();
 			if (command == 1) {
 				order();
+				return false;
 			}
 			if (command == 2) {
 				pay();
+				return false;
 			}
 			if (command == 3) {
-				return;
+				return true;
 			}
-		}
+			return true;
 	}
 
 	private static void order() {
@@ -73,7 +86,7 @@ public class ChickenHouse {
 	}
 
 	private static void creditCardCalculate(Table table) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
