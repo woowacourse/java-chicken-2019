@@ -1,6 +1,9 @@
 package domain;
 
 public class Menu {
+    private static final int CHICKEN_DISCOUNT = 10000;
+    private static final int NO_DISCOUNT = 0;
+
     private final int number;
     private final String name;
     private final Category category;
@@ -17,13 +20,24 @@ public class Menu {
         return this.number == menuNumber;
     }
 
-    public String getNameAndTotalPrice(int quantity) {
+    public String toString(int quantity) {
         return new StringBuffer(name)
                 .append(" ")
                 .append(quantity)
                 .append(" ")
-                .append(price * quantity)
+                .append(actualPrice(quantity))
                 .toString();
+    }
+
+    private int discountPrice() {
+        if (this.category == Category.CHICKEN) {
+            return CHICKEN_DISCOUNT;
+        }
+        return NO_DISCOUNT;
+    }
+
+    private int actualPrice(int quantity) {
+        return price * quantity - (quantity / 10) * discountPrice();
     }
 
     @Override

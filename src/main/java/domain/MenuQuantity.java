@@ -41,7 +41,7 @@ public class MenuQuantity {
             int quantity = elem.getValue();
             Menu menu = elem.getKey();
             if (quantity >= MIN_QUANTITY) {
-                paymentList.add(menu.getNameAndTotalPrice(quantity));
+                paymentList.add(menu.toString(quantity));
             }
         }
         return paymentList;

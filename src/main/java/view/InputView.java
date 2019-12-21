@@ -57,4 +57,16 @@ public class InputView {
             return getInputOfMenuQuantity(table, menu);
         }
     }
+
+    public static int getInputOfCardOrCash() {
+        System.out.println("## 신용카드는 1번, 현금은 2번");
+        String inputOfCardOrCash = scanner.nextLine();
+        try {
+            Validator.checkInputOfCardOrCash(inputOfCardOrCash);
+            return Integer.parseInt(inputOfCardOrCash);
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e);
+            return getInputOfCardOrCash();
+        }
+    }
 }

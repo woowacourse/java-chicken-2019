@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 public class Validator {
     private static final String VALID_INPUT_OF_MAIN_UI = "[1-3]";
+    private static final String VALID_INPUT_OF_CARD_OR_CASH = "[1-2]";
     private static final String VALID_INTEGER = "[0-9]+";
     private static final String VALID_MENU_QUANTITY = "^[1-9][0-9]?";
 
@@ -51,6 +52,12 @@ public class Validator {
     public static void checkAlreadyFullyOrdered(Table table, Menu menu) {
         if (table.IsAlreadyFullyOrdered(menu)) {
             throwException(CustomException.ALREADY_FULLY_ORDERED_MENU);
+        }
+    }
+
+    public static void checkInputOfCardOrCash(String inputOfCardOrCash) {
+        if (!inputOfCardOrCash.matches(VALID_INPUT_OF_CARD_OR_CASH)) {
+            throwException(CustomException.NOT_VALID_INPUT_OF_CARD_OR_CASH);
         }
     }
 

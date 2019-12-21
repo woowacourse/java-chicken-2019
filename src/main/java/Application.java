@@ -12,6 +12,8 @@ public class Application {
     private static final int ORDER = 1;
     private static final int PAYMENT = 2;
     private static final int EXIT = 3;
+    private static final int CARD = 1;
+    private static final int CASH = 2;
 
     private static final List<Table> tables = TableRepository.tables();
     private static final List<Menu> menus = MenuRepository.menus();
@@ -48,7 +50,10 @@ public class Application {
     }
 
     private static void doPay() {
+        OutputView.printTables(tables);
         Table table = TableRepository.findTableByNumber(InputView.getInputOfTableNumber());
         OutputView.printPayment(table);
+        int cardOrCash = InputView.getInputOfCardOrCash();
+
     }
 }

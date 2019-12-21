@@ -41,6 +41,7 @@ public class OutputView {
             System.out.println(payment);
         }
         System.out.println();
+        System.out.println("## " + table.toString() + "번 테이블의 결제를 진행합니다.");
     }
 
     private static void printTopLine(final List<Table> tables) {
