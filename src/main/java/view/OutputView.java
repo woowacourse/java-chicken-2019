@@ -11,6 +11,7 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BOTTOM_LINE_HAS_ORDER = "└ ₩ ┘";
     private static final String MAIN_TITLE = "## 메인 화면";
     private static final String TABLE_TITLE = "## 테이블 목록";
     private static final String MENU_TITLE = "## 메뉴 목록";
@@ -25,12 +26,12 @@ public class OutputView {
     private static final String NO_ORDER_MSG = "등록된 주문이 없어 결제를 실패했습니다.";
     private static final String RESULT_PAYMENT_FORMAT = "%s(으)로 총 %d원을 결제합니다.";
 
-    public static void printTables(final List<Table> tables) {
+    public static void printTables(final List<Table> tables, final boolean[] tableStatus) {
         System.out.println(TABLE_TITLE);
         final int size = tables.size();
-        printLine(TOP_LINE, size);
+        printTopLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLine(tableStatus);
     }
 
     public static void printTableSelectSuccess(int tableNumber) {
@@ -52,8 +53,19 @@ public class OutputView {
         System.out.println(MENU_NOT_EXIST_MSG);
     }
 
-    private static void printLine(final String line, final int count) {
+    private static void printTopLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
+            System.out.print(line);
+        }
+        System.out.println();
+    }
+
+    private static void printBottomLine(final boolean[] tableStatus) {
+        for (int i = 0; i < tableStatus.length; i++) {
+            String line = BOTTOM_LINE;
+            if (tableStatus[i]) {
+                line = BOTTOM_LINE_HAS_ORDER;
+            }
             System.out.print(line);
         }
         System.out.println();

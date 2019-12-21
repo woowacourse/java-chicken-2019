@@ -23,14 +23,8 @@ public class TableManager {
         tableStatus[index] = true;
     }
 
-    public void clearTable(int tableNumber) {
-        int index = TableRepository.search(tableNumber);
+    public void clearTable(int index) {
         tableStatus[index] = false;
-    }
-
-    private boolean isNewTable(int tableNumber) {
-        int index = TableRepository.search(tableNumber);
-        return tableStatus[index];
     }
 
     private int inputTableNumber() {
@@ -44,7 +38,7 @@ public class TableManager {
     }
 
     public int selectTable(boolean printGuide) {
-        OutputView.printTables(tables);
+        OutputView.printTables(tables, tableStatus);
         int tableNumber = inputTableNumber();
 
         while (!TableRepository.isExist(tableNumber)) {

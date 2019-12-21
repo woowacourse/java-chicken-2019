@@ -49,6 +49,7 @@ public class OrderManager {
 
     private void reset(int index) {
         receipts[index] = null;
+        tableManager.clearTable(index);
     }
 
     private void resetAll() {
