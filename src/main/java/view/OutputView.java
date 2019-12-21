@@ -34,6 +34,10 @@ public class OutputView {
         printSpacebar();
     }
 
+    public static void printInputMenuNumberException() {
+        System.out.println("화면에 출력된 메뉴에 있는 숫자를 입력해주세요.");
+    }
+
     private static void printLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);

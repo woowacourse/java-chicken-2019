@@ -11,6 +11,8 @@ public class Application {
         final List<MainMenu> mainMenus = MainMenuRepository.mainMenus();
         OutputView.printMainMenu(mainMenus);
 
+        final int mainMenuNumber = InputView.inputMainMenuNumber();
+
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 

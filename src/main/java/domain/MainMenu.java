@@ -14,4 +14,8 @@ public class MainMenu {
     public String toString() {
         return actionNumber + " - " + actionName;
     }
+
+    public boolean isEqualNumber(int inputNumber) {
+        return this.actionNumber == inputNumber;
+    }
 }

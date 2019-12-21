@@ -1,5 +1,7 @@
 package domain;
 
+import view.OutputView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,5 +17,15 @@ public class MainMenuRepository {
 
     public static List<MainMenu> mainMenus() {
         return Collections.unmodifiableList(mainMenus);
+    }
+
+    public static Boolean isRightInput(int inputNumber) {
+        for (MainMenu mainMenu : mainMenus) {
+            if (mainMenu.isEqualNumber(inputNumber)) {
+                return true;
+            }
+        }
+        OutputView.printInputMenuNumberException();
+        return false;
     }
 }
