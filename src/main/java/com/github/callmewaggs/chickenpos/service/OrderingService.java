@@ -1,18 +1,16 @@
 package com.github.callmewaggs.chickenpos.service;
 
-public class OrderingService {
-  private TableService tableService;
-  private MenuService menuService;
+import com.github.callmewaggs.chickenpos.domain.OrderHistory;
 
-  public OrderingService() {
-    this.tableService = new TableService();
-    this.menuService = new MenuService();
+public class OrderingService {
+  OrderHistory orderHistory;
+
+
+  public OrderingService(OrderHistory orderHistory) {
+    this.orderHistory = orderHistory;
   }
 
   public void startOrdering() {
-    tableService.showTables();
-    menuService.showMenus();
-    int menuNumber = menuService.inputMenuNumber();
-    int menuAmount = menuService.inputMenuAmount();
+    orderHistory.addNewOrder();
   }
 }
