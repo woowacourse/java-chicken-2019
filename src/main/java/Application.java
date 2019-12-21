@@ -4,6 +4,7 @@ import view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     // TODO 구현 진행
@@ -18,10 +19,10 @@ public class Application {
                 orders.add(orderSelect(tables));
             }
             if (mainNumber == 2) {
-                paymentSelect();
+                paymentSelect(tables, orders);
             }
             if (mainNumber == 3) {
-                OutputView.programExit();
+                OutputView.printProgramExit();
                 isProgress = false;
             }
         } while (isProgress);
@@ -40,8 +41,11 @@ public class Application {
         return new Order(table, menu, quantityNumber);
     }
 
-    public static void paymentSelect() {
+    public static void paymentSelect(List<Table> tables, List<Order> orders) {
+        final int tableNumber = InputView.inputTableNumber(tables);
 
+        List<Order> tableOrders = orders.stream().filter(order -> order.orderCheck(tableNumber)).collect(Collectors.toList());
+
+        OutputView.printOrderList(tableOrders, tableNumber);
     }
-
 }

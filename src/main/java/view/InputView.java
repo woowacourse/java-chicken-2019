@@ -28,7 +28,7 @@ public class InputView {
         do {
             OutputView.printTables(tables);
 
-            System.out.println(LINE + "## 주문할 테이블을 선택하세요.");
+            System.out.println(LINE + "## 테이블을 선택하세요.");
             inputNumberString = scanner.nextLine();
         } while (inputCheck.tableInputCheck(inputNumberString));
 
@@ -53,6 +53,4 @@ public class InputView {
 
         return Integer.parseInt(inputNumberString);
     }
-
-
 }

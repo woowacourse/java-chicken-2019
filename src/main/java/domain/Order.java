@@ -10,4 +10,13 @@ public class Order {
         this.menu = menu;
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return menu.toString();
+    }
+
+    public boolean orderCheck(int number){
+        return table.toString().equals(Integer.toString(number));
+    }
 }

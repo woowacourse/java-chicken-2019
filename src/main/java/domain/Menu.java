@@ -15,7 +15,7 @@ public class Menu {
 
     @Override
     public String toString() {
-        return category + " " + number + " - " + name + " : " + price + "원";
+        return name + " " + number + " " + price;
     }
 
     public boolean menuInputCheck(int number) {

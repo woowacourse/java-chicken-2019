@@ -2,6 +2,7 @@ package view;
 
 import domain.Main;
 import domain.Menu;
+import domain.Order;
 import domain.Table;
 
 import java.util.List;
@@ -45,7 +46,13 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void programExit(){
+    public static void printOrderList(List<Order> tableOrders, int tableNumber){
+        System.out.println("메뉴 수량 금액");
+        tableOrders.stream().forEach(tableOrder -> System.out.println(tableOrder.toString()));
+        System.out.println("## " + tableNumber + "번 테이블의 결제를 진행합니다.");
+    }
+
+    public static void printProgramExit(){
         System.out.println(LINE + "## 프로그램을 종료합니다.");
     }
 }
