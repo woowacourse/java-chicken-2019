@@ -49,6 +49,7 @@ public class Store {
 
         /**
          * 생성자 메서드는 파라미터를 받아 검사하고, 문제가 없다면 내부값으로 할당한다.
+         *
          * @param number 입력을 통해 넘어온 정수값이다.
          */
         public TodoNumber(int number) {
@@ -60,6 +61,7 @@ public class Store {
 
         /**
          * isOrder는 만약 들어온 명령값이 주문이라면 true를, 아니면 false를 반환한다.
+         *
          * @return 들어온 명령값이 주문인지 여부를 반환한다.
          */
         public boolean isOrder() {
@@ -68,6 +70,7 @@ public class Store {
 
         /**
          * isPay는 만약 들어온 명령값이 결제라면 true를, 아니면 false를 반환한다.
+         *
          * @return 들어온 명령값이 결제인지 여부를 반환한다.
          */
         public boolean isPay() {
@@ -76,6 +79,7 @@ public class Store {
 
         /**
          * isEnd는 만약 들어온 명령값이 종료라면 true를, 아니면 false를 반환한다.
+         *
          * @return 들어온 명령값이 종료인지 여부를 반환한다.
          */
         public boolean isEnd() {
@@ -119,6 +123,28 @@ public class Store {
         return todoNumber;
     }
 
+    private int getTableNumber() {
+        int tableNumber;
+
+        try{
+            tableNumber = InputView.inputTableNumber();
+            checkTableNumberException(tableNumber);
+        }catch(IllegalArgumentException e){
+            System.out.println("잘못된 값입니다. 값을 다시 입력해주세요");
+            return getTableNumber();
+        }
+        return tableNumber;
+    }
+
+    private void checkTableNumberException(int tableNumber) {
+        for(Table table : tables) {
+            if(table.isRightTableNumber(tableNumber)) {
+                return;
+            }
+        }
+        throw new IllegalArgumentException("확인할 수 없는 번지입니다.");
+    }
+
     /**
      * sales는 매장을 운영하는 메서드이다.
      * 이 메서드가 호출되면, 매장이 문을 닫을때까지 영업을 진행한다.
@@ -128,12 +154,12 @@ public class Store {
         while (true) {
             todoNumber = getTodoNumber();
             if (todoNumber.isOrder()) {
-                //주문 로직
+                order();
             }
             if (todoNumber.isPay()) {
-                //결제 로직
+                pay();
             }
-            if(todoNumber.isEnd()) {
+            if (todoNumber.isEnd()) {
                 break;
             }
         }
@@ -146,15 +172,17 @@ public class Store {
      * 메뉴 목록 출력, 메뉴 선택, 메뉴 수량 입력,
      * 종료(테이블에 메뉴 가져다주기->글자 표시해주기)
      */
-    private void order(){
+    private void order() {
+        int tableNumber;
         OutputView.printTables(tables);
+        tableNumber = getTableNumber();
         OutputView.printMenus(menus);
     }
 
     /**
      * pay는 결제를 하는 일련의 동작을 수행하는 메서드이다.
      */
-    private void pay(){
+    private void pay() {
 
     }
 }
