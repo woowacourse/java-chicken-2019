@@ -18,58 +18,58 @@ public class Application {
         app.finishApplication();
     }
 
-    public void startApplication(){
+    public void startApplication() {
         int mainFunctionNumber;
-        while(true){
+        while (true) {
             mainFunctionNumber = InputView.inputMainFunctionNumber();
-            if(mainFunctionNumber == 3){
+            if (mainFunctionNumber == 3) {
                 return;
             }
-            if(mainFunctionNumber == 1){
+            if (mainFunctionNumber == 1) {
                 addOrderToTable();
             }
-            if(mainFunctionNumber == 2){
+            if (mainFunctionNumber == 2) {
                 paymentForTable();
             }
         }
     }
 
-    public void addOrderToTable(){
+    public void addOrderToTable() {
         OutputView.printTables(tables);
         int tableNumber = InputView.inputTableNumber();
         OutputView.printMenus(menus);
         int menuNumber = InputView.inputMenuNumber();
         int amountNumber = InputView.inputAmountNumber();
-        findMenuObjectAddToTableObject(menuNumber,tableNumber, amountNumber);
+        findMenuObjectAddToTableObject(menuNumber, tableNumber, amountNumber);
     }
 
-    public void findMenuObjectAddToTableObject(int menuNumber, int tableNumber, int amountNumber){
+    public void findMenuObjectAddToTableObject(int menuNumber, int tableNumber, int amountNumber) {
         Table table = findTable(tableNumber);
         Menu menu = findMenu(menuNumber);
         table.addMenuToTable(menu, menuNumber, amountNumber);
     }
 
-    public Menu findMenu(int menuNumber){
-        for(Menu menu: menus){
+    public Menu findMenu(int menuNumber) {
+        for (Menu menu : menus) {
             String menuStatus = menu.toString().split("-")[0].trim();
-            if(Integer.parseInt(menuStatus) == menuNumber){
+            if (Integer.parseInt(menuStatus) == menuNumber) {
                 return menu;
             }
         }
         return null;
     }
 
-    public Table findTable(int tableNumber){
-        for(Table table : tables){
+    public Table findTable(int tableNumber) {
+        for (Table table : tables) {
             String tableStatus = table.toString().trim();
-            if(Integer.parseInt(tableStatus) == tableNumber){
+            if (Integer.parseInt(tableStatus) == tableNumber) {
                 return table;
             }
         }
         return null;
     }
 
-    public void paymentForTable(){
+    public void paymentForTable() {
         OutputView.printTables(tables);
         int tableNumber = InputView.inputTableNumber();
         Table table = findTable(tableNumber);
@@ -78,7 +78,7 @@ public class Application {
         OutputView.printFinalPrice(cardOrCash, totalPrice);
     }
 
-    public void finishApplication(){
+    public void finishApplication() {
         OutputView.printProgramEnding();
     }
 }
