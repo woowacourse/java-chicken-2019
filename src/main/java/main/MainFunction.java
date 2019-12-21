@@ -18,6 +18,7 @@ import java.util.Scanner;
  */
 public class MainFunction {
     private int caseNumber;
+    private int MenuQuantity;
     final static int ORDER = 1;
     final static int PAY = 2;
     final static int EXIT = 3;
@@ -25,8 +26,8 @@ public class MainFunction {
     public void mainFunction() {
         caseNumber = InputView.inputMainFunction();
         while (caseNumber != EXIT) {
-            OutputView.printMain();
             Order.orderTable();
+            MenuQuantity = InputView.MenuQuantity();
             caseNumber = InputView.inputMainFunction();
         }
     }

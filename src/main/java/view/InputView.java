@@ -66,7 +66,7 @@ public class InputView {
      * 메뉴 번호에 대한 예외처리입니다.
      *
      * 1.매뉴번호 이외의 입력 2.숫자이외의 입력에 대해 예외처리합니다
-     */
+    */
     public static void exceptionInputMenu() {
         try {
             MenuNumber = scanner.nextInt();
@@ -82,6 +82,28 @@ public class InputView {
             System.out.println("정수만 입력");
             scanner.nextLine();
             exceptionInputMenu();
+        }
+    }
+
+    public static int MenuQuantity(){
+        System.out.println("## 메뉴의 수량을 입력하세요");
+        exceptionINputMenuQuantity();
+        return MenuQuantity;
+    }
+
+    public static void exceptionINputMenuQuantity(){
+        try {
+            MenuQuantity = scanner.nextInt();
+            if ((MenuQuantity < 0) || (MenuQuantity > 99)) {
+                throw new IllegalArgumentException("수량은 0이상,99를 초과할수 없습니다.");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.toString());
+            exceptionInputMain();
+        } catch (InputMismatchException e) {
+            System.out.println("정수만 입력");
+            scanner.nextLine();
+            exceptionInputMain();
         }
     }
 
