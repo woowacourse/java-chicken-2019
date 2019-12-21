@@ -6,7 +6,6 @@ import domain.Pay;
 import domain.Table;
 import java.util.List;
 import view.InputView;
-import view.OutputView;
 
 public class Pos {
 
@@ -34,7 +33,6 @@ public class Pos {
       runProcess(process);
     } while (process != END);
 
-    OutputView.printMenus(menus);
   }
 
   private void runProcess(int process) {

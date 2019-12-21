@@ -26,4 +26,9 @@ public class InputView {
     return inputNumber();
   }
 
+  public static int inputMenuNumber(){
+    System.out.println("## 등록할 메뉴를 선택하세요.");
+    return inputNumber();
+  }
+
 }
