@@ -51,7 +51,16 @@ public class Application {
 	}
 
 	private static void order(int tableNumber, List<Table> tables, List<Menu> menus) {
+		OutputView.printMenus(menus);
+		try {
+			int menuNumber = InputView.inputMenuNumber();
+			int menuCount = InputView.inputMenuCount();
+			Table table = findTable(tableNumber, tables);
 
+			table.addOrder(new Order(menuNumber, menuCount, menus));
+		} catch (IllegalArgumentException e) {
+			pay(tableNumber, tables, menus);
+		}
 	}
 
 	private static Table findTable(int tableNumber, List<Table> tables) {

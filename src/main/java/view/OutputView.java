@@ -6,19 +6,21 @@ import domain.Table;
 import java.util.List;
 
 public class OutputView {
+    private static final String ORDER_FUNCTION_MESSAGE = "1 - 주문등록";
+    private static final String PAY_FUNCTION_MESSAGE = "2 - 결제하기";
+    private static final String EXIT_FUNCTION_MESSAGE = "3 - 프로그램 종료";
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
-    private static final String HYPHEN = "-";
-    public static final int ORDER_MENU = 1;
-    public static final int PAY_MENU = 2;
-    public static final int EXIT_PROGRAM = 3;
+    private static final String HYPHEN = " - ";
+    private static final String EXIT_PROGRAM_MESSAGE = "프로그램이 종료됩니다.";
 
     public static void printMain() {
         System.out.println("## 메인 화면");
-        System.out.println(ORDER_MENU + HYPHEN + "주문등록");
-        System.out.println(PAY_MENU + HYPHEN + "결제하기");
-        System.out.println(EXIT_PROGRAM + HYPHEN + "프로그램 종료");
+        System.out.println(ORDER_FUNCTION_MESSAGE);
+        System.out.println(PAY_FUNCTION_MESSAGE);
+        System.out.println(EXIT_FUNCTION_MESSAGE);
+        System.out.println();
     }
 
     public static void printTables(final List<Table> tables) {
@@ -27,6 +29,7 @@ public class OutputView {
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
         printLine(BOTTOM_LINE, size);
+        System.out.println();
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -47,5 +50,9 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+
+    public static void printProgramExit() {
+        System.out.println(EXIT_PROGRAM_MESSAGE);
     }
 }
