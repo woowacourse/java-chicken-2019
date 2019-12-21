@@ -53,6 +53,7 @@ public class Pos {
 
 	private int getPayAmount(int tableNumber) {
 		OutputView.printMenuAccounts(tableNumber, orders);
+		int paymentWayNumber = InputView.inputPaymentWayNumber(tableNumber);
 		return 0;
 	}
 }
