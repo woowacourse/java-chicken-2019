@@ -1,9 +1,11 @@
 package controller;
 
 import domain.Menu;
+import domain.Order;
 import domain.OrderProcess;
 import domain.PayProcess;
 import domain.Table;
+import java.util.ArrayList;
 import java.util.List;
 import view.InputView;
 
@@ -15,6 +17,7 @@ public class Pos {
 
   private final List<Table> tables;
   private final List<Menu> menus;
+  private final List<Order> orderList = new ArrayList<>();
   private final OrderProcess orderProcess;
   private final PayProcess payProcess = new PayProcess();
 
@@ -22,7 +25,7 @@ public class Pos {
     this.tables = tables;
     this.menus = menus;
 
-    orderProcess = new OrderProcess(tables, menus);
+    orderProcess = new OrderProcess(tables, menus, orderList);
   }
 
   public void start() {
@@ -31,6 +34,10 @@ public class Pos {
     do {
       process = getProcess();
       runProcess(process);
+
+      for(int i = 0; i < orderList.size(); i++){
+        System.out.println(orderList.get(i));
+      }
     } while (process != END);
 
   }

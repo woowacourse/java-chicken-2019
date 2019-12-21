@@ -9,13 +9,15 @@ public class OrderProcess {
 
   private final List<Table> tables;
   private final List<Menu> menus;
+  private final List<Order> orderList;
 
   private final HashMap<Integer, Integer> tableNumbers = new HashMap<>();
   private final HashMap<Integer, Integer> menuNumbers = new HashMap<>();
 
-  public OrderProcess(List<Table> tables, List<Menu> menus) {
+  public OrderProcess(List<Table> tables, List<Menu> menus, List<Order> orderList) {
     this.tables = tables;
     this.menus = menus;
+    this.orderList = orderList;
 
     getTableNumberList();
     getMenuNumberList();
@@ -39,7 +41,20 @@ public class OrderProcess {
 
     final int amount = getAmount(getTable(tableNumber), getMenu(menuNumber));
 
+    addOrder(tableNumber, menuNumber, amount);
   }
+
+  private void addOrder(int tableNumber, int menuNumber, int amount) {
+    Order order = new Order(getTable(tableNumber), getMenu(menuNumber), amount);
+
+    order.addToTable();
+    addToOrderList(order);
+  }
+
+  private void addToOrderList(Order order) {
+    orderList.add(order);
+  }
+
 
   private Table getTable(int tableNumber) {
     return this.tables.get(this.tableNumbers.get(tableNumber));
