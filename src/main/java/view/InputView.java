@@ -38,4 +38,20 @@ public class InputView {
         
         return Integer.valueOf(string);
     }
+    
+    public static int inputMenuNumber() {
+        System.out.println("## 등록할 메뉴를 선택하세요.");
+        String string = scanner.nextLine();
+        try {
+            Validator.validateMenuNumber(string);
+        } catch (NumberFormatException e) {
+            System.err.println("숫자를 입력해주세요.");
+            inputMenuNumber();
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+            inputMenuNumber();
+        }
+        
+        return Integer.valueOf(string);
+    }
 }

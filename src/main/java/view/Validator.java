@@ -1,5 +1,6 @@
 package view;
 
+import domain.MenuRepository;
 import domain.TableRepository;
 
 public class Validator {
@@ -20,6 +21,15 @@ public class Validator {
         }
         if (!TableRepository.isExist(Integer.parseInt(string))) {
             throw new IllegalArgumentException("현재 있는 테이블 숫자만 입력해주세요.");
+        }
+    }
+    
+    public static void validateMenuNumber(String string) {
+        if (string.isEmpty()) {
+            throw new IllegalArgumentException("null값은 허용되지 않습니다.");
+        }
+        if (!MenuRepository.isExist(Integer.parseInt(string))) {
+            throw new IllegalArgumentException("현재 있는 메뉴 숫자만 입력해주세요.");
         }
     }
 }

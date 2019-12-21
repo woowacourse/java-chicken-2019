@@ -12,6 +12,10 @@ public class Menu {
         this.category = category;
         this.price = price;
     }
+    
+    public boolean isTheMenu(int number) {
+        return this.number == number;
+    }
 
     @Override
     public String toString() {
