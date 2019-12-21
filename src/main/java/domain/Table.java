@@ -12,7 +12,6 @@ public class Table {
 
     public void addMenu(int menuNumber, int count) {
         Menu menu = MenuRepository.selectMenu(menuNumber);
-
         bills.put(menu, count);
     }
 
@@ -23,6 +22,30 @@ public class Table {
             System.out.println(e.getKey().printMenu(e.getValue()));
         }
     }
+
+    public void printTableNumber() {
+        System.out.println(number + "번 테이블의 결제를 진행합니다.");
+    }
+
+    public int totalPay(int payment) {
+        int chickenCount = 0;
+        int sum = 0;
+        Iterator itr = bills.entrySet().iterator();
+
+        while(itr.hasNext()) {
+            Map.Entry<Menu, Integer> e = (Map.Entry<Menu, Integer>)itr.next();
+            sum += e.getKey().totalPay(e.getValue());
+            chickenCount += e.getKey().isChicken();
+        }
+        if(chickenCount > 10) {
+            sum -= chickenCount / 10 * 10000;
+        }
+        if(payment == 2) {
+            return (int)((double)sum * 0.95);
+        }
+        return sum;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

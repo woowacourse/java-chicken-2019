@@ -17,6 +17,17 @@ public class Menu {
         return name + " " + count + " " + (price * count);
     }
 
+    public int totalPay(int count) {
+        return price * count;
+    }
+
+    public int isChicken() {
+        if(category == Category.CHICKEN) {
+            return 1;
+        }
+        return 0;
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";

@@ -41,5 +41,11 @@ public class OutputView {
     public static void printBills(final Table table) {
         System.out.println("## 주문 내역\n메뉴 수량 금액");
         table.printBill();
+        System.out.println();
+    }
+
+    public static void printTotal(final Table table, final int payment) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(table.totalPay(payment) + "원");
     }
 }

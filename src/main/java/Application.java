@@ -33,7 +33,6 @@ public class Application {
     }
 
     public static void orderNow(final List<Table> tables) {
-
         OutputView.printTables(tables);
 
         final int tableNumber = InputView.inputTableNumber();
@@ -43,7 +42,6 @@ public class Application {
 
         final int orderMenu = InputView.selectOrderMenu();
         final int orderCount = InputView.selectCountMenu();
-
         tables.get(tableNumber).addMenu(orderMenu, orderCount);
     }
 
@@ -53,6 +51,10 @@ public class Application {
         final int tableNumber = InputView.inputTableNumber();
 
         OutputView.printBills(tables.get(tableNumber));
+
+        final int paymentNumber = InputView.selectPaymentNumber();
+
+        OutputView.printTotal(tables.get(tableNumber), paymentNumber);
     }
 
 }
