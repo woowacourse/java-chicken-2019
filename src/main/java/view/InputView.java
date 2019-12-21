@@ -32,4 +32,9 @@ public class InputView {
         System.out.println("## 신용카드는1번,현금은2번");
         return scanner.nextLine();
     }
+
+    public static String inputFinishSign() {
+        System.out.println("정말 종료하시겠습니까? (종료하시려면 y, 아니면 n를 입력해주세요.");
+        return scanner.nextLine();
+    }
 }

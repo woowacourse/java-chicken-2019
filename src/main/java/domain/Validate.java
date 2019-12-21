@@ -13,4 +13,16 @@ public class Validate {
         }
         return number;
     }
+
+    public static boolean validateYesOrNo(String input) {
+        if (input.length() != 1)
+            return false;
+
+        char yesOrNo = Character.toLowerCase(input.charAt(0));
+        if (yesOrNo != 'y' && yesOrNo != 'n' ) {
+            System.out.println("잘못 입력하셨습니다.");
+            return false;
+        }
+        return true;
+    }
 }
