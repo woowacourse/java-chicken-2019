@@ -20,6 +20,15 @@ public class TableRepository {
         return Collections.unmodifiableList(tables);
     }
 
+    public static boolean isExistTableNumber(int tableNumber) {
+
+        if (getTableIndex(tableNumber) < tables.size()) {
+            return true;
+        }
+
+        return false;
+    }
+
     public static void takeOrder(int table, Order order) {
         tables.get(getTableIndex(table)).addOrder(order);
     }
@@ -39,7 +48,8 @@ public class TableRepository {
     private static int getTableIndex(int tableNumber) {
         int tableIndex = 0;
 
-        while (!tables.get(tableIndex).isTableNumberSame(tableNumber)) {
+        while (tableIndex < tables.size()
+                && (!tables.get(tableIndex).isTableNumberSame(tableNumber))) {
             tableIndex++;
         }
 

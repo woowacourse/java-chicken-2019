@@ -1,5 +1,6 @@
 package view;
 
+import domain.TableRepository;
 import java.util.Scanner;
 
 public class InputView {
