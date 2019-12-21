@@ -11,15 +11,26 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
     private static final String MAIN_TITLE = "## 메인 화면";
+    private static final String TABLE_TITLE = "## 테이블 목록";
     private static final String NUMBER_FORMAT_ERR = "유효한 숫자가 아닙니다.";
     private static final String NUMBER_RANGE_ERR = "범위 내의 숫자가 아닙니다.";
+    private static final String TABLE_SELECT_MSG = "손님을 %d번 테이블로 안내합니다.";
+    private static final String TABLE_ALREADY_SELECT_MSG = "사용할 수 없는 테이블입니다. 다시 선택해주세요.";
 
     public static void printTables(final List<Table> tables) {
-        System.out.println("## 테이블 목록");
+        System.out.println(TABLE_TITLE);
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
         printLine(BOTTOM_LINE, size);
+    }
+
+    public static void printTableSelectSuccess(int tableNumber) {
+        System.out.println(String.format(TABLE_SELECT_MSG, tableNumber));
+    }
+
+    public static void printTableSelectFail() {
+        System.out.println(TABLE_ALREADY_SELECT_MSG);
     }
 
     public static void printMenus(final List<Menu> menus) {
