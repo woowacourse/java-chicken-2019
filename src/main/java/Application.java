@@ -21,4 +21,15 @@ public class Application {
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
     }
+
+    public static void placeOrder() {
+
+    }
+
+    public static void checkout() {
+    }
+
+    public static boolean quit(int quitProgram) {
+        return quitProgram == 3;
+    }
 }
