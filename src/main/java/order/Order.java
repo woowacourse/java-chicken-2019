@@ -12,15 +12,14 @@ import view.OutputView;
 import java.util.List;
 
 public class Order {
-
     public void startOrder(OrderStatement orderStatement) {
         inputOrder(orderStatement);
     }
 
     public void inputOrder(OrderStatement orderStatement) {
-        final List<Table> tables = TableRepository.tables();
+        // final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
-        int tableNumber = inputTableNumber(tables);
+        int tableNumber = inputTableNumber(orderStatement.getTables());
         int menuId = inputMenuId(menus);
         int capacitiy = inputCapacity(orderStatement, tableNumber, menuId);
         orderStatement.addTableOrderStatement(tableNumber, careateOrderedMenu(menuId, capacitiy));
@@ -50,10 +49,6 @@ public class Order {
             return InputView.inputCapacity(orderedMenu);
         }
         return InputView.inputCapacity(null);
-    }
-
-    public void addMenuInOrderStatement(OrderStatement orderStatement) {
-
     }
 
 }

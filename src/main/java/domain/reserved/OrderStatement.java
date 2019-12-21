@@ -1,13 +1,18 @@
 package domain.reserved;
 
 import domain.Table;
+import domain.TableRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 // 모든 예약을 가지고 있다.
 public class OrderStatement {
-    List<Table> tables = new ArrayList<>();
+    private final List<Table> tables = TableRepository.tables();
+
+    public List<Table> getTables() {
+        return tables;
+    }
 
     public Table getTableOrderStatementBy(int id) {
         return tables.stream()
