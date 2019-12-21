@@ -3,6 +3,7 @@ import domain.Table;
 import view.InputView;
 import view.OutputView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,7 +17,6 @@ public class Payment {
 
         OutputView.printBill(order);
         final int methodNumber = InputView.inputPayMethod(tableNumber);
-        final int payment = getPayment(order);
         OutputView.printAmountOfPayment(calculateDiscount(order, methodNumber));
     }
 
@@ -28,7 +28,40 @@ public class Payment {
     }
 
     private static int getPayment(HashMap<Menu,Integer> order) {
-        // TODO
-        return 0;
+        List<Integer> priceOfMenu;
+        List<Integer> numberOfMenu;
+
+        priceOfMenu = getPriceList(order);
+        numberOfMenu = getNumberList(order);
+
+        return sumPayment(priceOfMenu, numberOfMenu);
     }
+
+    private static int sumPayment(List<Integer> priceList, List<Integer> numberList) {
+        int payment = 0;
+        for (int i = 0; i < priceList.size(); i++) {
+            payment += priceList.get(i) * numberList.get(i);
+        }
+        return payment;
+    }
+
+    private static List<Integer> getPriceList(HashMap<Menu,Integer> order) {
+        List<Integer> priceOfMenu = new ArrayList<>(order.size());
+        for (Menu menu : order.keySet()) {
+            priceOfMenu.add(menu.getPrice());
+        }
+
+        return priceOfMenu;
+    }
+
+    private static List<Integer> getNumberList(HashMap<Menu,Integer> order) {
+        List<Integer> numberOfMenu = new ArrayList<>(order.size());
+        for (int value : order.values()) {
+            numberOfMenu.add(value);
+        }
+
+        return numberOfMenu;
+    }
+
+
 }
