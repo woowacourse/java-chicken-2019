@@ -25,4 +25,13 @@ public class Payment {
     public Payment addPaymentAmount(int paymentAmount, int chickenAmount) {
         return new Payment(this.paymentAmount + paymentAmount, this.chickenAmount + chickenAmount);
     }
+
+    public int calculateFinalPaymentAmount(int paymentMethod) {
+        int paymentAmount = this.paymentAmount;
+        paymentAmount -= (int) (chickenAmount / TEN) * DISCOUNT;
+        if (paymentMethod == CASH) {
+            paymentAmount *= CASH_DISCOUNT_RATIO;
+        }
+        return paymentAmount;
+    }
 }
