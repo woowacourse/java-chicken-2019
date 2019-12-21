@@ -33,4 +33,8 @@ public class Menu {
     public int getPrice() {
     	return this.price;
     }
+    
+    public String getCategoryName() {
+    	return this.category.getName();
+    }
 }

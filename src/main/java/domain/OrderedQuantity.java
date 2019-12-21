@@ -1,15 +1,23 @@
 package domain;
 
+import domain.Category;
+
 import java.util.List;
 
 public class OrderedQuantity {
 	private static final int MAX_FOOD_QUANTITY = 99;
 	private int foodNumber;
 	private int foodQuantity;
+	private int price;
+	private String name;
+	private String category;
 	
-	OrderedQuantity(int foodNumber, int foodQuantity) {
+	OrderedQuantity(int foodNumber, int foodQuantity, String category, int price, String name) {
 		this.foodNumber = foodNumber;
 		this.foodQuantity = foodQuantity;
+		this.category = category;
+		this.price = price;
+		this.name = name;
 	}
 	
 	public int getFoodNumber() {
@@ -28,15 +36,15 @@ public class OrderedQuantity {
 		return this.foodQuantity;
 	}
 	
+	public int getTotalPrice() {
+		return price * foodQuantity;
+	}
+	
+	public String getCategory() {
+		return this.category;
+	}
+	
 	public String getNameAndQuantityAndPrice(List<Menu> menus) {
-		String name = "";
-		int price = 0;
-		for (Menu menu : MenuRepository.menus()) {
-			if (menu.getFoodNumber() == foodNumber) {
-				name = menu.getName();
-				price = menu.getPrice();
-			}
-		}
-		return name + " " + foodQuantity + " " + price;
+		return name + " " + foodQuantity + " " + (price * foodQuantity);
 	}
 }

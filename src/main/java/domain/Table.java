@@ -1,18 +1,23 @@
 package domain;
 
+import domain.Category;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
 	private static final int QUANTITY_IS_ZERO_AT_FIRST = 0;
 	private static final int NO_QUANTITY = 0;
+	private static final String CHICKEN = "치킨";
+	private static final int PER_TEN_CHICKEN = 10;
     private final int number;
     private List<OrderedQuantity> orderedQuantities = new ArrayList<>();
 
     public Table(final int number) {
         this.number = number;
         for (Menu menu : MenuRepository.menus()) {
-        	orderedQuantities.add(new OrderedQuantity(menu.getFoodNumber(), QUANTITY_IS_ZERO_AT_FIRST));
+        	orderedQuantities.add(new OrderedQuantity(menu.getFoodNumber() ,QUANTITY_IS_ZERO_AT_FIRST
+        			, menu.getCategoryName(), menu.getPrice(), menu.getName()));
         }
     }
     
@@ -61,6 +66,27 @@ public class Table {
     		}
     	}
     	return orderList;
+    }
+    
+    public int getTotalMoney() {
+    	return orderedQuantities.stream()
+    			.mapToInt(OrderedQuantity::getTotalPrice)
+    			.sum();
+    }
+    
+    public int chickenQuantityDiscount() {
+    	return orderedQuantities.stream()
+    			.filter(quantity -> quantity.getCategory().equals(CHICKEN))
+    			.mapToInt(quantity -> quantity.getQuantity())
+    			.sum() / PER_TEN_CHICKEN;
+    }
+    
+    public void removeOrderList() {
+    	orderedQuantities = new ArrayList<>();
+    	for (Menu menu : MenuRepository.menus()) {
+        	orderedQuantities.add(new OrderedQuantity(menu.getFoodNumber() ,QUANTITY_IS_ZERO_AT_FIRST
+        			, menu.getCategoryName(), menu.getPrice(), menu.getName()));
+        }
     }
 
     @Override

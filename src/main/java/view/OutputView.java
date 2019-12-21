@@ -18,6 +18,7 @@ public class OutputView {
 	private static final String EXIT_PROGRAM = "3. 프로그램 종료하기";
 	private static final String ORDER_LIST = "## 주문 내역";
 	private static final String MENU_QUANTITY_PRICE = "메뉴 수량 금액";
+	private static final String FINAL_MONEY = "## 최종금액";
 	private static final Scanner scanner = new Scanner(System.in);
 
 	public static void printMain() {
@@ -83,6 +84,11 @@ public class OutputView {
 		for (String order : orderList) {
 			System.out.println(order);
 		}
+	}
+	
+	public static void printFinalMoney(double finalMoney) {
+		System.out.println(FINAL_MONEY);
+		System.out.println(finalMoney);
 	}
 
 }
