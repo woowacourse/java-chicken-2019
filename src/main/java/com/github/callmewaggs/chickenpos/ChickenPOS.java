@@ -3,10 +3,7 @@ package com.github.callmewaggs.chickenpos;
 import com.github.callmewaggs.chickenpos.domain.Menu;
 import com.github.callmewaggs.chickenpos.domain.MenuRepository;
 import com.github.callmewaggs.chickenpos.domain.MenuService;
-import com.github.callmewaggs.chickenpos.domain.Table;
-import com.github.callmewaggs.chickenpos.domain.TableRepository;
 import com.github.callmewaggs.chickenpos.domain.TableService;
-import com.github.callmewaggs.chickenpos.view.InputView;
 import com.github.callmewaggs.chickenpos.view.OutputView;
 import java.util.List;
 
@@ -21,12 +18,10 @@ public class ChickenPOS {
   }
 
   public void start() {
-    final List<Table> tables = TableRepository.tables();
-    OutputView.printTables(tables);
+    tableService.showTables();
+    final int tableNumber = tableService.inputTableNumber();
 
-    final int tableNumber = InputView.inputTableNumber();
-
-    final List<Menu> menus = MenuRepository.menus();
-    OutputView.printMenus(menus);
+    menuService.showMenus();
+    final int menuNumber = menuService.inputMenuNumber();
   }
 }
