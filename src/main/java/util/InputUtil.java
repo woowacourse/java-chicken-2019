@@ -21,4 +21,8 @@ public class InputUtil {
 	public static TableNumber checkTableNumber(String tableNumberInput) {
 		return new TableNumber(tableNumberInput);
 	}
+
+	public static MenuNumber checkMenuNumber(String menuNumberInput) {
+		return new MenuNumber(menuNumberInput);
+	}
 }
