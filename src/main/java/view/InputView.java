@@ -30,7 +30,6 @@ public class InputView {
             outputView.printError(e);
             return inputTableNumber();
         }
-
     }
 
     public int inputMenuNumber() {
@@ -62,7 +61,7 @@ public class InputView {
     }
 
     public int inputFunctionNumber() {
-        System.out.println("## 원하는 기능을 선택하세요.\n");
+        System.out.println("## 원하는 기능을 선택하세요.");
         try {
             int funcNumber = Integer.parseInt(scanner.nextLine());
             if (Arrays.stream(Requests.values()).map(Requests::getValue).noneMatch(request -> request == funcNumber)) {

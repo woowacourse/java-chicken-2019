@@ -46,8 +46,6 @@ public class Table {
         }
 
         menus.put(menu, 1);
-
-
     }
 
     public boolean isTarget(int tableNumber) {
@@ -65,7 +63,10 @@ public class Table {
             moneyToPay += menu.getPrice() * menus.get(menu);
         }
 
+        return discount(moneyToPay, wayToPay);
+    }
 
+    private double discount(double moneyToPay, int wayToPay) {
         int menuSize = calculateMenuSize();
         int numToDiscount = menuSize / 10;
         for (int i = 0; i < numToDiscount; i++) {
@@ -77,6 +78,7 @@ public class Table {
         }
 
         return moneyToPay;
+
     }
 
     public Map<Menu, Integer> getMenus() {

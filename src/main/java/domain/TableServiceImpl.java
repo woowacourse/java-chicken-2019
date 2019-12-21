@@ -23,17 +23,11 @@ public class TableServiceImpl implements TableService {
 
     @Override
     public void register() {
-        outputView.printTables(tables);
-        int tableNumber = inputView.inputTableNumber();
-        Table table = getTableByNumber(tableNumber);
-
-        menuService.showMenues();
-        int menuNumber = inputView.inputMenuNumber();
-        Menu menu = menuService.getMenuByNumber(menuNumber);
-
+        Table table = inputTable();
+        Menu menu = inputMenu();
         int menuAmount = inputView.inputMenuAmount();
 
-        if (MenuConfig.MENU_LIMIT_NUM < table.calculateMenuSize() + menuAmount) {
+        if (isValidAmount(table, menuAmount)) {
             outputView.printRessonOfOrder(MenuConfig.MENU_LIMIT_NUM);
             register();
             return;
@@ -42,11 +36,26 @@ public class TableServiceImpl implements TableService {
         for (int i = 0; i < menuAmount; i++) {
             table.takeOrder(menu);
         }
-
     }
 
-    private Table getTableByNumber(int tableNumber) {
+    private boolean isValidAmount(Table table, int menuAmount) {
+        return MenuConfig.MENU_LIMIT_NUM < table.calculateMenuSize() + menuAmount;
+    }
 
+    private Table inputTable() {
+        outputView.printTables(tables);
+        int tableNumber = inputView.inputTableNumber();
+        return getTableByNumber(tableNumber);
+    }
+
+    private Menu inputMenu() {
+        menuService.showMenues();
+        int menuNumber = inputView.inputMenuNumber();
+        return menuService.getMenuByNumber(menuNumber);
+    }
+
+
+    private Table getTableByNumber(int tableNumber) {
         for (Table table : tables) {
             if (table.isTarget(tableNumber)) {
                 return table;

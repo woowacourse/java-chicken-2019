@@ -18,25 +18,20 @@ public class ChichenPoS implements PoS {
     @Override
     public void handle() {
         outputView.printMain();
-
         int funcNumber = inputView.inputFunctionNumber();
-
         if (funcNumber == Requests.Register.getValue()) {
             tableService.register();
             handle();
             return;
         }
-
         if (funcNumber == Requests.Pay.getValue()) {
             tableService.pay();
             handle();
             return;
         }
-
         if (funcNumber == Requests.Exit.getValue()) {
             outputView.printExit();
             System.exit(0);
         }
-
     }
 }

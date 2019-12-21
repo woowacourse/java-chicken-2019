@@ -47,7 +47,6 @@ public class OutputView {
                 System.out.print("└ ₩ ┘");
                 continue;
             }
-
             System.out.print(BOTTOM_LINE);
         }
         System.out.println();
@@ -89,7 +88,7 @@ public class OutputView {
         System.out.println(String.format("%.0f원", moneyToPay));
     }
 
-    void printError(RuntimeException e) {
+    public void printError(RuntimeException e) {
         System.out.println(String.format("다음과 같은 오류가 발생했습니다: %s", e.getMessage()));
     }
 

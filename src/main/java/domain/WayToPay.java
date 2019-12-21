@@ -1,7 +1,6 @@
 package domain;
 
 public enum WayToPay {
-
     creditCard(1),
     cash(2);
 
