@@ -8,16 +8,19 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
+	private static final int ORDER_REGISTERATION = 1;
+
     // TODO 구현 진행
     public static void main(String[] args) {
-        PosScreen.getFunctionNumber();
+    	final int functionNumber = Pos.getFunctionNumber();
+		if (functionNumber == ORDER_REGISTERATION) {
+			final List<Table> tables = TableRepository.tables();
+			OutputView.printTables(tables);
 
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
+			final int tableNumber = InputView.inputTableNumber();
 
-        final int tableNumber = InputView.inputTableNumber();
-
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+			final List<Menu> menus = MenuRepository.menus();
+			OutputView.printMenus(menus);
+		}
     }
 }
