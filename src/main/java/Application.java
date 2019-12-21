@@ -11,7 +11,7 @@ public class Application {
 
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
-        final List<Order> orders = new ArrayList<>();
+        List<Order> orders = new ArrayList<>();
         do {
             int mainNumber = InputView.inputMainNumber();
             if (mainNumber == 1) {
@@ -52,5 +52,9 @@ public class Application {
         int paymentPrice = calculator.getTotalPrice();
 
         OutputView.printFinalPayment(paymentPrice);
+
+        for (Order tableOrder : tableOrders){
+            orders.remove(tableOrder);
+        }
     }
 }
