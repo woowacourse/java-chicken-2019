@@ -31,7 +31,7 @@ public class Orders {
     }
 
     public int getAmount() {
-        int amount = 0;
+        int amount = ORDER_NOTHING;
         for (Order order : orders) {
             Menu current = MenuRepository.getMenu(order.number);
             amount += current.getPrice(order.quantity);
@@ -48,7 +48,7 @@ public class Orders {
     }
 
     public int getMenuSize( int menuNumber ) {
-        int size = 0;
+        int size = ORDER_NOTHING;
         for( Order order : orders) {
             if(order.isEqual(menuNumber)){
                 size += order.getQuantity();
