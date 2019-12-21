@@ -20,12 +20,15 @@ public class Application {
 
         Service selectedService = new ServiceSelector(services).selectService(InputView.inputServiceNumber());
 
+
         final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
+        //OutputView.printTables(tables);
 
         final int tableNumber = InputView.inputTableNumber();
 
         final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+        //OutputView.printMenus(menus);
+
+        selectedService.run(List<Table> tables);
     }
 }
