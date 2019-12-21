@@ -40,11 +40,10 @@ public class Application {
 
     public static void order(List<Table> tables, List<Menu> menus) {
         Table table = tableListingAndSelectingForOrdering(tables);
-        OutputView.printMenus(menus);
+        Menu menu = menuListingAndSelecting(menus);
+
         while (true) {
-            int menuNumber = InputView.inputMenuNumber();
             int menuQuantity = InputView.inputMenuQuantity();
-            Menu menu = orderMenuWithNumber(menus, menuNumber);
             if (table.isOrderPossible(menu, menuQuantity)) {
                 table.orderMenu(menu, menuQuantity);
                 break;
@@ -69,6 +68,29 @@ public class Application {
         boolean flag = false;
         for (Table table: tables) {
             if (table.getNumber()==number) {
+                flag = true;
+                break;
+            }
+        }
+        return flag;
+    }
+
+    public static Menu menuListingAndSelecting(List<Menu> menus) {
+        while (true) {
+            OutputView.printMenus(menus);
+            int menuNumber = InputView.inputMenuNumber();
+            if (!isContainingSpecificMenu(menus, menuNumber)) {
+                OutputView.printInvalidMenuNumber();
+                continue;
+            }
+            return orderMenuWithNumber(menus, menuNumber);
+        }
+    }
+
+    public static boolean isContainingSpecificMenu(List<Menu> menus, int number) {
+        boolean flag = false;
+        for (Menu menu: menus) {
+            if (menu.getNumber()==number) {
                 flag = true;
                 break;
             }
