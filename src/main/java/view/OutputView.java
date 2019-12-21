@@ -54,6 +54,7 @@ public class OutputView {
             if (tables.get(index).getOrderMenu().size() != 0)
                 System.out.print(BOTTOM_LINE_ORDER);
         }
+        System.out.println();
     }
 
     private static void printTableNumbers(final List<Table> tables) {
