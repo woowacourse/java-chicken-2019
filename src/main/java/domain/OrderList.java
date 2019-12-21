@@ -23,6 +23,17 @@ public class OrderList {
         return Collections.unmodifiableList(findOrders);
     }
 
+    public static List<Order> search(int tableNumber) {
+        List<Order> findOrders = new ArrayList<>();
+
+        for (Order order : orders) {
+            if (order.isTableNumber(tableNumber)) {
+                findOrders.add(order);
+            }
+        }
+
+        return Collections.unmodifiableList(findOrders);
+    }
     public static List<Order> orders() {
         return Collections.unmodifiableList(orders);
     }

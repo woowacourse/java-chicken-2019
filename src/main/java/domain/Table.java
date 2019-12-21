@@ -16,6 +16,16 @@ public class Table {
         return false;
     }
 
+    public boolean isOrder() {
+        if (OrderList.search(this.number).isEmpty()) {
+            return false;
+        }
+
+        return true;
+
+
+    }
+
 
     @Override
     public String toString() {

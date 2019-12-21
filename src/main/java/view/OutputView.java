@@ -8,9 +8,9 @@ import java.util.List;
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
-    private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BOTTOM_LINE = "└ %s ┘";
 
-//    public static void printFunctions(final List<String> functions) {
+//    public static void printFunctions() {
 //        System.out.println("## 메인화면");
 //        for (final String names : functions) {
 //            System.out.println(functions);
@@ -25,7 +25,7 @@ public class OutputView {
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLine(tables);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -44,6 +44,17 @@ public class OutputView {
     private static void printTableNumbers(final List<Table> tables) {
         for (final Table table : tables) {
             System.out.printf(TABLE_FORMAT, table);
+        }
+        System.out.println();
+    }
+
+    private static void printBottomLine(final List<Table> tables) {
+        for (final Table table : tables) {
+            if (table.isOrder()) {
+                System.out.printf(BOTTOM_LINE, 'W');
+            } else {
+                System.out.printf(BOTTOM_LINE, '-');
+            }
         }
         System.out.println();
     }
