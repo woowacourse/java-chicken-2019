@@ -24,9 +24,7 @@ public class MenuRepository {
     }
 
     public static boolean isInMenus(int number) {
-        Iterator itr = menus.iterator();
-        while (itr.hasNext()) {
-            Menu menu = (Menu) itr.next();
+        for (final Menu menu : menus) {
             if (menu.isSameNumber(number)) {
                 return true;
             }
@@ -35,9 +33,7 @@ public class MenuRepository {
     }
 
     public static Menu getMenu(int number) {
-        Iterator itr = menus.iterator();
-        while (itr.hasNext()) {
-            Menu menu = (Menu) itr.next();
+        for (final Menu menu : menus) {
             if (menu.isSameNumber(number)) {
                 return menu;
             }

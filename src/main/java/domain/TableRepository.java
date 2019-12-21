@@ -22,9 +22,7 @@ public class TableRepository {
     }
 
     public static boolean isInTable(int number) {
-        Iterator itr = tables.iterator();
-        while (itr.hasNext()) {
-            Table table = (Table) itr.next();
+        for (final Table table : tables) {
             if (table.isSameNumber(number)) {
                 return true;
             }
@@ -33,9 +31,7 @@ public class TableRepository {
     }
 
     public static Table getTable(int number) {
-        Iterator itr = tables.iterator();
-        while (itr.hasNext()) {
-            Table table = (Table) itr.next();
+        for (final Table table : tables) {
             if (table.isSameNumber(number)) {
                 return table;
             }
