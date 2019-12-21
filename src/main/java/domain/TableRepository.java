@@ -37,7 +37,7 @@ public class TableRepository {
 
     public static void addNewOrder(Table table, int type, int count) {
         Table orderedTable = table;
-        table.addMenu(type, count);
+        orderedTable.addMenu(type, count);
 
         tableMenu = tableMenu.stream().filter(x -> x.getNumber() != table.getNumber()).collect(Collectors.toList());
         tableMenu.add(table);
