@@ -24,12 +24,14 @@ public class OutputView {
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
         printLine(BOTTOM_LINE, size);
+        System.out.println();
     }
 
     public static void printMenus(final List<Menu> menus) {
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
+        System.out.println();
     }
 
     private static void printLine(final String line, final int count) {
