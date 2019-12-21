@@ -16,7 +16,13 @@ public class InputView {
         System.out.println("3 - 프로그램 종료\n");
 
         System.out.println("## 원하는 기능을 선택하세요.");
-        return scanner.nextInt();
+        int Action = scanner.nextInt();
+        if(Action < 1 || Action > 3){
+            System.out.println("## 숫자 1,2,3 중에 하나를 선택하세요. \n");
+            Action = inputAction();
+        }
+
+        return Action;
     }
 
     public static int inputTableNumber() {

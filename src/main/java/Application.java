@@ -29,7 +29,7 @@ public class Application {
 
         OutputView.printTables(tables);
         tableNumber = InputView.inputTableNumber();
-        if(tableNumber == 0){
+        if(tableNumber == ConstantNumber.CANNOT_ORDER){
             return;
         }
         OutputView.printMenus(menus);
