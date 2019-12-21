@@ -12,7 +12,7 @@ public class MainFeatures {
 
     private MainFeatures() {
     }
-    
+
     public static List<String> make() {
         mainFeatures.add(ORDER_REGISTRATION);
         mainFeatures.add(MAKE_PAYMENT);
@@ -20,5 +20,7 @@ public class MainFeatures {
         return mainFeatures;
     }
 
-
+    public static int size() {
+        return mainFeatures.size();
+    }
 }
