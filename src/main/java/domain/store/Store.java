@@ -127,15 +127,15 @@ public class Store {
      * getOrderTableNumber는 입력을 통해 주문할 테이블의 번호를 구하는 메서드이다.
      *
      * @return 주문할 테이블의 번호를 반환한다.
-     * @exception IllegalArgumentException 만약 유효하지 않은 번호라면 예외처리 후 다시 입력을 받는다.
+     * @throws IllegalArgumentException 만약 유효하지 않은 번호라면 예외처리 후 다시 입력을 받는다.
      */
     private int getOrderTableNumber() {
         int tableNumber;
 
-        try{
+        try {
             tableNumber = InputView.inputTableNumber();
             checkTableNumberException(tableNumber);
-        }catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("잘못된 값입니다. 값을 다시 입력해주세요");
             return getOrderTableNumber();
         }
@@ -149,12 +149,46 @@ public class Store {
      * @throws IllegalArgumentException 만약 테이블 번호에 맞는 테이블을 찾지 못하면 예외처리한다.
      */
     private void checkTableNumberException(int tableNumber) {
-        for(Table table : tables) {
-            if(table.isRightTableNumber(tableNumber)) {
+        for (Table table : tables) {
+            if (table.isRightTableNumber(tableNumber)) {
                 return;
             }
         }
-        throw new IllegalArgumentException("확인할 수 없는 번지입니다.");
+        throw new IllegalArgumentException("확인할 수 없는 테이블입니다.");
+    }
+
+    /**
+     * getMenuCode는 메뉴 코드(번호, 개수와 헷갈릴 수 있어 코드로 명명)를 입력받아 반환하는 메서드이다.
+     * checkMenuCodeException을 통해 메뉴 코드에 문제가 있는지 검사한다.
+     *
+     * @return 입력받은 메뉴 코드를 반환한다.
+     */
+    private int getMenuCode() {
+        int menuCode;
+
+        try {
+            menuCode = InputView.inputMenuCode();
+            checkMenuCodeException(menuCode);
+        } catch (IllegalArgumentException e) {
+            System.out.println("잘못된 값입니다. 값을 다시 입력해주세요");
+            return getMenuCode();
+        }
+        return menuCode;
+    }
+
+    /**
+     * checkMenuCodeException은 메뉴 번호에 맞는 메뉴가 있는지 확인하고 없다면 예외처리하는 메서드이다.
+     *
+     * @param menuCode 입력된 메뉴 번호이다.
+     * @throws IllegalArgumentException 없는 메뉴를 참조하였다면 예외처리를 한다.
+     */
+    private void checkMenuCodeException(int menuCode) {
+        for (Menu menu : menus) {
+            if (menu.isRightMenuNumber(menuCode)) {
+                return;
+            }
+        }
+        throw new IllegalArgumentException("확인할 수 없는 메뉴입니다.");
     }
 
     /**
@@ -185,10 +219,12 @@ public class Store {
      * 종료(테이블에 메뉴 가져다주기->글자 표시해주기)
      */
     private void order() {
-        int tableNumber;
+        int tableNumber, menuCode, menuNumber;
         OutputView.printTables(tables);
         tableNumber = getOrderTableNumber();
         OutputView.printMenus(menus);
+        menuCode = getMenuCode();
+        //menuNumber = getMenuNumber();
     }
 
     /**
