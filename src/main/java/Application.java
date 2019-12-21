@@ -14,6 +14,7 @@ public class Application {
     private static final int CASH = 2;
     private static final int MANY_ORDER_BOUNDARY = 10;
     private static final int HAS_MANY_ORDER_DISCOUNT = 10000;
+    private static final int MAXIMUM_QUANTITY = 99;
     private static final double CASH_DISCOUNT_RATES = 0.95;
 
     private static int mainMenuNumber = 1;
@@ -49,7 +50,21 @@ public class Application {
         final int menuNumber = InputView.inputMenuNumber();
         final int menuQuantity = InputView.inputMenuQuantity();
         Order order = new Order(menuNumber, menuQuantity);
+        if (checkOrder(tableNumber, menuNumber, menuQuantity)) {
+            OutputView.printNotAbleOrder();
+            return;
+        }
         tables.addOrder(tableNumber, order);
+        for( Table table: tables.tables() ) {
+            System.out.println(table.orderToString());
+        }
+    }
+
+    private static boolean checkOrder( int tableNumber, int menuNumber, int menuQuantity ) {
+        boolean isAble = false;
+        Table current = tables.getTable(tableNumber);
+        int menuAmount = current.targetOrderSize(menuNumber);
+        return menuAmount + menuQuantity > MAXIMUM_QUANTITY;
     }
 
     private static void runPayment() {
@@ -59,7 +74,7 @@ public class Application {
         }
         OutputView.printTables(tables);
         final int tableNumber = InputView.inputPaymentTableNumber();
-        if(hasNoOrder(tableNumber)) {
+        if (hasNoOrder(tableNumber)) {
             OutputView.printNoOrder();
             return;
         }
@@ -86,7 +101,7 @@ public class Application {
         return table.getOrderSize() >= MANY_ORDER_BOUNDARY;
     }
 
-    private static boolean hasNoOrder ( int tableNumber ) {
+    private static boolean hasNoOrder( int tableNumber ) {
         Table current = tables.getTable(tableNumber);
         return !current.hasOrder();
     }
