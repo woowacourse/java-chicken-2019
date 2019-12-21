@@ -30,4 +30,16 @@ public class InputView {
             return getInputOfTableNumber();
         }
     }
+
+    public static int getInputOfMenuNumber() {
+        System.out.println("## 등록할 메뉴를 선택하세요.");
+        String inputOfMenuNumber = scanner.nextLine();
+        try {
+            Validator.checkInputOfMenuNumber(inputOfMenuNumber);
+            return Integer.parseInt(inputOfMenuNumber);
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e);
+            return getInputOfMenuNumber();
+        }
+    }
 }
