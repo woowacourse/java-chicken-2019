@@ -90,7 +90,8 @@ public class OutputView {
     }
 
     private static void printOrder(Order order) {
-        System.out.println(order.getWhatMenu() + " "
-                + order.getOrderQuantity() + " ");
+        System.out.println(order.getMenu().getName() + " "
+                + order.getOrderQuantity() + " "
+                + order.getMenu().getPrice());
     }
 }
