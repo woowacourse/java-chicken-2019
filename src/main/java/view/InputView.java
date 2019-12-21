@@ -1,5 +1,6 @@
 package view;
 
+import domain.Menus;
 import domain.Tables;
 
 import java.util.Optional;
@@ -28,9 +29,14 @@ public class InputView {
                 .orElseGet(InputView::inputMainMenu);
     }
 
-    public static int inputMenuNumber() {
+    public static int inputMenuNumber(Menus menus) {
         System.out.println("## 등록할 메뉴를 선택하세요.");
-        return inputAsNumber();
+        return Optional.of(inputAsNumber())
+                .filter(menus::isMenuExist)
+                .orElseGet(() -> {
+                    System.out.println("존재하지않는 메뉴 번호입니다.");
+                    return inputMenuNumber(menus);
+                });
     }
 
     public static boolean isMainInputValid(int input) {
