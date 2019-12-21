@@ -1,5 +1,7 @@
 import domain.Menu;
 import domain.MenuRepository;
+import domain.ProvidingFunction;
+import domain.ProvidingFunctionRepository;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
@@ -10,6 +12,10 @@ import java.util.List;
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
+        final List<ProvidingFunction> providingFunctions
+                = ProvidingFunctionRepository.providingFunctions();
+        OutputView.printProvidingFunctions(providingFunctions);
+
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 
