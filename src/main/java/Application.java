@@ -11,11 +11,31 @@ public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
-
-        final int tableNumber = InputView.inputTableNumber();
-
         final List<Menu> menus = MenuRepository.menus();
+
+        Application application = new Application();
+        application.mainMenu();
+        application.tableMenu(tables);
+        application.menuMenu(menus);
+    }
+
+    private int mainMenu() {
+        OutputView.printMainMenu();
+        int mainMenuNumber = InputView.inputMainMenuNumber();
+        if (mainMenuNumber == 3) {
+            System.out.println("\nPOS 프로그램을 종료합니다.");
+            System.exit(0);
+        }
+        return mainMenuNumber;
+    }
+
+    private int tableMenu(List<Table> tables) {
+        OutputView.printTables(tables);
+        int tableNumber = InputView.inputTableNumber();
+        return tableNumber;
+    }
+
+    private void menuMenu(List<Menu> menus) {
         OutputView.printMenus(menus);
     }
 }

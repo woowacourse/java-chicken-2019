@@ -5,28 +5,37 @@ import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
+    private static final int MAIN_MENU_NUMBER = 3;
+    private static final int TABLE_NUMBERS = TableRepository.tableNumbers();
 
-    public static int inputTableNumber() {
-        System.out.println("## 주문할 테이블을 선택하세요.");
-        return tableNumber();
+    public static int inputMainMenuNumber() {
+        System.out.println("\n## 원하는 기능을 선택하세요.");
+        String printErrorMessage = "\n## 원하는 기능을 기능 번호로 다시 선택해주세요.";
+        return inputNumber(printErrorMessage, MAIN_MENU_NUMBER);
     }
 
-    private static int tableNumber() {
-        String tableNumberString = "";
-        do {
+    public static int inputTableNumber() {
+        System.out.println("\n## 주문할 테이블을 선택하세요.");
+        String printErrorMessage = "\n## 주문할 테이블을 테이블 번호로 다시 선택해주세요.";
+        return inputNumber(printErrorMessage, TABLE_NUMBERS);
+    }
+
+    private static int inputNumber(String printErrorMessage, int numberBounds) {
+        String tableNumberString = scanner.nextLine().trim();
+        while (!isBoundsNumberTF(tableNumberString, numberBounds)) {
+            System.out.println(printErrorMessage);
             tableNumberString = scanner.nextLine().trim();
-        } while (!isTableNumberTF(tableNumberString));
+        }
         int tableNumber = Integer.parseInt(tableNumberString);
         return tableNumber;
     }
 
-    private static boolean isTableNumberTF(String tableNumberString) {
+    private static boolean isBoundsNumberTF(String tableNumberString, int numberBounds) {
         if (isNumbersTF(tableNumberString)
-                && Integer.parseInt(tableNumberString) <= TableRepository.tableNumbers()
+                && Integer.parseInt(tableNumberString) <= numberBounds
                 && Integer.parseInt(tableNumberString) > 0) {
             return true;
         }
-        System.out.println("## 주문할 테이블을 테이블 번호로 다시 선택해주세요.");
         return false;
     }
 
