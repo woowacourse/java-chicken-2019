@@ -9,4 +9,12 @@ public class InputView {
         System.out.println("## 주문할 테이블을 선택하세요.");
         return scanner.nextInt();
     }
+
+    public static int inputMenuNumber() {
+        return 0;
+    }
+
+    public static int inputMenuAmount() {
+        return 0;
+    }
 }
