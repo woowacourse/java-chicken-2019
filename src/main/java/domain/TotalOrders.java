@@ -12,4 +12,14 @@ public class TotalOrders {
 			totalOrders.add(new TableOrder(table));
 		}
 	}
+
+	public void addOrder(Table table, Order order) {
+		for (TableOrder tableOrder : totalOrders) {
+			if (tableOrder.isEqualTable(table)) {
+				tableOrder.add(order);
+				return;
+			}
+		}
+		throw new IllegalArgumentException("해당하는 테이블이 존재하지 않습니다.");
+	}
 }

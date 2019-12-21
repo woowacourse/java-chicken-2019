@@ -1,7 +1,10 @@
 import domain.Menu;
 import domain.MenuRepository;
+import domain.Order;
 import domain.Table;
+import domain.TableOrder;
 import domain.TableRepository;
+import domain.TotalOrders;
 import view.InputView;
 import view.OutputView;
 
@@ -12,19 +15,25 @@ public class Application {
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
+        final TotalOrders totalOrders = new TotalOrders();
         int inputCode = 0;
         while (inputCode != 3) {
-            OutputView.printInitialMenu();
+            // 주문의 경우
+            OutputView.printInitialFunction();
             inputCode = InputView.inputFunctionId(); // 이거에 따라서 기능 구현하는 인터페이스 만들어야 겠다.  // 주문
+
             OutputView.printTables(tables);
-            final int tableNumber = InputView.inputTableNumber();
-            TableRepository.getTableByNumber(tableNumber);
-            //테이블 넘버로 테이블 가져오는 기능 구현해야한다.
+            final Table table = InputView.inputTable();
+
             OutputView.printMenus(menus);
-            int menu = InputView.inputMenuNumber();
-            MenuRepository.getMenuByNumber(menu);
+            Menu menu = InputView.inputMenu();
             int menuQuantity = InputView.inputMenuQuantity();
 
+            Order order = new Order(menu, menuQuantity);
+
+            totalOrders.addOrder(table, order);
+            // 이러고 다시 선택화면으로 돌아간다.
         }
+        // 1번 과정에서 테이블 입력,
     }
 }

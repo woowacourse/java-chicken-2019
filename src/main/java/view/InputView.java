@@ -2,6 +2,11 @@ package view;
 
 import java.util.Scanner;
 
+import domain.Menu;
+import domain.MenuRepository;
+import domain.Order;
+import domain.Table;
+import domain.TableRepository;
 import util.ValidateUtil;
 
 public class InputView {
@@ -19,26 +24,24 @@ public class InputView {
         }
     }
 
-    public static int inputTableNumber() {
+    public static Table inputTable() {
         try {
             System.out.println("## 주문할 테이블을 선택하세요.");
             int data = inputInt();
-            ValidateUtil.validateTableNumber(data);
-            return data;
+            return TableRepository.getTableByNumber(data);
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            return inputTableNumber();
+            return inputTable();
         }
     }
-    public static int inputMenuNumber() {
+    public static Menu inputMenu() {
         try {
             System.out.println("## 등록할 메뉴를 선택하세요.");
             int data = inputInt();
-            ValidateUtil.validateMenuNumber(data);
-            return data;
+            return MenuRepository.getMenuByNumber(data);
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            return inputMenuNumber();
+            return inputMenu();
         }
     }
 

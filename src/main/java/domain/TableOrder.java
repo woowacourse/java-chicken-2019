@@ -7,4 +7,12 @@ public class TableOrder {
 	public TableOrder(Table table) {
 		this.table = table;
 	}
+
+	public boolean isEqualTable(Table table) {
+		return this.table == table;
+	}
+
+	public void add(Order order) {
+		orders.add(order);
+	}
 }
