@@ -59,5 +59,12 @@ public class OutputView {
         for (Map.Entry<Menu, Integer> order : orderMenu.entrySet()) {
             System.out.println(order.getKey().getName() + " " + order.getValue() + " " + order.getKey().getPrice());
         }
+        System.out.println();
+    }
+
+    public static void printMoney(final List<Table> tables, final int tableNumber) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(tables.get(tableNumber).getMoney() + "원");
+        System.out.println();
     }
 }

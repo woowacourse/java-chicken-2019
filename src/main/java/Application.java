@@ -40,7 +40,12 @@ public class Application {
     }
 
     private void pay() {
-
+        OutputView.printTables(tables);
+        int tableNumber = InputView.inputPayTableNumber();
+        
+        OutputView.printOrderMenus(tables, menus, tableNumber);
+        InputView.inputPayNumber(tableNumber);
+        OutputView.printMoney(tables, tableNumber);
     }
 
     public static void main(String[] args) {
