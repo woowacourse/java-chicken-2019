@@ -73,4 +73,13 @@ public class OutputView {
     private static Integer calculatePrice(Menu menu, Integer amount) {
         return menu.getPrice() * amount;
     }
+
+    public static void printGuideForPayment(int tableNumber) {
+        System.out.println(String.format("## %d번 테이블의 결제를 진행합니다.", tableNumber));
+    }
+
+    public static void printResult(double moneyToPay) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(String.format("%.0f원", moneyToPay));
+    }
 }

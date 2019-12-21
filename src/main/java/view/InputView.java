@@ -24,4 +24,8 @@ public class InputView {
         System.out.println("## 원하는 기능을 선택하세요.");
         return scanner.nextInt();
     }
+
+    public static int inputPaymentWay() {
+        return scanner.nextInt();
+    }
 }

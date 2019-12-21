@@ -26,7 +26,8 @@ public class ChichenPoS implements PoS {
 
         if (funcNumber == Requests.Pay.getValue()) {
             tableService.pay();
-
+            handle();
+            return;
         }
 
         if (funcNumber == Requests.Exit.getValue()) {

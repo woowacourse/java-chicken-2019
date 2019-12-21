@@ -67,4 +67,28 @@ public class Table {
     public void showOrderHistory() {
         OutputView.printOrderHistory(menus);
     }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public double settle(int wayToPay) {
+        double moneyToPay = 0;
+        for (Menu menu : menus.keySet()) {
+            moneyToPay += menu.getPrice() * menus.get(menu);
+        }
+
+
+        int menuSize = calculateMenuSize();
+        int numToDiscount = menuSize / 10;
+        for (int i = 0; i < numToDiscount; i++ ) {
+            moneyToPay -= MenuConfig.DISCOUNT_AMOUNT;
+        }
+
+        if (wayToPay == WayToPay.cash.getValue()) {
+            moneyToPay *= 0.95;
+        }
+
+        return moneyToPay;
+    }
 }

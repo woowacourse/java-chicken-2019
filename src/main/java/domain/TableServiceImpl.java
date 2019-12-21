@@ -58,7 +58,14 @@ public class TableServiceImpl implements TableService {
         int tableNumber = InputView.inputTableNumber();
         Table table = getTableByNumber(tableNumber);
         table.showOrderHistory();
+        OutputView.printGuideForPayment(table.getNumber());
+        int way = InputView.inputPaymentWay();
+        double moneyToPay = table.settle(way);
+
+        OutputView.printResult(moneyToPay);
 
 
     }
+
+
 }
