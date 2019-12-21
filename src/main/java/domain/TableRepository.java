@@ -34,7 +34,7 @@ public class TableRepository {
 
     private static boolean checkAmount(int tableNumber, int amount) {
         if (amount > MAX_AMOUNT) {
-            System.out.println("\n!!!!주문량이 너무 많습니다. 99이하가 되도록 다시 주문해주세요!!!!");
+            System.out.println("\n!!주문량이 너무 많습니다. 한 테이블은 99개가 최대입니다.");
             System.out.println("현재 주문량 : " + tables.get(tableNumber).getTotalAmount());
             return false;
         }
