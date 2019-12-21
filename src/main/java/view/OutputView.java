@@ -1,9 +1,10 @@
 package view;
 
-import domain.Menu;
-import domain.Table;
-
 import java.util.List;
+
+import domain.Menu;
+import domain.Order;
+import domain.Table;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
@@ -46,7 +47,7 @@ public class OutputView {
     }
     
     private static String checkOrder(Table table) {
-    	if (table.getOrders().hasNotOrder()) {
+    	if (table.toOrders().hasNotOrder()) {
     		return BOTTOM_LINE;
     	}
     	return PAY_LINE;
@@ -58,4 +59,19 @@ public class OutputView {
         }
         System.out.println();
     }
+    
+    public static void printOrderList(final Table table) {
+    	System.out.println("\n## 주문내역\n메뉴 수량 금액");
+    	
+    	for (Order order : table.toOrders().toList()) {
+    		System.out.println(order.toString());
+    	}
+    	System.out.println();
+    }
+    
+    public static void printPayingProcess(final Table table) {
+    	System.out.println(table.toString() + "번 테이블의 결제를 진행합니다.");
+    }
+    
+    
 }

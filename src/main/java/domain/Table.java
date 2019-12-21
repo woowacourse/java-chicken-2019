@@ -17,7 +17,7 @@ public class Table {
 		return Integer.toString(number).equals(compare.toString());
 	}
 	
-	public Orders getOrders() {
+	public Orders toOrders() {
 		return orders;
 	}
 }

@@ -1,10 +1,9 @@
 package domain;
 
 public class FunctionNumber {
-	public final int charLength = 1;
-	public final int getOrder = 1;
-	public final int payment = 2;
-	public final int exit = 3;
+	private final int getOrder = 1;
+	private final int payment = 2;
+	private final int exit = 3;
 	private final int value;
 	
 	public FunctionNumber(final int value) {

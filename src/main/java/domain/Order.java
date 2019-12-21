@@ -8,4 +8,9 @@ public class Order {
         this.menu = menu;
         this.menuCount = menuCount;
     }
+    
+    public String toString() {
+    	return menu.toName() + menuCount.toInteger() 
+    		+ menu.toPrice() * menuCount.toInteger();
+    }
 }

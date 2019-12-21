@@ -6,6 +6,7 @@ import domain.FunctionNumber;
 import domain.Menu;
 import domain.MenuCount;
 import domain.MenuRepository;
+import domain.PaymentOption;
 import domain.Table;
 import domain.TableRepository;
 
@@ -27,7 +28,7 @@ public class InputView {
     public static Table inputTableNumber() {
 		try {
 			OutputView.printTables(TableRepository.tables());
-			System.out.println("\n## 주문할 테이블을 선택하세요.");
+			System.out.println("\n## 테이블을 선택하세요.");
 			return TableRepository.isExist(new Table(Integer.parseInt(scanner.nextLine())));
 		} catch (Exception e) {
 			System.out.println(e);
@@ -52,6 +53,16 @@ public class InputView {
  		} catch (Exception e) {
  			System.out.println(e);
  			return inputMenuCount();
+ 		}
+    }
+    
+    public static PaymentOption inputPaymentOption() {
+    	try {
+ 			System.out.println("## 신용카드는 1번, 현금은 2번");
+ 			return new PaymentOption(Integer.parseInt(scanner.nextLine()));
+ 		} catch (Exception e) {
+ 			System.out.println(e);
+ 			return inputPaymentOption();
  		}
     }
 }

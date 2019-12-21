@@ -15,6 +15,6 @@ public class GetOrder {
 		OutputView.printMenus(MenuRepository.menus());
 		Order order = new Order(InputView.inputMenuNumber(), InputView.inputMenuCount());
 		
-		table.getOrders().addOrder(order);
+		table.toOrders().addOrder(order);
 	}
 }
