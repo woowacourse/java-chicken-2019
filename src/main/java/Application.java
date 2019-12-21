@@ -13,8 +13,11 @@ public class Application {
         InputView.inputMainMenu();
         OutputView.printTables(tables.getTables());
 
-        if (tables.isTableExist(InputView.inputTableNumber())) {
-            OutputView.printMenus(menus.getMenus());
-        }
+        int inputTableNumber = InputView.inputTableNumber(tables);
+//            OutputView.printMenus(menus.getMenus());
+//            if(menus.isMenuExist(InputView.inputMenuNumber())){
+//                System.out.println("GOOD");
+//            }
+//        }
     }
 }
