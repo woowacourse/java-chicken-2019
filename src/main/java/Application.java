@@ -1,8 +1,8 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
-import domain.mainFunction.FunctionNumber;
+import domain.menu.Menu;
+import domain.menu.MenuRepository;
+import domain.table.Table;
+import domain.table.TableRepository;
+import domain.Function.FunctionNumber;
 import view.InputView;
 import view.OutputView;
 

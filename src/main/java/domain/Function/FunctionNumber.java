@@ -1,4 +1,4 @@
-package domain.mainFunction;
+package domain.Function;
 
 public class FunctionNumber {
     private static final int REGISTER_ORDER = 1;
