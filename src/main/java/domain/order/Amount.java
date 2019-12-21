@@ -18,6 +18,9 @@ public class Amount {
     }
 
     public void add(int addedAmount) {
+        if (this.amount + addedAmount > MAX_AMOUNT) {
+            throw new IllegalArgumentException("메뉴당 최대 주문 수량은 99개입니다.");
+        }
         this.amount += addedAmount;
     }
 }
