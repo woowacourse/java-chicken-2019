@@ -46,4 +46,9 @@ public class Table {
 		}
 		return orderedMenuCount;
 	}
+	
+	public void clearTable() {
+		orderedMenu.clear();
+		orderedMenuCount.clear();
+	}
 }

@@ -1,6 +1,4 @@
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import domain.Menu;
 import domain.MenuRepository;
@@ -84,6 +82,6 @@ public class Application {
 		OutputView.printOrders(tables.get(getTableIndex(nowTable)), menus);
 		howToPay = InputView.inputSelectHowToPay(nowTable);
 		OutputView.printTotalPayAmount(tables.get(getTableIndex(nowTable)), menus, howToPay);
+		tables.get(getTableIndex(nowTable)).clearTable();
 	}
-
 }
