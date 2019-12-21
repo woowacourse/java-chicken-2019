@@ -18,7 +18,7 @@ public class InputView {
     }
 
     public int inputTableNumber() {
-        System.out.println("## 주문할 테이블을 선택하세요.");
+        System.out.println("## 테이블을 선택하세요.");
         try {
             int tableNumber = Integer.parseInt(scanner.nextLine());
             if (Arrays.stream(TableConfig.TABLES_NUMBERS).parallel().noneMatch(number -> number == tableNumber )) {

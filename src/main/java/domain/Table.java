@@ -87,4 +87,8 @@ public class Table {
     public Map<Menu, Integer> getMenus() {
         return menus;
     }
+
+    public boolean isRegistered() {
+        return tableStatus.equals(TableStatus.Registered);
+    }
 }

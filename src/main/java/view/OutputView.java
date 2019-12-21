@@ -27,7 +27,7 @@ public class OutputView {
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLine(tables);
     }
 
     public void printMenus(final List<Menu> menus) {
@@ -39,6 +39,18 @@ public class OutputView {
     private void printLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
+        }
+        System.out.println();
+    }
+
+    private void printBottomLine(final List<Table> tables) {
+        for (Table table : tables) {
+            if (table.isRegistered()) {
+                System.out.print("└ ₩ ┘");
+                continue;
+            }
+
+            System.out.print(BOTTOM_LINE);
         }
         System.out.println();
     }
