@@ -2,20 +2,28 @@ package view;
 
 import domain.Menu;
 import domain.Table;
+import org.w3c.dom.ls.LSOutput;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String TABLE_HAVE_TO_PAY = "└ ₩ ┘";
 
-    public static void printTables(final List<Table> tables) {
+    public static void printTables(final List<Table> tables, List<Integer> orderCheck) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+
+        for (int i = 0; i < tables.size(); i++) {
+            System.out.print(printPayLine(i, orderCheck));
+        }
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -29,6 +37,23 @@ public class OutputView {
             System.out.print(line);
         }
         System.out.println();
+    }
+
+    private static String printPayLine(int index, List<Integer> orderCheck) {
+        String order = "";
+        boolean empty = true;
+
+        for (int i = 0; i < orderCheck.size(); i++) {
+            if (orderCheck.get(i).equals(index)) {
+                order += TABLE_HAVE_TO_PAY;
+                empty = false;
+            }
+        }
+        if (empty) {
+            order += BOTTOM_LINE;
+        }
+
+        return order;
     }
 
     private static void printTableNumbers(final List<Table> tables) {
