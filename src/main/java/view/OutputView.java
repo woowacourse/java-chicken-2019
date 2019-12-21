@@ -1,5 +1,6 @@
 package view;
 
+import domain.Bills;
 import domain.Menu;
 import domain.Table;
 
@@ -9,6 +10,7 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BOTTOM_LINE_FORMAT = "└ %s ┘";
 
     public static void printMainView() {
         System.out.println("## 메인화면");
@@ -23,13 +25,17 @@ public class OutputView {
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLine(BOTTOM_LINE, tables);
     }
 
     public static void printMenus(final List<Menu> menus) {
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
+    }
+
+    public static void printBills(Bills bills) {
+        System.out.println(bills.toString());
     }
 
     public static void printException(Exception e) {
@@ -39,6 +45,16 @@ public class OutputView {
     private static void printLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
+        }
+        System.out.println();
+    }
+    private static void printBottomLine(final String line, List<Table> tables) {
+        for (Table table : tables) {
+            if (table.isNoOrder()) {
+                System.out.print(line);
+                continue;
+            }
+            System.out.printf(BOTTOM_LINE_FORMAT, "₩");
         }
         System.out.println();
     }
