@@ -8,16 +8,14 @@ import view.OutputView;
 public class MenuServiceImpl implements MenuService {
 
     private List<Menu> menus;
-    private OutputView outputView;
 
-    public MenuServiceImpl(List<Menu> menus, OutputView outputView) {
+    public MenuServiceImpl(List<Menu> menus) {
         this.menus = menus;
-        this.outputView = outputView;
     }
 
     @Override
     public void showMenues() {
-        outputView.printMenus(menus);
+        OutputView.printMenus(menus);
     }
 
     @Override

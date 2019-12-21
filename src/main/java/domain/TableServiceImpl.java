@@ -11,14 +11,12 @@ public class TableServiceImpl implements TableService {
     private List<Table> tables;
     private MenuService menuService;
     private InputView inputView;
-    private OutputView outputView;
 
 
-    public TableServiceImpl(List<Table> tables, MenuService menuService, InputView inputView, OutputView outputView) {
+    public TableServiceImpl(List<Table> tables, MenuService menuService, InputView inputView) {
         this.tables = tables;
         this.menuService = menuService;
         this.inputView = inputView;
-        this.outputView = outputView;
     }
 
     @Override
@@ -28,7 +26,7 @@ public class TableServiceImpl implements TableService {
         int menuAmount = inputView.inputMenuAmount();
 
         if (isValidAmount(table, menuAmount)) {
-            outputView.printRessonOfOrder(MenuConfig.MENU_LIMIT_NUM);
+            OutputView.printRessonOfOrder(MenuConfig.MENU_LIMIT_NUM);
             register();
             return;
         }
@@ -43,7 +41,7 @@ public class TableServiceImpl implements TableService {
     }
 
     private Table inputTable() {
-        outputView.printTables(tables);
+        OutputView.printTables(tables);
         int tableNumber = inputView.inputTableNumber();
         return getTableByNumber(tableNumber);
     }
@@ -67,21 +65,21 @@ public class TableServiceImpl implements TableService {
 
     @Override
     public void pay() {
-        outputView.printTables(tables);
+        OutputView.printTables(tables);
 
         int tableNumber = inputView.inputTableNumber();
         Table table = getTableByNumber(tableNumber);
         showOrderHistory(table.getMenus());
-        outputView.printGuideForPayment(table.getNumber());
+        OutputView.printGuideForPayment(table.getNumber());
         int way = inputView.inputPaymentWay();
         double moneyToPay = table.settle(way);
         table.getSettled();
 
-        outputView.printResult(moneyToPay);
+        OutputView.printResult(moneyToPay);
     }
 
     private void showOrderHistory(Map<Menu, Integer> menus) {
-        outputView.printOrderHistory(menus);
+        OutputView.printOrderHistory(menus);
     }
 
 

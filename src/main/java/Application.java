@@ -13,32 +13,31 @@ import view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        OutputView outputView = new OutputView();
-        InputView inputView = new InputView(outputView);
-        PoS pos = setupPoS(inputView, outputView);
+        InputView inputView = new InputView();
+        PoS pos = setupPoS(inputView);
         try {
             pos.handle();
         } catch (RuntimeException e) {
-            outputView.printError(e);
-            outputView.printExit();
+            OutputView.printError(e);
+            OutputView.printExit();
             System.exit(-1);
         }
 
     }
 
-    private static PoS setupPoS(InputView inputView, OutputView outputView) {
-        TableService tableService = setupTableService(inputView, outputView);
-        return new ChichenPoS(tableService, inputView, outputView);
+    private static PoS setupPoS(InputView inputView) {
+        TableService tableService = setupTableService(inputView);
+        return new ChichenPoS(tableService, inputView);
     }
 
-    private static TableService setupTableService(InputView inputView, OutputView outputView) {
+    private static TableService setupTableService(InputView inputView) {
         final List<Table> tables = TableRepository.tables();
-        MenuService menuService = setupMenuService(outputView);
-        return new TableServiceImpl(tables, menuService, inputView, outputView);
+        MenuService menuService = setupMenuService();
+        return new TableServiceImpl(tables, menuService, inputView);
     }
 
-    private static MenuService setupMenuService(OutputView outputView) {
+    private static MenuService setupMenuService() {
         final List<Menu> menus = MenuRepository.menus();
-        return new MenuServiceImpl(menus, outputView);
+        return new MenuServiceImpl(menus);
     }
 }
