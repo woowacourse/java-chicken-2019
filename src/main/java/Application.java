@@ -35,8 +35,8 @@ public class Application {
 
     private static void doOrder() {
         OutputView.printTables(tables);
-        int tableNumber = InputView.getInputOfTableNumber();
+        Table table = TableRepository.findTableByNumber(InputView.getInputOfTableNumber());
         OutputView.printMenus(menus);
-        int menuNumber = InputView.getInputOfMenuNumber();
+        Menu menu = MenuRepository.findMenuByNumber(InputView.getInputOfMenuNumber());
     }
 }
