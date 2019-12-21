@@ -21,6 +21,14 @@ public class Table {
         }
     }
 
+    public boolean tableHasMenu(){
+        if(!menus.isEmpty()){
+            return true;
+        }
+        return false;
+    }
+
+    //삭제 예정!
     public void printCurrentState(){
         for(int i = 0; i < menus.size(); i ++){
             System.out.println(menus.get(i).toString().trim());

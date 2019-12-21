@@ -41,7 +41,6 @@ public class Application {
         int menuNumber = InputView.inputMenuNumber();
         int amountNumber = InputView.inputAmountNumber();
         findMenuObjectAddToTableObject(menuNumber,tableNumber, amountNumber);
-
     }
 
     public void findMenuObjectAddToTableObject(int menuNumber, int tableNumber, int amountNumber){
@@ -66,10 +65,11 @@ public class Application {
         return null;
     }
 
-
-
     public void paymentForTable(){
-
+        OutputView.printTables(tables);
+        int tableNumber = InputView.inputTableNumber();
+        Table table = findTable(tableNumber);
+        OutputView.printOrderHistory(table);
     }
 
     public void finishApplication(){
