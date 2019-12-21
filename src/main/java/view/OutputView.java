@@ -10,7 +10,7 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
 
-    public static void printAction(){
+    public static void printAction() {
         System.out.println("## 메인화면");
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
@@ -23,9 +23,10 @@ public class OutputView {
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-//      테이블 주문있을때 없을때 조건 만들기.
-        printLine(BOTTOM_LINE, size);
+        printLine(BOTTOM_LINE,size);
     }
+
+
 
     public static void printMenus(final List<Menu> menus) {
         for (final Menu menu : menus) {
@@ -46,7 +47,6 @@ public class OutputView {
         }
         System.out.println();
     }
-
 
 
 }

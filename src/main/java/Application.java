@@ -30,18 +30,21 @@ public class Application {
         while (true) {
             OutputView.printAction();
             actionNumber = InputView.inputActionNumber();
-            if (actionNumber == ORDER_KEY) {
-                orderProcess();
-                continue;
-            }
-            if (actionNumber == PAY_KEY) {
-                payProcess();
-                continue;
-            }
+
+            chooseAction(actionNumber);
             if (actionNumber == QUIT_KEY) {
                 System.out.println("시스템을 종료합니다.");
                 break;
             }
+        }
+    }
+
+    public static void chooseAction(int actionNumber){
+        if (actionNumber == ORDER_KEY) {
+            orderProcess();
+        }
+        if (actionNumber == PAY_KEY) {
+            payProcess();
         }
     }
 

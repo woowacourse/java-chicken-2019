@@ -34,7 +34,7 @@ public class Table {
                 inputOrder(newMenuCategory, newMenuCount);
                 return "추가 주문이 완료되었습니다.";
             }
-            return "제한 수량을 초과하였습니다.";
+            return "제한 수량을 초과하여 주문할 수 없습니다.";
         }
         inputNewOrder(newMenuCategory,newMenuCount);
         return "새로운 주문이 완료되었습니다.";
@@ -58,9 +58,9 @@ public class Table {
     }
 
     public boolean isNotOverCountNumber(int newInputMenuCategory, int newInputMenuCount) {
-        return calculateCount(newInputMenuCategory, newInputMenuCount) < MAX_ORDER_COUNT;
+        return calculateCount(newInputMenuCategory, newInputMenuCount) <= MAX_ORDER_COUNT;
     }
-
+    
     public void clearTable() {
         menuCategory = new ArrayList<>();
         menuCount = new ArrayList<>();
