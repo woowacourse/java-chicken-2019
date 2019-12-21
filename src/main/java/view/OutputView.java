@@ -70,7 +70,7 @@ public class OutputView {
 		System.out.println(price);
 	}
 
-	public static void printError(String error) {
+	public static void printError(final String error) {
 		System.out.println(error);
 	}
 }
