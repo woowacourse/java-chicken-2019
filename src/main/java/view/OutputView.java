@@ -1,5 +1,5 @@
 /*
- * @(#)OutputView.java      0.1 2019.12.21
+ * @(#)OutputView.java      0.2 2019.12.21
  *
  * Copyright (c) 2019 lxxjn0
  */
@@ -8,7 +8,9 @@ package view;
 
 import domain.Table;
 import domain.menu.Menu;
+import domain.menu.MenuQuantity;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class OutputView {
@@ -72,5 +74,15 @@ public class OutputView {
         System.out.println("2 - 결제하기");
         System.out.println("3 - 프로그램 종료");
         System.out.println();
+    }
+
+    public static void printOrderedMenuStatus(HashMap<Menu, MenuQuantity> orderedMenuStatus) {
+        System.out.println("## 주문 내역");
+        System.out.println("메뉴  수량  금액");
+        orderedMenuStatus.forEach(OutputView::printSelectedMenuStatus);
+    }
+
+    private static void printSelectedMenuStatus(Menu menu, MenuQuantity menuQuantity) {
+        System.out.println(menu.getName() + " " + menuQuantity.getMenuQuantity() + " " + menu.getPrice());
     }
 }

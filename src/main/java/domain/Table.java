@@ -1,5 +1,5 @@
 /*
- * @(#)Table.java       0.3 2019.12.21
+ * @(#)Table.java       0.4 2019.12.21
  *
  * Copyright (c) 2019 lxxjn0
  */
@@ -41,6 +41,10 @@ public class Table {
 
     public boolean isPaymentCompleted() {
         return paymentStatus;
+    }
+
+    public HashMap<Menu, MenuQuantity> getMenuStatus() {
+        return menuStatus;
     }
 
     @Override
