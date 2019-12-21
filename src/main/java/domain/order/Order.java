@@ -12,9 +12,16 @@ public class Order {
     }
 
     public void add(Menu menu, int menuAmount) {
+        if (orderedBefore(menu)) {
+            Amount amount = order.get(menu);
+            amount.add(menuAmount);
+        }
         Amount amount = new Amount(menuAmount);
-
         order.put(menu, amount);
+    }
+
+    private boolean orderedBefore(Menu menu) {
+        return order.containsKey(menu);
     }
 
     public boolean isEmpty() {
