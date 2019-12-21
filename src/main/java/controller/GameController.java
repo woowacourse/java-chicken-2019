@@ -4,6 +4,7 @@ import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
+import except.InputException;
 import order.OrderList;
 import utils.Calculate;
 import view.InputView;
@@ -47,7 +48,7 @@ public class GameController {
     private void tableOrder() {
         OutputView.printTables(tables, orderList);
         final Table table = getTable(InputView.inputTableNumber(tables));
-                OutputView.printMenus(menus);
+        OutputView.printMenus(menus);
         final Menu menu = foreignKeyGetMenu(InputView.inputMenuNumber(menus));
         final int quantityNumber = InputView.inputMenuQuantityNumber();
         orderList.get(table).addMenu(menu, quantityNumber);
@@ -55,7 +56,7 @@ public class GameController {
 
     private Table getTable(int tableNumber) {
         for (Table table : tables) {
-            if(table.getNumber() == tableNumber)
+            if (table.getNumber() == tableNumber)
                 return table;
         }
         return null;
@@ -72,6 +73,10 @@ public class GameController {
     private void tablePayment() {
         OutputView.printTables(tables, orderList);
         final Table table = getTable(InputView.inputTableNumber(tables));
+        if (!orderList.get(table).isActive()) {
+            InputException.notTableError();
+            return;
+        }
         OutputView.printOrderHistory(orderList.get(table).orderListToStringArray());
         final int paymentType = InputView.inputCardOrCash(table.getNumber());
         final int resultPrice = Calculate.amountCalculation(orderList.get(table).getTotalPrice()

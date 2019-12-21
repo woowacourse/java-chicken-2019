@@ -1,23 +1,29 @@
 package order;
 
 import domain.Menu;
+import except.InputException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class OrderList {
+    private final static int HUNDRED = 100;
+
     private final HashMap<Menu, Integer> menuCount;
 
     public OrderList() {
         menuCount = new HashMap<>();
     }
 
-    public void addMenu(Menu menu, int count) {
+    public boolean addMenu(Menu menu, int count) {
         if (menuCount.containsKey(menu)) {
+            if (InputException.overCheck(menuCount.get(menu) + count))
+                return false;
             menuCount.put(menu, menuCount.get(menu) + count);
-            return;
+            return true;
         }
         menuCount.put(menu, count);
+        return true;
     }
 
     public int getChickenCount() {
@@ -49,11 +55,12 @@ public class OrderList {
         return orders;
     }
 
-    public void vacateOrder(){
+    public void vacateOrder() {
         menuCount.clear();
     }
 
-    public boolean isActive(){
+    public boolean isActive() {
         return !menuCount.isEmpty();
     }
+
 }
