@@ -17,25 +17,22 @@ public class Application {
 
         while(true){
             OutputView.printMain();
-            int chooseNumber = InputView.inputChooseFunc();
+            int funcNumber = InputView.inputFuncNumber();
 
-            if(chooseNumber == 3){
+            if(funcNumber == 3){
                 OutputView.printExitProgram();
                 break;
             }
 
-            if(chooseNumber == 1){
+            if(funcNumber == 1){
                 OutputView.printTables(tables);
+                int tableNumber = InputView.inputTableNumber();
+                OutputView.printMenus(menus);
+
             }
 
-
-
-
-            final int tableNumber = InputView.inputTableNumber();
-
+//            final int tableNumber = InputView.inputTableNumber();
 
         }
-
-        OutputView.printMenus(menus);
     }
 }
