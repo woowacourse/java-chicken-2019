@@ -19,4 +19,5 @@ public class Application {
         OutputView.printMenus(menus);
         InputView.inputMenuNumber();
     }
+
 }
