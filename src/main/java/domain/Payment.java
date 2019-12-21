@@ -23,7 +23,8 @@ public class Payment {
 
         paymentMethod = getPaymentMethod();
         int finalPrice = getFinalPrice();
-
+        if (!validateFinalPrice(finalPrice))
+            return;
         OutputView.printTotalPayPrice(finalPrice);
         table.clearMenus();
     }
@@ -66,6 +67,14 @@ public class Payment {
     private boolean validateOrderedMenu() {
         if (table.getTableMenuCount() <= 0) {
             System.out.println("주문 내역이 없습니다.\n");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateFinalPrice(int totalPrice) {
+        if (totalPrice < 0) {
+            System.out.println("결제할 금액이 없습니다.");
             return false;
         }
         return true;
