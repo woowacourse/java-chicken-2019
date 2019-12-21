@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TableRepository {
+
     private static final List<Table> tables = new ArrayList<>();
 
     static {

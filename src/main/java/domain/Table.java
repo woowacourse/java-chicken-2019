@@ -2,8 +2,6 @@ package domain;
 
 public class Table {
 
-    private static final int ORDER_NOTHING = 0;
-
     private final int number;
     private final Orders orders = new Orders();
 

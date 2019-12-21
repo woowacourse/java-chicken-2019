@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class MenuRepository {
+
     private static final List<Menu> menus = new ArrayList<>();
 
     static {

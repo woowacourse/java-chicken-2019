@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
+
     private static final Scanner SCANNER = new Scanner(System.in);
     private static final int MINIMUM_MAIN_MENU = 1;
     private static final int MAXIMUM_MAIN_MENU = 3;

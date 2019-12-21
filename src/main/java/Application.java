@@ -5,7 +5,7 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
-    // TODO 구현 진행
+    
     public static final Tables tables = new Tables(TableRepository.tables());
     public static final List<Menu> menus = MenuRepository.menus();
 

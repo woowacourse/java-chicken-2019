@@ -7,6 +7,7 @@ import domain.Tables;
 import java.util.List;
 
 public class OutputView {
+
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
