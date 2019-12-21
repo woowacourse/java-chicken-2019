@@ -72,6 +72,10 @@ public class OutputView {
         System.out.println("원하는 기능은 1,2,3 중에 선택하여 주십시오.");
     }
 
+    public static void printInvalidTableNumber() {
+        System.out.println("없는 테이블 번호입니다.");
+    }
+
     public static void printQuantityLimit() {
         System.out.println("한 테이블에서 주문할 수 있는 한 메뉴의 최대 수량은 99개입니다.");
     }

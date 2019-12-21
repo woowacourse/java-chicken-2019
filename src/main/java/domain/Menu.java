@@ -25,8 +25,12 @@ public class Menu {
     public String getName() {
         return this.name;
     }
+
     public int getPrice() {
         return this.price;
     }
-    public Category getCategory() {return this.category;}
+
+    public Category getCategory() {
+        return this.category;
+    }
 }

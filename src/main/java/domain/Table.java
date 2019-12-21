@@ -33,7 +33,7 @@ public class Table {
     }
 
     public boolean isOrderPossible(Menu menu, int quantity) {
-        if (menuOrdered.getOrDefault(menu,0)+quantity>=100) {
+        if (menuOrdered.getOrDefault(menu, 0) + quantity >= 100) {
             return false;
         }
         return true;
@@ -50,21 +50,20 @@ public class Table {
     }
 
     public void addMoneyCharged(int money) {
-        this.moneyCharged+=money;
+        this.moneyCharged += money;
     }
 
     public void quantityDiscount() {
         int totalChicken = 0;
         int discountNumber = 0;
-        for (Entry<Menu, Integer> menu: getMenuOrdered().entrySet()) {
-            if (menu.getKey().getCategory()==CHICKEN) {
+        for (Entry<Menu, Integer> menu : getMenuOrdered().entrySet()) {
+            if (menu.getKey().getCategory() == CHICKEN) {
                 totalChicken += menu.getValue();
             }
         }
-        discountNumber = totalChicken/10;
-        addMoneyCharged((-10000)*discountNumber);
+        discountNumber = totalChicken / 10;
+        addMoneyCharged((-10000) * discountNumber);
     }
-
 
 
 }

@@ -33,15 +33,13 @@ public class Application {
                 OutputView.printInvalidMainInput();
                 continue;
             }
-        } catch(InputMismatchException e) {
+        } catch (InputMismatchException e) {
             OutputView.printInputMisMatchException();
         }
     }
 
     public static void order(List<Table> tables, List<Menu> menus) {
-        OutputView.printTables(tables);
-        int tableNumber = InputView.inputTableNumberForOrder();
-        Table table = selectTableWithNumber(tables, tableNumber);
+        Table table = tableListingAndSelecting(tables);
         OutputView.printMenus(menus);
         while (true) {
             int menuNumber = InputView.inputMenuNumber();
@@ -55,9 +53,21 @@ public class Application {
         }
     }
 
+    public static Table tableListingAndSelecting(List<Table> tables) {
+        while (true) {
+            OutputView.printTables(tables);
+            int tableNumber = InputView.inputTableNumberForOrder();
+            if (!isContainingSpecificTable(tables, tableNumber)) {
+                OutputView.printInvalidTableNumber();
+                continue;
+            }
+            return selectTableWithNumber(tables, tableNumber);
+        }
+    }
+
     public static Table selectTableWithNumber(List<Table> tables, int number) {
         Table returnTable = null;
-        for (Table table: tables) {
+        for (Table table : tables) {
             if (table.getNumber() == number) {
                 returnTable = table;
             }
@@ -67,12 +77,23 @@ public class Application {
 
     public static Menu orderMenuWithNumber(List<Menu> menus, int number) {
         Menu returnMenu = null;
-        for (Menu menu: menus) {
-            if (menu.getNumber()==number) {
+        for (Menu menu : menus) {
+            if (menu.getNumber() == number) {
                 returnMenu = menu;
             }
         }
         return returnMenu;
+    }
+
+    public static boolean isContainingSpecificTable(List<Table> tables, int number) {
+        boolean flag = false;
+        for (Table table: tables) {
+            if (table.getNumber()==number) {
+                flag = true;
+                break;
+            }
+        }
+        return flag;
     }
 
     public static void pay(List<Table> tables) {
