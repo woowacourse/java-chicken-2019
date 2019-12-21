@@ -31,6 +31,10 @@ public class Table {
         return ordered.countOfMenu(menu);
     }
 
+    public boolean isOrdered() {
+        return ordered.isNotEmpty();
+    }
+
     public Map<String, List<Menu>> allMenu() {
         return ordered.amountMenu();
     }
