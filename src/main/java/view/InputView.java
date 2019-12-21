@@ -10,13 +10,22 @@ public class InputView {
         return scanner.nextInt();
     }
 
+    public static int inputMenuNumber(){
+        System.out.println("## 등록할 메뉴를 선택하세요.");
+        return scanner.nextInt();
+    }
+
+    public static int inputAmountNumber(){
+        System.out.println("## 메뉴의 수량을 입력하세요.");
+        return scanner.nextInt();
+    }
+
     public static int inputMainFunctionNumber() {
         System.out.println("## 메인화면");
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
         System.out.println("3 - 프로그램 종료");
         System.out.println();
-
         System.out.println("## 원하는 기능을 선택하세요.");
         return scanner.nextInt();
     }
