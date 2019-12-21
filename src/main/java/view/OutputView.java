@@ -9,6 +9,17 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String HYPHEN = "-";
+    public static final int ORDER_MENU = 1;
+    public static final int PAY_MENU = 2;
+    public static final int EXIT_PROGRAM = 3;
+
+    public static void printMain() {
+        System.out.println("## 메인 화면");
+        System.out.println(ORDER_MENU + HYPHEN + "주문등록");
+        System.out.println(PAY_MENU + HYPHEN + "결제하기");
+        System.out.println(EXIT_PROGRAM + HYPHEN + "프로그램 종료");
+    }
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
