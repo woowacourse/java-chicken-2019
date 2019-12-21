@@ -17,6 +17,10 @@ public class OutputView {
     	System.out.println("3 - 프로그램 종료");
 	}
     
+    public static void chooseCommandMessage() {
+    	System.out.println("##원하는 기능을 선택하세요.");
+	}
+
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
