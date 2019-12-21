@@ -22,9 +22,12 @@ public class Application {
             OutputView.printMainScreen();
             function = InputView.inputFunctionNumber();
 
-            OutputView.printTables(tables);
-            final int tableNumber = InputView.inputTableNumber();
-            OutputView.printMenus(menus);
+            if (function == ORDER) {
+                OutputView.printTables(tables);
+                final int tableNumber = InputView.inputTableNumber();
+                OutputView.printMenus(menus);
+                int menuNumber = InputView.inputMenu();
+            }
         } while (function != PROGRAM_END);
     }
 }
