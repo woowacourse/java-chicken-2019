@@ -18,6 +18,7 @@ public class Application {
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
         
+        
         OutputView.printMain();
         int order = InputView.inputOrder();
         
@@ -26,7 +27,7 @@ public class Application {
         	if (order == REGISTER) {
             	Register.startOrder(tables, menus);
             } else if (order == PAY) {
-            	Payment.startPayment();
+            	Payment.startPayment(tables, menus);
             }
         	OutputView.printMain();
         	order = InputView.inputOrder();
