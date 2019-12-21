@@ -28,7 +28,7 @@ public class OutputView {
     }
 
     public static void printMenus(final MenuRepository menus) {
-        for (final Menu menu : menus.getMenus) {
+        for (final Menu menu : menus.getMenus()) {
             System.out.println(menu);
         }
     }

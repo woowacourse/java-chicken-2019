@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import domain.Menu;
+import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
 
@@ -28,10 +29,10 @@ public class InputView {
 		return tableNumber;
 	}
 	
-	public static int inputMenuNumber(List<Menu> menus) {
+	public static int inputMenuNumber(MenuRepository menus) {
 		System.out.println("## 등록할 메뉴를 선택하세요.");
 		int menuNumber = scanner.nextInt();
-		if (!menus.stream().filter(menu -> menu.getNumber() == menuNumber).findFirst().isPresent()) {
+		if (!menus.getMenus().stream().filter(menu -> menu.getNumber() == menuNumber).findFirst().isPresent()) {
 			throw new IllegalArgumentException("입력한 메뉴 번호에 해당하는 메뉴가 없습니다.");
 		}
 		return menuNumber;
