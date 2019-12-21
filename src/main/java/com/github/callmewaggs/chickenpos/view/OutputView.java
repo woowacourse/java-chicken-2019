@@ -1,7 +1,7 @@
-package view;
+package com.github.callmewaggs.chickenpos.view;
 
-import domain.Menu;
-import domain.Table;
+import com.github.callmewaggs.chickenpos.domain.Menu;
+import com.github.callmewaggs.chickenpos.domain.Table;
 import java.util.List;
 
 public class OutputView {

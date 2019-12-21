@@ -1,4 +1,4 @@
-package view;
+package com.github.callmewaggs.chickenpos.view;
 
 import java.util.Scanner;
 

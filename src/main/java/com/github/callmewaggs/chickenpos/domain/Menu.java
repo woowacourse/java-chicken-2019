@@ -1,4 +1,4 @@
-package domain;
+package com.github.callmewaggs.chickenpos.domain;
 
 public class Menu {
   private final int number;
