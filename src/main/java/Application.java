@@ -22,6 +22,7 @@ public class Application {
         if(tableNumber == FULL_ORDER){
             return;
         }
+        OutputView.printMenus(menus);
         Menu menu = MenuRepository.getMenuByNumber(InputView.inputMenu());
         menuNumber = InputView.inputOrderNumber();
 
