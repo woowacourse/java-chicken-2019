@@ -1,6 +1,7 @@
 package domain;
 
 public enum MainOptions {
+    NONE(-1, "초기상태"),
     ADD_ORDER(1, "주문등록"),
     PAYMENT(2, "결제하기"),
     EXIT(3, "종료하기");
@@ -16,5 +17,9 @@ public enum MainOptions {
     @Override
     public String toString() {
         return optionNumber + " - " + description;
+    }
+
+    public boolean isStop() {
+        return this == EXIT;
     }
 }
