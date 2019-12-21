@@ -1,5 +1,6 @@
 package view;
 
+import domain.MainMenu;
 import domain.Menu;
 import domain.Table;
 
@@ -9,6 +10,7 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    public static final String SPACEBAR = "";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
@@ -24,6 +26,14 @@ public class OutputView {
         }
     }
 
+    public static void printMainMenu(final List<MainMenu> mainMenus) {
+        System.out.println("## 메인 화면");
+        for (final MainMenu mainMenu : mainMenus) {
+            System.out.println(mainMenu);
+        }
+        printSpacebar();
+    }
+
     private static void printLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
@@ -37,4 +47,9 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    private static void printSpacebar() {
+        System.out.println(SPACEBAR);
+    }
+
 }
