@@ -27,7 +27,7 @@ public class TableRepository {
                 return true;
             }
         }
-        return false;
+        throw new IllegalArgumentException("입력된 값이 변경되었습니다.");
     }
 
     public static Table getTable(final int number) {
@@ -36,6 +36,6 @@ public class TableRepository {
                 return table;
             }
         }
-        return null;
+        throw new IllegalArgumentException("입력된 값이 변경되었습니다.");
     }
 }
