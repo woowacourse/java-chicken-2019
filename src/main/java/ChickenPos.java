@@ -43,6 +43,7 @@ public class ChickenPos {
 
         if (selectNumber.isMenu()) {
             doOrder(table);
+            return new SelectNumber(InputView.inputMainMenu());
         }
         doPayment(table);
         return new SelectNumber(InputView.inputMainMenu());
