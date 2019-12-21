@@ -31,6 +31,7 @@ public class OutputView {
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
+        System.out.println();
     }
 
     public static void printTerminatingProgram() {
