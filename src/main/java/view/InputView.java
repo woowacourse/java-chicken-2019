@@ -9,6 +9,8 @@ import domain.MenuRepository;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.Objects;
+import java.util.List;
+import java.util.ArrayList;
 
 public class InputView {
     private static final String NOT_NUMBER_PATTERN = "^[0-9]*$";
@@ -75,6 +77,27 @@ public class InputView {
     	boolean status = false;
     	for (Menu menu : MenuRepository.menus()) {
     		status = status || menu.isPresentMenu(registeredMenu);
+    	}
+    	return status;
+    }
+    
+    public static int inputOrderQuantity(List<Table> tables) {
+    	System.out.println("## 메뉴의 수량을 입력하세요.");
+    	String orderQuantity = scanner.nextLine();
+    	if (!Pattern.matches(NOT_NUMBER_PATTERN, orderQuantity)) {
+    		System.err.println("주문할 음식의 수량을 숫자로 입력해주세요.");
+    		return inputOrderQuantity(tables);
+    	} else if (isOverQuantity(Integer.parseInt(orderQuantity), tables)) {
+    		System.err.println("해당 음식을 주문할 수 있는 최대 수량(99개)을 넘겼습니다. 다시 입력해주세요.");
+    		return inputOrderQuantity(tables);
+    	}
+    	return Integer.parseInt(orderQuantity);
+    }
+    
+    private static boolean isOverQuantity(int orderQuantity, List<Table> tables) {
+    	boolean status = false;
+    	for (Table table : tables) {
+    		status = status || table.isOverQuantity(orderQuantity);
     	}
     	return status;
     }

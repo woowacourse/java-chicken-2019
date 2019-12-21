@@ -18,6 +18,10 @@ public class Menu {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
     
+    public int getFoodNumber() {
+    	return this.number;
+    }
+    
     public boolean isPresentMenu(int registeredMenu) {
     	return this.number == registeredMenu;
     }
