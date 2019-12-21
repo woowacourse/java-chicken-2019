@@ -45,4 +45,8 @@ public class OutputView {
             System.out.println(i + startFeatureNumber + " - " + mainFeatureList.get(i));
         }
     }
+
+    public static void printIsNotNumberError() {
+        System.out.println("입력된 데이터는 숫자가 아닙니다.\n");
+    }
 }
