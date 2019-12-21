@@ -29,6 +29,17 @@ public class InputView {
 		}
 	}
 
+	public static int inputOrderMenu(){
+		System.out.println("## 등록할 메뉴를 선택하세요.");
+		try {
+			int orderMenu = validateNumber(scanner.nextLine().trim());
+			return orderMenu;
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			return inputOrderMenu();
+		}
+	}
+
 	private static void validateRangeOfProcess(int process) {
 		if (process > PROCESS_SELECTION_RANGE) {
 			throw new IllegalArgumentException("선택지에 없는 값입니다.");
