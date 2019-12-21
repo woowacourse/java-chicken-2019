@@ -1,5 +1,6 @@
-package com.github.callmewaggs.chickenpos.domain;
+package com.github.callmewaggs.chickenpos.repository;
 
+import com.github.callmewaggs.chickenpos.domain.Table;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

@@ -1,5 +1,7 @@
-package com.github.callmewaggs.chickenpos.domain;
+package com.github.callmewaggs.chickenpos.service;
 
+import com.github.callmewaggs.chickenpos.domain.Menu;
+import com.github.callmewaggs.chickenpos.repository.MenuRepository;
 import com.github.callmewaggs.chickenpos.view.InputView;
 import com.github.callmewaggs.chickenpos.view.OutputView;
 import java.util.List;

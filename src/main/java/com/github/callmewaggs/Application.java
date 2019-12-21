@@ -1,14 +1,14 @@
 package com.github.callmewaggs;
 
 import com.github.callmewaggs.chickenpos.ChickenPOS;
-import com.github.callmewaggs.chickenpos.domain.MenuService;
-import com.github.callmewaggs.chickenpos.domain.TableService;
+import com.github.callmewaggs.chickenpos.service.OrderingService;
+import com.github.callmewaggs.chickenpos.service.PaymentService;
 
 public class Application {
   public static void main(String[] args) {
-    TableService tableService = new TableService();
-    MenuService menuService = new MenuService();
-    ChickenPOS chickenPOS = new ChickenPOS(tableService, menuService);
+    OrderingService orderingService = new OrderingService();
+    PaymentService paymentService = new PaymentService();
+    ChickenPOS chickenPOS = new ChickenPOS(orderingService, paymentService);
     chickenPOS.start();
   }
 }

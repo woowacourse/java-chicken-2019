@@ -1,27 +1,21 @@
 package com.github.callmewaggs.chickenpos;
 
-import com.github.callmewaggs.chickenpos.domain.Menu;
-import com.github.callmewaggs.chickenpos.domain.MenuRepository;
-import com.github.callmewaggs.chickenpos.domain.MenuService;
-import com.github.callmewaggs.chickenpos.domain.TableService;
-import com.github.callmewaggs.chickenpos.view.OutputView;
-import java.util.List;
+import com.github.callmewaggs.chickenpos.service.OrderingService;
+import com.github.callmewaggs.chickenpos.service.PaymentService;
 
 public class ChickenPOS {
+  private OrderingService orderingService;
+  private PaymentService paymentService;
 
-  private TableService tableService;
-  private MenuService menuService;
-
-  public ChickenPOS(TableService tableService, MenuService menuService) {
-    this.tableService = tableService;
-    this.menuService = menuService;
+  public ChickenPOS(OrderingService orderingService, PaymentService paymentService) {
+    this.orderingService = orderingService;
+    this.paymentService = paymentService;
   }
 
   public void start() {
-    tableService.showTables();
-    final int tableNumber = tableService.inputTableNumber();
+    while (true) {
+      orderingService.startOrdering();
 
-    menuService.showMenus();
-    final int menuNumber = menuService.inputMenuNumber();
+    }
   }
 }
