@@ -5,22 +5,15 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
-    final static ShoppingBasket shoppingBasket = new ShoppingBasket();
-    final static List<Action> actions = ActionRepository.actions();
-    final static List<Table> tables = TableRepository.tables();
-    final static List<Menu> menus = MenuRepository.menus();
-
     // TODO 구현 진행
     public static void main(String[] args) {
         boolean roof = true;
         while (roof) {
+            final List<Action> actions = ActionRepository.actions();
             OutputView.printActions(actions);
             final int actionNumber = InputView.inputActionNumber();
             roof = ActionQuery(actionNumber);
         }
-
-
-
     }
 
     /**
@@ -28,7 +21,7 @@ public class Application {
      */
     public static boolean ActionQuery(int actionNumber) {
         if (actionNumber == 1) {
-            registerOrder();
+            int table = SelectTable();
             return true;
         }
         if (actionNumber == 2) {
@@ -42,13 +35,19 @@ public class Application {
         throw new IllegalArgumentException("메인화면에서 입력은 1, 2, 3 중 하나여야 합니다.");
     }
 
-    public static void registerOrder() {
+    public static int SelectTable() {
+        final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
-        final int tableNumber = InputView.inputTableNumber();
+        return InputView.inputTableNumber();
+    }
+
+    public static int SelectMenu() {
+        final List<Menu> menus = MenuRepository.menus();
+        OutputView.printMenus(menus);
+        return InputView.inputMenuNumber();
     }
 
     public static void pay() {
-        OutputView.printMenus(menus);
     }
 
 }
