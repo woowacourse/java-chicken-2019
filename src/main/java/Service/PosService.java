@@ -8,10 +8,10 @@ import view.OutputView;
 
 import java.util.List;
 
+import static domain.TableRepository.isExistTable;
+
 public class PosService {
     public void run() {
-        OrderService orderService = new OrderService();
-        PayService payService = new PayService();
         NextStep nextStep;
         final List<Table> tables = TableRepository.tables();
 
@@ -22,15 +22,9 @@ public class PosService {
             // 주문을 등록하지 않고 결제하는 경우 예외
 
             OutputView.printTables(tables);
-            final int tableNumber = InputView.inputTableNumber();
+            final int tableNumber = checkExistTable(InputView.inputTableNumber());
             Table selectedTable = selectTable(tables, tableNumber);
-
-            if (nextStep.isOrder()) {
-                orderService.order(selectedTable);
-            }
-            if (nextStep.isPay()) {
-                payService.pay(selectedTable);
-            }
+            doNextStep(nextStep, selectedTable);
         }
         while (!nextStep.isExit());
     }
@@ -52,5 +46,29 @@ public class PosService {
                 .filter(table -> table.isSameTableNumber(number))
                 .findFirst()
                 .get();
+    }
+
+    private int checkExistTable(int number) {
+        try {
+            if (!isExistTable(number)) {
+                throw new IllegalStateException("없는 테이블 번호입니다.");
+            }
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+            number = checkExistTable(InputView.inputTableNumber());
+        }
+        return number;
+    }
+
+    private void doNextStep(NextStep nextStep, Table table) {
+        OrderService orderService = new OrderService();
+        PayService payService = new PayService();
+
+        if (nextStep.isOrder()) {
+            orderService.order(table);
+        }
+        if (nextStep.isPay()) {
+            payService.pay(table);
+        }
     }
 }
