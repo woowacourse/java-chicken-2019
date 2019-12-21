@@ -28,8 +28,7 @@ public class InputView {
 		try {
 			OutputView.printTables(TableRepository.tables());
 			System.out.println("\n## 주문할 테이블을 선택하세요.");
-			final int tableNumber = Integer.parseInt(scanner.nextLine());
-			return TableRepository.isExist(new Table(tableNumber));
+			return TableRepository.isExist(new Table(Integer.parseInt(scanner.nextLine())));
 		} catch (Exception e) {
 			System.out.println(e);
 			return inputTableNumber();

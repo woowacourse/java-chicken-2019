@@ -20,7 +20,7 @@ public class OutputView {
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printLastLine(tables);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -36,6 +36,20 @@ public class OutputView {
             System.out.print(line);
         }
         System.out.println();
+    }
+    
+    private static void printLastLine(final List<Table> tables) {
+        for (final Table table : tables) {    	
+            System.out.print(checkOrder(table));
+        }
+        System.out.println();
+    }
+    
+    private static String checkOrder(Table table) {
+    	if (table.getOrders().hasNotOrder()) {
+    		return BOTTOM_LINE;
+    	}
+    	return PAY_LINE;
     }
 
     private static void printTableNumbers(final List<Table> tables) {
