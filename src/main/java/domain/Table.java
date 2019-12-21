@@ -1,11 +1,10 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class Table {
     private final int number;
-    private List<Menu> orderMenu = new ArrayList<>();
+    private HashMap<Menu, Integer> orderMenu = new HashMap<>();
     private int money = 0;
 
     public Table(final int number) {
@@ -15,5 +14,9 @@ public class Table {
     @Override
     public String toString() {
         return Integer.toString(number);
+    }
+
+    public HashMap<Menu, Integer> order() {
+        return orderMenu;
     }
 }

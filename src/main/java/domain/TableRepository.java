@@ -19,4 +19,10 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public void order(int tableNumber, Menu menu, int amount) {
+        if (tables.get(tableNumber).order().containsKey(menu))
+            amount += tables.get(tableNumber).order().get(menu);
+        tables.get(tableNumber).order().put(menu, amount);
+    }
 }
