@@ -11,10 +11,8 @@ public class TableRepository {
         tables.add(new Table(1));
         tables.add(new Table(2));
         tables.add(new Table(3));
-        tables.add(new Table(4));
         tables.add(new Table(5));
         tables.add(new Table(6));
-        tables.add(new Table(7));
         tables.add(new Table(8));
     }
 
@@ -22,7 +20,11 @@ public class TableRepository {
         return Collections.unmodifiableList(tables);
     }
 
-    public static int tableNumbers() {
-        return tables.size();
+    public static List<Integer> tableNumbers() {
+        List<Integer> tablesNumber = new ArrayList<Integer>();
+        for (Table table : tables) {
+            tablesNumber.add(Integer.parseInt(table.toString()));
+        }
+        return tablesNumber;
     }
 }

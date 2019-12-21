@@ -1,12 +1,16 @@
 package view;
 
 import domain.TableRepository;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
-    private static final int MAIN_MENU_NUMBER = 3;
-    private static final int TABLE_NUMBERS = TableRepository.tableNumbers();
+    private static final List<Integer> TABLE_NUMBERS = TableRepository.tableNumbers();
+    private static final List<Integer> MAIN_MENU_NUMBER = new ArrayList<Integer>(Arrays.asList(new Integer[]{1, 2, 3}));
 
     public static int inputMainMenuNumber() {
         System.out.println("\n## 원하는 기능을 선택하세요.");
@@ -20,7 +24,7 @@ public class InputView {
         return inputNumber(printErrorMessage, TABLE_NUMBERS);
     }
 
-    private static int inputNumber(String printErrorMessage, int numberBounds) {
+    private static int inputNumber(String printErrorMessage, List<Integer> numberBounds) {
         String tableNumberString = scanner.nextLine().trim();
         while (!isBoundsNumberTF(tableNumberString, numberBounds)) {
             System.out.println(printErrorMessage);
@@ -30,10 +34,8 @@ public class InputView {
         return tableNumber;
     }
 
-    private static boolean isBoundsNumberTF(String tableNumberString, int numberBounds) {
-        if (isNumbersTF(tableNumberString)
-                && Integer.parseInt(tableNumberString) <= numberBounds
-                && Integer.parseInt(tableNumberString) > 0) {
+    private static boolean isBoundsNumberTF(String tableNumberString, List<Integer> numberBounds) {
+        if (isNumbersTF(tableNumberString) && numberBounds.contains(Integer.parseInt((tableNumberString)))) {
             return true;
         }
         return false;
