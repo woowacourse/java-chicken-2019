@@ -1,3 +1,4 @@
+import domain.Discount;
 import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
@@ -11,6 +12,8 @@ public class Application {
 	private static final int MENU_ORDER = 1;
 	private static final int MENU_PAYMENT = 2;
 	private static final int MENU_EXIT = 3;
+	private static final int PAYMENT_CREDITCARD = 1;
+	private static final int PAYMENT_CASH = 2;
 	
 	public static void main(String[] args) {
 		while(true) {
@@ -49,6 +52,14 @@ public class Application {
 		OutputView.printTables(tables);
 		final int tableNumber = InputView.inputTableNumber();
 		OutputView.printTableMenu(tableNumber);
-		InputView.inputPaymentMenuNumber();
+		final Table table = TableRepository.getTable(tableNumber);
+		int price = Table.getPrice();
+		price = Discount.discountByChickenCount(price, table);
+		final int paymentMenu = InputView.inputPaymentMenuNumber();
+		if (paymentMenu == PAYMENT_CASH) {
+			price = Discount.discountByCash(price);
+		}
+		OutputView.printPrice(price);
+		table.reset();
 	}
 }
