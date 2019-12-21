@@ -47,4 +47,11 @@ public class OutputView {
         System.out.println("2 - 결제하기");
         System.out.println("3 - 프로그램종료");
     }
+
+    /**
+     * 등록할 메뉴입력 view입니다.
+     */
+    public static void printInputMenu(){
+        System.out.println("## 등록할 메뉴를 선택하세요");
+    }
 }
