@@ -14,6 +14,7 @@ public class PayList {
         tables.add(new Pay(4));
         tables.add(new Pay(5));
         tables.add(new Pay(6));
+        tables.add(new Pay(8));
     }
 
     public static List<Pay> List() {

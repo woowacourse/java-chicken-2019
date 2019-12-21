@@ -24,11 +24,11 @@ public class Control {
         if (key == 1) {
             selectTable();
         } else if (key == 2) {
-            payLoad();
+            selectPayTable();
         } else if (key == 3) {
-            //정상종료
+            System.out.println("정상종료");
         } else {
-            // 오류종료
+            System.out.println("비정상종료(1,2,3이 아닌 다른 포맷으로 종료)");
         }
     }
 
@@ -41,9 +41,41 @@ public class Control {
     private static void registMenu(int tableNumber) {
         OutputView.printMenus(menus);
         int menuNumber = InputView.inputMenuNumber();
+        menuNumber = convertMenuNumber(menuNumber);
+        if (menuNumber != 100) {
+            payList.get(tableNumber - 1).setMenus(menus.get(menuNumber).toString());
+            payList.get(tableNumber - 1).setTablePay(menus.get(menuNumber).getPrice());
+            payList.get(tableNumber - 1).plusCount();
+        } else {
+            System.out.println("주문할수 없습니다.");
+        }
     }
 
-    private static void payLoad() {
-
+    private static void selectPayTable() {
+        OutputView.printTables(tables);
+        int tableNumber = InputView.inputTableNumber();
+        payLoad(tableNumber);
     }
+
+    private static void payLoad(int tableNumber) {
+        OutputView.printResults(payList.get(tableNumber - 1).getOrderedMenu());
+        int payHow = InputView.inputPayNumber(tableNumber);
+        // 나중에 결제 수단 할인
+        OutputView.printPay(payList.get(tableNumber - 1).getTablePay());
+    }
+
+    private static void discount(int tableNumber) {
+        //
+    }
+
+    private static int convertMenuNumber(int menuNumber) {
+        if (menuNumber < 7) {
+            return menuNumber - 1;
+        } else if (menuNumber > 21 && menuNumber < 23) {
+            return menuNumber - 16;
+        } else {
+            return 100;
+        }
+    }
+
 }

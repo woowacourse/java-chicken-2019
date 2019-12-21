@@ -1,6 +1,7 @@
 package view;
 
 import domain.Menu;
+import domain.Pay;
 import domain.Table;
 
 import java.util.List;
@@ -43,5 +44,17 @@ public class OutputView {
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
         System.out.println("3 - 프로그램 종료");
+    }
+
+    public static void printResults(List<String> orderedMenu) {
+        System.out.println("## 주문내역");
+        for (String result : orderedMenu) {
+            System.out.println(result);
+        }
+    }
+
+    public static void printPay(int tablePay) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(tablePay + "원");
     }
 }
