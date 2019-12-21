@@ -3,6 +3,7 @@ package view;
 import domain.Menu;
 import domain.Table;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class OutputView {
@@ -10,6 +11,10 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
     private static final String ORDERED_BOTTOM_LINE = "└ $ ┘";
+
+    private static final String PROGRAM_EXIT = "## 프로그램을 종료합니다.";
+    private static final String ANNOUNCE_ORDER_LIST = "## 주문내역";
+    private static final String ANNOUNCE_COMLUMNS = "메뉴 수량 금액";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
@@ -56,7 +61,16 @@ public class OutputView {
     }
 
     public static void printProgramExit() {
-        System.out.println("## 프로그램을 종료합니다.");
+        System.out.println(PROGRAM_EXIT);
         System.exit(0);
+    }
+
+    public static void printBill(HashMap<Menu, Integer> order) {
+        System.out.println(ANNOUNCE_ORDER_LIST);
+        System.out.println(ANNOUNCE_COMLUMNS);
+
+        order.forEach((key,value) ->
+                System.out.println(key.getName()+ " "+ value + " " + (key.getPrice() * value)));
+
     }
 }

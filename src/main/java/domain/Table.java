@@ -10,7 +10,7 @@ import java.util.Map;
 public class Table {
     final static int UNORDERED = 0;
 
-    private Map<Menu, Integer> order;
+    private HashMap<Menu, Integer> order;
 
     private final int number;
 
@@ -24,9 +24,11 @@ public class Table {
         order = new HashMap<>();
     }
 
-    public void getOrder(Menu menu, int menuHowMany) {
+    public void registerOrder(Menu menu, int menuHowMany) {
         order.put(menu, menuHowMany);
     }
+
+    public HashMap<Menu, Integer> getOrder() { return this.order; }
 
     public boolean isOrdered() {
         return order.size() != UNORDERED;
