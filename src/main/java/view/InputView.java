@@ -13,8 +13,12 @@ public class InputView {
         return inputInteger("## 테이블을 선택하세요.");
     }
 
-    public static int inputResgisterMenu() {
+    public static int inputRegisterMenu() {
         return inputInteger("## 등록할 메뉴를 선택하세요.");
+    }
+
+    public static int inputMenuQuantity() {
+        return inputInteger("## 메뉴의 수량을 입력하세요.");
     }
 
     private static int inputInteger(String text) {
