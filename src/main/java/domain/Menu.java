@@ -18,7 +18,11 @@ public class Menu {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
 
-    public boolean menuInputCheck(int number){
+    public boolean menuInputCheck(int number) {
         return this.number == number;
+    }
+
+    public int getNumber() {
+        return number;
     }
 }

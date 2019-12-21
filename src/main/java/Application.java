@@ -1,20 +1,21 @@
 import domain.*;
-import jdk.internal.util.xml.impl.Input;
 import view.InputView;
 import view.OutputView;
 
-import javax.swing.border.AbstractBorder;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
     // TODO 구현 진행
+
     public static void main(String[] args) {
         boolean isProgress = true;
-
+        final List<Table> tables = TableRepository.tables();
+        final List<Order> orders = new ArrayList<>();
         do {
             int mainNumber = InputView.inputMainNumber();
             if (mainNumber == 1) {
-                orderSelect();
+                orders.add(orderSelect(tables));
             }
             if (mainNumber == 2) {
                 paymentSelect();
@@ -26,10 +27,17 @@ public class Application {
         } while (isProgress);
     }
 
-    public static void orderSelect() {
-        final int tableNumber = InputView.inputTableNumber();
-        final int menuNumber = InputView.inputMenuNumber();
-        final int QuantityNumber = InputView.inputMenuQuantity();
+    public static Order orderSelect(List<Table> tables) {
+        final List<Menu> menus = MenuRepository.menus();
+
+        final int tableNumber = InputView.inputTableNumber(tables);
+        final int menuNumber = InputView.inputMenuNumber(menus);
+        final int quantityNumber = InputView.inputMenuQuantity();
+
+        Table table = new Table(tableNumber);
+        Menu menu = MenuRepository.getmenu(menuNumber);
+
+        return new Order(table, menu, quantityNumber);
     }
 
     public static void paymentSelect() {

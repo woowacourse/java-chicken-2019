@@ -2,7 +2,6 @@ package view;
 
 import domain.*;
 
-import javax.print.attribute.standard.PrinterIsAcceptingJobs;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,9 +24,8 @@ public class InputView {
         return Integer.parseInt(inputNumberString);
     }
 
-    public static int inputTableNumber() {
+    public static int inputTableNumber(List<Table> tables) {
         do {
-            final List<Table> tables = TableRepository.tables();
             OutputView.printTables(tables);
 
             System.out.println(LINE + "## 주문할 테이블을 선택하세요.");
@@ -37,9 +35,8 @@ public class InputView {
         return Integer.parseInt(inputNumberString);
     }
 
-    public static int inputMenuNumber() {
+    public static int inputMenuNumber(List<Menu> menus) {
         do {
-            final List<Menu> menus = MenuRepository.menus();
             OutputView.printMenus(menus);
             System.out.println(LINE + "## 등록할 메뉴를 선택하세요.");
             inputNumberString = scanner.nextLine();
