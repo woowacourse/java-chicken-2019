@@ -47,6 +47,11 @@ public class OutputView {
         // 출력하기 최종 결제 금액
     }
 
+    public static void printTableNoOrder(int tableNumber) {
+        System.out.println("\n## " + tableNumber +"번 테이블은 주문내역이 없습니다.");
+        System.out.println("## 메인 화면으로 돌아갑니다.");
+    }
+
     private static void printLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);

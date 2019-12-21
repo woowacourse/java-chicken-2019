@@ -28,11 +28,24 @@ public class Application {
     private void processPayment() {
         int tableNumber = tableMenu(tables);
         Table orderTable = TableRepository.selectTable(tableNumber);
+        if (orderTable.getOrderTF()) {
+            processPaymentContinue(orderTable, tableNumber);
+            return;
+        }
+        proccessPaymentCancel(tableNumber);
+        return;
+    }
+
+    private void processPaymentContinue(Table orderTable, int tableNumber) {
         OutputView.printOrderHistory(orderTable);
         int paymentType = paymentTypeMenu(tableNumber);
         OutputView.printTotalOrder(tableNumber, paymentType);
-
         orderTable.clearOrderMenu();
+        mainMenu();
+    }
+
+    private void proccessPaymentCancel(int tableNumber) {
+        OutputView.printTableNoOrder(tableNumber);
         mainMenu();
     }
 
