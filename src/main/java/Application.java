@@ -34,7 +34,7 @@ public class Application {
         }
         OutputView.printMenus(menus);
         Menu menu = MenuRepository.getMenuByNumber(InputView.inputMenu());
-        menuNumber = InputView.inputOrderNumber();
+        menuNumber = InputView.inputOrderNumber(TableRepository.getTablebyNumber(tableNumber));
 
         TableRepository.getTablebyNumber(tableNumber).addOrder(menu, menuNumber);
     }

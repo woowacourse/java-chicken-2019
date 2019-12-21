@@ -1,5 +1,7 @@
 package domain;
 
+import Constant.ConstantNumber;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,10 @@ public class Table {
             total_Order += orders.get(i);
         }
         return total_Order;
+    }
+
+    public int availableOrderNumber(){
+        return ConstantNumber.MAX_ORDER - getOrderedMenuNumber();
     }
 
     public int getTableNumber(){

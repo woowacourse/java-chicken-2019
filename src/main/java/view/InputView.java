@@ -3,8 +3,8 @@ package view;
 import Constant.ConstantNumber;
 import domain.MenuRepository;
 import domain.TableRepository;
+import domain.Table;
 
-import javax.smartcardio.Card;
 import java.util.Scanner;
 
 public class InputView {
@@ -26,27 +26,25 @@ public class InputView {
     }
 
     public static int inputTableNumber() {
-        int tableNumber;
-
         System.out.println("## 주문할 테이블을 선택하세요.");
-        tableNumber = scanner.nextInt();
+        int tableNumber = scanner.nextInt();
         if(!TableRepository.contains(tableNumber)){
+            System.out.println("존재하지 않는 테이블 번호입니다. \n");
             tableNumber = inputTableNumber();
         }else if(TableRepository.getTablebyNumber(tableNumber).getOrderedMenuNumber()
                 >= ConstantNumber.MAX_ORDER){
             System.out.println("더 이상 주문할 수 없습니다.");
-            return ConstantNumber.EXIT;
+            return ConstantNumber.CANNOT_ORDER;
         }
 
         return tableNumber;
     }
 
     public static int inputTableNumber_Pay(){
-        int tableNumber;
-
         System.out.println("## 테이블을 선택하세요.");
-        tableNumber = scanner.nextInt();
+        int tableNumber = scanner.nextInt();
         if(!TableRepository.contains(tableNumber)){
+            System.out.println("존재하지 않는 테이블 번호입니다. \n");
             tableNumber = inputTableNumber();
         }else if(TableRepository.getTablebyNumber(tableNumber).getOrderedMenuNumber()
                 == ConstantNumber.ZERO){
@@ -62,20 +60,22 @@ public class InputView {
         System.out.println("## 등록할 메뉴를 선택하세요.");
         menu = scanner.nextInt();
         if(!MenuRepository.contains(menu)) {
+            System.out.println("존재하지 않는 메뉴입니다. \n");
             menu = inputMenu();
         }
 
         return menu;
     }
 
-    public static int inputOrderNumber(){
+    public static int inputOrderNumber(Table table){
         int order;
 
-        System.out.println("## 메뉴의 수량을 입력하세요. (99개 이하 입력 가능)");
+        System.out.printf("## 메뉴의 수량을 입력하세요. (%d개 이하 입력 가능)\n", table.availableOrderNumber());
         order = scanner.nextInt();
 
-        if(order > 99){
-            order = inputOrderNumber();
+        if(order > table.availableOrderNumber()){
+            System.out.println("주문 가능한 최대량을 초과했습니다. \n");
+            order = inputOrderNumber(table);
         }
 
         return order;
