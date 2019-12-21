@@ -37,4 +37,13 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public static void printMainScreen(){
+    	StringBuilder sb = new StringBuilder();
+    	sb.append("## 메인화면\n");
+    	sb.append("1 - 주문등록\n");
+    	sb.append("2 - 결제하기\n");
+    	sb.append("3 - 프로그램 종료\n");
+		System.out.println(sb.toString());
+	}
 }
