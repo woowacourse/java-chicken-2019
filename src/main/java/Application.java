@@ -64,6 +64,7 @@ public class Application {
         int tableNum = selectTable();
         Table table = TableRepository.getTableByNum(tableNum);
         OutputView.printOrderHistory(table);
+        InputView.inputPayment(tableNum);
     }
 
 }

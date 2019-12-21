@@ -5,6 +5,12 @@ public class Order {
     private final int amount;
 
     public Order(Menu menu, int amount) {
+        if (amount > 99) {
+            throw new IllegalArgumentException("한 메뉴의 최대 수량은 99개 입니다.");
+        }
+        if (amount < 1) {
+            throw new IllegalArgumentException("한 메뉴의 수량은 1이상이어야 합니다.");
+        }
         this.menu = menu;
         this.amount = amount;
     }
