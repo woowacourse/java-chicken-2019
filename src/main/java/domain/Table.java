@@ -23,4 +23,8 @@ public class Table {
     public int getMoney() {
         return money;
     }
+
+    public void order(Menu menu, int amount) {
+        orderMenu.put(menu, amount);
+    }
 }

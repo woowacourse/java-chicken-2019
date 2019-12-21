@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-
 public class TableRepository {
     private static final List<Table> tables = new ArrayList<>();
 
@@ -21,10 +20,10 @@ public class TableRepository {
         return Collections.unmodifiableList(tables);
     }
 
-    public void order(int tableNumber, Menu menu, int amount) {
+    public static void order(int tableNumber, Menu menu, int amount) {
         if (tables.get(tableNumber).getOrderMenu().containsKey(menu))
             amount += tables.get(tableNumber).getOrderMenu().get(menu);
-        tables.get(tableNumber).getOrderMenu().put(menu, amount);
+        tables.get(tableNumber).order(menu, amount);
     }
 
     public HashMap<Menu, Integer> getOrderMenuList(int tableNumber) {
