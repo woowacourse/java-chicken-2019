@@ -13,6 +13,7 @@ public class OutputView {
     private static final String BOTTOM_LINE_FORMAT = "└ %s ┘";
 
     public static void printMainView() {
+        System.out.println();
         System.out.println("## 메인화면");
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
@@ -32,6 +33,12 @@ public class OutputView {
 
     public static void printStartPayment(Table table) {
         System.out.printf("%d번 테이블의 결제를 진행합니다\n", table.getNumber());
+    }
+
+    public static void printFinalPayment(int amount) {
+        System.out.println();
+        System.out.println("## 최종 결제할 금액");
+        System.out.printf("%d원\n", amount);
     }
 
     public static void printTables(final List<Table> tables) {
