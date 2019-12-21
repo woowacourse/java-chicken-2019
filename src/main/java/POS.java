@@ -1,5 +1,5 @@
 /*
- * @(#)POS.java     0.1 2019.12.21
+ * @(#)POS.java     0.2 2019.12.21
  *
  * Copyright (c) 2019 lxxjn0
  */
@@ -18,8 +18,8 @@ public class POS {
 
     public POS(List<Table> tables) {
         this.tables = tables;
-        this.functions.add(new OrderFunction());
-        this.functions.add(new PaymentFunction());
+        this.functions.add(new OrderFunction(tables));
+        this.functions.add(new PaymentFunction(tables));
     }
 
     public Function selectFunction(int functionNumber) {
