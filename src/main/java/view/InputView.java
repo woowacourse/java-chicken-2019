@@ -3,7 +3,6 @@ package view;
 import java.util.Scanner;
 
 import domain.MenuRepository;
-import domain.Table;
 import domain.TableRepository;
 
 public class InputView {
