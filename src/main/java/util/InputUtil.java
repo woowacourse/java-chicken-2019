@@ -14,7 +14,7 @@ package util;
  * @author HyungjuAn
  */
 public class InputUtil {
-	public static int checkMainMenuNumber(String mainMenuInput) {
-		return new OneOrTwoOrThree(mainMenuInput).getValue();
+	public static OneOrTwoOrThree checkMainMenuNumber(String mainMenuInput) {
+		return new OneOrTwoOrThree(mainMenuInput);
 	}
 }
