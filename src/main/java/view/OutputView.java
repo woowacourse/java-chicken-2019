@@ -8,7 +8,8 @@ import java.util.List;
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
-    private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String UNORDERED_BOTTOM_LINE = "└ ─ ┘";
+    private static final String ORDERED_BOTTOM_LINE = "└ ₩ ┘";
 
     public static void printFunctions() {
         System.out.println("## 메인화면");
@@ -22,7 +23,7 @@ public class OutputView {
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLine(tables);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -41,6 +42,17 @@ public class OutputView {
     private static void printTableNumbers(final List<Table> tables) {
         for (final Table table : tables) {
             System.out.printf(TABLE_FORMAT, table);
+        }
+        System.out.println();
+    }
+
+    private static void printBottomLine(final List<Table> tables) {
+        for (final Table table : tables) {
+            if (table.unordered()) {
+                System.out.print(UNORDERED_BOTTOM_LINE);
+                continue;
+            }
+            System.out.print(ORDERED_BOTTOM_LINE);
         }
         System.out.println();
     }
