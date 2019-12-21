@@ -3,14 +3,16 @@ import view.InputView;
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
-        final int action = InputView.inputMain();
-        actionLogic(action);
+        int action = InputView.inputMain();
+        while (action != 3) {
+            actionLogic(action);
+            action = InputView.inputMain();
+        }
     }
 
     public static void actionLogic(int action) {
-        if (action == 3)
-            System.exit(0);
         RunPOS runPOS = new RunPOS(action);
+        if (action == 1) runPOS.order();
+        if (action == 2) runPOS.pay();
     }
-
 }

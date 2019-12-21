@@ -26,4 +26,11 @@ public class TableRepository {
         }
         return false;
     }
+
+    public static Table getTable(int number) {
+        for (Table table : tables) {
+            if (table.isSame(number)) return table;
+        }
+        return null;
+    }
 }
