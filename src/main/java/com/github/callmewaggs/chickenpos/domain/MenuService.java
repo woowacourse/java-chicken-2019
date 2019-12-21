@@ -14,4 +14,8 @@ public class MenuService {
   public int inputMenuNumber() {
     return InputView.inputMenuNumber();
   }
+
+  public int inputMenuAmount() {
+    return InputView.inputMenuAmount();
+  }
 }
