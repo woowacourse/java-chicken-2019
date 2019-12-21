@@ -24,10 +24,28 @@ public class SelectionHandeler {
         return selectTable();
     }
 
+    public static int selectMenu() {
+        System.out.println("## 등록할 메뉴를 입력하세요.");
+        int selectedNumber = selectInt();
+        if( selectedNumber != 0 ) {
+            return selectedNumber;
+        }
+        return selectMenu();
+    }
+
+    public static int selectAmount() {
+        System.out.println("## 메뉴의 수량을 입력하세요.");
+        int selectedNumber = selectInt();
+        if( selectedNumber != 0 ) {
+            return selectedNumber;
+        }
+        return selectAmount();
+    }
+
     private static int selectInt() {
         try {
             return InputView.inputSelectNumber();
-        } catch (InputMismatchException e ) {
+        } catch (InputMismatchException e) {
             System.out.println("숫자만 입력해 주세요!");
             InputView.scanNextLine();
             return 0;

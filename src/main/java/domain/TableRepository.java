@@ -19,4 +19,8 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static void orderToTable(int tableNumber, Menu menu, int amount) {
+        tables.stream().filter(x -> x.isCorrectTable(tableNumber)).forEach(x->x.addOrder(menu, amount));
+    }
 }

@@ -1,10 +1,8 @@
 import domain.Menu;
 import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
-import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
+import utils.ErrorHandeler;
+import utils.OrderController;
 import utils.SelectionHandeler;
-import view.InputView;
 import view.OutputView;
 
 import java.util.List;
@@ -12,15 +10,22 @@ import java.util.List;
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
-        final List<Menu> menus = MenuRepository.menus();
+        do {
 
+        } while (!mainMenu());
+    }
+
+    private static boolean mainMenu() {
         OutputView.printMainMenu();
         final int menuNumber = SelectionHandeler.selectFunction();
         if (menuNumber == 1) {
-            OrderController orderController = new OrderController();
+            ErrorHandeler.makeOrderController();
         }
         if(menuNumber == 2) {
-            OutputView.printMenus(menus);
         }
+        if(menuNumber == 3) {
+            return false;
+        }
+        return true;
     }
 }

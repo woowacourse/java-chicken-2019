@@ -13,6 +13,19 @@ public class Menu {
         this.price = price;
     }
 
+    public boolean isCorrectMenu(int menuNumber) {
+        return this.number == menuNumber;
+    }
+
+    public boolean isChicken() {
+        System.out.println(this.category);
+        return this.category.equals("CHICKEN");
+    }
+
+    public String getNameTest() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
