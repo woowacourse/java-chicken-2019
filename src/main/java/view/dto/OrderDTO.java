@@ -6,9 +6,9 @@ public class OrderDTO {
     private static final String BLANK = " ";
     private final String name;
     private final int amount;
-    private final int price;
+    private final double price;
 
-    private OrderDTO(String name, int amount, int price) {
+    private OrderDTO(String name, int amount, double price) {
         this.name = name;
         this.amount = amount;
         this.price = price;

@@ -9,7 +9,7 @@ public class Order {
         this.amount = amount;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return menu.getPrice() * amount;
     }
 

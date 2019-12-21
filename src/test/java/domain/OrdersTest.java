@@ -15,8 +15,8 @@ class OrdersTest {
         Menu beverage = aMenu(Category.BEVERAGE, 100);
 
         Orders orders = Orders.emptyOrders();
-        orders.addMenu(chicken.toOrder(1));
-        orders.addMenu(beverage.toOrder(1));
+        orders.add(chicken.toOrder(1));
+        orders.add(beverage.toOrder(1));
 
         assertThat(orders.chickenSize()).isEqualTo(1);
     }
@@ -28,8 +28,8 @@ class OrdersTest {
         Menu beverage = aMenu(Category.BEVERAGE, 200);
 
         Orders orders = Orders.emptyOrders();
-        orders.addMenu(chicken.toOrder(1));
-        orders.addMenu(beverage.toOrder(1));
+        orders.add(chicken.toOrder(1));
+        orders.add(beverage.toOrder(1));
 
         assertThat(orders.getPrice()).isEqualTo(300);
     }
@@ -38,10 +38,10 @@ class OrdersTest {
     @Test
     void validateMaximumSize() {
         Orders order = Orders.emptyOrders();
-        order.addMenu(aMenu(Category.CHICKEN, 1).toOrder(99));
+        order.add(aMenu(Category.CHICKEN, 1).toOrder(99));
 
 
-        assertThatThrownBy(() -> order.addMenu(aMenu(Category.CHICKEN, 1).toOrder(1)))
+        assertThatThrownBy(() -> order.add(aMenu(Category.CHICKEN, 1).toOrder(1)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

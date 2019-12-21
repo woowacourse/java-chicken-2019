@@ -35,13 +35,13 @@ public class Orders {
                 .count();
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return orders.stream()
                 .map(Order::getPrice)
-                .reduce(0, Integer::sum);
+                .reduce(0.0, Double::sum);
     }
 
-    public void addMenu(Order order) {
+    public void add(Order order) {
         validateAmount(order);
         this.orders.add(order);
     }
@@ -56,6 +56,13 @@ public class Orders {
 
     public List<Order> getOrders() {
         return Collections.unmodifiableList(this.orders);
+    }
+
+    public int getChickenAmount() {
+        return this.orders.stream()
+                .filter(Order::isChicken)
+                .map(Order::getAmount)
+                .reduce(0, Integer::sum);
     }
 
     @Override

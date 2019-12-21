@@ -14,7 +14,7 @@ public class Table {
     }
 
     public void addOrder(Order order) {
-        this.orders.addMenu(order);
+        this.orders.add(order);
     }
 
     public boolean hasNotOrders() {
