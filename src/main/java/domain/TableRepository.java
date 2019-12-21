@@ -19,4 +19,23 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static boolean validateTableInput(String input) {
+        int tableNumber = -1;
+        try {
+            tableNumber = Integer.parseInt(input);
+        } catch (Exception e) {
+            tableNumber = -1;
+        }
+        return validateTableNumber(tableNumber);
+    }
+
+    public static boolean validateTableNumber(int tableNumber) {
+        for (int i = 0; i < tables.size(); i++) {
+            if (tables.get(i).getNumber() == tableNumber)
+                return true;
+        }
+        System.out.println("테이블 번호가 잘못되었습니다.\n");
+        return false;
+    }
 }
