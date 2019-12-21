@@ -68,9 +68,7 @@ public class Table {
   }
 
   public void pay(){
-    for(Menu menu : order.keySet()){
-      order.remove(menu);
-    }
+    order.clear();
   }
 
 }
