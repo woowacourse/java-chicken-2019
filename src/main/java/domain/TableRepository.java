@@ -32,4 +32,8 @@ public class TableRepository {
 	public static int size() {
 		return tables.size();
 	}
+	
+	public static List<Table> getTables(){
+		return tables;
+	}
 }
