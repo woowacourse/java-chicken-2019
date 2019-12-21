@@ -1,3 +1,5 @@
+package work;
+
 public class Validation {
 	private static final String RANGE_FORMAT="%d ~ %d 까지의 수만 가능합니다.";
 

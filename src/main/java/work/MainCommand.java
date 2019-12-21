@@ -1,3 +1,5 @@
+package work;
+
 import java.util.InputMismatchException;
 
 import view.InputView;
