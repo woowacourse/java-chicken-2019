@@ -39,6 +39,10 @@ public class Table {
         return ordered.amountMenu();
     }
 
+    public void removeAllOrdered() {
+        ordered = new Ordered();
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

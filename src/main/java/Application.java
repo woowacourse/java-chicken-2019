@@ -46,5 +46,6 @@ public class Application {
 
         OutputView.printTableOrderedList(inputTable.allMenu());
         OutputView.printFinalPrice(Calculator.cashAndCard(inputTable));
+        inputTable.removeAllOrdered();
     }
 }
