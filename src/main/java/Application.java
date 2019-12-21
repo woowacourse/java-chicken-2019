@@ -31,9 +31,14 @@ public class Application {
                     System.out.println("존재하지 않는 테이블 번호입니다. 다시 입력해주세요");
                     tableNumber = InputView.inputTableNumber();
                 }
-
                 OutputView.printMenus(menus);
                 int menuNumber = InputView.inputMenuNumber();
+
+                while(!MenuRepository.existMenuNumber(menuNumber)){
+                    System.out.println("존재하지 않는 메뉴 번호입니다. 다시 입력해주세요");
+                    menuNumber = InputView.inputMenuNumber();
+                }
+
                 int menuCount = InputView.inputMenuCount();
 
 
