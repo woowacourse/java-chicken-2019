@@ -3,7 +3,8 @@ package view;
 import java.util.Scanner;
 
 public class InputView {
-    private static final Scanner scanner = new Scanner(System.in);
+    // private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner("1\n1\n1\n11\n2\n1\n1\n3\n");
 
     public static int inputMain() {
         OutputView.printFeatures();
