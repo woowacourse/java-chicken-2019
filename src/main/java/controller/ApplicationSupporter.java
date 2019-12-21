@@ -6,7 +6,6 @@ import view.OutputView;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class ApplicationSupporter {
     private static final int ADD_MENU = 1;
@@ -51,17 +50,24 @@ public class ApplicationSupporter {
         final int menuQuantity = InputView.inputCountMenu();
         Menu choiceMenu = choiceMenuTrans(menuNumber);
         Table choiceTable = findTable(tableNumber);
-
+        isLimit(menuQuantity, choiceTable);
         choiceTable.makeOrder(choiceMenu, menuQuantity);
         chickenCount(choiceMenu, choiceTable, menuQuantity);
 
         mainOptionPhase();
     }
 
+    public void isLimit(int input, Table table) {
+        if (!table.orderLimit(input)){
+            addMenuPhase();
+        }
+    }
+
     public Table findTable(int input) {
         return tableList.stream().filter(x -> x.tableMatch(input))
                 .findAny().orElseThrow(Error::new);
     }
+
 
     public Menu choiceMenuTrans(int input) {
         return menuList.stream().filter(x -> x.matchNumber(input))

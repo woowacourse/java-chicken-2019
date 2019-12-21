@@ -79,4 +79,8 @@ public class OutputView {
     public static void printEndMessage() {
         System.out.println("\n프로그램을 종료합니다.");
     }
+
+    public static void printOrderLimitError() {
+        System.out.println("\n주문가능 수량을 초과했습니다.");
+    }
 }
