@@ -1,11 +1,9 @@
 package controller;
 
 import domain.Menu;
-import domain.MenuRepository;
 import domain.Order;
 import domain.Pay;
 import domain.Table;
-import domain.TableRepository;
 import java.util.List;
 import view.InputView;
 import view.OutputView;
@@ -18,12 +16,14 @@ public class Pos {
 
   private final List<Table> tables;
   private final List<Menu> menus;
-  private final Order order = new Order();
+  private final Order order;
   private final Pay pay = new Pay();
 
   public Pos(List<Table> tables, List<Menu> menus) {
     this.tables = tables;
     this.menus = menus;
+
+    order = new Order(tables, menus);
   }
 
   public void start() {
@@ -34,22 +34,18 @@ public class Pos {
       runProcess(process);
     } while (process != END);
 
-    final List<Table> tables = TableRepository.tables();
-    OutputView.printTables(tables);
-
-    final int tableNumber = InputView.inputTableNumber();
-
-    final List<Menu> menus = MenuRepository.menus();
     OutputView.printMenus(menus);
   }
 
-  private void runProcess(int process){
-    if(process == ORDER){
-      return order.start();
+  private void runProcess(int process) {
+    if (process == ORDER) {
+      order.start();
+      return;
     }
 
-    if(process == PAY){
-      return pay.start();
+    if (process == PAY) {
+      pay.start();
+      return;
     }
 
     return;
