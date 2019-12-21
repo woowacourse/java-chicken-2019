@@ -11,8 +11,6 @@ public class OutputView {
 	private static final String BOTTOM_LINE = "└ ─ ┘";
 	private static final String BOTTOM_LINE_WITH_ORDER = "└(W)┘";
 
-
-
 	public static void printTables(final List<Table> tables) {
 		System.out.println("## 테이블 목록");
 		final int size = tables.size();
@@ -33,14 +31,14 @@ public class OutputView {
 		}
 		System.out.println();
 	}
-	
+
 	private static void printLine(final int count, final List<Table> tables) {
 		for (int index = 0; index < count; index++) {
-			if(tables.get(index).getOrderCount() > 0) {
-				System.out.print(BOTTOM_LINE_WITH_ORDER);	
+			if (tables.get(index).getOrderCount() > 0) {
+				System.out.print(BOTTOM_LINE_WITH_ORDER);
 			}
-			if(tables.get(index).getOrderCount() == 0 ) {
-				System.out.print(BOTTOM_LINE);	
+			if (tables.get(index).getOrderCount() == 0) {
+				System.out.print(BOTTOM_LINE);
 			}
 		}
 		System.out.println();
@@ -51,6 +49,10 @@ public class OutputView {
 			System.out.printf(TABLE_FORMAT, table);
 		}
 		System.out.println();
+	}
+
+	public static void printCanNotOrder() {
+		System.out.println("해당 테이블은 더 이상 주문할 수 없습니다.");
 	}
 
 }

@@ -12,6 +12,7 @@ public class Application {
 	private static final int PAYMENT = 2;
 	private static final int EXIT = 3;
 	private static final int NOT_FOUND = -1;
+	private static final int MAXIMUM_ORDER_COUNT = 99;
 	private static final List<Table> tables = TableRepository.tables();
 	private static final List<Menu> menus = MenuRepository.menus();
 
@@ -47,6 +48,10 @@ public class Application {
 		int nowMenuCount;
 		OutputView.printTables(tables);
 		nowTable = InputView.inputSelectTable(tables);
+		if (tables.get(getTableIndex(nowTable)).getOrderCount() == MAXIMUM_ORDER_COUNT) {
+			OutputView.printCanNotOrder();
+			return;
+		}
 		OutputView.printMenus(menus);
 		nowMenu = InputView.inputSelectMenu(menus);
 		nowMenuCount = InputView.inputSelectMenuCount(tables.get(getTableIndex(nowTable)));
@@ -70,7 +75,7 @@ public class Application {
 		}
 		return NOT_FOUND;
 	}
-	
+
 	private static void doPayment() {
 		// TODO Auto-generated method stub
 
