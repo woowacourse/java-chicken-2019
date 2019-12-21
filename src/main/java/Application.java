@@ -1,8 +1,15 @@
+/*
+ * @(#)Application.java     0.1 2019.12.21
+ *
+ * Copyright (c) 2019 lxxjn0
+ */
+
 import domain.function.Function;
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import domain.function.TerminateFunction;
+import domain.menu.Menu;
+import domain.menu.MenuRepository;
+import domain.table.Table;
+import domain.table.TableRepository;
 import view.InputView;
 import view.OutputView;
 
@@ -12,30 +19,27 @@ import java.util.List;
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
-        OutputView.printFunctions();
-
         final List<Table> tables = TableRepository.tables();
-        POS pos = new POS(tables);
-
-        final int functionNumber = getInputFunctionNumber();
-        final Function selectedFunction = pos.selectFunction(functionNumber);
-
-        OutputView.printTables(tables);
-
-        final int tableNumber = InputView.inputTableNumber();
-
         final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+        POS pos = new POS(tables, menus);
+
+        while (true) {
+            OutputView.printFunctions();
+            final int functionNumber = getInputFunctionNumber();
+            final Function selectedFunction = pos.selectFunction(functionNumber - 1);
+
+            selectedFunction.operateFunction();
+            if (selectedFunction.getClass() == TerminateFunction.class) {
+                break;
+            }
+        }
     }
 
     private static int getInputFunctionNumber() {
         try {
             final int functionNumber = InputView.inputFunctionNumber();
             return isValid(functionNumber);
-        } catch (InputMismatchException e) {
-            System.out.println("1부터 3까지의 숫자만 입력 가능합니다.");
-            return getInputFunctionNumber();
-        } catch (IllegalArgumentException e) {
+        } catch (InputMismatchException | IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return getInputFunctionNumber();
         }

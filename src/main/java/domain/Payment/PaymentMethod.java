@@ -19,7 +19,7 @@ public class PaymentMethod {
 
     private void isValid(int paymentMethod) {
         if (paymentMethod != CREDIT_CARD && paymentMethod != CASH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("결재 수단은 신용카드 1번, 현금 2번, 두가지만 가능합니다.");
         }
     }
 

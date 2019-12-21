@@ -4,9 +4,10 @@
  * Copyright (c) 2019 lxxjn0
  */
 
-import domain.Menu;
+import domain.function.TerminateFunction;
+import domain.menu.Menu;
 import domain.function.Function;
-import domain.Table;
+import domain.table.Table;
 import domain.function.OrderFunction;
 import domain.function.PaymentFunction;
 
@@ -21,9 +22,10 @@ public class POS {
         this.tables = tables;
         this.functions.add(new OrderFunction(tables, menus));
         this.functions.add(new PaymentFunction(tables));
+        this.functions.add(new TerminateFunction(tables));
     }
 
     public Function selectFunction(int functionNumber) {
-        return functions.get(functionNumber - 1);
+        return functions.get(functionNumber);
     }
 }

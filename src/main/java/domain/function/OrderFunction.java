@@ -6,7 +6,7 @@
 
 package domain.function;
 
-import domain.Table;
+import domain.table.Table;
 import domain.menu.Menu;
 import view.InputView;
 import view.OutputView;
