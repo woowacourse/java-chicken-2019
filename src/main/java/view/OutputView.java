@@ -10,6 +10,7 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String UNPAID_BOTTOM_LINE = "└ ￦ ┘";
 
     public static void printMainFeatures() {
         System.out.println("## 메인화면");
@@ -24,7 +25,12 @@ public class OutputView {
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        for (Table table : tables) {
+            if (table.isUnpaidTable()) {
+                System.out.print(UNPAID_BOTTOM_LINE);
+            }
+            System.out.print(BOTTOM_LINE);
+        }
     }
 
     public static void printMenus(final List<Menu> menus) {
