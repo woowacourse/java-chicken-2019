@@ -38,7 +38,7 @@ public class Table {
 	public List<String> orderedMenuToString() {
 		List<String> result = new ArrayList<String>();
 		for(Map.Entry<Menu, Integer> menu : menus.entrySet()) {
-			result.add(menu.getKey().getName)
+			result.add(menu.getKey().getName()+" "+menu.getValue()+" "+menu.getKey().getPrice());
 		}
 	}
 
