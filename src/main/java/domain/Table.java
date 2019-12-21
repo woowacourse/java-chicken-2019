@@ -2,6 +2,7 @@ package domain;
 
 public class Table {
     private final int number;
+    private boolean isTable;
     private String name;
     private int menuNumber;
     private int price;
@@ -14,6 +15,15 @@ public class Table {
         this.name = name;
         this.menuNumber = menuNumber;
         this.price = price;
+        this.isTable = true;
+    }
+
+    public boolean isTable() {
+        return this.isTable;
+    }
+
+    public void setResetTable() {
+        this.isTable = false;
     }
 
     @Override

@@ -9,13 +9,17 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String IS_TABLE_BOTTOM_LINE = "└ ₩ ┘";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
-        printLine(TOP_LINE, size);
+        printTopLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        for (Table table: tables) {
+            printBottomLine(table);
+        }
+        System.out.println();
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -24,11 +28,19 @@ public class OutputView {
         }
     }
 
-    private static void printLine(final String line, final int count) {
+    private static void printTopLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
         }
         System.out.println();
+    }
+
+    private static void printBottomLine(Table table) {
+        if (table.isTable()) {
+            System.out.print(IS_TABLE_BOTTOM_LINE);
+            return;
+        }
+        System.out.print(BOTTOM_LINE);
     }
 
     private static void printTableNumbers(final List<Table> tables) {
