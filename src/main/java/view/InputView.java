@@ -79,4 +79,29 @@ public class InputView {
         }
         return true;
     }
+
+    public static int inputMenuNumber(List<Integer> menuNumbers) {
+        int input;
+
+        do {
+            input = getInteger(Message.INPUT_REGISTER_MENU);
+        } while (!checkMenuNumber(menuNumbers, input));
+        return input;
+    }
+
+    private static boolean checkMenuNumber(List<Integer> menuNumbers, int inputValue) {
+        if (isMinus(inputValue)) {
+            System.out.println(ErrorMessage.IS_MINUS);
+            return false;
+        }
+        if (isZero(inputValue)) {
+            System.out.println(ErrorMessage.IS_ZERO);
+            return false;
+        }
+        if (!menuNumbers.contains(inputValue)) {
+            System.out.println(ErrorMessage.THAT_INPUT_IS_NOT_EXIST);
+            return false;
+        }
+        return true;
+    }
 }

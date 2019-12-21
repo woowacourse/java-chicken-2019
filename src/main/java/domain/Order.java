@@ -23,6 +23,8 @@ public class Order {
 
     public void getOrder() {
         int tableNumber = getTableNumber();
+        int menuNumber = getMenuNumber();
+
     }
 
     private int getTableNumber() {
@@ -30,5 +32,12 @@ public class Order {
 
         OutputView.printTables(tables);
         return InputView.inputTableNumber(tableNumbers);
+    }
+
+    private int getMenuNumber() {
+        List<Integer> menuNumbers = MenuRepository.getMenuNumbers();
+
+        OutputView.printMenus(menus);
+        return InputView.inputMenuNumber(menuNumbers);
     }
 }
