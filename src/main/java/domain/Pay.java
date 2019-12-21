@@ -51,6 +51,15 @@ public class Pay {
         return countMenu;
     }
 
+    public int searchCount(String menu) {
+        int count = 0;
+        int index = orderedMenu.indexOf(menu);
+        if(index != -1) {
+            count = orderedMenuCount.get(index);
+        }
+        return count;
+    }
+
     public List<String> getOrderedMenu() {
         List<String> finalMenu = new ArrayList<>();
         for (int index = 0; index < orderedMenu.size(); index++) {

@@ -3,9 +3,7 @@ package control;
 import domain.*;
 import view.InputView;
 import view.OutputView;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Control {
     private static final List<Table> tables = TableRepository.tables();
@@ -45,6 +43,7 @@ public class Control {
         int menuNumber = InputView.inputMenuNumber();
         menuNumber = convertMenuNumber(menuNumber);
         tableNumber = convertTableNumber(tableNumber);
+        menuNumber = validateMenu(menus.get(menuNumber).getName(), tableNumber, menuNumber);
         if (menuNumber != 100) {
             payList.get(tableNumber - 1).setMenus(menus.get(menuNumber).getName(), menus.get(menuNumber).getPrice());
             payList.get(tableNumber - 1).setTablePay(menus.get(menuNumber).getPrice());
@@ -53,6 +52,7 @@ public class Control {
             System.out.println("주문할수 없습니다.(메뉴판에 없는 메뉴지정)");
         }
     }
+
 
     private static void selectPayTable() {
         OutputView.printTables(tables, payList);
@@ -69,7 +69,7 @@ public class Control {
             OutputView.printPay(totalPay);
             payList.get(tableNumber -1).resetTable();
         } else {
-            System.out.println("잘못된 결제방법입니다. 메뉴로 돌아갑니다.");
+            //
         }
     }
 
@@ -91,7 +91,16 @@ public class Control {
         } else if (menuNumber > 20 && menuNumber < 23) {
             return menuNumber - 15;
         }
+        System.out.println("주문할수 없습니다.(메뉴판에 없는 메뉴지정)");
         return 100;
+    }
+
+    private static int validateMenu(String menu, int tableNumber, int menuNumber) {
+        if (payList.get(tableNumber -1).searchCount(menu) > 99) {
+            System.out.println("주문할수 없습니다.(메뉴 99개 이상 주문시 주문 불가)");
+            return 100;
+        }
+        return menuNumber;
     }
 
     private static int convertTableNumber(int tableNumber) {
