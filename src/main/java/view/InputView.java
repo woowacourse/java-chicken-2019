@@ -43,7 +43,19 @@ public class InputView {
 
     public static int inputMenuAmount() {
         System.out.println("## 메뉴의 수량을 입력하세요.");
+        //TODO 메뉴 최대최소수량 확인하는 기능
         return inputAsNumber();
+    }
+
+    public static int inputPaymentMethod() {
+        System.out.println("## 신용카드는 1번, 현금은 2번");
+        return Optional.of(inputAsNumber())
+                .filter(InputView::isPaymentInputValid)
+                .orElseGet(InputView::inputPaymentMethod);
+    }
+
+    public static boolean isPaymentInputValid(int input) {
+        return input == ONE || input == TWO;
     }
 
     public static boolean isMainInputValid(int input) {
