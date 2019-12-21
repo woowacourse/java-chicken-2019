@@ -23,7 +23,9 @@ public enum Message {
     TABLE_NUMBER_RANGE_ERROR("위에 보이는 테이블 번호 중 하나를 입력하세요."),
     MENU_NUMBER_RANGE_ERROR("위에 보이는 메뉴 번호 중 하나를 입력하세요."),
     MENU_COUNT_RANGE_ERROR("주문 수량은 최소 1개부터 최대 99개까지 가능합니다."),
-    PAY_METHOD_RANGE_ERROR("잘못된 숫자를 입력하였습니다.");
+    PAY_METHOD_RANGE_ERROR("잘못된 숫자를 입력하였습니다."),
+    CANT_PAY_ERROR("결제할 내역이 없습니다.");
+
     private String message;
 
     Message(String message) {

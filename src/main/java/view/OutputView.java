@@ -18,6 +18,7 @@ import java.util.List;
 import domain.Menu;
 import domain.Order;
 import domain.Table;
+import util.Message;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
@@ -86,5 +87,9 @@ public class OutputView {
     public static void printPayment(String price) {
         System.out.println("## 최종 결제할 금액");
         System.out.println(price);
+    }
+
+    public static void printCantPay() {
+        System.out.println(Message.CANT_PAY_ERROR.getMessage());
     }
 }

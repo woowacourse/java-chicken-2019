@@ -35,7 +35,6 @@ public class Application {
     private static void action(int actionNumber) {
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
-
         final int tableNumber = InputView.inputTableNumber();
         Table table = TableRepository.getTableByNumber(tableNumber);
 
@@ -43,7 +42,11 @@ public class Application {
             order(table);
         }
         if (actionNumber == PosRule.PAY) {
-            pay(table);
+            if (table.hasOrder()) {
+                pay(table);
+                return;
+            }
+            OutputView.printCantPay();
         }
     }
 
