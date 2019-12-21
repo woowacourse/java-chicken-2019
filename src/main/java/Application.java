@@ -80,11 +80,6 @@ public class Application {
 	}
 
 	private static void doPayment() {
-		
-		
-
-		
-		
 		int nowTable;
 		OutputView.printTables(tables);
 		nowTable = InputView.inputSelectTable(tables);
@@ -93,6 +88,7 @@ public class Application {
 			return;
 		}
 		OutputView.printOrders(tables.get(getTableIndex(nowTable)), menus);
+		nowTable = InputView.inputSelectHowToPay(nowTable);
 	}
 
 }

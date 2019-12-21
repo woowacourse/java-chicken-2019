@@ -35,4 +35,10 @@ public class InputView {
 		return ExceptionHandler.inputSelectMenuCountHandler(table);
 	}
 
+	public static int inputSelectHowToPay(int nowTable) {
+		System.out.println("\n## "+nowTable+"번 테이블의 결제를 진행합니다.");
+        System.out.println("\n## 신용 카드는 1번, 현금은 2번");
+		return ExceptionHandler.inputSelectHowToPayHandler();
+	}
+
 }

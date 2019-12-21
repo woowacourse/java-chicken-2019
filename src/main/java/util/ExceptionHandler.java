@@ -12,6 +12,8 @@ public class ExceptionHandler {
 	private static final int PAYMENT = 2;
 	private static final int EXIT = 3;
 	private static final int MAXIMUM_ORDER_COUNT = 99;
+	private static final int CREDIT_CARD = 1;
+	private static final int CASH = 2;
 	private static Scanner scanner = new Scanner(System.in);
 
 	public static int inputSelectWorkHandler() {
@@ -88,6 +90,23 @@ public class ExceptionHandler {
 			throw new IllegalArgumentException();
 		}
 		return input;
+	}
+
+	public static int inputSelectHowToPayHandler() {
+		try {
+			return checkInputSelectHowToPayHandler(scanner.nextInt());
+		} catch (InputMismatchException | IllegalArgumentException e) {
+			System.out.println("입력값을 확인해주세요.");
+			scanner = new Scanner(System.in);
+			return inputSelectHowToPayHandler();
+		}
+	}
+
+	private static int checkInputSelectHowToPayHandler(int input) {
+		if (input ==CREDIT_CARD || input == CASH) {
+			return input;
+		}
+		throw new IllegalArgumentException();
 	}
 
 }
