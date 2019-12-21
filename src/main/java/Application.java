@@ -24,9 +24,13 @@ public class Application {
                 break;
             }
 
+            if(chooseNumber == 1){
+                OutputView.printTables(tables);
+            }
 
 
-            OutputView.printTables(tables);
+
+
             final int tableNumber = InputView.inputTableNumber();
 
 
