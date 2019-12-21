@@ -21,4 +21,16 @@ public class FunctionNumber {
     private boolean isValidValue(int functionNumber) {
         return functionNumber == REGISTER_ORDER || functionNumber == PAY_ORDER || functionNumber == EXIT;
     }
+
+    public boolean isRegisterOrder() {
+        return this.functionNumber == REGISTER_ORDER;
+    }
+
+    public boolean isPayOrder() {
+        return this.functionNumber == PAY_ORDER;
+    }
+
+    public boolean isExit() {
+        return this.functionNumber == EXIT;
+    }
 }
