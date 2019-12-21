@@ -61,4 +61,9 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public static void printOrderHistory(Table table) {
+        System.out.println(table.orderHistory());
+    }
+
 }

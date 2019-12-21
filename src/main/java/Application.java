@@ -61,6 +61,9 @@ public class Application {
     }
 
     public static void pay() {
+        int tableNum = selectTable();
+        Table table = TableRepository.getTableByNum(tableNum);
+        OutputView.printOrderHistory(table);
     }
 
 }

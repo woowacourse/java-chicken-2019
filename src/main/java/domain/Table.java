@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.Collections;
+
 public class Table {
     private final int number;
     private final ShoppingBasket shoppingBasket;
@@ -23,6 +25,10 @@ public class Table {
 
     public int sum() {
         return shoppingBasket.sum();
+    }
+
+    public String orderHistory() {
+        return shoppingBasket.toString();
     }
 
     @Override

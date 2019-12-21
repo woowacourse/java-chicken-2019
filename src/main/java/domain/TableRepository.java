@@ -25,7 +25,7 @@ public class TableRepository {
         table.offer(order);
     }
 
-    private static Table getTableByNum(int num) {
+    public static Table getTableByNum(int num) {
         if (num < 1 || num == 4 || num == 7 || num > 8) {
             throw new IllegalArgumentException("테이블 번호는 1,2,3,5,6,8 중 하나여야 합니다.");
         }

@@ -1,5 +1,8 @@
 package view;
 
+import domain.Table;
+import sun.tools.jconsole.Tab;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -22,6 +25,12 @@ public class InputView {
 
     public static int inputAmount() {
         System.out.println("메뉴의 수량을 입력하세요.");
+        return scanner.nextInt();
+    }
+
+    public static int inputPayment(int tableNum) {
+        System.out.println("## " + Integer.toString(tableNum) + "번 테이블의 결제를 진행합니다.");
+        System.out.println("## 신용 카드는 1번, 현금은 2번");
         return scanner.nextInt();
     }
 }
