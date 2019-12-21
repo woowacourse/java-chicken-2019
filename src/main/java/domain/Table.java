@@ -42,6 +42,10 @@ public class Table {
         orderTF = false;
     }
 
+    public boolean getOrderTF() {
+        return orderTF;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);
