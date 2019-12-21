@@ -1,6 +1,6 @@
 package domain;
 
-public class Money {
+public class Money implements MoneyService{
     private double amount;
 
     public Money(double amount) {

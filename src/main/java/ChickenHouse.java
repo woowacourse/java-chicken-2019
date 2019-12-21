@@ -10,11 +10,16 @@ import view.InputView;
 import view.OutputView;
 
 public class ChickenHouse {
+    private static final int FEATURE_ORDER = 1;
+    private static final int FEATURE_PAY = 2;
+    private static final int FEATURE_QUIT = 3;
+    private static final int PAY_BY_CREDIT = 1;
+
     private Restaurant restaurant = new Restaurant();
 
     public void start() {
         int selectedFeature = InputView.inputMain();
-        if (selectedFeature == 3) {
+        if (selectedFeature == FEATURE_QUIT) {
             return;
         }
         progress(selectedFeature, selectTable());
@@ -27,10 +32,10 @@ public class ChickenHouse {
     }
 
     private void progress(int selectedFeature, int tableNumber) {
-        if (selectedFeature == 1) {
+        if (selectedFeature == FEATURE_ORDER) {
             order(tableNumber);
         }
-        if (selectedFeature == 2) {
+        if (selectedFeature == FEATURE_PAY) {
             pay(tableNumber);
         }
     }
@@ -41,7 +46,6 @@ public class ChickenHouse {
         int menuNumber = InputView.inputMenuNumber();
         int menuQuantity = InputView.inputMenuQuantity();
         restaurant.orderMenu(TableRepository.findByNumber(tableNumber), menuNumber, menuQuantity);
-        System.out.println(restaurant);
         start();
     }
 
@@ -55,7 +59,7 @@ public class ChickenHouse {
     }
 
     private double payBy(Cashier cashier, int payMethod) {
-        if (payMethod == 1) {
+        if (payMethod == PAY_BY_CREDIT) {
             return cashier.discountByChickenQuantity().getAmount();
         }
         return cashier.discountByCash().getAmount();

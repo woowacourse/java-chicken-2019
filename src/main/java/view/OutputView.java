@@ -1,10 +1,10 @@
 package view;
 
+import java.util.List;
+
 import domain.Menu;
 import domain.Order;
 import domain.Table;
-
-import java.util.List;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
@@ -54,6 +54,6 @@ public class OutputView {
     }
 
     public static void printTotal(double amount) {
-        System.out.println("## 최종 결제할 금액\n" + (int) amount + "원");
+        System.out.println("## 최종 결제할 금액\n" + (int)amount + "원");
     }
 }
