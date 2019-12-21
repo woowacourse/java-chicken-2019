@@ -1,7 +1,10 @@
 package view;
 
+import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
+import domain.Menu;
+import domain.MenuRepository;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -51,6 +54,27 @@ public class InputView {
     	boolean status = false;
     	for (Table table : TableRepository.tables()) {
     		status = status || table.isPresentTable(tableNum);
+    	}
+    	return status;
+    }
+    
+    public static int inputRegisterMenu() {
+    	System.out.println("## 등록할 메뉴를 선택하세요.");
+    	String registeredMenu = scanner.nextLine();
+    	if (!Pattern.matches(NOT_NUMBER_PATTERN, registeredMenu)) {
+    		System.err.println("주문할 음식의 숫자를 입력해주세요.");
+    		return inputRegisterMenu();
+    	} else if (!isPresentMenu(Integer.parseInt(registeredMenu))) {
+    		System.err.println("존재하지 않는 메뉴입니다. 다시 입력해주세요.");
+    		return inputRegisterMenu();
+    	}
+    	return Integer.parseInt(registeredMenu);
+    }
+    
+    private static boolean isPresentMenu(int registeredMenu) {
+    	boolean status = false;
+    	for (Menu menu : MenuRepository.menus()) {
+    		status = status || menu.isPresentMenu(registeredMenu);
     	}
     	return status;
     }
