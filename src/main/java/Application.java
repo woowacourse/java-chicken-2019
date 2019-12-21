@@ -24,6 +24,23 @@ public class Application {
     }
 
     public static void actionLogic(int action) {
+        if (action == 1)
+            order();
+        if (action == 2)
+            pay();
+    }
+
+    /**
+     * 주문등록 담당
+     */
+    public static void order() {
+
+    }
+
+    /**
+     * 결제하기 담당
+     */
+    public static void pay() {
 
     }
 
