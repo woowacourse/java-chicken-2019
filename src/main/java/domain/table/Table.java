@@ -15,4 +15,8 @@ public class Table {
     public String toString() {
         return Integer.toString(number);
     }
+
+    public boolean equalsNumber(int tableNumber) {
+        return this.number == tableNumber;
+    }
 }

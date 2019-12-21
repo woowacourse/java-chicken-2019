@@ -1,5 +1,7 @@
 package domain.table;
 
+import domain.Exception.TableDoesNotExistExeption;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,5 +20,12 @@ public class TableRepository {
 
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
+    }
+
+    public static Table findTableBy(int tableNumber) {
+        return tables.stream()
+                .filter(menu -> menu.equalsNumber(tableNumber))
+                .findAny()
+                .orElseThrow(TableDoesNotExistExeption::new);
     }
 }
