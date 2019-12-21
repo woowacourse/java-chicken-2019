@@ -33,4 +33,13 @@ public class MainFeatureInputNumber {
         }
         return true;
     }
+
+    private static boolean isFeatureNumber(String inputString) {
+        int inputNumber = Integer.parseInt(inputString);
+        if (inputNumber > MainFeatures.size() || inputNumber < 0) {
+            OutputView.printIsNotFeatureNumberError();
+            return false;
+        }
+        return true;
+    }
 }
