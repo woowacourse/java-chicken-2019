@@ -7,8 +7,7 @@ import view.OutputView;
 public class PaymentFeature {
     public void startPayment(OrderStatement orderStatement) {
         int tableNumber = inputTableNumber(orderStatement);
-        
-        tableNumber = checkNoneOrderedMenu(orderStatement, tableNumber);
+
     }
 
     private int inputTableNumber(OrderStatement orderStatement) {

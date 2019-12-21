@@ -34,4 +34,11 @@ public class OrderedMenus {
     public void addMenu(Menu menu) {
         orderedMenus.add(new OrderedMenu(menu));
     }
+
+    public int  calcurateTotalPrice(){
+        return orderedMenus.stream()
+                .map(orderedMenu -> orderedMenu.getPrice())
+                .reduce(Integer::sum)
+                .get();
+    }
 }

@@ -32,4 +32,8 @@ public class OrderedMenu extends Menu {
     public Capacity getCapacity() {
         return capacity;
     }
+
+    public int calcuratePrice(OrderedMenu otherOrderedMenu) {
+        return otherOrderedMenu.getPrice() + this.getPrice();
+    }
 }

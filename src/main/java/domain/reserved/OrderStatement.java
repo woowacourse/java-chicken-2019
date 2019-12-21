@@ -50,4 +50,9 @@ public class OrderStatement {
         }
         return tableId;
     }
+
+    public void printTableOrderState(int tableId) {
+        Table table = getTableOrderStatementBy(tableId);
+        
+    }
 }
