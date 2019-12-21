@@ -23,6 +23,8 @@ public class Application {
             OutputView.printMenus(menus);
             int menu = InputView.inputMenuNumber();
             MenuRepository.getMenuByNumber(menu);
+            int menuQuantity = InputView.inputMenuQuantity();
+
         }
     }
 }
