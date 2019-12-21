@@ -11,11 +11,11 @@ public class RunPOS {
 
     private final Table table;
 
-    public RunPOS() {
+    public RunPOS(int action) {
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 
-        final int tableNumber = InputView.inputTableNumber();
+        final int tableNumber = InputView.inputTableNumber(action);
         table = TableRepository.getTable(tableNumber);
     }
 

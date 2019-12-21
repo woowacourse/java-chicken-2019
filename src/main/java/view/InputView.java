@@ -16,9 +16,9 @@ public final class InputView {
         return ExceptionDetect.mainInputException(scanner.nextInt());
     }
 
-    public static int inputTableNumber() {
+    public static int inputTableNumber(int action) {
         System.out.println("## 테이블을 선택하세요.");
-        return ExceptionDetect.tableInputException(scanner.nextInt());
+        return ExceptionDetect.tableInputException(scanner.nextInt(), action);
     }
 
     public static Menu inputOrderMenu() {

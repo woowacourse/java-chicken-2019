@@ -32,10 +32,6 @@ public class Table {
         return this.number == number;
     }
 
-    public List<Menu> getMenus() {
-        return menus;
-    }
-
     public void printOrderList() {
         for (int i = 0 ; i < menus.size() ; i++) {
             String name = menus.get(i).getName();
