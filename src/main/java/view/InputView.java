@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class InputView {
 	private static final Scanner scanner = new Scanner(System.in);
 	private static final int PROCESS_SELECTION_RANGE = 3;
+	private static final int MAX_ORDER_NUMBER = 99;
 
 	public static int inputTableNumber() {
 		System.out.println("## 주문할 테이블을 선택하세요.");
@@ -29,7 +30,7 @@ public class InputView {
 		}
 	}
 
-	public static int inputOrderMenu(){
+	public static int inputOrderMenu() {
 		System.out.println("## 등록할 메뉴를 선택하세요.");
 		try {
 			int orderMenu = validateNumber(scanner.nextLine().trim());
@@ -37,6 +38,24 @@ public class InputView {
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 			return inputOrderMenu();
+		}
+	}
+
+	public static int inputNumberOfMenu() {
+		System.out.println("## 메뉴의 수량을 입력하세요.");
+		try {
+			int numberOfMenu = validateNumber(scanner.nextLine().trim());
+			validateMaxOrderNumber(numberOfMenu);
+			return numberOfMenu;
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			return inputNumberOfMenu();
+		}
+	}
+
+	private static void validateMaxOrderNumber(int menu) {
+		if (menu > MAX_ORDER_NUMBER) {
+			throw new IllegalArgumentException("한 메뉴의 최대 수량은 99개 입니다");
 		}
 	}
 
