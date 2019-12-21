@@ -18,6 +18,7 @@ public class Application {
 
 //        final List<Menu> menus = MenuRepository.menus();
 //        OutputView.printMenus(menus);
-    	System.out.println("hello");
+    		PosMachine pos = new PosMachine();
+    		pos.play();
     }
 }
