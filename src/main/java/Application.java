@@ -65,6 +65,6 @@ public class Application {
         OutputView.printTablePay(TableRepository
                 .getTableByNumber(tableNumber), InputView.inputPayment());
         
-        TableRepository.getTableByNumber(tableNumber).clear();
+        TableRepository.getTableByNumber(tableNumber).clearMenus();
     }
 }
