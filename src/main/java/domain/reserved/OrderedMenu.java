@@ -1,21 +1,31 @@
 package domain.reserved;
 
+import domain.Capacity;
 import domain.Category;
 import domain.Menu;
 
 /*예약된 메뉴 하나를 가지고 있다.*/
 public class OrderedMenu extends Menu {
-    public OrderedMenu(int number, String name, Category category, int price) {
-        super(number, name, category, price);
+    private final Capacity capacity;
+
+    public OrderedMenu(Menu menu) {
+        super(menu.getNumber(), menu.getName(), menu.getCategory(), menu.getPrice());
+        this.capacity = new Capacity(0);
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
+    public OrderedMenu(Menu menu, int capacity) {
+        super(menu.getNumber(), menu.getName(), menu.getCategory(), menu.getPrice());
+        this.capacity = new Capacity(capacity);
     }
 
-    @Override
-    public boolean isMatch(int number) {
-        return super.isMatch(number);
+    public int checkPossibleOrder(int orderCapacity) {
+        if (capacity.isPossibleOrder(orderCapacity)) {
+            throw new IllegalArgumentException();
+        }
+        return orderCapacity;
+    }
+
+    public Capacity getCapacity() {
+        return capacity;
     }
 }

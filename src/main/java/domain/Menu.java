@@ -28,4 +28,20 @@ public class Menu {
     public boolean isMatch(int number) {
         return this.number == number;
     }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public int getNumber() {
+        return number;
+    }
 }
