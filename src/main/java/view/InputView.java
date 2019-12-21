@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import domain.MenuRepository;
+import domain.TableRepository;
 
 public class InputView {
 	private static final Scanner scanner = new Scanner(System.in);
@@ -13,6 +14,7 @@ public class InputView {
 		System.out.println("## 주문할 테이블을 선택하세요.");
 		try {
 			int tableNumber = validateNumber(scanner.nextLine().trim());
+			validateTableNumber(tableNumber);
 			return tableNumber;
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
@@ -59,6 +61,12 @@ public class InputView {
 	private static void validateRangeOfMenus(int menuNumber) {
 		if (!MenuRepository.isAvailableMenu(menuNumber)) {
 			throw new IllegalArgumentException("메뉴판에 없는 메뉴입니다.");
+		}
+	}
+
+	private static void validateTableNumber(int tableNumber) {
+		if (!TableRepository.isAvailableTable(tableNumber)) {
+			throw new IllegalArgumentException("유효하지 않은 테이블 번호 입니다.");
 		}
 	}
 

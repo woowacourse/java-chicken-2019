@@ -23,6 +23,6 @@ public class MenuRepository {
 	}
 
 	public static boolean isAvailableMenu(int menuNumber) {
-		return menus.stream().anyMatch(menu -> menu.getNumber() == menuNumber);
+		return menus.stream().anyMatch(menu -> menu.containMenuNumber(menuNumber));
 	}
 }
