@@ -17,7 +17,7 @@ public enum Payment {
     }
 
     public double calculateFinalDiscountedPrice(int totalPrice){
-        if (this.paymentNumber == 2) {
+        if (this.equals(CASH)) {
             return totalPrice - totalPrice * discountRatio;
         }
         return totalPrice;
