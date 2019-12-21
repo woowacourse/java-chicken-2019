@@ -16,4 +16,8 @@ public class TableService {
   public int inputTableNumber() {
     return InputView.inputTableNumber();
   }
+
+  public void markTable(int tableNumber) {
+    TableRepository.markTable(tableNumber);
+  }
 }

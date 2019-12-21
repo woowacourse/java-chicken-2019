@@ -23,7 +23,7 @@ public class OrderHistory {
     Order order = new Order(menuService.getMenu(menuNumber), menuAmount);
     if (!ordersByTable.containsKey(tableNumber)) {
       ordersByTable.put(tableNumber, new ArrayList<>());
-      // TODO : table 에 order가 들어있다는 ₩ 표시 해줘야함
+      tableService.markTable(tableNumber);
     }
     ordersByTable.get(tableNumber).add(order);
   }

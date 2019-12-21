@@ -4,12 +4,12 @@ import com.github.callmewaggs.chickenpos.domain.Order;
 import java.util.List;
 
 public class CashDiscountPolicy extends DefaultDiscountPolicy {
-  private static final double DISCOUNT_PERCENT = 5;
-  private static final double ORIGINAL_PERCENT = 100;
+  private static final double DISCOUNT_PERCENT = 0.05;
+  private static final double ORIGINAL_PERCENT = 1;
 
   @Override
   public double afterDiscount(double totalPrice) {
-    return totalPrice * ORIGINAL_PERCENT - DISCOUNT_PERCENT;
+    return totalPrice * (ORIGINAL_PERCENT - DISCOUNT_PERCENT);
   }
 
   @Override

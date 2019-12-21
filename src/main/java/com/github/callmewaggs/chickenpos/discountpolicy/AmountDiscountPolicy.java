@@ -17,7 +17,7 @@ public class AmountDiscountPolicy extends DefaultDiscountPolicy {
 
   @Override
   public double afterDiscount(double totalPrice) {
-    int discountPrice = countChickens() % MINIMUM_DISCOUNT_AMOUNT * DISCOUNT_PRICE;
+    int discountPrice = countChickens() / MINIMUM_DISCOUNT_AMOUNT * DISCOUNT_PRICE;
     return totalPrice - discountPrice;
   }
 
