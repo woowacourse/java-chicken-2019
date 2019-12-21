@@ -32,6 +32,18 @@ public class Table {
     	}
     	return status;
     }
+    
+    public void registerMenuQuantity(int orderMenu, int orderQuantity) {
+    	for (OrderedQuantity orderedQuantity : orderedQuantities) {
+    		if (orderedQuantity.getFoodNumber() == orderMenu) {
+    			orderedQuantity.plusMenuQuantity(orderMenu, orderQuantity);
+    		}
+    	}
+    }
+    
+    public int getTableNumber() {
+    	return this.number;
+    }
 
     @Override
     public String toString() {

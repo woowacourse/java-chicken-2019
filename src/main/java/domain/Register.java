@@ -20,5 +20,10 @@ public class Register {
         OutputView.printMenus(menus);
         orderMenu = InputView.inputRegisterMenu();
         orderQuantity = InputView.inputOrderQuantity(tables);
+        for (Table table : tables) {
+        	if (table.getTableNumber() == tableNumber) {
+        		table.registerMenuQuantity(orderMenu, orderQuantity);
+        	}
+        }
 	}
 }

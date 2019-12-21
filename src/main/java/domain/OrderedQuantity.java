@@ -17,4 +17,8 @@ public class OrderedQuantity {
 	public boolean isOverQuantity(int newOrderQuantity) {
 		return this.foodQuantity + newOrderQuantity > MAX_FOOD_QUANTITY;
 	}
+	
+	public void plusMenuQuantity(int orderMenu, int orderQuantity) {
+		this.foodQuantity += orderQuantity;
+	}
 }
