@@ -1,3 +1,5 @@
+import domain.MainMenu;
+import domain.MainMenuRepository;
 import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
@@ -12,54 +14,54 @@ import java.util.List;
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
-        while (true) {
-            final List<Table> tables = TableRepository.tables();
-            final List<Menu> menus = MenuRepository.menus();
+        final List<MainMenu> mainMenus = MainMenuRepository.mainMenus();
+        final List<Table> tables = TableRepository.tables();
+        final List<Menu> menus = MenuRepository.menus();
 
-            int mainMenu = takeMainMenuFromUser();
-            if (mainMenu == 3) {
+        while (true) {
+            MainMenu mainMenu = takeMainMenuFromUser(mainMenus);
+            if (mainMenu.isQuit()) {
                 break;
             }
             runProgram(tables, menus, mainMenu);
-
         }
     }
 
-    private static int takeMainMenuFromUser() {
+    private static MainMenu takeMainMenuFromUser(List<MainMenu> mainMenus) {
         try {
             OutputView.printMain();
-            int mainMenu = InputView.inputMainMenuNumber();
-            validateMainNumber(mainMenu);
-            return mainMenu;
+            int mainMenuNumber = InputView.inputMainMenuNumber();
+            return mainMenus.stream().filter(mainMenu -> mainMenu.isSameMenu(mainMenuNumber)).findFirst()
+                    .orElseThrow(() -> new InvalidInputException("메인 메뉴를 잘못 선택하셨습니다."));
         } catch (InputMismatchException ime) {
             throw new InvalidInputException("숫자가 아닌 값을 입력하실 수 없습니다.");
         }
     }
 
-    private static void validateMainNumber(int mainMenu) {
-        if (mainMenu != 1 && mainMenu != 2 && mainMenu != 3) {
-            throw new InvalidInputException("메인 메뉴는 1, 2, 3 중 하나를 선택해주세요");
+    private static void runProgram(List<Table> tables, List<Menu> menus, MainMenu mainMenu) {
+        if (mainMenu.isOrder()) {
+            runOrder(tables, menus);
+        }
+        if (mainMenu.isPay()) {
+            runPay(tables);
         }
     }
 
-    private static void runProgram(List<Table> tables, List<Menu> menus, int mainMenu) {
+    private static void runOrder(List<Table> tables, List<Menu> menus) {
         Table selectedTable = takeTableFromUser(tables);
+        OutputView.printMenus(menus);
+        int menuNumber = takeMenuFromUser(menus);
+        Menu menuToAdd = menus.stream().filter(menu -> menu.isSameMenu(menuNumber)).findAny()
+                .orElseThrow(() -> new InvalidInputException("존재하지 않는 메뉴를 입력하셨습니다."));
+        int menuCount = takeMenuCountFromUser();
+        selectedTable.addMenu(menuToAdd, menuCount);
+    }
 
-        if (mainMenu == 1) {
-            OutputView.printMenus(menus);
-            int menuNumber = takeMenuFromUser(menus);
-            Menu menuToAdd = menus.stream().filter(menu -> menu.isSameMenu(menuNumber)).findAny()
-                    .orElseThrow(() -> new InvalidInputException("존재하지 않는 메뉴를 입력하셨습니다."));
-            int menuCount = takeMenuCountFromUser();
-            selectedTable.addMenu(menuToAdd, menuCount);
-        }
-
-        if (mainMenu == 2) {
-            OutputView.printOrders(selectedTable);
-            int paymentWay = InputView.inputPaymentWay();
-            OutputView.printPrices(selectedTable);
-        }
-
+    private static void runPay(List<Table> tables) {
+        Table selectedTable = takeTableFromUser(tables);
+        OutputView.printOrders(selectedTable);
+        int paymentWay = InputView.inputPaymentWay();
+        OutputView.printPrices(selectedTable);
     }
 
     private static Table takeTableFromUser(List<Table> tables) {
