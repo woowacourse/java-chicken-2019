@@ -33,4 +33,16 @@ public final class ExceptionDetect {
         return number;
     }
 
+    public static final boolean orderCountException(int number) {
+        while (number < 0) {
+            System.out.println("1개 이상 주문 가능합니다. 다시 선택해주세요.");
+            return false;
+        }
+        while (number > 99) {
+            System.out.println("99개 이상 주문 불가합니다. 다시 선택해주세요.");
+            return false;
+        }
+        return true;
+    }
+
 }

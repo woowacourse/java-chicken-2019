@@ -30,6 +30,9 @@ public final class InputView {
 
     public static int inputOrderCount() {
         System.out.println("## 메뉴의 수량을 입력하세요.");
-        return scanner.nextInt();
+        int number = scanner.nextInt();
+        while (!ExceptionDetect.orderCountException(number))
+            number = scanner.nextInt();
+        return number;
     }
 }
