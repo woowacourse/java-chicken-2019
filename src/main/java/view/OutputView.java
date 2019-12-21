@@ -57,4 +57,8 @@ public class OutputView {
 		}
 		System.out.println();
 	}
+
+	public static void printOrderedList(String totalOrder) {
+		System.out.println(totalOrder);
+	}
 }

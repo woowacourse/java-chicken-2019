@@ -6,6 +6,8 @@ import domain.Table;
 import domain.TableRepository;
 import util.InputUtil;
 import util.OneOrTwoOrThree;
+import util.OutputUtil;
+import util.TotalOrder;
 import view.InputView;
 import view.OutputView;
 
@@ -73,6 +75,7 @@ public class Application {
 			OutputView.printMenus(menus);
 			menuNumber = InputUtil.checkMenuNumber(InputView.inputMenuNumber()).getValue();
 		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
 			return getMenuNumber(menus);
 		}
 		return menuNumber;
@@ -84,12 +87,17 @@ public class Application {
 		try {
 			menuCount = InputUtil.checkMenuCount(InputView.inputMenuCount()).getValue();
 		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
 			return getMenuCount(menuNumber);
 		}
 		return menuCount;
 	}
 
 	private static void payByTable(int tableNumber) {
-
+		List<Menu> orderedMenus = TableRepository.tables().stream()
+			.filter(t -> t.getNumber() == tableNumber)
+			.findFirst().get().getMenus();
+		TotalOrder totalOrder = OutputUtil.getOrderedList(orderedMenus);
+		OutputView.printOrderedList(totalOrder.toString());
 	}
 }

@@ -22,6 +22,10 @@ public class Table {
 		use = true;
 	}
 
+	public List<Menu> getMenus() {
+		return menus;
+	}
+
 	public boolean isUse() {
 		return use;
 	}

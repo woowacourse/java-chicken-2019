@@ -8,10 +8,17 @@
 
 package util;
 
+import java.util.List;
+
+import domain.Menu;
+
 /**
  * 아웃풋 유틸 클래스입니다.
  *
  * @author HyungjuAn
  */
 public class OutputUtil {
+	public static TotalOrder getOrderedList(List<Menu> orderedMenus) {
+		return new TotalOrder(orderedMenus);
+	}
 }
