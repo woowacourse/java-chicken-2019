@@ -3,6 +3,7 @@ package view;
 import domain.MenuConfig;
 import domain.Requests;
 import domain.TableConfig;
+import domain.WayToPay;
 import domain.errors.InvalidInputException;
 
 import java.util.Arrays;
@@ -67,6 +68,7 @@ public class InputView {
             if (Arrays.stream(Requests.values()).map(Requests::getValue).noneMatch(request -> request == funcNumber)) {
                 throw new InvalidInputException("존재하지 않는 기능입니다.");
             }
+            return funcNumber;
         } catch (RuntimeException e) {
             outputView.printError(e);
             return inputFunctionNumber();
@@ -75,6 +77,15 @@ public class InputView {
 
     public int inputPaymentWay() {
         System.out.println("## 신용카드는 1번, 현금은 2번");
-        return Integer.parseInt(scanner.nextLine());
+        try {
+            int paymentWay =  Integer.parseInt(scanner.nextLine());
+            if (Arrays.stream(WayToPay.values()).map(WayToPay::getValue).noneMatch(way -> way == paymentWay)) {
+                throw new InvalidInputException("존재하지 않는 결제 수단입니다.");
+            }
+            return paymentWay;
+        } catch (RuntimeException e) {
+            outputView.printError(e);
+            return inputPaymentWay();
+        }
     }
 }
