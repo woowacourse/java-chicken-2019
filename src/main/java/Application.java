@@ -11,6 +11,9 @@ public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
+
+        final int mainNumber = InputView.inputMainNumber();
+
         OutputView.printTables(tables);
 
         final int tableNumber = InputView.inputTableNumber();
