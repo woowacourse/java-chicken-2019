@@ -48,7 +48,7 @@ public class Application {
 
             Payment payment = createPaymentByInput();
             int tableAmount = table.calculateAmount();
-            OutputView.printFinalPayment(payment.calculateBySelect(tableAmount));
+            OutputView.printFinalPaymentAmount(payment.calculateBySelect(tableAmount));
             table.completePayment();
         } catch (IllegalArgumentException e) {
             OutputView.printException(e);

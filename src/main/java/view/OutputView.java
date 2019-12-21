@@ -36,7 +36,7 @@ public class OutputView {
         System.out.printf("%d번 테이블의 결제를 진행합니다\n", table.getNumber());
     }
 
-    public static void printFinalPayment(int amount) {
+    public static void printFinalPaymentAmount(int amount) {
         System.out.println();
         System.out.println("## 최종 결제할 금액");
         System.out.printf("%d원\n", amount);
