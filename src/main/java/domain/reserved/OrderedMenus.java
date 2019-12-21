@@ -37,8 +37,7 @@ public class OrderedMenus {
     }
 
 
-
-    public int  calcurateTotalPrice(){
+    public int calcurateTotalPrice() {
         return orderedMenus.stream()
                 .map(orderedMenu -> orderedMenu.getPrice())
                 .reduce(Integer::sum)
@@ -47,5 +46,13 @@ public class OrderedMenus {
 
     public void printOrderedMenu() {
         OutputView.printOrderedMenu(orderedMenus);
+    }
+
+    public int calcurateChickenCount() {
+        return orderedMenus.stream()
+                .filter(orderedMenu -> orderedMenu.isChicken())
+                .map(orderedMenu -> orderedMenu.getCapacity().getCapacity())
+                .reduce(Integer::sum)
+                .get();
     }
 }

@@ -68,6 +68,5 @@ public class InputView {
             System.out.println("올바르지 않은 입력입니다.");
             return inputPaymentType();
         }
-
     }
 }

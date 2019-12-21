@@ -36,4 +36,13 @@ public class OrderedMenu extends Menu {
     public int calcuratePrice(OrderedMenu otherOrderedMenu) {
         return otherOrderedMenu.getPrice() + this.getPrice();
     }
+
+    public boolean isChicken() {
+        return getCategory().isChicken();
+    }
+
+    public int calcurateCapacity(OrderedMenu otherOrderedMenu) {
+        return otherOrderedMenu.getCapacity().getCapacity()
+                + this.getCapacity().getCapacity();
+    }
 }
