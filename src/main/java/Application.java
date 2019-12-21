@@ -46,6 +46,8 @@ public class Application {
         int tableNumber = InputView.inputPayTableNumber() - 1;
 
         OutputView.printOrderMenus(tables, menus, tableNumber);
+        if (tables.get(tableNumber).getOrderMenu().size() == 0) return;
+        
         int payNumber = InputView.inputPayNumber(tableNumber + 1);
         OutputView.printMoney(tables, tableNumber, payNumber);
     }

@@ -66,6 +66,10 @@ public class OutputView {
 
     public static void printOrderMenus(final List<Table> tables, final List<Menu> menus, final int tableNumber) {
         HashMap<Menu, Integer> orderMenu = tables.get(tableNumber).getOrderMenu();
+        if (orderMenu.size() == 0) {
+            System.out.println("!!주문 내역이 없습니다. 주문을 먼저 해주세요.");
+            return;
+        }
 
         System.out.println("## 주문 내역");
         System.out.println("메뉴 수량 금액");
