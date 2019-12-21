@@ -13,6 +13,7 @@ public class Application {
         InputView.inputMainMenu();
         int tableNumber = InputView.inputTableNumber(tables);
         int menuNumber = InputView.inputMenuNumber(menus);
-        InputView.inputMenuAmount();
+        int menuAmount = InputView.inputMenuAmount();
+
     }
 }

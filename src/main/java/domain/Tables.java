@@ -13,6 +13,13 @@ public class Tables {
         return tables;
     }
 
+    public Table findTable(int tableId) {
+        return tables.stream()
+                .filter(x -> x.isTableNumberSame(tableId))
+                .findAny()
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
     public boolean isTableExist(int number) {
         return tables.stream().anyMatch(x -> x.isTableNumberSame(number));
     }
