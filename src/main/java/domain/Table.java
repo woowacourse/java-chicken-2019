@@ -29,6 +29,18 @@ public class Table {
         for (Map.Entry<Menu, Integer> order : orderMenu.entrySet()) {
             sum += order.getKey().getPrice() * order.getValue();
         }
-        return sum;
+        return discount(sum);
+    }
+
+    public int discount(int sum) {
+        int chicken = 0;
+
+        for (Map.Entry<Menu, Integer> order : orderMenu.entrySet()) {
+            if (order.getKey().getCategory().equals("치킨")) {
+                chicken += order.getValue() / 10;
+            }
+        }
+        
+        return sum - chicken * 10000;
     }
 }
