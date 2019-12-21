@@ -1,5 +1,5 @@
 package domain;
 
 public interface RestaurantService {
-    void clearTable();
+    void clearTable(Table table);
 }
