@@ -16,14 +16,19 @@ public class Payment {
 
         OutputView.printBill(order);
         final int methodNumber = InputView.inputPayMethod(tableNumber);
+        final int payment = getPayment(order);
         OutputView.printAmountOfPayment(calculateDiscount(order, methodNumber));
     }
 
     private static int calculateDiscount(HashMap<Menu,Integer> order , int method) {
-        int payment = 50000;
+        int payment = getPayment(order);
         payment = Discount.calculateDiscountByNumberOfMenu(order, payment);
         payment = Discount.calculateDiscountByMethod(method, payment);
-
         return payment;
+    }
+
+    private static int getPayment(HashMap<Menu,Integer> order) {
+        // TODO
+        return 0;
     }
 }

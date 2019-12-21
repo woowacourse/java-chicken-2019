@@ -28,7 +28,9 @@ public class Table {
         order.put(menu, menuHowMany);
     }
 
-    public HashMap<Menu, Integer> getOrder() { return this.order; }
+    public HashMap<Menu, Integer> getOrder() {
+        return this.order;
+    }
 
     public boolean isOrdered() {
         return order.size() != UNORDERED;
