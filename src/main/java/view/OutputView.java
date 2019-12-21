@@ -9,9 +9,12 @@ public class OutputView {
 	private static final String TOP_LINE = "┌ ─ ┐";
 	private static final String TABLE_FORMAT = "| %s |";
 	private static final String BOTTOM_LINE = "└ ─ ┘";
+	private static final String ORDER_BOTTOM_LINE = "└ ₩ ┘";
+	private static final String TABLE_LIST = "## 테이블 목록";
+	private static final String MAIN_SCREEN_LIST = "## 메인화면\n1 - 주문등록\n2 - 결제하기\n3 - 프로그램 종료\n";
 
 	public static void printTables(final List<Table> tables) {
-		System.out.println("## 테이블 목록");
+		System.out.println(TABLE_LIST);
 		final int size = tables.size();
 		printLine(TOP_LINE, size);
 		printTableNumbers(tables);
@@ -40,12 +43,8 @@ public class OutputView {
 
 	public static void printMainScreen() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("## 메인화면\n");
-		sb.append("1 - 주문등록\n");
-		sb.append("2 - 결제하기\n");
-		sb.append("3 - 프로그램 종료\n");
+		sb.append(MAIN_SCREEN_LIST);
 		System.out.println(sb.toString());
 	}
-
 
 }

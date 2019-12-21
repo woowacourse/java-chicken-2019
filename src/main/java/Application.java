@@ -8,20 +8,20 @@ import view.InputView;
 import view.OutputView;
 
 public class Application {
-	// TODO 구현 진행
 	private static boolean flag = true;
+	private static int MENU_SELECT = 1;
+	private static int PAY = 2;
+	private static int EXIT = 3;
 
 	public static void main(String[] args) {
 		Order order = new Order();
-
 		do {
 			OutputView.printMainScreen();
 			int process = InputView.inputMainProcess();
-			if (process == 1) {
+			if (process == MENU_SELECT) {
 				order.orderMenu();
 			}
-
-			if (process == 2) {
+			if (process == PAY) {
 				int tableNumberToPay = InputView.inputTableNumberToPay();
 				List<OrderMenu> orderMenuList = order.getTableToPay(tableNumberToPay);
 				if (orderMenuList.isEmpty()) {
@@ -30,12 +30,9 @@ public class Application {
 				}
 				Pay.pay(orderMenuList, tableNumberToPay);
 			}
-
-			if (process == 3) {
+			if (process == EXIT) {
 				break;
 			}
-
 		} while (flag);
-
 	}
 }

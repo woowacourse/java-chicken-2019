@@ -1,6 +1,7 @@
 package domain;
 
 public class OrderMenu extends Menu {
+	private static final String CHICKEN = "CHICKEN";
 	private Table orderTable;
 	private int numberOfMenu;
 
@@ -10,12 +11,16 @@ public class OrderMenu extends Menu {
 		this.numberOfMenu = numberOfMenu;
 	}
 
-	public boolean checkOrderTableNumber(int tableNumber) {
-		return orderTable.containTableNumber(tableNumber);
+	public int getNumberOfMenu() {
+		return numberOfMenu;
 	}
 
 	public boolean containTableNumber(int tableNumber) {
 		return orderTable.containTableNumber(tableNumber);
+	}
+
+	public boolean isChicken() {
+		return super.getCategory().equals(CHICKEN);
 	}
 
 	public int getTotalPrice() {

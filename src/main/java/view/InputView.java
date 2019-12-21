@@ -11,9 +11,20 @@ public class InputView {
 	private static final int MAX_ORDER_NUMBER = 99;
 	private static final int CREDIT_CARD = 1;
 	private static final int CASH = 2;
+	private static final String SELECT_TABLE_TO_ORDER = "## 주문할 테이블을 선택하세요.";
+	private static final String SELECT_TABLE_TO_PAY = "## 결제할 테이블을 선택하세요.";
+	private static final String SELECT_MAIN_PROCESS = "원하는 기능을 선택하세요";
+	private static final String SELECT_MENU = "## 등록할 메뉴를 선택하세요.";
+	private static final String SELECT_AMOUNT_OF_MENU = "## 메뉴의 수량을 입력하세요.";
+	private static final String SELECT_PAYMENT_TYPE = "신용카드는 1번, 현금은 2";
+	private static final String NO_MENU_ERROR = "메뉴판에 없는 메뉴입니다.";
+	private static final String NO_TABLE_ERROR = "유효하지 않은 테이블 번호 입니다.";
+	private static final String INVALID_INPUT_ERROR = "올바른 입력값이 아닙니다.";
+	private static final String MENU_MAX_AMOUNT_ERROR = "한 메뉴의 최대 수량은 99개 입니다";
+	private static final String OUT_OF_LIST_ERROR = "선택지에 없는 값입니다.";
 
 	public static int inputTableNumber() {
-		System.out.println("## 주문할 테이블을 선택하세요.");
+		System.out.println(SELECT_TABLE_TO_ORDER);
 		try {
 			int tableNumber = validateNumber(scanner.nextLine().trim());
 			validateTableNumber(tableNumber);
@@ -25,7 +36,7 @@ public class InputView {
 	}
 
 	public static int inputTableNumberToPay() {
-		System.out.println("## 결제할 테이블을 선택하세요.");
+		System.out.println(SELECT_TABLE_TO_PAY);
 		try {
 			int tableNumber = validateNumber(scanner.nextLine().trim());
 			validateTableNumber(tableNumber);
@@ -37,7 +48,7 @@ public class InputView {
 	}
 
 	public static int inputMainProcess() {
-		System.out.println("원하는 기능을 선택하세요");
+		System.out.println(SELECT_MAIN_PROCESS);
 		try {
 			int process = validateNumber(scanner.nextLine().trim());
 			validateRangeOfProcess(process);
@@ -49,7 +60,7 @@ public class InputView {
 	}
 
 	public static int inputOrderMenu() {
-		System.out.println("## 등록할 메뉴를 선택하세요.");
+		System.out.println(SELECT_MENU);
 		try {
 			int orderMenu = validateNumber(scanner.nextLine().trim());
 			validateRangeOfMenus(orderMenu);
@@ -61,7 +72,7 @@ public class InputView {
 	}
 
 	public static int inputNumberOfMenu() {
-		System.out.println("## 메뉴의 수량을 입력하세요.");
+		System.out.println(SELECT_AMOUNT_OF_MENU);
 		try {
 			int numberOfMenu = validateNumber(scanner.nextLine().trim());
 			validateMaxOrderNumber(numberOfMenu);
@@ -73,7 +84,7 @@ public class InputView {
 	}
 
 	public static int inputPaymentType() {
-		System.out.println("신용카드는 1번, 현금은 2");
+		System.out.println(SELECT_PAYMENT_TYPE);
 		try {
 			int paymentType = validateNumber(scanner.nextLine().trim());
 			validatePaymentType(paymentType);
@@ -86,31 +97,31 @@ public class InputView {
 
 	private static void validateRangeOfMenus(int menuNumber) {
 		if (!MenuRepository.isAvailableMenu(menuNumber)) {
-			throw new IllegalArgumentException("메뉴판에 없는 메뉴입니다.");
+			throw new IllegalArgumentException(NO_MENU_ERROR);
 		}
 	}
 
 	private static void validateTableNumber(int tableNumber) {
 		if (!TableRepository.isAvailableTable(tableNumber)) {
-			throw new IllegalArgumentException("유효하지 않은 테이블 번호 입니다.");
+			throw new IllegalArgumentException(NO_TABLE_ERROR);
 		}
 	}
 
 	private static void validatePaymentType(int paymentType) {
 		if (paymentType != CREDIT_CARD && paymentType != CASH) {
-			throw new IllegalArgumentException("올바른 입력값이 아닙니다.");
+			throw new IllegalArgumentException(INVALID_INPUT_ERROR);
 		}
 	}
 
 	private static void validateMaxOrderNumber(int menu) {
 		if (menu > MAX_ORDER_NUMBER) {
-			throw new IllegalArgumentException("한 메뉴의 최대 수량은 99개 입니다");
+			throw new IllegalArgumentException(MENU_MAX_AMOUNT_ERROR);
 		}
 	}
 
 	private static void validateRangeOfProcess(int process) {
 		if (process > PROCESS_SELECTION_RANGE) {
-			throw new IllegalArgumentException("선택지에 없는 값입니다.");
+			throw new IllegalArgumentException(OUT_OF_LIST_ERROR);
 		}
 	}
 
@@ -120,7 +131,7 @@ public class InputView {
 			isPositiveNumber(number);
 			return number;
 		} catch (IllegalArgumentException e) {
-			throw new IllegalArgumentException("유효하지 않은 입력값입니다.");
+			throw new IllegalArgumentException(INVALID_INPUT_ERROR);
 		}
 	}
 
