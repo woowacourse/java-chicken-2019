@@ -63,6 +63,8 @@ public class OutputView {
 	public static void printAllMenuesOfTable(Table table) {
 		System.out.println("## 주문 내역");
 		System.out.println("메뉴 수량 금액");
-		System.out.println(table.orderedMenuToString());
+		for(String string : table.orderedMenuToString()) {
+			System.out.println(string);
+		}
 	}
 }

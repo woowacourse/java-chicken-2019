@@ -34,12 +34,13 @@ public class Table {
 	public boolean isEmpty() {
 		return this.menus.isEmpty();
 	}
-	
+
 	public List<String> orderedMenuToString() {
 		List<String> result = new ArrayList<String>();
-		for(Map.Entry<Menu, Integer> menu : menus.entrySet()) {
-			result.add(menu.getKey().getName()+" "+menu.getValue()+" "+menu.getKey().getPrice());
+		for (Map.Entry<Menu, Integer> menu : menus.entrySet()) {
+			result.add(menu.getKey().getName() + " " + menu.getValue() + " " + menu.getKey().getPrice());
 		}
+		return result;
 	}
 
 	@Override
