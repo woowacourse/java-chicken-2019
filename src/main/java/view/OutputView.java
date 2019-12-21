@@ -54,4 +54,8 @@ public class OutputView {
 
         System.out.println(amountMenu);
     }
+
+    public static void printTablePrices(final Table table) {
+        System.out.println(table.allPrices());
+    }
 }

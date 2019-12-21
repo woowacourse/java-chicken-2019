@@ -18,7 +18,7 @@ public class Application {
             inputTable.addMenu(inputMenu, menuAmount);
 
             OutputView.printTableOrderedList(inputTable.allMenu());
-            System.out.println(inputTable.allPrices());
+            OutputView.printTablePrices(inputTable);
         }
     }
 }
