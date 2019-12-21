@@ -12,6 +12,14 @@ public class Table {
         return this.isInUse;
     }
 
+    public void changeToInUse() {
+        this.isInUse = true;
+    }
+
+    public void changeToNotInUse() {
+        this.isInUse = false;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);
