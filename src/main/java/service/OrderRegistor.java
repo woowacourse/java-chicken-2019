@@ -17,10 +17,12 @@ public class OrderRegistor extends Service{
 
     public void run(List<Table> table){
         int tableNumber;
+        int menuNumber;
 
         OutputView.printTables(tables);
         tableNumber = InputView.inputTableNumber();
         OutputView.printMenus(MenuRepository.menus());
+        menuNumber = InputView.inputMenuNumber();
 
     }
 }
