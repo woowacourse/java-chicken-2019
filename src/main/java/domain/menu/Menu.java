@@ -1,4 +1,4 @@
-package domain;
+package domain.menu;
 
 public class Menu {
     private final int number;
