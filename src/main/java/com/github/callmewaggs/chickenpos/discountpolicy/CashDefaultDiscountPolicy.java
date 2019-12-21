@@ -1,15 +1,15 @@
-package com.github.callmewaggs.chickenpos.discount;
+package com.github.callmewaggs.chickenpos.discountpolicy;
 
 import com.github.callmewaggs.chickenpos.domain.Order;
 import java.util.List;
 
-public class CashDiscount extends Discount {
+public class CashDefaultDiscountPolicy extends DefaultDiscountPolicy {
   private static final double DISCOUNT_PERCENT = 0.5;
   private static final double ORIGINAL_VALUE = 1;
 
   @Override
-  public double afterDiscount() {
-    return totalPrice() * ORIGINAL_VALUE - DISCOUNT_PERCENT;
+  public double afterDiscount(double totalPrice) {
+    return totalPrice * ORIGINAL_VALUE - DISCOUNT_PERCENT;
   }
 
   @Override

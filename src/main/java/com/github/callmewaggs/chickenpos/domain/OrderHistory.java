@@ -45,4 +45,13 @@ public class OrderHistory {
     }
     throw new IllegalArgumentException("테이블 번호가 잘못됐습니다.");
   }
+
+  public double getTotalPriceByTable(int tableNumber) {
+    List<Order> orders = ordersByTable.get(tableNumber);
+    double price = 0;
+    for(Order order : orders) {
+      price += order.getTotalPriceOfOrder();
+    }
+    return price;
+  }
 }

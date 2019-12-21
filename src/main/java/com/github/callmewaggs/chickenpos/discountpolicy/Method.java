@@ -1,4 +1,4 @@
-package com.github.callmewaggs.chickenpos.discount;
+package com.github.callmewaggs.chickenpos.discountpolicy;
 
 public enum Method {
   CARD(1),

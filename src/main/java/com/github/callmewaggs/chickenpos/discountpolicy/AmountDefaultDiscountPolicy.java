@@ -1,9 +1,9 @@
-package com.github.callmewaggs.chickenpos.discount;
+package com.github.callmewaggs.chickenpos.discountpolicy;
 
 import com.github.callmewaggs.chickenpos.domain.Order;
 import java.util.List;
 
-public class AmountDiscount extends Discount {
+public class AmountDefaultDiscountPolicy extends DefaultDiscountPolicy {
   private static final int MINIMUM_DISCOUNT_AMOUNT = 10;
   private static final int DISCOUNT_PRICE = 10000;
 
@@ -16,9 +16,9 @@ public class AmountDiscount extends Discount {
   }
 
   @Override
-  public double afterDiscount() {
+  public double afterDiscount(double totalPrice) {
     int discountPrice = countChickens() % MINIMUM_DISCOUNT_AMOUNT * DISCOUNT_PRICE;
-    return totalPrice() - discountPrice;
+    return totalPrice - discountPrice;
   }
 
   @Override
