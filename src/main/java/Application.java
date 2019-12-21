@@ -1,7 +1,4 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.TableRepository;
-import domain.Tables;
+import domain.*;
 import view.InputView;
 import view.OutputView;
 
@@ -11,15 +8,13 @@ public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
         Tables tables = new Tables(TableRepository.tables());
+        Menus menus = new Menus(MenuRepository.menus());
 
         InputView.inputMainMenu();
         OutputView.printTables(tables.getTables());
 
         if (tables.isTableExist(InputView.inputTableNumber())) {
-            final List<Menu> menus = MenuRepository.menus();
-            OutputView.printMenus(menus);
+            OutputView.printMenus(menus.getMenus());
         }
-
-
     }
 }
