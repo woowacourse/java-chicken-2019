@@ -21,6 +21,10 @@ public class Menu {
         return this.name;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
     public int getPrice() {
         return price;
     }
