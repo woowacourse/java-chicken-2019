@@ -1,4 +1,5 @@
 import domain.Exception.MenuDoesNotExistExeption;
+import domain.Exception.TableDidNotOrderedExeption;
 import domain.Exception.TableDoesNotExistExeption;
 import domain.PosPower;
 import domain.menu.Menu;
@@ -92,5 +93,23 @@ public class Application {
     }
 
     private static void payOrder() {
+        Table orderedTable = askOrderedTable();
+    }
+
+    private static Table askOrderedTable() {
+        try {
+            Table selectedTable = askTable();
+            validateOrderedTable(selectedTable);
+            return selectedTable;
+        } catch (TableDidNotOrderedExeption e) {
+            OutputView.printMessage(e.getMessage());
+            return askOrderedTable();
+        }
+    }
+
+    private static void validateOrderedTable(Table selectedTable) {
+        if (selectedTable.unordered()) {
+            throw new TableDidNotOrderedExeption();
+        }
     }
 }
