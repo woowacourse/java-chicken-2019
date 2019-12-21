@@ -1,6 +1,7 @@
 package view;
 
 import domain.Menu;
+import domain.ProvidingFunction;
 import domain.Table;
 
 import java.util.List;
@@ -9,10 +10,15 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String PROVIDING_FUNCTION_FORMAT = "%d - %s";
 
-    public static void printProvidingFunctions() {
+    public static void printProvidingFunctions(final List<ProvidingFunction> providingFunctions) {
         System.out.println("## 메인화면");
 
+    }
+
+    private static void printProvidingFunction(final ProvidingFunction providingFunction) {
+        System.out.printf(PROVIDING_FUNCTION_FORMAT, providingFunction.getId(), providingFunction.getDescription());
     }
 
     public static void printTables(final List<Table> tables) {
