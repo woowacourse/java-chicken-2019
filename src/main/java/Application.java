@@ -45,14 +45,18 @@ public class Application {
 
     public void findMenuObjectAddToTableObject(int menuNumber, int tableNumber, int amountNumber){
         Table table = findTable(tableNumber);
-        for(Menu menu : menus){
+        Menu menu = findMenu(menuNumber);
+        table.addMenuToTable(menu, menuNumber, amountNumber);
+    }
+
+    public Menu findMenu(int menuNumber){
+        for(Menu menu: menus){
             String menuStatus = menu.toString().split("-")[0].trim();
             if(Integer.parseInt(menuStatus) == menuNumber){
-                table.addMenuToTable(menu, amountNumber);
+                return menu;
             }
         }
-        //System.out.println("current state");
-        //table.printCurrentState();
+        return null;
     }
 
     public Table findTable(int tableNumber){
@@ -69,7 +73,9 @@ public class Application {
         OutputView.printTables(tables);
         int tableNumber = InputView.inputTableNumber();
         Table table = findTable(tableNumber);
-        OutputView.printOrderHistory(table);
+        int totalPrice = OutputView.printOrderHistory(table);
+        int cardOrCash = InputView.inputCardOrCash(tableNumber);
+        OutputView.printFinalPrice(cardOrCash, totalPrice);
     }
 
     public void finishApplication(){

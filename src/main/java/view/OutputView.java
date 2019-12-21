@@ -10,17 +10,19 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
     private static final String BOTTOM_LINE_WHEN_PAYMENT_TOBE_DONE = "└ ₩ ┘";
+    private static final int card = 1;
+    private static final int cash = 0;
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        for(Table table: tables){
-            if(table.tableHasMenu()){
+        for (Table table : tables) {
+            if (table.tableHasMenu()) {
                 printBottomLine(BOTTOM_LINE_WHEN_PAYMENT_TOBE_DONE);
             }
-            if(!table.tableHasMenu()){
+            if (!table.tableHasMenu()) {
                 printBottomLine(BOTTOM_LINE);
             }
         }
@@ -51,13 +53,22 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printProgramEnding(){
+    public static void printProgramEnding() {
         System.out.println("프로그램 종료");
     }
 
-    public static void printOrderHistory(Table table){
+    public static int printOrderHistory(Table table) {
         System.out.println("## 주문 내역");
         System.out.println("메뉴 \t 수량 \t 금액");
+        return table.currentMenus();
+    }
 
+    public static void printFinalPrice(int cardOrCash, int totalPrice) {
+        System.out.println("## 최종 결제할 금액");
+        if (cardOrCash == cash) {
+            System.out.printf("%d원\n", totalPrice * 0.95);
+            return;
+        }
+        System.out.println(totalPrice + "원");
     }
 }
