@@ -59,7 +59,7 @@ public class ChickenHouse {
             OutputView.printOrders(order);
             OutputView.printTotal(payBy(cashier, InputView.inputPayMethod(tableNumber)));
             restaurant.clearTable(table);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         start();
     }
