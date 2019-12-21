@@ -18,15 +18,15 @@ public class Menu {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
 
-    public boolean isSameNumber(int number) {
+    public boolean isSameNumber(final int number) {
         return this.number == number;
     }
 
-    public String getOrderString(int orderAmount) {
+    public String getOrderString(final int orderAmount) {
         return this.name + " " + orderAmount + " " + (this.price * orderAmount) + "\n";
     }
 
-    public int getAmountPrice(int orderAmount) {
+    public int getAmountPrice(final int orderAmount) {
         return orderAmount * this.price;
     }
 

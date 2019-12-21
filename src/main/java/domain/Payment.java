@@ -11,7 +11,7 @@ public class Payment {
     private final int paymentAmount;
     private final int chickenAmount;
 
-    public Payment(int paymentAmount, int chickenAmount) {
+    public Payment(final int paymentAmount, final int chickenAmount) {
         if (paymentAmount < PAYMENT_MIN) {
             throw new IllegalArgumentException("주문 가격은 " + PAYMENT_MIN + "이상이어야 합니다.");
         }
@@ -22,11 +22,11 @@ public class Payment {
         this.chickenAmount = chickenAmount;
     }
 
-    public Payment addPaymentAmount(int paymentAmount, int chickenAmount) {
+    public Payment addPaymentAmount(final int paymentAmount, final int chickenAmount) {
         return new Payment(this.paymentAmount + paymentAmount, this.chickenAmount + chickenAmount);
     }
 
-    public int calculateFinalPaymentAmount(int paymentMethod) {
+    public int calculateFinalPaymentAmount(final int paymentMethod) {
         int paymentAmount = this.paymentAmount;
         paymentAmount -= (int) (chickenAmount / TEN) * DISCOUNT;
         if (paymentMethod == CASH) {

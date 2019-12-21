@@ -23,7 +23,7 @@ public class MenuRepository {
         return Collections.unmodifiableList(menus);
     }
 
-    public static boolean isInMenus(int number) {
+    public static boolean isInMenus(final int number) {
         for (final Menu menu : menus) {
             if (menu.isSameNumber(number)) {
                 return true;
@@ -32,7 +32,7 @@ public class MenuRepository {
         return false;
     }
 
-    public static Menu getMenu(int number) {
+    public static Menu getMenu(final int number) {
         for (final Menu menu : menus) {
             if (menu.isSameNumber(number)) {
                 return menu;

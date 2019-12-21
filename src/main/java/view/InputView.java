@@ -52,7 +52,7 @@ public class InputView {
         }
     }
 
-    public static int inputPaymentMethod(int tableNumber) {
+    public static int inputPaymentMethod(final int tableNumber) {
         System.out.println("## " + tableNumber + "번 테이블의 결제를 진행합니다.");
         System.out.println("## 신용 카드는 1번, 현금은 2번");
         try {

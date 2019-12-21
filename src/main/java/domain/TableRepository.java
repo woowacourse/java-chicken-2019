@@ -21,7 +21,7 @@ public class TableRepository {
         return Collections.unmodifiableList(tables);
     }
 
-    public static boolean isInTable(int number) {
+    public static boolean isInTable(final int number) {
         for (final Table table : tables) {
             if (table.isSameNumber(number)) {
                 return true;
@@ -30,7 +30,7 @@ public class TableRepository {
         return false;
     }
 
-    public static Table getTable(int number) {
+    public static Table getTable(final int number) {
         for (final Table table : tables) {
             if (table.isSameNumber(number)) {
                 return table;
