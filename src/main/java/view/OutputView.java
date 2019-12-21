@@ -71,4 +71,10 @@ public class OutputView {
         System.out.println("주문이 없습니다");
         System.out.println("================");
     }
+
+    public static void printNotAbleOrder() {
+        System.out.println("================");
+        System.out.println("주문 수량이 99가 넘습니다.");
+        System.out.println("================");
+    }
 }
