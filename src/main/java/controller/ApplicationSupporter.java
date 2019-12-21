@@ -14,6 +14,7 @@ public class ApplicationSupporter {
     private static final int CASH = 2;
     private static final int CHICKEN_DISCOUNT = 10000;
     private static final int CHICKEN_COUNT = 10;
+    private static final double CASH_DISCOUNT = 0.95;
 
     private static MenuRepository menu = new MenuRepository();
     private static List<Menu> menuList;
@@ -58,7 +59,7 @@ public class ApplicationSupporter {
     }
 
     public void isLimit(int input, Table table) {
-        if (!table.orderLimit(input)){
+        if (!table.orderLimit(input)) {
             addMenuPhase();
         }
     }
@@ -96,7 +97,7 @@ public class ApplicationSupporter {
     public void orderCheck(Table table) {
         if (!table.isOrder()) {
             OutputView.printTableChoiceError();
-            checkOutPhase();
+            mainOptionPhase();
         }
     }
 
@@ -119,13 +120,13 @@ public class ApplicationSupporter {
 
         input = chickenDiscount(input, chickens);
         if (choice == CASH) {
-            input = (int) (input * 0.95);
+            input = (int) (input * CASH_DISCOUNT);
         }
         OutputView.printResult(input);
     }
 
     public int chickenDiscount(int input, int chickens) {
-        for (int i = chickens; i >= 10; i -= CHICKEN_COUNT) {
+        for (int i = chickens; i >= CHICKEN_COUNT; i -= CHICKEN_COUNT) {
             input -= CHICKEN_DISCOUNT;
         }
         return input;

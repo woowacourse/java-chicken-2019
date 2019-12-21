@@ -3,7 +3,6 @@ package view;
 import domain.Menu;
 import domain.Table;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class OutputView {
@@ -29,6 +28,7 @@ public class OutputView {
 
     public static void printTableChoiceError() {
         System.out.println("\n주문이 없는 테이블 입니다.");
+        System.out.println("메인 메뉴로 이동합니다.");
     }
 
     public static void printMenus(final List<Menu> menus) {
