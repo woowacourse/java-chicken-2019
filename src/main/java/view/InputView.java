@@ -59,7 +59,7 @@ public class InputView {
         System.out.println("## 메뉴의 수량을 입력하세요.");
         String string = scanner.nextLine();
         try {
-            Validator.validateNull(string);
+            Validator.validateMenuCount(string);
         } catch (NumberFormatException e) {
             System.err.println("숫자를 입력해주세요.");
             return inputMenuCount();

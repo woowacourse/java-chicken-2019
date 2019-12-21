@@ -43,7 +43,11 @@ public class Application {
         int menuNumber = InputView.inputMenuNumber();
         int menuCount = InputView.inputMenuCount();
         
-        TableRepository.addMenuToTable(tableNumber, menuNumber, menuCount);
+        try {
+            TableRepository.addMenuToTable(tableNumber, menuNumber, menuCount);
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
     }
     
     private static void pay() {

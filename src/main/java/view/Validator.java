@@ -8,6 +8,7 @@ public class Validator {
     private static final int MIN_NUM = 0;
     private static final int MAX_METHOD_NUM = 3;
     private static final int MAX_PAYMENT_NUM = 2;
+    private static final int MAX_MENU_COUNT = 99;
     
     public static void validateNull(String string) {
         if (string.isEmpty()) {
@@ -30,6 +31,13 @@ public class Validator {
         }
     }
     
+    public static void validateMenuCount(String string) {
+        validateNull(string);
+        if (Integer.parseInt(string) <=  MIN_NUM) {
+            throw new IllegalArgumentException("1개 이상의 값을 입력해주세요.");
+        }
+    }
+    
     public static void validateMenuNumber(String string) {
         validateNull(string);
         if (!MenuRepository.isExist(Integer.parseInt(string))) {
@@ -48,6 +56,12 @@ public class Validator {
     public static void validateNullMenus(Table table) {
         if (table.isEmptyMenus()) {
             throw new IllegalArgumentException("테이블에 결제할 목록이 없습니다.");
+        }
+    }
+    
+    public static void validateMenuMaxCount(int count) {
+        if (count > MAX_MENU_COUNT) {
+            throw new IllegalArgumentException("메뉴 총 주문 한도를 초과하셨습니다.");
         }
     }
 }

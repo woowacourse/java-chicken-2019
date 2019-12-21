@@ -2,6 +2,7 @@ package domain;
 
 public class Table {
     private static final int CASH_NUMBER = 2;
+    private static final double DISCOUNT_RATE = 0.05;
     private final int number;
     private Menus menus;
 
@@ -28,7 +29,7 @@ public class Table {
     
     public double getFinalPrice(int paymentNumber) {
         if (paymentNumber == CASH_NUMBER) {
-            return menus.calculatePrice() * 0.95;
+            return menus.calculatePrice() * (1 - DISCOUNT_RATE);
         }
         
         return menus.calculatePrice();

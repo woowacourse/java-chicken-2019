@@ -65,7 +65,7 @@ public class OutputView {
     }
     
     public static void printTablePay(final Table table, int paymentNumber) {
-        System.out.println("##" + table.toString() + "번 테이블의 결제를 진행합니다.\n");
+        System.out.println("## " + table.toString() + "번 테이블의 결제를 진행합니다.\n");
         System.out.println("## 최종 결제할 금액\n" + table.getFinalPrice(paymentNumber) + "원");
     }
 }

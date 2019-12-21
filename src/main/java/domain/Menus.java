@@ -2,6 +2,8 @@ package domain;
 
 import java.util.HashMap;
 
+import view.Validator;
+
 public class Menus {
     private static final int CHICKEN_DISCOUNT_PRICE = 10_000;
     private static final int PER_DISCOUNT_NUMBER = 10;
@@ -13,7 +15,10 @@ public class Menus {
     
     public void addMenuByNumber(int menuNumber, int count) {
         Menu menu = MenuRepository.getMenuByNumber(menuNumber);
+        Validator.validateMenuMaxCount(count);
+        
         if (menus.containsKey(menu)) {
+            Validator.validateMenuMaxCount(menus.get(menu) + count);
             menus.put(menu, menus.get(menu) + count);
             return;
         }
