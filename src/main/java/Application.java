@@ -1,20 +1,20 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
 import domain.Order;
-import view.InputView;
-import view.OutputView;
-
-import java.util.List;
+import domain.OrderList;
+import domain.OrderForm;
 
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
-        Order order = new Order();
+
+        while(true) {
+            //functions order  order UI
+            OrderList list = new OrderList();
+            OrderForm order = new OrderForm();
 
 
 
-
+        }
     }
+
+
 }

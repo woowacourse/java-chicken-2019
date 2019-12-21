@@ -2,6 +2,7 @@ package domain;
 
 public class Table {
     private final int number;
+    private int totalMenuQuantity;
 
     public Table(final int number) {
         this.number = number;
