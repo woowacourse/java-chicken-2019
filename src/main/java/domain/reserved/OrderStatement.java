@@ -30,12 +30,14 @@ public class OrderStatement {
     }
 
     public void addTableOrderStatement(int tableNumber, OrderedMenu menu) {
-//        Table table;
-//        if (!contain(tableNumber)) {
-//            table = new Table(tableNumber);
-//            table.addMenu(menu, menu.getCapacity().getCapacity());
-//            return;
-//        }
+        if (isExist(tableNumber, menu.getNumber())) {
+            getTableOrderStatementBy(tableNumber)
+                    .getOrderedMenus()
+                    .getMenuBy(menu.getNumber())
+                    .getCapacity()
+                    .addCapacity(menu.getCapacity().getCapacity());
+            return;
+        }
         getTableOrderStatementBy(tableNumber)
                 .addMenu(menu, menu.getCapacity().getCapacity());
     }

@@ -12,10 +12,10 @@ public class Capacity {
     }
 
     public boolean isPossibleOrder(int orderCapacity) {
-        return capacity + orderCapacity < 100;
+        return capacity + orderCapacity > 100;
     }
 
-    public Capacity addCapacity(int orderCapacity) {
-        return new Capacity(capacity + orderCapacity);
+    public void addCapacity(int orderCapacity) {
+        capacity += orderCapacity;
     }
 }
