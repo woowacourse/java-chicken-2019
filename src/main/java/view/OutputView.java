@@ -59,4 +59,13 @@ public class OutputView {
         }
         System.out.println("");
     }
+
+    public static void printTableOrderHistory(final Table table) {
+        System.out.println(table.getOrderHistory());
+    }
+
+    public static void printTablePaymentAmount(final Table table, final int paymentMethod) {
+        System.out.println("\n## 최종 결제할 금액");
+        System.out.println(table.calculatePaymentAmount(paymentMethod) + "원");
+    }
 }
