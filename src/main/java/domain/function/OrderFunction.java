@@ -1,13 +1,13 @@
 /*
- * @(#)OrderFunction.java       0.4 2019.12.21
+ * @(#)OrderFunction.java       0.5 2019.12.21
  *
  * Copyright (c) 2019 lxxjn0
  */
 
 package domain.function;
 
-import domain.Menu;
 import domain.Table;
+import domain.menu.Menu;
 import view.InputView;
 import view.OutputView;
 
@@ -24,7 +24,7 @@ public class OrderFunction extends Function {
     public void operateFunction() {
         OutputView.printTables(tables);
         final int tableNumber = InputView.inputTableNumber();
-        final Table selectedtable = tables.stream()
+        final Table selectedTable = tables.stream()
                 .filter(table -> table.isSelectedTable(tableNumber))
                 .findFirst()
                 .get();
@@ -36,8 +36,16 @@ public class OrderFunction extends Function {
                 .filter(menu -> menu.isSelectedMenu(menuNumber))
                 .findFirst()
                 .get();
+        addSelectedOrderMenu(selectedTable, selectedMenu);
+    }
 
-        final int menuQuantity = InputView.inputMenuQuantity();
-        selectedtable.addOrderMenu(selectedMenu, menuQuantity);
+    private void addSelectedOrderMenu(Table selectedTable, Menu selectedMenu) {
+        try {
+            final int menuQuantity = InputView.inputMenuQuantity();
+            selectedTable.addOrderMenu(selectedMenu, menuQuantity);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            addSelectedOrderMenu(selectedTable, selectedMenu);
+        }
     }
 }
