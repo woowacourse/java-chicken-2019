@@ -1,6 +1,7 @@
 package domain.menu;
 
 import domain.Category;
+import domain.Exception.MenuDoesNotExistExeption;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,5 +28,12 @@ public class MenuRepository {
     public static boolean contain(int menuNumber) {
         return menus.stream()
                 .anyMatch(menu -> menu.equalsNumber(menuNumber));
+    }
+
+    public static Menu findMenuBy(int menuNumber) {
+        return menus.stream()
+                .filter(menu -> menu.equalsNumber(menuNumber))
+                .findAny()
+                .orElseThrow(MenuDoesNotExistExeption::new);
     }
 }
