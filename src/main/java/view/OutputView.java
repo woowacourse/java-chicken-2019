@@ -67,7 +67,7 @@ public class OutputView {
 
 	public static void printPrice(final int price) {
 		System.out.println("## 최종 결제할 금액");
-		System.out.println(price);
+		System.out.println(price + "원");
 	}
 
 	public static void printError(final String error) {
