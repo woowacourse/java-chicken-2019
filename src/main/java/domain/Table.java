@@ -1,5 +1,8 @@
 package domain;
 
+import java.util.List;
+import java.util.Map;
+
 public class Table {
     private final int number;
     private Ordered ordered = new Ordered();
@@ -18,6 +21,10 @@ public class Table {
 
     public int allPrices() {
         return ordered.allPrices();
+    }
+
+    public Map<String, List<Menu>> allMenu() {
+        return ordered.amountMenu();
     }
 
     @Override

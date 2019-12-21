@@ -10,10 +10,15 @@ public class Application {
         Tables tables = new Tables(TableRepository.tables());
         Menus menus = new Menus(MenuRepository.menus());
 
-        InputView.inputMainMenu();
-        Table inputTable = tables.findTable(InputView.inputTableNumber(tables));
-        Menu inputMenu = menus.findMenu(InputView.inputMenuNumber(menus));
-        int menuAmount = InputView.inputMenuAmount();
-        inputTable.addMenu(inputMenu, menuAmount);
+        while(true) {
+            InputView.inputMainMenu();
+            Table inputTable = tables.findTable(InputView.inputTableNumber(tables));
+            Menu inputMenu = menus.findMenu(InputView.inputMenuNumber(menus));
+            int menuAmount = InputView.inputMenuAmount();
+            inputTable.addMenu(inputMenu, menuAmount);
+
+            OutputView.printTableOrderedList(inputTable.allMenu());
+            System.out.println(inputTable.allPrices());
+        }
     }
 }

@@ -4,6 +4,9 @@ import domain.Menu;
 import domain.Table;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
@@ -41,5 +44,14 @@ public class OutputView {
     public static void mainView() {
         System.out.println("## 메인화면");
         System.out.println("1 - 주문등록\n2 - 결제하기\n3 - 프로그램종료\n");
+    }
+
+    public static void printTableOrderedList(final Map<String, List<Menu>> menuAmount) {
+        String amountMenu = menuAmount.keySet().stream()
+                .map(x -> x + " " + menuAmount.get(x).size() + " "
+                        + Objects.requireNonNull(menuAmount.get(x).stream().findAny().orElse(null)).getPrice())
+                .collect(Collectors.joining("\n"));
+
+        System.out.println(amountMenu);
     }
 }

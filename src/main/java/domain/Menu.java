@@ -17,6 +17,10 @@ public class Menu {
         return this.number == number;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
     public int getPrice() {
         return price;
     }
