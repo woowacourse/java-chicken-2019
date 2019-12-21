@@ -27,4 +27,9 @@ public final class InputView {
         int number = ExceptionDetect.orderMenuException(scanner.nextInt());
         return MenuRepository.getMenu(number);
     }
+
+    public static int inputOrderCount() {
+        System.out.println("## 메뉴의 수량을 입력하세요.");
+        return scanner.nextInt();
+    }
 }

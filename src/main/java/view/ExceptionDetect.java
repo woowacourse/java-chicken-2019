@@ -32,4 +32,5 @@ public final class ExceptionDetect {
         }
         return number;
     }
+
 }

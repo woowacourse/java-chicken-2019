@@ -32,7 +32,7 @@ public class RunPOS {
         OutputView.printMenus(menus);
 
         Menu menu = InputView.inputOrderMenu();
-
+        int count = InputView.inputOrderCount();
     }
 
     /**
