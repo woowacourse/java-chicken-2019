@@ -74,4 +74,9 @@ public class OutputView {
 		System.out.println("\r\n## 최종 결제할 금액");
 		System.out.println(String.format("%1$,.0f", amount) + "원\r\n");
 	}
+	
+	public static void printOverMax() {
+		System.out.println("동일 메뉴가 99개를 넘개 주문했습니다.");
+		printMenuCountError();
+	}
 }

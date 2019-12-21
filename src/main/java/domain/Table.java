@@ -38,6 +38,14 @@ public class Table {
 		public int discountMoney() {
 			return (menuCount / 10) * 10000;
 		}
+		
+		public boolean isSame(Menu menu) {
+			return menu.getName().equals(myMenu.getName());
+		}
+		
+		public int getMenuCount() {
+			return this.menuCount;
+		}
 	}
 
 	private ArrayList<TableMenu> menuList;
@@ -108,5 +116,25 @@ public class Table {
 
 	public void clear() {
 		this.menuList.clear();
+	}
+	
+	public boolean hasSameMenu(Menu menu) {
+		boolean check = false;
+		
+		for (TableMenu m : menuList) {
+			check = m.isSame(menu);
+		}
+		return check;
+	}
+	
+	public int getSameMenuCount(Menu menu) {
+		int count = 0;
+		
+		for (TableMenu m : menuList) {
+			if (m.isSame(menu)) {
+				count = m.getMenuCount();
+			}
+		}
+		return count;
 	}
 }

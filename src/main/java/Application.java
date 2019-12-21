@@ -55,7 +55,7 @@ public class Application {
 		OutputView.printMenus(menus);
 		int menuNumber = Integer.parseInt(inputOrderMenu());
 		Menu myMenu = findMenu(menuNumber);
-		int menuCount = Integer.parseInt(inputMenuCount());
+		int menuCount = Integer.parseInt(inputMenuCount(myMenu));
 		tables.get(tableNumber).addMenu(myMenu, menuCount);
 	}
 	
@@ -130,23 +130,32 @@ public class Application {
 	 * 사용자가 입력한 메뉴 수량이 유효한지 검사한다.
 	 * @return 유요한 메뉴 수량
 	 */
-	private static String inputMenuCount() {
+	private static String inputMenuCount(Menu menu) {
 		String count = ProjectConstant.EMPTY;
 
 		try {
 			count = InputView.inputMenuCount();
-			checkMenuCountValidation(count);
+			checkMenuCountValidation(count, menu);
 			return count;
 		} catch (RuntimeException e) {
-			count = inputMenuCount();
+			count = inputMenuCount(menu);
 		}
 		return count;
 	}
 	
-	private static void checkMenuCountValidation(String count) {
+	private static void checkMenuCountValidation(String count, Menu menu) {
 		checkCountLength(count.length());
 		checkStringIsNum(count);
 		checkCountRange(Integer.parseInt(count));
+		checkTableMenuSum(Integer.parseInt(count), menu);
+	}
+	
+	private static void checkTableMenuSum(int count, Menu menu) {
+		if (tables.get(tableNumber).hasSameMenu(menu) && 
+				count + tables.get(tableNumber).getSameMenuCount(menu) > 99) {
+			OutputView.printOverMax();
+			throw new RuntimeException();
+		}
 	}
 
 	private static void checkCountLength(int length) {
