@@ -26,6 +26,6 @@ public class TableRepository {
         for (Table table : tables()) {
             tableNames.add(table.getNumber());
         }
-        return tableNames;
+        return Collections.unmodifiableList(tableNames);
     }
 }

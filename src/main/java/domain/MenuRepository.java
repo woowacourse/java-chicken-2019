@@ -28,6 +28,6 @@ public class MenuRepository {
         for (Menu menu : menus()) {
             menuNumbers.add(menu.getNumber());
         }
-        return menuNumbers;
+        return Collections.unmodifiableList(menuNumbers);
     }
 }
