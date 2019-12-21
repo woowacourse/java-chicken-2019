@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class TableRepository {
@@ -21,8 +22,12 @@ public class TableRepository {
     }
 
     public void order(int tableNumber, Menu menu, int amount) {
-        if (tables.get(tableNumber).order().containsKey(menu))
-            amount += tables.get(tableNumber).order().get(menu);
-        tables.get(tableNumber).order().put(menu, amount);
+        if (tables.get(tableNumber).getOrderMenu().containsKey(menu))
+            amount += tables.get(tableNumber).getOrderMenu().get(menu);
+        tables.get(tableNumber).getOrderMenu().put(menu, amount);
+    }
+
+    public HashMap<Menu, Integer> getOrderMenuList(int tableNumber) {
+        return tables.get(tableNumber).getOrderMenu();
     }
 }
