@@ -1,5 +1,7 @@
 package domain;
 
+import view.OutputView;
+
 public class Purchase {
 	private final TableOrder tableOrder;
 	private final Payment payment;
@@ -10,6 +12,16 @@ public class Purchase {
 	}
 
 	public void calculate() {
+		doPay();
+		requestToRemovePayedOrder();
+	}
 
+	private void doPay() {
+		Cost cost = payment.getCost(tableOrder);
+		OutputView.printPurchaseInfo(cost);
+	}
+
+	private void requestToRemovePayedOrder() {
+		tableOrder.removeOrdersInfo();
 	}
 }

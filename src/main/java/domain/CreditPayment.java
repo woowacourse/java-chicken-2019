@@ -2,7 +2,7 @@ package domain;
 
 public class CreditPayment implements Payment {
 	@Override
-	public void pay(Orders orders) {
-
+	public Cost getCost(TableOrder tableOrder) {
+		return null;
 	}
 }

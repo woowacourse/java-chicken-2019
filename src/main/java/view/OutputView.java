@@ -1,5 +1,6 @@
 package view;
 
+import domain.Cost;
 import domain.Menu;
 import domain.Table;
 
@@ -40,5 +41,9 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+
+    public static void printPurchaseInfo(Cost cost) {
+        System.out.println(cost);
     }
 }

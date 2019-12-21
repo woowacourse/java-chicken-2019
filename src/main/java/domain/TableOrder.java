@@ -15,4 +15,8 @@ public class TableOrder {
 	public void add(Order order) {
 		orders.add(order);
 	}
+
+	public void removeOrdersInfo() {
+		orders.removeAll();
+	}
 }
