@@ -19,7 +19,11 @@ public class Orders {
     }
 
     public int getOrderSize() {
-        return orders.size();
+        int size = orders.stream()
+                .filter(Order::isChicken)
+                .mapToInt(order -> order.quantity)
+                .sum();
+        return size;
     }
 
     public int getAmount() {
