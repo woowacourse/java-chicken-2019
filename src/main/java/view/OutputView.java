@@ -11,6 +11,7 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BOTTOM_LINE_ORDER = "└ \\ ┘";
 
     public static void printMain() {
         System.out.println("## 메인화면");
@@ -26,7 +27,7 @@ public class OutputView {
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLine(tables);
         System.out.println();
     }
 
@@ -44,6 +45,15 @@ public class OutputView {
         System.out.println();
     }
 
+    private static void printBottomLine(final List<Table> tables) {
+        for (int index = 0; index < tables.size(); index++) {
+            if (tables.get(index).getOrderMenu().size() == 0)
+                System.out.print(BOTTOM_LINE);
+            if (tables.get(index).getOrderMenu().size() != 0)
+                System.out.print(BOTTOM_LINE_ORDER);
+        }
+    }
+
     private static void printTableNumbers(final List<Table> tables) {
         for (final Table table : tables) {
             System.out.printf(TABLE_FORMAT, table);
@@ -57,7 +67,8 @@ public class OutputView {
         System.out.println("## 주문 내역");
         System.out.println("메뉴 수량 금액");
         for (Map.Entry<Menu, Integer> order : orderMenu.entrySet()) {
-            System.out.println(order.getKey().getName() + " " + order.getValue() + " " + order.getKey().getPrice());
+            Menu menu = order.getKey();
+            System.out.println(menu.getName() + " " + order.getValue() + " " + menu.getPrice());
         }
         System.out.println();
     }
