@@ -14,7 +14,6 @@ public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static int inputTableNumber(Tables tables) {
-        System.out.println("## 주문할 테이블을 선택하세요.");
         OutputView.printTables(tables.getTables());
         return Optional.of(inputAsNumber())
                 .filter(tables::isTableExist)

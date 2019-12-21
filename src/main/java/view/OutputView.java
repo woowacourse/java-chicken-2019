@@ -58,4 +58,12 @@ public class OutputView {
     public static void printTablePrices(final Table table) {
         System.out.println(table.allPrices());
     }
+
+    public static void showSelectTableAsOrder(){
+        System.out.println("## 주문할 테이블을 선택하세요.");
+    }
+
+    public static void showSelectTableAsPayment(){
+        System.out.println("## 결제할 테이블을 선택하세요.");
+    }
 }
