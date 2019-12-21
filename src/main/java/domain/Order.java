@@ -16,4 +16,8 @@ public class Order {
     public String toString() {
     	return menu.toName() + " " + menuCount.toInteger() + " " + toOrderPrice();
     }
+    
+    public Menu toMenu() {
+    	return menu; 
+    }
 }

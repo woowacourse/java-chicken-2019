@@ -14,7 +14,7 @@ public class OutputView {
     private static final String PAY_LINE = "└ ₩ ┘";
     
     public static void printFunction() {
-    	System.out.println("###메인화면\n1 - 주문등록\n2 - 결제하기\n3 - 프로그램 종료\n");
+    	System.out.println("## 메인화면\n1 - 주문등록\n2 - 결제하기\n3 - 프로그램 종료\n");
     }
 
     public static void printTables(final List<Table> tables) {
@@ -75,7 +75,7 @@ public class OutputView {
     }
     
     public static void printAllPrice(final Table table, final PaymentOption paymentOption) {
-    	System.out.println("n## 최종 결제할 금액");
-    	System.out.println(table.toOrders().toAllPrice()+ "\n");
+    	System.out.println("\n## 최종 결제할 금액");
+    	System.out.println(table.toOrders().toAllPrice(paymentOption)+ "\n");
     }
 }

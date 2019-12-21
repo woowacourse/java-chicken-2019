@@ -15,7 +15,7 @@ public class InputView {
     
     public static FunctionNumber inputFunctionNumber() {
 		try {
-			System.out.println("###원하는 기능을 선택하세요.");
+			System.out.println("## 원하는 기능을 선택하세요.");
 			FunctionNumber functionNumber = new FunctionNumber(Integer.parseInt(scanner.nextLine()));
 			System.out.println();
 			return functionNumber;

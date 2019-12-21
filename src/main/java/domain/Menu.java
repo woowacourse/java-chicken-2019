@@ -29,4 +29,8 @@ public class Menu {
     public int toPrice() {
     	return price;
     }
+    
+    public Category toCategory() {
+    	return category;
+    }
 }

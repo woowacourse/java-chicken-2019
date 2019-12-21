@@ -10,15 +10,23 @@ public class Application {
     	do {
     		OutputView.printFunction();
     		functionNumber = InputView.inputFunctionNumber();
-    		
-    		if (functionNumber.isOne()) {
-    			GetOrder getOrder = new GetOrder();
-    			getOrder.run();
-    		}
-    		if (functionNumber.isTwo()) {
-    			Payment payment = new Payment();
-    			payment.run();
-    		}
+
+    		initiateGetOrder(functionNumber);
+    		initiatePayment(functionNumber);
     	} while (!functionNumber.isThree());
+    }
+    
+    public static void initiateGetOrder(FunctionNumber functionNumber) {
+    	if (functionNumber.isOne()) {
+    		GetOrder getOrder = new GetOrder();
+    		getOrder.run();
+    	}
+    }
+    
+    public static void initiatePayment(FunctionNumber functionNumber) {
+    	if (functionNumber.isTwo()) {
+    		Payment payment = new Payment();
+    		payment.run();
+    	}
     }
 }

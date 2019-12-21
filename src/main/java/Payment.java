@@ -1,6 +1,5 @@
 import java.util.List;
 
-import domain.PaymentOption;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
@@ -14,5 +13,6 @@ public class Payment {
 		OutputView.printOrderList(table);
 		OutputView.printPayingProcess(table);
 		OutputView.printAllPrice(table, InputView.inputPaymentOption());
+		table.toOrders().removeOrders();
 	}
 }

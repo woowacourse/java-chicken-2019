@@ -11,4 +11,8 @@ public class PaymentOption {
 			throw new IllegalArgumentException("입력 번호는 1(신용카드), 2(현금)번만 가능합니다.");
 		}
 	}
+	
+	public boolean isCash() {
+		return value == cash;
+	}
 }
