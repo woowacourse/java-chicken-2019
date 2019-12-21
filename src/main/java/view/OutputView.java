@@ -37,4 +37,9 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public static void mainView() {
+        System.out.println("## 메인화면");
+        System.out.println("1 - 주문등록\n2 - 결제하기\n3 - 프로그램종료\n");
+    }
 }
