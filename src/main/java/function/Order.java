@@ -18,6 +18,6 @@ public class Order {
 
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
-        OutputView.printInputMenu();
+        InputView.InputMenu();
     }
 }
