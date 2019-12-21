@@ -9,7 +9,8 @@ public class Order {
         this.num = num;
     }
 
-    public int price() {
+    public int price()
+    {
         return menu.price() * num;
     }
 
