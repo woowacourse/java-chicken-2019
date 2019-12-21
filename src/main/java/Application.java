@@ -68,10 +68,11 @@ public class Application {
                 }
 
                 for(int i = 0 ; i < menuCount ; i++){
+                    System.out.println(MenuRepository.getMenu(menuNumber));
                     tables.get(tableNumber).addMenu(MenuRepository.getMenu(menuNumber));
                 }
 
-                OutputView.checkOrder[tableNumber] = true;
+                OutputView.checkOrder[TableRepository.getTableListIndex(tableNumber)] = true;
             }
 
             if(funcNumber == 2){
@@ -82,6 +83,7 @@ public class Application {
                 int paymentNumber = InputView.inputPaymentNumber();
                 int totalPayment = calcPayment(tableNumber, paymentNumber);
                 OutputView.printTotalPayment(totalPayment);
+                OutputView.checkOrder[TableRepository.getTableListIndex(tableNumber)] = false;
             }
 
 

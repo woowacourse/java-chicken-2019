@@ -38,9 +38,11 @@ public class Table {
     }
 
     public String getMenuHistoryStr(){
+        System.out.println("여기까지 들어옴");
         String menuHistory = "";
-        for(int i = 0 ; i  < menuList.size() ; i++){
-            menuHistory += menuList.get(i).toString() + "\n";
+        System.out.println("size : " + this.menuList.size());
+        for(int i = 0 ; i  < this.menuList.size() ; i++){
+            menuHistory += this.menuList.get(i).toString() + "\n";
         }
         return menuHistory;
     }

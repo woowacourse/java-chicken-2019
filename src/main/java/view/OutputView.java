@@ -8,7 +8,7 @@ import java.util.List;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
-    private static final String TABLE_FORMAT = "| %s |";
+    private static final String TABLE_FORMAT = "|  %s  |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
     private static final String REGISTER_BOTTOM_LINE = "└ \\ ┘";
     public static boolean[] checkOrder;
@@ -44,7 +44,7 @@ public class OutputView {
 
     private static void printBottomLine(final int count){
         for (int index = 0; index < count; index++) {
-            System.out.println(checkOrderFunc(index));
+            System.out.print(checkOrderFunc(index));
         }
         System.out.println();
     }
@@ -68,7 +68,9 @@ public class OutputView {
     }
 
     public static void printOrderHistory(int tableNumber){
+        System.out.println("## 주문내역");
         System.out.println("메뉴 | 메뉴번호 | 수량 | 금액");
+        System.out.println(TableRepository.getSelectTable(tableNumber));
         System.out.println(TableRepository.getSelectTable(tableNumber).getMenuHistoryStr());
     }
 

@@ -39,6 +39,15 @@ public class TableRepository {
         return null;
     }
 
+    public static int getTableListIndex(int tableNumber){
+        for(int i = 0 ; i < tables.size() ; i++){
+            if(tables.get(i).getNumber() == tableNumber){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public static boolean existTableNumber(int tableNumber){
 
         for(int i = 0 ; i < tables.size() ; i++){
