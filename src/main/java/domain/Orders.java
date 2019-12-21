@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Orders {
-	private final List<Menu> orders = new ArrayList<>();
+	private final List<Order> orders = new ArrayList<>();
 	
-	public void addOrder() {
-		
+	public void addOrder(Order order) {
+		orders.add(order);
+	}
+	
+	public boolean hasNotOrder() {
+		return orders.isEmpty();
 	}
 }

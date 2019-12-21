@@ -1,7 +1,7 @@
 import java.util.List;
 
-import domain.Menu;
 import domain.MenuRepository;
+import domain.Order;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
@@ -13,6 +13,8 @@ public class GetOrder {
 	public void run() {
 		Table table = InputView.inputTableNumber();
 		OutputView.printMenus(MenuRepository.menus());
-		Menu menu = InputView.inputMenuNumber();
+		Order order = new Order(InputView.inputMenuNumber(), InputView.inputMenuCount());
+		
+		table.getOrders().addOrder(order);
 	}
 }

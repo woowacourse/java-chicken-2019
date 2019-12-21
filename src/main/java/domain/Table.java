@@ -16,4 +16,8 @@ public class Table {
 	public boolean isSame(Table compare) {
 		return Integer.toString(number).equals(compare.toString());
 	}
+	
+	public Orders getOrders() {
+		return orders;
+	}
 }

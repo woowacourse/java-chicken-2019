@@ -9,6 +9,7 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String PAY_LINE = "└ ₩ ┘";
     
     public static void printFunction() {
     	System.out.println("###메인화면\n1 - 주문등록\n2 - 결제하기\n3 - 프로그램 종료\n");
