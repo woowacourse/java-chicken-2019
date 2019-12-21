@@ -16,6 +16,8 @@ public class OutputView {
     private static final String GET_ORDER = "1. 주문등록";
     private static final String PAY = "2. 결제하기";
     private static final String EXIT_PROGRAM = "3. 프로그램 종료하기";
+    private static final String ORDER_LIST = "## 주문 내역";
+    private static final String MENU_QUANTITY_PRICE = "메뉴 수량 금액";
     private static final Scanner scanner = new Scanner(System.in);
     
     public static void printMain() {
@@ -67,5 +69,21 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+    
+    public static void printOrderedList(List<Table> tables, int tableNumber, List<Menu> menus) {
+    	for (Table table : tables) {
+    		if (tableNumber == table.getTableNumber()) {
+    			System.out.println(ORDER_LIST);
+    			System.out.println(MENU_QUANTITY_PRICE);
+    			printMenuQuantityPrice(table.printOrderList(menus));
+    		}
+    	}
+    }
+    
+    private static void printMenuQuantityPrice(List<String> orderList) {
+    	for (String order : orderList) {
+    		System.out.println(order);
+    	}
     }
 }

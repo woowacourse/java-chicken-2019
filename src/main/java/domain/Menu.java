@@ -25,4 +25,12 @@ public class Menu {
     public boolean isPresentMenu(int registeredMenu) {
     	return this.number == registeredMenu;
     }
+    
+    public String getName() {
+    	return this.name;
+    }
+    
+    public int getPrice() {
+    	return this.price;
+    }
 }

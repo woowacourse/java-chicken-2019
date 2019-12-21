@@ -1,6 +1,8 @@
 package domain;
 
 import domain.TableRepository;
+import view.InputView;
+import view.OutputView;
 import domain.Table;
 import domain.Menu;
 import domain.MenuRepository;
@@ -18,6 +20,7 @@ public class Payment {
 			System.out.println("결제를 진행할 테이블이 없습니다.");
 			return;
 		}
-		
+		final int tableNumber = InputView.inputTableNumber();
+		OutputView.printOrderedList(tables, tableNumber, menus);
 	}
 }

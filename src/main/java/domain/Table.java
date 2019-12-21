@@ -53,6 +53,18 @@ public class Table {
     	}
     	return -1;
     }
+    
+    public List<String> printOrderList(List<Menu> menus) {
+    	List<String> orderList = new ArrayList<>();
+    	for (OrderedQuantity orderedQuantity : orderedQuantities) {
+    		if (orderedQuantity.getQuantity() == 0) {
+    			continue;
+    		} else if (orderedQuantity.getQuantity() > 0) {
+    			orderList.add(orderedQuantity.getNameAndQuantityAndPrice(menus));
+    		}
+    	}
+    	return orderList;
+    }
 
     @Override
     public String toString() {

@@ -1,5 +1,10 @@
 package domain;
 
+import domain.MenuRepository;
+
+import java.util.List;
+import java.util.ArrayList;
+
 public class OrderedQuantity {
 	private static final int MAX_FOOD_QUANTITY = 99;
 	private int foodNumber;
@@ -24,5 +29,17 @@ public class OrderedQuantity {
 	
 	public int getQuantity() {
 		return this.foodQuantity;
+	}
+	
+	public String getNameAndQuantityAndPrice(List<Menu> menus) {
+		String name = "";
+		int price = 0;
+		for (Menu menu : MenuRepository.menus()) {
+			if (menu.getFoodNumber() == foodNumber) {
+				name = menu.getName();
+				price = menu.getPrice();
+			}
+		}
+		return name + " " + foodQuantity + " " + price;
 	}
 }
