@@ -14,4 +14,15 @@ public class Order {
 	public boolean isTableEquals(int tableNumber) {
 		return table.getNumber() == tableNumber;
 	}
+
+	public String menuAccounts() {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(menu.getName());
+		stringBuilder.append("\t");
+		stringBuilder.append(menuAmount.getAmount());
+		stringBuilder.append("\t");
+		stringBuilder.append(menu.getPrice() * menuAmount.getAmount());
+		stringBuilder.append("\n");
+		return stringBuilder.toString();
+	}
 }

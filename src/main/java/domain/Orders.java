@@ -21,4 +21,13 @@ public class Orders {
 		}
 		return false;
 	}
+
+	public String getMenuAccounts(int tableNumber) {
+		for (Order order : orders) {
+			if (order.isTableEquals(tableNumber)) {
+				return order.menuAccounts();
+			}
+		}
+		return null;
+	}
 }

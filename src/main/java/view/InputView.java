@@ -9,7 +9,7 @@ public class InputView {
     private static final String INPUT_MENU_AMOUNT_MESSAGE = "## 메뉴의 수량을 입력하세요.";
 
     public static int inputTableNumber() {
-        System.out.println("## 주문할 테이블을 선택하세요.");
+        System.out.println("## 테이블을 선택하세요.");
         return Integer.parseInt(scanner.nextLine());
     }
 

@@ -52,6 +52,7 @@ public class Pos {
 	}
 
 	private int getPayAmount(int tableNumber) {
+		OutputView.printMenuAccounts(tableNumber, orders);
 		return 0;
 	}
 }

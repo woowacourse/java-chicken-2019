@@ -15,4 +15,8 @@ public class MenuAmount {
 			throw new IllegalArgumentException("한 메뉴의 최대 수량은 99개 입니다.");
 		}
 	}
+
+	public int getAmount() {
+		return amount;
+	}
 }
