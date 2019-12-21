@@ -11,10 +11,11 @@ public class Application {
 
     public static void main(String[] args) {
         TableDeck deck = new TableDeck();
+        Orders orders = new Orders();
         int functionNumber = selectFunction();
         while (functionNumber != QUIT) {
             if (functionNumber == ORDER) {
-                Order order = placeOrder(deck);
+                orders.add(placeOrder(deck));
             }
             if (functionNumber == CHECKOUT) {
 
@@ -33,20 +34,20 @@ public class Application {
     }
 
     public static Order placeOrder(TableDeck deck) {
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables, deck);
-
+        printFullTable(deck);
         final int tableNumber = InputView.inputTableNumber();
         deck.pop(tableNumber);
-        OutputView.printTables(tables, deck);
-
+        printFullTable(deck);
         printFullMenu();
-
         Menus orderedMenus = new Menus(MenuRepository.getMenu(InputView.inputMenuNumber()),
                                        InputView.inputMenuQuantity());
         OutputView.printMenus(orderedMenus.getMenus());
-
         return new Order(new Table(tableNumber), orderedMenus);
+    }
+
+    public static void printFullTable(TableDeck deck) {
+        final List<Table> tables = TableRepository.tables();
+        OutputView.printTables(tables, deck);
     }
 
     public static void printFullMenu() {

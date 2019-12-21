@@ -1,8 +1,5 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Order {
     private final Table table;
     private Menus menus;
@@ -10,5 +7,9 @@ public class Order {
     public Order(Table table, Menus menus) {
         this.table = table;
         this.menus = menus;
+    }
+
+    public boolean isTableNumber(int tableNumber) {
+        return table.isNumber(tableNumber);
     }
 }
