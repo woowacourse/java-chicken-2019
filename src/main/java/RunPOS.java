@@ -15,11 +15,11 @@ public class RunPOS {
 
     private final Table table;
 
-    public RunPOS(int action) {
+    public RunPOS() {
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 
-        final int tableNumber = InputView.inputTableNumber(action);
+        final int tableNumber = InputView.inputTableNumber();
         table = TableRepository.getTable(tableNumber);
     }
 
@@ -32,7 +32,7 @@ public class RunPOS {
         OutputView.printMenus(menus);
 
         Menu menu = InputView.inputOrderMenu();
-        int count = InputView.inputOrderCount();
+        int count = InputView.inputOrderCount(table, menu);
         table.addMenus(menu, count);
     }
 

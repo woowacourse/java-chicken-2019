@@ -1,6 +1,8 @@
 package view;
 
+import domain.Menu;
 import domain.MenuRepository;
+import domain.Table;
 import domain.TableRepository;
 import java.util.Scanner;
 
@@ -13,7 +15,7 @@ public final class ExceptionDetect {
     /**
      * 가장 처음 주문/결제/종료 여부 입력에 대한 예외처리
      */
-    public static final int mainInputException(int action) {
+    public static final int actionInputException(int action) {
         while (action < 1 || action > 3) {
             System.out.println("1, 2, 3 중 선택해주세요.");
             action = scanner.nextInt();
@@ -21,7 +23,7 @@ public final class ExceptionDetect {
         return action;
     }
 
-    public static final int tableInputException(int number, int action) {
+    public static final int tableInputException(int number) {
         while (!TableRepository.isExists(number)) {
             System.out.println("없는 테이블 번호입니다. 위의 테이블 중 다시 선택하세요.");
             number = scanner.nextInt();
@@ -37,12 +39,12 @@ public final class ExceptionDetect {
         return number;
     }
 
-    public static final boolean orderCountException(int number) {
+    public static final boolean orderCountException(int number, Table table, Menu menu) {
         while (number < 0) {
             System.out.println("1개 이상 주문 가능합니다. 다시 선택해주세요.");
             return false;
         }
-        while (number > 99) {
+        while (number > Table.MENU_LIMIT) {
             System.out.println("99개 이상 주문 불가합니다. 다시 선택해주세요.");
             return false;
         }

@@ -8,7 +8,7 @@ public class Table {
     private final List<Menu> menus = new ArrayList<>();
     private final List<Integer> counts = new ArrayList<>();
 
-    private static final int MENU_LIMIT = 99;
+    public static final int MENU_LIMIT = 99;
 
     public Table(final int number) {
         this.number = number;
@@ -43,5 +43,9 @@ public class Table {
             int sum = menus.get(i).getPrice() * count;
             System.out.println(name + '\t'+ count + '\t' + sum);
         }
+    }
+
+    public boolean hasMenu(Menu menu) {
+        return menus.contains(menu);
     }
 }
