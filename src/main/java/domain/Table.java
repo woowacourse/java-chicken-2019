@@ -27,7 +27,8 @@ public class Table {
 	public String toStringInfo() {
 		String currentInfo = "## 주문내역\n메뉴/ 수량/ 금액\n";
 		for (Menu eachMenu: menu.keySet()) {
-			currentInfo += eachMenu.getName() + "/ " + menu.get(eachMenu) + "/ " + eachMenu.getPrice() + "\n";
+			currentInfo += eachMenu.getName() + "/ " 
+					+ menu.get(eachMenu) + "/ " + eachMenu.getPrice() + "\n";
 		}
 		return currentInfo;
 	}

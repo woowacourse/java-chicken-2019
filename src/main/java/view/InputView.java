@@ -48,20 +48,4 @@ public class InputView {
 		System.out.println("## 신용카드는 1번, 현금은 2번");
 		return scanner.nextInt();
 	}
-
-	public static void selectFeature() {
-		mainView();
-		int userInput = validMainViewInput();
-		if (userInput == 1) {
-			// 주문등록
-		}
-		if (userInput == 2) {
-			// 결제
-		}
-		if (userInput == 3) {
-			// 프로그램 종료
-			System.out.println("프로그램을 종료합니다");
-			System.exit(0);
-		}
-	}
 }
