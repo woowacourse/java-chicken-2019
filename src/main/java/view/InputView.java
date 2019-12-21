@@ -9,6 +9,16 @@ public class InputView {
 		System.out.println("## 주문할 테이블을 선택하세요.");
 		return scanner.nextInt();
 	}
+	
+	public static int inputMenu() {
+		System.out.println("## 등록할 메뉴를 선택하세요.");
+		return scanner.nextInt();
+	}
+	
+	public static int inputQuantity() {
+		System.out.println("## 메뉴의 수량을 선택하세요.");
+		return scanner.nextInt();
+	}
 
 	public static void mainView() {
 		System.out.println("## 메인화면\n1 - 주문등록\n2 - 결제하기\n3 - 프로그램 종료\n");
@@ -45,13 +55,17 @@ public class InputView {
 		}
 		if (userInput == 3) {
 			// 프로그램 종료
+			System.out.println("프로그램을 종료합니다");
+			System.exit(0);
 		}
 	}
 	
-	public static void main(String[] args) {
-		// ValidateMainView test
-		mainView();
-		int a = validMainViewInput();
-		System.out.println(a);
-	}
+	
+	
+//	public static void main(String[] args) {
+//		// ValidateMainView test
+//		mainView();
+//		int a = validMainViewInput();
+//		System.out.println(a);
+//	}
 }
