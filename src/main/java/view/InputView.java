@@ -27,5 +27,6 @@ public class InputView {
 
     public static int inputMainFeature() {
         System.out.println("## 원하는 기능을 선택하세요.");
+        return ExceptionService.handExceptionOfMainFeature();
     }
 }
