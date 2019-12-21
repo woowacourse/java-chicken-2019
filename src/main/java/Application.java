@@ -60,9 +60,17 @@ public class Application {
 
     private static void SelectTwoOption() {
         final int tableNumber = selectTable();
+        printBill(tableNumber);
+
     }
 
     private static void SelectThreeOption() {
+    }
+
+    public static void printBill(int tableNumber) {
+        System.out.println("## 주문 내역\n"
+                + "메뉴 수량 금액\n"
+                + tables.get(tableRealNumber.get(tableNumber)).toStringBill());
     }
 
 }
