@@ -8,7 +8,9 @@ import domain.Table;
 public class OutputView {
 	private static final String TOP_LINE = "┌ ─ ┐";
 	private static final String TABLE_FORMAT = "| %s |";
-	private static final String BOTTOM_LINE = "└ ─ ┘";
+	private static final String BOTTOM_LINE = "└ - ┘";
+	private static final String BOTTOM_LINE_FORMAT = "└ %s ┘";
+	private static final String WON = "￦";
 
 	public static void printMainMenu() {
 		System.out.println("## 메인화면\n"
@@ -22,7 +24,7 @@ public class OutputView {
 		final int size = tables.size();
 		printLine(TOP_LINE, size);
 		printTableNumbers(tables);
-		printLine(BOTTOM_LINE, size);
+		printOrderedTable(tables);
 	}
 
 	public static void printMenus(final List<Menu> menus) {
@@ -41,6 +43,17 @@ public class OutputView {
 	private static void printTableNumbers(final List<Table> tables) {
 		for (final Table table : tables) {
 			System.out.printf(TABLE_FORMAT, table);
+		}
+		System.out.println();
+	}
+
+	private static void printOrderedTable(final List<Table> tables) {
+		for (final Table table : tables) {
+			if (table.isUse()) {
+				System.out.printf(BOTTOM_LINE_FORMAT, WON);
+				continue;
+			}
+			System.out.print(BOTTOM_LINE);
 		}
 		System.out.println();
 	}
