@@ -35,8 +35,11 @@ public class Table {
 		return this.menus.isEmpty();
 	}
 	
-	public String orderedMenuToString() {
-		return this.name + " " + this.number + " " + this.price;
+	public List<String> orderedMenuToString() {
+		List<String> result = new ArrayList<String>();
+		for(Map.Entry<Menu, Integer> menu : menus.entrySet()) {
+			result.add(menu.getKey().getName)
+		}
 	}
 
 	@Override
