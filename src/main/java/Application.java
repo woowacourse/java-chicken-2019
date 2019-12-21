@@ -15,8 +15,7 @@ public class Application {
         OutputView.printMainScreen();
         final int functionNumber=InputView.inputFuction();
         OutputView.printTables(tables);
-
-        final int tableNumber = InputView.inputTableNumber();
+        final int tableNumber = InputView.inputTableNumber(tables);
 
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);

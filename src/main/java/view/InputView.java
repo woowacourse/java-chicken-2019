@@ -1,15 +1,20 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 import Controller.SelectControl;
+import domain.Table;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int inputTableNumber() {
+    public static int inputTableNumber(final List<Table> tables) {
 	System.out.println("## 주문할 테이블을 선택하세요.");
-	
-	return scanner.nextInt();
+	int tmpNum=SelectControl.checkTableSelect(scanner.nextLine(),tables);
+	while(tmpNum==-1) {
+	    tmpNum=SelectControl.checkTableSelect(scanner.nextLine(),tables);
+	}
+	return tmpNum;
         
         
     }
