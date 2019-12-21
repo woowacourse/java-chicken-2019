@@ -20,6 +20,7 @@ public class Application {
 
     public static void main(String[] args) {
         while (doMainService() != EXIT) ;
+        OutputView.printExit();
     }
 
     private static int doMainService() {

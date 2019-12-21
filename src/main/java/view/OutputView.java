@@ -44,6 +44,10 @@ public class OutputView {
         System.out.println("## " + table.toString() + "번 테이블의 결제를 진행합니다.");
     }
 
+    public static void printExit() {
+        System.out.println("프로그램을 종료합니다.");
+    }
+
     private static void printTopLine(final List<Table> tables) {
         for (Table table : tables) {
             System.out.print(TOP_LINE);
