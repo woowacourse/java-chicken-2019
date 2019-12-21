@@ -20,4 +20,9 @@ public class Table {
     public boolean isEqualNumber(int inputNumber) {
         return this.number == inputNumber;
     }
+
+    public boolean hasMenu() {
+        return menus.size() > 0;
+    }
+
 }

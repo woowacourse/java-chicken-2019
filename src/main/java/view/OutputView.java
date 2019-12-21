@@ -3,21 +3,23 @@ package view;
 import domain.MainMenu;
 import domain.Menu;
 import domain.Table;
+import domain.Tables;
 
 import java.util.List;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
+    private static final String TABLE_ORDERED_FORMAT = "└ ￦ ┘";
     private static final String BOTTOM_LINE = "└ ─ ┘";
-    public static final String SPACEBAR = "";
 
-    public static void printTables(final List<Table> tables) {
+    public static void printTables(final Tables tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLine(tables);
+        // printLine(BOTTOM_LINE, size);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -31,7 +33,7 @@ public class OutputView {
         for (final MainMenu mainMenu : mainMenus) {
             System.out.println(mainMenu);
         }
-        printSpacebar();
+        System.out.println();
     }
 
     public static void printInputMenuNumberException() {
@@ -49,15 +51,28 @@ public class OutputView {
         System.out.println();
     }
 
-    private static void printTableNumbers(final List<Table> tables) {
-        for (final Table table : tables) {
-            System.out.printf(TABLE_FORMAT, table);
-        }
+    private static void printTableNumbers(Tables tables) {
+        tables.orderPrintTableNumbers();
+
         System.out.println();
     }
 
-    private static void printSpacebar() {
-        System.out.println(SPACEBAR);
+    public static void printTableNumber(Table table) {
+        System.out.printf(TABLE_FORMAT, table);
     }
+
+    private static void printBottomLine(Tables tables) {
+        tables.orderPrintBottomState();
+        System.out.println();
+    }
+
+    public static void printOrderedFormat() {
+        System.out.print(TABLE_ORDERED_FORMAT);
+    }
+
+    public static void printBottomLine() {
+        System.out.print(BOTTOM_LINE);
+    }
+
 
 }
