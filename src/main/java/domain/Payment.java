@@ -3,6 +3,8 @@ package domain;
 import view.InputView;
 import view.OutputView;
 
+import java.util.List;
+
 public class Payment {
     static final int DISCOUNT_PER_10CHICKEN = 10000;
     Table table;
@@ -15,6 +17,8 @@ public class Payment {
     }
 
     public void pay() {
+        if (!validateOrderedMenu())
+            return;
         paymentMethod = getPaymentMethod();
         int totalPrice = table.getTotalPrice();
         totalPrice -= getChickenDiscount();
@@ -49,5 +53,13 @@ public class Payment {
 
     private int getCashDiscount(int totalPrice) {
         return  (int) (totalPrice * 0.95);
+    }
+
+    private boolean validateOrderedMenu() {
+        if (table.getTableMenuCount() <= 0) {
+            System.out.println("주문 내역이 없습니다.\n");
+            return false;
+        }
+        return true;
     }
 }
