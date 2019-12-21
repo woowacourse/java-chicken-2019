@@ -21,9 +21,12 @@ public class TableRepository {
     }
 
     public static boolean existTableNumber(int tableNumber){
-        if(tables.get(tableNumber) == null){
-            return false;
+
+        for(int i = 0 ; i < tables.size() ; i++){
+            if(tables.get(i).getNumber() == tableNumber){
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 }
