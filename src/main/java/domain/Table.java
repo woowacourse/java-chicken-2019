@@ -1,6 +1,7 @@
 package domain;
 
 public class Table {
+    private static final int CASH_NUMBER = 2;
     private final int number;
     private Menus menus;
 
@@ -23,6 +24,14 @@ public class Table {
     
     public String getMenusString() {
         return menus.toString();
+    }
+    
+    public double getFinalPrice(int paymentNumber) {
+        if (paymentNumber == CASH_NUMBER) {
+            return menus.calculatePrice() * 0.95;
+        }
+        
+        return menus.calculatePrice();
     }
 
     @Override

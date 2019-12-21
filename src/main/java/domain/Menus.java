@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class Menus {
     private static final int CHICKEN_DISCOUNT_PRICE = 10_000;
+    private static final int PER_DISCOUNT_NUMBER = 10;
     private HashMap<Menu, Integer> menus;
     
     public Menus() {
@@ -38,8 +39,9 @@ public class Menus {
     }
     
     public int calculatePrice() {
+        int discountNumber = countChicken() / PER_DISCOUNT_NUMBER;
         return calculateRawPrice() 
-                - CHICKEN_DISCOUNT_PRICE * countChicken();
+                - CHICKEN_DISCOUNT_PRICE * discountNumber;
     }
     
     public boolean isNull() {

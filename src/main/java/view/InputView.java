@@ -70,4 +70,20 @@ public class InputView {
         
         return Integer.valueOf(string);
     }
+    
+    public static int inputPayment() {
+        System.out.println("## 신용카드는 1번, 현금은 2번");
+        String string = scanner.nextLine();
+        try {
+            Validator.validateNull(string);
+        } catch (NumberFormatException e) {
+            System.err.println("숫자를 입력해주세요.");
+            return inputMenuCount();
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+            return inputMenuCount();
+        }
+        
+        return Integer.valueOf(string);
+    }
 }

@@ -8,8 +8,30 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
-    // TODO 구현 진행
+    private static final int ORDER_NUMBER = 1;
+    private static final int PAY_NUMBER = 2;
+    private static final int END_NUMBER = 3;
+    
     public static void main(String[] args) {
+        start();
+    }
+    
+    private static void start() {
+        int methodNumber = InputView.inputMethodNumber();
+        if (methodNumber == ORDER_NUMBER) {
+            order();
+            start();
+        }
+        if (methodNumber == PAY_NUMBER) {
+            pay();
+            start();
+        }
+        if (methodNumber == END_NUMBER) {
+            return;
+        }
+    }
+    
+    private static void order() {
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 
@@ -17,5 +39,22 @@ public class Application {
 
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
+        
+        int menuNumber = InputView.inputMenuNumber();
+        int menuCount = InputView.inputMenuCount();
+        
+        TableRepository.addMenuToTable(tableNumber, menuNumber, menuCount);
+    }
+    
+    private static void pay() {
+        final List<Table> tables = TableRepository.tables();
+        OutputView.printTables(tables);
+
+        final int tableNumber = InputView.inputTableNumber();
+        
+        OutputView.printTableOrder(TableRepository.getTableByNumber(tableNumber));
+        OutputView.printTablepay(TableRepository
+                .getTableByNumber(tableNumber), InputView.inputPayment());
+        
     }
 }
