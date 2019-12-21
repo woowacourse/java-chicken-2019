@@ -8,4 +8,8 @@ public class Order {
 		this.menu = menu;
 		this.quantity = quantity;
 	}
+
+	public Cost getCost() {
+		return menu.calculateCost(quantity);
+	}
 }

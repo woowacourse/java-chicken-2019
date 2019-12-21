@@ -17,7 +17,7 @@ public class Purchase {
 	}
 
 	private void doPay() {
-		Cost cost = payment.getCost(tableOrder);
+		Cost cost = payment.getPayedCost(tableOrder);
 		OutputView.printPurchaseInfo(cost);
 	}
 

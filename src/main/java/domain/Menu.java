@@ -17,6 +17,10 @@ public class Menu {
         return number == menuNumber;
     }
 
+    public Cost calculateCost(int quantity) {
+        return new Cost(price * quantity);
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";

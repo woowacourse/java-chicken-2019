@@ -19,4 +19,8 @@ public class TableOrder {
 	public void removeOrdersInfo() {
 		orders.removeAll();
 	}
+
+	public Cost getAllOriginCost() {
+		return orders.getAllCost();
+	}
 }

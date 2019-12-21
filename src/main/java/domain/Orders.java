@@ -16,4 +16,12 @@ public class Orders {
 		}
 		System.out.println("<<<<<<<<<<<<<<삭제 되면 사이즈 값 0 나와야해  " + orders.size());
 	}
+
+	public Cost getAllCost() {
+		Cost cost = Cost.ZERO;
+		for (Order order : orders) {
+			cost = cost.add(order.getCost());
+		}
+		return cost;
+	}
 }
