@@ -18,8 +18,10 @@ public class Application {
 
     private void processOrder() {
         int tableNumber = tableMenu(tables);
-        menuMenu(menus);
-        quantityMenu();
+        int menuNumber = menuMenu(menus);
+        int quantityNumber = quantityMenu();
+        Table orderTable = TableRepository.selectTable(tableNumber);
+        orderTable.addOrderMenu(menuNumber, quantityNumber);
         mainMenu();
     }
 
@@ -28,6 +30,7 @@ public class Application {
         OutputView.printOrderHistory(tableNumber);
         int paymentType = paymentTypeMenu(tableNumber);
         OutputView.printTotalOrder(tableNumber, paymentType);
+        // 테이블 클리어
         mainMenu();
     }
 

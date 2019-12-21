@@ -39,7 +39,7 @@ public class OutputView {
     }
 
     public static void printTotalOrder(int tableNumber, int paymentType) {
-        System.out.println("\n최종 결제할 금액");
+        System.out.println("\n## 최종 결제할 금액");
         // 출력하기 최종 결제 금액
     }
 

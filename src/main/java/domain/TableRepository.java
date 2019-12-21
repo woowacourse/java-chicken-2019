@@ -1,8 +1,6 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class TableRepository {
     private static final List<Table> tables = new ArrayList<>();
@@ -26,5 +24,21 @@ public class TableRepository {
             tablesNumber.add(Integer.parseInt(table.toString()));
         }
         return tablesNumber;
+    }
+
+    public static Table selectTable(int tableNumber) {
+        Set<Table> selectTable = new HashSet<Table>();
+        for (Table table : tables) {
+            selectTable.add(compareTable(table, tableNumber));
+        }
+        selectTable.remove(null);
+        return selectTable.iterator().next();
+    }
+
+    public static Table compareTable(Table table, int tableNumber) {
+        if (Integer.parseInt(table.toString()) == tableNumber) {
+            return table;
+        }
+        return null;
     }
 }
