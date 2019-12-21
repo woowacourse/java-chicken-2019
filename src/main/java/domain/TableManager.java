@@ -14,18 +14,18 @@ public class TableManager {
     private boolean[] tableStatus = new boolean[tables.size()];
 
     private void selectTable(int tableNumber) {
-        int index = TableRepository.searchTableIndex(tableNumber);
+        int index = TableRepository.search(tableNumber);
         tableStatus[index] = true;
         OutputView.printTableSelectSuccess(tableNumber);
     }
 
     public void clearTable(int tableNumber) {
-        int index = TableRepository.searchTableIndex(tableNumber);
+        int index = TableRepository.search(tableNumber);
         tableStatus[index] = false;
     }
 
     private boolean isUsableTable(int tableNumber) {
-        int index = TableRepository.searchTableIndex(tableNumber);
+        int index = TableRepository.search(tableNumber);
         return tableStatus[index];
     }
 
@@ -39,7 +39,7 @@ public class TableManager {
         return Integer.parseInt(input);
     }
 
-    public void choiceTable() {
+    public void selectTable() {
         OutputView.printTables(tables);
         int tableNumber = inputTableNumber();
 
