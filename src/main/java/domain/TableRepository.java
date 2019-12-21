@@ -19,4 +19,9 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static Table findByNumber(int tableNumber) {
+        // TODO: 예외처리
+        return tables().stream().filter(menu -> menu.getNumber() == tableNumber).findFirst().get();
+    }
 }
