@@ -28,4 +28,8 @@ public class Table {
     public List<Order> orders() {
         return Collections.unmodifiableList(orders);
     }
+
+    public boolean hasOrder() {
+        return !orders.isEmpty();
+    }
 }
