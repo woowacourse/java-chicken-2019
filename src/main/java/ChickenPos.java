@@ -65,24 +65,23 @@ public class ChickenPos {
             table.addOrder(order);
         } catch (NoSuchElementException | IllegalArgumentException e) {
             OutputView.printErrorLog(e.getMessage());
-            mainMenu();
+            doOrder(table);
         }
     }
 
     private void doPayment(Table table) {
         if (table.hasNotOrders()) {
             OutputView.printNoOrders();
-            doSelection(PAYMENT);
-        }
-
-        PaymentPolicyDTO paymentPolicyDTO = inputPaymentPolicy(table);
-        if (paymentPolicyDTO == null) {
+            mainMenu();
             return;
         }
 
-        Payment payment = table.toPayment(paymentPolicyDTO);
-        OutputView.printFinalPrice(DiscountGroup.getDiscountPrice(payment));
-        table.clear();
+        PaymentPolicyDTO paymentPolicyDTO = inputPaymentPolicy(table);
+        if (paymentPolicyDTO != null) {
+            Payment payment = table.toPayment(paymentPolicyDTO);
+            OutputView.printFinalPrice(DiscountGroup.getDiscountPrice(payment));
+            table.clear();
+        }
     }
 
     private PaymentPolicyDTO inputPaymentPolicy(Table table) {
