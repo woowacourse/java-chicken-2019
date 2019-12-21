@@ -40,14 +40,18 @@ public class Application {
 			return mainMenuNumber;
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
+			return 0;
 		}
-		return 0;
 	}
 
 	private static void orderMenu() {
 		try {
 			OutputView.printTables(tables);
 			final int tableNumber = InputView.inputTableNumber();
+			if (TableRepository.getTable(tableNumber) == null) {
+				System.err.println("존재하지 않는 테이블입니다.");
+				return;
+			}
 			OutputView.printMenus(menus);
 			final int selectedMenu = InputView.inputMenuSelect();
 			final int menuCount = InputView.inputMenuCount();

@@ -12,7 +12,7 @@ public class InputView {
 		System.out.println("## 테이블을 선택하세요.");
 		int tableNumber = 0;
 		try {
-			tableNumber = scanner.nextInt();
+			tableNumber = Integer.parseInt(scanner.nextLine());
 		} catch (Exception e) {
 			throw new Exception("잘못된 입력입니다.");
 		}
@@ -23,7 +23,7 @@ public class InputView {
 		System.out.println("## 원하는 기능을 선택하세요.");
 		int menuNumber = 0;
 		try {
-			menuNumber = scanner.nextInt();
+			menuNumber = Integer.parseInt(scanner.nextLine());
 		} catch (Exception e) {
 			throw new Exception("잘못된 입력입니다.");
 		}
@@ -34,7 +34,7 @@ public class InputView {
 		System.out.println("## 신용카드는 1번, 현금은 2번");
 		int menuNumber = 0;
 		try {
-			menuNumber = scanner.nextInt();
+			menuNumber = Integer.parseInt(scanner.nextLine());
 			if(menuNumber != PAYMENT_CASH && menuNumber != PAYMENT_CREDITCARD) {
 				throw new Exception("잘못된 입력입니다.");
 			}
@@ -48,7 +48,7 @@ public class InputView {
 		System.out.println("## 등록할 메뉴를 선택하세요");
 		int menuNumber = 0;
 		try {
-			menuNumber = scanner.nextInt();
+			menuNumber = Integer.parseInt(scanner.nextLine());
 		} catch (Exception e) {
 			throw new Exception("잘못된 입력입니다.");
 		}
@@ -59,7 +59,7 @@ public class InputView {
 		System.out.println("## 메뉴의 수량을 입력하세요");
 		int menuCount = 0;
 		try {
-			menuCount = scanner.nextInt();
+			menuCount = Integer.parseInt(scanner.nextLine());
 		} catch (Exception e) {
 			throw new Exception("잘못된 입력입니다.");
 		}
