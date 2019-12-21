@@ -1,5 +1,5 @@
 /*
- * @(#)MenuQuantity.java        0.1 2019.12.21
+ * @(#)MenuQuantity.java        0.2 2019.12.21
  *
  * Copyright (c) 2019 lxxjn0
  */
@@ -12,8 +12,6 @@ public class MenuQuantity {
     private static final int MAX_QUANTITY = 99;
 
     private final int menuQuantity;
-
-    public static final MenuQuantity ZERO = new MenuQuantity(ZERO_MENU_QUANTITY);
 
     public MenuQuantity(int menuQuantity) {
         isValid(menuQuantity);

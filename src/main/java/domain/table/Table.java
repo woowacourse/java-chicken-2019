@@ -1,10 +1,10 @@
 /*
- * @(#)Table.java       0.4 2019.12.21
+ * @(#)Table.java       0.5 2019.12.21
  *
  * Copyright (c) 2019 lxxjn0
  */
 
-package domain;
+package domain.table;
 
 import domain.menu.Menu;
 import domain.menu.MenuQuantity;
@@ -23,7 +23,8 @@ public class Table {
     }
 
     public void addOrderMenu(Menu menu, int menuCount) {
-        setPaymentStatus();
+        setNonCompletePayment();
+
         if (menuStatus.containsKey(menu)) {
             menuStatus.put(menu, menuStatus.get(menu).addMenuQuantity(menuCount));
             return;
@@ -31,7 +32,7 @@ public class Table {
         menuStatus.put(menu, new MenuQuantity(menuCount));
     }
 
-    private void setPaymentStatus() {
+    private void setNonCompletePayment() {
         paymentStatus = false;
     }
 

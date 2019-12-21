@@ -1,3 +1,9 @@
+/*
+ * @(#)InputView.java       0.1 2019.12.21
+ *
+ * Copyright (c) 2019 lxxjn0
+ */
+
 package view;
 
 import java.util.Scanner;
@@ -22,6 +28,11 @@ public class InputView {
 
     public static int inputMenuQuantity() {
         System.out.println("## 메뉴의 수량을 입력하세요.");
+        return scanner.nextInt();
+    }
+
+    public static int inputPaymentMethod() {
+        System.out.println("## 신용 카드는 1번, 현금은 2번");
         return scanner.nextInt();
     }
 }

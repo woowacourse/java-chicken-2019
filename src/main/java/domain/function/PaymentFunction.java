@@ -6,13 +6,14 @@
 
 package domain.function;
 
-import domain.Table;
+import domain.table.Table;
 import domain.menu.Menu;
 import domain.menu.MenuQuantity;
 import view.InputView;
 import view.OutputView;
 
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class PaymentFunction extends Function {
@@ -31,5 +32,17 @@ public class PaymentFunction extends Function {
 
         final HashMap<Menu, MenuQuantity> orderedMenuStatus = selectedTable.getMenuStatus();
         OutputView.printOrderedMenuStatus(orderedMenuStatus);
+
+        final int paymentMethod = getInputPaymentMethod();
     }
+
+    private int getInputPaymentMethod() {
+        try {
+            return InputView.inputPaymentMethod();
+        } catch (InputMismatchException | IllegalArgumentException e) {
+            System.out.println("결재 수단은 신용카드 1번, 현금 2번, 두가지만 가능합니다.");
+            return getInputPaymentMethod();
+        }
+    }
+
 }
