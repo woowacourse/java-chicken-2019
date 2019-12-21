@@ -32,9 +32,11 @@ public class OrderedMenus {
         return false;
     }
 
-    public void addMenu(Menu menu) {
-        orderedMenus.add(new OrderedMenu(menu));
+    public void addMenu(Menu menu, int capacity) {
+        orderedMenus.add(new OrderedMenu(menu, capacity));
     }
+
+
 
     public int  calcurateTotalPrice(){
         return orderedMenus.stream()

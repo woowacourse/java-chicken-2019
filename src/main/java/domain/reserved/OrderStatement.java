@@ -30,13 +30,14 @@ public class OrderStatement {
     }
 
     public void addTableOrderStatement(int tableNumber, OrderedMenu menu) {
-        Table table;
-        if (!contain(tableNumber)) {
-            table = new Table(tableNumber);
-            table.addMenu(menu);
-            return;
-        }
-        getTableOrderStatementBy(tableNumber).addMenu(menu);
+//        Table table;
+//        if (!contain(tableNumber)) {
+//            table = new Table(tableNumber);
+//            table.addMenu(menu, menu.getCapacity().getCapacity());
+//            return;
+//        }
+        getTableOrderStatementBy(tableNumber)
+                .addMenu(menu, menu.getCapacity().getCapacity());
     }
 
     private boolean contain(int tableIndex) {
@@ -53,6 +54,6 @@ public class OrderStatement {
 
     public void printTableOrderState(int tableId) {
         Table table = getTableOrderStatementBy(tableId);
-        
+
     }
 }

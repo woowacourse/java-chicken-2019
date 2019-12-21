@@ -28,8 +28,8 @@ public class Table {
         return orderedMenus;
     }
 
-    public void addMenu(Menu menu) {
-        orderedMenus.addMenu(menu);
+    public void addMenu(Menu menu, int capacity) {
+        orderedMenus.addMenu(menu, capacity);
     }
 
     public int getNumber() {
