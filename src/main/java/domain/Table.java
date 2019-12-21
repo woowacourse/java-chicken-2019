@@ -7,6 +7,7 @@ public class Table {
     private final int number;
     private static int orderedMenuNumber;
     private List<Menu> menus = new ArrayList<>();
+    private List<Integer> order = new ArrayList<>();
 
     public Table(final int number) {
         this.number = number;
@@ -16,11 +17,8 @@ public class Table {
         return orderedMenuNumber;
     }
 
-    public boolean getTable(int tableNumber){
-        if(tableNumber == number){
-            return true;
-        }
-        return false;
+    public int getTableNumber(){
+        return this.number;
     }
 
     @Override

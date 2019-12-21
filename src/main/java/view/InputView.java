@@ -1,6 +1,8 @@
 package view;
 
+import domain.MenuRepository;
 import domain.TableRepository;
+import domain.Menu;
 
 import java.util.Scanner;
 
@@ -23,7 +25,9 @@ public class InputView {
 
         System.out.println("## 주문할 테이블을 선택하세요.");
         tableNumber = scanner.nextInt();
-        if(TableRepository.getTablebyNumber(tableNumber).getOrderedMenuNumber()
+        if(!TableRepository.contains(tableNumber)){
+            tableNumber = inputTableNumber();
+        }else if(TableRepository.getTablebyNumber(tableNumber).getOrderedMenuNumber()
                 >= MAX_ORDER){
             System.out.println("더 이상 주문할 수 없습니다.");
             return EXIT;
@@ -32,7 +36,15 @@ public class InputView {
         return tableNumber;
     }
 
+    public static int inputMenu(){
+        int menu;
 
+        System.out.println("## 등록할 메뉴를 선택하세요.");
+        menu = scanner.nextInt();
+        if(!MenuRepository.contains(menu)){
+            menu = inputMenu();
+        }
 
-
+        return menu;
+    }
 }

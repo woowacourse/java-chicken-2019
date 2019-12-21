@@ -22,11 +22,20 @@ public class TableRepository {
 
     public static Table getTablebyNumber(int number){
         for(int i = 0; i < tables.size(); i++){
-            if(tables.get(i).getTable(number)){
+            if(tables.get(i).getTableNumber() == number){
                 return tables.get(i);
             }
         }
         return null;
+    }
+
+    public static boolean contains(int number){
+        for(int i = 0; i < tables.size(); i++){
+            if(tables.get(i).getTableNumber() == number){
+                return true;
+            }
+        }
+        return false;
     }
 
 
