@@ -11,7 +11,6 @@ import java.util.List;
 
 public class Application {
 
-    // TODO 구현 진행
     public static void main(String[] args) throws IllegalAccessException {
         List<Service> services = new ArrayList<Service>();
         services.add(new OrderRegistor(1,"주문등록"));

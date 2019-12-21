@@ -17,12 +17,12 @@ public class Table {
         return Integer.toString(number);
     }
 
-    public void addMenu(OrderedMenu menu){
+    public void addMenu(OrderedMenu menu) {
         menuList.add(menu);
     }
 
-    public boolean equals(int tableNumber){
-        if(number == tableNumber){
+    public boolean equals(int tableNumber) {
+        if (number == tableNumber) {
             return true;
         }
         return false;
