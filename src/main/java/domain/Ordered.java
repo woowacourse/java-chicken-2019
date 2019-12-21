@@ -34,6 +34,6 @@ public class Ordered {
         return orderedMenus.stream()
                 .map(Menu::getPrice)
                 .reduce(Integer::sum)
-                .orElse(0);
+                .orElse(0) - chickensDiscount();
     }
 }
