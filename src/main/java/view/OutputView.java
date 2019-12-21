@@ -11,6 +11,13 @@ public class OutputView {
     private static final String ORIGINAL_BOTTOM_LINE = "└ ─ ┘";
     private static final String BEFORE_PAYMENT_BOTTOM_LINE = "└ P ┘";
 
+    public static void printMainScreen() {
+        System.out.println("\n## 메인화면");
+        System.out.println("1 - 주문등록");
+        System.out.println("2 - 결제하기");
+        System.out.println("3 - 프로그램 종료\n");
+    }
+
     public static void printTables(final List<Table> tables) {
         System.out.println("\n## 테이블 목록");
         final int size = tables.size();
