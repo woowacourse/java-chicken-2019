@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 import domain.Menu;
 import domain.MenuAmount;
@@ -15,10 +14,10 @@ import view.OutputView;
 public class Pos {
 	private static final int ORDER_REGISTER_NUMBER = 1;
 	private static final int PAYMENT_NUMBER = 2;
-	private static final int CREDIT_CARD = 1;
 	private static final int CASH = 2;
 	private static final double CASH_DISCOUNT_AMOUNT = 0.05;
 	private static final double NO_DISCOUNT = 0.0;
+	private static final int QUIT_NUMBER = 3;
 
 	private final Orders orders;
 
@@ -42,6 +41,10 @@ public class Pos {
 			int tableNumber = InputView.inputTableNumber();
 			OutputView.printTotalPayment(getPayAmount(tableNumber));
 			orders.deleteOrder(tableNumber);
+			return;
+		}
+		if (functionNumber == QUIT_NUMBER) {
+			throw new IllegalArgumentException("프로그램 종료");
 		}
 	}
 
