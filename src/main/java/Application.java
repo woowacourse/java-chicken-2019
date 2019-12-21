@@ -17,7 +17,10 @@ import java.util.InputMismatchException;
 import java.util.List;
 
 public class Application {
-    // TODO 구현 진행
+    private static final int START_MENU_INDEX = 1;
+    private static final int MIN_FUNCTION_NUMBER = 1;
+    private static final int MAX_FUNCTION_NUMBER = 3;
+
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
@@ -26,7 +29,7 @@ public class Application {
         while (true) {
             OutputView.printFunctions();
             final int functionNumber = getInputFunctionNumber();
-            final Function selectedFunction = pos.selectFunction(functionNumber - 1);
+            final Function selectedFunction = pos.selectFunction(functionNumber - START_MENU_INDEX);
 
             selectedFunction.operateFunction();
             if (selectedFunction.getClass() == TerminateFunction.class) {
@@ -46,7 +49,7 @@ public class Application {
     }
 
     private static int isValid(int functionNumber) {
-        if (functionNumber > 3 || functionNumber < 1) {
+        if (functionNumber > MAX_FUNCTION_NUMBER || functionNumber < MIN_FUNCTION_NUMBER) {
             throw new IllegalArgumentException("입력한 기능 목록이 존재하지 않습니다. 1부터 3까지의 숫자만 입력 가능합니다.");
         }
         return functionNumber;

@@ -14,7 +14,6 @@ import domain.menu.MenuQuantity;
 import java.util.HashMap;
 
 public class Table {
-    private static final int ZERO_ORDER_AMOUNT = 0;
     private final int number;
     private boolean paymentStatus;
 

@@ -9,6 +9,8 @@ package domain.Payment;
 public class OrderAmount {
     private static final double ZERO_ORDER_AMOUNT = 0;
     private static final int CHICKEN_DISCOUNT_UNIT = 10;
+    private static final double CHICKEN_ADDITIONAL_DISCOUNT = 10000;
+    private static final double CASH_ADDITIONAL_DISCOUNT = 0.95;
 
     public static OrderAmount ZERO = new OrderAmount(ZERO_ORDER_AMOUNT);
 
@@ -31,9 +33,9 @@ public class OrderAmount {
     }
 
     public double getOrderAmount(int chickenAmount, PaymentMethod paymentMethod) {
-        final double discountAmount = (chickenAmount / CHICKEN_DISCOUNT_UNIT) * 10000;
+        final double discountAmount = (chickenAmount / CHICKEN_DISCOUNT_UNIT) * CHICKEN_ADDITIONAL_DISCOUNT;
         if (paymentMethod.isCash()) {
-            return ((this.orderAmount - discountAmount) * 0.95);
+            return ((this.orderAmount - discountAmount) * CASH_ADDITIONAL_DISCOUNT);
         }
         return this.orderAmount - discountAmount;
     }

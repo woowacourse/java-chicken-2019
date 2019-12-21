@@ -7,7 +7,6 @@
 package domain.menu;
 
 public class MenuQuantity {
-    private static final int ZERO_MENU_QUANTITY = 0;
     private static final int MIN_QUANTITY = 1;
     private static final int MAX_QUANTITY = 99;
 

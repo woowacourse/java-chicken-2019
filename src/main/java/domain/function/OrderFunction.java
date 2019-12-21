@@ -11,10 +11,12 @@ import domain.menu.Menu;
 import view.InputView;
 import view.OutputView;
 
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class OrderFunction extends Function {
     private final List<Menu> menus;
+
     public OrderFunction(List<Table> tables, List<Menu> menus) {
         super(tables);
         this.menus = menus;
@@ -43,6 +45,9 @@ public class OrderFunction extends Function {
         try {
             final int menuQuantity = InputView.inputMenuQuantity();
             selectedTable.addOrderMenu(selectedMenu, menuQuantity);
+        } catch (InputMismatchException e) {
+            System.out.println("입력을 다시 확인해주세요.");
+            addSelectedOrderMenu(selectedTable, selectedMenu);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             addSelectedOrderMenu(selectedTable, selectedMenu);

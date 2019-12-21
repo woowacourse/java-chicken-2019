@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Map;
 
 public class PaymentFunction extends Function {
-
     private static final int ZERO_CHICKEN_AMOUNT = 0;
 
     public PaymentFunction(List<Table> tables) {
@@ -50,11 +49,8 @@ public class PaymentFunction extends Function {
         try {
             int paymentMethod = InputView.inputPaymentMethod();
             return new PaymentMethod(paymentMethod);
-        } catch (InputMismatchException e) {
+        } catch (InputMismatchException | IllegalArgumentException e) {
             System.out.println("결재 수단은 신용카드 1번, 현금 2번, 두가지만 가능합니다.");
-            return getInputPaymentMethod();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
             return getInputPaymentMethod();
         }
     }
