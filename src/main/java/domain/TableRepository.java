@@ -19,4 +19,13 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static int searchTableIndex(int tableNumber) {
+        Table target = new Table(tableNumber);
+        return tables().indexOf(target);
+    }
+
+    public static boolean isExist(int tableNumber) {
+        return searchTableIndex(tableNumber) != -1;
+    }
 }
