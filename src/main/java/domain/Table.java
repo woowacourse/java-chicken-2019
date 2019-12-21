@@ -1,11 +1,14 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Table {
 	private final int number;
-	private final List<Menu> menus = new ArrayList<Menu>();
+	//private final List<Menu> menus = new ArrayList<Menu>();
+	private final Map<Menu, Integer> menus  = new HashMap<Menu,Integer>();
 
 	public Table(final int number) {
 		this.number = number;
@@ -15,13 +18,15 @@ public class Table {
 		return this.number;
 	}
 
-	public List<Menu> getMenus() {
+	public Map<Menu, Integer> getMenus() {
 		return this.menus;
 	}
 
-	public void add(Menu menu, int menuCount) {
-		for (int i = 0; i < menuCount; i++) {
-			menus.add(menu);
+	public void add(Menu inputMenu, int menuCount) {
+		for(Menu menu : menus) {
+			if(menu == inputMenu) {
+				
+			}
 		}
 		// 예외처리 필요
 	}
