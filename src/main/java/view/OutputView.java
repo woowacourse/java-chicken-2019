@@ -24,6 +24,7 @@ public class OutputView {
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
         printLine(BOTTOM_LINE, size);
+        System.out.println();
     }
 
     public static void printMenus(final List<Menu> menus) {
