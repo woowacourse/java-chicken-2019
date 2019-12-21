@@ -21,4 +21,16 @@ public class MainFeatureInputNumber {
     private static boolean isValid(String inputString) {
         return isNumeric(inputString) && isFeatureNumber(inputString);
     }
+
+    private static boolean isNumeric(String inputString) {
+        Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+        if (inputString == null) {
+            return false;
+        }
+        if (!pattern.matcher(inputString).matches()) {
+            OutputView.printIsNotNumberError();
+            return false;
+        }
+        return true;
+    }
 }
