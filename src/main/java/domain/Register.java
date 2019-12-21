@@ -13,7 +13,7 @@ public class Register {
 		final int tableNumber = InputView.inputTableNumber();
 		OutputView.printMenus(menus);
 		orderMenu = InputView.inputRegisterMenu();
-		orderQuantity = InputView.inputOrderQuantity(tables);
+		orderQuantity = InputView.inputOrderQuantity(tables, tableNumber);
 		for (Table table : tables) {
 			if (table.getTableNumber() == tableNumber) {
 				table.registerMenuQuantity(orderMenu, orderQuantity, tableNumber);

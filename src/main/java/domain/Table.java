@@ -45,7 +45,7 @@ public class Table {
     public int isOrderedTable() {
     	if (orderedQuantities.stream()
 				.mapToInt(OrderedQuantity::getQuantity)
-				.sum() > NO_QUANTITY) {
+				.sum() > 0) {
     		return this.number;
     	}
     	return -1;

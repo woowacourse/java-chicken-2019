@@ -83,23 +83,25 @@ public class InputView {
 		return status;
 	}
 
-	public static int inputOrderQuantity(List<Table> tables) {
+	public static int inputOrderQuantity(List<Table> tables, int tableNumber) {
 		System.out.println("## 메뉴의 수량을 입력하세요.");
 		String orderQuantity = scanner.nextLine();
 		if (!Pattern.matches(NOT_NUMBER_PATTERN, orderQuantity)) {
 			System.err.println("주문할 음식의 수량을 숫자로 입력해주세요.");
-			return inputOrderQuantity(tables);
-		} else if (isOverQuantity(Integer.parseInt(orderQuantity), tables)) {
+			return inputOrderQuantity(tables, tableNumber);
+		} else if (isOverQuantity(Integer.parseInt(orderQuantity), tables, tableNumber)) {
 			System.err.println("해당 음식을 주문할 수 있는 최대 수량(99개)을 넘겼습니다. 다시 입력해주세요");
-			return inputOrderQuantity(tables);
+			return inputOrderQuantity(tables, tableNumber);
 		}
 		return Integer.parseInt(orderQuantity);
 	}
 
-	private static boolean isOverQuantity(int orderQuantity, List<Table> tables) {
+	private static boolean isOverQuantity(int orderQuantity, List<Table> tables, int tableNumber) {
 		boolean status = false;
 		for (Table table : tables) {
-			status = status || table.isOverQuantity(orderQuantity);
+			if (table.getTableNumber() == tableNumber) {
+				status = status || table.isOverQuantity(orderQuantity);
+			}
 		}
 		return status;
 	}
