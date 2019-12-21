@@ -18,6 +18,7 @@ public class InputView {
 		System.out.println("## 원하는 기능을 선택하세요");
 		return scanner.nextInt();
 	}
+	
 	public static int validMainViewInput() {
 		int userInput = 0;
 		try {
@@ -33,6 +34,20 @@ public class InputView {
 		return userInput;
 	}
 
+	public static void selectFeature() {
+		mainView();
+		int userInput = validMainViewInput();
+		if (userInput == 1) {
+			// 주문등록
+		}
+		if (userInput == 2) {
+			// 결제
+		}
+		if (userInput == 3) {
+			// 프로그램 종료
+		}
+	}
+	
 	public static void main(String[] args) {
 		// ValidateMainView test
 		mainView();
