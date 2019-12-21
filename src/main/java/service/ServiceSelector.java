@@ -9,13 +9,13 @@ public class ServiceSelector {
         this.services = services;
     }
 
-    public Service selectService(int number) throws IllegalAccessException {
+    public Service selectService(int number) {
         for(Service service : services){
             if(service.isCalled(number)){
                 return service;
             }
         }
-        throw new IllegalAccessException("올바르지 않은 기능 번호 입니다");
+        return null;
     }
 
 }

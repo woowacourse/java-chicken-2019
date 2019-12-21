@@ -1,13 +1,17 @@
 package service;
 
+import domain.Table;
+
+import java.util.List;
+
 public class ProgramFinisher extends Service {
 
-    public ProgramFinisher(int number, String name) {
-        super(number, name);
+    public ProgramFinisher() {
+        super(3, "프로그램 종료");
     }
 
-    public boolean run(){
-        return false;
+    public void run(List<Table> tables) {
+        System.exit(0);
     }
 
 }

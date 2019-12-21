@@ -11,11 +11,11 @@ import java.util.List;
 
 public class OrderRegistor extends Service {
 
-    public OrderRegistor(int number, String name) {
-        super(number, name);
+    public OrderRegistor() {
+        super(1, "주문등록");
     }
 
-    public boolean run(List<Table> tables) {
+    public void run(List<Table> tables) {
         Table table;
         OrderedMenu orderedMenu;
 
@@ -25,7 +25,6 @@ public class OrderRegistor extends Service {
         orderedMenu = new OrderedMenu(getMenu(InputView.inputMenuNumber()), InputView.inputMenuQuantity());
 
         table.addMenu(orderedMenu);
-        return true;
     }
 
     private Menu getMenu(int menuNumber) {

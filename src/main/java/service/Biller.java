@@ -14,11 +14,11 @@ public class Biller extends Service {
     private final static int DISCOUNT_PRICE_PER_PAIR = 10000;
     private final static int AMOUNT_OF_CHICKEN_PAIR = 10;
 
-    public Biller(int number, String name) {
-        super(number, name);
+    public Biller() {
+        super(2, "결제하기");
     }
 
-    public boolean run(List<Table> tables) {
+    public void run(List<Table> tables) {
         Table table;
         int totalPrice;
 
@@ -26,10 +26,9 @@ public class Biller extends Service {
         table = getTable(tables, InputView.inputTableNumber());
         table.printOrderedMenu();
         OutputView.printStartCalculatingPrice(table);
-        totalPrice = calculateTotalPrice(table,InputView.inputCardOrCash());
+        totalPrice = calculateTotalPrice(table, InputView.inputCardOrCash());
         OutputView.printTotalPrice(totalPrice);
 
-        return true;
     }
 
     private Table getTable(List<Table> tables, int tableNumber) {
@@ -43,15 +42,15 @@ public class Biller extends Service {
 
     private int calculateTotalPrice(Table table, int cardOrCash) {
         int totalPrice = table.getSumOfPrice();
-        if(cardOrCash == OPTION_NUMBER_OF_CAHS){
-            totalPrice = (int)(totalPrice * DISCOUNT_IF_CASH);
+        if (cardOrCash == OPTION_NUMBER_OF_CAHS) {
+            totalPrice = (int) (totalPrice * DISCOUNT_IF_CASH);
         }
         totalPrice -= discountPriceBecauseChicken(table);
         return totalPrice;
     }
 
-    private int discountPriceBecauseChicken(Table table){
-        return DISCOUNT_PRICE_PER_PAIR * (table.countTotalChicken()/AMOUNT_OF_CHICKEN_PAIR);
+    private int discountPriceBecauseChicken(Table table) {
+        return DISCOUNT_PRICE_PER_PAIR * (table.countTotalChicken() / AMOUNT_OF_CHICKEN_PAIR);
     }
 
 }

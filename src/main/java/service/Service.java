@@ -22,8 +22,6 @@ public class Service {
         return this.number == number;
     }
 
-    public boolean run(List<Table> tables) {
-        return true;
-    }
+    public void run(List<Table> tables) {}
 
 }
