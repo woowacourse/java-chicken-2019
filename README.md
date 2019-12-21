@@ -29,3 +29,16 @@
 ## 클래스 구현
 * Table
     - Menu와 수량을 갖는다.
+
+* Constant
+    * ProjectConstant
+        - 프로젝트에 사용되는 전반적인 상수
+    
+    * FunctionNumber
+        - 입력받은 문자열이 기능 목록인지 확인하는 상수
+    
+    * TableNumber
+        - 입력받은 문자열이 유효한 테이블 넘버인지 확인하는 상수
+
+    * PaymentMethodNumber
+        - 입력받은 문자열이 유효한 결제 수단인지 확인하는 상수
