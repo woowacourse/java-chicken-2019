@@ -35,4 +35,13 @@ public class Application {
         final int orderAmount = InputView.inputAmount();
         table.addMenuOrder(menuNumber, orderAmount);
     }
+
+    public static void pay() {
+        OutputView.printTables(tables);
+        final int tableNumber = InputView.inputTableNumber();
+        final Table table = TableRepository.getTable(tableNumber);
+        OutputView.printTableOrderHistory(table);
+        final int paymentMethod = InputView.inputPaymentMethod(tableNumber);
+        OutputView.printTablePaymentAmount(table, paymentMethod);
+    }
 }
