@@ -17,6 +17,7 @@ public class OutputView {
     private static final String BOTTOM_LINE_FORMAT = "└ %s ┘";
     private static final String LINE = "─";
     private static final String ORDERED = "₩";
+    private static final String PAY_MESSAGE_FORMAT = "## %d 테이블의 결제를 진행합니다.";
     private static final String EXIT_PROGRAM_MESSAGE = "프로그램이 종료됩니다.";
 
     public static void printMain() {
@@ -73,6 +74,10 @@ public class OutputView {
             System.out.println(order);
         }
         System.out.println();
+    }
+
+    public static void printPayMessage(int tableNumber) {
+        System.out.printf(PAY_MESSAGE_FORMAT, tableNumber);
     }
 
     public static void printProgramExit() {

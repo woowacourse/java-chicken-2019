@@ -24,4 +24,14 @@ public class Bill {
 	public List<Order> getOrders() {
 		return orders;
 	}
+
+	public int getPriceAmount() {
+		int priceAmount = ZERO;
+		for (Order order : this.orders) {
+			priceAmount += order.getPrice();
+		}
+
+		return priceAmount;
+	}
+
 }

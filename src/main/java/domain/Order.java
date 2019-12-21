@@ -1,5 +1,6 @@
 package domain;
 
+import static domain.Category.*;
 import static view.InputView.*;
 
 import java.util.ArrayList;
@@ -33,6 +34,18 @@ public class Order {
 		}
 
 		throw new IllegalArgumentException(INVALID_MENU_NUMBER);
+	}
+	public int getPrice() {
+		return menu.getPrice() * count;
+	}
+
+
+	public boolean isChicken() {
+		return menu.getCategory() == CHICKEN;
+	}
+
+	public int getCount() {
+		return count;
 	}
 
 	@Override

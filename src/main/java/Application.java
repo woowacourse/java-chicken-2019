@@ -51,6 +51,8 @@ public class Application {
 		try {
 			Table selectTable = findTable(tableNumber, tables);
 			OutputView.printBill(selectTable);
+			OutputView.printPayMessage(tableNumber);
+			InputView.inputCardOrCash();
 		} catch (IllegalArgumentException exception) {
 			pay(tableNumber, tables, menus);
 		}

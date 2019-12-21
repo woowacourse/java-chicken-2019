@@ -7,6 +7,8 @@ public class InputView {
     private static final String SELECT_MENU = "## 등록할 메뉴를 선택하세요.";
     private static final String SELECT_TABLE = "## 주문할 테이블을 선택하세요.";
     private static final String INPUT_COUNT = "## 메뉴의 수량을 입력하세요.";
+    private static final String CASH_OR_CARD = "신용 카드는 1번, 현금은 2번";
+    public static final String INVALID_CARD_CASH_NUMBER = "유효하지 않는 신용카드, 현금 번호입니다.";
     public static final String INVALID_TABLE_NUMBER = "유효하지 않는 테이블 번호입니다.";
     public static final String INVALID_MENU_NUMBER = "유효하지 않는 메뉴 번호입니다.";
     public static final String OVER_MAX_MENU_COUNT = "99개 이상으로 주문할 수 없습니다.";
@@ -33,6 +35,12 @@ public class InputView {
 
     public static int inputMenuCount() {
         System.out.println(INPUT_COUNT);
+
+        return scanner.nextInt();
+    }
+
+    public static int inputCardOrCash() {
+        System.out.println(CASH_OR_CARD);
 
         return scanner.nextInt();
     }
