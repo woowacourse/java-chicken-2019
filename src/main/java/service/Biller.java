@@ -20,12 +20,14 @@ public class Biller extends Service {
 
     public void run(List<Table> tables) {
         Table table;
+        int totalPrice;
 
         OutputView.printTables(tables);
         table = getTable(tables, InputView.inputTableNumber());
         table.printOrderedMenu();
         OutputView.printStartCalculatingPrice(table);
-        calculateTotalPrice(table,InputView.inputCardOrCash());
+        totalPrice = calculateTotalPrice(table,InputView.inputCardOrCash());
+        OutputView.printTotalPrice(totalPrice);
     }
 
     private Table getTable(List<Table> tables, int tableNumber) {

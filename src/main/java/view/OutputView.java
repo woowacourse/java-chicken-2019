@@ -58,4 +58,9 @@ public class OutputView {
     public static void printStartCalculatingPrice(Table table){
         System.out.println(table.getTableNumber()+"의 결제를 진행합니다.");
     }
+
+    public static void printTotalPrice(int price){
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(price +"원");
+    }
 }
