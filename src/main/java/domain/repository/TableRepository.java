@@ -30,4 +30,8 @@ public class TableRepository {
     public static boolean isExist(int tableNumber) {
         return search(tableNumber) != -1;
     }
+
+    public static int size() {
+        return tables.size();
+    }
 }

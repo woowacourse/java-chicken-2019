@@ -77,13 +77,10 @@ public class OutputView {
         System.out.println(NO_ORDER_MSG);
     }
 
-    public static void printStartPayment(int tableNumber) {
-        System.out.println(tableNumber + START_PAYMENT_MSG);
-    }
-
-    public static void printOrder(Receipt receipt) {
+    public static void printOrder(Receipt receipt, int tableNumber) {
         System.out.println(ORDER_TITLE);
         System.out.println(receipt.toString());
+        System.out.println(tableNumber + START_PAYMENT_MSG);
     }
 
     public static void printPaymentResult(String payType, int total) {

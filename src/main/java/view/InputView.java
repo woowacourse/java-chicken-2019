@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
     private static final String INPUT_OPTION_MSG = "## 원하는 기능을 입력하세요.";
-    private static final String INPUT_TABLE_MSG = "## 주문할 테이블을 선택하세요.";
+    private static final String INPUT_TABLE_MSG = "## 테이블을 선택하세요.";
     private static final String INPUT_MENU_MSG = "## 등록할 메뉴를 선택하세요.";
     private static final String INPUT_COUNT_MSG = "## 메뉴의 수량을 선택하세요.";
     private static final String TITLE_PAY_TYPE = "## 결제 수단";

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Receipt {
-    private static final String RECEIPT_TITLE = "메뉴, 수량, 금액";
+    private static final String RECEIPT_TITLE = "메뉴, 수량, 금액\n";
     private List<Order> orderList = new ArrayList<>();
     private int tableNumber;
 
