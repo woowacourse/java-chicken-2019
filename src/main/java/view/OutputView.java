@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class OutputView {
+    private static final String NEW_LINE = "\n";
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
@@ -65,14 +66,14 @@ public class OutputView {
     }
 
     public static void printMenu() {
-        System.out.println("## 메인 화면");
+        System.out.println(NEW_LINE + "## 메인 화면");
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
         System.out.println("3 - 프로그램 종료");
     }
 
     public static void printReceipt(int tableNumber) {
-        System.out.println("## 주문 내역");
+        System.out.println(NEW_LINE + "## 주문 내역");
         System.out.println("메뉴  수량  금액");
         TableRepository.getTableMenu().get(tableNumber).getMenu().toString();
     }
