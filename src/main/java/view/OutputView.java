@@ -64,7 +64,9 @@ public class OutputView {
 		System.out.println(tableNumber + "번 테이블의 메뉴 수량 금액");
 		Map<Integer, Integer> menuList = TableRepository.getTable(tableNumber).getMenuList();
 		for (int menuNumber : menuList.keySet()) {
-			System.out.println(MenuRepository.getMenu(menuNumber).toString() + ", 총 " + menuList.get(menuNumber) + "개");
+			int menuCount = menuList.get(menuNumber);
+			Menu menu = MenuRepository.getMenu(menuNumber);
+			System.out.println(menu + ", 총 " + menuCount + "개 = " + menuCount * menu.getPrice() + "원");
 		}
 		System.out.println();
 		System.out.println("## " + tableNumber + "번 테이블의 결제를 진행합니다");
