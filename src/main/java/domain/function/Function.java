@@ -1,5 +1,5 @@
 /*
- * @(#)Function.java 0.1 2019.12.21
+ * @(#)Function.java 0.2 2019.12.21
  *
  * Copyright (c) 2019 lxxjn0
  */
@@ -16,4 +16,6 @@ public class Function {
     public Function(List<Table> tables) {
         this.tables = tables;
     }
+
+    public void operateFunction() {}
 }

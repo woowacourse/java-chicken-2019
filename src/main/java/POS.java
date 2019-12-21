@@ -1,9 +1,10 @@
 /*
- * @(#)POS.java     0.2 2019.12.21
+ * @(#)POS.java     0.3 2019.12.21
  *
  * Copyright (c) 2019 lxxjn0
  */
 
+import domain.Menu;
 import domain.function.Function;
 import domain.Table;
 import domain.function.OrderFunction;
@@ -16,9 +17,9 @@ public class POS {
     private final List<Table> tables;
     private final List<Function> functions = new ArrayList<>();
 
-    public POS(List<Table> tables) {
+    public POS(List<Table> tables, List<Menu> menus) {
         this.tables = tables;
-        this.functions.add(new OrderFunction(tables));
+        this.functions.add(new OrderFunction(tables, menus));
         this.functions.add(new PaymentFunction(tables));
     }
 
