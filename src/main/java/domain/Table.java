@@ -7,8 +7,8 @@ import java.util.Map;
 
 public class Table {
 	private final int number;
-	//private final List<Menu> menus = new ArrayList<Menu>();
-	private final Map<Menu, Integer> menus  = new HashMap<Menu,Integer>();
+	// private final List<Menu> menus = new ArrayList<Menu>();
+	private final Map<Menu, Integer> menus = new HashMap<Menu, Integer>();
 
 	public Table(final int number) {
 		this.number = number;
@@ -23,8 +23,8 @@ public class Table {
 	}
 
 	public void add(Menu inputMenu, int menuCount) {
-		if(menus.get(inputMenu)!= null) {
-			menus.put(inputMenu, menus.get(inputMenu)+menuCount);
+		if (menus.get(inputMenu) != null) {
+			menus.put(inputMenu, menus.get(inputMenu) + menuCount);
 			return;
 		}
 		menus.put(inputMenu, menuCount);
@@ -33,6 +33,10 @@ public class Table {
 
 	public boolean isEmpty() {
 		return this.menus.isEmpty();
+	}
+	
+	public String orderedMenuToString() {
+		return this.name + " " + this.number + " " + this.price;
 	}
 
 	@Override

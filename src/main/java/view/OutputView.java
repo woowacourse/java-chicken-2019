@@ -6,6 +6,7 @@ import domain.Table;
 import domain.TableRepository;
 
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
 	private static final String TOP_LINE = "┌ ─ ┐";
@@ -62,8 +63,6 @@ public class OutputView {
 	public static void printAllMenuesOfTable(Table table) {
 		System.out.println("## 주문 내역");
 		System.out.println("메뉴 수량 금액");
-		for (Menu menu : table.getMenus()) {
-			System.out.println(menu.orderedMenuToString());
-		}
+		System.out.println(table.orderedMenuToString());
 	}
 }

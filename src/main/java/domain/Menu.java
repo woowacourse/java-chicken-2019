@@ -21,9 +21,4 @@ public class Menu {
 	public String toString() {
 		return category + " " + number + " - " + name + " : " + price + "원";
 	}
-	
-	public String orderedMenuToString() {
-		return this.name + " " + this.number + " " + this.price;
-	}
-
 }
