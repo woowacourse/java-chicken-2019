@@ -37,4 +37,9 @@ public class Cost {
 	private int getDiscountedPriceByChickenEA(int countOfChickenOrder) {
 		return price - (countOfChickenOrder / CHICKEN_DISCOUNT_EA) * CHICKEN_DISCOUNT_PRICE;
 	}
+
+	@Override
+	public String toString() {
+		return price + "원";
+	}
 }

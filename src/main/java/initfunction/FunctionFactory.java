@@ -1,4 +1,4 @@
-package flow;
+package initfunction;
 
 public class FunctionFactory {
 	private final static int ORDER_CODE = 1;
