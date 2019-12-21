@@ -22,4 +22,9 @@ public class InputView {
         System.out.println("## 등록할 메뉴를 선택하세요.");
         return SCANNER.nextInt();
     }
+
+    public static int inputMenuAmount() {
+        System.out.println("## 메뉴의 수량을 입력하세요.");
+        return SCANNER.nextInt();
+    }
 }
