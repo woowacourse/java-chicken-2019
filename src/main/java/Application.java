@@ -7,11 +7,11 @@ import view.InputView;
 import view.OutputView;
 
 public class Application {
-	private static boolean flag = true;
-	private static int MENU_SELECT = 1;
-	private static int PAY = 2;
-	private static int EXIT = 3;
 	private static final String NO_ORDER_TABLE = "주문 내역이 없는 테이블 입니다.";
+	private static final boolean flag = true;
+	private static final int MENU_SELECT = 1;
+	private static final int PAY = 2;
+	private static final int EXIT = 3;
 
 	public static void main(String[] args) {
 		Application application = new Application();
