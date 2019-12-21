@@ -5,6 +5,7 @@ import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
 import constant.FunctionNumber;
+import constant.ProjectConstant;
 
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class Application {
 	}
 
 	private static Menu findMenu(int menuNumber) {
-		Menu tempMenu = menus.get(0);
+		Menu tempMenu = menus.get(ProjectConstant.ZERO);
 		for (Menu m : menus) {
 			if (m.getNumber() == menuNumber) {
 				return m;
@@ -57,7 +58,7 @@ public class Application {
 	}
 
 	private static String inputOrderMenu() {
-		String menu = "";
+		String menu = ProjectConstant.EMPTY;
 
 		try {
 			menu = InputView.inputMenuNumber();
@@ -76,7 +77,7 @@ public class Application {
 	}
 
 	private static void checkOrderMenuLength(int length) {
-		if (!(length >= 1 && length <= 2)) {
+		if (!(length >= ProjectConstant.ONE && length <= ProjectConstant.TWO)) {
 			OutputView.printOrderMenuError();
 			throw new RuntimeException();
 		}
@@ -99,7 +100,7 @@ public class Application {
 
 	private static void checkStringIsNum(String string) {
 		for (char c : string.toCharArray()) {
-			if (!(c >= 48 && c <= 57)) {
+			if (!(c >= ProjectConstant.ASCII_ZERO && c <= ProjectConstant.ASCII_NINE)) {
 				OutputView.printNotNumber();
 				throw new RuntimeException();
 			}
@@ -107,7 +108,7 @@ public class Application {
 	}
 
 	private static String inputMenuCount() {
-		String count = "";
+		String count = ProjectConstant.EMPTY;
 
 		try {
 			count = InputView.inputMenuCount();
@@ -126,29 +127,29 @@ public class Application {
 	}
 
 	private static void checkCountLength(int length) {
-		if (!(length >= 1 && length <= 2)) {
+		if (!(length >= ProjectConstant.ONE && length <= ProjectConstant.TWO)) {
 			OutputView.printMenuCountError();
 			throw new RuntimeException();
 		}
 	}
 
 	private static void checkCountRange(int count) {
-		if (!(count >= 1 && count <= 99)) {
+		if (!(count >= ProjectConstant.ONE && count <= ProjectConstant.NINETYNINE)) {
 			OutputView.printMenuCountError();
 			throw new RuntimeException();
 		}
 	}
 
 	private static int convertTableNumber(int number) {
-		int convert = 0;
-		if (number >= 1 && number <= 3) {
-			convert = number - 1;
+		int convert = ProjectConstant.ZERO;
+		if (number >= ProjectConstant.ONE && number <= ProjectConstant.THREE) {
+			convert = number - ProjectConstant.ONE;
 		}
-		if (number >= 5 && number <= 6) {
-			convert = number - 2;
+		if (number >= ProjectConstant.FIVE && number <= ProjectConstant.SIX) {
+			convert = number - ProjectConstant.TWO;
 		}
-		if (number == 8) {
-			convert = number - 3;
+		if (number == ProjectConstant.EIGHT) {
+			convert = number - ProjectConstant.THREE;
 		}
 		return convert;
 	}
