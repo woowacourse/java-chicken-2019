@@ -17,15 +17,15 @@ public class ChickenPOS {
   public void start() {
     while (true) {
       int operation = InputView.inputMainOperation();
-      if (operation == Operation.ORDERING.ordinal()) {
+      if (Operation.ORDERING.equals(operation)) {
         orderingService.startOrdering();
         continue;
       }
-      if (operation == Operation.PAYMENT.ordinal()) {
-        paymentService.startPaymenting();
+      if (Operation.PAYMENT.equals(operation)) {
+        paymentService.startPayment();
         continue;
       }
-      if (operation == Operation.EXIT.ordinal()) {
+      if (Operation.EXIT.equals(operation)) {
         break;
       }
       // TODO : 잘못된 입력값입니다.

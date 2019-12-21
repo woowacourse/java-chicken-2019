@@ -11,7 +11,7 @@ public enum Operation {
     this.operation = operation;
   }
 
-  public boolean compareTo(int value) {
+  public boolean equals(int value) {
     return operation == value;
   }
 }
