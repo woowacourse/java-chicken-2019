@@ -12,8 +12,9 @@ public class Bills {
     private final Map<Menu, Integer> bills = new HashMap<>();
 
     public void add(Menu menu, int quantity) {
+        validateQuantity(menu, quantity);
         if (bills.containsKey(menu)) {
-            validateQuantity(menu, quantity);
+            validateQuantityIfContains(menu, quantity);
             bills.replace(menu, bills.get(menu) + quantity);
             return;
         }
@@ -21,12 +22,18 @@ public class Bills {
     }
 
     private void validateQuantity(Menu menu, int quantity) {
-        if (bills.get(menu) + quantity > MAX_QUANTITY_PER_MENU ) {
+        if (quantity > MAX_QUANTITY_PER_MENU ) {
             throw new IllegalArgumentException(menu.getName() + " 최대 수량 99개를 초과하였습니다.");
         }
 
         if (quantity < MIN_QUANTITY) {
             throw new IllegalArgumentException("1개 이상부터 주문이 가능합니다.");
+        }
+    }
+
+    private void validateQuantityIfContains(Menu menu, int quantity) {
+        if (bills.get(menu) + quantity > MAX_QUANTITY_PER_MENU ) {
+            throw new IllegalArgumentException(menu.getName() + " 최대 수량 99개를 초과하였습니다.");
         }
     }
 
