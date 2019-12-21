@@ -21,6 +21,7 @@ public class Payment {
         if (paymentMethod == 2)
             totalPrice = getCashDiscount(totalPrice);
         OutputView.printTotalPayPrice(totalPrice);
+        table.clearMenus();
     }
 
     public int getPaymentMethod() {

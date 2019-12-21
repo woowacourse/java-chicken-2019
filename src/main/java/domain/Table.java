@@ -24,7 +24,7 @@ public class Table {
         return menus.size();
     }
 
-    public void addMenu(Menu menu){
+    public void addMenu(Menu menu) {
         menus.add(menu);
     }
 
@@ -37,11 +37,15 @@ public class Table {
         return count;
     }
 
-    public int getTotalPrice(){
+    public int getTotalPrice() {
         int totalPrice = 0;
         for (int i = 0; i < menus.size(); i++) {
             totalPrice += menus.get(i).getPrice();
         }
         return totalPrice;
+    }
+
+    public void clearMenus() {
+        menus.clear();
     }
 }
