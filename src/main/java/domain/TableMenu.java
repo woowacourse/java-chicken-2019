@@ -16,6 +16,6 @@ public class TableMenu {
 
     @Override
     public String toString() {
-        return menu.getName() + " " + count + " " + calculateMoney();
+        return menu.getName() + " " + count + " " + menu.getPrice();
     }
 }
