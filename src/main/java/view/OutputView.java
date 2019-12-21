@@ -13,13 +13,6 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
 
-    public static void printMainMenu() {
-        System.out.println("## 메인 화면");
-        System.out.println("1 - 주문등록");
-        System.out.println("2 - 결제하기");
-        System.out.println("3 - 종료");
-    }
-
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
@@ -65,5 +58,14 @@ public class OutputView {
 
     public static void printPaymentPolicy(int number) {
         System.out.println(String.format("## %d번 테이블의 결제를 진행합니다.", number));
+    }
+
+    public static void printFinalPrice(double discountPrice) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(discountPrice + "원");
+    }
+
+    public static void printErrorLog(String message) {
+        System.out.println(message);
     }
 }

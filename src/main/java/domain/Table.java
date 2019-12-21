@@ -1,5 +1,7 @@
 package domain;
 
+import view.dto.PaymentPolicyDTO;
+
 public class Table {
     private final int number;
 
@@ -31,6 +33,10 @@ public class Table {
 
     public int getNumber() {
         return number;
+    }
+
+    public Payment toPayment(PaymentPolicyDTO paymentPolicyDTO) {
+        return new Payment(orders, paymentPolicyDTO.toEntity());
     }
 
     @Override

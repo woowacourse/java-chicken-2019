@@ -1,8 +1,10 @@
 import domain.Menu;
 import domain.MenuRepository;
 import domain.Order;
+import domain.Payment;
 import domain.Table;
 import domain.TableRepository;
+import domain.discount.DiscountGroup;
 import view.InputView;
 import view.OutputView;
 import view.dto.PaymentPolicyDTO;
@@ -23,6 +25,12 @@ public class ChickenPos {
 
     public void on() {
         int selectNumber = InputView.inputMainMenu();
+
+        if (selectNumber < MENU || selectNumber > OFF) {
+            on();
+            return;
+        }
+
         while (untilOff(selectNumber)) {
             doSelection(selectNumber);
 
@@ -55,7 +63,9 @@ public class ChickenPos {
             doSelection(PAYMENT);
         }
         PaymentPolicyDTO paymentPolicyDTO = getPaymentPolicyDTO(table);
+        Payment payment = table.toPayment(paymentPolicyDTO);
 
+        OutputView.printFinalPrice(DiscountGroup.getDiscountPrice(payment));
         table.clear();
     }
 
@@ -65,6 +75,7 @@ public class ChickenPos {
         try {
             return new PaymentPolicyDTO(InputView.inputPaymentPolicy());
         } catch (IllegalArgumentException e) {
+            OutputView.printErrorLog(e.getMessage());
             return getPaymentPolicyDTO(table);
         }
     }
@@ -75,6 +86,7 @@ public class ChickenPos {
         try {
             return TableRepository.findById(tableNumber);
         } catch (NoSuchElementException e) {
+            OutputView.printErrorLog(e.getMessage());
             return getTable();
         }
     }
@@ -88,6 +100,7 @@ public class ChickenPos {
 
             return menu.toOrder(menuSize);
         } catch (NoSuchElementException e) {
+            OutputView.printErrorLog(e.getMessage());
             return getOrder();
         }
     }
