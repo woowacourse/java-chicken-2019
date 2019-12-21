@@ -20,7 +20,7 @@ public class Table {
     }
 
     public boolean hasOrder() {
-        return tableMenus.isEmpty();
+        return !tableMenus.isEmpty();
     }
 
     public void initTableMenu() {
