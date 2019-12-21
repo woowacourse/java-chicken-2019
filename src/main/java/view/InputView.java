@@ -24,7 +24,7 @@ public class InputView {
             }
 
             return value;
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             throw new InputMismatchException("양의 정수의 숫자를 입력해야 합니다.");
         }
     }
