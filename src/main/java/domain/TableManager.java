@@ -15,10 +15,12 @@ public class TableManager {
     private List<Table> tables = TableRepository.tables();
     private boolean[] tableStatus = new boolean[tables.size()];
 
-    private void selectTable(int tableNumber) {
+    private void inputTable(int tableNumber, boolean printGuide) {
         int index = TableRepository.search(tableNumber);
+        if (printGuide && !tableStatus[index]) {
+            OutputView.printTableSelectSuccess(tableNumber);
+        }
         tableStatus[index] = true;
-        OutputView.printTableSelectSuccess(tableNumber);
     }
 
     public void clearTable(int tableNumber) {
@@ -26,7 +28,7 @@ public class TableManager {
         tableStatus[index] = false;
     }
 
-    private boolean isUsableTable(int tableNumber) {
+    private boolean isNewTable(int tableNumber) {
         int index = TableRepository.search(tableNumber);
         return tableStatus[index];
     }
@@ -36,20 +38,20 @@ public class TableManager {
 
         do {
             input = InputView.inputTableNumber();
-        } while (!InputValidator.isNumber(input));
+        } while (!InputValidator.isNumberInRange(input, Integer.MAX_VALUE));
 
         return Integer.parseInt(input);
     }
 
-    public int selectTable() {
+    public int selectTable(boolean printGuide) {
         OutputView.printTables(tables);
         int tableNumber = inputTableNumber();
 
-        while (TableRepository.isExist(tableNumber) || isUsableTable(tableNumber)) {
+        while (!TableRepository.isExist(tableNumber)) {
             OutputView.printTableSelectFail();
             tableNumber = inputTableNumber();
         }
-        selectTable(tableNumber);
+        inputTable(tableNumber, printGuide);
         return tableNumber;
     }
 }
