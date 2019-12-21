@@ -5,6 +5,9 @@ import domain.MenuRepository;
 
 import java.util.Scanner;
 
+/**
+ * 사용자의 입력을 받는 클래스
+ */
 public final class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 

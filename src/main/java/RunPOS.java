@@ -7,6 +7,10 @@ import view.OutputView;
 
 import java.util.List;
 
+/**
+ * 주문과 결제를 담당하는 클래스.
+ * 전반적인 로직이 구현되어 있다.
+ */
 public class RunPOS {
 
     private final Table table;
@@ -20,7 +24,8 @@ public class RunPOS {
     }
 
     /**
-     * 주문등록 담당
+     * 주문 등록을 담당하는 메소드
+     * 사용자가 고른 메뉴를 해당 테이블에 추가한다.
      */
     public void order() {
         final List<Menu> menus = MenuRepository.menus();
@@ -32,7 +37,7 @@ public class RunPOS {
     }
 
     /**
-     * 결제하기 담당
+     * 결제를 담당하는 메소드
      */
     public void pay() {
         OutputView.printOrderedMenus(table);

@@ -4,9 +4,15 @@ import domain.MenuRepository;
 import domain.TableRepository;
 import java.util.Scanner;
 
+/**
+ * 예외 처리를 담당하는 클래스
+ */
 public final class ExceptionDetect {
     private static final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * 가장 처음 주문/결제/종료 여부 입력에 대한 예외처리
+     */
     public static final int mainInputException(int action) {
         while (action < 1 || action > 3) {
             System.out.println("1, 2, 3 중 선택해주세요.");

@@ -24,6 +24,10 @@ public class Table {
         counts.add(count);
     }
 
+    /**
+     * 테이블에 주문이 있는지 확인하는 메소드.
+     * 주문이 있으면 true를 return한다.
+     */
     public boolean isOrdered() {
         return !menus.isEmpty();
     }

@@ -5,6 +5,9 @@ import domain.Table;
 
 import java.util.List;
 
+/**
+ * 정보를 출력하는 클래스
+ */
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
