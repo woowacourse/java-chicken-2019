@@ -37,22 +37,22 @@ public class ChickenHouse {
 			}
 		}
 	}
-	
+
 	private static boolean whileLoop() {
-			OutputView.mainDisplay();
-			int command = InputView.inputCommand();
-			if (command == 1) {
-				order();
-				return false;
-			}
-			if (command == 2) {
-				pay();
-				return false;
-			}
-			if (command == 3) {
-				return true;
-			}
+		OutputView.mainDisplay();
+		int command = InputView.inputCommand();
+		if (command == 1) {
+			order();
+			return false;
+		}
+		if (command == 2) {
+			pay();
+			return false;
+		}
+		if (command == 3) {
 			return true;
+		}
+		return true;
 	}
 
 	private static void order() {
@@ -74,18 +74,20 @@ public class ChickenHouse {
 
 	private static void pay() {
 		int tableNumber;
+		int totalPrice;
 		OutputView.printTables(tables);
 		tableNumber = InputView.inputTableNumber(tables, false);
 		OutputView.printAllMenuesOfTable(tables.getByNumber(tableNumber));
-		calculate(InputView.inputPaymentMethod(tableNumber), TableRepository.getByNumber(tableNumber));
+		totalPrice = calculate(InputView.inputPaymentMethod(tableNumber), TableRepository.getByNumber(tableNumber));
+		System.out.println("최종 결제할 금액 : " + totalPrice);
 	}
-	
-	private static void calculate(int paymentMethod, Table table) {
+
+	private static int calculate(int paymentMethod, Table table) {
 		int totalPrice = creditCardCalculate(table);
-		if(paymentMethod == 2) {
-			cashCalculate(table);
+		if (paymentMethod == 2) {
+			totalPrice = (int) cashCalculate(totalPrice);
 		}
-		
+		return totalPrice;
 	}
 
 	private static int creditCardCalculate(Table table) {
@@ -101,8 +103,7 @@ public class ChickenHouse {
 		return totalPrice;
 	}
 
-	private static void cashCalculate(Table table) {
-		// TODO Auto-generated method stub
-		
+	private static double cashCalculate(int totalPrice) {
+		return 0.95 * totalPrice;
 	}
 }
