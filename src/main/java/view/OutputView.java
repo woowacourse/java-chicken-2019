@@ -1,6 +1,7 @@
 package view;
 
 import domain.Menu;
+import domain.MenuFeatureNumber;
 import domain.Table;
 
 import java.util.List;
@@ -9,6 +10,14 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+
+    public static void printMainFeatures() {
+        System.out.println("## 메인화면");
+        System.out.println(String.format("%d - 주문등록", MenuFeatureNumber.ORDER));
+        System.out.println(String.format("%d - 결제하기", MenuFeatureNumber.PAY));
+        System.out.println(String.format("%d - 주문등록", MenuFeatureNumber.EXIT));
+        System.out.println();
+    }
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");

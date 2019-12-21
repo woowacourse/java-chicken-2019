@@ -11,7 +11,18 @@ public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
+        OutputView.printMainFeatures();
+        MenuFeatureNumber menuFeatureNumber = InputView.inputMenuFeatureNumber();
+        if (menuFeatureNumber.isExit()) {
+            System.out.println("포스 프로그램이 종료되었습니다.");
+            return;
+        }
+        if (menuFeatureNumber.isOrder()) {
+            OutputView.printTables(tables);
+        }
+        if (menuFeatureNumber.isPay()) {
+            OutputView.printTables(tables);
+        }
 
         final int tableNumber = InputView.inputTableNumber();
 
