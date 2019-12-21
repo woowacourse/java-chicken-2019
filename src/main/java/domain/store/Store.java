@@ -2,6 +2,7 @@ package domain.store;
 
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
+import domain.menu.Order;
 import domain.table.Table;
 import domain.table.TableRepository;
 import view.InputView;
@@ -163,17 +164,18 @@ public class Store {
      *
      * @return 입력받은 메뉴 코드를 반환한다.
      */
-    private int getMenuCode() {
+    private Menu getMenuCode() {
         int menuCode;
+        Menu menu;
 
         try {
             menuCode = InputView.inputMenuCode();
-            checkMenuCodeException(menuCode);
+            menu = checkMenuCodeException(menuCode);
         } catch (IllegalArgumentException e) {
             System.out.println("잘못된 값입니다. 값을 다시 입력해주세요");
             return getMenuCode();
         }
-        return menuCode;
+        return menu;
     }
 
     /**
@@ -182,10 +184,10 @@ public class Store {
      * @param menuCode 입력된 메뉴 번호이다.
      * @throws IllegalArgumentException 없는 메뉴를 참조하였다면 예외처리를 한다.
      */
-    private void checkMenuCodeException(int menuCode) {
+    private Menu checkMenuCodeException(int menuCode) {
         for (Menu menu : menus) {
             if (menu.isRightMenuNumber(menuCode)) {
-                return;
+                return menu;
             }
         }
         throw new IllegalArgumentException("확인할 수 없는 메뉴입니다.");
@@ -249,6 +251,28 @@ public class Store {
     }
 
     /**
+     * deliveryOrderToTable은 주문받은 정보를 테이블에 전달하는(즉, 음식을 테이블에 배달하는 것과 같은 동작) 메서드이다.
+     */
+    private void deliveryOrderToTable(int tableNumber, Menu menu, int number){
+        findTableToNumber(tableNumber).makeNewOrder(menu, number);
+    }
+
+    /**
+     * findTableToNumber는 입력받은 정수 번지값을 바탕으로 일치하는 테이블을 찾아 객체 그대로 반환한다.
+     *
+     * @param tableNumber 찾을 테이블의 번호
+     * @return 찾은 테이블의 객체
+     * @throws IllegalArgumentException 테이블을 찾을 수 없다면 예외처리한다.
+     */
+    private Table findTableToNumber(int tableNumber) {
+        for(Table table : tables) {
+            if(table.isRightTableNumber(tableNumber)) {
+                return table;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
+    /**
      * order는 주문을 받는 일련의 동작을 수행하는 메서드이다.
      * 수행해야 할 로직은 다음과 같다.
      * 테이블 목록 출력, 테이블 선택,
@@ -256,12 +280,16 @@ public class Store {
      * 종료(테이블에 메뉴 가져다주기->글자 표시해주기)
      */
     private void order() {
-        int tableNumber, menuCode, menuNumber;
+        int tableNumber, menuNumber;
+        Menu menu;
+
         OutputView.printTables(tables);
         tableNumber = getOrderTableNumber();
         OutputView.printMenus(menus);
-        menuCode = getMenuCode();
+        menu = getMenuCode();
         menuNumber = getMenuNumber();
+        deliveryOrderToTable(tableNumber,menu,menuNumber);
+        findTableToNumber(tableNumber).printOrder();
     }
 
     /**
