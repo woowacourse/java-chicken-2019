@@ -1,10 +1,11 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
     private final int number;
-    private List<Menu> menus;
+    private List<Menu> menus = new ArrayList<>();
 
     public Table(final int number) {
         this.number = number;

@@ -42,4 +42,8 @@ public class OutputView {
     public static void printMainFunctions() {
         System.out.println(Functions.REGISTER.toString());
     }
+
+    public static void printTableBill(Table tableByTableNumber) {
+
+    }
 }
