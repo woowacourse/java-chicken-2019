@@ -59,6 +59,6 @@ public class Order {
 
         for (int i = 0; i < menuCount; i++)
             table.addMenu(menu);
-        System.out.println("주문이 완료되었습니다.");
+        System.out.println("주문이 완료되었습니다.\n");
     }
 }

@@ -1,6 +1,7 @@
 package domain;
 
 import view.InputView;
+import view.OutputView;
 
 public class Payment {
     static final int DISCOUNT_PER_10CHICKEN = 10000;
@@ -19,6 +20,7 @@ public class Payment {
         totalPrice -= getChickenDiscount();
         if (paymentMethod == 2)
             totalPrice = getCashDiscount(totalPrice);
+        OutputView.printTotalPayPrice(totalPrice);
     }
 
     public int getPaymentMethod() {
