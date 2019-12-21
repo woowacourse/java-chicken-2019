@@ -123,7 +123,13 @@ public class Store {
         return todoNumber;
     }
 
-    private int getTableNumber() {
+    /**
+     * getOrderTableNumber는 입력을 통해 주문할 테이블의 번호를 구하는 메서드이다.
+     *
+     * @return 주문할 테이블의 번호를 반환한다.
+     * @exception IllegalArgumentException 만약 유효하지 않은 번호라면 예외처리 후 다시 입력을 받는다.
+     */
+    private int getOrderTableNumber() {
         int tableNumber;
 
         try{
@@ -131,11 +137,17 @@ public class Store {
             checkTableNumberException(tableNumber);
         }catch(IllegalArgumentException e){
             System.out.println("잘못된 값입니다. 값을 다시 입력해주세요");
-            return getTableNumber();
+            return getOrderTableNumber();
         }
         return tableNumber;
     }
 
+    /**
+     * checkTableNumberException은 입력받은 tableNumber에 대하여 예외처리할 부분이 있는지 검사한다.
+     *
+     * @param tableNumber 입력받은 테이블 번호 값이다. 정수형임이 보장된다.
+     * @throws IllegalArgumentException 만약 테이블 번호에 맞는 테이블을 찾지 못하면 예외처리한다.
+     */
     private void checkTableNumberException(int tableNumber) {
         for(Table table : tables) {
             if(table.isRightTableNumber(tableNumber)) {
@@ -175,7 +187,7 @@ public class Store {
     private void order() {
         int tableNumber;
         OutputView.printTables(tables);
-        tableNumber = getTableNumber();
+        tableNumber = getOrderTableNumber();
         OutputView.printMenus(menus);
     }
 
