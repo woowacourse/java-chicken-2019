@@ -19,7 +19,7 @@ public class Menu {
 
 	@Override
 	public String toString() {
-		return "[" + this.category + "] " + this.number + " - " + this.name + " : " + this.price + "원";
+		return category + " " + number + " - " + name + " : " + price + "원";
 	}
 	
 	public String orderedMenuToString() {
