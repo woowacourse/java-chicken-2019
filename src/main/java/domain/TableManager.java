@@ -1,5 +1,7 @@
 package domain;
 
+import domain.model.Table;
+import domain.repository.TableRepository;
 import util.InputValidator;
 import view.InputView;
 import view.OutputView;

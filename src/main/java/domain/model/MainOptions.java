@@ -1,4 +1,4 @@
-package domain;
+package domain.model;
 
 public enum MainOptions {
     NONE(-1, "초기상태"),

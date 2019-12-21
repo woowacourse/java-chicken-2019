@@ -1,4 +1,4 @@
-package domain;
+package domain.model;
 
 public class Order {
     private static final String ORDER_FORMAT = "%s - %d개, %d원";

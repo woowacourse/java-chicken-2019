@@ -1,8 +1,8 @@
 package view;
 
-import domain.MainOptions;
-import domain.Menu;
-import domain.Table;
+import domain.model.MainOptions;
+import domain.model.Menu;
+import domain.model.Table;
 
 import java.util.List;
 
@@ -16,6 +16,7 @@ public class OutputView {
     private static final String NUMBER_RANGE_ERR = "범위 내의 숫자가 아닙니다.";
     private static final String TABLE_SELECT_MSG = "손님을 %d번 테이블로 안내합니다.";
     private static final String TABLE_ALREADY_SELECT_MSG = "사용할 수 없는 테이블입니다. 다시 선택해주세요.";
+    private static final String MENU_NOT_EXIST_MSG = "존재하지 않는 메뉴입니다. 다시 선택해주세요.";
 
     public static void printTables(final List<Table> tables) {
         System.out.println(TABLE_TITLE);
@@ -37,6 +38,10 @@ public class OutputView {
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
+    }
+
+    public static void printNotExistMenu() {
+        System.out.println(MENU_NOT_EXIST_MSG);
     }
 
     private static void printLine(final String line, final int count) {

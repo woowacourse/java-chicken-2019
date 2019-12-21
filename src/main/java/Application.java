@@ -1,12 +1,10 @@
-import domain.MainOptions;
-import domain.TableManager;
+import domain.model.MainOptions;
 import util.InputValidator;
 import view.InputView;
 import view.OutputView;
 
 public class Application {
     private static final int OPTION_BEGIN = 1;
-    private TableManager manager = new TableManager();
     private MainOptions[] options = new MainOptions[]{
             MainOptions.ADD_ORDER,
             MainOptions.PAYMENT,
@@ -50,7 +48,7 @@ public class Application {
     }
 
     private void startOrder() {
-        manager.choiceTable();
+
     }
 
     private void exit() {

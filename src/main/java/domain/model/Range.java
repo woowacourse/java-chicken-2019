@@ -1,4 +1,4 @@
-package domain;
+package domain.model;
 
 /**
  * 정수 범위를 나타내는 클래스

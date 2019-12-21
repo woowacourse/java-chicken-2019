@@ -1,4 +1,7 @@
-package domain;
+package domain.repository;
+
+import domain.model.Category;
+import domain.model.Menu;
 
 import java.util.ArrayList;
 import java.util.Collections;

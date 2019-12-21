@@ -1,6 +1,6 @@
 package util;
 
-import domain.Range;
+import domain.model.Range;
 import view.OutputView;
 
 public class InputValidator {
