@@ -3,6 +3,7 @@ package view;
 import java.util.List;
 import java.util.Scanner;
 import Controller.SelectControl;
+import domain.Menu;
 import domain.Table;
 
 public class InputView {
@@ -15,8 +16,6 @@ public class InputView {
 	    tmpNum=SelectControl.checkTableSelect(scanner.nextLine(),tables);
 	}
 	return tmpNum;
-        
-        
     }
     
     public static int inputFuction() {
@@ -26,6 +25,22 @@ public class InputView {
 	while(tmpNum==-1) {
 	    tmpNum=SelectControl.checkFunctionSelect(scanner.nextLine());
 	}
+	return tmpNum;
+    }
+    
+    public static int inputMenu(final List<Menu> menus) {
+	int tmpNum;
+	System.out.println("## 등록할 메뉴를 선택하세요.");
+	tmpNum=SelectControl.checkMenuSelect(scanner.nextLine(),menus);
+	while(tmpNum==-1) {
+	    tmpNum=SelectControl.checkMenuSelect(scanner.nextLine(),menus);
+	}
+	return tmpNum;
+    }
+    
+    public static int inputMenuAmount() {
+	int tmpNum=0;
+	System.out.println("## 메뉴의 수량을 입력하세요.");
 	return tmpNum;
     }
    

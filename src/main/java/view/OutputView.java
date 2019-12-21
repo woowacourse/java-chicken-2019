@@ -57,4 +57,8 @@ public class OutputView {
     public static void printTableFullError() {
 	System.out.println("테이블의 주문이 꽉 찼습니다. 다른 테이블을 입력해주세요.");
     }
+    
+    public static void printMenuSelectError() {
+	System.out.println("메뉴 입력이 잘못되었습니다. 가능한 메뉴 목록만 입력해주세요.");
+    }
 }
