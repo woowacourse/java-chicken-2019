@@ -13,18 +13,44 @@ public class InputView {
     private static final int END_PROGRAM = 3;
     private static int inputNumber;
 
-    public static int inputTableNumber() {
+    public static int inputTableNumber(List<Table> tables) {
         System.out.println("## 주문할 테이블을 선택하세요.");
-        return scanner.nextInt();
+        while(!isTableNumber(tables));
+        System.out.println(inputNumber);
+        return inputNumber;
+    }
+
+    private static boolean isTableNumber(List<Table> tables) {
+        try{
+            inputNumber = scanner.nextInt();
+            checkTableNumber(inputNumber, tables);
+            return true;
+        } catch(Exception e) {
+            System.out.println("올바른 테이블 번호를 입력해주세요");
+        }
+        return false;
+
+    }
+
+    private static void checkTableNumber(int inputNumber, List<Table> tables) throws Exception {
+        int unCorrectTable = 0;
+        for(Table table : tables) {
+            if(table.getNumber() == inputNumber) {
+                return;
+            }
+        }
+        if(unCorrectTable != tables.size()) {
+            throw new Exception("올바른 테이블 번호를 입력해주시기 바랍니다.");
+        }
     }
 
     public static int inputOrderNumber(HashMap<Integer, Integer> orderTable, List<Table> tableList) {
         OutputView.printOrderPage();
-        while(!isNumber(orderTable, tableList));
+        while(!isOrderNumber(orderTable, tableList));
         return inputNumber;
     }
 
-    private static boolean isNumber(HashMap<Integer, Integer> orderTable, List<Table> tableList) {
+    private static boolean isOrderNumber(HashMap<Integer, Integer> orderTable, List<Table> tableList) {
         try{
             inputNumber = scanner.nextInt();
             checkOrderNumber(inputNumber);
