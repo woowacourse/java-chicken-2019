@@ -6,17 +6,22 @@
 
 package domain.function;
 
-import domain.table.Table;
+import domain.Payment.PaymentMethod;
 import domain.menu.Menu;
 import domain.menu.MenuQuantity;
+import domain.table.Table;
 import view.InputView;
 import view.OutputView;
 
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Map;
 
 public class PaymentFunction extends Function {
+
+    private static final int ZERO_CHICKEN_AMOUNT = 0;
+
     public PaymentFunction(List<Table> tables) {
         super(tables);
     }
@@ -33,16 +38,36 @@ public class PaymentFunction extends Function {
         final HashMap<Menu, MenuQuantity> orderedMenuStatus = selectedTable.getMenuStatus();
         OutputView.printOrderedMenuStatus(orderedMenuStatus);
 
-        final int paymentMethod = getInputPaymentMethod();
+        final PaymentMethod paymentMethod = getInputPaymentMethod();
+        final int chickenAmount = getChickenDiscountNumber(orderedMenuStatus);
+
+        final double finalOrderAmount = selectedTable.getOrderAmount(chickenAmount, paymentMethod);
+        OutputView.printFinalOrderAmount(finalOrderAmount);
     }
 
-    private int getInputPaymentMethod() {
+    private PaymentMethod getInputPaymentMethod() {
         try {
-            return InputView.inputPaymentMethod();
-        } catch (InputMismatchException | IllegalArgumentException e) {
+            int paymentMethod = InputView.inputPaymentMethod();
+            return new PaymentMethod(paymentMethod);
+        } catch (InputMismatchException e) {
             System.out.println("결재 수단은 신용카드 1번, 현금 2번, 두가지만 가능합니다.");
             return getInputPaymentMethod();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getInputPaymentMethod();
         }
+    }
+
+    private int getChickenDiscountNumber(HashMap<Menu, MenuQuantity> orderedMenuStatus) {
+        int chickenAmount = ZERO_CHICKEN_AMOUNT;
+        for (Map.Entry<Menu, MenuQuantity> entry : orderedMenuStatus.entrySet()) {
+            Menu menu = entry.getKey();
+            MenuQuantity menuQuantity = entry.getValue();
+            if (menu.isChicken()) {
+                chickenAmount += menuQuantity.getMenuQuantity();
+            }
+        }
+        return chickenAmount;
     }
 
 }

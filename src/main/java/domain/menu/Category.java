@@ -1,4 +1,4 @@
-package domain;
+package domain.menu;
 
 public enum Category {
     CHICKEN("치킨"),
@@ -8,6 +8,10 @@ public enum Category {
 
     Category(final String name) {
         this.name = name;
+    }
+
+    public boolean isChicken() {
+        return this == CHICKEN;
     }
 
     @Override

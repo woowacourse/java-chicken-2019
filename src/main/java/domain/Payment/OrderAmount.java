@@ -8,26 +8,33 @@ package domain.Payment;
 
 public class OrderAmount {
     private static final int ZERO_ORDER_AMOUNT = 0;
+    private static final int CHICKEN_DISCOUNT_UNIT = 10;
 
     public static OrderAmount ZERO = new OrderAmount(ZERO_ORDER_AMOUNT);
 
-    private final int orderAmount;
+    private final double orderAmount;
 
-    public OrderAmount(int orderAmount) {
+    public OrderAmount(double orderAmount) {
         isValid(orderAmount);
 
         this.orderAmount = ZERO_ORDER_AMOUNT;
     }
 
-    private void isValid(int orderAmount) {
+    private void isValid(double orderAmount) {
         if (orderAmount < ZERO_ORDER_AMOUNT) {
             throw new IllegalArgumentException("주문 금액이 0원보다 작을수 없습니다.");
         }
     }
 
-    public OrderAmount add(int addOrderAmount) {
+    public OrderAmount add(double addOrderAmount) {
         return new OrderAmount(this.orderAmount + addOrderAmount);
     }
 
-    public OrderAmount getOrderAmount()
+    public double getOrderAmount(int chickenAmount, PaymentMethod paymentMethod) {
+        final int discountAmount =  (chickenAmount / CHICKEN_DISCOUNT_UNIT) * 10000;
+        if (paymentMethod.isCash()) {
+            return ((this.orderAmount - discountAmount) * 0.95);
+        }
+        return this.orderAmount - discountAmount;
+    }
 }

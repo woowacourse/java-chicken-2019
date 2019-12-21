@@ -6,7 +6,7 @@
 
 package view;
 
-import domain.Table;
+import domain.table.Table;
 import domain.menu.Menu;
 import domain.menu.MenuQuantity;
 
@@ -84,5 +84,10 @@ public class OutputView {
 
     private static void printSelectedMenuStatus(Menu menu, MenuQuantity menuQuantity) {
         System.out.println(menu.getName() + " " + menuQuantity.getMenuQuantity() + " " + menu.getPrice());
+    }
+
+    public static void printFinalOrderAmount(double orderAmount) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.printf("%.1f원\n", orderAmount);
     }
 }
