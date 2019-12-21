@@ -15,7 +15,7 @@ public class OrderRegistor extends Service {
         super(number, name);
     }
 
-    public void run(List<Table> tables) {
+    public boolean run(List<Table> tables) {
         Table table;
         OrderedMenu orderedMenu;
 
@@ -25,6 +25,7 @@ public class OrderRegistor extends Service {
         orderedMenu = new OrderedMenu(getMenu(InputView.inputMenuNumber()), InputView.inputMenuQuantity());
 
         table.addMenu(orderedMenu);
+        return true;
     }
 
     private Menu getMenu(int menuNumber) {

@@ -6,4 +6,8 @@ public class ProgramFinisher extends Service {
         super(number, name);
     }
 
+    public boolean run(){
+        return false;
+    }
+
 }

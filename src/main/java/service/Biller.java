@@ -18,7 +18,7 @@ public class Biller extends Service {
         super(number, name);
     }
 
-    public void run(List<Table> tables) {
+    public boolean run(List<Table> tables) {
         Table table;
         int totalPrice;
 
@@ -28,6 +28,8 @@ public class Biller extends Service {
         OutputView.printStartCalculatingPrice(table);
         totalPrice = calculateTotalPrice(table,InputView.inputCardOrCash());
         OutputView.printTotalPrice(totalPrice);
+
+        return true;
     }
 
     private Table getTable(List<Table> tables, int tableNumber) {

@@ -21,6 +21,10 @@ public class Application {
         Service selectedService = new ServiceSelector(services).selectService(InputView.inputServiceNumber());
 
         final List<Table> tables = TableRepository.tables();
-        selectedService.run(tables);
+        boolean continuePrograme = true;
+
+        while(continuePrograme) {
+            continuePrograme = selectedService.run(tables);
+        }
     }
 }
