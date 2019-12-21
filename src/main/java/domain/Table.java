@@ -1,12 +1,25 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Table {
+	private final List<Menu> menus = new ArrayList<>();
 	private final int number;
-	private final boolean use;
+	private boolean use = false;
 
 	public Table(final int number) {
 		this.number = number;
-		this.use = false;
+	}
+
+	public void addMenus(int menuNumber, int menuCount) {
+		for (int i = 0; i < menuCount; i++) {
+			menus.add(MenuRepository.menus().stream()
+				.filter(menu -> menu.getNumber() == menuNumber)
+				.findFirst()
+				.get());
+		}
+		use = true;
 	}
 
 	public boolean isUse() {

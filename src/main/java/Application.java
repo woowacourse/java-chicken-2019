@@ -59,6 +59,11 @@ public class Application {
 		final List<Menu> menus = MenuRepository.menus();
 		int menuNumber = getMenuNumber(menus);
 		int menuCount = getMenuCount(menuNumber);
+
+		TableRepository.tables().stream()
+			.filter(t -> t.getNumber() == tableNumber)
+			.findFirst()
+			.get().addMenus(menuNumber, menuCount);
 	}
 
 	private static int getMenuNumber(List<Menu> menus) {
@@ -81,6 +86,6 @@ public class Application {
 		} catch (IllegalArgumentException e) {
 			return getMenuCount(menuNumber);
 		}
-		return menuNumber;
+		return menuCount;
 	}
 }
