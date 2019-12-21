@@ -38,6 +38,10 @@ public class OutputView {
         System.out.println("화면에 출력된 메뉴에 있는 숫자를 입력해주세요.");
     }
 
+    public static void printInputTableNumberException() {
+        System.out.println("화면에 출력된 테이블 정보에 있는 숫자를 입력해주세요.");
+    }
+
     private static void printLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
