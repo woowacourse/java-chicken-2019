@@ -13,7 +13,7 @@
   * 주문 등록의 InputView와 OutputView 구현
   * 테이블 별 주문 관리 - 주문 메뉴가 정확한 테이블에 제대로 들어가게
   * 주문이 등록된 테이블 별도 표시
-  * [예외] 없는 table 번호 input(invalid input)
   * [예외] 없는 menu 번호 input(invalid input)
   * [예외] 한 테이블에서 주문한 한 메뉴의 최대 수량이 99를 넘어갔을 때
 - 결제하기 구현
+  * 결제의 InputView와 OutputView 구현

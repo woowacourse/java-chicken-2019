@@ -3,7 +3,9 @@ package view;
 import domain.Menu;
 import domain.Table;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
@@ -34,6 +36,27 @@ public class OutputView {
         System.out.println();
     }
 
+    public static void printMenusOrdered(Table table) {
+        System.out.println("## 주문 내역");
+        System.out.println("메뉴 수량 금액");
+        for (Entry<Menu, Integer> menuOrdered : table.getMenuOrdered().entrySet()) {
+            System.out.print(menuOrdered.getKey().getName()+" ");
+            System.out.print(menuOrdered.getValue()+" ");
+            System.out.println(menuOrdered.getKey().getPrice()*menuOrdered.getValue());
+        }
+        System.out.println();
+    }
+
+    public static void printPayment(Table table) {
+        System.out.println("## "+table.getNumber()+"번 테이블의 결제를 진행합니다.");
+    }
+
+    public static void printSumOfMoney(Table table) {
+        System.out.println("최종 결제할 금액");
+        System.out.println(table.getMoneyCharged());
+        System.out.println();
+    }
+
     public static void printTerminatingProgram() {
         System.out.println("## 프로그램을 종료합니다.");
     }
@@ -58,6 +81,7 @@ public class OutputView {
             }
             System.out.print(ORDERED_BOTTOM_LINE);
         }
+        System.out.println();
     }
 
     private static void printTableNumbers(final List<Table> tables) {

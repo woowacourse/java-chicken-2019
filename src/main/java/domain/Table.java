@@ -22,17 +22,30 @@ public class Table {
         return this.number;
     }
 
-    public void orderMenu(Menu menu, int quantity) {
-        this.menuOrdered.put(menu, menuOrdered.getOrDefault(menu, 0)+quantity);
+    public int getMoneyCharged() {
+        return this.moneyCharged;
     }
 
     public HashMap<Menu, Integer> getMenuOrdered() {
         return this.menuOrdered;
     }
 
+    public void orderMenu(Menu menu, int quantity) {
+        this.menuOrdered.put(menu, menuOrdered.getOrDefault(menu, 0)+quantity);
+        addMoneyCharged(quantity*menu.getPrice());
+    }
+
+
+
     public boolean hasOrdered() {
         if (menuOrdered.isEmpty()) return false;
         return true;
     }
+
+    public void addMoneyCharged(int money) {
+        this.moneyCharged+=money;
+    }
+
+
 
 }

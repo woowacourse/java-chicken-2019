@@ -10,19 +10,20 @@ import java.util.*;
 
 public class Application {
     // TODO 구현 진행
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InputMismatchException {
 
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
 
         while(true) {
             OutputView.printMain();
-            final int mainDecision = InputView.inputMain();
+            int mainDecision = InputView.inputMain();
             if (mainDecision == 1) {
                 order(tables, menus);
                 continue;
             }
             if (mainDecision == 2) {
+                pay(tables);
                 continue;
             }
             if (mainDecision == 3) {
@@ -53,7 +54,6 @@ public class Application {
         return returnTable;
     }
 
-
     public static Menu orderMenuWithNumber(List<Menu> menus, int number) {
         Menu returnMenu = null;
         for (Menu menu: menus) {
@@ -62,6 +62,15 @@ public class Application {
             }
         }
         return returnMenu;
+    }
+
+    public static void pay(List<Table> tables) {
+        OutputView.printTables(tables);
+        int tableNumber = InputView.inputTableNumberForCharge();
+        OutputView.printMenusOrdered(selectTableWithNumber(tables, tableNumber));
+        OutputView.printPayment(selectTableWithNumber(tables,tableNumber));
+        int paymentMethod = InputView.inputPaymentMethod();
+        OutputView.printSumOfMoney(selectTableWithNumber(tables,tableNumber));
     }
 
 }
