@@ -3,6 +3,7 @@ package view;
 import domain.Menu;
 import domain.Table;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class OutputView {
@@ -18,12 +19,12 @@ public class OutputView {
         printLine(BOTTOM_LINE, size);
     }
 
-    public static void printMenus(final List<Menu> menus) {
+    public static HashMap printMenus(final List<Menu> menus) {
         System.out.println();
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
-        new InputView().inputMenu(menus);
+        return new InputView().inputMenu(menus);
     }
 
     private static void printLine(final String line, final int count) {
@@ -44,7 +45,4 @@ public class OutputView {
         System.out.println("##메인 화면\n1 - 주문등록\n2 - 결제하기\n3 - 프로그램 종료");
         new InputView().inputFunction();
     }
-
-
-
 }

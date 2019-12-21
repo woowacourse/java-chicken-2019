@@ -56,7 +56,7 @@
 - Check
   - 예외 체크 담당
   
-- Order
+- OrderBoard
   - 테이블의 주문 상태 저장
   
 ## 예외

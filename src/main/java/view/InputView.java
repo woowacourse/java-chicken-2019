@@ -4,6 +4,7 @@ import Check.Check;
 import domain.Menu;
 import domain.Table;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -28,10 +29,10 @@ public class InputView {
         return Integer.parseInt(userInput);
     }
 
-    public void inputMenu(final List<Menu> menus){
-        //주문함수(inputMenuNumber(final List<Menu> menus),inputMenuCount)
-        inputMenuNumber(menus);
-        inputMenuCount();
+    public HashMap inputMenu(final List<Menu> menus){
+        HashMap<Integer,Integer> orders = new HashMap<>();
+        orders.put(inputMenuNumber(menus),inputMenuCount());
+        return orders;
     }
 
     public int inputMenuNumber(final List<Menu> menus){
