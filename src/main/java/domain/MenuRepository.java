@@ -21,4 +21,14 @@ public class MenuRepository {
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
     }
+
+    public static final Menu menu(int menuNumber) {
+        int index = 0;
+
+        while (!(menus.get(index).getNumber() == menuNumber)) {
+            index++;
+        }
+
+        return menus.get(index);
+    }
 }
