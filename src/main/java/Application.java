@@ -23,7 +23,7 @@ public class Application {
             // 주문 등록 로직
             if (posChoice == Choice.ORDER) {
                 OutputView.printTables(tables, currentTableNumber);
-                final int tableNumber = validateTableNumber(currentTableNumber);
+                final int tableNumber = validateTableNumber(tables, currentTableNumber);
                 currentTableNumber = tableNumber;
                 OutputView.printMenus(menus);
                 int foodNumber = validateFoodNumber(menus);
@@ -63,9 +63,7 @@ public class Application {
     private static int validatePayableTableNumber(int currentTableNumber) {
         try {
             int tableNumber = InputView.inputTableNumber();
-            if (tableNumber < 0 | tableNumber > 8) {
-                throw new IllegalArgumentException("선택 가능한 범위가 아닙니다.");
-            }
+            validateOverOne(tableNumber);
             validateCurrentPayableTable(currentTableNumber, tableNumber);
             return tableNumber;
         } catch (IllegalArgumentException e) {
@@ -110,18 +108,29 @@ public class Application {
         return validateFoodNumber(menus);
     }
 
-    private static int validateTableNumber(int currentTableNumber) {
+    private static int validateTableNumber(List<Table> tables, int currentTableNumber) {
         try {
             int tableNumber = InputView.inputTableNumber();
-            if (tableNumber < 0 | tableNumber > 8) {
-                throw new IllegalArgumentException("선택 가능한 범위가 아닙니다.");
-            }
+            validateOverOne(tableNumber);
+            validateExistedTables(tables, tableNumber);
             validateCurrentOrderingTable(currentTableNumber, tableNumber);
             return tableNumber;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        return validateTableNumber(currentTableNumber);
+        return validateTableNumber(tables, currentTableNumber);
+    }
+
+    private static void validateOverOne(int tableNumber) {
+        if (tableNumber <= 0) {
+            throw new IllegalArgumentException("선택 가능한 범위가 아닙니다.");
+        }
+    }
+
+    private static void validateExistedTables(List<Table> tables, int tableNumber) {
+        if (tables.stream().filter(table -> table.isMatchNumber(tableNumber)).count() == 0){
+            throw new IllegalArgumentException("존재하는 테이블 번호가 아닙니다.");
+        }
     }
 
     private static void validateCurrentOrderingTable(int currentTableNumber, int tableNumber) {
