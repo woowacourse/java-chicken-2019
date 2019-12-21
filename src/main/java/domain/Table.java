@@ -26,15 +26,33 @@ public class Table {
         TreeMap<Integer, Integer> orderMenuSort = new TreeMap<Integer, Integer>(orderMenu);
         StringBuilder orderMenus = new StringBuilder();
         for (int menu : orderMenuSort.keySet()) {
-            Menu orderMenu = MenuRepository.selectMenu(menu);
-            orderMenus.append(orderMenu.getName());
+            Menu tableOrderMenu = MenuRepository.selectMenu(menu);
+            orderMenus.append(tableOrderMenu.getName());
             orderMenus.append(" ");
             orderMenus.append(orderMenuSort.get(menu));
             orderMenus.append(" ");
-            orderMenus.append(orderMenuSort.get(menu) * orderMenu.getPrice());
+            orderMenus.append(orderMenuSort.get(menu) * tableOrderMenu.getPrice());
             orderMenus.append("\n");
         }
         return orderMenus.toString();
+    }
+
+    public int orderPriceTotal() {
+        int price = 0;
+        int chickenCount = 0;
+        for (int menu : orderMenu.keySet()) {
+            Menu tableOrderMenu = MenuRepository.selectMenu(menu);
+            price += orderMenu.get(menu) * tableOrderMenu.getPrice();
+            chickenCount += orderMenu.get(menu) * tableOrderMenu.isChickenOneReturn();
+        }
+        return orderPriceCal(price, chickenCount);
+    }
+
+    private int orderPriceCal(int price, int chickenCount) {
+        if(chickenCount >= 10) {
+            price -= chickenCount / 10 * 10_000;
+        }
+        return price;
     }
 
     public void clearOrderMenu() {

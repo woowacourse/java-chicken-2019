@@ -42,9 +42,9 @@ public class OutputView {
         System.out.println(orderTable.orderMenuTotal());
     }
 
-    public static void printTotalOrder(int tableNumber, int paymentType) {
+    public static void printTotalOrder(Table orderTable, int paymentType) {
         System.out.println("\n## 최종 결제할 금액");
-        // 출력하기 최종 결제 금액
+        System.out.println(orderTable.orderPriceTotal());
     }
 
     public static void printTableNoOrder(int tableNumber) {

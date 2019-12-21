@@ -25,6 +25,13 @@ public class Menu {
         return price;
     }
 
+    public int isChickenOneReturn() {
+        if(category.toString().equals("[치킨]")) {
+            return 1;
+        }
+        return 0;
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";

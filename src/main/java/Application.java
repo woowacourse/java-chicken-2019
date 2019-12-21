@@ -39,7 +39,7 @@ public class Application {
     private void processPaymentContinue(Table orderTable, int tableNumber) {
         OutputView.printOrderHistory(orderTable);
         int paymentType = paymentTypeMenu(tableNumber);
-        OutputView.printTotalOrder(tableNumber, paymentType);
+        OutputView.printTotalOrder(orderTable, paymentType);
         orderTable.clearOrderMenu();
         mainMenu();
     }
