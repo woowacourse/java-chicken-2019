@@ -6,7 +6,7 @@ public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static int inputTableNumber() {
-        System.out.println("## ì£¼ë¬¸í•  í…Œì´ë¸”ì„ ì„ íƒí•˜ì„¸ìš”.");
+        System.out.println("## ÁÖ¹®ÇÒ Å×ÀÌºíÀ» ¼±ÅÃÇÏ¼¼¿ä");
         return scanner.nextInt();
     }
 }

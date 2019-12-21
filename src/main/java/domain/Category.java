@@ -1,8 +1,8 @@
 package domain;
 
 public enum Category {
-    CHICKEN("ì¹˜í‚¨"),
-    BEVERAGE("ìŒë£Œ");
+    CHICKEN("Ä¡Å²"),
+    BEVERAGE("À½·á");
 
     private final String name;
 
