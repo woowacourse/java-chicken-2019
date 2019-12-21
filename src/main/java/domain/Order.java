@@ -9,8 +9,11 @@ public class Order {
         this.menuCount = menuCount;
     }
     
+    public int toOrderPrice() {
+    	return menu.toPrice() * menuCount.toInteger();
+    }
+    
     public String toString() {
-    	return menu.toName() + menuCount.toInteger() 
-    		+ menu.toPrice() * menuCount.toInteger();
+    	return menu.toName() + " " + menuCount.toInteger() + " " + toOrderPrice();
     }
 }

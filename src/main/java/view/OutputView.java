@@ -4,6 +4,7 @@ import java.util.List;
 
 import domain.Menu;
 import domain.Order;
+import domain.PaymentOption;
 import domain.Table;
 
 public class OutputView {
@@ -73,5 +74,8 @@ public class OutputView {
     	System.out.println(table.toString() + "번 테이블의 결제를 진행합니다.");
     }
     
-    
+    public static void printAllPrice(final Table table, final PaymentOption paymentOption) {
+    	System.out.println("n## 최종 결제할 금액");
+    	System.out.println(table.toOrders().toAllPrice()+ "\n");
+    }
 }

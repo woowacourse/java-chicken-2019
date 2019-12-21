@@ -13,6 +13,6 @@ public class Payment {
 		Table table = InputView.inputTableNumber();
 		OutputView.printOrderList(table);
 		OutputView.printPayingProcess(table);
-		PaymentOption paymentOption = InputView.inputPaymentOption();
+		OutputView.printAllPrice(table, InputView.inputPaymentOption());
 	}
 }

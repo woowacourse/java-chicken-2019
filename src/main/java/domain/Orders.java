@@ -17,4 +17,14 @@ public class Orders {
 	public List<Order> toList() {
 		return orderList;
 	}
+	
+	public String toAllPrice() {
+		int allPrice = 0;
+		
+		for (Order order : orderList) {
+			allPrice += order.toOrderPrice();
+		}
+		
+		return allPrice + "원";
+	}
 }
