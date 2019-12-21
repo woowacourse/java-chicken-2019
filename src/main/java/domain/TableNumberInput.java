@@ -1,9 +1,8 @@
 package domain;
 
 import view.InputView;
-import view.OutputView;
 
-import java.util.regex.Pattern;
+import static Util.Utility.isNumeric;
 
 public class TableNumberInput {
 
@@ -17,21 +16,9 @@ public class TableNumberInput {
 
     public static boolean isValid(String inputString) {
         if (isNumeric(inputString)) {
-            Table selectedTable = new Table(Integer.parseInt(inputString));
-            return TableRepository.tables().contains(selectedTable);
+            int selectedNumber = Integer.parseInt(inputString);
+            return TableRepository.contain(selectedNumber);
         }
         return false;
-    }
-
-    private static boolean isNumeric(String inputString) {
-        Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
-        if (inputString == null) {
-            return false;
-        }
-        if (!pattern.matcher(inputString).matches()) {
-            OutputView.printIsNotNumberError();
-            return false;
-        }
-        return true;
     }
 }
