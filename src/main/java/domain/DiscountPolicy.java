@@ -14,9 +14,9 @@ public class DiscountPolicy {
         return 1;
     }
 
-    public int QuantityDiscount(List<Menu> menuList) {
+    public int QuantityDiscount(List<Menu> orderList) {
         int chickenAQuantity = 0;
-        for (Menu it : menuList) {
+        for (Menu it : orderList) {
             if (it.isChicken())
                 chickenAQuantity += 1;
         }

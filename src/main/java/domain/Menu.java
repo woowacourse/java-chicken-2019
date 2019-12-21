@@ -22,6 +22,10 @@ public class Menu {
         return price;
     }
 
+    public boolean isMatchedMenu(int number) {
+        return number == this.number;
+    }
+
     public boolean isChicken() {
         return category.isChicken(this.category);
     }

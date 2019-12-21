@@ -7,6 +7,7 @@ public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static int inputFeature() {
+        //TODO class Feature 만들고, 클래스 안에 기능 나열한 뒤, 하드코딩 삭제
         System.out.println("## 메인화면");
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
@@ -22,22 +23,21 @@ public class InputView {
     }
 
     public static int inputTableNumber() {
-        System.out.println("## 주문할 테이블을 선택하세요.");
+        System.out.println("## 테이블을 선택하세요.");
         return scanner.nextInt();
     }
 
     public static int inputMenu() {
-        System.out.println("## 주문할 테이블을 선택하세요.");
+        System.out.println("## 등록할 메뉴를 선택하세요.");
         return scanner.nextInt();
     }
 
     public static int inputQuantity() {
-        System.out.println("## 주문할 테이블을 선택하세요.");
+        System.out.println("## 메뉴의 수량을 입력하세요.");
         return scanner.nextInt();
     }
 
     public static int inputPaymentMethod(int tableNumber) {
-        System.out.println("## " + tableNumber + "번 테이블의 결제를 진행합니다.");
         System.out.println("## 신용카드는 1번, 현금은 2번");
         return scanner.nextInt();
     }

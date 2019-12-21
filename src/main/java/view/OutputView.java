@@ -9,6 +9,8 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BOTTOM_LINE_HAS_ORDER = "└ $ ┘";
+    //TODO 주문이 있는 테이블은 별도로 표시
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
