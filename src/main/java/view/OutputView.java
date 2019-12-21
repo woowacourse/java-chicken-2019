@@ -4,11 +4,23 @@ import domain.Menu;
 import domain.Table;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String GET_ORDER = "1. 주문등록";
+    private static final String PAY = "2. 결제하기";
+    private static final String EXIT_PROGRAM = "3. 프로그램 종료하기";
+    private static final Scanner scanner = new Scanner(System.in);
+    
+    public static void printMain() {
+    	System.out.println("## 메인화면 ");
+    	System.out.println(GET_ORDER);
+    	System.out.println(PAY);
+    	System.out.println(EXIT_PROGRAM);
+    }
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
