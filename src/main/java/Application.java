@@ -19,6 +19,7 @@ public class Application {
 		OutputView.printMenus(menus);
         while(true){
             MainCommand mainCommand=new MainCommand();
+            mainCommand.getCommand();
 			if(mainCommand.isOrder()){
 
 			}
