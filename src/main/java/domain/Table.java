@@ -32,4 +32,8 @@ public class Table {
     public boolean hasOrder() {
         return !orders.isEmpty();
     }
+
+    public int getNumber() {
+        return number;
+    }
 }
