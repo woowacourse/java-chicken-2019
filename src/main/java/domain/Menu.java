@@ -1,7 +1,6 @@
 package domain;
 
-public class Menu {
-    private final int number;
+public class Menu extends StoreTool{
     private final String name;
     private final Category category;
     private final int price;

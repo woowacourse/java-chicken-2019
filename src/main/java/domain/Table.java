@@ -1,14 +1,9 @@
 package domain;
 
-public class Table {
-    private final int number;
+public class Table  extends StoreTool{
 
     public Table(final int number) {
         this.number = number;
-    }
-
-    public boolean isMatchNumber(int number) {
-        return this.number == number;
     }
 
     @Override
