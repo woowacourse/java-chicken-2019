@@ -51,7 +51,7 @@ public class Table {
 
     public void printOrders(){
         for(int i = 0; i < menus.size(); i++){
-            System.out.printf("%s %d %d",
+            System.out.printf("%s %d %d \n",
                     menus.get(i).getName(),
                     orders.get(i),
                     (int)menus.get(i).getPrice() * orders.get(i));
