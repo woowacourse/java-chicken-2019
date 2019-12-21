@@ -1,7 +1,6 @@
 package domain;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class Bills {
@@ -24,6 +23,10 @@ public class Bills {
         if (quantity < 1) {
             throw new IllegalArgumentException("1개 이상부터 주문이 가능합니다.");
         }
+    }
+
+    public boolean isEmpty() {
+        return bills.isEmpty();
     }
 
     @Override
