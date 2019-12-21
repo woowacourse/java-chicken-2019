@@ -11,7 +11,7 @@ public class InputView {
     }
 
     public static int inputTableNumber() {
-        System.out.println("## 주문할 테이블을 선택하세요.");
+        System.out.println("## 테이블을 선택하세요.");
         return scanner.nextInt();
     }
 
