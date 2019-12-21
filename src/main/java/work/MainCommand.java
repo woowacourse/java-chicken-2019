@@ -1,14 +1,13 @@
 package work;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.List;
 
 import view.InputView;
 import view.OutputView;
 
-public class MainCommand {
+public class MainCommand implements Work{
 	private int command;
 	private final List<String> COMMAND_NAMES = Arrays.asList("1 - 주문등록", "2 - 결제하기", "3 - 프로그램 종료");
 	public MainCommand(){
@@ -21,7 +20,7 @@ public class MainCommand {
 			Validation.checkPositiveRange(value, COMMAND_NAMES.size());
 			this.command = value;
 		} catch (InputMismatchException e) {
-			System.out.println("숫자를 입력해주세요.");
+			System.out.println(NUMBER_WARNING);
 			InputView.flush();
 			return getCommand();
 		} catch (Exception e) {
