@@ -52,6 +52,7 @@ public class OutputView {
 
     public static void printResults(List<String> orderedMenu) {
         System.out.println("## 주문내역");
+        System.out.println("메뉴  수량  금액");
         for (String result : orderedMenu) {
             System.out.println(result);
         }

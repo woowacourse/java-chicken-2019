@@ -46,11 +46,11 @@ public class Control {
         menuNumber = convertMenuNumber(menuNumber);
         tableNumber = convertTableNumber(tableNumber);
         if (menuNumber != 100) {
-            payList.get(tableNumber - 1).setMenus(menus.get(menuNumber).toString());
+            payList.get(tableNumber - 1).setMenus(menus.get(menuNumber).getName(), menus.get(menuNumber).getPrice());
             payList.get(tableNumber - 1).setTablePay(menus.get(menuNumber).getPrice());
             payList.get(tableNumber - 1).plusCount(menuNumber);
         } else {
-            System.out.println("주문할수 없습니다.");
+            System.out.println("주문할수 없습니다.(메뉴판에 없는 메뉴지정)");
         }
     }
 
@@ -64,9 +64,13 @@ public class Control {
     private static void payLoad(int tableNumber) {
         OutputView.printResults(payList.get(tableNumber - 1).getOrderedMenu());
         int payHow = InputView.inputPayNumber(payList.get(tableNumber - 1));
-        int totalPay = discount(tableNumber, payHow);
-        OutputView.printPay(totalPay);
-        payList.get(tableNumber -1).resetTable();
+        if (payHow == 2 || payHow == 1) {
+            int totalPay = discount(tableNumber, payHow);
+            OutputView.printPay(totalPay);
+            payList.get(tableNumber -1).resetTable();
+        } else {
+            System.out.println("잘못된 결제방법입니다. 메뉴로 돌아갑니다.");
+        }
     }
 
     private static int discount(int tableNumber, int payHow) {
