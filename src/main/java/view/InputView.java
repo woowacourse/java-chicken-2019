@@ -26,12 +26,12 @@ public class InputView {
 		if (!tables.getTables().stream().filter(table -> table.getNumber() == tableNumber).findFirst().isPresent()) {
 			throw new IllegalArgumentException("입력한 테이블 번호에 해당하는 테이블이 없습니다.");
 		}
-		if(!isOrder && tables.getByNumber(tableNumber).isEmpty()) {
+		if (!isOrder && tables.getByNumber(tableNumber).isEmpty()) {
 			throw new IllegalArgumentException("입력한 테이블 번호에 해당하는 테이블에서 주문한 메뉴가 없습니다.");
 		}
 		return tableNumber;
 	}
-	
+
 	public static int inputMenuNumber(MenuRepository menus) {
 		System.out.println("## 등록할 메뉴를 선택하세요.");
 		int menuNumber = scanner.nextInt();
@@ -40,10 +40,19 @@ public class InputView {
 		}
 		return menuNumber;
 	}
-	
+
 	public static int inputMenuCount() {
 		System.out.println("## 메뉴의 수량을 선택하세요.");
 		return scanner.nextInt();
 	}
 
+	public static int inputPaymentMethod(int tableNum) {
+		System.out.println("## " + tableNum + "번 테이블의 결제를 진행합니다.");
+		System.out.println("## 신용카드는 1번, 현금은 2번");
+		int paymentMethod = scanner.nextInt();
+		if (paymentMethod != 1 && paymentMethod != 2) {
+			throw new IllegalArgumentException("1과 2만 입력할 수 있습니다.");
+		}
+		return paymentMethod;
+	}
 }
