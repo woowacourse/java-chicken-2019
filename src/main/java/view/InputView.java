@@ -6,6 +6,13 @@ import domain.PaymentType;
 import domain.PosMenuType;
 import domain.Table;
 
+/**
+ * 콘솔 입력을 담당하는 객체
+ *
+ * @version 1.0.0
+ * @author KSKIM
+ * @since 2019-12-21
+ */
 public class InputView {
     private static final String MENU_SELECT_GUIDE_MESSAGE =
             "## 메인화면\n1: 주문등록\n2: 결제하기\n3: 프로그램 종료\n";

@@ -1,5 +1,12 @@
 package domain;
 
+/**
+ * 음식 메뉴를 의미하는 객체
+ *
+ * @version 1.0.0
+ * @author KSKIM
+ * @since 2019-12-21
+ */
 public class Menu {
     private final int number;
     private final String name;
@@ -17,7 +24,7 @@ public class Menu {
         return number == menuNumber;
     }
 
-    public boolean ischicken() {
+    public boolean isChicken() {
         return Category.CHICKEN.equals(category);
     }
 

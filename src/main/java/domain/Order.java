@@ -21,8 +21,8 @@ public class Order {
 		this.orderCount = orderCount;
 	}
 
-	public boolean ischicken() {
-		return menu.ischicken();
+	public boolean isChicken() {
+		return menu.isChicken();
 	}
 
 	public boolean canAddOrder(int totalOrderCount) {

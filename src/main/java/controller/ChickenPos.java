@@ -17,6 +17,8 @@ import view.InputView;
 import view.OutputView;
 
 /**
+ * 프로그램의 전반적인 흐름을 담당하는 객체
+ *
  * @version 1.0.0
  * @author KSKIM
  * @since 2019-12-21
@@ -179,7 +181,7 @@ public class ChickenPos {
 
 	private int calculatePaymentPrice(List<Order> orders, Table table) {
 		int fullPrice = calculateFullPrice(orders);
-		int chickenDiscountedPrice = calculatechickenDiscountedPrice(fullPrice, orders);
+		int chickenDiscountedPrice = calculateChickenDiscountedPrice(fullPrice, orders);
 		PaymentType paymentType = InputView.inputPaymentType(table);
 		return calculateCashDiscountedPrice(paymentType, chickenDiscountedPrice);
 	}
@@ -190,14 +192,14 @@ public class ChickenPos {
 				.sum();
 	}
 
-	private int calculatechickenDiscountedPrice(int price, List<Order> orders) {
-		int chickenCount = calculatechickenCount(orders);
+	private int calculateChickenDiscountedPrice(int price, List<Order> orders) {
+		int chickenCount = calculateChickenCount(orders);
 		return price - chickenCount / DISCOUNT_chicken_COUNT * DISCOUNT_chicken_PRICE;
 	}
 
-	private int calculatechickenCount(List<Order> orders) {
+	private int calculateChickenCount(List<Order> orders) {
 		return orders.stream()
-				.filter(order -> order.ischicken())
+				.filter(Order::isChicken)
 				.mapToInt(Order::getOrderCount)
 				.sum();
 	}

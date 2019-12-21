@@ -2,6 +2,13 @@ package domain;
 
 import java.util.Objects;
 
+/**
+ * 매장 내 테이블 번호를 의미하는 객체
+ *
+ * @version 1.0.0
+ * @author KSKIM
+ * @since 2019-12-21
+ */
 public class Table {
     private final int number;
 

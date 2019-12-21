@@ -7,6 +7,13 @@ import domain.Table;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 콘솔 출력을 담당하는 객체
+ *
+ * @version 1.0.0
+ * @author KSKIM
+ * @since 2019-12-21
+ */
 public class OutputView {
 	private static final String TOP_LINE = "┌ ─ ┐";
 	private static final String TABLE_FORMAT = "|  %s  |";
