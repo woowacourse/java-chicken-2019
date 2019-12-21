@@ -41,16 +41,19 @@ public class Application {
 
     public static void pay(){
         int tableNumber, howToPay;
+
         OutputView.printTables(tables);
         if(!TableRepository.hasTableToPay()){
+            System.out.println("결제 가능한 테이블이 없습니다.\n");
             return;
         }
         tableNumber = InputView.inputTableNumber_Pay();
         OutputView.printOrders(TableRepository.getTablebyNumber(tableNumber));
         howToPay = InputView.inputHowToPay();
         System.out.println("## 최종 결제할 금액");
-        System.out.println(discountCalculator(TableRepository.getTablebyNumber(tableNumber), howToPay));
+        System.out.println(discountCalculator(TableRepository.getTablebyNumber(tableNumber), howToPay) + "원");
         System.out.println();
+        TableRepository.getTablebyNumber(tableNumber).clearTable();
     }
 
     private static int discountCalculator(Table table, int Card_or_Cash){
@@ -62,4 +65,5 @@ public class Application {
 
         return (int)price;
     }
+
 }

@@ -16,6 +16,13 @@ public class Table {
         this.number = number;
     }
 
+    public void clearTable(){
+        menus.clear();
+        orders.clear();
+        numberOfChicken = 0;
+        totalPrice = 0;
+    }
+
     public int getOrderedMenuNumber(){
         int total_Order = 0;
         for(int i = 0; i < orders.size(); i++){

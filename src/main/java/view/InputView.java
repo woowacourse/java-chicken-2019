@@ -45,10 +45,11 @@ public class InputView {
         int tableNumber = scanner.nextInt();
         if(!TableRepository.contains(tableNumber)){
             System.out.println("존재하지 않는 테이블 번호입니다. \n");
-            tableNumber = inputTableNumber();
+            tableNumber = inputTableNumber_Pay();
         }else if(TableRepository.getTablebyNumber(tableNumber).getOrderedMenuNumber()
                 == ConstantNumber.ZERO){
-            tableNumber = inputTableNumber();
+            System.out.println("결제 가능한 테이블이 아닙니다.\n");
+            tableNumber = inputTableNumber_Pay();
         }
 
         return tableNumber;
