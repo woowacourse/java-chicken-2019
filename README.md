@@ -73,11 +73,18 @@
    
 3. 테스트 코드 작성
     
-    - 테스트코드 작성
+    - [x] 테스트코드 작성
+        - [x] ChickenManager
+        - [x] MenuRepository
+        - [x] Menu
+        - [x] OrderedMenu
+        - [x] Payment
+        - [x] TableRepository
+        - [x] Table
     
-4. 추가적인 작업
+4.[x] 추가적인 작업
     
-    - 사용 설명서 및 스크린샷파일 첨부
+    - [x] 사용 설명서 및 스크린샷파일 첨부
 
 
 ## 프로그램 실행 스크린샷 
