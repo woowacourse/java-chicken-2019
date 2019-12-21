@@ -37,10 +37,10 @@ public class OutputView {
 	private static void printBottomLine(final String line, final List<Table> tables, final int count) {
 		for (final Table table : tables) {
 			if (table.hasCustomer()) {
-				System.out.printf(line, "\\");
+				System.out.printf(line, "O");
 				continue;
 			}
-			System.out.printf(line, "-");
+			System.out.printf(line, "─");
 		}
 		System.out.println();
 	}

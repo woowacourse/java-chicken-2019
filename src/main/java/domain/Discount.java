@@ -12,15 +12,15 @@ public class Discount {
 	}
 
 	public static int discountByChickenCount(int price, Table table) {
-		int discountPrice = price; 
+		int chickenCount = 0;
 		Map<Integer, Integer> menuList = table.getMenuList();
 		for (int menuNumber : menuList.keySet()) {
 			Menu menu = MenuRepository.getMenu(menuNumber);
 			int menuCount = menuList.get(menuNumber);
-			if (menu.toString().contains("치킨") && menuCount >= DISCOUNT_CHICKEN_MIN_COUNT) {
-				discountPrice -= DISCOUNT_WON * (menuCount / DISCOUNT_CHICKEN_MIN_COUNT);
+			if (menu.toString().contains("치킨")) {
+				chickenCount += menuCount;
 			}
 		}
-		return discountPrice;
+		return price - DISCOUNT_WON * (chickenCount / DISCOUNT_CHICKEN_MIN_COUNT);
 	}
 }
