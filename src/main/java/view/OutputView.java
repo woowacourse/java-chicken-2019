@@ -18,6 +18,7 @@ public class OutputView {
     private static final String[] MENU_ACCOUNTS_MESSAGES = {"## 주문내역", "메뉴\t수량\t금액"};
     private static final String TOTAL_PAYMENT_MESSAGE = "## 최종 결제할 금액";
     private static final String WON = "원";
+    private static final String RE_ENTER_MESSAGE = "잘못된 입력입니다. 다시 입력해주세요.";
 
     public static void printTables(final List<Table> tables, Orders orders) {
         System.out.println("## 테이블 목록");
@@ -78,5 +79,9 @@ public class OutputView {
 	public static void printTotalPayment(Price price) {
     	System.out.println(TOTAL_PAYMENT_MESSAGE);
     	System.out.println(price.getPrice() + WON);
+	}
+
+	public static void printReEnter() {
+    	System.out.println(RE_ENTER_MESSAGE);
 	}
 }

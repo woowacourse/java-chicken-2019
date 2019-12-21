@@ -46,6 +46,7 @@ public class Pos {
 		if (functionNumber == QUIT_NUMBER) {
 			throw new IllegalArgumentException("프로그램 종료");
 		}
+		OutputView.printReEnter();
 	}
 
 	private void registerOrder() {
