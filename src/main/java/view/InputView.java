@@ -50,13 +50,14 @@ public class InputView {
 		}
 	}
 	
-	public static boolean enterCacheOrCard() {
+	public static boolean enterCacheOrCard(int tableNum) {
 		try {
-			System.out.println("##신용카드는 1번, 현금은 2번");
+			System.out.println("##" + tableNum + "번 테이블의 결제를 진행합니다\n"
+					+ "##신용카드는 1번, 현금은 2번");
 			return new CacheOrCard(Integer.parseInt(scanner.nextLine().trim())).isCache();
 		} catch (IllegalArgumentException e) {
 			System.out.println("1또는 2를 입력해주세요");
-			return enterCacheOrCard();
+			return enterCacheOrCard(tableNum);
 		}
 	}
 }

@@ -24,10 +24,15 @@ public class PosMachine {
 		OutputView.printTables(tables.tables());
 		TableNumber tableNum = new TableNumber();
 		tableNum.enterNum();
-		tables.enterOrderAt(tableNum);
-		tables.showTableStates();
-		OutputView.printTables(tables.tables());
-		OutputView.printOrders(tables.tableAt(tableNum).getOrders());
-		OutputView.printFinalPrice(tables.tableAt(tableNum).getOrders().calculateFinalPrice(InputView.enterCacheOrCard()));
+		if (oneTwoThree.isGetOrder()) {
+			OutputView.printMenus(MenuRepository.menus());
+			tables.enterOrderAt(tableNum);
+			oneCycle();
+		}
+		if (oneTwoThree.isPay()) {
+			OutputView.printOrders(tables.tableAt(tableNum).getOrders());
+			OutputView.printFinalPrice(tables.tableAt(tableNum).getOrders().calculateFinalPrice(InputView.enterCacheOrCard(tableNum.getValue())));
+			oneCycle();
+		}
 	}
 }
