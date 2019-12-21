@@ -1,6 +1,9 @@
 package domain;
 
 public class Order {
+    private static final int ZERO = 0;
+    private static final String SPACE = " ";
+
     private Menu menu;
     private int foodCount;
 
@@ -13,7 +16,7 @@ public class Order {
         return this.menu.equals(menu);
     }
 
-    public void increaseFoodCount(int foodCount){
+    public void increaseFoodCount(int foodCount) {
         this.foodCount += foodCount;
     }
 
@@ -21,18 +24,18 @@ public class Order {
         return menu.getPrice() * foodCount;
     }
 
-    public int getFoodCountWhenChicken(){
+    public int getFoodCountWhenChicken() {
         if (menu.isMatchCategory(Category.CHICKEN)) {
             return foodCount;
         }
-        return 0;
+        return ZERO;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(menu.getName() + " ");
-        sb.append(foodCount + " ");
+        sb.append(menu.getName() + SPACE);
+        sb.append(foodCount + SPACE);
         sb.append(menu.getPrice());
         return sb.toString();
     }
