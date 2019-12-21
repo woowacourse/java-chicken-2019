@@ -29,7 +29,7 @@ public class Application {
         OutputView.showSelectTableAsOrder();
         Table inputTable = tables.findTable(InputView.inputTableNumber(tables));
         Menu inputMenu = menus.findMenu(InputView.inputMenuNumber(menus));
-        int menuAmount = InputView.inputMenuAmount();
+        int menuAmount = InputView.inputMenuAmount(inputTable, inputMenu);
         inputTable.addMenu(inputMenu, menuAmount);
     }
 

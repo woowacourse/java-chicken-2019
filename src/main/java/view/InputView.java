@@ -1,8 +1,6 @@
 package view;
 
-import domain.Calculator;
-import domain.Menus;
-import domain.Tables;
+import domain.*;
 
 import java.util.Optional;
 import java.util.Scanner;
@@ -41,9 +39,8 @@ public class InputView {
                 });
     }
 
-    public static int inputMenuAmount() {
+    public static int inputMenuAmount(Table table, Menu inputMenu) {
         System.out.println("## 메뉴의 수량을 입력하세요.");
-        //TODO 메뉴 최대최소수량 확인하는 기능
         return inputAsNumber();
     }
 

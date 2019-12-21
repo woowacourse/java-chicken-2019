@@ -23,9 +23,14 @@ public class Ordered {
         return orderedMenus.stream().collect(Collectors.groupingBy(Menu::getName));
     }
 
+    public int countOfMenu(Menu menu) {
+        return (int) orderedMenus.stream().filter(x -> x.equals(menu)).count();
+    }
+
     public int chickensDiscount() {
         Map<Category, List<Menu>> categoryGroupedMenu = orderedMenus.stream()
                 .collect(Collectors.groupingBy(Menu::getCategory));
+
         try {
             int chickenAmount = categoryGroupedMenu.get(Category.CHICKEN).size();
             return (chickenAmount / CHICKEN_DISCOUNT_MIN_SIZE) * CHICKEN_DISCOUNT_VALUE;
