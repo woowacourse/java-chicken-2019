@@ -11,8 +11,10 @@ public class InputView {
     private static final int MAKE_PAYMENT = 2;
     private static final int END_PROGRAM = 3;
     private static final int OFFSET = 0;
-    private static final int LEAST_ORDER_COUNT = 1;
-    private static final int BIGGIST_ORDER_COUNT = 99;
+    private static final int MINIMUM_MENU_QUANTITY = 1;
+    private static final int MAXIMUM_MENU_QUANTITY = 99;
+    private static final int CARD = 1;
+    private static final int MONEY = 2;
     private static int inputNumber;
 
     public static int inputOrderNumber() {
@@ -35,7 +37,7 @@ public class InputView {
         return inputNumber;
     }
 
-    public static int inputChooseMenuCount() {
+    public static int inputChooseMenuAmount() {
         System.out.println("## 메뉴 수량을 입력해주세요");
         while(!isChooseMenuNumber());
         System.out.println(inputNumber);
@@ -57,7 +59,7 @@ public class InputView {
     }
 
     private static void checkChooseMenuNumber(int inputNumber) throws Exception {
-        if(inputNumber < LEAST_ORDER_COUNT || inputNumber > BIGGIST_ORDER_COUNT) {
+        if(inputNumber < MINIMUM_MENU_QUANTITY || inputNumber > MAXIMUM_MENU_QUANTITY) {
             throw new Exception("수량은 1~99까지 가능합니다");
         }
     }
@@ -138,20 +140,20 @@ public class InputView {
 
     private static boolean isPaymentMethodNumber() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("신용카드는 1번, 현금은 2번 ");
+        System.out.println("신용카드는 1번, 금은 2번 ");
         try{
             inputNumber = scanner.nextInt();
             checkPaymentMethod(inputNumber);
             return true;
         } catch(Exception e) {
-            System.out.println("결제 수을 다시 입력해주세요");
+            System.out.println("결제 수단을 다시 입력해주세요");
             System.out.println(e.getMessage());
         }
         return false;
     }
 
     private static void checkPaymentMethod(int inputNumber) throws Exception {
-        if(inputNumber != 1 && inputNumber != 2) {
+        if(inputNumber != CARD && inputNumber != MONEY) {
             throw new Exception("제대로된 결제 방법을 입력해주세요");
         }
     }

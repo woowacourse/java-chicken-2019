@@ -11,6 +11,7 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
     private static final String BOTTOM_LINE_OREDR = "└ ₩ ┘";
+    private static final double MONEY_DISCOUNT = 0.95;
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
@@ -66,7 +67,7 @@ public class OutputView {
     }
 
     public static void moneyPayment(int allPayment) {
-        System.out.println("최종 결제할 금액 " + (int)(allPayment * 0.95));
+        System.out.println("최종 결제할 금액 " + (int)(allPayment * MONEY_DISCOUNT));
     }
 
     public static void cardPayMent(int allPayment) {
