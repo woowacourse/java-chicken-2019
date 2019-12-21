@@ -2,6 +2,7 @@ package service;
 
 import domain.Menu;
 import domain.MenuRepository;
+import domain.OrderedMenu;
 import domain.Table;
 import view.InputView;
 import view.OutputView;
@@ -15,14 +16,18 @@ public class OrderRegistor extends Service{
         super(number, name);
     }
 
-    public void run(List<Table> table){
+    public void run(List<Table> tables){
         int tableNumber;
         int menuNumber;
+        int menuQuantity;
 
         OutputView.printTables(tables);
         tableNumber = InputView.inputTableNumber();
         OutputView.printMenus(MenuRepository.menus());
-        menuNumber = InputView.inputMenuNumber();
+        menuNumber =InputView.inputMenuNumber();
+        menuQuantity =  InputView.inputMenuQuantity();
 
     }
+
+
 }
