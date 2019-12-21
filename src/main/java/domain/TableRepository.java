@@ -13,6 +13,7 @@ public class TableRepository {
         tables.add(new Table(3));
         tables.add(new Table(5));
         tables.add(new Table(6));
+        tables.add(new Table(7));
         tables.add(new Table(8));
     }
 
