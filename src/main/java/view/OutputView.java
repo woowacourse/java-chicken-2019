@@ -10,6 +10,13 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
 
+    public static void printFeatures() {
+        System.out.println("## 메인화면\n"
+            + "1 - 주문등록\n"
+            + "2 - 결제하기\n"
+            + "3 - 프로그램 종료");
+    }
+
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
@@ -38,5 +45,10 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+
+    public static void printOrders(int tableNumber) {
+        StringBuilder sb = new StringBuilder("메뉴 수량 금액\n");
+        // TODO: tableNumber 로 테이블을 찾고 Order 출력
     }
 }
