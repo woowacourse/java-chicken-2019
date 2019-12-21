@@ -1,5 +1,9 @@
 package service;
 
+import domain.Table;
+
+import java.util.List;
+
 public class Service {
     private final int number;
     private final String name;
@@ -18,7 +22,7 @@ public class Service {
         return this.number == number;
     }
 
-    public void run(){
+    public void run(List<Table> tables){
 
     }
 }

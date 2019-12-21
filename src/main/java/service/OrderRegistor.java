@@ -1,6 +1,7 @@
 package service;
 
 import domain.Table;
+import view.InputView;
 import view.OutputView;
 
 import java.util.List;
@@ -13,7 +14,10 @@ public class OrderRegistor extends Service{
     }
 
     public void run(List<Table> table){
+        int tableNumber;
+
         OutputView.printTables(tables);
+        tableNumber = InputView.inputTableNumber();
 
     }
 }
