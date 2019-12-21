@@ -4,6 +4,7 @@ import domain.Table;
 import domain.TableRepository;
 import domain.reserved.OrderStatement;
 import order.Order;
+import payment.PaymentFeature;
 import view.InputView;
 import view.OutputView;
 import view.dto.FeatureType;
@@ -26,8 +27,7 @@ public class Application {
             return true;
         }
         if (featureType.isTypePayment()) {
-            System.out.println("결제 진행");
-            // 결제 진행
+            runPayment(orderStatement);
             return true;
         }
         System.out.println("종료");
@@ -37,5 +37,10 @@ public class Application {
     private static void runOrder(OrderStatement orderStatement) {
         Order oder = new Order();
         oder.startOrder(orderStatement);
+    }
+
+    private static void runPayment(OrderStatement orderStatement) {
+        PaymentFeature paymentFeature = new PaymentFeature();
+        paymentFeature.startPayment(orderStatement);
     }
 }

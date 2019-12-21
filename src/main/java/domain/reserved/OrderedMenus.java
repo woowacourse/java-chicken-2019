@@ -1,6 +1,7 @@
 package domain.reserved;
 
 import domain.Menu;
+import view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,5 +41,9 @@ public class OrderedMenus {
                 .map(orderedMenu -> orderedMenu.getPrice())
                 .reduce(Integer::sum)
                 .get();
+    }
+
+    public void printOrderedMenu() {
+        OutputView.printOrderedMenu(orderedMenus);
     }
 }

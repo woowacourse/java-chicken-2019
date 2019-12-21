@@ -2,6 +2,7 @@ package view;
 
 import domain.Menu;
 import domain.Table;
+import domain.reserved.OrderedMenu;
 
 import java.util.List;
 
@@ -10,6 +11,8 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
     private static final String EXIST_ORDER_BOTTOM_LINE = "└ ₩ ┘";
+    private static final String SPACE = " ";
+    private static final String NEWLINE = "\n";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
@@ -53,5 +56,19 @@ public class OutputView {
     public static void printNoExistTablePayment() {
         System.out.println("결제할 금액이 없습니다.");
         System.out.println("다른 테이블을 입력해주세요.");
+    }
+
+    public static void printOrderedMenu(List<OrderedMenu> orderedMenus) {
+        System.out.println("## 주문 내역");
+        System.out.println("메뉴 수량 금액");
+        StringBuilder sb = new StringBuilder();
+        orderedMenus.stream()
+                .forEach(orderedMenu -> {
+                    sb.append(orderedMenu.getName()).append(SPACE);
+                    sb.append(orderedMenu.getCapacity().getCapacity()).append(SPACE);
+                    sb.append(orderedMenu.getPrice()).append(SPACE);
+                    sb.append(NEWLINE);
+                });
+        System.out.println(sb.toString());
     }
 }
