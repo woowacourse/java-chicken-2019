@@ -17,4 +17,8 @@ public class Amount {
 			throw new IllegalArgumentException(AMOUNT_ERROR);
 		}
 	}
+
+	public int get() {
+		return amount;
+	}
 }

@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Table {
@@ -22,5 +23,9 @@ public class Table {
 
     public void addOrder(Order order) {
         orders.add(order);
+    }
+
+    public List<Order> orders() {
+        return Collections.unmodifiableList(orders);
     }
 }
