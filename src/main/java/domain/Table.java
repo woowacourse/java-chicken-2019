@@ -15,17 +15,21 @@ public class Table {
 		return this.number;
 	}
 
+	public List<Menu> getMenus() {
+		return this.menus;
+	}
+
 	public void add(Menu menu, int menuCount) {
 		for (int i = 0; i < menuCount; i++) {
 			menus.add(menu);
 		}
-		//예외처리 필요
+		// 예외처리 필요
 	}
 
 	public boolean isEmpty() {
 		return this.menus.isEmpty();
 	}
-	
+
 	@Override
 	public String toString() {
 		return Integer.toString(number);
