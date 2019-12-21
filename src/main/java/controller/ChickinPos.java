@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import domain.Menu;
 import domain.Order;
+import domain.PaymentType;
 import domain.PosMenuType;
 import domain.Table;
 import view.InputView;
@@ -21,6 +22,9 @@ import view.OutputView;
  * @since 2019-12-21
  */
 public class ChickinPos {
+	private static final int EMPTY_TABLE = 0;
+	private static final int DISCOUNT_CHICKIN_COUNT = 10;
+	private static final int DISCOUNT_CHICKIN_PRICE = 10_000;
 	private static final int PURCHASE_NOT_DECIDED = -1;
 
 	private final List<Table> tables;
@@ -60,7 +64,6 @@ public class ChickinPos {
 	}
 
 	private void addOrder() {
-		OutputView.printTables(tables, tableOrders);
 		Table table = getTable();
 		Order order = getOrder();
 		if (!canAddOrder(table, order)) {
@@ -75,23 +78,6 @@ public class ChickinPos {
 		Menu menu = getMenu();
 		int purchaseCount = getPurchaseCount();
 		return new Order(menu, purchaseCount);
-	}
-
-	private Table getTable() {
-		Table table = null;
-		while (table == null) {
-			int tableNumber = InputView.inputTableNumber();
-			table = findTableByTableNumber(tableNumber);
-		}
-		return table;
-	}
-
-	private Table findTableByTableNumber(int tableNumber) {
-		return tableOrders.keySet()
-				.stream()
-				.filter(table -> table.isSameTable(tableNumber))
-				.findFirst()
-				.orElse(null);
 	}
 
 	private Menu getMenu() {
@@ -137,6 +123,86 @@ public class ChickinPos {
 	}
 
 	private void payment() {
+		if (!hasUnpaidTable()) {
+			OutputView.printNotHasUnpaidTable();
+			return;
+		}
+		Table table = getNotPaidTable();
+		List<Order> orders = findOrders(table);
+		OutputView.printOrders(orders);
+		int price = calculatePaymentPrice(orders, table);
+		OutputView.printPaymentPrice(price);
+		orders.clear();
+	}
 
+	private boolean hasUnpaidTable() {
+		return tableOrders.values()
+				.stream()
+				.anyMatch(orders -> orders.size() != 0);
+	}
+
+	private Table getTable() {
+		OutputView.printTables(tables, tableOrders);
+		Table table = null;
+		while (table == null) {
+			int tableNumber = InputView.inputTableNumber();
+			table = findTableByTableNumber(tableNumber);
+		}
+		return table;
+	}
+
+	private List<Order> findOrders(Table table) {
+		return tableOrders.get(table);
+	}
+
+	private Table getNotPaidTable() {
+		OutputView.printTables(tables, tableOrders);
+		Table table = null;
+		while (table == null || isEmptyTable(table)) {
+			int tableNumber = InputView.inputTableNumber();
+			table = findTableByTableNumber(tableNumber);
+		}
+		return table;
+	}
+
+	private boolean isEmptyTable(Table table) {
+		return tableOrders.get(table).size() == EMPTY_TABLE;
+	}
+
+	private Table findTableByTableNumber(int tableNumber) {
+		return tableOrders.keySet()
+				.stream()
+				.filter(table -> table.isSameTable(tableNumber))
+				.findFirst()
+				.orElse(null);
+	}
+
+	private int calculatePaymentPrice(List<Order> orders, Table table) {
+		int fullPrice = calculateFullPrice(orders);
+		int chickinDiscountedPrice = calculateChickinDiscountedPrice(fullPrice, orders);
+		PaymentType paymentType = InputView.inputPaymentType(table);
+		return calculateCashDiscountedPrice(paymentType, chickinDiscountedPrice);
+	}
+
+	private int calculateFullPrice(List<Order> orders) {
+		return orders.stream()
+				.mapToInt(Order::calculateTotalPrice)
+				.sum();
+	}
+
+	private int calculateChickinDiscountedPrice(int price, List<Order> orders) {
+		int chickinCount = calculateChickinCount(orders);
+		return price - chickinCount / DISCOUNT_CHICKIN_COUNT * DISCOUNT_CHICKIN_PRICE;
+	}
+
+	private int calculateChickinCount(List<Order> orders) {
+		return orders.stream()
+				.filter(order -> order.isChickin())
+				.mapToInt(Order::getOrderCount)
+				.sum();
+	}
+
+	private int calculateCashDiscountedPrice(PaymentType paymentType, int price) {
+		return paymentType.calculateDiscountedPrice(price);
 	}
 }
