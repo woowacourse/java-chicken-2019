@@ -49,4 +49,9 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public static void printNoExistTablePayment() {
+        System.out.println("결제할 금액이 없습니다.");
+        System.out.println("다른 테이블을 입력해주세요.");
+    }
 }

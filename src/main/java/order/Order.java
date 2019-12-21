@@ -17,9 +17,8 @@ public class Order {
     }
 
     public void inputOrder(OrderStatement orderStatement) {
-        // final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
-        int tableNumber = inputTableNumber(orderStatement.getTables());
+        int tableNumber = inputTableNumber(orderStatement);
         int menuId = inputMenuId(menus);
         int capacitiy = inputCapacity(orderStatement, tableNumber, menuId);
         orderStatement.addTableOrderStatement(tableNumber, careateOrderedMenu(menuId, capacitiy));
@@ -30,9 +29,9 @@ public class Order {
         return OrderedMenu.createMenu(menu, capacity);
     }
 
-    public int inputTableNumber(List<Table> tables) {
-        OutputView.printTables(tables);
-        return InputView.inputTableNumber();
+    public int inputTableNumber(OrderStatement orderStatement) {
+        OutputView.printTables(orderStatement.getTables());
+        return InputView.inputTableNumber(orderStatement);
     }
 
     public int inputMenuId(List<Menu> menus) {

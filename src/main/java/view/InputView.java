@@ -2,6 +2,7 @@ package view;
 
 import domain.MenuRepository;
 import domain.TableRepository;
+import domain.reserved.OrderStatement;
 import domain.reserved.OrderedMenu;
 import view.dto.FeatureType;
 
@@ -25,13 +26,13 @@ public class InputView {
         }
     }
 
-    public static int inputTableNumber() {
+    public static int inputTableNumber(OrderStatement orderStatement) {
         try {
             System.out.println("## 주문할 테이블을 선택하세요.");
-            return TableRepository.checkExistTable(Integer.parseInt(scanner.nextLine().trim()));
+            return orderStatement.checkExistTable(Integer.parseInt(scanner.nextLine().trim()));
         } catch (IllegalArgumentException e) {
             System.out.println("올바르지 않은 입력입니다.");
-            return inputTableNumber();
+            return inputTableNumber(orderStatement);
         }
     }
 

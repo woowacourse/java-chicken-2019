@@ -19,16 +19,4 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
-
-    private static boolean contain(int tableIndex) {
-        return tables.stream()
-                .anyMatch(table -> table.isMatch(tableIndex));
-    }
-
-    public static int checkExistTable(int tableId) {
-        if (!contain(tableId)) {
-            throw new IllegalArgumentException();
-        }
-        return tableId;
-    }
 }
