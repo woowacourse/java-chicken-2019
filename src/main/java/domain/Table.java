@@ -27,4 +27,13 @@ public class Table {
     public void addMenu(Menu menu){
         menus.add(menu);
     }
+
+    public int getChickenCount() {
+        int count = 0;
+        for (int i = 0; i < menus.size(); i++) {
+            if (menus.get(i).getCategory() == Category.CHICKEN)
+                count++;
+        }
+        return count;
+    }
 }

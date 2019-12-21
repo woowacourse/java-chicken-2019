@@ -3,6 +3,7 @@ package domain;
 import view.InputView;
 
 public class Payment {
+    static final int DISCOUNT_PER_10CHICKEN = 10000;
     Table table;
     int paymentMethod; // 1: 신용카드, 2: 현금
 
@@ -31,5 +32,11 @@ public class Payment {
             return true;
         System.out.println("주문 방식을 잘못 입력하셨습니다.\n");
         return false;
+    }
+
+    public int getChickenDiscount() {
+        int chickenCount = table.getChickenCount();
+        int discount = chickenCount / 10;
+        return -1 * discount * DISCOUNT_PER_10CHICKEN;
     }
 }
