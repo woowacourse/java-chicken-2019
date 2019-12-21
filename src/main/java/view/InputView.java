@@ -62,7 +62,6 @@ public class InputView {
             System.out.println(printErrorMessage);
             numberString = scanner.nextLine().trim();
         }
-        int tableNumber = Integer.parseInt(numberString);
-        return tableNumber;
+        return Integer.parseInt(numberString);
     }
 }

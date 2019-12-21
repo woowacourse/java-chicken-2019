@@ -20,10 +20,10 @@ public class OutputView {
     public static void printTables(final List<Table> tables) {
         System.out.println("\n## 테이블 목록");
         final int size = tables.size();
-        printLine(TOP_LINE, size);
+        printLine(size);
         printTableNumbers(tables);
         for (Table table : tables) {
-            printLine(BOTTOM_LINE, BOTTOM_LINE_ORDER, table);
+            printLine(table);
         }
         System.out.println();
     }
@@ -55,19 +55,19 @@ public class OutputView {
         System.out.println("## 메인 화면으로 돌아갑니다.");
     }
 
-    private static void printLine(final String line, final int count) {
+    private static void printLine(final int count) {
         for (int index = 0; index < count; index++) {
-            System.out.print(line);
+            System.out.print(TOP_LINE);
         }
         System.out.println();
     }
 
-    private static void printLine(final String line, final String lineOrder, Table table) {
+    private static void printLine(Table table) {
         if (table.getOrderTF()) {
-            System.out.print(lineOrder);
+            System.out.print(BOTTOM_LINE_ORDER);
             return;
         }
-        System.out.print(line);
+        System.out.print(BOTTOM_LINE);
     }
 
     private static void printTableNumbers(final List<Table> tables) {

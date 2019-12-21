@@ -16,23 +16,22 @@ public class Application {
     }
 
     private void processOrder() {
-        int tableNumber = tableMenu(tables);
+        int tableNumber = tableMenu();
         Table orderTable = TableRepository.selectTable(tableNumber);
-        int menuNumber = menuMenu(menus);
+        int menuNumber = menuMenu();
         int quantityNumber = quantityMenu(orderTable, menuNumber);
         orderTable.addOrderMenu(menuNumber, quantityNumber);
         mainMenu();
     }
 
     private void processPayment() {
-        int tableNumber = tableMenu(tables);
+        int tableNumber = tableMenu();
         Table orderTable = TableRepository.selectTable(tableNumber);
         if (orderTable.getOrderTF()) {
             processPaymentContinue(orderTable, tableNumber);
             return;
         }
         proccessPaymentCancel(tableNumber);
-        return;
     }
 
     private void processPaymentContinue(Table orderTable, int tableNumber) {
@@ -66,25 +65,21 @@ public class Application {
         processEnd();
     }
 
-    private int tableMenu(List<Table> tables) {
+    private int tableMenu() {
         OutputView.printTables(tables);
-        int tableNumber = InputView.inputTableNumber();
-        return tableNumber;
+        return InputView.inputTableNumber();
     }
 
-    private int menuMenu(List<Menu> menus) {
+    private int menuMenu() {
         OutputView.printMenus(menus);
-        int menuNumber = InputView.inputMenuNumber();
-        return menuNumber;
+        return InputView.inputMenuNumber();
     }
 
     private int quantityMenu(Table orderTable, int menuNumber) {
-        int quantityNumber = InputView.inputQuantityNumber(orderTable, menuNumber);
-        return quantityNumber;
+        return InputView.inputQuantityNumber(orderTable, menuNumber);
     }
 
     private int paymentTypeMenu(int tableNumber) {
-        int paymentNumber = InputView.inputPaymentTypeNumber(tableNumber);
-        return paymentNumber;
+        return InputView.inputPaymentTypeNumber(tableNumber);
     }
 }
