@@ -53,4 +53,8 @@ public class OutputView {
     public static void printIsNotFeatureNumberError() {
         System.out.println("입력된 숫자는 기능목록에 포함되지 않습니다.\n");
     }
+
+    public static void printSelectTableNumber() {
+        System.out.println("테이블 번호를 선택하세요.");
+    }
 }
