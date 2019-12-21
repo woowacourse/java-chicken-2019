@@ -1,4 +1,3 @@
-import domain.Exception.TableDoesNotExistExeption;
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
 import domain.table.Table;
@@ -40,7 +39,8 @@ public class Application {
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 
-        Table table = askTableNumber();
+        final int tableNumber = InputView.inputTableNumber();
+        Table table = TableRepository.findTableBy(tableNumber);
 
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
@@ -49,16 +49,6 @@ public class Application {
         final int menuAmount = InputView.inputMenuAmount();
 
         table.addOrder(menuNumber, menuAmount);
-    }
-
-    private static Table askTableNumber() {
-        try {
-            final int tableNumber = InputView.inputTableNumber();
-            return TableRepository.findTableBy(tableNumber);
-        } catch (TableDoesNotExistExeption e) {
-            OutputView.printMessage(e.getMessage());
-            return askTableNumber();
-        }
     }
 
     private static void payOrder() {
