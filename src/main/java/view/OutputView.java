@@ -109,12 +109,17 @@ public class OutputView {
 
     public static void printPrice(Table table, List<Menu> menus, int pay) {
 	System.out.println("## 최종 결제할 금액");
+	int chickensum=0;
+	int[] chicken=table.getChickenMenu();
+	for(int i=0;i<chicken.length;i++) {
+	    chickensum+=chicken[i];
+	}
+	chickensum/=10;
 	if (pay == 1) {
-	    System.out.println(table.getChickenPrice()+table.getDrinkPrice());
+	    System.out.println(table.getChickenPrice()+table.getDrinkPrice()-chickensum);
 	}
 	if(pay==2) {
-	    System.out.println(((float)table.getChickenPrice()+(float)table.getDrinkPrice())*0.9);
+	    System.out.println(((float)table.getChickenPrice()+(float)table.getDrinkPrice()-chickensum)*0.95);
 	}
-	
     }
 }
