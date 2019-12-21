@@ -1,8 +1,9 @@
 package view;
 
+import domain.Menu;
 import domain.Table;
 
-import java.time.ZonedDateTime;
+import java.lang.invoke.MutableCallSite;
 import java.util.List;
 import java.util.Scanner;
 
@@ -67,14 +68,35 @@ public class InputView {
         return false;
     }
 
-    public static int inputTableBillNumber() {
+    public static int inputTableBillNumber(List<Table> tables) {
         System.out.println("## 계산할 테이블을 선택하세요.");
-        return scanner.nextInt();
+        String inputTableBillNumber = scanner.nextLine();
+        while (!functionNumberValidator(inputTableBillNumber) || !isTable(tables, inputTableBillNumber)) {
+            System.out.println("나와있는 테이블 번호를 입력하세요.");
+            System.out.println("## 주문할 테이블을 선택하세요.");
+            inputTableBillNumber = scanner.nextLine();
+        }
+        return Integer.parseInt(inputTableBillNumber);
     }
 
-    public static int inputMenuNumber() {
+    public static int inputMenuNumber(List<Menu> menus) {
         System.out.println("## 등록할 메뉴를 선택하세요.");
-        return scanner.nextInt();
+        String inputMenuNumber = scanner.nextLine();
+        while (!functionNumberValidator(inputMenuNumber) || !isMenus(menus, Integer.parseInt(inputMenuNumber))) {
+            System.out.println("나와있는 메뉴를 입력하세요.");
+            System.out.println("## 주문할 테이블을 선택하세요.");
+            inputMenuNumber = scanner.nextLine();
+        }
+        return Integer.parseInt(inputMenuNumber);
+    }
+
+    private static boolean isMenus(List<Menu> menus, int inputMenuNumber) {
+        for (Menu menu: menus) {
+            if (menu.isNumber(inputMenuNumber)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static int inputMenuCount() {

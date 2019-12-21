@@ -44,7 +44,7 @@ public class Application {
     }
 
     private static void setMenu(Table table) {
-        final int menuNumber = InputView.inputMenuNumber();
+        final int menuNumber = InputView.inputMenuNumber(menus);
         final int MenuCount =  InputView.inputMenuCount();
         for (Menu menu: menus) {
             if (menu.isNumber(menuNumber)) {
@@ -54,7 +54,7 @@ public class Application {
     }
 
     private static void doIfNumberIsTwo() {
-        final int tableBillNumber = InputView.inputTableBillNumber();
+        final int tableBillNumber = InputView.inputTableBillNumber(tables);
         for (Table table: tables) {
             if (table.toString().equals(Integer.toString(tableBillNumber))) {
                 setBill(table);
