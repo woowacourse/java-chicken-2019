@@ -35,6 +35,10 @@ public class OneOrTwoOrThree {
 		}
 	}
 
+	public int getValue() {
+		return value;
+	}
+
 	public boolean isOne() {
 		return value == ONE;
 	}

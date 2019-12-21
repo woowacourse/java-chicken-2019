@@ -17,14 +17,14 @@ public class Application {
 			if (mainMenuNumber.isThree()) {
 				System.exit(0);
 			}
-
 			final List<Table> tables = TableRepository.tables();
-			int tableNumber = getTableNumber(tables);
+			int tableNumber = getTableNumber(tables, mainMenuNumber.getValue());
+
 			if (mainMenuNumber.isOne()) {
 				orderByTable(tableNumber);
 			}
 			if (mainMenuNumber.isTwo()) {
-
+				payByTable(tableNumber);
 			}
 		}
 	}
@@ -42,15 +42,15 @@ public class Application {
 		return mainMenuNumber;
 	}
 
-	private static int getTableNumber(List<Table> tables) {
+	private static int getTableNumber(List<Table> tables, int mainMenuNumber) {
 		int tableNumber;
 
 		try {
 			OutputView.printTables(tables);
-			tableNumber = InputUtil.checkTableNumber(InputView.inputTableNumber()).getValue();
+			tableNumber = InputUtil.checkTableNumber(InputView.inputTableNumber(), mainMenuNumber).getValue();
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
-			return getTableNumber(tables);
+			return getTableNumber(tables, mainMenuNumber);
 		}
 		return tableNumber;
 	}
@@ -87,5 +87,9 @@ public class Application {
 			return getMenuCount(menuNumber);
 		}
 		return menuCount;
+	}
+
+	private static void payByTable(int tableNumber) {
+
 	}
 }
