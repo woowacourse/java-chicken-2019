@@ -27,6 +27,7 @@ public class Application {
                 final int tableNumber = InputView.inputTableNumber();
                 OutputView.printMenus(menus);
                 int menuNumber = InputView.inputMenu();
+                int quantity = InputView.inputQuantity();
             }
         } while (function != PROGRAM_END);
     }
