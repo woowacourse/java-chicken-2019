@@ -11,14 +11,29 @@ import java.util.stream.Collectors;
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
+    private static final String ORDERED_FORMAT = "└ %s ┘";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String ORDERED = "$";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLineWithOrdered(tables);
+    }
+
+    public static void printBottomLineWithOrdered(List<Table> tables) {
+        tables.stream().map(Table::isOrdered).map(OutputView::orderedOrNot).forEach(System.out::print);
+        System.out.println();
+    }
+
+    public static String orderedOrNot(boolean ordered) {
+        if (ordered) {
+            return String.format(ORDERED_FORMAT, ORDERED);
+        }
+
+        return BOTTOM_LINE;
     }
 
     public static void printMenus(final List<Menu> menus) {
