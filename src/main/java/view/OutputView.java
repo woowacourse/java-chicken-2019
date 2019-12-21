@@ -26,7 +26,7 @@ public class OutputView {
         }
     }
 
-    public static void printBottomLine(final List<Table> tables) {
+    public static void printBottomLine(final List<Table> tables) {  //주문이 들어갔으면 BottomLine을 변경함
         for (Table table : tables) {
             if(table.isOrdered == 1) {
                 System.out.print(BOTTOM_LINE_ORDERED);

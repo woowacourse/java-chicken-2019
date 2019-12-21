@@ -13,7 +13,7 @@ public class CheckValidity {
     }
 
     public static int checkTableNumber(int tableNumber) {
-        tableNumber = convertTableNumber(tableNumber);
+        tableNumber = convertTableNumber(tableNumber); //테이블명은 1,2,3,5,6,8이므로 함수를 통해 변경
         if(tableNumber == -1) {
             System.out.println("없는 테이블입니다.");
             return InputView.inputTableNumber();
@@ -45,7 +45,7 @@ public class CheckValidity {
         return paymentNumber;
     }
 
-    public static int convertTableNumber(int input) {
+    public static int convertTableNumber(int input) {   //테이블명을 index로 변경해주는 함수
         if(input >= 1 && input <= 3) {
             return input - 1;
         }

@@ -21,7 +21,7 @@ public class Menu {
         return price * count;
     }
 
-    public int isChicken() {
+    public int isChicken() {                //지금 들어온 주문이 치킨인지 확인
         if(category == Category.CHICKEN) {
             return 1;
         }

@@ -22,7 +22,7 @@ public class MenuRepository{
         return Collections.unmodifiableList(menus);
     }
     
-    public static Menu selectMenu(int menuNumber) {
+    public static Menu selectMenu(int menuNumber) {         //메뉴번호에 따라서 메뉴를 반환하는 함수
         if (menuNumber == 21) {
             return menus.get(6);
         }

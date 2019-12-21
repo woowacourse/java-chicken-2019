@@ -22,11 +22,11 @@ public class InputView {
 
     public static int selectCountMenu() {
         System.out.println("## 메뉴의 수량을 입력하세요.");
-        return scanner.nextInt();
+        return CheckValidity.checkCountMenu(scanner.nextInt());
     }
 
     public static int selectPaymentNumber() {
         System.out.println("## 신용 카드는 1번, 현금은 2번");
-        return scanner.nextInt();
+        return CheckValidity.checkPayment(scanner.nextInt());
     }
 }

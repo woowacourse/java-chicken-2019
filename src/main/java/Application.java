@@ -8,7 +8,6 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
-    // TODO 구현 진행
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
         int menuSelect = mainMenuSelecter();
@@ -32,7 +31,7 @@ public class Application {
         }
     }
 
-    public static void orderNow(final List<Table> tables) {
+    public static void orderNow(final List<Table> tables) {         //메인화면 1번인 주문등록
         OutputView.printTables(tables);
 
         int tableNumber = InputView.inputTableNumber();
@@ -42,12 +41,12 @@ public class Application {
 
         int orderMenu = InputView.selectOrderMenu();
         int orderCount = InputView.selectCountMenu();
-        tables.get(tableNumber).addMenu(orderMenu, orderCount);
+        tables.get(tableNumber).setAddMenu(orderMenu, orderCount);  //메뉴가 99개를 넘는지를 판단
 
-        tables.get(tableNumber).isOrdered = 1;
+        tables.get(tableNumber).isOrdered = 1;                      //테이블에 주문이 들어갔는지 확인
     }
 
-    public static void payNow(final List<Table> tables) {
+    public static void payNow(final List<Table> tables) {           //메인화면 2번인 결제하기
         OutputView.printTables(tables);
 
         int tableNumber = InputView.inputTableNumber();
@@ -56,7 +55,7 @@ public class Application {
         int paymentNumber = InputView.selectPaymentNumber();
         OutputView.printTotal(tables.get(tableNumber), paymentNumber);
 
-        tables.get(tableNumber).isOrdered = 0;
+        tables.get(tableNumber).isOrdered = 0;                      //테이블이 결제가 되었는지 확인
     }
 
 
