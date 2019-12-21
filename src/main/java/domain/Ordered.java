@@ -8,4 +8,11 @@ public class Ordered {
 
     public Ordered() {
     }
+
+    public int allPrices() {
+        return orderedMenus.stream()
+                .map(Menu::getPrice)
+                .reduce(Integer::sum)
+                .orElse(0);
+    }
 }
