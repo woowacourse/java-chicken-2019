@@ -1,7 +1,9 @@
+import static view.InputView.*;
 import static view.OutputView.*;
 
 import domain.Menu;
 import domain.MenuRepository;
+import domain.Order;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
@@ -10,28 +12,55 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
+	private static final int ORDER_FUNCTION = 1;
+	private static final int PAY_FUNCTION = 2;
+	private static final int EXIT_PROGRAM = 3;
 	// TODO 구현 진행
 	public static void main(String[] args) {
+		final List<Table> tables = TableRepository.tables();
+		final List<Menu> menus = MenuRepository.menus();
 
-		// final List<Table> tables = TableRepository.tables();
-		// OutputView.printTables(tables);
-		//
-		// final int tableNumber = InputView.inputTableNumber();
-		//
-		// final List<Menu> menus = MenuRepository.menus();
-		// OutputView.printMenus(menus);
+		runPos(tables, menus);
 	}
 
 	private static void runPos(List<Table> tables, List<Menu> menus) {
 		OutputView.printMain();
 		int functionNumber = InputView.inputFunctionNumber();
-
 		if (functionNumber == EXIT_PROGRAM) {
+			OutputView.printProgramExit();
 			return;
 		}
 
-
+		runFunction(functionNumber, tables, menus);
 		runPos(tables, menus);
 	}
 
+	private static void runFunction(int functionNumber, List<Table> tables, List<Menu> menus) {
+		OutputView.printTables(tables);
+		int tableNumber = InputView.inputTableNumber();
+		if (functionNumber == ORDER_FUNCTION) {
+			order(tableNumber, tables, menus);
+			return;
+		}
+
+		pay(tableNumber, tables, menus);
+	}
+
+	private static void pay(int tableNumber, List<Table> tables, List<Menu> menus) {
+
+	}
+
+	private static void order(int tableNumber, List<Table> tables, List<Menu> menus) {
+
+	}
+
+	private static Table findTable(int tableNumber, List<Table> tables) {
+		for (Table table : tables) {
+			if (table.isThisTable(tableNumber)) {
+				return table;
+			}
+		}
+
+		throw new IllegalArgumentException(INVALID_TABLE_NUMBER);
+	}
 }
