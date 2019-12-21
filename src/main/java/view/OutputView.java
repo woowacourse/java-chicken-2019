@@ -9,6 +9,7 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String FUNCTION_FORMAT = "%s - %s";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
@@ -36,5 +37,15 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+
+    public static void printMainScreen() {
+        System.out.println(Message.MAIN_SCREEN);
+    }
+
+    public static void printFunctions(List<String> functions) {
+        for (int index = 0; index < functions.size(); index++) {
+            System.out.printf(FUNCTION_FORMAT, index + 1, functions.get(index));
+        }
     }
 }
