@@ -22,7 +22,7 @@ public class InputView {
     }
 
     public static int getInputOfTableNumber() {
-        System.out.println("## 주문할 테이블을 선택하세요.");
+        System.out.println("## 주문(결제)할 테이블을 선택하세요.");
         String inputOfTableNumber = scanner.nextLine();
         try {
             Validator.checkInputOfTableNumber(inputOfTableNumber);

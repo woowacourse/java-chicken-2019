@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class MenuQuantity {
     }
 
     protected Boolean canAddMenuQuantity(Menu menu, int quantity) {
-        if (menuQuantity.get(menu) + quantity > MAXIMUM_QUANTITY){
+        if (menuQuantity.get(menu) + quantity > MAXIMUM_QUANTITY) {
             return false;
         }
         return true;
@@ -32,6 +33,18 @@ public class MenuQuantity {
         if (canAddMenuQuantity(menu, quantity)) {
             menuQuantity.put(menu, menuQuantity.get(menu) + quantity);
         }
+    }
+
+    protected List<String> getPaymentList() {
+        List<String> paymentList = new ArrayList<>();
+        for (HashMap.Entry<Menu, Integer> elem : menuQuantity.entrySet()) {
+            int quantity = elem.getValue();
+            Menu menu = elem.getKey();
+            if (quantity >= MIN_QUANTITY) {
+                paymentList.add(menu.getNameAndTotalPrice(quantity));
+            }
+        }
+        return paymentList;
     }
 
     protected Boolean IsAlreadyFullyOrdered(Menu menu) {

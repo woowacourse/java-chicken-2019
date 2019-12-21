@@ -28,6 +28,7 @@ public class Application {
             return ORDER;
         }
         if (choice == PAYMENT) {
+            doPay();
             return PAYMENT;
         }
         return EXIT;
@@ -44,5 +45,10 @@ public class Application {
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e);
         }
+    }
+
+    private static void doPay() {
+        Table table = TableRepository.findTableByNumber(InputView.getInputOfTableNumber());
+        OutputView.printPayment(table);
     }
 }

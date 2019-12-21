@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.List;
+
 public class Table {
     private final int number;
     private final MenuQuantity menuQuantity = new MenuQuantity(MenuRepository.menus());
@@ -26,6 +28,10 @@ public class Table {
 
     public Boolean IsAlreadyFullyOrdered(Menu menu) {
         return menuQuantity.IsAlreadyFullyOrdered(menu);
+    }
+
+    public List<String> getPaymentList() {
+        return menuQuantity.getPaymentList();
     }
 
     @Override

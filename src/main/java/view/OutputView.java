@@ -35,6 +35,14 @@ public class OutputView {
         System.out.println(e.getMessage());
     }
 
+    public static void printPayment(Table table) {
+        List<String> paymentList = table.getPaymentList();
+        for (String payment : paymentList) {
+            System.out.println(payment);
+        }
+        System.out.println();
+    }
+
     private static void printTopLine(final List<Table> tables) {
         for (Table table : tables) {
             System.out.print(TOP_LINE);
