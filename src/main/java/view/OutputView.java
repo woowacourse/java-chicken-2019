@@ -2,7 +2,9 @@ package view;
 
 import domain.Menu;
 import domain.Table;
+import order.OrderList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OutputView {
@@ -25,9 +27,11 @@ public class OutputView {
         System.out.println("3 - 프로그램 종료");
     }
 
-    public static void printOrderHistory() {
+    public static void printOrderHistory(ArrayList<String> orderList) {
         System.out.println("## 주문내역");
         System.out.println("메뉴 수량 금액");
+        for(String order : orderList)
+            System.out.println(order);
     }
 
     public static void printFinalPaymontAmount() {

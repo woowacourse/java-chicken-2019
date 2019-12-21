@@ -26,6 +26,10 @@ public class Menu {
         return price;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public boolean isForeignKey(int number){
         return this.number == number;
     }

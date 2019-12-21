@@ -17,13 +17,17 @@ public class GameController {
     private static final int PAYMENT = 2;
     private static final int EXIT = 3;
 
-    private final List<Table> tables = TableRepository.tables();
-    ;
-    private final List<Menu> menus = MenuRepository.menus();
-    private final List<OrderList> orderList;
+    private final List<Table> tables;
+    private final List<Menu> menus;
+    private final ArrayList<OrderList> orderList;
 
     public GameController() {
-        orderList = new ArrayList<>(tables.size() + 1);
+        tables = TableRepository.tables();
+        menus = MenuRepository.menus();
+        orderList = new ArrayList<>();
+        for (int i = 0; i < tables.size() + 1; i++) {
+            orderList.add(new OrderList());
+        }
     }
 
     public void gameStart() {
@@ -57,9 +61,9 @@ public class GameController {
 
     private void tablePayment() {
         OutputView.printTables(tables);
-        InputView.inputTableNumber();
-        OutputView.printOrderHistory();
-        InputView.inputCardOrCash(1);
+        final int tableNumber = InputView.inputTableNumber();
+        OutputView.printOrderHistory(orderList.get(tableNumber).orderListToStringArray());
+        InputView.inputCardOrCash(tableNumber);
         OutputView.printFinalPaymontAmount();
     }
 

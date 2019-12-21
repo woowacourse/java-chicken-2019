@@ -2,6 +2,7 @@ package order;
 
 import domain.Menu;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class OrderList {
@@ -22,7 +23,7 @@ public class OrderList {
     public int getChickenCount() {
         int chickenCount = 0;
         for (Menu menu : menuCount.keySet()) {
-            if(menu.isChicken())
+            if (menu.isChicken())
                 chickenCount += menuCount.get(menu);
         }
         return chickenCount;
@@ -34,5 +35,17 @@ public class OrderList {
             totalPrice += menu.getPrice() * menuCount.get(menu);
         }
         return totalPrice;
+    }
+
+    public ArrayList<String> orderListToStringArray() {
+        ArrayList<String> orders = new ArrayList<>();
+        for (Menu menu : menuCount.keySet()) {
+            String temp = String.join(" "
+                    , menu.getName()
+                    , Integer.toString(menuCount.get(menu))
+                    , Integer.toString(menuCount.get(menu) * menu.getPrice()));
+            orders.add(temp);
+        }
+        return orders;
     }
 }
