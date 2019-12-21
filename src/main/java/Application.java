@@ -40,4 +40,8 @@ public class Application {
         functions.add(DO_PAYMENT);
         functions.add(EXIT_PROGRAM);
     }
+
+    private int getFunctionNumber() {
+        return InputView.getFuctionNumber(functions.size());
+    }
 }
