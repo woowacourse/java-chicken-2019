@@ -35,7 +35,7 @@ public class TableRepository {
         return selectTable.iterator().next();
     }
 
-    public static Table compareTable(Table table, int tableNumber) {
+    private static Table compareTable(Table table, int tableNumber) {
         if (Integer.parseInt(table.toString()) == tableNumber) {
             return table;
         }

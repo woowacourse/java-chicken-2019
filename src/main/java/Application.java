@@ -18,19 +18,20 @@ public class Application {
 
     private void processOrder() {
         int tableNumber = tableMenu(tables);
+        Table orderTable = TableRepository.selectTable(tableNumber);
         int menuNumber = menuMenu(menus);
         int quantityNumber = quantityMenu();
-        Table orderTable = TableRepository.selectTable(tableNumber);
         orderTable.addOrderMenu(menuNumber, quantityNumber);
         mainMenu();
     }
 
     private void processPayment() {
         int tableNumber = tableMenu(tables);
-        OutputView.printOrderHistory(tableNumber);
+        Table orderTable = TableRepository.selectTable(tableNumber);
+        OutputView.printOrderHistory(orderTable);
         int paymentType = paymentTypeMenu(tableNumber);
         OutputView.printTotalOrder(tableNumber, paymentType);
-        Table orderTable = TableRepository.selectTable(tableNumber);
+
         orderTable.clearOrderMenu();
         mainMenu();
     }

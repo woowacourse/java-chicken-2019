@@ -1,8 +1,6 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class MenuRepository {
     private static final List<Menu> menus = new ArrayList<>();
@@ -28,5 +26,21 @@ public class MenuRepository {
             menusNumber.add(menu.getNumber());
         }
         return menusNumber;
+    }
+
+    public static Menu selectMenu(int menuNumber) {
+        Set<Menu> selectMenu = new HashSet<Menu>();
+        for (Menu menu : menus) {
+            selectMenu.add(compareMenu(menu, menuNumber));
+        }
+        selectMenu.remove(null);
+        return selectMenu.iterator().next();
+    }
+
+    private static Menu compareMenu(Menu menu, int menuNumber) {
+        if (menu.getNumber() == menuNumber) {
+            return menu;
+        }
+        return null;
     }
 }
