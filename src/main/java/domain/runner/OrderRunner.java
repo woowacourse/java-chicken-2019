@@ -10,7 +10,7 @@ import view.OutputView;
 
 import java.util.List;
 
-public class OrderRunner {
+public class OrderRunner extends Runner {
 
     public static final int SELECT_NUMBER = 1;
     public static List<Table> tables = TableRepository.tables();
@@ -19,7 +19,6 @@ public class OrderRunner {
     public static void runOrder() {
         OutputView.printTables(tables);
         Table table = inputTableInfo();
-        OutputView.printOrderStatus(table);
         Basket basket = generateBasket(menus);
         addBasketToTable(table, basket);
     }
@@ -30,13 +29,7 @@ public class OrderRunner {
         int countMenuNumber = InputView.inputCountMenuNumber();
 
         Menu menu = MenuRepository.findByMenuNumber(menuNumber);
-
         return new Basket(menu, countMenuNumber);
-    }
-
-    private static Table inputTableInfo() {
-        int tableNumber = InputView.inputTableNumber();
-        return TableRepository.findByTableNumber(tableNumber);
     }
 
     private static void addBasketToTable(Table table, Basket basket) {

@@ -58,4 +58,15 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public static void printResultPayAccount(int resultAccount) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(resultAccount + "원");
+    }
+
+    public static void printTablePayProcessing(Table table) {
+        System.out.printf("## %d번 테이블의 결제를 진행합니다", table.getNumber());
+        System.out.println();
+    }
+
 }

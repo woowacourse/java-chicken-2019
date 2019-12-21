@@ -1,9 +1,11 @@
 package domain.table.order;
 
+import domain.menu.Category;
 import domain.menu.Menu;
 
 public class Basket {
 
+    private static final int BUNDLE_DISCOUNT_AMOUNT = 10000;
     private Menu menu;
     private CountMenu countMenu;
 
@@ -26,7 +28,15 @@ public class Basket {
     }
 
     public Integer getCharge() {
-        return menu.getPrice() * countMenu.getCount();
+        int initCharge = menu.getPrice() * countMenu.getCount();
+        if (menu.getCategory() == Category.CHICKEN)
+            return applyBundleDiscount(initCharge);
+        return initCharge;
+    }
+
+    private Integer applyBundleDiscount(int initCharge) {
+        int bundleDiscount = countMenu.getCount() / 10;
+        return initCharge - bundleDiscount * BUNDLE_DISCOUNT_AMOUNT;
     }
 
     @Override

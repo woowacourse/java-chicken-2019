@@ -47,6 +47,12 @@ public class Table {
                 });
     }
 
+    public Integer getTableCharge() {
+        return baskets.stream()
+                .mapToInt(Basket::getCharge)
+                .sum();
+    }
+
     private boolean checkExistBasketMenu(Basket otherBasket) {
         return baskets.stream()
                 .anyMatch(b -> b.isSameMenu(otherBasket));
@@ -58,5 +64,9 @@ public class Table {
 
     public List<Basket> getBaskets() {
         return baskets;
+    }
+
+    public void successPayProcessing() {
+        baskets.clear();
     }
 }
