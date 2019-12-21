@@ -28,6 +28,8 @@ public class Application {
                 OutputView.printTables(tables);
                 int tableNumber = InputView.inputTableNumber();
                 OutputView.printMenus(menus);
+                int menuNumber = InputView.inputMenuNumber();
+
 
             }
 
