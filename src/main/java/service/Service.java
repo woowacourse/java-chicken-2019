@@ -18,10 +18,12 @@ public class Service {
         return number + "-" + name;
     }
 
-    public boolean isCalled(int number) {
+    public boolean equals(int number) {
         return this.number == number;
     }
 
-    public void run(List<Table> tables) {}
+    public void run(List<Table> tables) {
+        return;
+    }
 
 }

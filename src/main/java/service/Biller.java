@@ -28,6 +28,7 @@ public class Biller extends Service {
         OutputView.printStartCalculatingPrice(table);
         totalPrice = calculateTotalPrice(table, InputView.inputCardOrCash());
         OutputView.printTotalPrice(totalPrice);
+        completePayment(table);
 
     }
 
@@ -42,15 +43,23 @@ public class Biller extends Service {
 
     private int calculateTotalPrice(Table table, int cardOrCash) {
         int totalPrice = table.getSumOfPrice();
-        if (cardOrCash == OPTION_NUMBER_OF_CAHS) {
-            totalPrice = (int) (totalPrice * DISCOUNT_IF_CASH);
-        }
+        totalPrice = discountBecuaseCash(totalPrice,cardOrCash);
         totalPrice -= discountPriceBecauseChicken(table);
         return totalPrice;
     }
 
     private int discountPriceBecauseChicken(Table table) {
         return DISCOUNT_PRICE_PER_PAIR * (table.countTotalChicken() / AMOUNT_OF_CHICKEN_PAIR);
+    }
+
+    private int discountBecuaseCash(int price, int cardOrCash){
+        if (cardOrCash == OPTION_NUMBER_OF_CAHS) {
+            return (int) (price * DISCOUNT_IF_CASH);
+        }
+        return price;
+    }
+    private void completePayment(Table table){
+        table.removeMenu();
     }
 
 }

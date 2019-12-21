@@ -11,7 +11,7 @@ public class ServiceSelector {
 
     public Service selectService(int number) {
         for(Service service : services){
-            if(service.isCalled(number)){
+            if(service.equals(number)){
                 return service;
             }
         }

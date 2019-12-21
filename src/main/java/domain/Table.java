@@ -53,4 +53,8 @@ public class Table {
         }
         return count;
     }
+
+    public void removeMenu(){
+        menuList = new ArrayList<OrderedMenu>();
+    }
 }
