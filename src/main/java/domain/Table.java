@@ -18,6 +18,7 @@ public class Table  extends StoreTool{
     public boolean isNoOrder() {
         return bills.isEmpty();
     }
+
     public Bills getBills() {
         return bills;
     }

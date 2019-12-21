@@ -11,6 +11,7 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
     private static final String BOTTOM_LINE_FORMAT = "└ %s ┘";
+    private static final String WON = "₩";
 
     public static void printMainView() {
         System.out.println();
@@ -69,7 +70,7 @@ public class OutputView {
                 System.out.print(line);
                 continue;
             }
-            System.out.printf(BOTTOM_LINE_FORMAT, "₩");
+            System.out.printf(BOTTOM_LINE_FORMAT, WON);
         }
         System.out.println();
     }
