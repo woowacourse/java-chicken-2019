@@ -11,7 +11,8 @@ public class PaymentFeature {
         int tableNumber = inputTableNumber(orderStatement);
         Table table = orderStatement.getTableOrderStatementBy(tableNumber);
         table.getOrderedMenus().printOrderedMenu();
-        inputPaymentType(table);
+        int price = inputPaymentType(table);
+        OutputView.printPrice(price);
     }
 
     private int inputTableNumber(OrderStatement orderStatement) {

@@ -13,6 +13,7 @@ public class OutputView {
     private static final String EXIST_ORDER_BOTTOM_LINE = "└ ₩ ┘";
     private static final String SPACE = " ";
     private static final String NEWLINE = "\n";
+    private static final String WON = "원";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
@@ -40,6 +41,7 @@ public class OutputView {
             Table table = tables.get(index);
             if (table.isExistMenu()) {
                 System.out.print(EXIST_ORDER_BOTTOM_LINE);
+                continue;
             }
             System.out.print(line);
         }
@@ -70,5 +72,10 @@ public class OutputView {
                     sb.append(NEWLINE);
                 });
         System.out.println(sb.toString());
+    }
+
+    public static void printPrice(int price) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(price + WON);
     }
 }
