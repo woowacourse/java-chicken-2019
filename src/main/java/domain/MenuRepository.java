@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,5 +21,24 @@ public class MenuRepository {
 
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
+    }
+    
+    //나중에 수정 할  여유 생기면 수정하자
+    public static String numToName(int num) {
+    	for (Menu menu: menus) {
+    		if (menu.isSameNumber(num)) {
+    			return menu.getName();
+    		}
+    	}
+    	return "";
+    }
+    
+    public static int numToPrice(int num) {
+      	for (Menu menu: menus) {
+    		if (menu.isSameNumber(num)) {
+    			return menu.getPrice();
+    		}
+    	}
+      	return 0;
     }
 }

@@ -1,6 +1,7 @@
 package view;
 
 import domain.Menu;
+import domain.OrderStorage;
 import domain.Table;
 
 import java.util.List;
@@ -50,5 +51,10 @@ public class OutputView {
 			System.out.printf(TABLE_FORMAT, table);
 		}
 		System.out.println();
+	}
+	
+	public static void printOrders(OrderStorage orderStorage) {
+		System.out.println("##주문 내역");
+		System.out.println(orderStorage.toString());
 	}
 }

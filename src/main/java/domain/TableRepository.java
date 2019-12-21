@@ -24,6 +24,10 @@ public class TableRepository {
     	tables.get(tableNum.convertNumberToIndex()).enterOrder();
     }
     
+    public Table tableAt(TableNumber tableNum) {
+    	return tables.get(tableNum.convertNumberToIndex());
+    }
+    
     //테스트용
     public void showTableStates() {
     	int i = 0;

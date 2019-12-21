@@ -54,4 +54,10 @@ public class Order {
 			throw new IllegalArgumentException("1개 이상, 99개 이하를 입력해주세요");
 		}
 	}
+	
+	public String toString() {
+		return MenuRepository.numToName(this.menuNum) + " " 
+				+ amount + " "
+				+ MenuRepository.numToPrice(this.menuNum);
+	}
 }

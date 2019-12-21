@@ -40,6 +40,14 @@ public class OrderStorage {
 			.forEach(order -> order.addAmount(amount));
 	}
 	
+	public String toString() {
+		StringBuilder message = new StringBuilder();
+		message.append("메뉴 수량 금액\n");
+		orders.stream()
+			.forEach(order -> message.append(order.toString() + "\n"));
+		return message.toString();
+	}
+	
 	//테스트용
 	public void showOrders() {
 		for(Order order:orders) {

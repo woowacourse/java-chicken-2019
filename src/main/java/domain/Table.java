@@ -29,4 +29,8 @@ public class Table {
     	}
     	return "└ ─ ┘";
     }
+    
+    public void getPayed() {
+    	
+    }
 }
