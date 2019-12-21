@@ -16,13 +16,12 @@ public class InputView {
     private static String inputNumberString;
 
     public static int inputMainNumber() {
+        final List<Main> mains = MainRepository.mains();
         do {
-            final List<Main> mains = MainRepository.mains();
             OutputView.printMains(mains);
-
             System.out.println(LINE + "## 원하는 기능을 선택하세요.");
             inputNumberString = scanner.nextLine();
-        } while (inputCheck.mainInputCheck(inputNumberString));
+        } while (inputCheck.mainInputCheck(inputNumberString, mains));
 
         return Integer.parseInt(inputNumberString);
     }
@@ -30,10 +29,9 @@ public class InputView {
     public static int inputTableNumber(List<Table> tables) {
         do {
             OutputView.printTables(tables);
-
             System.out.println(LINE + "## 테이블을 선택하세요.");
             inputNumberString = scanner.nextLine();
-        } while (inputCheck.tableInputCheck(inputNumberString));
+        } while (inputCheck.tableInputCheck(inputNumberString, tables));
 
         return Integer.parseInt(inputNumberString);
     }
@@ -43,7 +41,7 @@ public class InputView {
             OutputView.printMenus(menus);
             System.out.println(LINE + "## 등록할 메뉴를 선택하세요.");
             inputNumberString = scanner.nextLine();
-        } while (inputCheck.tableInputCheck(inputNumberString));
+        } while (inputCheck.menuInputCheck(inputNumberString, menus));
 
         return Integer.parseInt(inputNumberString);
     }
@@ -52,7 +50,7 @@ public class InputView {
         do {
             System.out.println(LINE + "## 메뉴의 수량을 입력하세요.");
             inputNumberString = scanner.nextLine();
-        } while (inputCheck.menuInputCheck(inputNumberString));
+        } while (inputCheck.numberCheck(inputNumberString));
 
         return Integer.parseInt(inputNumberString);
     }

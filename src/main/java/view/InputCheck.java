@@ -2,11 +2,16 @@ package view;
 
 import domain.*;
 
+import java.util.List;
+
 public class InputCheck {
+
+    private int checkNumber;
 
     public boolean numberCheck(String number) {
         try {
-            if (Integer.parseInt(number) < 1) {
+            checkNumber = Integer.parseInt(number);
+            if (checkNumber < 1) {
                 return true;
             }
         } catch (Exception e) {
@@ -16,55 +21,28 @@ public class InputCheck {
         return false;
     }
 
-    public boolean mainInputCheck(String number) {
+    public boolean mainInputCheck(String number, List<Main> mains) {
         if (this.numberCheck(number)) {
             return true;
         }
 
-        int checkNumber = Integer.parseInt(number);
-
-        for (Main main : MainRepository.mains()) {
-            if (main.mainInputCheck(checkNumber)) {
-                return false;
-            }
-        }
-
-        System.out.println("1, 2, 3 중에 입력해주세요.");
-        return true;
+        return !mains.stream().anyMatch(main -> main.mainInputCheck(checkNumber));
     }
 
-    public boolean tableInputCheck(String number) {
+    public boolean tableInputCheck(String number, List<Table> tables) {
         if (numberCheck(number)) {
             return true;
         }
 
-        int checkNumber = Integer.parseInt(number);
-
-        for (Table table : TableRepository.tables()) {
-            if (table.TableInputCheck(checkNumber)) {
-                return false;
-            }
-        }
-
-        System.out.println("테이블 번호를 입력해주세요.");
-        return true;
+        return !tables.stream().anyMatch(table -> table.tableInputCheck(checkNumber));
     }
 
-    public boolean menuInputCheck(String number) {
+    public boolean menuInputCheck(String number, List<Menu> menus) {
         if (numberCheck(number)) {
             return true;
         }
 
-        int checkNumber = Integer.parseInt(number);
-
-        for (Menu menu : MenuRepository.menus()) {
-            if (menu.menuInputCheck(checkNumber)) {
-                return false;
-            }
-        }
-
-        System.out.println("메뉴를 다시 확인해주세요.");
-        return true;
+        return !menus.stream().anyMatch(menu -> menu.menuInputCheck(checkNumber));
     }
 }
 

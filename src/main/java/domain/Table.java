@@ -12,7 +12,7 @@ public class Table {
         return Integer.toString(number);
     }
 
-    public boolean TableInputCheck(int number) {
+    public boolean tableInputCheck(int number) {
         return this.number == number;
     }
 }
