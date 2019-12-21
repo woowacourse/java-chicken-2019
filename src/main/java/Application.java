@@ -1,30 +1,34 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import domain.*;
 import jdk.internal.util.xml.impl.Input;
 import view.InputView;
 import view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
+
+        // 장바구니, 테이블 , 메뉴
+        final List<Order> orderList = new ArrayList<>();
+        final List<Table> tables = TableRepository.tables();
+        final List<Menu> menus = MenuRepository.menus();
+
+        // 메인 메뉴 출력
         OutputView.printPosMenu();
         int posChoice = validatePosChoice();
 
-        final List<Table> tables = TableRepository.tables();
+        // 테이블 상태 출력
         OutputView.printTables(tables);
 
-        // 주문 등록
+        // 주문 등록 로직
         if (posChoice == 1) {
             final int tableNumber = validateTableNumber();
-            final List<Menu> menus = MenuRepository.menus();
             OutputView.printMenus(menus);
-
             int foodNumber = validateFoodNumber(menus);
             int foodCount = validateFoodCount();
+            orderList.add(new Order(foodNumber, foodCount));
         }
     }
 
