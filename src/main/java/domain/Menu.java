@@ -16,6 +16,14 @@ public class Menu {
     public int getNumber() {
 	return number;
     }
+    
+    public String getCategoryName() {
+	return category.getCategory();
+    }
+    
+    public int getPrice() {
+	return price;
+    }
 
     @Override
     public String toString() {

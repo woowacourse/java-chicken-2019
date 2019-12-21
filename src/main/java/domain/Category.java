@@ -9,6 +9,10 @@ public enum Category {
     Category(final String name) {
         this.name = name;
     }
+    
+    public String getCategory() {
+	return name;
+    }
 
     @Override
     public String toString() {
