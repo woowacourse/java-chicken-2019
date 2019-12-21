@@ -1,7 +1,10 @@
 package util;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+
+import domain.Table;
 
 public class ExceptionHandler {
 	private static final int ORDER = 1;
@@ -21,6 +24,29 @@ public class ExceptionHandler {
 
 	private static int checkInputSelectWorkHandler(int input) {
 		if (input == ORDER || input == PAYMENT || input == EXIT) {
+			return input;
+		}
+		throw new IllegalArgumentException();
+	}
+
+	public static int inputSelectTableHandler(List<Table> tables) {
+		try {
+			return checkInputSelectTableHandler(tables, scanner.nextInt());
+		} catch (InputMismatchException | IllegalArgumentException e) {
+			System.out.println("입력값을 확인해주세요.");
+			scanner = new Scanner(System.in);
+			return inputSelectTableHandler(tables);
+		}
+	}
+
+	private static int checkInputSelectTableHandler(List<Table> tables, int input) {
+		boolean isExistTableNumber = false;
+		for (Table table : tables) {
+			if (table.getNumber() == input) {
+				isExistTableNumber = true;
+			}
+		}
+		if (isExistTableNumber == true) {
 			return input;
 		}
 		throw new IllegalArgumentException();

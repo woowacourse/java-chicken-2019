@@ -8,10 +8,17 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
+	private static final int ORDER = 1;
+	private static final int PAYMENT = 2;
+	private static final int EXIT = 3;
+	private static final List<Table> tables = TableRepository.tables();
+	
 	public static void main(String[] args) {
 		int nowWork;
 		do {
 			nowWork = InputView.inputSelectWork();
+			doWork(nowWork);
+
 //			final List<Table> tables = TableRepository.tables();
 //			OutputView.printTables(tables);
 //
@@ -19,7 +26,29 @@ public class Application {
 //
 //			final List<Menu> menus = MenuRepository.menus();
 //			OutputView.printMenus(menus);
-		} while (true);
-
+		} while (nowWork != EXIT);
 	}
+
+	private static void doWork(int inputSelectWork) {
+		if (inputSelectWork == ORDER) {
+			doOrder();
+		}
+		if (inputSelectWork == PAYMENT) {
+			doPayment();
+		}
+		if (inputSelectWork == EXIT) {
+		}
+	}
+
+
+	private static void doOrder() {
+		int nowTable;
+		OutputView.printTables(tables);
+		nowTable = InputView.inputSelectTable(tables);
+	}
+	private static void doPayment() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -1,7 +1,9 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 
+import domain.Table;
 import util.ExceptionHandler;
 
 
@@ -15,10 +17,11 @@ public class InputView {
 		System.out.println("3 - 프로그램 종료");
 		return ExceptionHandler.inputSelectWorkHandler();
 	}
-    public static int inputTableNumber() {
+
+	public static int inputSelectTable(List<Table> tables) {
         System.out.println("## 주문할 테이블을 선택하세요.");
-        return scanner.nextInt();
-    }
+		return ExceptionHandler.inputSelectTableHandler(tables);
+	}
 
 
 }
