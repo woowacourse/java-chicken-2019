@@ -1,7 +1,7 @@
 package view;
 
 import domain.Menu;
-import domain.MenuFeatureNumber;
+import domain.MainFeatureNumber;
 import domain.Table;
 
 import java.util.List;
@@ -14,9 +14,9 @@ public class OutputView {
 
     public static void printMainFeatures() {
         System.out.println("## 메인화면");
-        System.out.println(String.format("%d - 주문등록", MenuFeatureNumber.ORDER));
-        System.out.println(String.format("%d - 결제하기", MenuFeatureNumber.PAY));
-        System.out.println(String.format("%d - 주문등록", MenuFeatureNumber.EXIT));
+        System.out.println(String.format("%d - 주문등록", MainFeatureNumber.ORDER));
+        System.out.println(String.format("%d - 결제하기", MainFeatureNumber.PAY));
+        System.out.println(String.format("%d - 프로그램 종료", MainFeatureNumber.EXIT));
         System.out.println();
     }
 
@@ -31,6 +31,7 @@ public class OutputView {
             }
             System.out.print(BOTTOM_LINE);
         }
+        System.out.println();
     }
 
     public static void printMenus(final List<Menu> menus) {

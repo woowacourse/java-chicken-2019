@@ -9,21 +9,16 @@ public class Application {
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
         OutputView.printMainFeatures();
-        MenuFeatureNumber menuFeatureNumber = InputView.inputMenuFeatureNumber();
-        if (menuFeatureNumber.isExit()) {
+        MainFeatureNumber mainFeatureNumber = InputView.inputMainFeatureNumber();
+        if (mainFeatureNumber.isExit()) {
             System.out.println("포스 프로그램이 종료되었습니다.");
             return;
         }
-        if (menuFeatureNumber.isOrder()) {
+        if (mainFeatureNumber.isOrder()) {
             OutputView.printTables(tables);
         }
-        if (menuFeatureNumber.isPay()) {
+        if (mainFeatureNumber.isPay()) {
             OutputView.printTables(tables);
         }
-
-        final int tableNumber = InputView.inputTableNumber();
-
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
     }
 }
