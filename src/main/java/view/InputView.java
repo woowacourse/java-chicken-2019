@@ -1,6 +1,7 @@
 package view;
 
 import domain.MenuRepository;
+import domain.Table;
 import domain.TableRepository;
 import viewSupporter.NumberInBounds;
 import viewSupporter.NumberList;
@@ -34,10 +35,16 @@ public class InputView {
         return inputNumber(printErrorMessage, MENU_NUMBER);
     }
 
-    public static int inputQuantityNumber() {
+    public static int inputQuantityNumber(Table orderTable, int menuNumber) {
+        int orderCount = orderTable.getOrderMenuCount(menuNumber);
+        if (orderCount == QUANTITY) {
+            System.out.println("\n## 현재 메뉴의 주문 가능한 개수가 모두 소진되었습니다. 다른 메뉴를 주문하십시오.");
+            return 0;
+        }
         System.out.println("\n## 메뉴의 수량을 입력하세요.");
-        String printErrorMessage = "\n## 메뉴의 수량은 (숫자로) 1 ~ " + QUANTITY + "까지 입력 가능합니다.";
-        List<Integer> quantityNumber = NumberList.createNumberList(QUANTITY);
+        String printErrorMessage = "\n## 한 메뉴당 주문은 " + QUANTITY + "개까지 가능하며, 현재 주문 수량은 " + orderCount + "개로, "
+                + (QUANTITY - orderCount) +"개 주문이 가능한 상태입니다. 주문할 메뉴의 수량을 다시 입력하세요." ;
+        List<Integer> quantityNumber = NumberList.createNumberList(QUANTITY - orderCount);
         return inputNumber(printErrorMessage, quantityNumber);
     }
 
@@ -50,12 +57,12 @@ public class InputView {
     }
 
     private static int inputNumber(String printErrorMessage, List<Integer> numberBounds) {
-        String tableNumberString = scanner.nextLine().trim();
-        while (!NumberInBounds.isBoundsNumberTF(tableNumberString, numberBounds)) {
+        String numberString = scanner.nextLine().trim();
+        while (!NumberInBounds.isBoundsNumberTF(numberString, numberBounds)) {
             System.out.println(printErrorMessage);
-            tableNumberString = scanner.nextLine().trim();
+            numberString = scanner.nextLine().trim();
         }
-        int tableNumber = Integer.parseInt(tableNumberString);
+        int tableNumber = Integer.parseInt(numberString);
         return tableNumber;
     }
 }

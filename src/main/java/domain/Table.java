@@ -22,6 +22,14 @@ public class Table {
         orderTF = true;
     }
 
+    public int getOrderMenuCount(int menuNumber) {
+        int orderMenuCount = 0;
+        if (orderMenu.containsKey(menuNumber)) {
+            orderMenuCount = orderMenu.get(menuNumber);
+        }
+        return orderMenuCount;
+    }
+
     public String orderMenuTotal() {
         TreeMap<Integer, Integer> orderMenuSort = new TreeMap<Integer, Integer>(orderMenu);
         StringBuilder orderMenus = new StringBuilder();

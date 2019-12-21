@@ -20,7 +20,7 @@ public class Application {
         int tableNumber = tableMenu(tables);
         Table orderTable = TableRepository.selectTable(tableNumber);
         int menuNumber = menuMenu(menus);
-        int quantityNumber = quantityMenu();
+        int quantityNumber = quantityMenu(orderTable, menuNumber);
         orderTable.addOrderMenu(menuNumber, quantityNumber);
         mainMenu();
     }
@@ -79,8 +79,8 @@ public class Application {
         return menuNumber;
     }
 
-    private int quantityMenu() {
-        int quantityNumber = InputView.inputQuantityNumber();
+    private int quantityMenu(Table orderTable, int menuNumber) {
+        int quantityNumber = InputView.inputQuantityNumber(orderTable, menuNumber);
         return quantityNumber;
     }
 
