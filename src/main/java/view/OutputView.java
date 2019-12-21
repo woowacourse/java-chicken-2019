@@ -69,4 +69,8 @@ public class OutputView {
         System.out.println("## 최종 결제할 금액");
         System.out.println(price);
     }
+
+    public static void printError(String error) {
+        System.out.println(error);
+    }
 }
