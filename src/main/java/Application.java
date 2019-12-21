@@ -33,6 +33,12 @@ public class Application {
 
             totalOrders.addOrder(table, order);
             // 이러고 다시 선택화면으로 돌아간다.
+
+            //결제의 경우.
+            Table table2 = InputView.inputTable();
+            //해당 테이블의 주문 내역 가져온다.
+            //메뉴,수량,금액\n
+            //결제 객체가 결제 책임진다.   [TableOrder를 포함 하고 있을거야. ]
         }
         // 1번 과정에서 테이블 입력,
     }
