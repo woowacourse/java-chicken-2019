@@ -47,4 +47,18 @@ public class InputView {
 
         return menu;
     }
+
+    public static int inputOrderNumber(){
+        int order;
+
+        System.out.println("## 메뉴의 수량을 입력하세요. (99개 이하 입력 가능)");
+        order = scanner.nextInt();
+
+        if(order > 99){
+            order = inputOrderNumber();
+        }
+
+        return order;
+
+    }
 }
