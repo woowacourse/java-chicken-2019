@@ -20,6 +20,12 @@ public class TableRepository {
         return Collections.unmodifiableList(tables);
     }
 
+    public static void addMenuListToAllTables(){
+        for(int i = 0 ; i < tables.size() ; i++){
+            tables.get(i).addMenuList();
+        }
+    }
+
     public static int getTablesSize(){
         return tables.size();
     }

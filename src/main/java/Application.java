@@ -33,6 +33,7 @@ public class Application {
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
         OutputView.checkOrder = new boolean[TableRepository.getTablesSize()];
+        TableRepository.addMenuListToAllTables();;
 
 
         while(true){

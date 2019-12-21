@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
@@ -8,6 +9,10 @@ public class Table {
 
     public Table(final int number) {
         this.number = number;
+    }
+
+    public void addMenuList(){
+        this.menuList = new ArrayList<>();
     }
 
     public int getNumber(){
