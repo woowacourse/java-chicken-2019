@@ -23,6 +23,7 @@ public class OutputView {
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
+        new InputView().inputMenu(menus);
     }
 
     private static void printLine(final String line, final int count) {

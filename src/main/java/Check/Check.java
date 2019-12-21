@@ -1,5 +1,6 @@
 package Check;
 
+import domain.Menu;
 import domain.Table;
 
 import java.util.ArrayList;
@@ -40,22 +41,41 @@ public class Check {
         return false;
     }
 
-    public Boolean isInputTableError(String number,final List<Table> tables){
+    public Boolean isInputTableError(String number, final List<Table> tables) {
         checkList.add(isInt(number));
         if (checkList.contains(false)) {
             return true;
         }
-        checkList.add(isExistTable(number,tables));
+        checkList.add(isExistTable(number, tables));
         return checkList.contains(false);
     }
 
-    public Boolean isExistTable(String number,final List<Table> tables){
-        for (Table table:tables){
-            if (number.equals(table.toString())){
+    public Boolean isExistTable(String number, final List<Table> tables) {
+        for (Table table : tables) {
+            if (number.equals(table.toString())) {
                 return true;
             }
         }
         System.out.println("없는 테이블입니다. 다시 입력하세요.");
+        return false;
+    }
+
+    public Boolean isInputMenuNumberError(String number, final List<Menu> menus) {
+        checkList.add(isInt(number));
+        if (checkList.contains(false)) {
+            return true;
+        }
+        checkList.add(isExistMenu(number, menus));
+        return checkList.contains(false);
+    }
+
+    public Boolean isExistMenu(String number, final List<Menu> menus) {
+        for (Menu menu : menus) {
+            if (Integer.parseInt(number) == menu.getNumber()) {
+                return true;
+            }
+        }
+        System.out.println("없는 메뉴입니다. 다시 입력하세요.");
         return false;
     }
 }
