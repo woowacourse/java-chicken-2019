@@ -29,8 +29,8 @@ public class Application {
                 final int tableNumber = validateTableNumber();
                 OutputView.printMenus(menus);
                 int foodNumber = validateFoodNumber(menus);
-                int foodCount = validateFoodCount();
-                orderList.add(new Order(foodNumber, foodCount));
+                Menu selectedMenu = menus.stream().filter(m -> m.isMatchNumber(foodNumber)).findAny().get();
+                orderList.add(new Order(selectedMenu, validateFoodCount()));
             }
 
             // 결제 로직
