@@ -15,51 +15,74 @@ public class Application {
 	private static final int PAYMENT_CREDITCARD = 1;
 	private static final int PAYMENT_CASH = 2;
 	
+	private static final List<Table> tables = TableRepository.tables();
+	private static final List<Menu> menus = MenuRepository.menus();
+
 	public static void main(String[] args) {
-		while(true) {
+		while (true) {
 			int mainMenuNumber = mainMenu();
-			if(mainMenuNumber == MENU_ORDER) {
+			if (mainMenuNumber == MENU_ORDER) {
 				orderMenu();
 			}
-			if(mainMenuNumber == MENU_PAYMENT) {
+			if (mainMenuNumber == MENU_PAYMENT) {
 				paymentMenu();
 			}
-			if(mainMenuNumber == MENU_EXIT) {
+			if (mainMenuNumber == MENU_EXIT) {
 				break;
 			}
 		}
 	}
 
 	private static int mainMenu() {
-		OutputView.printMainMenu();
-		final int mainMenuNumber = InputView.inputMainMenuNumber();
-		return mainMenuNumber;
-	}
-	
-	private static void orderMenu() {
-		final List<Table> tables = TableRepository.tables();
-		OutputView.printTables(tables);
-		final int tableNumber = InputView.inputTableNumber();
-		final List<Menu> menus = MenuRepository.menus();
-		OutputView.printMenus(menus);
-		final int selectedMenu = InputView.inputMenuSelect();
-		final int menuCount = InputView.inputMenuCount();
-		TableRepository.addMenu(tableNumber, selectedMenu, menuCount);
-	}
-	
-	private static void paymentMenu() {
-		final List<Table> tables = TableRepository.tables();
-		OutputView.printTables(tables);
-		final int tableNumber = InputView.inputTableNumber();
-		OutputView.printTableMenu(tableNumber);
-		final Table table = TableRepository.getTable(tableNumber);
-		int price = Table.getPrice();
-		price = Discount.discountByChickenCount(price, table);
-		final int paymentMenu = InputView.inputPaymentMenuNumber();
-		if (paymentMenu == PAYMENT_CASH) {
-			price = Discount.discountByCash(price);
+		try {
+			OutputView.printMainMenu();
+			final int mainMenuNumber = InputView.inputMainMenuNumber();
+			return mainMenuNumber;
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
 		}
-		OutputView.printPrice(price);
-		table.reset();
+		return 0;
+	}
+
+	private static void orderMenu() {
+		try {
+			OutputView.printTables(tables);
+			final int tableNumber = InputView.inputTableNumber();
+			OutputView.printMenus(menus);
+			final int selectedMenu = InputView.inputMenuSelect();
+			final int menuCount = InputView.inputMenuCount();
+			TableRepository.addMenu(tableNumber, selectedMenu, menuCount);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+
+	private static void paymentMenu() {
+		try {
+			OutputView.printTables(tables);
+			final int tableNumber = InputView.inputTableNumber();
+			final Table table = TableRepository.getTable(tableNumber);
+			if (table == null || !table.hasCustomer()) {
+				System.err.println("결제할 수 없는 테이블입니다.");
+				return;
+			}
+			calculateAll(tableNumber, table);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	private static void calculateAll(int tableNumber, Table table) {
+		try {
+			OutputView.printTableMenu(tableNumber);
+			int price = Discount.discountByChickenCount(Table.getPrice(), table);
+			if (InputView.inputPaymentMenuNumber() == PAYMENT_CASH) {
+				price = Discount.discountByCash(price);
+			}
+			OutputView.printPrice(price);
+			table.reset();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 }

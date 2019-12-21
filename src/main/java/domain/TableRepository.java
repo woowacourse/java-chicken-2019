@@ -20,13 +20,14 @@ public class TableRepository {
         return Collections.unmodifiableList(tables);
     }
     
-    public static void addMenu(int tableNumber, int menuNumber, int menuCount) {
+    public static void addMenu(int tableNumber, int menuNumber, int menuCount) throws Exception {
     	for (Table table : tables) {
 			if(table.getNumber() == tableNumber) {
 				table.addMenu(menuNumber, menuCount);
-				break;
+				return;
 			}
 		}
+    	throw new Exception("해당 테이블이 존재하지 않습니다.");
     }
     
     public static Table getTable(int tableNumber) {
