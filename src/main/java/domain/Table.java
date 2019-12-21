@@ -21,6 +21,10 @@ public class Table {
         chickens++;
     }
 
+    public boolean isOrder() {
+        return !orders.isEmpty();
+    }
+
     public HashMap getOrder() {
         return orders;
     }
