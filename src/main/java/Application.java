@@ -45,9 +45,11 @@ public class Application {
             validateOrderedTable(table);
             OutputView.printBills(table.getBills());
             OutputView.printStartPayment(table);
+
             Payment payment = createPaymentByInput();
             int tableAmount = table.calculateAmount();
             OutputView.printFinalPayment(payment.calculateBySelect(tableAmount));
+            table.completePayment();
         } catch (IllegalArgumentException e) {
             OutputView.printException(e);
         }

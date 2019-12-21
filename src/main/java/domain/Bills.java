@@ -38,6 +38,10 @@ public class Bills {
         }
     }
 
+    public void clear() {
+        bills.clear();
+    }
+
     public boolean isEmpty() {
         return bills.isEmpty();
     }

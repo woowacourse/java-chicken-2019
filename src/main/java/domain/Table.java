@@ -19,6 +19,10 @@ public class Table  extends StoreTool{
         return bills.isEmpty();
     }
 
+    public void completePayment() {
+        bills.clear();
+    }
+
     public Bills getBills() {
         return bills;
     }
