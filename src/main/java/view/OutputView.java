@@ -11,40 +11,40 @@ public class OutputView {
     private static final String BOTTOM_LINE = "└ ─ ┘";
 
     public static void printMain() {
+        System.out.println();
         System.out.println("## 메인화면");
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
         System.out.println("3 - 프로그램 종료");
-        System.out.println();
     }
 
     public static void printTables(final List<Table> tables) {
+        System.out.println();
         System.out.println("## 테이블 목록");
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
         printLine(BOTTOM_LINE, size);
-        System.out.println();
     }
 
     public static void printMenus(final List<Menu> menus) {
+        System.out.println();
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
-        System.out.println();
     }
 
     private static void printLine(final String line, final int count) {
+        System.out.println();
         for (int index = 0; index < count; index++) {
             System.out.print(line);
         }
-        System.out.println();
     }
 
     private static void printTableNumbers(final List<Table> tables) {
+        System.out.println();
         for (final Table table : tables) {
             System.out.printf(TABLE_FORMAT, table);
         }
-        System.out.println();
     }
 }
