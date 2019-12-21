@@ -2,6 +2,8 @@ package view;
 
 import java.util.Scanner;
 
+import domain.MenuRepository;
+
 public class InputView {
 	private static final Scanner scanner = new Scanner(System.in);
 	private static final int PROCESS_SELECTION_RANGE = 3;
@@ -34,6 +36,7 @@ public class InputView {
 		System.out.println("## 등록할 메뉴를 선택하세요.");
 		try {
 			int orderMenu = validateNumber(scanner.nextLine().trim());
+			validateRangeOfMenus(orderMenu);
 			return orderMenu;
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
@@ -50,6 +53,12 @@ public class InputView {
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 			return inputNumberOfMenu();
+		}
+	}
+
+	private static void validateRangeOfMenus(int menuNumber) {
+		if (!MenuRepository.isAvailableMenu(menuNumber)) {
+			throw new IllegalArgumentException("메뉴판에 없는 메뉴입니다.");
 		}
 	}
 
