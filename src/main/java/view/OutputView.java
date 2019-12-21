@@ -23,9 +23,11 @@ public class OutputView {
     }
 
     public static void printMenus(final List<Menu> menus) {
+    	System.out.println();
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
+        System.out.println();
     }
 
     private static void printLine(final String line, final int count) {

@@ -1,10 +1,4 @@
-import java.util.List;
-
 import domain.FunctionNumber;
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
 

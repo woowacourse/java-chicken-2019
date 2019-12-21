@@ -21,4 +21,18 @@ public class MenuRepository {
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
     }
+    
+    public static Menu isExist(int number) throws Exception {
+    	if (!menus.stream()
+    				.filter(menu -> menu.getMenuNumber() == number)
+    				.findFirst()
+    				.isPresent()) {
+    		throw new Exception("존재하지 않는 메뉴입니다.");
+    	}
+    	
+    	return menus.stream()
+				.filter(menu -> menu.getMenuNumber() == number)
+				.findFirst()
+				.get();
+    }
 }
