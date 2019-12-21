@@ -7,6 +7,7 @@ import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -66,8 +67,34 @@ public class ApplicationSupporter {
     }
 
     public void checkOutPhase() {
-        // 코드 추가 -> 결제 기능
-        System.out.println(menuList);
+        OutputView.printTables(tableList);
+        final int tableNumber = InputView.tableChecker(tableList);
+        Table choiceTable = findTable(tableNumber);
+        orderCheck(choiceTable);
+        orderResult(choiceTable.getOrder(), menuList);
+
+        // 최종 결제, 할인, 객체 클리어
+        mainOptionPhase();
+    }
+
+    public void orderCheck(Table table) {
+        if (!table.isOrder()) {
+            OutputView.printTableChoiceError();
+            checkOutPhase();
+        }
+    }
+
+    public void orderResult(HashMap<String, Integer> order, List<Menu> tableMenu) {
+        OutputView.printOrderForCheckOut();
+        int total = 0;
+        for (String key : order.keySet()) {
+            Menu thisMenu = tableMenu.stream().filter(x -> x.matchName(key))
+                    .findFirst().orElseThrow(Error::new);
+            System.out.println(key + " " + order.get(key)
+                    + " " + thisMenu.getPrice() * order.get(key));
+            total += thisMenu.getPrice() * order.get(key);
+        }
+        OutputView.printResult(total);
     }
 
 }

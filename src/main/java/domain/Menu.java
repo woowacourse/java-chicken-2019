@@ -21,6 +21,10 @@ public class Menu {
         return input == number;
     }
 
+    public boolean matchName(String input) {
+        return input.equals(name);
+    }
+
     public int getPrice() {
         return price;
     }

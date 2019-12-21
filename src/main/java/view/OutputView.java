@@ -3,6 +3,7 @@ package view;
 import domain.Menu;
 import domain.Table;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class OutputView {
@@ -24,6 +25,10 @@ public class OutputView {
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
         printTableStatus(tables);
+    }
+
+    public static void printTableChoiceError() {
+        System.out.println("주문이 없는 테이블 입니다.");
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -55,6 +60,16 @@ public class OutputView {
             System.out.print(BOTTOM_LINE);
         }
         System.out.println();
+    }
+
+    public static void printOrderForCheckOut() {
+        System.out.println("## 주문 내역");
+        System.out.println("메뉴  수량  주문");
+    }
+
+    public static void printResult(int total) {
+        System.out.println("\n## 최종 결제할 금액");
+        System.out.println(total + "원\n");
     }
 
     public static void printEndMessage() {
