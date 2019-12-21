@@ -10,24 +10,40 @@ import view.OutputView;
 import java.util.List;
 
 public class OrderRegistor extends Service{
-    private List<Table> tables;
 
     public OrderRegistor(int number, String name) {
         super(number, name);
     }
 
+
     public void run(List<Table> tables){
-        int tableNumber;
-        int menuNumber;
-        int menuQuantity;
+        Table table;
+        OrderedMenu orderedMenu;
 
         OutputView.printTables(tables);
-        tableNumber = InputView.inputTableNumber();
+        table = getTable(tables,InputView.inputTableNumber());
         OutputView.printMenus(MenuRepository.menus());
-        menuNumber =InputView.inputMenuNumber();
-        menuQuantity =  InputView.inputMenuQuantity();
+        orderedMenu = new OrderedMenu(getMenu(InputView.inputMenuNumber()),InputView.inputMenuQuantity());
 
+        table.addMenu(orderedMenu);
     }
 
+    private Menu getMenu(int menuNumber){
+        for(Menu menu : MenuRepository.menus()){
+            if(menu.equals(menuNumber)){
+                return menu;
+            }
+        }
+        return null;
+    }
+
+    private Table getTable(List<Table> tables, int tableNumber){
+        for(Table table : tables){
+            if(table.equals(tableNumber)){
+                return table;
+            }
+        }
+        return null;
+    }
 
 }
