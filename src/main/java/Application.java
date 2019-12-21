@@ -4,6 +4,7 @@ import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
+import util.InputUtil;
 import view.InputView;
 import view.OutputView;
 
@@ -25,7 +26,7 @@ public class Application {
 
 		try {
 			OutputView.printMainMenu();
-			mainMenuNumber = InputView.inputMainMenuNumber();
+			mainMenuNumber = InputUtil.checkMainMenuNumber(InputView.inputMainMenuNumber());
 		} catch (IllegalArgumentException e) {
 			return getMainMenuNumber();
 		}

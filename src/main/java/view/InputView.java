@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class InputView {
 	private static final Scanner scanner = new Scanner(System.in);
 
-	public static int inputMainMenuNumber() {
+	public static String inputMainMenuNumber() {
 		System.out.println("## 원하는 기능을 선택하세요.");
-		return Integer.parseInt(scanner.nextLine());
+		return scanner.nextLine();
 	}
 
 	public static int inputTableNumber() {
