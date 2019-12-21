@@ -2,6 +2,7 @@ package view;
 
 import domain.Menu;
 import domain.Table;
+import domain.TableMenu;
 
 import java.util.List;
 
@@ -34,6 +35,20 @@ public class OutputView {
         }
     }
 
+    public static void printOrders(final Table table) {
+        System.out.println();
+        System.out.println("## 주문내역");
+        System.out.println("메뉴 수량 금액");
+        table.getTableMenus().forEach(OutputView::printTableMenu);
+        System.out.println();
+        System.out.printf("%d번 테이블의 결제를 진행합니다.\n", table.getNumber());
+    }
+
+    public static void printPrices(final Table table) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.printf("%d원\n", table.calculateTablePrice());
+    }
+
     private static void printLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
@@ -46,5 +61,9 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+
+    private static void printTableMenu(final TableMenu tableMenu) {
+        System.out.println(tableMenu);
     }
 }
