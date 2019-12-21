@@ -47,12 +47,10 @@ public class Control {
     private static void selectTable() {
         OutputView.printTables(tables, payList);
         int tableNumber = InputView.inputTableNumber();
-        System.out.println(tableNumber + "a");
         registMenu(tableNumber);
     }
 
     private static void registMenu(int tableNumber) { // 메뉴를 등록합니다.
-        System.out.println(tableNumber + "a");
         OutputView.printMenus(menus);
         int menuNumber = InputView.inputMenuNumber();
         menuNumber = convertMenuNumber(menuNumber);
@@ -72,12 +70,10 @@ public class Control {
         OutputView.printTables(tables, payList);
         int tableNumber = InputView.inputTableNumber();
         tableNumber = convertTableNumber(tableNumber);
-        System.out.println(tableNumber + "a");
         payLoad(tableNumber);
     }
 
     private static void payLoad(int tableNumber) { // 결제 모듈입니다.
-        System.out.println(tableNumber + "a");
         OutputView.printResults(payList.get(tableNumber - 1).getOrderedMenu());
         int payHow = InputView.inputPayNumber(payList.get(tableNumber - 1));
         if (payHow == 2 || payHow == 1) {

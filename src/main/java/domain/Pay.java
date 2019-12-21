@@ -38,7 +38,6 @@ public class Pay {
     }
 
     public void setMenus(String menu, int cost) {
-        System.out.println(tableNumber + "b");
         int index = orderedMenu.indexOf(menu);
         if(index != -1) {
             orderedMenuCount.set(index,orderedMenuCount.get(index)+1);
