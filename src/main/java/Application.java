@@ -26,7 +26,7 @@ public class Application {
             // 주문 등록 로직
             if (posChoice == Choice.ORDER) {
                 OutputView.printTables(tables, currentTableNumber);
-                final int tableNumber = validateTableNumber(); // currentTable 변동 불가 추가
+                final int tableNumber = validateTableNumber(currentTableNumber); // currentTable 변동 불가 추가
                 currentTableNumber = tableNumber;
                 OutputView.printMenus(menus);
                 int foodNumber = validateFoodNumber(menus);
@@ -63,7 +63,7 @@ public class Application {
             if (tableNumber < 0 | tableNumber > 8) {
                 throw new IllegalArgumentException("선택 가능한 범위가 아닙니다.");
             }
-            validateCurrentTableNumber(currentTableNumber, tableNumber);
+            validateCurrentPayableTable(currentTableNumber, tableNumber);
             return tableNumber;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -71,7 +71,7 @@ public class Application {
         return validatePayableTableNumber(currentTableNumber);
     }
 
-    private static void validateCurrentTableNumber(int currentTableNumber, int tableNumber) {
+    private static void validateCurrentPayableTable(int currentTableNumber, int tableNumber) {
         if (tableNumber != currentTableNumber) {
             throw new IllegalArgumentException("결제 가능한 테이블이 아닙니다.");
         }
@@ -107,17 +107,24 @@ public class Application {
         return validateFoodNumber(menus);
     }
 
-    private static int validateTableNumber() {
+    private static int validateTableNumber(int currentTableNumber) {
         try {
             int tableNumber = InputView.inputTableNumber();
             if (tableNumber < 0 | tableNumber > 8) {
                 throw new IllegalArgumentException("선택 가능한 범위가 아닙니다.");
             }
+            validateCurrentOrderingTable(currentTableNumber, tableNumber);
             return tableNumber;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        return validateTableNumber();
+        return validateTableNumber(currentTableNumber);
+    }
+
+    private static void validateCurrentOrderingTable(int currentTableNumber, int tableNumber) {
+        if (currentTableNumber != 0 && tableNumber != currentTableNumber){
+            throw new IllegalArgumentException("현재 주문 중인 테이블이 아닙니다.");
+        }
     }
 
     public static Choice validatePosChoice() {
