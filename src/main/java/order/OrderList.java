@@ -48,4 +48,12 @@ public class OrderList {
         }
         return orders;
     }
+
+    public void vacateOrder(){
+        menuCount.clear();
+    }
+
+    public boolean isActive(){
+        return !menuCount.isEmpty();
+    }
 }
