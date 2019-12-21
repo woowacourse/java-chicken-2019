@@ -20,4 +20,8 @@ public class Order {
 	public Cost getCost() {
 		return menu.calculateCost(quantity);
 	}
+
+	public boolean isChicken() {
+		return menu.isChicken();
+	}
 }

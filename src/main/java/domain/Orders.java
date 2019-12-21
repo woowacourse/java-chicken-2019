@@ -38,4 +38,14 @@ public class Orders {
 			.mapToInt(Order::getQuantity)
 			.sum();
 	}
+
+	public int getCountOfChickenOrder() {
+		// order 각각 메뉴 , 수량 함휴 하고 있다.
+		// order 한테 니가 갖고 있는 메뉴 치킨이냐 묻고 필터
+		// 걔네들의 갯수
+		return orders.stream()
+			.filter(order -> order.isChicken())
+			.mapToInt(Order::getQuantity)
+			.sum();
+	}
 }

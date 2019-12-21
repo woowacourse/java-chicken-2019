@@ -29,4 +29,8 @@ public class TableOrder {
 	public boolean isAbleToOrderMenu(Menu menu, int additionalQuantity) {
 		return orders.isAbleToOrderMenu(menu, additionalQuantity);
 	}
+
+	public int getCountOfChickenOrder() {
+		return orders.getCountOfChickenOrder();
+	}
 }
