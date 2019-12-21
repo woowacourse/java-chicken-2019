@@ -28,14 +28,13 @@ public class Table {
         return number == tableNumber;
     }
 
-    public void checkNewOrder() {
-        System.out.printf("%d 테이블에 주문 연결이 되는지 확인 \n", number);
-    }
-
     public String order(int newMenuCategory, int newMenuCount){
         if(isNotFirstMenuCategory(newMenuCategory)){
-            inputOrder(newMenuCategory,newMenuCount);
-            return "추가 주문이 완료되었습니다.";
+            if(isNotOverCountNumber(newMenuCategory,newMenuCount)) {
+                inputOrder(newMenuCategory, newMenuCount);
+                return "추가 주문이 완료되었습니다.";
+            }
+            return "제한 수량을 초과하였습니다.";
         }
         inputNewOrder(newMenuCategory,newMenuCount);
         return "새로운 주문이 완료되었습니다.";
@@ -47,9 +46,7 @@ public class Table {
     }
 
     public void inputOrder(int newMenuCategory, int newMenuCount) {
-        if(isNotOverCountNumber(newMenuCategory,newMenuCount)) {
-            menuCount.set(menuCategory.indexOf(newMenuCategory), calculateCount(newMenuCategory, newMenuCount));
-        }
+        menuCount.set(menuCategory.indexOf(newMenuCategory), calculateCount(newMenuCategory, newMenuCount));
     }
 
     public boolean isNotFirstMenuCategory(int newMenuCategory) {
@@ -64,4 +61,8 @@ public class Table {
         return calculateCount(newInputMenuCategory, newInputMenuCount) < MAX_ORDER_COUNT;
     }
 
+    public void clearTable() {
+        menuCategory = new ArrayList<>();
+        menuCount = new ArrayList<>();
+    }
 }

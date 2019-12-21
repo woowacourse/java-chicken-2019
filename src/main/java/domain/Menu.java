@@ -17,4 +17,19 @@ public class Menu {
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
+
+    public Category getCategory(){
+        return category;
+    }
+    public int calculatePrice(int count) {
+        return price * count;
+    }
+
+    public boolean isEqaulMenuCategory(int menuCategory) {
+        return number == menuCategory;
+    }
+
+    public boolean isChickenCategory(String checkCategory) {
+        return category.equals(checkCategory);
+    }
 }
