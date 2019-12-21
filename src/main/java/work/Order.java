@@ -13,8 +13,12 @@ public class Order extends TableWork {
 		int tableNumber = getTableNumber();
 		OutputView.printMenus(menus);
 		int menuChoice = getMenuChoice();
-		int menuQuantity = getMenuQuantity();
+		int menuQuantity = getMenuQuantity(tableNumber,menuChoice);
+		commitOrder(tableNumber,menuChoice,menuQuantity);
+	}
 
+	private void commitOrder(int tableNumber, int menuChoice, int menuQuantity) {
+		tables.get(tableNumber).putOrder(menuChoice,menuQuantity);
 	}
 
 	private int getMenuChoice() {
@@ -35,18 +39,19 @@ public class Order extends TableWork {
 		return value;
 	}
 
-	private int getMenuQuantity() {
+	private int getMenuQuantity(int tableNumber, int menuChoice) {
 		int value;
 		try {
 			value = InputView.inputMenuQuantity();
-			Validation.checkPositiveRange(value, menus.size());
+			int orderedQuantity = tables.get(tableNumber).getOrderQuantity(menuChoice);
+			Validation.checkPositiveRange(value, 99 - orderedQuantity);
 		} catch (InputMismatchException e) {
 			System.out.println("숫자를 입력해주세요.");
 			InputView.flush();
-			return getMenuQuantity();
+			return getMenuQuantity(tableNumber, menuChoice);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			return getMenuQuantity();
+			return getMenuQuantity(tableNumber, menuChoice);
 		}
 		return value;
 	}
