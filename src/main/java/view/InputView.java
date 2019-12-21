@@ -10,7 +10,7 @@ public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static int inputTableNumber(final List<Table> tables) {
-        System.out.println("## 주문할 테이블을 선택하세요.");
+        System.out.println("\n## 주문할 테이블을 선택하세요.");
         String userInput = scanner.next();
         while (new Check().isInputTableError(userInput,tables)){
             userInput = scanner.next();
@@ -19,7 +19,7 @@ public class InputView {
     }
 
     public int inputFunction() {
-        System.out.println("원하는 기능을 입력하세요.");
+        System.out.println("\n원하는 기능을 입력하세요.");
         String userInput = scanner.next();
         while (new Check().isInputFunctionError(userInput)) {
             userInput = scanner.next();
