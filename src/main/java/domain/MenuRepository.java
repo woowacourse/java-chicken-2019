@@ -33,4 +33,15 @@ public class MenuRepository {
         }
         return false;
     }
+
+    public static Menu getMenu(int number) {
+        Iterator itr = menus.iterator();
+        while (itr.hasNext()) {
+            Menu menu = (Menu) itr.next();
+            if (menu.isSameNumber(number)) {
+                return menu;
+            }
+        }
+        return null;
+    }
 }
