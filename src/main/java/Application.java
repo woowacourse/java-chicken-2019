@@ -9,10 +9,13 @@ public class Application {
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
-        MenuService menuService = new MenuServiceImpl(menus);
 
-        TableService tableService = new TableServiceImpl(tables, menuService);
-        PoS pos = new ChichenPoS(tableService);
+        OutputView outputView = new OutputView();
+        InputView inputView = new InputView(outputView);
+        MenuService menuService = new MenuServiceImpl(menus, outputView);
+
+        TableService tableService = new TableServiceImpl(tables, menuService, inputView, outputView);
+        PoS pos = new ChichenPoS(tableService, inputView, outputView);
 
         pos.handle();
     }

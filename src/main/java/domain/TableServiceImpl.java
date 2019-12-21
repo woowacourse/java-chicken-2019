@@ -6,27 +6,33 @@ import view.OutputView;
 
 import java.security.InvalidParameterException;
 import java.util.List;
+import java.util.Map;
 
 public class TableServiceImpl implements TableService {
     private List<Table> tables;
     private MenuService menuService;
+    private InputView inputView;
+    private OutputView outputView;
 
-    public TableServiceImpl(List<Table> tables, MenuService menuService) {
+
+    public TableServiceImpl(List<Table> tables, MenuService menuService, InputView inputView, OutputView outputView) {
         this.tables = tables;
         this.menuService = menuService;
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     @Override
     public void register() {
-        OutputView.printTables(tables);
-        int tableNumber = InputView.inputTableNumber();
+        outputView.printTables(tables);
+        int tableNumber = inputView.inputTableNumber();
         Table table = getTableByNumber(tableNumber);
 
         menuService.showMenues();
-        int menuNumber = InputView.inputMenuNumber();
+        int menuNumber = inputView.inputMenuNumber();
         Menu menu = menuService.getMenuByNumber(menuNumber);
 
-        int menuAmount = InputView.inputMenuAmount();
+        int menuAmount = inputView.inputMenuAmount();
 
         for (int i = 0; i < menuAmount; i++) {
             table.takeOrder(menu);
@@ -47,18 +53,20 @@ public class TableServiceImpl implements TableService {
 
     @Override
     public void pay() {
-        OutputView.printTables(tables);
+        outputView.printTables(tables);
 
-        int tableNumber = InputView.inputTableNumber();
+        int tableNumber = inputView.inputTableNumber();
         Table table = getTableByNumber(tableNumber);
-        table.showOrderHistory();
-        OutputView.printGuideForPayment(table.getNumber());
-        int way = InputView.inputPaymentWay();
+        showOrderHistory(table.getMenus());
+        outputView.printGuideForPayment(table.getNumber());
+        int way = inputView.inputPaymentWay();
         double moneyToPay = table.settle(way);
 
-        OutputView.printResult(moneyToPay);
+        outputView.printResult(moneyToPay);
+    }
 
-
+    public void showOrderHistory(Map<Menu, Integer> menus) {
+        outputView.printOrderHistory(menus);
     }
 
 

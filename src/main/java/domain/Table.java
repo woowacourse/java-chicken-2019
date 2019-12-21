@@ -64,9 +64,6 @@ public class Table {
         return number == tableNumber;
     }
 
-    public void showOrderHistory() {
-        OutputView.printOrderHistory(menus);
-    }
 
     public int getNumber() {
         return number;
@@ -90,5 +87,9 @@ public class Table {
         }
 
         return moneyToPay;
+    }
+
+    public Map<Menu, Integer> getMenus() {
+        return menus;
     }
 }

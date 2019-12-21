@@ -12,7 +12,7 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
 
-    public static void printMain() {
+    public void printMain() {
         System.out.println("## 메인화면");
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
@@ -22,7 +22,7 @@ public class OutputView {
 
 
 
-    public static void printTables(final List<Table> tables) {
+    public void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
         printLine(TOP_LINE, size);
@@ -30,20 +30,20 @@ public class OutputView {
         printLine(BOTTOM_LINE, size);
     }
 
-    public static void printMenus(final List<Menu> menus) {
+    public void printMenus(final List<Menu> menus) {
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
     }
 
-    private static void printLine(final String line, final int count) {
+    private void printLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
         }
         System.out.println();
     }
 
-    private static void printTableNumbers(final List<Table> tables) {
+    private void printTableNumbers(final List<Table> tables) {
         for (final Table table : tables) {
             System.out.printf(TABLE_FORMAT, table);
         }
@@ -51,11 +51,11 @@ public class OutputView {
     }
 
 
-    public static void printExit() {
+    public void printExit() {
         System.out.println("프로그램을 종료합니다.");
     }
 
-    public static void printOrderHistory(Map<Menu, Integer> menus) {
+    public void printOrderHistory(Map<Menu, Integer> menus) {
         System.out.println("## 주문 내역");
         System.out.println("메뉴 수량 금액");
 
@@ -66,16 +66,20 @@ public class OutputView {
         }
     }
 
-    private static Integer calculatePrice(Menu menu, Integer amount) {
+    private Integer calculatePrice(Menu menu, Integer amount) {
         return menu.getPrice() * amount;
     }
 
-    public static void printGuideForPayment(int tableNumber) {
+    public void printGuideForPayment(int tableNumber) {
         System.out.println(String.format("## %d번 테이블의 결제를 진행합니다.", tableNumber));
     }
 
-    public static void printResult(double moneyToPay) {
+    public void printResult(double moneyToPay) {
         System.out.println("## 최종 결제할 금액");
         System.out.println(String.format("%.0f원", moneyToPay));
+    }
+
+    public void printError(RuntimeException e) {
+        System.out.println(String.format("다음과 같은 오류가 발생했습니다: %s", e.getMessage()));
     }
 }
