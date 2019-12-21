@@ -19,6 +19,7 @@ public class OutputView {
     private static final String TOTAL_PAYMENT_MESSAGE = "## 최종 결제할 금액";
     private static final String WON = "원";
     private static final String RE_ENTER_MESSAGE = "잘못된 입력입니다. 다시 입력해주세요.";
+    private static final String NO_ORDER_MESSAGE = "입력 하신 테이블엔 주문이 없습니다.";
 
     public static void printTables(final List<Table> tables, Orders orders) {
         System.out.println("## 테이블 목록");
@@ -70,9 +71,6 @@ public class OutputView {
 		for (String message : MENU_ACCOUNTS_MESSAGES) {
 			System.out.println(message);
 		}
-		if (!orders.isOrderIn(tableNumber)) {
-			throw new IllegalArgumentException("주문이 없습니다.");
-		}
 		System.out.println(orders.getMenuAccounts(tableNumber));
 	}
 
@@ -83,5 +81,9 @@ public class OutputView {
 
 	public static void printReEnter() {
     	System.out.println(RE_ENTER_MESSAGE);
+	}
+
+	public static void printNoOrderInTable() {
+    	System.out.println(NO_ORDER_MESSAGE);
 	}
 }

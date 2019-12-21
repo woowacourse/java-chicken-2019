@@ -40,6 +40,10 @@ public class Pos {
 		if (functionNumber == PAYMENT_NUMBER) {
 			OutputView.printTables(TableRepository.tables(), orders);
 			int tableNumber = InputView.inputTableNumber();
+			if (!orders.isOrderIn(tableNumber)) {
+				OutputView.printNoOrderInTable();
+				return;
+			}
 			OutputView.printTotalPayment(getPayAmount(tableNumber));
 			orders.deleteOrder(tableNumber);
 			return;
