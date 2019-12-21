@@ -1,8 +1,8 @@
 package com.github.callmewaggs.chickenpos.service;
 
 import com.github.callmewaggs.chickenpos.discountpolicy.DefaultDiscountPolicy;
-import com.github.callmewaggs.chickenpos.domain.Order;
-import com.github.callmewaggs.chickenpos.domain.OrderHistory;
+import com.github.callmewaggs.chickenpos.domain.order.Order;
+import com.github.callmewaggs.chickenpos.domain.order.OrderHistory;
 import com.github.callmewaggs.chickenpos.view.InputView;
 import com.github.callmewaggs.chickenpos.view.OutputView;
 import java.util.Arrays;

@@ -1,6 +1,6 @@
 package com.github.callmewaggs.chickenpos.service;
 
-import com.github.callmewaggs.chickenpos.domain.OrderHistory;
+import com.github.callmewaggs.chickenpos.domain.order.OrderHistory;
 import com.github.callmewaggs.chickenpos.view.OutputView;
 
 public class OrderingService {

@@ -1,4 +1,7 @@
-package com.github.callmewaggs.chickenpos.domain;
+package com.github.callmewaggs.chickenpos.domain.order;
+
+import com.github.callmewaggs.chickenpos.domain.Category;
+import com.github.callmewaggs.chickenpos.domain.Menu;
 
 public class Order {
   private Menu menu;

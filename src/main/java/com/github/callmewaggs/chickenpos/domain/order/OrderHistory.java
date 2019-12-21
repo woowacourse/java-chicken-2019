@@ -1,4 +1,4 @@
-package com.github.callmewaggs.chickenpos.domain;
+package com.github.callmewaggs.chickenpos.domain.order;
 
 import com.github.callmewaggs.chickenpos.service.MenuService;
 import com.github.callmewaggs.chickenpos.service.TableService;

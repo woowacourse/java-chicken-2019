@@ -1,6 +1,6 @@
 package com.github.callmewaggs.chickenpos.discountpolicy;
 
-import com.github.callmewaggs.chickenpos.domain.Order;
+import com.github.callmewaggs.chickenpos.domain.order.Order;
 import java.util.List;
 
 public class AmountDiscountPolicy extends DefaultDiscountPolicy {

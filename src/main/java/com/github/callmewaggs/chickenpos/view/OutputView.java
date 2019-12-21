@@ -1,7 +1,7 @@
 package com.github.callmewaggs.chickenpos.view;
 
 import com.github.callmewaggs.chickenpos.domain.Menu;
-import com.github.callmewaggs.chickenpos.domain.Order;
+import com.github.callmewaggs.chickenpos.domain.order.Order;
 import com.github.callmewaggs.chickenpos.domain.Table;
 import java.util.List;
 

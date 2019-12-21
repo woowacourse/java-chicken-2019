@@ -3,7 +3,7 @@ package com.github.callmewaggs;
 import com.github.callmewaggs.chickenpos.ChickenPOS;
 import com.github.callmewaggs.chickenpos.discountpolicy.AmountDiscountPolicy;
 import com.github.callmewaggs.chickenpos.discountpolicy.CashDiscountPolicy;
-import com.github.callmewaggs.chickenpos.domain.OrderHistory;
+import com.github.callmewaggs.chickenpos.domain.order.OrderHistory;
 import com.github.callmewaggs.chickenpos.service.OrderingService;
 import com.github.callmewaggs.chickenpos.service.PaymentService;
 
