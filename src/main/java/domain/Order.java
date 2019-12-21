@@ -19,6 +19,7 @@ public class Order {
         OutputView.printMenus(MenuRepository.menus());
         int menuNumber = getMenuNumber();
         int menuCount = getMenuCount();
+        addOrder(menuNumber, menuCount);
     }
 
     int getMenuNumber() {
@@ -47,5 +48,17 @@ public class Order {
             return false;
         }
         return true;
+    }
+
+    void addOrder(int menuNumber, int menuCount) {
+        Menu menu = MenuRepository.getMenu(menuNumber);
+        if (menu == null) {
+            System.out.println("메뉴가 잘못되었습니다.");
+            return;
+        }
+
+        for (int i = 0; i < menuCount; i++)
+            table.addMenu(menu);
+        System.out.println("주문이 완료되었습니다.");
     }
 }

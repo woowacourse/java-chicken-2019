@@ -39,12 +39,12 @@ public class MenuRepository {
         return false;
     }
 
-    public static boolean validateMenuCountInput(String menuCountInput){
+    public static boolean validateMenuCountInput(String menuCountInput) {
         int menuCount = Validate.validateNumber(menuCountInput);
         return validateMenuCountNumber(menuCount);
     }
 
-    public static boolean validateMenuCountNumber(int menuCount){
+    public static boolean validateMenuCountNumber(int menuCount) {
         if (menuCount <= 0) {
             System.out.println("1개 이상 주문해야 합니다.");
             return false;
@@ -52,7 +52,15 @@ public class MenuRepository {
         return true;
     }
 
-    public static int get_MAX_MENU_COUNT(){
+    public static int get_MAX_MENU_COUNT() {
         return MAX_MENU_COUNT;
+    }
+
+    public static Menu getMenu(int menuNumber) {
+        for (int i = 0; i < menus().size(); i++) {
+            if (menus().get(i).getNumber() == menuNumber)
+                return menus.get(i);
+        }
+        return null;
     }
 }

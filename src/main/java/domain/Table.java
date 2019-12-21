@@ -23,4 +23,8 @@ public class Table {
     public int getTableMenuCount() {
         return menus.size();
     }
+
+    public void addMenu(Menu menu){
+        menus.add(menu);
+    }
 }
