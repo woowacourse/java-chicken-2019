@@ -9,14 +9,14 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
-    private static final String BOTTOM_LINE_ORDERED="└ \\ ┘";
+    private static final String BOTTOM_LINE_ORDERED = "└ \\ ┘";
 
     public static void printTables(final List<Table> tables) {
 	System.out.println("## 테이블 목록");
 	final int size = tables.size();
 	printLine(TOP_LINE, size);
 	printTableNumbers(tables);
-	printBottomLine(size,tables);
+	printBottomLine(size, tables);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -31,16 +31,16 @@ public class OutputView {
 	}
 	System.out.println();
     }
-    
-    private static void printBottomLine(final int count,final List<Table> tables) {
+
+    private static void printBottomLine(final int count, final List<Table> tables) {
 	for (int index = 0; index < count; index++) {
 	    System.out.print(printWhichLine(tables.get(index)));
 	}
 	System.out.println();
     }
-    
+
     public static String printWhichLine(Table table) {
-	if(table.getOrderd()) {
+	if (table.getOrderd()) {
 	    return BOTTOM_LINE_ORDERED;
 	}
 	return BOTTOM_LINE;
@@ -90,20 +90,31 @@ public class OutputView {
 	for (int i = 0; i < 6; i++) {
 	    int tmpChickenMenu = table.getChickenMenu()[i];
 	    if (tmpChickenMenu != 0) {
-		System.out
-			.println(menus.get(i).getName() + " " + tmpChickenMenu + " " + menus.get(i).getPrice()*tmpChickenMenu);
+		System.out.println(
+			menus.get(i).getName() + " " + tmpChickenMenu + " " + menus.get(i).getPrice() * tmpChickenMenu);
 	    }
 	}
 	for (int i = 0; i < 2; i++) {
 	    int tmpDrinkMenu = table.getDrinkMenu()[i];
 	    if (tmpDrinkMenu != 0) {
-		System.out
-			.println(menus.get(i+6).getName() + " " + tmpDrinkMenu + " " + menus.get(i + 6).getPrice()*tmpDrinkMenu);
+		System.out.println(menus.get(i + 6).getName() + " " + tmpDrinkMenu + " "
+			+ menus.get(i + 6).getPrice() * tmpDrinkMenu);
 	    }
 	}
     }
-    
+
     public static void printPayInputError() {
 	System.out.println("결제방식 입력이 잘못되었습니다. 1또는 2만 입력해주세요.");
+    }
+
+    public static void printPrice(Table table, List<Menu> menus, int pay) {
+	System.out.println("## 최종 결제할 금액");
+	if (pay == 1) {
+	    System.out.println(table.getChickenPrice()+table.getDrinkPrice());
+	}
+	if(pay==2) {
+	    System.out.println(((float)table.getChickenPrice()+(float)table.getDrinkPrice())*0.9);
+	}
+	
     }
 }

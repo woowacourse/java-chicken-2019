@@ -48,10 +48,12 @@ public class Table {
     }
 
     public int getChickenPrice() {
+	this.order=false;
 	return this.chickenPrice;
     }
     
     public int getDrinkPrice() {
+	this.order=false;
 	return this.drinkPrice;
     }
     

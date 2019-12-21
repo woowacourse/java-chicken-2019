@@ -60,9 +60,9 @@ public class Application {
     }
 
     public static void PayFunction(List<Table> tables, List<Menu> menus, int tableNumber) {
-	OutputView.printMenus(menus);
 	OutputView.printOrderList(tables.get(tableNumber-1),menus);
 	final int pay=InputView.inputPay(tables.get(tableNumber-1).getNumber());
+	OutputView.printPrice(tables.get(tableNumber-1),menus,pay);
     }
 
     public static boolean QuitFunction() {
