@@ -6,6 +6,7 @@ import java.util.List;
 
 public class MenuRepository {
     private static final List<Menu> menus = new ArrayList<>();
+    private static final Menu NOT_EXSIT_MENU = null;
 
     static {
         menus.add(new Menu(1, "후라이드", Category.CHICKEN, 16_000));
@@ -29,5 +30,14 @@ public class MenuRepository {
             }
         }
         return false;
+    }
+
+    public static Menu findMenuByNumber(int menuNumber) {
+        for (Menu menu : menus()) {
+            if (menu.isMatchingMenu(menuNumber)) {
+                return menu;
+            }
+        }
+        return NOT_EXSIT_MENU;
     }
 }

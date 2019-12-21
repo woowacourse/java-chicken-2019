@@ -6,6 +6,7 @@ import java.util.List;
 
 public class TableRepository {
     private static final List<Table> tables = new ArrayList<>();
+    private static final Table NOT_EXSIT_TABLE = null;
 
     static {
         tables.add(new Table(1));
@@ -27,5 +28,14 @@ public class TableRepository {
             }
         }
         return false;
+    }
+
+    public static Table findTableByNumber(int tableNumber) {
+        for (Table table : tables()) {
+            if (table.isMatchingTable(tableNumber)) {
+                return table;
+            }
+        }
+        return NOT_EXSIT_TABLE;
     }
 }
