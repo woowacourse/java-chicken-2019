@@ -1,21 +1,21 @@
 package domain;
 
 public enum Category {
-    CHICKEN("치킨"),
-    BEVERAGE("음료");
+	CHICKEN("치킨"),
+	BEVERAGE("음료");
 
-    private final String name;
+	private final String name;
 
-    Category(final String name) {
-        this.name = name;
-    }
+	Category(final String name) {
+		this.name = name;
+	}
 
-    @Override
-    public String toString() {
-        return "[" + name + "]";
-    }
+	@Override
+	public String toString() {
+		return "[" + name + "]";
+	}
 
-    public boolean isChicken() {
-        return this == CHICKEN;
-    }
+	public boolean isChicken() {
+		return this == CHICKEN;
+	}
 }
