@@ -33,14 +33,12 @@ public class Application {
 			if (userInput == TWO) { // 결제
 				OutputView.printTables(tables); // 테이블 목록 출력
 				Table targetTable = findTable(tables); // 선택된 테이블 저장
-				// 주문내역 출력해야함
-				// n번 테이블의 결제를 진행함니다 출력해야함
+				System.out.println(targetTable.toStringInfo()); // 현재 주문내역 출력
+				OutputView.printPaymentProcedureInfo(targetTable); // n번 테이블 결제진행 안내
 				double totalPrice = targetTable.getTotalPrice(); // 선택된 테이블의 결제금액 계산
 				totalPrice -= (targetTable.numberOfChickenQty() % EVERY_TEN) * DISCOUNT_WON; // 치킨수량합이 10개이상일때마다 할인
 				int paymentMethod = InputView.choosePaymentMethod();
-				if (paymentMethod == 2) {
-					totalPrice = totalPrice * (1 - DISCOUNT_RATIO); // 현금일 경우, 5%할인
-				}
+				totalPrice = discountIfCash(paymentMethod, totalPrice); // 현금일 경우, 5%할인
 				OutputView.printFinalPrice(totalPrice); // 최종결제금액 출력
 			}
 			if (userInput == THREE) { // 프로그램 종료
@@ -54,11 +52,8 @@ public class Application {
 		final int tableNumber = InputView.inputTableNumber();
 		for (Table eachTable : tables) {
 			if (eachTable.isSame(tableNumber)) {
-				// 현재 테이블에 주문받아라
-				return eachTable; // 찾으면 끝내야 함
+				return eachTable;
 			}
-//			System.out.println("찾는 테이블이 없다.");
-			// 재귀
 		}
 		return null;
 	}
@@ -71,5 +66,12 @@ public class Application {
 			}
 		}
 		return null;
+	}
+	
+	private static double discountIfCash(int paymentMethod, double totalPrice) {
+		if (paymentMethod == TWO) {
+			return totalPrice * (1 - DISCOUNT_RATIO);
+		}
+		return totalPrice;
 	}
 }
