@@ -19,6 +19,10 @@ public class Table {
         return Integer.toString(number);
     }
 
+    public int getTableNumber(){
+        return number;
+    }
+
     public void addMenu(OrderedMenu menu) {
         menuList.add(menu);
     }

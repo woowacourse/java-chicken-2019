@@ -54,4 +54,8 @@ public class OutputView {
             System.out.println(menu.toString());
         }
     }
+
+    public static void printStartCalculatingPrice(Table table){
+        System.out.println(table.getTableNumber()+"의 결제를 진행합니다.");
+    }
 }

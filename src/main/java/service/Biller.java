@@ -9,6 +9,8 @@ import view.OutputView;
 import java.util.List;
 
 public class Biller extends Service {
+    private final static double DISCOUNT_IF_CASH = 0.95;
+    private final static int OPTION_NUMBER_OF_CAHS = 2;
 
     public Biller(int number, String name) {
         super(number, name);
@@ -20,7 +22,8 @@ public class Biller extends Service {
         OutputView.printTables(tables);
         table = getTable(tables, InputView.inputTableNumber());
         table.printOrderedMenu();
-        caculateTotalPrice(table);
+        OutputView.printStartCalculatingPrice(table);
+        calculateTotalPrice(table,InputView.inputCardOrCash());
     }
 
     private Table getTable(List<Table> tables, int tableNumber) {
@@ -32,8 +35,12 @@ public class Biller extends Service {
         return null;
     }
 
-    private int caculateTotalPrice(Table table) {
-        return table.getSumOfPrice();
+    private int calculateTotalPrice(Table table, int cardOrCash) {
+        int totalPrice = table.getSumOfPrice();
+        if(cardOrCash == OPTION_NUMBER_OF_CAHS){
+            totalPrice = (int)(totalPrice * DISCOUNT_IF_CASH);
+        }
+        return totalPrice;
     }
 
 }
