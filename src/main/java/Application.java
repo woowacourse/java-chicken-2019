@@ -8,14 +8,50 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
-    // TODO 구현 진행
-    public static void main(String[] args) {
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
+	private static final int MENU_ORDER = 1;
+	private static final int MENU_PAYMENT = 2;
+	private static final int MENU_EXIT = 3;
+	
+	public static void main(String[] args) {
+		while(true) {
+			int mainMenuNumber = mainMenu();
+			if(mainMenuNumber == MENU_ORDER) {
+				orderMenu();
+			}
+			if(mainMenuNumber == MENU_PAYMENT) {
+				paymentMenu();
+			}
+			if(mainMenuNumber == MENU_EXIT) {
+				break;
+			}
+		}
+	}
 
-        final int tableNumber = InputView.inputTableNumber();
+	private static int mainMenu() {
+		OutputView.printMainMenu();
 
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
-    }
+		final int mainMenuNumber = InputView.inputMainMenuNumber();
+		
+		return mainMenuNumber;
+	}
+	
+	private static void orderMenu() {
+		final List<Table> tables = TableRepository.tables();
+		OutputView.printTables(tables);
+
+		final int tableNumber = InputView.inputTableNumber();
+
+		final List<Menu> menus = MenuRepository.menus();
+		OutputView.printMenus(menus);
+	}
+	
+	private static void paymentMenu() {
+		final List<Table> tables = TableRepository.tables();
+		OutputView.printTables(tables);
+		
+		final int tableNumber = InputView.inputTableNumber();
+		
+		OutputView.printTableMenu(tableNumber);
+		InputView.inputPaymentMenuNumber();
+	}
 }
