@@ -1,4 +1,6 @@
 import domain.*;
+import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
+import sun.tools.jconsole.Tab;
 import view.InputView;
 import view.OutputView;
 
@@ -10,13 +12,15 @@ public class Application {
     static final List<Menu> menus = MenuRepository.menus();
 
     public static void main(String[] args) {
-        while(true){
+        while (true) {
             int programIndex = getProgramIndex();
             if (programIndex == 3)
                 break;
             int tableIndex = getTableNumber();
-            if (programIndex == 1)
-                Order.getOrder(tableIndex);
+            if (programIndex == 1) {
+                Order order = new Order(TableRepository.getTable(tableIndex));
+                order.getOrder();
+            }
         }
     }
 

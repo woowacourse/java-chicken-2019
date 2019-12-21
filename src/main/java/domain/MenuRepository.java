@@ -1,11 +1,14 @@
 package domain;
 
+import sun.jvmstat.monitor.event.VmListener;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class MenuRepository {
     private static final List<Menu> menus = new ArrayList<>();
+    private static final int MAX_MENU_COUNT = 99;
 
     static {
         menus.add(new Menu(1, "후라이드", Category.CHICKEN, 16_000));
@@ -34,5 +37,22 @@ public class MenuRepository {
         }
         System.out.println("메뉴 번호가 잘못되었습니다.\n");
         return false;
+    }
+
+    public static boolean validateMenuCountInput(String menuCountInput){
+        int menuCount = Validate.validateNumber(menuCountInput);
+        return validateMenuCountNumber(menuCount);
+    }
+
+    public static boolean validateMenuCountNumber(int menuCount){
+        if (menuCount <= 0) {
+            System.out.println("1개 이상 주문해야 합니다.");
+            return false;
+        }
+        return true;
+    }
+
+    public static int get_MAX_MENU_COUNT(){
+        return MAX_MENU_COUNT;
     }
 }

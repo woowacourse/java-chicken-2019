@@ -1,5 +1,7 @@
 package domain;
 
+import sun.tools.jconsole.Tab;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -32,5 +34,13 @@ public class TableRepository {
         }
         System.out.println("테이블 번호가 잘못되었습니다.\n");
         return false;
+    }
+
+    public static Table getTable(int tableIndex){
+        for (int i = 0; i < tables.size(); i++) {
+            if (tables.get(i).getNumber() == tableIndex)
+                return tables.get(i);
+        }
+        return null;
     }
 }
