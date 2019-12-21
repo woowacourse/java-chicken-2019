@@ -23,9 +23,11 @@ public class MainFunction {
     final static int EXIT = 3;
 
     public void mainFunction() {
+        Order order = new Order();
+
         caseNumber = InputView.inputMainFunction();
         while (caseNumber != EXIT) {
-            Order.orderTable();
+            order.orderTable();
             caseNumber = InputView.inputMainFunction();
         }
     }

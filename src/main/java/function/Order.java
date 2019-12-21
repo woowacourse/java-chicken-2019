@@ -32,7 +32,7 @@ public class Order {
     /**
      * 주문 등록 기능을 할때 테이블번호, 메뉴등록, 메뉴수량을 입력하는 메소드를 실행합니다.
      */
-    public static void orderTable() {
+    public void orderTable() {
         OutputView.printTables(TABLES);
         final int tableNumber = InputView.inputTableNumber();
 
@@ -46,12 +46,16 @@ public class Order {
     /**
      * 테이블의 계산금액을 저장합니다.
      */
-    public static void calculateTableMoney(int tableNumber, int menuNumber, int MenuQuantity) {
-        int MoneySum = 0;
+    public void calculateTableMoney(int tableNumber, int menuNumber, int MenuQuantity) {
+        int MoneySum;
+        int previousPrice = tableMoney.get(TABLES.get(tableNumber));
+
         List<Menu> temp = MENUS.stream().filter(key -> key.isMenu(menuNumber)).collect(Collectors.toList());
 
         MoneySum = temp.get(0).calculate(MenuQuantity);
 
-        tableMoney.put(TABLES.get(tableNumber),MoneySum);
+        tableMoney.put(TABLES.get(tableNumber),MoneySum+previousPrice);
+
+        System.out.println(tableMoney.get(TABLES.get(tableNumber)));
     }
 }
