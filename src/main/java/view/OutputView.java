@@ -16,6 +16,8 @@ public class OutputView {
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
         printLine(BOTTOM_LINE, size);
+
+        // TODO: 주문이 존재하는 경우 BOTTOM_LINE 을 "└ ₩ ┘" 으로 교체
     }
 
     public static void printMenus(final List<Menu> menus) {
