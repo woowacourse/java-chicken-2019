@@ -23,6 +23,6 @@ public final class Range {
 
     @Override
     public String toString() {
-        return "Range[" + begin + "," + end + "]";
+        return "[" + begin + "~" + end + "]";
     }
 }

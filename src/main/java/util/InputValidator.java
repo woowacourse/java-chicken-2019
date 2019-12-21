@@ -34,7 +34,7 @@ public class InputValidator {
     private static boolean isRangeVerify(int num, Range range) {
         boolean rangeVerify = range.verify(num);
         if (!rangeVerify) {
-            OutputView.printRangeError();
+            OutputView.printRangeError(range.toString());
         }
         return rangeVerify;
     }
