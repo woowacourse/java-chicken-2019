@@ -38,11 +38,11 @@ public class Application {
     public static void OrderFunction(List<Table> tables, List<Menu> menus, int tableNumber) {
 	int menuNumber = InputView.inputMenu(menus);
 	int menuAmount = InputView.inputMenuAmount(tables.get(tableNumber));
-	if (menus.get(menuNumber).getCategoryName().equals("치킨")) {
-	    tables.get(tableNumber).setChickenPrice(menus.get(menuNumber).getNumber(),menuAmount,menus.get(menuNumber).getPrice());
+	if (menuNumber<=6) {
+	    tables.get(tableNumber).setChickenPrice(menus.get(menuNumber-1).getNumber(),menuAmount,menus.get(menuNumber-1).getPrice());
 	    return;
 	}
-	tables.get(tableNumber).setDrinkPrice(menus.get(menuNumber).getNumber(),menuAmount,menus.get(menuNumber).getPrice());
+	tables.get(tableNumber).setDrinkPrice(menus.get(menuNumber-15).getNumber(),menuAmount,menus.get(menuNumber-15).getPrice());
     }
 
     public static void PayFunction(List<Table> tables, List<Menu> menus, int tableNumber) {

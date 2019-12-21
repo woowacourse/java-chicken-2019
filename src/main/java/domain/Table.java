@@ -35,6 +35,22 @@ public class Table {
     	return sum;
     }
     
+    public int[] getChickenMenu() {
+	return chicken;
+    }
+    
+    public int[] getDrinkMenu() {
+	return drink;
+    }
+
+    public int getChickenPrice() {
+	return this.chickenPrice;
+    }
+    
+    public int getDrinkPrice() {
+	return this.drinkPrice;
+    }
+    
     public void setChickenPrice(int menuNum,int chickenNum,int chickenPrice) {
 	this.chicken[menuNum-1]+=chickenNum;
 	this.chickenPrice+= chickenNum*chickenPrice;
