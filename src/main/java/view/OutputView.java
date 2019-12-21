@@ -58,6 +58,6 @@ public class OutputView {
             }
             System.out.print(BOTTOM_LINE);
         }
-
+        System.out.println();
     }
 }

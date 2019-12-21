@@ -34,11 +34,30 @@ public class Application {
             return true;
         }
         if(orderState == 2){
+            calculatePayMent(reservedTable,orderMenuInTable,tables);
             return true;
         }
         return false;
     }
 
+    private static void calculatePayMent(HashMap<Integer, Integer> reservedTable,int[][] orderMenuInTable, List<Table> tables) {
+        if(reservedTable.isEmpty()) {
+            System.out.println("결제할 테이블이 없습니다");
+            return;
+        }
+        OutputView.printOrderTable(reservedTable,tables);
+        int paymentTable = InputView.inputTableNumber(tables);
+        isWrongTable(reservedTable, paymentTable);
+
+
+    }
+
+
+    private static void isWrongTable(HashMap<Integer, Integer> reservedTable, int paymentTable) {
+        if(!reservedTable.containsKey(paymentTable)) {
+            System.out.println("잘못된 테이블 입니다.");
+        }
+    }
 
     private static void orderMenu(List<Table> tables) {
         OutputView.printTables(tables);
