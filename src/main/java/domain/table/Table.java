@@ -69,4 +69,8 @@ public class Table {
     public void successPayProcessing() {
         baskets.clear();
     }
+
+    public boolean isPayProcessingRequire() {
+        return !baskets.isEmpty();
+    }
 }
