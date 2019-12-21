@@ -1,5 +1,7 @@
 package view;
 
+import exception.TableNumber;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -16,7 +18,7 @@ public class InputView {
 
     public static int inputTableNumber() {
         println("## 테이블을 선택하세요.");
-        return scanner.nextInt();
+        return new TableNumber(scanner.nextInt()).getTableNumber();
     }
 
     public static int inputMenuNumber() {

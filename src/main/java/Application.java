@@ -3,6 +3,7 @@ import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
 import exception.PosNumber;
+import exception.TableNumber;
 import view.InputView;
 import view.OutputView;
 
@@ -61,7 +62,7 @@ public class Application {
     private static void SelectTwoOption() {
         final int tableNumber = selectTable();
         printBill(tableNumber);
-
+        int cardOrMoney = InputView.inputPayment(tableNumber);
     }
 
     private static void SelectThreeOption() {
