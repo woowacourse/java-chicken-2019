@@ -16,5 +16,11 @@ public class Payment {
     public void payment(){
         OutputView.printTablesPayment(TABLES,Order.tableMoney);
         tableNumber = InputView.inputPaymentTable();
+        tableNumber = tableNumber -1;
+
+        System.out.println("#최종 결제할 금액#");
+        System.out.println(Order.tableMoney.get(TABLES.get(tableNumber)));
+
+        Order.tableMoney.put(TABLES.get(tableNumber),0);
     }
 }

@@ -31,11 +31,11 @@ public class MainFunction {
         while (caseNumber != EXIT) {
             if(caseNumber == ORDER) {
                 order.orderTable();
-                caseNumber = InputView.inputMainFunction();
             }
             if(caseNumber == PAY){
                 pay.payment();
             }
+            caseNumber = InputView.inputMainFunction();
         }
     }
 }
