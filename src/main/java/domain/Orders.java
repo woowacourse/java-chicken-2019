@@ -19,21 +19,15 @@ public class Orders {
 	}
 
 	public boolean isOrderIn(int tableNumber) {
-		for (Order order : orders) {
-			if (order.isTableEquals(tableNumber)) {
-				return true;
-			}
-		}
-		return false;
+		return orders.stream().anyMatch(order -> order.isTableEquals(tableNumber));
 	}
 
 	public String getMenuAccounts(int tableNumber) {
-		for (Order order : orders) {
-			if (order.isTableEquals(tableNumber)) {
-				return order.menuAccounts();
-			}
-		}
-		return null;
+		return orders.stream()
+			.filter(order -> order.isTableEquals(tableNumber))
+			.findFirst()
+			.map(Order::menuAccounts)
+			.orElse(null);
 	}
 
 	public int getTotalPrice(int tableNumber) {
@@ -56,5 +50,9 @@ public class Orders {
 
 	public void deleteOrder(int tableNumber) {
 		orders.removeIf(order -> order.isTableEquals(tableNumber));
+	}
+
+	public boolean isEmpty() {
+		return orders.isEmpty();
 	}
 }

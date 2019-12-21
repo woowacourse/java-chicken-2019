@@ -2,6 +2,8 @@ package view;
 
 import java.util.Scanner;
 
+import util.InputValidator;
+
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
     private static final String INPUT_FUNCTION_NUMBER_MESSAGE = "## 원하는 기능을 선택하세요.";
@@ -22,7 +24,7 @@ public class InputView {
 
     public static int inputMenuNumber() {
         System.out.println(INPUT_MENU_NUMBER_MESSAGE);
-        return Integer.parseInt(scanner.nextLine());
+		return Integer.parseInt(scanner.nextLine());
     }
 
     public static int inputMenuAmount() {

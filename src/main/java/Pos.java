@@ -38,14 +38,7 @@ public class Pos {
 			return;
 		}
 		if (functionNumber == PAYMENT_NUMBER) {
-			OutputView.printTables(TableRepository.tables(), orders);
-			int tableNumber = InputView.inputTableNumber();
-			if (!orders.isOrderIn(tableNumber)) {
-				OutputView.printNoOrderInTable();
-				return;
-			}
-			OutputView.printTotalPayment(getPayAmount(tableNumber));
-			orders.deleteOrder(tableNumber);
+			pay();
 			return;
 		}
 		if (functionNumber == QUIT_NUMBER) {
@@ -58,7 +51,12 @@ public class Pos {
 		OutputView.printTables(TableRepository.tables(), orders);
 		Table table = createTable();
 		OutputView.printMenus(MenuRepository.menus());
-		Menu menu = MenuRepository.getMenu(InputView.inputMenuNumber());
+		int menuNumber = InputView.inputMenuNumber();
+		if (!InputValidator.isValidMenuNumber(menuNumber)) {
+			OutputView.printInvalidMenuNumber();
+			return;
+		}
+		Menu menu = MenuRepository.getMenu(menuNumber);
 		MenuAmount menuAmount = new MenuAmount(InputView.inputMenuAmount());
 		Order order = new Order(table, menu, menuAmount);
 		orders.add(order);
@@ -84,5 +82,20 @@ public class Pos {
 			createTable();
 		}
 		return new Table(tableNumber);
+	}
+
+	private void pay() {
+		if (orders.isEmpty()) {
+			OutputView.printNoOrder();
+			return;
+		}
+		OutputView.printTables(TableRepository.tables(), orders);
+		int tableNumber = InputView.inputTableNumber();
+		if (!orders.isOrderIn(tableNumber)) {
+			OutputView.printNoOrderInTable();
+			return;
+		}
+		OutputView.printTotalPayment(getPayAmount(tableNumber));
+		orders.deleteOrder(tableNumber);
 	}
 }

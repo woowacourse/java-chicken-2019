@@ -23,11 +23,9 @@ public class MenuRepository {
     }
 
     public static Menu getMenu(int number) {
-        for (Menu menu : menus) {
-            if (menu.isNumberEquals(number)) {
-                return menu;
-            }
-        }
-        return null;
+        return menus.stream()
+            .filter(menu -> menu.isNumberEquals(number))
+            .findFirst()
+            .orElse(null);
     }
 }
