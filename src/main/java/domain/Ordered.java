@@ -12,22 +12,22 @@ public class Ordered {
 
     private List<Menu> orderedMenus = new ArrayList<>();
 
-    public Ordered() {
+    Ordered() {
     }
 
-    public void addMenu(Menu menu, int amount) {
+    void addMenu(Menu menu, int amount) {
         IntStream.range(0, amount).forEach(x -> orderedMenus.add(menu));
     }
 
-    public Map<String, List<Menu>> amountMenu() {
+    Map<String, List<Menu>> amountMenu() {
         return orderedMenus.stream().collect(Collectors.groupingBy(Menu::getName));
     }
 
-    public int countOfMenu(Menu menu) {
+    int countOfMenu(Menu menu) {
         return (int) orderedMenus.stream().filter(x -> x.equals(menu)).count();
     }
 
-    public int chickensDiscount() {
+    private int chickensDiscount() {
         Map<Category, List<Menu>> categoryGroupedMenu = orderedMenus.stream()
                 .collect(Collectors.groupingBy(Menu::getCategory));
 
@@ -39,14 +39,14 @@ public class Ordered {
         }
     }
 
-    public int allPrices() {
+    int allPrices() {
         return orderedMenus.stream()
                 .map(Menu::getPrice)
                 .reduce(Integer::sum)
                 .orElse(0) - chickensDiscount();
     }
 
-    public boolean isNotEmpty() {
+    boolean isNotEmpty() {
         return !orderedMenus.isEmpty();
     }
 }

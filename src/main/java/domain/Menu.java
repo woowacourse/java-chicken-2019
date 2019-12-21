@@ -15,15 +15,15 @@ public class Menu {
         this.price = price;
     }
 
-    public boolean isMenuNumberSame(int number) {
+    boolean isMenuNumberSame(int number) {
         return this.number == number;
     }
 
-    public String getName(){
+    String getName(){
         return this.name;
     }
 
-    public Category getCategory() {
+    Category getCategory() {
         return category;
     }
 

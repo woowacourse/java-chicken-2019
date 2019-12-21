@@ -11,7 +11,7 @@ public class Table {
         this.number = number;
     }
 
-    public int getNumber() {
+    int getNumber() {
         return number;
     }
 
@@ -19,11 +19,11 @@ public class Table {
         ordered.addMenu(menu, amount);
     }
 
-    public boolean isTableNumberSame(int number) {
+    boolean isTableNumberSame(int number) {
         return this.number == number;
     }
 
-    public int allPrices() {
+    int allPrices() {
         return ordered.allPrices();
     }
 
