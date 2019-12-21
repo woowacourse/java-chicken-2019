@@ -4,6 +4,7 @@ import domain.Menu;
 import domain.OrderProcess;
 import domain.PayProcess;
 import domain.Table;
+import java.util.HashMap;
 import java.util.List;
 import view.InputView;
 
@@ -15,14 +16,34 @@ public class Pos {
 
   private final List<Table> tables;
   private final List<Menu> menus;
+  private final HashMap<Integer, Integer> tableNumbers = new HashMap<>();
+  private final HashMap<Integer, Integer> menuNumbers = new HashMap<>();
+
   private final OrderProcess orderProcess;
-  private final PayProcess payProcess = new PayProcess();
+  private final PayProcess payProcess;
 
   public Pos(List<Table> tables, List<Menu> menus) {
     this.tables = tables;
     this.menus = menus;
 
-    orderProcess = new OrderProcess(tables, menus);
+    getTableNumberList();
+    getMenuNumberList();
+
+    orderProcess = new OrderProcess(tables, menus, tableNumbers, menuNumbers);
+    payProcess = new PayProcess(tables, menus, tableNumbers, menuNumbers);
+  }
+
+
+  private void getMenuNumberList() {
+    for (int i = 0; i < this.menus.size(); i++) {
+      menuNumbers.put(this.menus.get(i).getNumber(), i);
+    }
+  }
+
+  private void getTableNumberList() {
+    for (int i = 0; i < this.tables.size(); i++) {
+      tableNumbers.put(this.tables.get(i).getNumber(), i);
+    }
   }
 
   public void start() {

@@ -12,28 +12,16 @@ public class OrderProcess {
 
   private final List<Table> tables;
   private final List<Menu> menus;
+  private final HashMap<Integer, Integer> tableNumbers;
+  private final HashMap<Integer, Integer> menuNumbers;
 
-  private final HashMap<Integer, Integer> tableNumbers = new HashMap<>();
-  private final HashMap<Integer, Integer> menuNumbers = new HashMap<>();
-
-  public OrderProcess(List<Table> tables, List<Menu> menus) {
+  public OrderProcess(List<Table> tables, List<Menu> menus, HashMap<Integer, Integer> tableNumbers,
+      HashMap<Integer, Integer> menuNumbers) {
     this.tables = tables;
     this.menus = menus;
+    this.tableNumbers = tableNumbers;
+    this.menuNumbers = menuNumbers;
 
-    getTableNumberList();
-    getMenuNumberList();
-  }
-
-  private void getMenuNumberList() {
-    for (int i = 0; i < this.menus.size(); i++) {
-      menuNumbers.put(this.menus.get(i).getNumber(), i);
-    }
-  }
-
-  private void getTableNumberList() {
-    for (int i = 0; i < this.tables.size(); i++) {
-      tableNumbers.put(this.tables.get(i).getNumber(), i);
-    }
   }
 
   public void start() {
@@ -70,7 +58,7 @@ public class OrderProcess {
     }
     int currentAmount = table.getMenuAmount(menu);
     if ((amount + currentAmount) > NINETY_NINE) {
-      throw new Exception("99개 이상 주문 할 수 없습니다.\n현재 수량 : "+currentAmount);
+      throw new Exception("99개 이상 주문 할 수 없습니다.\n현재 수량 : " + currentAmount);
     }
   }
 
