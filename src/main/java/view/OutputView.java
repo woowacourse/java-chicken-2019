@@ -20,6 +20,11 @@ public class OutputView {
     printBottomLine(tables);
   }
 
+  public static void printOrderResult(Table table){
+      System.out.println("## 메뉴  수량  금액");
+      System.out.println(table.getOrderResult());
+  }
+
   public static void printBottomLine(List<Table> tables) {
     for (Table table : tables) {
       if (table.hasOrdered()) {

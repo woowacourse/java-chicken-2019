@@ -36,9 +36,16 @@ public class Table {
     return 0;
   }
 
-  public Boolean hasOrdered(){
+  public Boolean hasOrdered() {
     return !order.isEmpty();
   }
 
+  public String getOrderResult() {
+    String result = "";
+    for (Menu menu : order.keySet()) {
+      result += menu.getName() + " " + order.get(menu) + " " + menu.getPrice() + "\n";
+    }
+    return result;
+  }
 
 }

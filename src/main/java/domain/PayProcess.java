@@ -32,12 +32,17 @@ public class PayProcess {
   }
 
   public void start() {
-    if(!hasOrdered()){
+    if (!hasOrdered()) {
       System.out.println("주문이 존재하지 않습니다.");
       return;
     }
 
     int tableNumber = getTableNumber();
+    pay(tableNumber);
+  }
+
+  private void pay(int tableNumber){
+    OutputView.printOrderResult(getTable(tableNumber));
   }
 
   private int getTableNumber() {
@@ -45,25 +50,26 @@ public class PayProcess {
     return validateTableNumber(InputView.inputTableNumber());
   }
 
-  private int validateTableNumber(int tableNumber){
-    try{
-     return hasOrdered(tableNumber);
-    }catch (Exception e){
+  private int validateTableNumber(int tableNumber) {
+    try {
+      return hasOrdered(tableNumber);
+    } catch (Exception e) {
       System.out.println(e.getMessage());
       return getTableNumber();
     }
   }
+
   private int hasOrdered(int tableNumber) throws Exception {
     Table table = getTable(tableNumber);
-    if(!table.hasOrdered()){
+    if (!table.hasOrdered()) {
       throw new Exception("주문이 존재하지 않습니다.");
     }
     return tableNumber;
   }
 
-  private boolean hasOrdered(){
-    for(int i = 0; i < tables.size(); i++){
-      if(tables.get(i).hasOrdered()){
+  private boolean hasOrdered() {
+    for (int i = 0; i < tables.size(); i++) {
+      if (tables.get(i).hasOrdered()) {
         return true;
       }
     }
