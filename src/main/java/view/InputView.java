@@ -51,11 +51,11 @@ public class InputView {
                 });
     }
 
-    public static boolean isNotOverThenMaxAmount(Table table, Menu inputMenu, int inputCount) {
+    private static boolean isNotOverThenMaxAmount(Table table, Menu inputMenu, int inputCount) {
         return table.countOfMenu(inputMenu) + inputCount <= MAX_AMOUNT;
     }
 
-    public static boolean isNotLessEqualThenZero(int inputCount) {
+    private static boolean isNotLessEqualThenZero(int inputCount) {
         return inputCount > 0;
     }
 
@@ -66,15 +66,15 @@ public class InputView {
                 .orElseGet(InputView::inputPaymentMethod);
     }
 
-    public static boolean isPaymentInputValid(int input) {
+    private static boolean isPaymentInputValid(int input) {
         return input == Calculator.CARD_PAYMENT || input == Calculator.CASH_PAYMENT;
     }
 
-    public static boolean isMainInputValid(int input) {
+    private static boolean isMainInputValid(int input) {
         return input == ONE || input == TWO || input == THREE;
     }
 
-    public static int inputAsNumber() {
+    private static int inputAsNumber() {
         try {
             return Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {

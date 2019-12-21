@@ -3,9 +3,9 @@ import view.InputView;
 import view.OutputView;
 
 public class Application {
-    private static int MAIN_ORDER = 1;
-    private static int MAIN_PAYMENT = 2;
-    private static int MAIN_EXIT = 3;
+    private static final int MAIN_ORDER = 1;
+    private static final int MAIN_PAYMENT = 2;
+    private static final int MAIN_EXIT = 3;
 
     // TODO 구현 진행
     public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class Application {
         } while (true);
     }
 
-    public static void orderMain(Tables tables, Menus menus) {
+    private static void orderMain(Tables tables, Menus menus) {
         OutputView.showSelectTableAsOrder();
         Table inputTable = tables.findTable(InputView.inputTableNumber(tables));
         Menu inputMenu = menus.findMenu(InputView.inputMenuNumber(menus));
@@ -33,7 +33,7 @@ public class Application {
         inputTable.addMenu(inputMenu, menuAmount);
     }
 
-    public static void paymentMain(Tables tables) {
+    private static void paymentMain(Tables tables) {
         OutputView.showSelectTableAsPayment();
         Table inputTable = tables.findTable(InputView.inputTableNumber(tables));
         OutputView.printTableOrderedList(inputTable.allMenu());
