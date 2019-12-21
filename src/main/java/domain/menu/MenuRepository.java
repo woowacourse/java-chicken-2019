@@ -25,11 +25,6 @@ public class MenuRepository {
         return Collections.unmodifiableList(menus);
     }
 
-    public static boolean contain(int menuNumber) {
-        return menus.stream()
-                .anyMatch(menu -> menu.equalsNumber(menuNumber));
-    }
-
     public static Menu findMenuBy(int menuNumber) {
         return menus.stream()
                 .filter(menu -> menu.equalsNumber(menuNumber))
