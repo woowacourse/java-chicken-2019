@@ -7,10 +7,6 @@ import view.OutputView;
 import view.dto.PaymentType;
 
 public class PaymentFeature {
-    private static final int ZERO = 0;
-    private static final int TEN = 10;
-    private static final double MONEY_DISCOUTN_RATE = 0.05;
-    private static final int MILLION = 10000;
 
     public void startPayment(OrderStatement orderStatement) {
         int tableNumber = inputTableNumber(orderStatement);
@@ -36,9 +32,10 @@ public class PaymentFeature {
     private int inputPaymentType(Table table) {
         PaymentType paymentType = InputView.inputPaymentType();
         int noneDiscountTotalPrice = getNoneDiscountTotalPrice(table);
-        int chickenDiscountTotalPrice = discountChickenNumber(table, noneDiscountTotalPrice);
+        int chickenDiscountTotalPrice =
+                DiscountCalcurater.discountChickenNumber(table, noneDiscountTotalPrice);
         if (paymentType.isTypeMoney()) {
-            return (int) discountMoney(chickenDiscountTotalPrice);
+            return (int) DiscountCalcurater.discountMoney(chickenDiscountTotalPrice);
         }
         return chickenDiscountTotalPrice;
     }
@@ -47,20 +44,5 @@ public class PaymentFeature {
         return table
                 .getOrderedMenus()
                 .calcurateTotalPrice();
-    }
-
-    private int discountChickenNumber(Table table, int noneDiscountTotalPrice) {
-        int chickenCount = table.getOrderedMenus().calcurateChickenCount();
-        while (chickenCount > ZERO) {
-            if (chickenCount >= TEN) {
-                noneDiscountTotalPrice -= MILLION;
-            }
-            chickenCount -= TEN;
-        }
-        return noneDiscountTotalPrice;
-    }
-
-    private double discountMoney(int noneDiscountMoneyPrice) {
-        return noneDiscountMoneyPrice - (noneDiscountMoneyPrice * MONEY_DISCOUTN_RATE);
     }
 }
