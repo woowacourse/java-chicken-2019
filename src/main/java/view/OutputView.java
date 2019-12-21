@@ -37,4 +37,12 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public static void printMainFeatures(List<String> mainFeatureList) {
+        System.out.println("## 메인화면");
+        int startFeatureNumber = 1;
+        for (int i = 0; i < mainFeatureList.size(); i++) {
+            System.out.println(i + startFeatureNumber + " - " + mainFeatureList.get(i));
+        }
+    }
 }
