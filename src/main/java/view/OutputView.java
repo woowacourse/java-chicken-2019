@@ -20,14 +20,6 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printTables(final List<Table> tables) {
-        System.out.println("## 테이블 목록");
-        final int size = tables.size();
-        printLine(TOP_LINE, size);
-        printTableNumbers(tables);
-        printBottomLine(BOTTOM_LINE, tables);
-    }
-
     public static void printMenus(final List<Menu> menus) {
         for (final Menu menu : menus) {
             System.out.println(menu);
@@ -38,8 +30,16 @@ public class OutputView {
         System.out.println(bills.toString());
     }
 
-    public static void printException(Exception e) {
-        System.out.println(e.getMessage());
+    public static void printStartPayment(Table table) {
+        System.out.printf("%d번 테이블의 결제를 진행합니다\n", table.getNumber());
+    }
+
+    public static void printTables(final List<Table> tables) {
+        System.out.println("## 테이블 목록");
+        final int size = tables.size();
+        printLine(TOP_LINE, size);
+        printTableNumbers(tables);
+        printBottomLine(BOTTOM_LINE, tables);
     }
 
     private static void printLine(final String line, final int count) {
@@ -48,6 +48,14 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    private static void printTableNumbers(final List<Table> tables) {
+        for (final Table table : tables) {
+            System.out.printf(TABLE_FORMAT, table);
+        }
+        System.out.println();
+    }
+
     private static void printBottomLine(final String line, List<Table> tables) {
         for (Table table : tables) {
             if (table.isNoOrder()) {
@@ -59,10 +67,7 @@ public class OutputView {
         System.out.println();
     }
 
-    private static void printTableNumbers(final List<Table> tables) {
-        for (final Table table : tables) {
-            System.out.printf(TABLE_FORMAT, table);
-        }
-        System.out.println();
+    public static void printException(Exception e) {
+        System.out.println(e.getMessage());
     }
 }
