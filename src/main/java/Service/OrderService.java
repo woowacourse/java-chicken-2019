@@ -16,8 +16,7 @@ public class OrderService {
         int menuNumber = InputView.inputMenuNumber();
         Menu selectedMenu = selectMenu(menus, menuNumber);
 
-        int menuAmount = InputView.inputMenuAmount();
-        table.addMenu(selectedMenu, menuAmount);
+        addMenu(table, selectedMenu);
     }
 
     private Menu selectMenu(List<Menu> menus, int number) {
@@ -25,5 +24,15 @@ public class OrderService {
                 .filter(menu -> menu.isSameMenuNumber(number))
                 .findFirst()
                 .get();
+    }
+
+    private void addMenu(Table table, Menu menu) {
+        try {
+            table.addMenu(menu, InputView.inputMenuAmount());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            addMenu(table, menu);
+        }
+
     }
 }

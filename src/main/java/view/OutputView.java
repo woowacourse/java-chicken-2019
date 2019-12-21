@@ -72,7 +72,7 @@ public class OutputView {
     private static void printBill(StringBuilder sb, HashMap<Menu, Amount> bill) {
         for (Map.Entry<Menu, Amount> entry : bill.entrySet()) {
             sb.append(entry.getKey().getName() + " ");
-            sb.append(entry.getValue() + " ");
+            sb.append(entry.getValue().getAmount() + " ");
             sb.append(entry.getKey().getPrice() * entry.getValue().getAmount() + "\n");
         }
     }
