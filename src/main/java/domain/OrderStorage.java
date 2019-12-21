@@ -74,4 +74,11 @@ public class OrderStorage {
 			.sum();
 		return (chikenAmount / CHIKEN_DISCOUNT_THRESHOLD) * CHIKEN_DISCOUNT_MONEY;
 	}
+	
+	public boolean isEmpty() {
+		if (orders.isEmpty()) {
+			return true;
+		}
+		return false;
+	}
 }

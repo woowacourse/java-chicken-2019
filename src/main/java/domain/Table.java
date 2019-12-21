@@ -20,6 +20,9 @@ public class Table {
 	}
 
 	public OrderStorage getOrders() {
+		if (orders.isEmpty()) {
+			throw new IllegalArgumentException("주문이 없는 테이블입니다");
+		}
 		return this.orders;
 	}
 
@@ -28,9 +31,5 @@ public class Table {
 			return "└ \\ ┘";
 		}
 		return "└ ─ ┘";
-	}
-
-	public void getPayed() {
-
 	}
 }

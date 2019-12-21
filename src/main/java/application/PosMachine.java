@@ -46,9 +46,14 @@ public class PosMachine {
 	}
 	
 	private void getPaid(TableNumber tableNum) {
-		OutputView.printOrders(tables.tableAt(tableNum).getOrders());
-		OutputView.printFinalPrice(tables.tableAt(tableNum).getOrders()
-				.calculateFinalPrice(InputView.enterCacheOrCard(tableNum.getValue())));
-		turnOn();
+		try {
+			OutputView.printOrders(tables.tableAt(tableNum).getOrders());
+			OutputView.printFinalPrice(tables.tableAt(tableNum).getOrders()
+					.calculateFinalPrice(InputView.enterCacheOrCard(tableNum.getValue())));
+			turnOn();
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			turnOn();
+		}
 	}
 }
