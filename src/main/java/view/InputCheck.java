@@ -2,6 +2,8 @@ package view;
 
 import domain.Main;
 import domain.MainRepository;
+import domain.Table;
+import domain.TableRepository;
 
 public class InputCheck {
 
@@ -28,6 +30,23 @@ public class InputCheck {
              }
         }
         System.out.println("1, 2, 3 중에 입력해주세요.");
+        return true;
+    }
+
+    public boolean tableInputCheck(String number){
+        if(numberCheck(number)){
+            return true;
+        }
+
+        int checkNumber = Integer.parseInt(number);
+
+        for(Table table : TableRepository.tables()){
+            if(table.TableInputCheck(checkNumber)){
+                return false;
+            }
+        }
+
+        System.out.println("테이블 번호를 입력해주세요.");
         return true;
     }
 }

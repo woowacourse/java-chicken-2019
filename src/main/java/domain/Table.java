@@ -11,4 +11,11 @@ public class Table {
     public String toString() {
         return Integer.toString(number);
     }
+
+    public boolean TableInputCheck(int number) {
+        if(this.number == number){
+            return true;
+        }
+        return false;
+    }
 }

@@ -2,6 +2,8 @@ package view;
 
 import domain.Main;
 import domain.MainRepository;
+import domain.Table;
+import domain.TableRepository;
 
 import java.util.List;
 import java.util.Scanner;
@@ -11,23 +13,30 @@ public class InputView {
     private static final String LINE = "\n";
 
     private static InputCheck inputCheck = new InputCheck();
+    private static String inputNumberString;
 
     public static int inputMainNumber() {
-        String inputNumberString;
         do {
             final List<Main> mains = MainRepository.mains();
             OutputView.printMains(mains);
-            
+
             System.out.println(LINE + "## 원하는 기능을 선택하세요.");
             inputNumberString = scanner.nextLine();
-        }while (inputCheck.numberCheck(inputNumberString));
+        } while (inputCheck.mainInputCheck(inputNumberString));
 
         return Integer.parseInt(inputNumberString);
     }
 
     public static int inputTableNumber() {
-        System.out.println(LINE + "## 주문할 테이블을 선택하세요.");
-        return scanner.nextInt();
+        do {
+            final List<Table> tables = TableRepository.tables();
+            OutputView.printTables(tables);
+
+            System.out.println(LINE + "## 주문할 테이블을 선택하세요.");
+            inputNumberString = scanner.nextLine();
+        } while (inputCheck.tableInputCheck(inputNumberString));
+
+        return Integer.parseInt(inputNumberString);
     }
 
     public static int inputMenuNumber() {
@@ -35,8 +44,10 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public static int inputMenuQuantity(){
+    public static int inputMenuQuantity() {
         System.out.println(LINE + "## 메뉴의 수량을 입력하세요.");
         return scanner.nextInt();
     }
+
+
 }

@@ -26,9 +26,6 @@ public class Application {
     }
 
     public static void orderSelect() {
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
-
         final int tableNumber = InputView.inputTableNumber();
 
         final List<Menu> menus = MenuRepository.menus();
