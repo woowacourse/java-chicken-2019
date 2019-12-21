@@ -20,13 +20,20 @@ public class Table {
     return number;
   }
 
-  public void addOrder(Menu menu, int amount){
-    if(order.containsKey(menu)){
-      order.put(menu,amount);
-      return ;
+  public void addOrder(Menu menu, int amount) {
+    if (order.containsKey(menu)) {
+      amount += order.get(menu);
+      order.put(menu, amount);
+      return;
     }
-    amount += order.get(menu);
     order.put(menu, amount);
+  }
+
+  public int getMenuAmount(Menu menu) {
+    if (order.containsKey(menu)) {
+      return order.get(menu);
+    }
+    return 0;
   }
 
 

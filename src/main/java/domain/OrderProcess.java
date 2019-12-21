@@ -7,6 +7,9 @@ import view.OutputView;
 
 public class OrderProcess {
 
+  private final int ZERO = 0;
+  private final int NINETY_NINE = 99;
+
   private final List<Table> tables;
   private final List<Menu> menus;
 
@@ -47,7 +50,6 @@ public class OrderProcess {
   }
 
 
-
   private Table getTable(int tableNumber) {
     return this.tables.get(this.tableNumbers.get(tableNumber));
   }
@@ -61,12 +63,15 @@ public class OrderProcess {
     return validateAmount(table, menu, InputView.inputAmount());
   }
 
+
   private void isInRange(Table table, Menu menu, int amount) throws Exception {
-    if (amount <= 0 || amount > 99) {
+    if (amount <= ZERO || amount > NINETY_NINE) {
       throw new Exception("수량은 1이상 99 이하로 입력해주세요.");
     }
-    //todo
-    //테이블에 해당 메뉴 99개 이상인지 확인
+    int currentAmount = table.getMenuAmount(menu);
+    if ((amount + currentAmount) > NINETY_NINE) {
+      throw new Exception("99개 이상 주문 할 수 없습니다.\n현재 수량 : "+currentAmount);
+    }
   }
 
   private int validateAmount(Table table, Menu menu, int amount) {
