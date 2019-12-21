@@ -11,13 +11,16 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
     private static final String ORDERED_BOTTOM_LINE = "└ $ ┘";
+    private static final String AMOUNT_OF_PAYMENT = "%d원\n";
 
     private static final String PROGRAM_EXIT = "## 프로그램을 종료합니다.";
     private static final String ANNOUNCE_ORDER_LIST = "## 주문내역";
     private static final String ANNOUNCE_COMLUMNS = "메뉴 수량 금액";
+    private static final String ANNOUNCE_TABLE_LIST = "## 테이블 목록";
+    private static final String ANNOUNCE_AMOUNT_OF_PAYMENT = "## 최종 결제할 금액";
 
     public static void printTables(final List<Table> tables) {
-        System.out.println("## 테이블 목록");
+        System.out.println(ANNOUNCE_TABLE_LIST);
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
@@ -68,9 +71,13 @@ public class OutputView {
     public static void printBill(HashMap<Menu, Integer> order) {
         System.out.println(ANNOUNCE_ORDER_LIST);
         System.out.println(ANNOUNCE_COMLUMNS);
-
         order.forEach((key,value) ->
                 System.out.println(key.getName()+ " "+ value + " " + (key.getPrice() * value)));
-
     }
+
+    public static void printAmountOfPayment(int payment) {
+        System.out.println(ANNOUNCE_AMOUNT_OF_PAYMENT);
+        System.out.printf(AMOUNT_OF_PAYMENT, payment);
+    }
+
 }

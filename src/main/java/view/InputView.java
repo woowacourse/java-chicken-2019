@@ -9,6 +9,9 @@ public class InputView {
     private static final String INPUT_TABLE_NUMBER = "## 테이블을 선택하세요.";
     private static final String INPUT_MENU_NUMBER = "## 등록할 메뉴를 선택하세요.";
     private static final String INPUT_HOW_MANY = "## 메뉴의 수량을 입력하세요.";
+    private static final String INPUT_PAY_TABLE_NUMBER = "## %d번 테이블 결제합니다.\n";
+    private static final String ANNOUNCE_PAYMENT_METHOD = "## 신용카드는 1번, 현금은 2번";
+
     private final static int MATCH_INDEX_WITH_INPUT = 1;
 
     public static int inputMainMenu() {
@@ -37,6 +40,12 @@ public class InputView {
         } while (InputCatcher.isOverHundred(howMany));
 
         return howMany;
+    }
+
+    public static int inputPayMethod(int tableNumber) {
+        System.out.printf(INPUT_PAY_TABLE_NUMBER, tableNumber + MATCH_INDEX_WITH_INPUT);
+        System.out.println(ANNOUNCE_PAYMENT_METHOD);
+        return InputCatcher.isInt();
     }
 
 }
