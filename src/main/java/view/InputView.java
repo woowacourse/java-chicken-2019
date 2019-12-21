@@ -3,6 +3,7 @@ package view;
 import domain.Menu;
 import domain.MenuRepository;
 import domain.Menus;
+import domain.Table;
 
 import java.util.List;
 import java.util.Scanner;
@@ -20,12 +21,13 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public static Menus inputMenus() {
+    public static int inputMenuNumber() {
         System.out.println("등록할 메뉴를 선택하세요.");
-        int menuNumber = scanner.nextInt();
+        return scanner.nextInt();
+    }
 
+    public static int inputMenuQuantity() {
         System.out.println("메뉴의 수량을 입력하세요.");
-        int menuQuantity = scanner.nextInt();
-        return new Menus(MenuRepository.getMenu(menuNumber), menuQuantity);
+        return scanner.nextInt();
     }
 }
