@@ -4,15 +4,18 @@ import domain.Menu;
 import domain.Table;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class OutputView {
 	private static final String TOP_LINE = "┌ ─ ┐";
 	private static final String TABLE_FORMAT = "| %s |";
 	private static final String BOTTOM_LINE = "└ ─ ┘";
 	private static final String BOTTOM_LINE_WITH_ORDER = "└(W)┘";
+	private static final int MENU_NOT_FOUND = -1;
 
 	public static void printTables(final List<Table> tables) {
-		System.out.println("## 테이블 목록");
+		System.out.println("\n## 테이블 목록");
 		final int size = tables.size();
 		printLine(TOP_LINE, size);
 		printTableNumbers(tables);
@@ -57,7 +60,26 @@ public class OutputView {
 
 	public static void printCanNotPayment() {
 		System.out.println("해당 테이블은 결제할 수 없습니다.");
-		
+
+	}
+
+	public static void printOrders(Table table, List<Menu> menus) {
+		Set<Map.Entry<String, Integer>> entries = table.makeResult().entrySet();
+		System.out.println("\n## 주문 내역");
+		System.out.println("메뉴 수량 금액");
+		for (Map.Entry<String, Integer> entry : entries) {
+			System.out.println(entry.getKey() + " " + entry.getValue() + " "
+					+ getPriceByName(entry.getKey(), entry.getValue(), menus));
+		}
+	}
+
+	private static int getPriceByName(String menuName, Integer count, List<Menu> menus) {
+		for (Menu menu : menus) {
+			if (menu.getName().equals(menuName)) {
+				return menu.getPrice() * count;
+			}
+		}
+		return MENU_NOT_FOUND;
 	}
 
 }

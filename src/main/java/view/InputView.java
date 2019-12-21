@@ -20,18 +20,18 @@ public class InputView {
 	}
 
 	public static int inputSelectTable(List<Table> tables) {
-        System.out.println("## 주문할 테이블을 선택하세요.");
+        System.out.println("\n## 주문할 테이블을 선택하세요.");
 		return ExceptionHandler.inputSelectTableHandler(tables);
 	}
 
 
 	public static int inputSelectMenu(List<Menu> menus) {
-        System.out.println("## 등록할 메뉴를 선택하세요.");
+        System.out.println("\n## 등록할 메뉴를 선택하세요.");
 		return ExceptionHandler.inputSelectMenuHandler(menus);
 	}
 
 	public static int inputSelectMenuCount(Table table) {
-        System.out.println("## 메뉴의 수량을 입력하세요.");
+        System.out.println("\n## 메뉴의 수량을 입력하세요.");
 		return ExceptionHandler.inputSelectMenuCountHandler(table);
 	}
 

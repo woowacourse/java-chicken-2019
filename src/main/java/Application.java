@@ -1,11 +1,13 @@
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
-
-import java.util.List;
 
 public class Application {
 	private static final int ORDER = 1;
@@ -78,6 +80,11 @@ public class Application {
 	}
 
 	private static void doPayment() {
+		
+		
+
+		
+		
 		int nowTable;
 		OutputView.printTables(tables);
 		nowTable = InputView.inputSelectTable(tables);
@@ -85,7 +92,7 @@ public class Application {
 			OutputView.printCanNotPayment();
 			return;
 		}
-		
+		OutputView.printOrders(tables.get(getTableIndex(nowTable)), menus);
 	}
 
 }
