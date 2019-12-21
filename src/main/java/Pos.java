@@ -13,6 +13,7 @@ import view.OutputView;
 
 public class Pos {
 	private static final int ORDER_REGISTER_NUMBER = 1;
+	private static final int PAYMENT_NUMBER = 2;
 
 	private final Orders orders;
 
@@ -29,6 +30,11 @@ public class Pos {
 		int functionNumber = getFunctionNumber();
 		if (functionNumber == ORDER_REGISTER_NUMBER) {
 			registerOrder();
+			return;
+		}
+		if (functionNumber == PAYMENT_NUMBER) {
+			OutputView.printTables(TableRepository.tables(), orders);
+			int payAmount = getPayAmount(InputView.inputTableNumber());
 		}
 	}
 
@@ -43,5 +49,9 @@ public class Pos {
 
 		Order order = new Order(table, menu, menuAmount);
 		orders.add(order);
+	}
+
+	private int getPayAmount(int tableNumber) {
+		return 0;
 	}
 }
