@@ -1,6 +1,9 @@
 package view;
 
-import domain.*;
+import domain.Main;
+import domain.Menu;
+import domain.Order;
+import domain.Table;
 
 import java.util.List;
 

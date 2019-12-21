@@ -10,7 +10,6 @@ public class Application {
     // TODO 구현 진행
 
     public static void main(String[] args) {
-        boolean isProgress = true;
         final List<Table> tables = TableRepository.tables();
         final List<Order> orders = new ArrayList<>();
         do {
@@ -23,9 +22,9 @@ public class Application {
             }
             if (mainNumber == 3) {
                 OutputView.printProgramExit();
-                isProgress = false;
+                break;
             }
-        } while (isProgress);
+        } while (true);
     }
 
     public static Order orderSelect(List<Table> tables) {
@@ -33,12 +32,12 @@ public class Application {
 
         final int tableNumber = InputView.inputTableNumber(tables);
         final int menuNumber = InputView.inputMenuNumber(menus);
-        final int quantityNumber = InputView.inputMenuQuantity();
+        final int quantity = InputView.inputMenuQuantity();
 
         Table table = new Table(tableNumber);
         Menu menu = MenuRepository.getmenu(menuNumber);
 
-        return new Order(table, menu, quantityNumber);
+        return new Order(table, menu, quantity);
     }
 
     public static void paymentSelect(List<Table> tables, List<Order> orders) {

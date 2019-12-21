@@ -14,11 +14,11 @@ public class Calculator {
 
         this.noDisCountTotalPrice();
 
+        this.quantityDiscount();
+
         if (paymentSelect == 2) {
             this.cashDiscount();
         }
-
-        this.quantityDiscount();
     }
 
     private void noDisCountTotalPrice() {

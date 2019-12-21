@@ -17,5 +17,4 @@ public class MainRepository {
     public static List<Main> mains() {
         return Collections.unmodifiableList(mains);
     }
-
 }

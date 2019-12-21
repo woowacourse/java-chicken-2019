@@ -6,12 +6,13 @@ public class InputCheck {
 
     public boolean numberCheck(String number) {
         try {
-            Integer.parseInt(number);
+            if (Integer.parseInt(number) < 1) {
+                return true;
+            }
         } catch (Exception e) {
-            System.out.println("숫자를 입력해주세요.");
+            System.out.println("정수를 입력해주세요.");
             return true;
         }
-
         return false;
     }
 
@@ -27,6 +28,7 @@ public class InputCheck {
                 return false;
             }
         }
+
         System.out.println("1, 2, 3 중에 입력해주세요.");
         return true;
     }
@@ -64,6 +66,5 @@ public class InputCheck {
         System.out.println("메뉴를 다시 확인해주세요.");
         return true;
     }
-
 }
 

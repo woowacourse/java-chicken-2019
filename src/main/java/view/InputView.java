@@ -1,6 +1,9 @@
 package view;
 
-import domain.*;
+import domain.Main;
+import domain.MainRepository;
+import domain.Menu;
+import domain.Table;
 
 import java.util.List;
 import java.util.Scanner;
@@ -49,7 +52,7 @@ public class InputView {
         do {
             System.out.println(LINE + "## 메뉴의 수량을 입력하세요.");
             inputNumberString = scanner.nextLine();
-        } while (inputCheck.numberCheck(inputNumberString));
+        } while (inputCheck.menuInputCheck(inputNumberString));
 
         return Integer.parseInt(inputNumberString);
     }

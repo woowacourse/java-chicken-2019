@@ -18,4 +18,7 @@ public class Main {
         return this.number == number;
     }
 
+    public int getNumber() {
+        return number;
+    }
 }
