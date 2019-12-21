@@ -94,7 +94,7 @@ public class InputView {
     }
 
     private static int checkHowManyNumber(int howManyNumber) throws IOException {
-        if (howManyNumber < MIN_AMOUNT || howManyNumber > MAX_AMOUNT) {
+        if (howManyNumber <= MIN_AMOUNT || howManyNumber > MAX_AMOUNT) {
             System.out.println(ERROR_AMOUNT);
             return inputHowMany();
         }
