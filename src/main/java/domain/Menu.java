@@ -17,4 +17,11 @@ public class Menu {
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
+
+    public Boolean isItInt(Integer input) {
+        if (this.name.equals(input)) {
+            return true;
+        }
+        return false;
+    }
 }
