@@ -30,10 +30,10 @@ public class InputView {
             Validator.validateTableNumber(string);
         } catch (NumberFormatException e) {
             System.err.println("숫자를 입력해주세요.");
-            inputTableNumber();
+            return inputTableNumber();
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
-            inputTableNumber();
+            return inputTableNumber();
         }
         
         return Integer.valueOf(string);
@@ -46,10 +46,26 @@ public class InputView {
             Validator.validateMenuNumber(string);
         } catch (NumberFormatException e) {
             System.err.println("숫자를 입력해주세요.");
-            inputMenuNumber();
+            return inputMenuNumber();
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
-            inputMenuNumber();
+            return inputMenuNumber();
+        }
+        
+        return Integer.valueOf(string);
+    }
+    
+    public static int inputMenuCount() {
+        System.out.println("## 메뉴의 수량을 입력하세요.");
+        String string = scanner.nextLine();
+        try {
+            Validator.validateNull(string);
+        } catch (NumberFormatException e) {
+            System.err.println("숫자를 입력해주세요.");
+            return inputMenuCount();
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+            return inputMenuCount();
         }
         
         return Integer.valueOf(string);
