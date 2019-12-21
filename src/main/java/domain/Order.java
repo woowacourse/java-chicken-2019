@@ -8,4 +8,12 @@ public class Order {
         this.orderQuantity = orderQuantity;
         this.menu = menu;
     }
+
+    public int getOrderQuantity() {
+        return this.orderQuantity;
+    }
+
+    public String getWhatMenu() {
+        return menu.getName();
+    }
 }

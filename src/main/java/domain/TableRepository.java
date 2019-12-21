@@ -33,4 +33,8 @@ public class TableRepository {
 
         return tableIndex;
     }
+
+    public static List<Order> getOrders(int tableNumber) {
+        return Collections.unmodifiableList(tables.get(getTableIndex(tableNumber)).getOrders());
+    }
 }
