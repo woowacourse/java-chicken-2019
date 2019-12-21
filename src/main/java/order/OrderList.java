@@ -28,7 +28,11 @@ public class OrderList {
         return chickenCount;
     }
 
-    public int getPrice() {
-        return 1;
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for (Menu menu : menuCount.keySet()) {
+            totalPrice += menu.getPrice() * menuCount.get(menu);
+        }
+        return totalPrice;
     }
 }

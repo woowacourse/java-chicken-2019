@@ -22,5 +22,9 @@ public class Menu {
         return category == Category.CHICKEN;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
 
 }
