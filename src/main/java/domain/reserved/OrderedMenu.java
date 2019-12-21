@@ -4,7 +4,6 @@ import domain.Capacity;
 import domain.Menu;
 
 public class OrderedMenu extends Menu {
-    private static final int ZERO = 0;
     private final Capacity capacity;
 
     OrderedMenu(Menu menu, int capacity) {

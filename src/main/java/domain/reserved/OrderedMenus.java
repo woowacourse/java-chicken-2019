@@ -22,7 +22,7 @@ public class OrderedMenus {
                 .get();
     }
 
-    public boolean isExistBy(int menuId) {
+    boolean isExistBy(int menuId) {
         Optional<OrderedMenu> targetOrderedMenu = orderedMenus.stream()
                 .filter(orderedMenu -> orderedMenu.isMatch(menuId))
                 .findFirst();

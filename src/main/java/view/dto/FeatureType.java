@@ -4,7 +4,7 @@ public class FeatureType {
     private static final int ONE = 1;
     private static final int TWO = 1;
     private static final int THREE = 1;
-    int type;
+    private int type;
 
     public FeatureType(int featureType) {
         if (featureType == ONE || featureType == TWO || featureType == THREE) {

@@ -1,7 +1,7 @@
 package view.dto;
 
 public class PaymentType {
-    int type;
+    private int type;
 
     public PaymentType(int paymentType) {
         if (paymentType == 1 || paymentType == 2) {
@@ -9,14 +9,6 @@ public class PaymentType {
             return;
         }
         throw new IllegalArgumentException();
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public boolean isTypeCard() {
-        return type == 1;
     }
 
     public boolean isTypeMoney() {

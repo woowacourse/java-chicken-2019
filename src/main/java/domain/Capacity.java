@@ -2,7 +2,7 @@ package domain;
 
 public class Capacity {
     private static final int HUNDREAD = 100;
-    int capacity;
+    private int capacity;
 
     public Capacity(int capacity) {
         this.capacity = capacity;
