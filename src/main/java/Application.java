@@ -56,6 +56,10 @@ public class Application {
     }
 
     public static void checkout() {
+        printFullTable();
+        final int tableNumber = InputView.inputTableNumber();
+
+
     }
 
     public static boolean quit(int quitProgram) {
