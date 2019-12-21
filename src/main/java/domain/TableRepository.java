@@ -43,7 +43,6 @@ public class TableRepository {
     }
 
     public static Table getTableByNumber(int number) {
-
         for (Table table : tables()) {
             if (table.toString().equals(Integer.toString(number))) {
                 return table;
@@ -51,6 +50,4 @@ public class TableRepository {
         }
         return null;
     }
-
-
 }

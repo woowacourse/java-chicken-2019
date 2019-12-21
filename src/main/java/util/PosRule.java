@@ -14,15 +14,20 @@
 package util;
 
 public class PosRule {
+    public static final int ZERO = 0;
+    public static final int TEN = 10;
+    public static final int TEN_THOUSAND = 10000;
+    public static final double PAY_RATE = 0.95;
+
     public static final int ORDER = 1;
     public static final int PAY = 2;
     public static final int TERMINATION = 3;
 
-    public static final int ZERO = 0;
     public static final int MAX_MENU_ORDER_COUNT = 99;
 
     public static final int CARD = 1;
     public static final int CASH = 2;
 
     public static final String CHICKEN = "치킨";
+    public static final String MONEY_UNIT = "원";
 }

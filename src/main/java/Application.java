@@ -50,9 +50,11 @@ public class Application {
     private static void order(Table table) {
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
+
         final int menuNumber = InputView.inputMenuNumber();
         final int menuCount = InputView.inputMenuCount();
         Menu menu = MenuRepository.getMenuByNumber(menuNumber);
+
         Order order = new Order(menu, menuCount);
         table.order(order);
         OutputView.printTables(TableRepository.tables());
@@ -61,7 +63,8 @@ public class Application {
     private static void pay(Table table) {
         OutputView.printOrders(table.getOrders());
         OutputView.printPayMethod(table);
-        int payMethod = InputView.inputPayMethod();
+        final int payMethod = InputView.inputPayMethod();
+
         Payment payMent = new Payment(table, payMethod);
         payMent.pay();
         OutputView.printPayment(payMent.toString());

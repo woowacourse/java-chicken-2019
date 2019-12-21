@@ -28,24 +28,26 @@ public class Payment {
     public Payment(Table table, int paymentMethod) {
         this.paymentMethod = paymentMethod;
         this.table = table;
-        totalPrice = 0;
+        totalPrice = PosRule.ZERO;
     }
 
-    // 계산하는 기능
     public void pay() {
         List<Order> orders = table.getOrders();
-        totalPrice = 0;
+        totalPrice = PosRule.ZERO;
+
         for (Order order : orders) {
             totalPrice += order.getMenu().getPrice() * order.getCount();
         }
-        totalPrice -= (table.getCountOfChicken() / 10) * 10000;
+
+        totalPrice -= (table.getCountOfChicken() / PosRule.TEN) * PosRule.TEN_THOUSAND;
+
         if (paymentMethod == PosRule.CASH) {
-            totalPrice = totalPrice * 0.95;
+            totalPrice = totalPrice * PosRule.PAY_RATE;
         }
     }
 
     @Override
     public String toString() {
-        return totalPrice + "원";
+        return totalPrice + PosRule.MONEY_UNIT;
     }
 }

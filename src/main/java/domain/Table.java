@@ -26,7 +26,7 @@ public class Table {
     public Table(final int number) {
         this.number = number;
         orders = new ArrayList<>();
-        countOfChicken = 0;
+        countOfChicken = PosRule.ZERO;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class Table {
     }
 
     public boolean hasOrder() {
-        return (orders.size() > 0);
+        return (orders.size() > PosRule.ZERO);
     }
 
     public List<Order> getOrders() {
