@@ -11,13 +11,8 @@ public class Application {
         Menus menus = new Menus(MenuRepository.menus());
 
         InputView.inputMainMenu();
-        OutputView.printTables(tables.getTables());
 
-        int inputTableNumber = InputView.inputTableNumber(tables);
-//            OutputView.printMenus(menus.getMenus());
-//            if(menus.isMenuExist(InputView.inputMenuNumber())){
-//                System.out.println("GOOD");
-//            }
-//        }
+        int tableNumber = InputView.inputTableNumber(tables);
+        int menuNumber = InputView.inputMenuNumber(menus);
     }
 }
