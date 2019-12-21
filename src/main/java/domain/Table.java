@@ -16,7 +16,7 @@ public class Table {
         return Integer.toString(number);
     }
 
-    public HashMap<Menu, Integer> order() {
+    public HashMap<Menu, Integer> getOrderMenu() {
         return orderMenu;
     }
 }
