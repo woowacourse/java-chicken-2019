@@ -6,6 +6,7 @@ import domain.Table;
 
 import java.lang.reflect.Array;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class OutputView {
@@ -48,9 +49,13 @@ public class OutputView {
         return new InputView().inputFunction();
     }
 
-    public static void printOrderList(int tableNumber, OrderBoard orderBoard) {
+    public static void printOrderList(HashMap<Integer,Integer> oders,final List<Menu> menus) {
         System.out.println("주문 내역\n메뉴  수량  금액");
-
+        for(int key : oders.keySet()){
+            int menuNumber = key;
+//            String menuName = menus.stream().filter(x->(x.getNumber()==key)).map(Menu::getName);
+            System.out.println(menuNumber+" ");
+        }
     }
 
 }

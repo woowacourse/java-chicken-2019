@@ -25,6 +25,12 @@ public class Application {
     public static void selectTwo() {
         OutputView.printTables(tables);
         final int tableNumber = InputView.inputTableNumber(tables);
+        final List<Menu> menus = MenuRepository.menus();
+        for (Table table:tables){
+            if (tableNumber == table.getNumber()){
+                OutputView.printOrderList(table.getOrder(tableNumber),menus);
+            }
+        }
     }
 
     // TODO 구현 진행
@@ -36,7 +42,7 @@ public class Application {
                 mainInput = OutputView.printMainScreen();
             }
             if (mainInput == 2) {
-                System.out.println("아직 만들지 않은 기능입니다.");
+                selectTwo();
                 mainInput = OutputView.printMainScreen();
             }
         }
