@@ -1,18 +1,19 @@
 import Service.PosService;
+import domain.NextStep;
 import view.InputView;
 import view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
         PosService posService = new PosService();
-        int nextStep;
+        NextStep nextStep;
 
         do {
             OutputView.printMain();
-            nextStep = InputView.inputNextStep();
-            if (nextStep == 3) return;
+            nextStep = new NextStep(InputView.inputNextStep());
+            if (nextStep.isExit()) return;
             posService.run(nextStep);
         }
-        while (nextStep != 3);
+        while (!nextStep.isExit());
     }
 }

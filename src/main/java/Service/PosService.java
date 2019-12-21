@@ -1,5 +1,6 @@
 package Service;
 
+import domain.NextStep;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
@@ -11,7 +12,7 @@ public class PosService {
     private static final int ORDER = 1;
     private static final int PAY = 2;
 
-    public void run(int nextStep) {
+    public void run(NextStep nextStep) {
         OrderService orderService = new OrderService();
         PayService payService = new PayService();
 
@@ -21,10 +22,10 @@ public class PosService {
         final int tableNumber = InputView.inputTableNumber();
         Table selectedTable = selectTable(tables, tableNumber);
 
-        if (nextStep == ORDER) {
+        if (nextStep.isOrder()) {
             orderService.order(selectedTable);
         }
-        if (nextStep == PAY) {
+        if (nextStep.isPay()) {
             payService.pay(selectedTable);
         }
     }
