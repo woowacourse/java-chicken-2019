@@ -24,10 +24,13 @@ public class OrderRunner extends Runner {
 
     private static Basket generateBasket(List<Menu> menus) {
         OutputView.printMenus(menus);
-
         Menu menu = getMenuByNumber();
-        int countMenuNumber = InputView.inputCountMenuNumber();
-        return new Basket(menu, countMenuNumber);
+        try {
+            return new Basket(menu, InputView.inputCountMenuNumber());
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorRetryMessage(e);
+            return generateBasket(menus);
+        }
     }
 
     protected static Menu getMenuByNumber() {
@@ -40,7 +43,12 @@ public class OrderRunner extends Runner {
     }
 
     private static void addBasketToTable(Table table, Basket basket) {
-        table.saveBasket(basket);
+        try {
+            table.saveBasket(basket);
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorRetryMessage(e);
+            addBasketToTable(table, generateBasket(menus));
+        }
     }
 
 }
