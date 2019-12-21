@@ -12,4 +12,8 @@ public class Tables {
     public List<Table> getTables() {
         return tables;
     }
+
+    public boolean isTableExist(int number) {
+        return tables.stream().anyMatch(x -> x.isTableNumberSame(number));
+    }
 }
