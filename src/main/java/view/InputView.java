@@ -9,6 +9,7 @@ public class InputView {
     private static final int ONE = 1;
     private static final int TWO = 2;
     private static final int THREE = 3;
+    private static final int MAX_AMOUNT = 99;
     private static final Scanner scanner = new Scanner(System.in);
 
     public static int inputTableNumber(Tables tables) {
@@ -41,7 +42,21 @@ public class InputView {
 
     public static int inputMenuAmount(Table table, Menu inputMenu) {
         System.out.println("## 메뉴의 수량을 입력하세요.");
-        return inputAsNumber();
+        return Optional.of(inputAsNumber())
+                .filter(x -> isNotOverThenMaxAmount(table, inputMenu, x))
+                .filter(InputView::isNotLessEqualThenZero)
+                .orElseGet(() -> {
+                    System.out.println("추가하려는 메뉴가 99개를 넘었거나 1보다 작습니다.");
+                    return inputMenuAmount(table, inputMenu);
+                });
+    }
+
+    public static boolean isNotOverThenMaxAmount(Table table, Menu inputMenu, int inputCount) {
+        return table.countOfMenu(inputMenu) + inputCount <= MAX_AMOUNT;
+    }
+
+    public static boolean isNotLessEqualThenZero(int inputCount) {
+        return inputCount > 0;
     }
 
     public static int inputPaymentMethod() {

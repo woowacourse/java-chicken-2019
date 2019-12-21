@@ -27,6 +27,10 @@ public class Table {
         return ordered.allPrices();
     }
 
+    public int countOfMenu(Menu menu) {
+        return ordered.countOfMenu(menu);
+    }
+
     public Map<String, List<Menu>> allMenu() {
         return ordered.amountMenu();
     }
