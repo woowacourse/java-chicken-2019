@@ -30,6 +30,11 @@ public class OutputView {
         System.out.println("메뉴 수량 금액");
     }
 
+    public static void printFinalPaymontAmount() {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println("17000원");
+    }
+
     public static void printMenus(final List<Menu> menus) {
         for (final Menu menu : menus) {
             System.out.println(menu);
@@ -49,4 +54,5 @@ public class OutputView {
         }
         System.out.println();
     }
+
 }
