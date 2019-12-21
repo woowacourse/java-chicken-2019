@@ -21,6 +21,10 @@ public class Application {
                 Order order = new Order(TableRepository.getTable(tableIndex));
                 order.getOrder();
             }
+            if (programIndex == 2) {
+                Payment payment = new Payment(TableRepository.getTable(tableIndex));
+                payment.pay();
+            }
         }
     }
 
