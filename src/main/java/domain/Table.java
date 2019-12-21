@@ -33,16 +33,25 @@ public class Table {
     	return status;
     }
     
-    public void registerMenuQuantity(int orderMenu, int orderQuantity) {
+    public void registerMenuQuantity(int orderMenu, int orderQuantity, int tablenum) {
     	for (OrderedQuantity orderedQuantity : orderedQuantities) {
     		if (orderedQuantity.getFoodNumber() == orderMenu) {
-    			orderedQuantity.plusMenuQuantity(orderMenu, orderQuantity);
+    			orderedQuantity.plusMenuQuantity(orderMenu, orderQuantity, tablenum);
     		}
     	}
     }
     
     public int getTableNumber() {
     	return this.number;
+    }
+    
+    public int isOrderedTable() {
+    	if (orderedQuantities.stream()
+				.mapToInt(OrderedQuantity::getQuantity)
+				.sum() > 0) {
+    		return this.number;
+    	}
+    	return -1;
     }
 
     @Override

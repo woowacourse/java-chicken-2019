@@ -4,12 +4,15 @@ import domain.Menu;
 import domain.Table;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BEFORE_PAYMENT = "└ ￦┘";
     private static final String GET_ORDER = "1. 주문등록";
     private static final String PAY = "2. 결제하기";
     private static final String EXIT_PROGRAM = "3. 프로그램 종료하기";
@@ -23,11 +26,16 @@ public class OutputView {
     }
 
     public static void printTables(final List<Table> tables) {
+    	List<Integer> orderedTables = new ArrayList<>();
+    	orderedTables = tables.stream()
+    			.map(Table::isOrderedTable)
+    			.filter(num -> num != -1)
+    			.collect(Collectors.toList());
         System.out.println("## 테이블 목록");
         final int size = tables.size();
-        printLine(TOP_LINE, size);
+        printTopLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLine(BOTTOM_LINE, tables, orderedTables);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -35,10 +43,21 @@ public class OutputView {
             System.out.println(menu);
         }
     }
-
-    private static void printLine(final String line, final int count) {
+    
+    private static void printTopLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
+        }
+        System.out.println();
+    }
+
+    private static void printBottomLine(final String line, List<Table> tables, List<Integer> orderedTables) {
+        for (Table table : tables) {
+        	if (orderedTables.contains(table.getTableNumber())) {
+        		System.out.print(BEFORE_PAYMENT);
+        	} else if (!orderedTables.contains(table.getTableNumber())) {
+        		System.out.print(line);
+        	}
         }
         System.out.println();
     }

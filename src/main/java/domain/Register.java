@@ -21,7 +21,7 @@ public class Register {
         orderQuantity = InputView.inputOrderQuantity(tables);
         for (Table table : tables) {
         	if (table.getTableNumber() == tableNumber) {
-        		table.registerMenuQuantity(orderMenu, orderQuantity);
+        		table.registerMenuQuantity(orderMenu, orderQuantity, tableNumber);
         	}
         }
 	}

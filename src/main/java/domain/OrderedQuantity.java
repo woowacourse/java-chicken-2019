@@ -18,7 +18,11 @@ public class OrderedQuantity {
 		return this.foodQuantity + newOrderQuantity > MAX_FOOD_QUANTITY;
 	}
 	
-	public void plusMenuQuantity(int orderMenu, int orderQuantity) {
+	public void plusMenuQuantity(int orderMenu, int orderQuantity, int tablenum) {
 		this.foodQuantity += orderQuantity;
+	}
+	
+	public int getQuantity() {
+		return this.foodQuantity;
 	}
 }

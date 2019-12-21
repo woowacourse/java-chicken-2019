@@ -21,7 +21,7 @@ public class Application {
         int order = InputView.inputOrder();
         
         while (order != EXIT_PROGRAM) {
-        	 OutputView.printTables(tables);
+        	OutputView.printTables(tables);
         	if (order == REGISTER) {
             	Register.startOrder(tables, menus);
             } else if (order == PAY) {
