@@ -1,77 +1,52 @@
 package work;
 
 import java.util.InputMismatchException;
-import java.util.List;
+import java.util.stream.Collectors;
 
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
 
-public class Order {
-	final List<Table> tables;
-	int tableNumber;
-	final List<Menu> menus;
-
-	public Order() {
-		tables = TableRepository.tables();
-		menus = MenuRepository.menus();
-		OutputView.printTables(tables);
-	}
+public class Order extends TableWork {
 
 	public void run() {
-		tableNumber =getTableNumber();
+		OutputView.printTables(tables);
+		int tableNumber = getTableNumber();
 		OutputView.printMenus(menus);
-		int menuChoice= getMenuChoice();
-		int menuQuantity=getMenuQuantity();
+		int menuChoice = getMenuChoice();
+		int menuQuantity = getMenuQuantity();
+
+	}
+
+	private int getMenuChoice() {
+		int value;
+		try {
+			value = InputView.inputMenuChoice();
+			Validation.checkInList(value, menus.stream()
+				.map(menu -> menu.getNumber())
+				.collect(Collectors.toList()));
+		} catch (InputMismatchException e) {
+			System.out.println("숫자를 입력해주세요.");
+			InputView.flush();
+			return getMenuChoice();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return getMenuChoice();
+		}
+		return value;
 	}
 
 	private int getMenuQuantity() {
 		int value;
-		try{
-			value=InputView.inputMenuQuantity();
-			Validation.checkPositiveRange(value,menus.size());
-		}catch(InputMismatchException e) {
+		try {
+			value = InputView.inputMenuQuantity();
+			Validation.checkPositiveRange(value, menus.size());
+		} catch (InputMismatchException e) {
 			System.out.println("숫자를 입력해주세요.");
 			InputView.flush();
 			return getMenuQuantity();
-		}catch (Exception e){
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return getMenuQuantity();
-		}
-		return value;
-	}
-
-	private int getTableNumber() {
-		int value;
-		try{
-			value=InputView.inputTableNumber();
-			Validation.checkPositiveRange(value,tables.size());
-		}catch(InputMismatchException e) {
-			System.out.println("숫자를 입력해주세요.");
-			InputView.flush();
-			return getTableNumber();
-		}catch (Exception e){
-			System.out.println(e.getMessage());
-			return getTableNumber();
-		}
-		return value;
-	}
-
-	private int getMenuChoice(){
-		int value;
-		try{
-			value=InputView.inputMenuChoice();
-			Validation.checkPositiveRange(value,menus.size());
-		}catch(InputMismatchException e) {
-			System.out.println("숫자를 입력해주세요.");
-			InputView.flush();
-			return getMenuChoice();
-		}catch (Exception e){
-			System.out.println(e.getMessage());
-			return getMenuChoice();
 		}
 		return value;
 	}
