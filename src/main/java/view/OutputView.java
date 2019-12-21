@@ -65,4 +65,10 @@ public class OutputView {
         System.out.println("프로그램을 종료합니다.");
         System.out.println("=======================");
     }
+
+    public static void printNoOrder() {
+        System.out.println("================");
+        System.out.println("주문이 없습니다");
+        System.out.println("================");
+    }
 }
