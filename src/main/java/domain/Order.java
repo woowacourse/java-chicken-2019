@@ -18,4 +18,11 @@ public class Order implements OrderService {
         // TODO: 메뉴 개수 관련 예외처리
         order.put(menu, order.get(menu) + quantityToAdd);
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+            "order=" + order +
+            '}';
+    }
 }
