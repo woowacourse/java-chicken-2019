@@ -90,7 +90,7 @@ public class InputView {
         String inputMenuNumber = scanner.nextLine();
         while (!isNumberValidator(inputMenuNumber) || !isMenus(menus, Integer.parseInt(inputMenuNumber))) {
             System.out.println("나와있는 메뉴를 입력하세요.");
-            System.out.println("## 주문할 테이블을 선택하세요.");
+            System.out.println("## 등록할 메뉴를 선택하세요.");
             inputMenuNumber = scanner.nextLine();
         }
         System.out.println();

@@ -74,7 +74,7 @@ public class Application {
     private static void setBill(Table table) {
         OutputView.printBill(table);
         OutputView.printTableBill(table);
-        int inputCardOrCash = InputView.inputCardOrCash();
+        final int inputCardOrCash = InputView.inputCardOrCash();
         if (isCash(inputCardOrCash)) {
             OutputView.printFinalBill(calculateCashBills(table));
             return;
