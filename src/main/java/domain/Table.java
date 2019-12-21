@@ -32,6 +32,17 @@ public class Table {
         this.paymentAmount = this.paymentAmount.addPaymentAmount(menu.getAmountPrice(orderAmount), 0);
     }
 
+    public int calculatePaymentAmount(final int paymentMethod) {
+        int paymentAmount = this.paymentAmount.calculateFinalPaymentAmount(paymentMethod);
+        resetTable();
+        return paymentAmount;
+    }
+
+    public void resetTable() {
+        this.paymentAmount = new Payment(INITIAL_VALUE, INITIAL_VALUE);
+        this.orderHistory = "";
+    }
+
     public boolean isSameNumber(final int number) {
         return this.number == number;
     }
