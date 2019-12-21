@@ -4,7 +4,6 @@ import domain.Table;
 import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
-import Controller.SelectControl;
 
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class Application {
 	OutputView.printMainScreen();
 	final int functionNumber = InputView.inputFuction();
 	if (functionNumber == 3) {
-	    return QuitFunction();
+	    return QuitFunction(tables,menus);
 	}
 	OutputView.printTables(tables);
 	int tableNumber = InputView.inputTableNumber(tables);
@@ -65,7 +64,13 @@ public class Application {
 	OutputView.printPrice(tables.get(tableNumber-1),menus,pay);
     }
 
-    public static boolean QuitFunction() {
+    public static boolean QuitFunction(List<Table> tables, List<Menu> menus) {
+	for(int i=0;i<tables.size();i++) {
+	    if (tables.get(i).getOrderd()) {
+		int pay= InputView.inputPay(tables.get(i).getNumber());
+		OutputView.printPrice(tables.get(i),menus,pay);
+	    }
+	}
 	return false;
     }
 }
