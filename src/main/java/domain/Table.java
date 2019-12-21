@@ -20,6 +20,10 @@ public class Table {
     public boolean isEmptyMenus() {
         return menus.isNull();
     }
+    
+    public String getMenusString() {
+        return menus.toString();
+    }
 
     @Override
     public String toString() {

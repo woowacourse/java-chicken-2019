@@ -56,4 +56,10 @@ public class OutputView {
         }
         System.out.println();
     }
+    
+    public static void printTableOrder(final Table table) {
+        System.out.println("## 주문내역 \n메뉴 수량 금액");
+        System.out.println(table.getMenusString());
+        System.out.println("##" + table.toString() + "번 테이블의 결제를 진행합니다.");
+    }
 }

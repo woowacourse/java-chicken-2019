@@ -45,4 +45,15 @@ public class Menus {
     public boolean isNull() {
         return menus.size() == 0;
     }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Menu menu : menus.keySet()) {
+            sb.append(menu.getName() + " ");
+            sb.append(menus.get(menu) + " ");
+            sb.append(menu.getPrice() * menus.get(menu) + "\n");
+        }
+        return sb.toString();
+    }
 }
