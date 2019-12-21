@@ -6,6 +6,9 @@ public class Order {
 
   public Order(Menu menu, int amount) {
     this.menu = menu;
+    if(amount > 99) {
+      throw new IllegalArgumentException("최대 수량은 99개 입니다.");
+    }
     this.amount = amount;
   }
 

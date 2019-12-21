@@ -20,12 +20,17 @@ public class OrderHistory {
   }
 
   public void addNewOrder(int tableNumber, int menuNumber, int menuAmount) {
-    Order order = new Order(menuService.getMenu(menuNumber), menuAmount);
-    if (!ordersByTable.containsKey(tableNumber)) {
-      ordersByTable.put(tableNumber, new ArrayList<>());
-      tableService.markTable(tableNumber);
+    Order order;
+    try {
+      order = new Order(menuService.getMenu(menuNumber), menuAmount);
+      if (!ordersByTable.containsKey(tableNumber)) {
+        ordersByTable.put(tableNumber, new ArrayList<>());
+        tableService.markTable(tableNumber);
+      }
+      ordersByTable.get(tableNumber).add(order);
+    } catch (Exception e) {
+      OutputView.printMessage(e.getMessage());
     }
-    ordersByTable.get(tableNumber).add(order);
   }
 
   public void showOrdersByTable(int tableNumber) {
@@ -49,7 +54,7 @@ public class OrderHistory {
   public double getTotalPriceByTable(int tableNumber) {
     List<Order> orders = ordersByTable.get(tableNumber);
     double price = 0;
-    for(Order order : orders) {
+    for (Order order : orders) {
       price += order.getTotalPriceOfOrder();
     }
     return price;
