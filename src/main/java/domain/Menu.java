@@ -13,8 +13,20 @@ public class Menu {
         this.price = price;
     }
 
+    public boolean isSameMenu(int number) {
+        return this.number == number;
+    }
+
     public int getNumber() {
         return number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     @Override
