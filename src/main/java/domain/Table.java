@@ -30,4 +30,9 @@ public class Table {
         return this.menuOrdered;
     }
 
+    public boolean hasOrdered() {
+        if (menuOrdered.isEmpty()) return false;
+        return true;
+    }
+
 }

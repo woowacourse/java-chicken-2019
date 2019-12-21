@@ -9,21 +9,21 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String ORDERED_BOTTOM_LINE = "└ ₩ ┘";
 
     public static void printMain() {
         System.out.println("## 메인화면");
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
-        System.out.println("3 - 프로그램 종료");
-        System.out.println();
+        System.out.println("3 - 프로그램 종료\n");
     }
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
-        printLine(TOP_LINE, size);
+        printTopLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLine(tables, size);
         System.out.println();
     }
 
@@ -42,11 +42,22 @@ public class OutputView {
         System.out.println("잘못된 입력값입니다.");
     }
 
-    private static void printLine(final String line, final int count) {
+    private static void printTopLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
         }
         System.out.println();
+    }
+
+    private static void printBottomLine(List<Table> tables, final int count) {
+        String line = "";
+        for (Table table: tables) {
+            if (table.hasOrdered() == false) {
+                System.out.print(BOTTOM_LINE);
+                continue;
+            }
+            System.out.print(ORDERED_BOTTOM_LINE);
+        }
     }
 
     private static void printTableNumbers(final List<Table> tables) {

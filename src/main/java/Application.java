@@ -20,7 +20,6 @@ public class Application {
             final int mainDecision = InputView.inputMain();
             if (mainDecision == 1) {
                 order(tables, menus);
-                System.out.println(tables.get(0).getMenuOrdered());
                 continue;
             }
             if (mainDecision == 2) {
@@ -38,12 +37,10 @@ public class Application {
     public static void order(List<Table> tables, List<Menu> menus) {
         OutputView.printTables(tables);
         int tableNumber = InputView.inputTableNumberForOrder();
-        System.out.println("tableNumber: " +tableNumber);
         OutputView.printMenus(menus);
         int menuNumber = InputView.inputMenuNumber();
         int menuQuantity = InputView.inputMenuQuantity();
         selectTableWithNumber(tables, tableNumber).orderMenu(orderMenuWithNumber(menus, menuNumber), menuQuantity);
-        System.out.println(tables.get(tableNumber).toString());
     }
 
     public static Table selectTableWithNumber(List<Table> tables, int number) {
