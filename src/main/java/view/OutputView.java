@@ -26,7 +26,7 @@ public class OutputView {
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLine(size);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -66,4 +66,10 @@ public class OutputView {
     public static void printExitProgram(){
         System.out.println("프로그램을 종료합니다");
     }
+
+    public static void printOrderHistory(int tableNumber){
+        System.out.println("메뉴 | 메뉴번호 | 수량 | 금액");
+        System.out.println(TableRepository.getSelectTable(tableNumber).getMenuHistoryStr());
+    }
+
 }

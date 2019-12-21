@@ -20,8 +20,17 @@ public class TableRepository {
         return Collections.unmodifiableList(tables);
     }
 
-    public static int getTableSize(){
+    public static int getTablesSize(){
         return tables.size();
+    }
+
+    public static Table getSelectTable(int tableNumber){
+        for(int i = 0 ; i < tables.size() ; i++){
+            if(tables.get(i).getNumber() == tableNumber){
+                return tables.get(i);
+            }
+        }
+        return null;
     }
 
     public static boolean existTableNumber(int tableNumber){

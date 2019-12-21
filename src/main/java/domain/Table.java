@@ -18,6 +18,14 @@ public class Table {
         menuList.add(menu);
     }
 
+    public String getMenuHistoryStr(){
+        String menuHistory = "";
+        for(int i = 0 ; i  < menuList.size() ; i++){
+            menuHistory += menuList.get(i).toString() + "\n";
+        }
+        return menuHistory;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

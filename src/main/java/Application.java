@@ -13,7 +13,7 @@ public class Application {
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
-        OutputView.checkOrder = new boolean[TableRepository.getTableSize()];
+        OutputView.checkOrder = new boolean[TableRepository.getTablesSize()];
 
 
         while(true){
@@ -55,8 +55,16 @@ public class Application {
             }
 
             if(funcNumber == 2){
+                OutputView.printTables(tables);
+                int tableNumber = InputView.inputTableNumber();
+                OutputView.printOrderHistory(tableNumber);
+
+
 
             }
+
+
+
 
 //            final int tableNumber = InputView.inputTableNumber();
 
