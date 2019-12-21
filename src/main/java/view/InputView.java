@@ -1,5 +1,6 @@
 package view;
 
+import domain.MenuRepository;
 import domain.TableRepository;
 
 import java.util.ArrayList;
@@ -9,8 +10,9 @@ import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
-    private static final List<Integer> TABLE_NUMBERS = TableRepository.tableNumbers();
     private static final List<Integer> MAIN_MENU_NUMBER = new ArrayList<Integer>(Arrays.asList(new Integer[]{1, 2, 3}));
+    private static final List<Integer> TABLE_NUMBERS = TableRepository.tableNumbers();
+    private static final List<Integer> MENU_NUMBER = MenuRepository.menuNumbers();
 
     public static int inputMainMenuNumber() {
         System.out.println("\n## 원하는 기능을 선택하세요.");
@@ -22,6 +24,12 @@ public class InputView {
         System.out.println("\n## 주문할 테이블을 선택하세요.");
         String printErrorMessage = "\n## 주문할 테이블을 테이블 번호로 다시 선택해주세요.";
         return inputNumber(printErrorMessage, TABLE_NUMBERS);
+    }
+
+    public static int inputMenuNumber() {
+        System.out.println("\n## 등록할 메뉴를 선택하세요.");
+        String printErrorMessage = "\n## 등록할 메뉴를 주문할 메뉴 번호로 다시 선택해주세요.";
+        return inputNumber(printErrorMessage, MENU_NUMBER);
     }
 
     private static int inputNumber(String printErrorMessage, List<Integer> numberBounds) {

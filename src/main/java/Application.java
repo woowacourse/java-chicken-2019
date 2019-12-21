@@ -35,7 +35,9 @@ public class Application {
         return tableNumber;
     }
 
-    private void menuMenu(List<Menu> menus) {
+    private int  menuMenu(List<Menu> menus) {
         OutputView.printMenus(menus);
+        int menuNumber = InputView.inputMenuNumber();
+        return menuNumber;
     }
 }
