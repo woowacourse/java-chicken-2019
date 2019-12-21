@@ -1,5 +1,7 @@
 package service;
 
+import domain.Menu;
+import domain.MenuRepository;
 import domain.Table;
 import view.InputView;
 import view.OutputView;
@@ -18,6 +20,7 @@ public class OrderRegistor extends Service{
 
         OutputView.printTables(tables);
         tableNumber = InputView.inputTableNumber();
+        OutputView.printMenus(MenuRepository.menus());
 
     }
 }
