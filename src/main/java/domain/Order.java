@@ -8,7 +8,9 @@ import view.OutputView;
 
 
 public class Order {
-    private static final String name = "주문하기";
+    private static final int MENU_NAME_INDEX= 0;
+    private static final int MENU_QAUNTITY = 1;
+    private static final int ORDER_TOTAL_PRICE = 2;
     private static final int MAX_QUANTITY = 99;
     private int tableNumber;
     private int menuNumber;
@@ -44,4 +46,14 @@ public class Order {
         return false;
     }
 
+    public String getInformation() {
+        Menu menu = MenuRepository.search(this.menuNumber);
+        String[] information = new String[3];
+
+        information[MENU_NAME_INDEX] = menu.getMenuName();
+        information[MENU_QAUNTITY] = Integer.toString(this.menuQuantity);
+        information[ORDER_TOTAL_PRICE] = Integer.toString(this.menuQuantity  * menu.getPrice());
+
+        return information[0] + " " + information[1] + " " + information[2];
+    }
 }

@@ -18,6 +18,17 @@ public class MenuRepository {
         menus.add(new Menu(22, "사이다", Category.BEVERAGE, 1_000));
     }
 
+    public static Menu search(int menuNumber) {
+        Menu findMenu = null;
+
+        for (Menu menu : menus) {
+            if (menu.existMenuNumber(menuNumber)) {
+                findMenu = menu ;
+            }
+        }
+
+        return findMenu;
+    }
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
     }
