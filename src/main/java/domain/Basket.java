@@ -6,10 +6,6 @@ import java.util.List;
 public class Basket {
     final static List<Order> orderList = new ArrayList<>();
 
-    public static void addList() {
-
-    }
-
     public static void addToOrderList(Menu menu, int foodCount) {
         if (orderList.stream().anyMatch(order -> order.isEqualMenu(menu))) {
             orderList.stream()
@@ -23,9 +19,16 @@ public class Basket {
     }
 
     public static int calculateTotalPrice() {
-        return orderList.stream()
+        int totalPrice = orderList.stream()
                 .mapToInt(order -> order.getMenuPriceByCount())
                 .sum();
+        return discountWhenChickenCategory(totalPrice);
+    }
+
+    private static int discountWhenChickenCategory(int totalPrice) {
+        int totalCountOfChicken = orderList.stream()
+                .mapToInt(order -> order.getFoodCountWhenChicken()).sum();
+        return totalPrice - (totalCountOfChicken / 10) * 10000;
     }
 
     public static String showOrderList() {

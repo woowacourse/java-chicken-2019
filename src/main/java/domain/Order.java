@@ -21,6 +21,13 @@ public class Order {
         return menu.getPrice() * foodCount;
     }
 
+    public int getFoodCountWhenChicken(){
+        if (menu.isMatchCategory(Category.CHICKEN)) {
+            return foodCount;
+        }
+        return 0;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

@@ -43,6 +43,7 @@ public class Application {
 
                 int totalPrice = Basket.calculateTotalPrice();
                 Payment paymentChoice = validatePaymentChoice();
+                System.out.println(totalPrice);
             }
         } while(posChoice != Choice.EXIT);
 

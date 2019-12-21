@@ -19,6 +19,10 @@ public class Menu {
         return this.number == number;
     }
 
+    public boolean isMatchCategory(Category category){
+        return this.category.equals(category);
+    }
+
     public String getName() {
         return name;
     }
