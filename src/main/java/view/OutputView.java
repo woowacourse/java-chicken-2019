@@ -33,6 +33,14 @@ public class OutputView {
         }
     }
 
+    public static void printTerminatingProgram() {
+        System.out.println("## 프로그램을 종료합니다.");
+    }
+
+    public static void printInvalidMainInput() {
+        System.out.println("잘못된 입력값입니다.");
+    }
+
     private static void printLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);

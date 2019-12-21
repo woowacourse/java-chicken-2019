@@ -1,3 +1,4 @@
+import com.sun.tools.internal.ws.wsdl.document.Output;
 import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
@@ -28,10 +29,10 @@ public class Application {
                 continue;
             }
             if (mainDecision == 3) {
-                System.out.println("## 프로그램을 종료합니다.");
+                OutputView.printTerminatingProgram();
                 return;
             }
-            System.out.println("원하는 기능은 1,2,3 중에 선택 가능합니다.");
+            OutputView.printInvalidMainInput();
             continue;
         }
 
