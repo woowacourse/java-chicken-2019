@@ -29,7 +29,7 @@ public class Application {
                 int tableNumber = InputView.inputTableNumber();
                 OutputView.printMenus(menus);
                 int menuNumber = InputView.inputMenuNumber();
-
+                int menuCount = InputView.inputMenuCount();
 
             }
 
