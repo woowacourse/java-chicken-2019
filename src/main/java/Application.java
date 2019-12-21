@@ -82,16 +82,21 @@ public class Application {
         OutputView.printMenusOrdered(table);
         table.quantityDiscount();
         OutputView.printPayment(table);
-        int paymentMethod = InputView.inputPaymentMethod();
-        OutputView.printSumOfMoneyInstruction();
-        if (paymentMethod==1) {
-            OutputView.printSumOfMoney(table);
-            return;
+        while (true) {
+            int paymentMethod = InputView.inputPaymentMethod();
+            if (paymentMethod == 1) {
+                OutputView.printSumOfMoneyInstruction();
+                OutputView.printSumOfMoney(table);
+                break;
+            }
+            if (paymentMethod == 2) {
+                OutputView.printSumOfMoneyInstruction();
+                OutputView.printSumOfMoneyCash(table);
+                break;
+            }
+            OutputView.printInvalidPaymentMethodInput();
         }
-        if (paymentMethod==2) {
-            OutputView.printSumOfMoneyCash(table);
-            return;
-        }
+
     }
 
 }
