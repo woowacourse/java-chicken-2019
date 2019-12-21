@@ -10,6 +10,8 @@ public class InputView {
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
         System.out.println("3 - 프로그램 종료");
+        System.out.println();
+        System.out.println("## 원하는 기능을 선택하세요.");
         return SCANNER.nextInt();
     }
 
