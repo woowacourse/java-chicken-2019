@@ -3,19 +3,22 @@ package view;
 import domain.Menu;
 import domain.Table;
 
+import java.util.Currency;
 import java.util.List;
+import java.util.Locale;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BOTTOM_LINE_WITH_WON = "└ " + Currency.getInstance(Locale.KOREA).getSymbol() + " ┘";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLines(tables);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -30,7 +33,23 @@ public class OutputView {
         }
         System.out.println();
     }
+    
+    private static void printBottomLines(final List<Table> tables) {
+        for (Table table : tables) {
+            printBottomLine(table);
+        }
+        System.out.println();
+    }
+    
+    private static void printBottomLine(final Table table) {
+        if (table.isEmptyMenus()) {
+            System.out.print(BOTTOM_LINE);
+            return;
+        }
+        System.out.print(BOTTOM_LINE_WITH_WON);
 
+    }
+    
     private static void printTableNumbers(final List<Table> tables) {
         for (final Table table : tables) {
             System.out.printf(TABLE_FORMAT, table);

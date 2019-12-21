@@ -18,4 +18,8 @@ public class Menus {
         
         menus.put(menu, count);
     }
+    
+    public boolean isNull() {
+        return menus.size() == 0;
+    }
 }

@@ -16,6 +16,10 @@ public class Table {
     public void addMenu(int menuNumber, int count) {
         menus.addMenuByNumber(menuNumber, count);
     }
+    
+    public boolean isEmptyMenus() {
+        return menus.isNull();
+    }
 
     @Override
     public String toString() {
