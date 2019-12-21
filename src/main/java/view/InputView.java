@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class InputView {
     private static final String NEWLINE = "\n";
     private static final int VALUE_MIN = 0;
+    private static final int MENU_MAX = 3;
     private static final Scanner scanner = new Scanner(System.in);
 
     public static int inputTableNumber() {
@@ -17,7 +18,7 @@ public class InputView {
             if (Objects.isNull(value)) {
                 throw new IllegalArgumentException("테이블 번호는 'null'이 될 수 없습니다.");
             }
-            if (value < VALUE_MIN) {
+            if (value < VALUE_MIN && value > MENU_MAX) {
                 throw new IllegalArgumentException("테이블 번호는 0보다 커야합니다.");
             }
 
@@ -35,8 +36,8 @@ public class InputView {
             if (Objects.isNull(value)) {
                 throw new IllegalArgumentException("원하는 기능 번호는 'null'이 될 수 없습니다.");
             }
-            if (value < VALUE_MIN) {
-                throw new IllegalArgumentException("원하는 기능 번호는 0보다 커야합니다.");
+            if (value < VALUE_MIN && value > MENU_MAX) {
+                throw new IllegalArgumentException("원하는 기능 번호는 1~3 사이여야 합니다.");
             }
             return value;
         } catch (InputMismatchException e) {
