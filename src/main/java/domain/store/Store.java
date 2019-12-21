@@ -30,6 +30,52 @@ public class Store {
     }
 
     /**
+     * TodoNumber클래스는 주문/결제/종료를 선택하는 입력 구문에 대하여
+     * 원시 타입을 감싸 예외처리를 용이하게 하는 클래스이다.
+     */
+    private static class TodoNumber {
+        /**
+         * number는 TodoNumber가 감싸고 있는 값, 즉 동작 선택에 대한 입력값이다.
+         */
+        private final int number;
+
+        /**
+         * 생성자 메서드는 파라미터를 받아 검사하고, 문제가 없다면 내부값으로 할당한다.
+         * @param number 입력을 통해 넘어온 정수값이다.
+         */
+        public TodoNumber(int number) {
+            if (number < 1 || number > 3) {
+                throw new IllegalArgumentException("잘못된 값입니다.");
+            }
+            this.number = number;
+        }
+
+        /**
+         * isOrder는 만약 들어온 명령값이 주문이라면 true를, 아니면 false를 반환한다.
+         * @return 들어온 명령값이 주문인지 여부를 반환한다.
+         */
+        public boolean isOrder() {
+            return number == 1;
+        }
+
+        /**
+         * isPay는 만약 들어온 명령값이 결제라면 true를, 아니면 false를 반환한다.
+         * @return 들어온 명령값이 결제인지 여부를 반환한다.
+         */
+        public boolean isPay() {
+            return number == 2;
+        }
+
+        /**
+         * isEnd는 만약 들어온 명령값이 종료라면 true를, 아니면 false를 반환한다.
+         * @return 들어온 명령값이 종료인지 여부를 반환한다.
+         */
+        public boolean isEnd() {
+            return number == 3;
+        }
+    }
+
+    /**
      * 생성자 메서드이다.
      * 외부에서 호출되지 못하도록 보호된다.
      * 테이블 리스트와 메뉴 리스트를 생성해준다.
@@ -50,14 +96,15 @@ public class Store {
 
     /**
      * 주문, 결제, 종료 중 하나를 선택하는 입력값 todoNumber를 받는다.
+     *
      * @return 입력된 todoNumber값을 반환한다.
      */
-    private int getTodoNumber() {
-        final int todoNumber;
-        try{
-            todoNumber = InputView.inputTodoNumber();
-            checkTodoNumberException(todoNumber);
-        } catch (InputMismatchException e){
+    private TodoNumber getTodoNumber() {
+        TodoNumber todoNumber;
+        OutputView.printTodoChoices();
+        try {
+            todoNumber = new TodoNumber(InputView.inputTodoNumber());
+        } catch (IllegalArgumentException e) {
             System.out.println("잘못된 값입니다. 값을 다시 입력해주세요");
             return getTodoNumber();
         }
@@ -65,31 +112,22 @@ public class Store {
     }
 
     /**
-     * 입력된 todoNumber값에 대하여, 예외처리할 사항을 검사한다.
-     * @param todoNumber 입력된 숫자 todoNumber이다.
-     * @throws InputMismatchException 만약 입력값이 정해진 범위보다 크거나 작으면 예외처리시킨다.
-     */
-    private void checkTodoNumberException(int todoNumber){
-        if(todoNumber < 1 || todoNumber > 3){
-            throw new InputMismatchException("입력은 1,2,3만 가능합니다.");
-        }
-    }
-
-    /**
      * sales는 매장을 운영하는 메서드이다.
      * 이 메서드가 호출되면, 매장이 문을 닫을때까지 영업을 진행한다.
      */
     public void sales() {
-        int todoNumber;
+        TodoNumber todoNumber;
         while (true) {
             todoNumber = getTodoNumber();
-            if(todoNumber == 1){
+            if (todoNumber.isOrder()) {
                 //주문 로직
             }
-            if(todoNumber == 2){
+            if (todoNumber.isPay()) {
                 //결제 로직
             }
-            break;
+            if(todoNumber.isEnd()) {
+                break;
+            }
         }
     }
 }
