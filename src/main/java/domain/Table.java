@@ -29,10 +29,10 @@ public class Table {
         for (Map.Entry<Menu, Integer> order : orderMenu.entrySet()) {
             sum += order.getKey().getPrice() * order.getValue();
         }
-        return discount(sum);
+        return chickenDiscount(sum);
     }
 
-    public int discount(int sum) {
+    public int chickenDiscount(int sum) {
         int chicken = 0;
 
         for (Map.Entry<Menu, Integer> order : orderMenu.entrySet()) {
