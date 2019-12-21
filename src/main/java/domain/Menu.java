@@ -25,4 +25,8 @@ public class Menu {
     public Category getCategory(){
         return category;
     }
+
+    public int getPrice(){
+        return price;
+    }
 }
