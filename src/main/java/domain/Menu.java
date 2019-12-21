@@ -1,5 +1,11 @@
 package domain;
 
+/**
+ * Menu에 기본생성자를 추가할 수 없다.
+ * Menu의 필드(인스턴스변수)를 추가할 수 없다.
+ * 단,기존필드(인스턴스변수)의데이터타입은변경할수있다.
+ * 필드(인스턴스변수)의 접근제어자는 private으로 구현해야한다.
+ */
 public class Menu {
     private final int number;
     private final String name;

@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 데이터를 조회하는 DB역할을 한다.
+ * TableRepository의 기존코드는 수정할수없다.
+ * 단,추가는 가능하다.
+ */
 public class TableRepository {
     private static final List<Table> tables = new ArrayList<>();
 

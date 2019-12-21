@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 데이터를 조회하는 DB역할을 한다.
+ * MenuRepository의 기존코드는 수정할 수 없다.
+ * 단, 추가는 가능하다
+ */
 public class MenuRepository {
     private static final List<Menu> menus = new ArrayList<>();
 
