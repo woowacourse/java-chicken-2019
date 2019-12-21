@@ -20,6 +20,7 @@ public class InputView {
             if (value < VALUE_MIN) {
                 throw new IllegalArgumentException("테이블 번호는 0보다 커야합니다.");
             }
+
             return value;
         } catch (InputMismatchException e){
             throw new InputMismatchException("양의 정수의 숫자를 입력해야 합니다.");

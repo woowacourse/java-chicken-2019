@@ -6,10 +6,15 @@ import view.OutputView;
 import java.util.List;
 
 public class Pos {
-    public void pos() {
+    private static final int EXIT_CODE = 3;
+
+    public int pos() {
         OutputView.printMenu();
         final int inputMenu = InputView.inputMenu();
 
+        if (inputMenu == EXIT_CODE) {
+            return EXIT_CODE;
+        }
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables, TableRepository.getOrderCheck());
 
@@ -21,5 +26,6 @@ public class Pos {
 
         final int inputOrder = InputView.inputOrder();
         final int inputCount = InputView.inputCount();
+        return inputMenu;
     }
 }
