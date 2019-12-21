@@ -40,6 +40,13 @@ public class InputView {
         return tableNumber;
     }
 
+    public static int inputPaymentTableNumber() {
+        System.out.println("## 결제할 테이블을 선택하세요.");
+        int tableNumber = SCANNER.nextInt();
+        validatesTableNumber(tableNumber);
+        return tableNumber;
+    }
+
     private static void validatesTableNumber( int tableNumber ) {
         List<Integer> tableNumbers = TableRepository.tableValues();
         if (!tableNumbers.contains(tableNumber)) {
