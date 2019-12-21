@@ -3,7 +3,9 @@ package view;
 import domain.Menu;
 import domain.Table;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
@@ -55,5 +57,20 @@ public class OutputView {
 
     public static void printExit() {
         System.out.println("프로그램을 종료합니다.");
+    }
+
+    public static void printOrderHistory(Map<Menu, Integer> menus) {
+        System.out.println("## 주문 내역");
+        System.out.println("메뉴 수량 금액");
+
+        for (Menu menu : menus.keySet()) {
+            Integer price = calculatePrice(menu, menus.get(menu));
+            List<String> menuInfo = Arrays.asList(menu.getName(), menus.get(menu).toString(), price.toString());
+            System.out.println(String.join(" ", menuInfo));
+        }
+    }
+
+    private static Integer calculatePrice(Menu menu, Integer amount) {
+        return menu.getPrice() * amount;
     }
 }

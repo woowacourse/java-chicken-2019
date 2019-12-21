@@ -1,13 +1,18 @@
 package domain;
 
+import view.OutputView;
+
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Table {
     private final int number;
     private TableStatus tableStatus;
-    private List<Menu> menus = new ArrayList<>();
+
+    private Map<Menu, Integer> menus = new LinkedHashMap<>();
 
     public Table(final int number) {
         this.number = number;
@@ -22,12 +27,20 @@ public class Table {
     //todo: do other logic
     public void takeOrder(Menu menu) {
         //todo: refac
-        if (MenuConfig.MENU_LIMIT_NUM <= menus.size()) {
+        if (MenuConfig.MENU_LIMIT_NUM <= calculateMenuSize()) {
             throw new InvalidParameterException("더이상 메뉴를 추가할 수 없습니다.");
         }
 
         tableStatus = TableStatus.Registered;
         addMenu(menu);
+    }
+
+    private int calculateMenuSize() {
+        int size = 0;
+        for (Menu menu : menus.keySet()) {
+            size += menus.get(menu);
+        }
+        return size;
     }
 
     //todo: do other logic
@@ -37,10 +50,21 @@ public class Table {
 
     private void addMenu(Menu menu) {
         //todo: validation
-        menus.add(menu);
+        if (menus.get(menu) != null) {
+            menus.put(menu, menus.get(menu) + 1);
+            return;
+        }
+
+        menus.put(menu, 1);
+
+
     }
 
     public boolean isTarget(int tableNumber) {
         return number == tableNumber;
+    }
+
+    public void showOrderHistory() {
+        OutputView.printOrderHistory(menus);
     }
 }

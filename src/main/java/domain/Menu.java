@@ -21,4 +21,12 @@ public class Menu {
     public boolean isTarget(int menuNumber) {
         return number == menuNumber;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
 }

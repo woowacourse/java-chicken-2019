@@ -50,4 +50,15 @@ public class TableServiceImpl implements TableService {
         OutputView.printTables(tables);
 
     }
+
+    @Override
+    public void pay() {
+        showTables();
+
+        int tableNumber = InputView.inputTableNumber();
+        Table table = getTableByNumber(tableNumber);
+        table.showOrderHistory();
+
+
+    }
 }
