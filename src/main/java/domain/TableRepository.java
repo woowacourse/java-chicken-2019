@@ -31,4 +31,15 @@ public class TableRepository {
         }
         return false;
     }
+
+    public static Table getTable(int number) {
+        Iterator itr = tables.iterator();
+        while (itr.hasNext()) {
+            Table table = (Table) itr.next();
+            if (table.isSameNumber(number)) {
+                return table;
+            }
+        }
+        return null;
+    }
 }
