@@ -39,7 +39,7 @@ public class Application {
     }
 
     public static void order(List<Table> tables, List<Menu> menus) {
-        Table table = tableListingAndSelecting(tables);
+        Table table = tableListingAndSelectingForOrdering(tables);
         OutputView.printMenus(menus);
         while (true) {
             int menuNumber = InputView.inputMenuNumber();
@@ -53,7 +53,7 @@ public class Application {
         }
     }
 
-    public static Table tableListingAndSelecting(List<Table> tables) {
+    public static Table tableListingAndSelectingForOrdering(List<Table> tables) {
         while (true) {
             OutputView.printTables(tables);
             int tableNumber = InputView.inputTableNumberForOrder();
@@ -63,6 +63,17 @@ public class Application {
             }
             return selectTableWithNumber(tables, tableNumber);
         }
+    }
+
+    public static boolean isContainingSpecificTable(List<Table> tables, int number) {
+        boolean flag = false;
+        for (Table table: tables) {
+            if (table.getNumber()==number) {
+                flag = true;
+                break;
+            }
+        }
+        return flag;
     }
 
     public static Table selectTableWithNumber(List<Table> tables, int number) {
@@ -85,21 +96,9 @@ public class Application {
         return returnMenu;
     }
 
-    public static boolean isContainingSpecificTable(List<Table> tables, int number) {
-        boolean flag = false;
-        for (Table table: tables) {
-            if (table.getNumber()==number) {
-                flag = true;
-                break;
-            }
-        }
-        return flag;
-    }
 
     public static void pay(List<Table> tables) {
-        OutputView.printTables(tables);
-        int tableNumber = InputView.inputTableNumberForCharge();
-        Table table = selectTableWithNumber(tables, tableNumber);
+        Table table = tableListingAndSelectingForCharge(tables);
         OutputView.printMenusOrdered(table);
         table.quantityDiscount();
         OutputView.printPayment(table);
@@ -117,7 +116,20 @@ public class Application {
             }
             OutputView.printInvalidPaymentMethodInput();
         }
-
     }
+
+    public static Table tableListingAndSelectingForCharge(List<Table> tables) {
+        while (true) {
+            OutputView.printTables(tables);
+            int tableNumber = InputView.inputTableNumberForCharge();
+            if (!isContainingSpecificTable(tables, tableNumber)) {
+                OutputView.printInvalidTableNumber();
+                continue;
+            }
+            return selectTableWithNumber(tables, tableNumber);
+        }
+    }
+
+
 
 }
