@@ -20,7 +20,7 @@ public class TableRepository {
         return Collections.unmodifiableList(tables);
     }
     
-    public static void isExist(Table input) throws Exception {
+    public static void isNotExist(Table input) throws Exception {
     	if (!tables.stream()
     				.filter(table -> table.isSame(input))
     				.findFirst()

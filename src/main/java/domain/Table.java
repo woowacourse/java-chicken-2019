@@ -2,6 +2,7 @@ package domain;
 
 public class Table {
     private final int number;
+    private final Orders orders = new Orders();
 
     public Table(final int number) {
         this.number = number;

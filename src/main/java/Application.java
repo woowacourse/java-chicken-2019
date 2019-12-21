@@ -24,9 +24,6 @@ public class Application {
     		if (functionNumber.isTwo()) {
     			
     		}
-    	} while (!functionNumber.isThree());    
-
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+    	} while (!functionNumber.isThree());
     }
 }

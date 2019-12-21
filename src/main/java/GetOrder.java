@@ -1,5 +1,6 @@
 import java.util.List;
 
+import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
@@ -10,19 +11,10 @@ public class GetOrder {
 	
 	public void run() {
 		selectTable();
+		OutputView.printMenus(MenuRepository.menus());
 	}
 	
 	public void selectTable() {
-		Table table;
-		
-		try {
-			OutputView.printTables(tables);
-			final int tableNumber = InputView.inputTableNumber();
-			table = new Table(tableNumber);
-			TableRepository.isExist(table);
-		} catch (Exception e) {
-			System.out.println(e);
-			selectTable();
-		}
+		int number = InputView.inputTableNumber();
 	}
 }

@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import domain.FunctionNumber;
 import domain.Table;
+import domain.TableRepository;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
@@ -21,9 +22,13 @@ public class InputView {
 
     public static int inputTableNumber() {
 		try {
+			OutputView.printTables(TableRepository.tables());
 			System.out.println("## 주문할 테이블을 선택하세요.");
-			return Integer.parseInt(scanner.nextLine());
-		} catch (IllegalArgumentException e) {
+			final int tableNumber = Integer.parseInt(scanner.nextLine());;
+			Table table = new Table(tableNumber);
+			TableRepository.isNotExist(table);
+			return tableNumber;
+		} catch (Exception e) {
 			System.out.println(e);
 			return inputTableNumber();
 		}
