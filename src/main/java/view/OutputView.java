@@ -3,7 +3,9 @@ package view;
 import domain.Menu;
 import domain.Table;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
@@ -47,5 +49,15 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+
+    public static void printOrderMenus(final List<Table> tables, final List<Menu> menus, final int tableNumber) {
+        HashMap<Menu, Integer> orderMenu = tables.get(tableNumber).getOrderMenu();
+
+        System.out.println("## 주문 내역");
+        System.out.println("메뉴 수량 금액");
+        for (Map.Entry<Menu, Integer> order : orderMenu.entrySet()) {
+            System.out.println(order.getKey().getName() + " " + order.getValue() + " " + order.getKey().getPrice());
+        }
     }
 }
