@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Application {
     final static int REGISTER_ORDER = 1;
+    final static int MATCH_INDEX_WITH_INPUT = 1;
     final static int PAYMENT = 2;
     final static int EXIT = 3;
 
@@ -19,22 +20,22 @@ public class Application {
     }
 
     private static void run(List<Table> tables, List<Menu> menus) {
-        while(true) {
+        while (true) {
             int mainMenu = InputView.inputMainMenu();
             runMenu(tables, menus, mainMenu);
         }
     }
 
     private static void runMenu(List<Table> tables, List<Menu> menus, int mainMenu) {
-        if(isOrder(mainMenu)) {
+        if (isOrder(mainMenu)) {
             order(tables, menus);
         }
 
-        if(isPayment(mainMenu)) {
+        if (isPayment(mainMenu)) {
             payment(tables);
         }
 
-        if(isExit(mainMenu)) {
+        if (isExit(mainMenu)) {
             OutputView.printProgramExit();
         }
     }
@@ -53,11 +54,14 @@ public class Application {
 
     private static void order(List<Table> tables, List<Menu> menus) {
         OutputView.printTables(tables);
+
         final int tableNumber = InputView.inputTableNumber();
         OutputView.printMenus(menus);
+
         int menuNumber = InputView.inputMenuNumber();
         int menuHowMany = InputView.inputHowManyMenu();
-        tables.get(tableNumber).getOrder(menus.get(menuNumber), menuHowMany);
+        tables.get(tableNumber - MATCH_INDEX_WITH_INPUT)
+                .getOrder(menus.get(menuNumber - MATCH_INDEX_WITH_INPUT), menuHowMany);
     }
 
 

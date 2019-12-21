@@ -1,8 +1,6 @@
 package domain;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -10,8 +8,12 @@ import java.util.Map;
  * 필드(인스턴스변수)의 접근제어자는 private으로 구현해야한다.
  */
 public class Table {
-    private final int number;
+    final static int UNORDERED = 0;
+
     private Map<Menu, Integer> order;
+
+    private final int number;
+
 
     public Table(final int number) {
         this.number = number;
@@ -24,6 +26,10 @@ public class Table {
 
     public void getOrder(Menu menu, int menuHowMany) {
         order.put(menu, menuHowMany);
+    }
+
+    public boolean isOrdered() {
+        return order.size() != UNORDERED;
     }
 
     @Override
