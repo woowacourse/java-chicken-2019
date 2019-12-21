@@ -31,7 +31,7 @@ public class Pos {
     getMenuNumberList();
 
     orderProcess = new OrderProcess(tables, menus, tableNumbers, menuNumbers);
-    payProcess = new PayProcess(tables, menus, tableNumbers, menuNumbers);
+    payProcess = new PayProcess(tables, tableNumbers);
   }
 
 
@@ -71,19 +71,17 @@ public class Pos {
         return;
       }
       endPos();
-      return;
 
     } catch (Exception e) {
       System.out.println(e.getMessage());
-      return;
     }
   }
 
-  private void endPos(){
+  private void endPos() {
     try {
       validateEnd();
       OutputView.printEndPos();
-    }catch (Exception e){
+    } catch (Exception e) {
       System.out.println(e.getMessage());
       start();
       return;

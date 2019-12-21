@@ -49,25 +49,25 @@ public class Table {
     return result;
   }
 
-  public int getChickenAmount(){
+  public int getChickenAmount() {
     int amount = 0;
-    for(Menu menu : order.keySet()){
-      if(menu.getCategoryName().equals(CHICKEN)){
+    for (Menu menu : order.keySet()) {
+      if (menu.getCategoryName().equals(CHICKEN)) {
         amount += order.get(menu);
       }
     }
     return amount;
   }
 
-  public int getAllPrice(){
+  public int getAllPrice() {
     int price = 0;
-    for(Menu menu : order.keySet()){
-      price += (menu.getPrice()*order.get(menu));
+    for (Menu menu : order.keySet()) {
+      price += (menu.getPrice() * order.get(menu));
     }
     return price;
   }
 
-  public void pay(){
+  public void pay() {
     order.clear();
   }
 

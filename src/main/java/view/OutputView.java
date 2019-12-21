@@ -34,7 +34,7 @@ public class OutputView {
       System.out.println(table.getOrderResult());
   }
 
-  public static void printBottomLine(List<Table> tables) {
+  private static void printBottomLine(List<Table> tables) {
     for (Table table : tables) {
       if (table.hasOrdered()) {
         System.out.print(ORDERED_BOTTOM_LINE);

@@ -15,16 +15,11 @@ public class PayProcess {
   private final int NINETY_FIVE = 95;
 
   private final List<Table> tables;
-  private final List<Menu> menus;
   private final HashMap<Integer, Integer> tableNumbers;
-  private final HashMap<Integer, Integer> menuNumbers;
 
-  public PayProcess(List<Table> tables, List<Menu> menus, HashMap<Integer, Integer> tableNumbers,
-      HashMap<Integer, Integer> menuNumbers) {
+  public PayProcess(List<Table> tables, HashMap<Integer, Integer> tableNumbers) {
     this.tables = tables;
-    this.menus = menus;
     this.tableNumbers = tableNumbers;
-    this.menuNumbers = menuNumbers;
   }
 
   private Table getTable(int tableNumber) {
