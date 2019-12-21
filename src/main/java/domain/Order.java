@@ -13,7 +13,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return menu.toString();
+        return menu.getName() + " " + quantity + " " + this.totalPrice();
     }
 
     public boolean orderCheck(int number) {

@@ -69,7 +69,7 @@
 
 ### Class 구성
 
-1. Apllication Class
+1. Application Class
     - main()을 실행해 프로그램 시작
     - main()에서 구현 시작
     
@@ -114,5 +114,5 @@
 11. Order
     - 주문한 내역 객체
 
-12. OrderRepository
-    - 모든 주문 내역 집합소
+12. Calculator Class
+    - 결제 금액 계산
