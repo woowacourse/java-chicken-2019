@@ -26,7 +26,7 @@ public class OutputView {
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printOrderedLine(BOTTOM_LINE, size, tableNumber);
+        printOrderedLine(BOTTOM_LINE, size, tables, tableNumber);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -42,9 +42,9 @@ public class OutputView {
         System.out.println();
     }
 
-    private static void printOrderedLine(final String line, final int count, int tableNumber) {
+    private static void printOrderedLine(final String line, final int count, List<Table> tables, int tableNumber) {
         for (int index = 0; index < count; index++) {
-            if (tableNumber == index + 1) {
+            if (tables.get(index).isMatchNumber(tableNumber)) {
                 System.out.print(ORDERED_BOTTOM_LINE);
                 continue;
             }
@@ -57,7 +57,7 @@ public class OutputView {
         for (final Table table : tables) {
             System.out.printf(TABLE_FORMAT, table);
         }
-        System.out.println(NEW_LINE);
+        System.out.println();
     }
 
     public static void printOrderList(String orderList) {
