@@ -10,13 +10,13 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public static int inputMainFunctionNumber() {
+    public static int inputFunctionNumber() {
         try {
             System.out.println("## 원하는 기능을 선택하세요.");
             return scanner.nextInt();
         } catch (NumberFormatException e) {
             System.out.println("숫자만 입력해주세요.");
-            return inputMainFunctionNumber();
+            return inputFunctionNumber();
         }
     }
 }
