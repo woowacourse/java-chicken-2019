@@ -29,4 +29,8 @@ public class InputUtil {
 	public static MenuCount checkMenuCount(String menuCountInput) {
 		return new MenuCount(menuCountInput);
 	}
+
+	public static CardOrCash checkPayMethod(String payMethodInput) {
+		return new CardOrCash(payMethodInput);
+	}
 }

@@ -98,6 +98,20 @@ public class Application {
 			.filter(t -> t.getNumber() == tableNumber)
 			.findFirst().get().getMenus();
 		TotalOrder totalOrder = OutputUtil.getOrderedList(orderedMenus);
+
 		OutputView.printOrderedList(totalOrder.toString());
+		int payMethod = getPayMethod();
+	}
+
+	private static int getPayMethod() {
+		int payMethod;
+
+		try {
+			payMethod = InputUtil.checkPayMethod(InputView.inputPayMethod()).getValue();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+			return getPayMethod();
+		}
+		return payMethod;
 	}
 }
