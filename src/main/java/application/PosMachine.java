@@ -1,8 +1,5 @@
 package application;
 
-import java.util.List;
-
-import domain.Table;
 import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
@@ -50,7 +47,8 @@ public class PosMachine {
 	
 	private void getPaid(TableNumber tableNum) {
 		OutputView.printOrders(tables.tableAt(tableNum).getOrders());
-		OutputView.printFinalPrice(tables.tableAt(tableNum).getOrders().calculateFinalPrice(InputView.enterCacheOrCard(tableNum.getValue())));
+		OutputView.printFinalPrice(tables.tableAt(tableNum).getOrders()
+				.calculateFinalPrice(InputView.enterCacheOrCard(tableNum.getValue())));
 		turnOn();
 	}
 }

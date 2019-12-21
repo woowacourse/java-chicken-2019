@@ -74,11 +74,4 @@ public class OrderStorage {
 			.sum();
 		return (chikenAmount / CHIKEN_DISCOUNT_THRESHOLD) * CHIKEN_DISCOUNT_MONEY;
 	}
-	
-	//테스트용
-	public void showOrders() {
-		for(Order order:orders) {
-			System.out.println("메뉴번호: " + order.getNum() + "양: " + order.getAmount());
-		}
-	}
 }
