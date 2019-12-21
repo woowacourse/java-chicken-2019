@@ -11,8 +11,28 @@ public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
+        int menuSelect = mainMenuSelecter();
 
+        while(menuSelect != 3) {
+            checkMenuSelect(menuSelect, tables);
+            menuSelect = mainMenuSelecter();
+        }
+    }
+    
+    public static int mainMenuSelecter() {
         final int mainNumber = InputView.inputMainNumber();
+        return mainNumber;
+    }
+
+    public static void checkMenuSelect(final int mainMenu, final List<Table> tables) {
+        if (mainMenu == 1) {
+            orderNow(tables);
+        } else if (mainMenu == 2) {
+            payNow(tables);
+        }
+    }
+
+    public static void orderNow(final List<Table> tables) {
 
         OutputView.printTables(tables);
 
@@ -21,4 +41,11 @@ public class Application {
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
     }
+
+    public static void payNow(final List<Table> tables) {
+        OutputView.printTables(tables);
+
+        final int tableNumber = InputView.inputTableNumber();
+    }
+
 }
