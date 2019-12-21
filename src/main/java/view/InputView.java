@@ -7,7 +7,11 @@ public class InputView {
 
     public static int inputCommand() {
         System.out.println("## 원하는 기능을 선택하세요.");
-        return scanner.nextInt();
+        int command = scanner.nextInt();
+        if(command != 1 && command != 2 &&command != 3) {
+        	throw new IllegalArgumentException("1,2,3이외의 수는 입력할 수 없습니다");
+        }
+        return command;
     }
 
     public static int inputTableNumber() {
