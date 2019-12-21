@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 import domain.Menu;
 import domain.MenuRepository;
+import domain.Order;
 import domain.Payment;
 import domain.PaymentFactory;
 import domain.Table;
+import domain.TableOrder;
 import domain.TableRepository;
 import flow.ChickenFunction;
 import flow.FunctionFactory;
@@ -27,7 +29,7 @@ public class InputView {
 
     public static Table inputTable() {
         try {
-            System.out.println("## 주문할 테이블을 선택하세요.");
+            System.out.println("## 테이블을 선택하세요.");
             int data = inputInt();
             return TableRepository.getTableByNumber(data);
         } catch (IllegalArgumentException ex) {
@@ -35,26 +37,34 @@ public class InputView {
             return inputTable();
         }
     }
-    public static Menu inputMenu() {
+
+    public static Order inputOrderIn(TableOrder tableOrder) {
+        Menu menu = InputView.inputMenu(tableOrder);            // 올바른 코드 아니거나 이미 99개 이상 주문한 경우 빽
+        int menuQuantity = InputView.inputMenuQuantity(menu, tableOrder);       //해당 메뉴가 99개 이상 주문 한 경우 빽
+        return new Order(menu, menuQuantity);
+    }
+
+    private static Menu inputMenu(TableOrder tableOrder) {
         try {
             System.out.println("## 등록할 메뉴를 선택하세요.");
-            int data = inputInt();
-            return MenuRepository.getMenuByNumber(data);
+            Menu menu = MenuRepository.getMenuByNumber(inputInt());
+            ValidateUtil.validateMenu(menu, tableOrder);
+            return menu;
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            return inputMenu();
+            return inputMenu(tableOrder);
         }
     }
 
-    public static int inputMenuQuantity() {
+    private static int inputMenuQuantity(Menu menu, TableOrder tableOrder) {
         try {
             System.out.println("## 메뉴의 수량을 입력하세요.");
             int data = inputInt();
-            ValidateUtil.validateMenuQuantity(data);
+            ValidateUtil.validateMenuQuantity(data, menu, tableOrder);
             return data;
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            return inputMenuQuantity();
+            return inputMenuQuantity(menu, tableOrder);
         }
     }
 

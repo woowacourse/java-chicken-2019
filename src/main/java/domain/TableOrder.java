@@ -1,6 +1,8 @@
 package domain;
 
 public class TableOrder {
+	private static final int MAX_ORDER_COUNT_PER_MENU = 99;
+
 	private final Table table;
 	private final Orders orders = new Orders();
 
@@ -22,5 +24,9 @@ public class TableOrder {
 
 	public Cost getAllOriginCost() {
 		return orders.getAllCost();
+	}
+
+	public boolean isAbleToOrderMenu(Menu menu, int additionalQuantity) {
+		return orders.isAbleToOrderMenu(menu, additionalQuantity);
 	}
 }

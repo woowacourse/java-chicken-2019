@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Orders {
+	private static final int MAX_ORDER_COUNT = 99;
+
 	private final List<Order> orders = new ArrayList<>();
 
 	public void add(Order order) {
@@ -23,5 +25,17 @@ public class Orders {
 			cost = cost.add(order.getCost());
 		}
 		return cost;
+	}
+
+	public boolean isAbleToOrderMenu(Menu menu, int additionalQuantity) {
+		int alreadyOrderedMenuCount = calculateAlreadyOrderedMenuCount(menu);
+		return alreadyOrderedMenuCount + additionalQuantity <= MAX_ORDER_COUNT;
+	}
+
+	private int calculateAlreadyOrderedMenuCount(Menu menu) {
+		return orders.stream()
+			.filter(order -> order.isEqualMenu(menu))
+			.mapToInt(Order::getQuantity)
+			.sum();
 	}
 }

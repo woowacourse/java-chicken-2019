@@ -8,6 +8,7 @@ import domain.Table;
 import domain.TableOrder;
 import domain.TableRepository;
 import domain.TotalOrders;
+import flow.ChickenFunction;
 import view.InputView;
 import view.OutputView;
 
@@ -23,16 +24,16 @@ public class Application {
         while (inputCode != 3) {
             // 주문의 경우
             OutputView.printInitialFunction();
-            inputCode = InputView.inputFunctionId(); // 이거에 따라서 기능 구현하는 인터페이스 만들어야 겠다.  // 주문
-
+            ChickenFunction chickenFunction = InputView.inputFunction();
+            chickenFunction.run();
             OutputView.printTables(tables);
-            final Table table = InputView.inputTable();
+            final Table table = InputView.inputTable();     //여기는 잘 된다.
 
             OutputView.printMenus(menus);
-            Menu menu = InputView.inputMenu();
-            int menuQuantity = InputView.inputMenuQuantity();
+            TableOrder tableOrder2 = totalOrders.getTableOrderByTable(table);
+            Order order = InputView.inputOrderIn(tableOrder2);
 
-            Order order = new Order(menu, menuQuantity);
+
 
             totalOrders.addOrder(table, order);
             // 이러고 다시 선택화면으로 돌아간다.
