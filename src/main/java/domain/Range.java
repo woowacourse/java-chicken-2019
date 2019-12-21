@@ -1,8 +1,8 @@
 package domain;
 
-/*
- * 범위를 나타내는 클래스
- * */
+/**
+ * 정수 범위를 나타내는 클래스
+ */
 public final class Range {
     private static final String MSG_RANGE_ERROR = "end는 begin보다 큰 값이어야 합니다.";
     private final int begin;

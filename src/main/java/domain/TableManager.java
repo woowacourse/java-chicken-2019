@@ -4,7 +4,6 @@ import util.InputValidator;
 import view.InputView;
 import view.OutputView;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -48,6 +47,6 @@ public class TableManager {
             OutputView.printTableSelectFail();
             tableNumber = inputTableNumber();
         }
-        System.out.println(Arrays.toString(tableStatus));
+        selectTable(tableNumber);
     }
 }

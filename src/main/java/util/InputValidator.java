@@ -6,6 +6,16 @@ import view.OutputView;
 public class InputValidator {
     private static final int DEFAULT_MIN = 0;
 
+    public static boolean isNumber(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            OutputView.printNumberError();
+            return false;
+        }
+    }
+
     public static boolean isNumberInRange(String input, int begin, int end) {
         try {
             int inputNumber = Integer.parseInt(input);
