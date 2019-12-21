@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Table {
+	private static final String PAYMENT_ERROR = "주문이 존재하지 않습니다.";
+
 	private final int number;
 	private final List<Order> orders = new ArrayList<>();
 
@@ -38,6 +40,9 @@ public class Table {
 	}
 
 	public Receipt payment(PaymentType paymentType) {
+		if (!hasOrder()) {
+			throw new IllegalStateException(PAYMENT_ERROR);
+		}
 		int price = orders.stream().mapToInt(Order::realPrice).sum();
 		orders.clear();
 		return new Receipt(price, paymentType);
