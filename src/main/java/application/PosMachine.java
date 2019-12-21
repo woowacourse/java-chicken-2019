@@ -14,25 +14,43 @@ public class PosMachine {
 	
 	public PosMachine() {};
 	
-	public void oneCycle () {
-		OutputView.showMain();
-		OneTwoThree oneTwoThree = new OneTwoThree();
-		oneTwoThree.enterOneTwoThree();
+	public void turnOn() {
+		OneTwoThree oneTwoThree = chooseApplication();
 		if (oneTwoThree.isTerminate()) {
 			return;
 		}
+		TableNumber tableNum = getTableNum();
+		if (oneTwoThree.isGetOrder()) {
+			getOrder(tableNum);
+		}
+		if (oneTwoThree.isPay()) {
+			getPaid(tableNum);
+		}
+	}
+	
+	private OneTwoThree chooseApplication() {
+		OutputView.showMain();
+		OneTwoThree oneTwoThree = new OneTwoThree();
+		oneTwoThree.enterOneTwoThree();
+		return oneTwoThree;
+	}
+	
+	private TableNumber getTableNum() {
 		OutputView.printTables(tables.tables());
 		TableNumber tableNum = new TableNumber();
 		tableNum.enterNum();
-		if (oneTwoThree.isGetOrder()) {
-			OutputView.printMenus(MenuRepository.menus());
-			tables.enterOrderAt(tableNum);
-			oneCycle();
-		}
-		if (oneTwoThree.isPay()) {
-			OutputView.printOrders(tables.tableAt(tableNum).getOrders());
-			OutputView.printFinalPrice(tables.tableAt(tableNum).getOrders().calculateFinalPrice(InputView.enterCacheOrCard(tableNum.getValue())));
-			oneCycle();
-		}
+		return tableNum;
+	}
+	
+	private void getOrder(TableNumber tableNum) {
+		OutputView.printMenus(MenuRepository.menus());
+		tables.enterOrderAt(tableNum);
+		turnOn();
+	}
+	
+	private void getPaid(TableNumber tableNum) {
+		OutputView.printOrders(tables.tableAt(tableNum).getOrders());
+		OutputView.printFinalPrice(tables.tableAt(tableNum).getOrders().calculateFinalPrice(InputView.enterCacheOrCard(tableNum.getValue())));
+		turnOn();
 	}
 }
