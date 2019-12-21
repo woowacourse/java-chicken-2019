@@ -31,4 +31,9 @@ public class InputView {
     return inputNumber();
   }
 
+  public static int inputAmount(){
+    System.out.println("## 메뉴의 수량을 입력하세요.");
+    return inputNumber();
+  }
+
 }

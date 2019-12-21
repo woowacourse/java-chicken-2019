@@ -1,6 +1,5 @@
 package domain;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import view.InputView;
@@ -38,7 +37,40 @@ public class Order {
     final int tableNumber = getTableNumber();
     final int menuNumber = getMenuNumber();
 
+    final int amount = getAmount(getTable(tableNumber), getMenu(menuNumber));
 
+  }
+
+  private Table getTable(int tableNumber){
+    return this.tables.get(this.tableNumbers.get(tableNumber));
+  }
+
+  private Menu getMenu(int menuNumber){
+    return this.menus.get(this.menuNumbers.get(menuNumber));
+  }
+
+
+
+  private int getAmount(Table table, Menu menu){
+    return InputView.inputAmount();
+  }
+
+  private void isInRange(Table table, Menu menu, int amount) throws Exception {
+    if(amount < 0 || amount > 99){
+      throw new Exception("수량은 1이상 99 이하로 입력해주세요.");
+    }
+    //todo
+    //테이블에 해당 메뉴 99개 이상인지 확인
+  }
+
+  private int validateAmount(Table table, Menu menu, int amount){
+    try {
+      isInRange(table, menu, amount);
+      return amount;
+    }catch (Exception e){
+      System.out.println(e.getMessage());
+      return getAmount(table,menu);
+    }
   }
 
   private int getMenuNumber() {
