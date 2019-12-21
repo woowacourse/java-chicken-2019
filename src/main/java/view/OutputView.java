@@ -62,16 +62,14 @@ public class OutputView {
     }
 
     public static void printTableOrderedList(final Map<String, List<Menu>> menuAmount) {
+        System.out.println("메뉴\t수량 금액");
+
         String amountMenu = menuAmount.keySet().stream()
                 .map(x -> x + " " + menuAmount.get(x).size() + " "
                         + Objects.requireNonNull(menuAmount.get(x).stream().findAny().orElse(null)).getPrice())
                 .collect(Collectors.joining("\n"));
 
         System.out.println(amountMenu);
-    }
-
-    public static void printTablePrices(final Table table) {
-        System.out.println(table.allPrices());
     }
 
     public static void showSelectTableAsOrder() {
