@@ -1,5 +1,6 @@
 package view;
 
+import domain.Main;
 import domain.Menu;
 import domain.Table;
 
@@ -9,6 +10,11 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+
+    public static void printMains(final List<Main> mains) {
+        System.out.println("## 메인화면");
+        mains.stream().forEach(main -> System.out.println(main.toString()));
+    }
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");

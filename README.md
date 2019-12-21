@@ -79,26 +79,32 @@
     - 출력하는 모든 UI 처리
     
 4. Category Class
+
+5. Main Class
+    - 메인 입력 값 객체
     
-5. Menu Class
+6. MainRepository
+    - 모든 메인 입력값(1, 2, 3) 집합소
+
+7. Menu Class
     - 각 메뉴 객체
     - 기본생성자 추가 불가
     - 필드 추가 불가
         - 기존 필드 데이터 타입 변경 가능
     - 필드의 접근 제어자는 private으로만 해야 함
    
-6. MenuRepository Class
+8. MenuRepository Class
     - 모든 메뉴 집합소
     - 데이터 조회 DB 역할
     - 코드 수정 불가
         - 단, 추가 가능
     
-7. Table Class
+9. Table Class
     - 각 테이블 객체
     - 기본생성자 추가 불가
     - 접근 제어자 private
     
-8. TableRepository
+10. TableRepository
     - 모든 테이블 집합소
     - 데이터 조회 DB 역할
     - 코드 수정 불가
