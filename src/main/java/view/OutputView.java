@@ -60,8 +60,10 @@ public class OutputView {
     }
 
     public static void printOrderList(List<Order> orderList) {
+        System.out.println("\n## 주문 내역 \n메뉴 수량 금액");
         for (Order order : orderList) {
             System.out.println(order);
         }
+        System.out.println();
     }
 }

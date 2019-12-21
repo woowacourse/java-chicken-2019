@@ -26,12 +26,12 @@ public class Application {
             // 주문 등록 로직
             if (posChoice == Choice.ORDER) {
                 OutputView.printTables(tables, currentTableNumber);
-                final int tableNumber = validateTableNumber();
+                final int tableNumber = validateTableNumber(); // currentTable 변동 불가 추가
                 currentTableNumber = tableNumber;
                 OutputView.printMenus(menus);
                 int foodNumber = validateFoodNumber(menus);
                 Menu selectedMenu = menus.stream().filter(m -> m.isMatchNumber(foodNumber)).findAny().get();
-                orderList.add(new Order(selectedMenu, validateFoodCount()));
+                addToOrderList(orderList, selectedMenu, validateFoodCount());
             }
 
             // 결제 로직
@@ -39,10 +39,22 @@ public class Application {
                 OutputView.printTables(tables, currentTableNumber);
                 final int tableNumber = validatePayableTableNumber(currentTableNumber);
                 System.out.println(tableNumber);
+                OutputView.printOrderList(orderList);
             }
-            OutputView.printOrderList(orderList);
         } while(posChoice != Choice.EXIT);
 
+    }
+
+    private static void addToOrderList(List<Order> orderList, Menu menu, int foodCount) {
+        if (orderList.stream().anyMatch(order -> order.isEqualMenu(menu))){
+            orderList.stream()
+                    .filter(order -> order.isEqualMenu(menu))
+                    .findAny()
+                    .get()
+                    .increaseFoodCount(foodCount);
+            return;
+        }
+        orderList.add(new Order(menu, foodCount));
     }
 
     private static int validatePayableTableNumber(int currentTableNumber) {
