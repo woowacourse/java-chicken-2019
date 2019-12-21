@@ -1,5 +1,8 @@
 package domain;
 
+import sun.tools.jconsole.Tab;
+import view.OutputView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,5 +21,15 @@ public class TableRepository {
 
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
+    }
+
+    public static boolean contain(int tableNumber) {
+        for (Table table : tables()) {
+            if (table.isThisNumber(tableNumber)){
+                return true;
+            }
+        }
+        OutputView.printNotExistTableNumber();
+        return false;
     }
 }
