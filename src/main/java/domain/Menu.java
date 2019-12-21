@@ -19,7 +19,7 @@ public class Menu {
     }
 
     public Boolean isItInt(Integer input) {
-        if (this.name.equals(input)) {
+        if (this.number == input) {
             return true;
         }
         return false;
