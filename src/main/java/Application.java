@@ -40,6 +40,11 @@ public class Application {
 
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
+
+        final int orderMenu = InputView.selectOrderMenu();
+        final int orderCount = InputView.selectCountMenu();
+
+        tables.get(tableNumber).addMenu(orderMenu, orderCount);
     }
 
     public static void payNow(final List<Table> tables) {
