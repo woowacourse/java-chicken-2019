@@ -31,12 +31,22 @@ public class InputView {
     public void inputMenu(final List<Menu> menus){
         //주문함수(inputMenuNumber(final List<Menu> menus),inputMenuCount)
         inputMenuNumber(menus);
+        inputMenuCount();
     }
 
     public int inputMenuNumber(final List<Menu> menus){
         System.out.println("등록할 메뉴를 선택하세요");
         String userInput = scanner.next();
         while (new Check().isInputMenuNumberError(userInput,menus)){
+            userInput = scanner.next();
+        }
+        return Integer.parseInt(userInput);
+    }
+
+    public int inputMenuCount(){
+        System.out.println("메뉴의 수량을 입력하세요");
+        String userInput = scanner.next();
+        while (new Check().isInputMenuCountError(userInput)){
             userInput = scanner.next();
         }
         return Integer.parseInt(userInput);

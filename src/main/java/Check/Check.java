@@ -9,6 +9,8 @@ import java.util.List;
 public class Check {
     private static final int FUNCTION_MIN = 1;
     private static final int FUNCTION_MAX = 3;
+    private static final int MENU_COUNT_MIN = 1;
+    private static final int MENU_COUNT_MAX = 99;
     private ArrayList<Boolean> checkList = new ArrayList<Boolean>();
 
     /**
@@ -76,6 +78,23 @@ public class Check {
             }
         }
         System.out.println("없는 메뉴입니다. 다시 입력하세요.");
+        return false;
+    }
+
+    public Boolean isInputMenuCountError(String number){
+        checkList.add(isInt(number));
+        if (checkList.contains(false)) {
+            return true;
+        }
+        checkList.add(isNinetyNineOrLess(number));
+        return checkList.contains(false);
+    }
+
+    public Boolean isNinetyNineOrLess(String number){
+        if (Integer.parseInt(number) <= MENU_COUNT_MAX && Integer.parseInt(number) >= MENU_COUNT_MIN) {
+            return true;
+        }
+        System.out.println("1 이상 99 이하의 수만 입력 가능합니다.");
         return false;
     }
 }
