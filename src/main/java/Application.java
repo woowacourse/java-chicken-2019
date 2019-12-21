@@ -46,6 +46,12 @@ public class Application {
                     break;
                 }
 
+                for(int i = 0 ; i < menuCount ; i++){
+                    tables.get(tableNumber).addMenu(MenuRepository.getMenu(menuNumber));
+                }
+
+
+
 
 
             }
