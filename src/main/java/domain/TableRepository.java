@@ -19,4 +19,13 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static Table getTable(int tableNumber) {
+        for (Table table : tables) {
+            if (table.isNumber(tableNumber)) {
+                return table;
+            }
+        }
+        return null;
+    }
 }

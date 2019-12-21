@@ -14,6 +14,10 @@ public class Application {
         OutputView.printTables(tables);
 
         final int tableNumber = InputView.inputTableNumber();
+        Table orderedTable = new Table(tableNumber);
+
+        TableDeck deck = new TableDeck();
+        deck.pop(orderedTable);
 
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);

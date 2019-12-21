@@ -13,8 +13,8 @@ public class Menu {
         this.price = price;
     }
 
-    public boolean isNumber(int number) {
-        return this.number == number;
+    public boolean isNumber(int menuNumber) {
+        return this.number == menuNumber;
     }
 
     @Override

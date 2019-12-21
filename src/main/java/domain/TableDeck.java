@@ -10,7 +10,8 @@ public class TableDeck {
         this.tables = new ArrayList<>(TableRepository.tables());
     }
 
-    public Table pop() {
-        return tables.remove(0);
+    public Table pop(Table table) {
+        tables.remove(table);
+        return table;
     }
 }
