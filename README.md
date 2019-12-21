@@ -20,6 +20,7 @@
 ###### selectPosMenu 메소드 : 첫 메인 화면 포스기의 원하는 기능을 선택하면, 선택한 옵션의 기능을 수행하도록 해준다.
 ###### selectTable 메소드 : 원하는 테이블을 선택할 수 있게 해주는 출력이 뜨도록 한다.
 ###### selectOneOption, selectTweOption, selectThreeOption 메소드 : 각 옵션 별로 다르게 실행되도록 한다.
+###### putTableRealNumber 메소드 : tableRealNumber 는 각 테이블을 연속된 숫자들로 호출하기 위해 만들었다. 각 테이블의 번호를 연속된 숫자들로 재배치 해주는 메소드
 
 ### Table Class
 ##### 테이블별로 어떤 메뉴를 시켰는지 저장하기 위해서, 총 시킨 음식 가격 등의 필드를 만든다.
