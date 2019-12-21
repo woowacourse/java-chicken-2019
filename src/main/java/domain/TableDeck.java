@@ -10,8 +10,19 @@ public class TableDeck {
         this.tables = new ArrayList<>(TableRepository.tables());
     }
 
-    public Table pop(Table table) {
-        tables.remove(table);
-        return table;
+    public void add(Table table) {
+        tables.add(table);
+    }
+
+    public void pop(int tableNumber) {
+        tables.removeIf(table -> table.isNumber(tableNumber));
+    }
+
+    public boolean isTaken(Table table) {
+        return !tables.contains(table);
+    }
+
+    public List<Table> getTables() {
+        return tables;
     }
 }

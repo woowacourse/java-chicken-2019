@@ -10,14 +10,15 @@ public class Application {
         OutputView.printFunctions();
         final int functionNumber = InputView.inputFunctionNumber();
 
+        TableDeck deck = new TableDeck();
+
         final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
+        OutputView.printTables(tables, deck);
 
         final int tableNumber = InputView.inputTableNumber();
         Table orderedTable = new Table(tableNumber);
-
-        TableDeck deck = new TableDeck();
-        deck.pop(orderedTable);
+        deck.pop(tableNumber);
+        OutputView.printTables(tables, deck);
 
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
