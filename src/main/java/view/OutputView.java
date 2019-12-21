@@ -75,7 +75,7 @@ public class OutputView {
 
     public static void printMoney(final List<Table> tables, final int tableNumber) {
         System.out.println("## 최종 결제할 금액");
-        System.out.println(tables.get(tableNumber).getMoney() + "원");
+        System.out.println(tables.get(tableNumber).getTotalMoney() + "원");
         System.out.println();
     }
 }
