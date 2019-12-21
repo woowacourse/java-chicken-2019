@@ -9,6 +9,10 @@ public class Table {
         shoppingBasket = new ShoppingBasket();
     }
 
+    public boolean isEmpty() {
+        return shoppingBasket.isEmpty();
+    }
+
     public void clear() {
         shoppingBasket.clear();
     }

@@ -27,6 +27,10 @@ public class ShoppingBasket {
         orderQueue.clear();
     }
 
+    public boolean isEmpty() {
+        return orderQueue.isEmpty();
+    }
+
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("메뉴 수량 금액\n");

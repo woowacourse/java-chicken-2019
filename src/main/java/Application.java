@@ -47,6 +47,10 @@ public class Application {
         return InputView.inputMenuNumber();
     }
 
+    public static int SelectAmount() {
+        return InputView.inputAmount();
+    }
+
     public static void pay() {
     }
 

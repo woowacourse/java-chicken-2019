@@ -10,6 +10,7 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BOTTOM_LINE_2 = "└ ! ┘";
 
     public static void printActions(final List<Action> actions) {
         System.out.println("## 메인화면");
@@ -21,9 +22,9 @@ public class OutputView {
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
-        printLine(TOP_LINE, size);
+        printLine(TOP_LINE, tables);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printUnderLine(tables);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -32,11 +33,26 @@ public class OutputView {
         }
     }
 
-    private static void printLine(final String line, final int count) {
-        for (int index = 0; index < count; index++) {
+    private static void printLine(final String line, final List<Table> tables) {
+        for (Table table: tables) {
             System.out.print(line);
         }
         System.out.println();
+    }
+
+    private static void printUnderLine(final List<Table> tables) {
+        for (Table table: tables) {
+            String line = underLine(table.isEmpty());
+            System.out.print(line);
+        }
+        System.out.println();
+    }
+
+    private static String underLine(boolean isEmpty) {
+        if (isEmpty) {
+            return BOTTOM_LINE;
+        }
+        return BOTTOM_LINE_2;
     }
 
     private static void printTableNumbers(final List<Table> tables) {
