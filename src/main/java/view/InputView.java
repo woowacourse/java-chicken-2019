@@ -18,19 +18,20 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public static int inputTableNumber(TableRepository tableRepository) {
+    public static int inputTableNumber() {
         int tableNumber;
 
         System.out.println("## 주문할 테이블을 선택하세요.");
         tableNumber = scanner.nextInt();
-        if(tableRepository.getTablebyNumber(tableNumber).getOrderedMenuNumber()
+        if(TableRepository.getTablebyNumber(tableNumber).getOrderedMenuNumber()
                 >= MAX_ORDER){
             System.out.println("더 이상 주문할 수 없습니다.");
             return EXIT;
         }
-        
+
         return tableNumber;
     }
+
 
 
 

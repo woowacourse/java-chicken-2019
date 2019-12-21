@@ -20,7 +20,7 @@ public class TableRepository {
         return Collections.unmodifiableList(tables);
     }
 
-    public Table getTablebyNumber(int number){
+    public static Table getTablebyNumber(int number){
         for(int i = 0; i < tables.size(); i++){
             if(tables.get(i).getTable(number)){
                 return tables.get(i);
