@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import domain.Menu;
 import domain.MenuRepository;
 import domain.OrderMenu;
+import domain.OrderTable;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
@@ -28,10 +29,10 @@ public class Order {
 		int menu = InputView.inputOrderMenu();
 		Menu selectedMenu = selectMenu(menus, menu);
 		System.out.println(selectedMenu);
-		InputView.inputNumberOfMenu();
+		int numberOfMenu = InputView.inputNumberOfMenu();
 
-		// orderMenuList.add(new OrderMenu())
-
+		addToOrderMenuList(selectedMenu, numberOfMenu, tableNumber);
+		printOrderMenuList();
 		return true;
 	}
 
@@ -41,5 +42,17 @@ public class Order {
 			.collect(Collectors.toList())
 			.get(0);
 		return selectedMenu;
+	}
+
+	private void addToOrderMenuList(Menu selectedMenu, int numberOfMenu, int tableNumber) {
+		orderMenuList.add(new OrderMenu(selectedMenu.getNumber(), selectedMenu.getName(), selectedMenu.getCategory(),
+			selectedMenu.getPrice(), numberOfMenu, new OrderTable(tableNumber)));
+	}
+
+	private void printOrderMenuList() {
+		System.out.println("## 주문 내역");
+		for (Menu menu : orderMenuList) {
+			System.out.println(menu);
+		}
 	}
 }
