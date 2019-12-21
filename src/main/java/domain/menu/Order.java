@@ -66,6 +66,15 @@ public class Order {
         public int getNumber(){
             return number;
         }
+
+        /**
+         * toString을 Override하여, 주문한 내역을 출력하도록 한다.
+         * @return
+         */
+        @Override
+        public String toString() {
+            return menu.toString() + "를 " + number + "개 주문하셨습니다.";
+        }
     }
 
     /**
@@ -116,5 +125,16 @@ public class Order {
             }
         }
         throw new AssertionError("검색 결과, 찾을 수 없는 값입니다.");
+    }
+
+    /**
+     * printOrder는 실제 구현에는 필요 없는 메서드로, 주문이 성공적으로 진행되는지 확인하기 위한 테스트 코드이다.
+     * 별도로 TDD를 할 시간이 안되어 이렇게 구현한 점이 아쉽다.
+     *
+     */
+    public void printOrder(){
+        for(MenuWithNumber order : orderList){
+            System.out.println(order.toString());
+        }
     }
 }

@@ -31,4 +31,12 @@ public class Table {
     public String toString() {
         return Integer.toString(number);
     }
+
+    /**
+     * 테스트용 코드. 주문된 양을 확인한다. 추후 삭제.
+     * TDD할 시간이 없어 아쉬웠다.
+     */
+    public void printOrder(){
+        order.printOrder();
+    }
 }
