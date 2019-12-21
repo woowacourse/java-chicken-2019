@@ -15,6 +15,10 @@ public class Payment {
 
     public void pay() {
         paymentMethod = getPaymentMethod();
+        int totalPrice = table.getTotalPrice();
+        totalPrice -= getChickenDiscount();
+        if (paymentMethod == 2)
+            totalPrice = getCashDiscount(totalPrice);
     }
 
     public int getPaymentMethod() {
@@ -37,6 +41,10 @@ public class Payment {
     public int getChickenDiscount() {
         int chickenCount = table.getChickenCount();
         int discount = chickenCount / 10;
-        return -1 * discount * DISCOUNT_PER_10CHICKEN;
+        return discount * DISCOUNT_PER_10CHICKEN;
+    }
+
+    private int getCashDiscount(int totalPrice) {
+        return  (int) (totalPrice * 0.95);
     }
 }
