@@ -29,10 +29,9 @@ public class InputView {
         return Integer.parseInt(userInput);
     }
 
-    public HashMap inputMenu(final List<Menu> menus){
-        HashMap<Integer,Integer> orders = new HashMap<>();
-        orders.put(inputMenuNumber(menus),inputMenuCount());
-        return orders;
+    public int[] inputMenu(final List<Menu> menus){
+        int[] order = new int[]{inputMenuNumber(menus),inputMenuCount()};
+        return order;
     }
 
     public int inputMenuNumber(final List<Menu> menus){

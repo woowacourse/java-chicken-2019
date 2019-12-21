@@ -1,6 +1,5 @@
 import domain.Menu;
 import domain.MenuRepository;
-import domain.OrderBoard;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
@@ -10,23 +9,33 @@ import java.util.List;
 
 public class Application {
     static final List<Table> tables = TableRepository.tables();
-    static OrderBoard orderBoard = new OrderBoard();
 
-    public static void selectOne(){
+    public static void selectOne() {
         OutputView.printTables(tables);
         final int tableNumber = InputView.inputTableNumber(tables);
         final List<Menu> menus = MenuRepository.menus();
-        orderBoard.add(tableNumber,OutputView.printMenus(menus));
+        for (Table table:tables){
+            if (tableNumber == table.getNumber()){
+                int[] order = OutputView.printMenus(menus);
+                table.addOrder(order[0],order[1]);
+            }
+        }
     }
+
+    public static void selectTwo() {
+        OutputView.printTables(tables);
+        final int tableNumber = InputView.inputTableNumber(tables);
+    }
+
     // TODO 구현 진행
     public static void main(String[] args) {
         int mainInput = OutputView.printMainScreen();
-        while (mainInput != 3){
-            if (mainInput == 1){
+        while (mainInput != 3) {
+            if (mainInput == 1) {
                 selectOne();
                 mainInput = OutputView.printMainScreen();
             }
-            if (mainInput == 2){
+            if (mainInput == 2) {
                 System.out.println("아직 만들지 않은 기능입니다.");
                 mainInput = OutputView.printMainScreen();
             }

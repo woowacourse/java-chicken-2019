@@ -1,8 +1,10 @@
 package view;
 
 import domain.Menu;
+import domain.OrderBoard;
 import domain.Table;
 
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,7 +21,7 @@ public class OutputView {
         printLine(BOTTOM_LINE, size);
     }
 
-    public static HashMap printMenus(final List<Menu> menus) {
+    public static int[] printMenus(final List<Menu> menus) {
         System.out.println();
         for (final Menu menu : menus) {
             System.out.println(menu);
@@ -41,8 +43,14 @@ public class OutputView {
         System.out.println();
     }
 
-    public static int printMainScreen(){
+    public static int printMainScreen() {
         System.out.println("##메인 화면\n1 - 주문등록\n2 - 결제하기\n3 - 프로그램 종료");
         return new InputView().inputFunction();
     }
+
+    public static void printOrderList(int tableNumber, OrderBoard orderBoard) {
+        System.out.println("주문 내역\n메뉴  수량  금액");
+
+    }
+
 }
