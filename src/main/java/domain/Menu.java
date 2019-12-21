@@ -17,4 +17,13 @@ public class Menu {
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "¿ø";
     }
+    public int getNumber() {
+    	return this.number;
+    }
+    public String getName() {
+    	return this.name;
+    }
+    public int getPrice() {
+    	return this.price;
+    }
 }
