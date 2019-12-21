@@ -45,7 +45,7 @@ public class ChickenHouse {
 		int MenuCount;
 		
 		OutputView.printTables(tables);
-		tableNumber = InputView.inputTableNumber(tables);
+		tableNumber = InputView.inputTableNumber(tables, true);
 		OutputView.printMenus(menus);
 		MenuNumber = InputView.inputMenuNumber(menus);
 		MenuCount = InputView.inputMenuCount();
@@ -59,7 +59,7 @@ public class ChickenHouse {
 	private static void pay() {
 		int tableNumber;
 		OutputView.printTables(tables);
-		tableNumber = InputView.inputTableNumber(tables);
+		tableNumber = InputView.inputTableNumber(tables, false);
 		
 	}
 

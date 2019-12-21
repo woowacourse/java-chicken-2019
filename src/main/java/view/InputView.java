@@ -20,11 +20,14 @@ public class InputView {
 		return command;
 	}
 
-	public static int inputTableNumber(TableRepository tables) {
+	public static int inputTableNumber(TableRepository tables, boolean isOrder) {
 		System.out.println("## 테이블을 선택하세요.");
 		int tableNumber = scanner.nextInt();
 		if (!tables.getTables().stream().filter(table -> table.getNumber() == tableNumber).findFirst().isPresent()) {
 			throw new IllegalArgumentException("입력한 테이블 번호에 해당하는 테이블이 없습니다.");
+		}
+		if(!isOrder && tables.getByNumber(tableNumber).isEmpty()) {
+			throw new IllegalArgumentException("입력한 테이블 번호에 해당하는 테이블에서 주문한 메뉴가 없습니다.");
 		}
 		return tableNumber;
 	}
