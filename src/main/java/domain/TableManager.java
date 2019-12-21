@@ -41,14 +41,15 @@ public class TableManager {
         return Integer.parseInt(input);
     }
 
-    public void selectTable() {
+    public int selectTable() {
         OutputView.printTables(tables);
         int tableNumber = inputTableNumber();
 
-        while (!TableRepository.isExist(tableNumber) || isUsableTable(tableNumber)) {
+        while (TableRepository.isExist(tableNumber) || isUsableTable(tableNumber)) {
             OutputView.printTableSelectFail();
             tableNumber = inputTableNumber();
         }
         selectTable(tableNumber);
+        return tableNumber;
     }
 }
