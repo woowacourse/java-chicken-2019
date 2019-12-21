@@ -30,6 +30,9 @@ public class Table {
     public boolean isOrderEmpty(){
         return order.isEmpty();
     }
+    public int getPrice(){
+        return order.getPrice();
+    }
 
     @Override
     public String toString() {

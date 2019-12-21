@@ -69,6 +69,15 @@ public class Order {
         }
 
         /**
+         * getPrice는 MenuWithNumber 객체에 들어있는 메뉴 객체의 가격을 반환한다.
+         *
+         * @return 정수형의 가격을 반환한다.
+         */
+        public int getPrice() {
+            return menu.getPrice();
+        }
+
+        /**
          * toString을 Override하여, 주문한 내역을 출력하도록 한다.
          *
          * @return
@@ -131,10 +140,24 @@ public class Order {
 
     /**
      * isEmpty는 주문이 있는지 없는지(비었는지) 확인하여 반환한다.
+     *
      * @return 주문이 없다면 true를 반환한다.
      */
     public boolean isEmpty() {
         return orderList.isEmpty();
+    }
+
+    /**
+     * getPrice는 주문의 총 금액을 반환하는 메서드이다.
+     *
+     * @return 누적된 총 금액을 반환한다.
+     */
+    public int getPrice(){
+        int price = 0;
+        for(MenuWithNumber order : orderList) {
+            price += order.getPrice();
+        }
+        return price;
     }
 
     /**

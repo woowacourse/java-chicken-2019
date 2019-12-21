@@ -295,8 +295,13 @@ public class Store {
 
     /**
      * pay는 결제를 하는 일련의 동작을 수행하는 메서드이다.
+     * 테스트를 위해 여기에 price를 구하는 메서드를 넣었다.
+     * 추후 삭제할 예정.
      */
     private void pay() {
-
+        System.out.println("TEST : 각 테이블의 주문 가격");
+        for(Table table : tables) {
+            System.out.println(table.getPrice());
+        }
     }
 }
