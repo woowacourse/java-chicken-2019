@@ -9,8 +9,10 @@ import view.OutputView;
 
 public class OrderForm {
     private static final String FUNCTION_NAME = "주문하기";
+    private static final int NOTINPUT = 0;
     private static final int MENU_NUMBER_INDEX = 0;
     private static final int MENU_QUANTITY_INDEX = 1;
+    private static final int MAX_QUANTITY = 99;
 
     private int tableNumber;
     private int[] menu;
@@ -59,7 +61,11 @@ public class OrderForm {
     }
 
     public int selectMenuQuantity() {
-        int quantity = InputView.inputMenuQuantity();
+        int quantity;
+
+        do {
+            quantity = InputView.inputMenuQuantity();
+        } while (!checkMenuQuantity(quantity));
 
         return quantity;
     }
@@ -94,26 +100,35 @@ public class OrderForm {
 
         return false;
     }
-//
-//    public boolean checkMenuQuantity(int quantity) {
-//        final List<Order> orders = OrderList.orders();
-//
-//
-//        for (Order o : OrderList.search(this.table)) {
-//        }
-//        return false;
-//    }
 
-    public void isDone() {
-        if (this.tableNumber != 0 && this.menu[MENU_QUANTITY_INDEX] != 0 && this.menu[MENU_NUMBER_INDEX] != 0) {
-            OrderList.addOrder(new Order(this.tableNumber, this.menu[MENU_NUMBER_INDEX], this.menu[MENU_QUANTITY_INDEX]));
+    public boolean checkMenuQuantity(int quantity) {
+        final List<Order> orders = OrderList.orders();
+
+        /*order가 여러개일 경우 quantity check*/
+        for (Order o : OrderList.search(this.tableNumber, this.menu[MENU_NUMBER_INDEX])) {
+            if (o.isOverQuantity(quantity)) {
+                OutputView.printOverQuantity();
+                return false;
+            }
         }
+
+        /*첫 주문 시 quantity 체크 */
+        if (quantity <= MAX_QUANTITY){
+            return true;
+
+        }
+
+        OutputView.printOverQuantity();
+
+        return false;
     }
 
-
-    @Override
-    public String toString() {
-        return tableNumber + " " + menu[0] + " " + menu[1];
+    /*form 작성 후 완료된 order 객체를 생성하고 list에 추가*/
+    public void isDone() {
+        if (this.tableNumber != NOTINPUT && this.menu[MENU_QUANTITY_INDEX] != NOTINPUT
+                && this.menu[MENU_NUMBER_INDEX] != NOTINPUT) {
+            OrderList.addOrder(new Order(this.tableNumber, this.menu[MENU_NUMBER_INDEX], this.menu[MENU_QUANTITY_INDEX]));
+        }
     }
 
 }

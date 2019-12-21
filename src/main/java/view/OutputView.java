@@ -58,4 +58,8 @@ public class OutputView {
         System.out.println("존재하지 않는 메뉴입니다. 다시 입력해주세요");
     }
 
+    public static void printOverQuantity() {
+        System.out.println("너무 많은 수량을 시켰습니다. 다시 입력해주세요");
+    }
+
 }

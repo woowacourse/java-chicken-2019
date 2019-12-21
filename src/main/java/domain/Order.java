@@ -9,6 +9,7 @@ import view.OutputView;
 
 public class Order {
     private static final String name = "주문하기";
+    private static final int MAX_QUANTITY = 99;
     private int tableNumber;
     private int menuNumber;
     private int menuQuantity;
@@ -29,6 +30,14 @@ public class Order {
 
     public boolean isMenuNumber(int menuNumber) {
         if (this.tableNumber == menuNumber) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean isOverQuantity(int quantity) {
+        if (this.menuQuantity + quantity > MAX_QUANTITY) {
             return true;
         }
 
