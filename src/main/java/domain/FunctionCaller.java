@@ -9,7 +9,7 @@ public class FunctionCaller {
         }
 
         if (ProvidingFunctionRepository.isPayment(functionNumber)) {
-            new Payment().pay();
+            new Payment().paymentControl();
             return;
         }
 
