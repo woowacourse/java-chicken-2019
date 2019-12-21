@@ -8,40 +8,31 @@ import domain.discount.DiscountGroup;
 import view.InputView;
 import view.OutputView;
 import view.dto.PaymentPolicyDTO;
+import view.dto.SelectNumber;
 
 import java.util.NoSuchElementException;
 
 public class ChickenPos {
-    private static final int MENU = 1;
-    private static final int PAYMENT = 2;
-    private static final int OFF = 3;
-
-    private ChickenPos() {
-    }
 
     public static ChickenPos init() {
         return new ChickenPos();
     }
 
     public void mainMenu() {
-        int selectNumber = InputView.inputMainMenu();
+        SelectNumber selectNumber = new SelectNumber(InputView.inputMainMenu());
 
-        if (selectNumber < MENU || selectNumber > OFF) {
+        if (selectNumber.isNotAllow()) {
             mainMenu();
             return;
         }
 
-        while (untilOff(selectNumber)) {
+        while (selectNumber.isNotOff()) {
             doSelection(selectNumber);
-            selectNumber = InputView.inputMainMenu();
+            selectNumber = new SelectNumber(InputView.inputMainMenu());
         }
     }
 
-    private boolean untilOff(int select) {
-        return select != OFF;
-    }
-
-    private void doSelection(int select) {
+    private void doSelection(SelectNumber selectNumber) {
         Table table;
         try {
             table = getTable();
@@ -51,7 +42,7 @@ public class ChickenPos {
             return;
         }
 
-        if (selectMenu(select)) {
+        if (selectNumber.isMenu()) {
             doOrder(table);
             return;
         }
@@ -117,8 +108,5 @@ public class ChickenPos {
         return menu.toOrder(menuSize);
     }
 
-    private boolean selectMenu(int select) {
-        return select == MENU;
-    }
 
 }
