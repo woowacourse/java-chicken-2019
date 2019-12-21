@@ -15,7 +15,7 @@ public class TableMenu {
     }
 
     boolean isSameMenu(Menu menu) {
-        return menu.isSameMenu(menu.getNumber());
+        return this.menu.isSameMenu(menu.getNumber());
     }
 
     int calculateMoney() {

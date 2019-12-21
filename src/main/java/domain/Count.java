@@ -6,14 +6,17 @@ public class Count {
 
     private int count;
 
-    public Count(int count) {
+    Count(int count) {
         if (count < 0) {
-            throw new InvalidInputException("수량은 0이하일 수 없습니다.");
+            throw new InvalidInputException(InvalidInputException.WRONG_COUNT_EXCEPTION);
         }
         this.count = count;
     }
 
     void addCount(int count) {
+        if (this.count + count < 0) {
+            throw new InvalidInputException(InvalidInputException.WRONG_COUNT_EXCEPTION);
+        }
         this.count += count;
     }
 

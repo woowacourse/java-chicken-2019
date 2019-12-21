@@ -12,7 +12,11 @@ public class Table {
     }
 
     public void addMenu(Menu menu, int count) {
-        tableMenus.add(new TableMenu(menu, count));
+        TableMenu tableMenuToAdd = tableMenus.stream().filter(tableMenu -> tableMenu.isSameMenu(menu)).findAny()
+                .orElse(new TableMenu(menu, 0));
+        tableMenus.remove(tableMenuToAdd);
+        tableMenuToAdd.addCount(count);
+        tableMenus.add(tableMenuToAdd);
     }
 
     public int calculateTablePrice() {
