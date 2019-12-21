@@ -17,4 +17,8 @@ public class Order {
 
         order.put(menu, amount);
     }
+
+    public boolean isEmpty() {
+        return order.isEmpty();
+    }
 }

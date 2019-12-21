@@ -25,4 +25,8 @@ public class Table {
     public void addOrder(Menu menu, int menuAmount) throws MenuDoesNotExistExeption {
         order.add(menu, menuAmount);
     }
+
+    public boolean unordered() {
+        return order.isEmpty();
+    }
 }
