@@ -8,10 +8,10 @@ import view.InputView;
 import view.OutputView;
 
 public class ChickenHouse {
-	//final static List<Table> tables = TableRepository.tables();
+	// final static List<Table> tables = TableRepository.tables();
 	final static TableRepository tables = new TableRepository();
 	final static List<Menu> menus = MenuRepository.menus();
-	
+
 	public void execute() {
 		while (true) {
 			OutputView.mainDisplay();
@@ -41,8 +41,8 @@ public class ChickenHouse {
 	}
 
 	private static void add(int tableNumber, int menuNumber, int menuCount) {
-		tables.
-		
+		tables.getByNumber(tableNumber).add(menuNumber, menuCount);
+
 	}
 
 	private static void pay() {
