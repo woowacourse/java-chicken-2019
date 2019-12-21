@@ -1,7 +1,6 @@
 package view;
 
 import domain.Menu;
-import domain.Order;
 import domain.Table;
 
 import java.util.List;
@@ -24,6 +23,7 @@ public class OutputView {
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
+//      테이블 주문있을때 없을때 조건 만들기.
         printLine(BOTTOM_LINE, size);
     }
 

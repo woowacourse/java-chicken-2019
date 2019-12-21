@@ -10,12 +10,15 @@ public class Application {
     private static int ORDER_KEY = 1;
     private static int PAY_KEY = 2;
     private static int QUIT_KEY = 3;
-    List<Order> tableList = new ArrayList<>();
-    List<Order> menuList = new ArrayList<>();
-    static List<Order> orderList = new ArrayList<>();
+
     static int actionNumber = 0;
     static int payMethod = 0;
     static double totalPay = 0;
+    static int nowTableNumber = -1;
+
+    final static List<Table> tables = TableRepository.tables();
+    final static List<Menu> menus = MenuRepository.menus();
+
     public static void main(String[] args) {
 
         while(true){
@@ -28,22 +31,26 @@ public class Application {
             }
         }
     }
-
+    public static void getTableIndex(int tableNumber){
+        for (int i = 0; i < tables.size(); i++) {
+            if(tables.get(i).isEqaulTableNumber(tableNumber)){
+                nowTableNumber = i;
+                break;
+            }
+        }
+    }
     public static void chooseAction(int actionNumber){
         if(actionNumber == ORDER_KEY) {
-            final List<Table> tables = TableRepository.tables();
             OutputView.printTables(tables);
             final int tableNumber = InputView.inputTableNumber();
+            getTableIndex(tableNumber);
 
-            final List<Menu> menus = MenuRepository.menus();
+            tables.get(nowTableNumber).checkNewOrder();
             OutputView.printMenus(menus);
             final int menuCategory = InputView.inputMenuCategory();
             final int menuCount = InputView.inputMenuCount();
-
-            orderList.add(new Order(tableNumber, menuCategory, menuCount));
-            for (Order dd : orderList) {
-                System.out.printf("테이블 : %d 메뉴 : %d 수량 : %d \n", dd.tableNumber, dd.menuCategory, dd.menuCount);
-            }
+            System.out.println(tables.get(nowTableNumber).order(menuCategory,menuCount));
+            tables.get(nowTableNumber).printNowOrder();
         }
         if(actionNumber == PAY_KEY){
             payMethod = InputView.inputPayMethod();
