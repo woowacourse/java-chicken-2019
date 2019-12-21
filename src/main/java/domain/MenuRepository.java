@@ -21,7 +21,7 @@ public class MenuRepository{
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
     }
-
+    
     public static Menu selectMenu(int menuNumber) {
         if (menuNumber == 21) {
             return menus.get(6);
@@ -29,6 +29,9 @@ public class MenuRepository{
         else if (menuNumber == 22) {
             return menus.get(7);
         }
-        return menus.get(menuNumber - 1);
+        else if (menuNumber >= 1 && menuNumber <= 6){            
+           return menus.get(menuNumber - 1);
+        }
+        return null;
     }
 }

@@ -5,6 +5,7 @@ import java.util.*;
 public class Table {
     private final int number;
     private HashMap<Menu, Integer> bills = new HashMap<Menu, Integer>();
+    public int isOrdered = 0;
 
     public Table(final int number) {
         this.number = number;
@@ -12,7 +13,12 @@ public class Table {
 
     public void addMenu(int menuNumber, int count) {
         Menu menu = MenuRepository.selectMenu(menuNumber);
-        bills.put(menu, count);
+        if (bills.containsKey(menu)) {
+            bills.put(menu, bills.get(menu) + count);
+        }
+        else if (!bills.containsKey(menu)){
+            bills.put(menu, count);
+        }
     }
 
     public void printBill() {
@@ -35,9 +41,9 @@ public class Table {
         while(itr.hasNext()) {
             Map.Entry<Menu, Integer> e = (Map.Entry<Menu, Integer>)itr.next();
             sum += e.getKey().totalPay(e.getValue());
-            chickenCount += e.getKey().isChicken();
+            chickenCount += e.getKey().isChicken() * e.getValue();
         }
-        if(chickenCount > 10) {
+        if(chickenCount >= 10) {
             sum -= chickenCount / 10 * 10000;
         }
         if(payment == 2) {

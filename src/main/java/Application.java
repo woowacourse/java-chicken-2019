@@ -20,7 +20,7 @@ public class Application {
     }
     
     public static int mainMenuSelecter() {
-        final int mainNumber = InputView.inputMainNumber();
+        int mainNumber = InputView.inputMainNumber();
         return mainNumber;
     }
 
@@ -35,26 +35,29 @@ public class Application {
     public static void orderNow(final List<Table> tables) {
         OutputView.printTables(tables);
 
-        final int tableNumber = InputView.inputTableNumber();
+        int tableNumber = InputView.inputTableNumber();
 
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
 
-        final int orderMenu = InputView.selectOrderMenu();
-        final int orderCount = InputView.selectCountMenu();
+        int orderMenu = InputView.selectOrderMenu();
+        int orderCount = InputView.selectCountMenu();
         tables.get(tableNumber).addMenu(orderMenu, orderCount);
+
+        tables.get(tableNumber).isOrdered = 1;
     }
 
     public static void payNow(final List<Table> tables) {
         OutputView.printTables(tables);
 
-        final int tableNumber = InputView.inputTableNumber();
-
+        int tableNumber = InputView.inputTableNumber();
         OutputView.printBills(tables.get(tableNumber));
 
-        final int paymentNumber = InputView.selectPaymentNumber();
-
+        int paymentNumber = InputView.selectPaymentNumber();
         OutputView.printTotal(tables.get(tableNumber), paymentNumber);
+
+        tables.get(tableNumber).isOrdered = 0;
     }
+
 
 }
