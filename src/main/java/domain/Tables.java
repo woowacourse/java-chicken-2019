@@ -43,4 +43,15 @@ public class Tables {
             }
         }
     }
+
+    public static boolean hallIsEmpty() {
+        boolean isEmpty = true;
+        for (Table table : tables) {
+            if( table.hasOrder()) {
+                isEmpty = false;
+                break;
+            }
+        }
+        return isEmpty;
+    }
 }
