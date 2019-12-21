@@ -35,8 +35,8 @@ public class Table {
     }
 
     public void order(Order order) {
-        if (order.getMenu().getCategory().equals(PosRule.CHICKEN)) {
-            countOfChicken++;
+        if (order.getMenu().getCategory().CHICKEN.getName().equals(PosRule.CHICKEN)) {
+            countOfChicken += order.getCount();
         }
         orders.add(order);
     }

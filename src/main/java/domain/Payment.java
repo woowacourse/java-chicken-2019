@@ -22,13 +22,9 @@ public class Payment {
     private Table table;
     private double totalPrice;
 
-    private Payment() {
-    }
-
     public Payment(Table table, int paymentMethod) {
         this.paymentMethod = paymentMethod;
         this.table = table;
-        totalPrice = PosRule.ZERO;
     }
 
     public void pay() {
@@ -38,8 +34,11 @@ public class Payment {
         for (Order order : orders) {
             totalPrice += order.getMenu().getPrice() * order.getCount();
         }
+        calculateSalePrice();
+    }
 
-        totalPrice -= (table.getCountOfChicken() / PosRule.TEN) * PosRule.TEN_THOUSAND;
+    private void calculateSalePrice() {
+        totalPrice -= (table.getCountOfChicken() / (double) PosRule.TEN) * (double) PosRule.TEN_THOUSAND;
 
         if (paymentMethod == PosRule.CASH) {
             totalPrice = totalPrice * PosRule.PAY_RATE;
