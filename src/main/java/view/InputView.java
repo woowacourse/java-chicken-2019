@@ -22,6 +22,18 @@ public class InputView {
 		}
 	}
 
+	public static int inputTableNumberToPay() {
+		System.out.println("## 결제할 테이블을 선택하세요.");
+		try {
+			int tableNumber = validateNumber(scanner.nextLine().trim());
+			validateTableNumber(tableNumber);
+			return tableNumber;
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			return inputTableNumberToPay();
+		}
+	}
+
 	public static int inputMainProcess() {
 		System.out.println("원하는 기능을 선택하세요");
 		try {

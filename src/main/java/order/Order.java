@@ -55,4 +55,10 @@ public class Order {
 			System.out.println(menu);
 		}
 	}
+
+	public List<OrderMenu> getTableToPay(int tableNumber) {
+		return orderMenuList.stream()
+			.filter(orderMenu -> orderMenu.containTableNumber(tableNumber))
+			.collect(Collectors.toList());
+	}
 }

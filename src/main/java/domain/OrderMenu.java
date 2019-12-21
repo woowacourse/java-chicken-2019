@@ -10,6 +10,14 @@ public class OrderMenu extends Menu {
 		this.numberOfMenu = numberOfMenu;
 	}
 
+	public boolean checkOrderTableNumber(int tableNumber) {
+		return orderTable.containTableNumber(tableNumber);
+	}
+
+	public boolean containTableNumber(int tableNumber) {
+		return orderTable.containTableNumber(tableNumber);
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

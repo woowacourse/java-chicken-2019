@@ -1,4 +1,8 @@
+import java.util.List;
+
+import domain.OrderMenu;
 import order.Order;
+import pay.Pay;
 import view.InputView;
 import view.OutputView;
 
@@ -15,6 +19,10 @@ public class Application {
 			}
 			break;
 		} while (order.orderMenu());
+
+		int tableNumberToPay = InputView.inputTableNumberToPay();
+		List<OrderMenu> orderMenuList = order.getTableToPay(tableNumberToPay);
+		Pay.pay(orderMenuList);
 
 	}
 }
