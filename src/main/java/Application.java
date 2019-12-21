@@ -10,6 +10,8 @@ public class Application {
         final List<Main> mains = MainRepository.mains();
         OutputView.printMains(mains);
 
+        final int mainNumber = InputView.inputMainNumber();
+
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 
