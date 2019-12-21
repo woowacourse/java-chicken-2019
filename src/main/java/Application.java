@@ -11,8 +11,8 @@ public class Application {
         Menus menus = new Menus(MenuRepository.menus());
 
         InputView.inputMainMenu();
-
         int tableNumber = InputView.inputTableNumber(tables);
         int menuNumber = InputView.inputMenuNumber(menus);
+        InputView.inputMenuAmount();
     }
 }
