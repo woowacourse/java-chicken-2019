@@ -112,8 +112,9 @@ public class Application {
 		try {
 			count = InputView.inputMenuCount();
 			checkMenuCountValidation(count);
+			return count;
 		} catch (RuntimeException e) {
-
+			count = inputMenuCount();
 		}
 		return count;
 	}
