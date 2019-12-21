@@ -27,7 +27,7 @@ public class PaymentController {
     }
 
     private void checkOutTable() {
-        Price price = .calculatePrice();
-
+        Price price = TableRepository.checkOutTable(tableNumber);
+        System.out.println(price.getPrice(false));
     }
 }

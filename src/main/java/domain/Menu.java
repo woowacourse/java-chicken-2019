@@ -17,12 +17,12 @@ public class Menu {
         return this.number == menuNumber;
     }
 
-    public boolean isChicken() {
+    protected boolean isChicken() {
         System.out.println(this.category);
         return this.category.equals("CHICKEN");
     }
 
-    public String getNameTest() {
+    protected String getNameTest() {
         return name;
     }
 

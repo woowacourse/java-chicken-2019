@@ -14,12 +14,12 @@ public class Table {
     }
 
     public void addOrder(Menu menu, int amount) {
-        if(order == null) {
+        if(!hasOrder()) {
             HashMap<Menu, Integer> newOrder = new HashMap<>();
             newOrder.put(menu, amount);
             this.order = new Order(newOrder);
         }
-        if(order != null) {
+        if(hasOrder()) {
             this.order = order.addNewOrder(menu, amount);
         }
     }
@@ -28,12 +28,12 @@ public class Table {
         return this.number == tableNumber;
     }
 
-    public boolean hasOrder() {
-        return !order.isEmpty();
+    private boolean hasOrder() {
+        return !(order == null);
     }
 
-    public void printOrderTest() {
-
+    public Price calculatePrice() {
+        return order.PriceInfo();
     }
 
     @Override

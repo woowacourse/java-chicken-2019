@@ -1,8 +1,10 @@
 package domain;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class Order {
+    private static final int ZERO = 0;
     private final HashMap<Menu, Integer> menus;
 
     public Order(HashMap<Menu, Integer> menus) {
@@ -22,7 +24,13 @@ public class Order {
         return this.menus.isEmpty();
     }
 
-    public String PriceInfo() {
-
+    public Price PriceInfo() {
+        Price price = new Price(ZERO);
+        Iterator<Menu> menuIterator = menus.keySet().iterator();
+        while(menuIterator.hasNext()) {
+            Menu oneMenu = menuIterator.next();
+            price = price.addPrice(oneMenu, menus.get(oneMenu));
+        }
+        return price;
     }
 }

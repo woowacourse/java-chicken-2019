@@ -21,6 +21,18 @@ public class TableRepository {
     }
 
     public static void orderToTable(int tableNumber, Menu menu, int amount) {
-        tables.stream().filter(x -> x.isCorrectTable(tableNumber)).forEach(x->x.addOrder(menu, amount));
+        tables.stream()
+                .filter(x -> x.isCorrectTable(tableNumber))
+                .findFirst()
+                .get()
+                .addOrder(menu, amount);
+    }
+
+    public static Price checkOutTable(int tableNumber) {
+        return tables.stream()
+                .filter(x-> x.isCorrectTable(tableNumber))
+                .findFirst()
+                .get()
+                .calculatePrice();
     }
 }
