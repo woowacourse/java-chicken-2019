@@ -18,6 +18,9 @@ public class OrderedMenu extends Menu {
         this.capacity = new Capacity(capacity);
     }
 
+    public static OrderedMenu createMenu(Menu menu, int capacity) {
+        return new OrderedMenu(menu, capacity);
+    }
     public int checkPossibleOrder(int orderCapacity) {
         if (capacity.isPossibleOrder(orderCapacity)) {
             throw new IllegalArgumentException();

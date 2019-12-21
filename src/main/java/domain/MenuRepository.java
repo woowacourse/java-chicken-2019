@@ -22,6 +22,14 @@ public class MenuRepository {
         return Collections.unmodifiableList(menus);
     }
 
+    public static Menu getMenuBy(int id) {
+        return menus().stream()
+                .filter(menu -> menu.isMatch(id))
+                .findFirst()
+                .get();
+    }
+
+
     private static boolean contain(int menuId) {
         return menus.stream()
                 .anyMatch(table -> table.isMatch(menuId));

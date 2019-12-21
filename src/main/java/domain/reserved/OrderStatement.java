@@ -23,11 +23,22 @@ public class OrderStatement {
 
 
     public boolean isExist(int tableNumber, int menuId) {
-        if(isExistTableOrder(tableNumber)) {
+        if (isExistTableOrder(tableNumber)) {
             return getTableOrderStatementBy(tableNumber)
                     .getOrderedMenus()
                     .isExistBy(menuId);
         }
         return false;
+    }
+
+    public void addTableOrderStatement(int tableNumber, OrderedMenu menu) {
+        TableOrderStatement tableOrderStatement;
+        if (!isExistTableOrder(tableNumber)) {
+            tableOrderStatement = new TableOrderStatement(tableNumber);
+            tableOrderStatement.addMenu(menu);
+            return;
+        }
+        
+        getTableOrderStatementBy(tableNumber).addMenu(menu);
     }
 }
