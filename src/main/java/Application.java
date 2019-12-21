@@ -1,9 +1,9 @@
 import domain.*;
-import jdk.internal.util.xml.impl.Input;
 import view.InputView;
 import view.OutputView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -15,21 +15,29 @@ public class Application {
         final List<Table> tables = TableRepository.tables();
         final List<Menu> menus = MenuRepository.menus();
 
-        // 메인 메뉴 출력
-        OutputView.printPosMenu();
-        int posChoice = validatePosChoice();
+        Choice posChoice;
+        do {
+            // 메인 메뉴 출력
+            OutputView.printPosMenu();
+            posChoice = validatePosChoice();
 
-        // 테이블 상태 출력
-        OutputView.printTables(tables);
+            // 테이블 상태 출력
+            OutputView.printTables(tables);
 
-        // 주문 등록 로직
-        if (posChoice == 1) {
-            final int tableNumber = validateTableNumber();
-            OutputView.printMenus(menus);
-            int foodNumber = validateFoodNumber(menus);
-            int foodCount = validateFoodCount();
-            orderList.add(new Order(foodNumber, foodCount));
-        }
+            // 주문 등록 로직
+            if (posChoice == Choice.ORDER) {
+                final int tableNumber = validateTableNumber();
+                OutputView.printMenus(menus);
+                int foodNumber = validateFoodNumber(menus);
+                int foodCount = validateFoodCount();
+                orderList.add(new Order(foodNumber, foodCount));
+            }
+
+            // 결제 로직
+            if (posChoice == Choice.PAY){}
+            OutputView.printOrderList(orderList);
+        } while(posChoice != Choice.EXIT);
+
     }
 
     /** 조건 분리 */
@@ -75,13 +83,13 @@ public class Application {
         return validateTableNumber();
     }
 
-    public static int validatePosChoice() {
+    public static Choice validatePosChoice() {
         try {
             int posChoice = InputView.inputPosChoice();
             if (posChoice < 0 | posChoice > 3) {
                 throw new IllegalArgumentException("선택 가능한 범위가 아닙니다.");
             }
-            return posChoice;
+            return Arrays.stream(Choice.values()).filter(c -> c.getPosNumber() == posChoice).findAny().get();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

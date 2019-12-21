@@ -1,6 +1,7 @@
 package view;
 
 import domain.Menu;
+import domain.Order;
 import domain.Table;
 
 import java.util.List;
@@ -43,5 +44,11 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+
+    public static void printOrderList(List<Order> orderList) {
+        for (Order order : orderList) {
+            System.out.println(order);
+        }
     }
 }
