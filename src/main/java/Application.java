@@ -21,14 +21,14 @@ public class Application {
     }
 
     private static void run(List<Table> tables, List<Menu> menus, List<MainMenu> mainMenus) {
-        while(true) {
+        boolean isQuit = false;
+
+        while (!isQuit) {
             try {
                 MainMenu mainMenu = takeMainMenuFromUser(mainMenus);
-                if (mainMenu.isQuit()) {
-                    break;
-                }
+                isQuit = mainMenu.isQuit();
                 runProgram(tables, menus, mainMenu);
-            } catch(InputMismatchException ime) {
+            } catch (InputMismatchException ime) {
                 throw new InvalidInputException(InvalidInputException.NOT_NUMBER_EXCEPTION);
             } catch (InvalidInputException ie) {
                 System.out.println(ie.getMessage());
@@ -57,7 +57,6 @@ public class Application {
         int menuNumber = takeMenuFromUser(menus);
         Menu menuToAdd = menus.stream().filter(menu -> menu.isSameMenu(menuNumber)).findAny()
                 .orElseThrow(() -> new InvalidInputException(InvalidInputException.WRONG_MENU_NUMBER_EXCEPTION));
-        System.out.println(menuToAdd);
         int menuCount = InputView.inputMenuCount();
         selectedTable.addMenu(menuToAdd, menuCount);
     }
