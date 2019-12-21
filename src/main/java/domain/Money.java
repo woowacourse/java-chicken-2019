@@ -1,17 +1,17 @@
 package domain;
 
 public class Money {
-    private int amount;
+    private double amount;
 
-    public Money(int amount) {
+    public Money(double amount) {
         this.amount = amount;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public Money discountByAmount(int amount) {
+    public Money discountByAmount(double amount) {
         this.amount -= amount;
         return new Money(this.amount);
     }

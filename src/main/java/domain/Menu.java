@@ -13,6 +13,10 @@ public class Menu {
         this.price = price;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getNumber() {
         return number;
     }
