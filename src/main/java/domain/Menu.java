@@ -1,5 +1,8 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Menu {
     private final int number;
     private final String name;
@@ -21,12 +24,20 @@ public class Menu {
         return price;
     }
 
+    public boolean equalId(int id) {
+        return number == id;
+    }
+
+    public List<Menu> list(int size) {
+        List<Menu> orders = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            orders.add(this);
+        }
+        return orders;
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
-    }
-
-    public boolean equalId(int id) {
-        return number == id;
     }
 }

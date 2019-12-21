@@ -1,7 +1,6 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -37,11 +36,6 @@ public class Orders {
         return orders.stream()
                 .map(Menu::getPrice)
                 .reduce(0, Integer::sum);
-    }
-
-    public void addMenu(Menu order) {
-        validateAmount(Collections.singletonList(order));
-        this.orders.add(order);
     }
 
     public void addMenu(List<Menu> orders) {

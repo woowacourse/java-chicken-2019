@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.List;
+
 public class Table {
     private final int number;
 
@@ -16,5 +18,9 @@ public class Table {
 
     public boolean equalId(int id) {
         return number == id;
+    }
+
+    public void addOrders(List<Menu> list) {
+        this.orders.addMenu(list);
     }
 }

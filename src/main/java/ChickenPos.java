@@ -38,7 +38,7 @@ public class ChickenPos {
         if (selectMenu(select)) {
             Menu menu = getMenu();
             int menuSize = InputView.inputMenuAmount();
-            // 테이블에 주문 추가하기
+            table.addOrders(menu.list(menuSize));
             return;
         }
         //테이블 가격계산하기
