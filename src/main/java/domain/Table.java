@@ -34,7 +34,7 @@ public class Table {
         return bill.hasOrders();
     }
 
-    public void showOrders(){
+    public void showOrders() {
         OutputView.printOrders();
         bill.showOrders();
     }
@@ -42,5 +42,6 @@ public class Table {
     public void pay() {
         OutputView.startPayment(number);
         int paymentMethod = InputView.inputPayMethod();
+        bill.calTotal();
     }
 }

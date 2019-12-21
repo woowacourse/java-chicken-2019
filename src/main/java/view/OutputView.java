@@ -63,11 +63,16 @@ public class OutputView {
         System.out.println("메뉴 수량 금액");
     }
 
-    public static void printOrder(Order order){
+    public static void printOrder(Order order) {
         System.out.println(order);
     }
 
-    public static void startPayment(int number){
+    public static void startPayment(int number) {
         System.out.println("##" + number + "번테이블의결제를진행합니다. ");
+    }
+
+    public static void printTotalPrice(int total) {
+        System.out.println("##최종 결제할 금액");
+        System.out.println(total + "원");
     }
 }

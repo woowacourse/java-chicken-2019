@@ -24,4 +24,13 @@ public class Bill {
             OutputView.printOrder(order);
         }
     }
+
+    public int calTotal() {
+        int total = 0;
+        for (Order order : orders) {
+            total += order.price();
+        }
+        OutputView.printTotalPrice(total);
+        return total;
+    }
 }
