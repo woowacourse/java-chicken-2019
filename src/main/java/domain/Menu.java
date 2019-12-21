@@ -15,6 +15,14 @@ public class Menu {
         this.price = price;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
@@ -31,5 +39,9 @@ public class Menu {
     @Override
     public int hashCode() {
         return Objects.hash(number);
+    }
+
+    public boolean isSame(int number) {
+        return this.number == number;
     }
 }
