@@ -28,7 +28,7 @@ public class Application {
     private static int takeMainMenuFromUser() {
         try {
             OutputView.printMain();
-            int mainMenu = InputView.inputMainNumber();
+            int mainMenu = InputView.inputMainMenuNumber();
             validateMainNumber(mainMenu);
             return mainMenu;
         } catch (InputMismatchException ime) {
@@ -43,13 +43,18 @@ public class Application {
     }
 
     private static void runProgram(List<Table> tables, List<Menu> menus, int mainMenu) {
+        int tableNumber = takeTableNumberFromUser(tables);
+
         if (mainMenu == 1) {
-            int tableNumber = takeTableNumber(tables);
             OutputView.printMenus(menus);
+            int menuNumber = takeMenuFromUser(menus);
+            int menuCount = takeMenuCountFromUser();
+            return;
         }
+
     }
 
-    private static int takeTableNumber(List<Table> tables) {
+    private static int takeTableNumberFromUser(List<Table> tables) {
         try {
             OutputView.printTables(tables);
             int tableNumber = InputView.inputTableNumber();
@@ -63,6 +68,39 @@ public class Application {
     private static void validateTableNumber(int tableNumber, List<Table> tables) {
         if (!(0 < tableNumber && tableNumber <= tables.size())) {
             throw new InvalidInputException("테이블의 크기는 ~이하입니다.");
+        }
+    }
+
+    private static int takeMenuFromUser(List<Menu> menus) {
+        try {
+            OutputView.printMenus(menus);
+            int menuNumber = InputView.inputMenuNumber();
+            validateMenuNumber(menuNumber, menus);
+            return menuNumber;
+        } catch (InputMismatchException ime) {
+            throw new InvalidInputException("숫자가 아닌 값을 입력하실 수 없습니다.");
+        }
+    }
+
+    private static void validateMenuNumber(int menuNumber, List<Menu> menus) {
+        if (!menus.stream().anyMatch(menu -> menu.getNumber() == menuNumber)) {
+            throw new InvalidInputException("존재하지 않는 메뉴를 입력하셨습니다.");
+        }
+    }
+
+    private static int takeMenuCountFromUser() {
+        try {
+            int menuCount = InputView.inputMenuCount();
+            validateMenuCount(menuCount);
+            return menuCount;
+        } catch (InputMismatchException ime) {
+            throw new InvalidInputException("숫자가 아닌 값을 입력하실 수 없습니다.");
+        }
+    }
+
+    private static void validateMenuCount(int menuCount) {
+        if (menuCount < 0) {
+            throw new InvalidInputException("메뉴 수량은 0미만일 수 없습니다.");
         }
     }
 }

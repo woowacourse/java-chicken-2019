@@ -11,6 +11,7 @@ public class OutputView {
     private static final String BOTTOM_LINE = "└ ─ ┘";
 
     public static void printMain() {
+        System.out.println();
         System.out.println("## 메인화면");
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
@@ -18,6 +19,7 @@ public class OutputView {
     }
 
     public static void printTables(final List<Table> tables) {
+        System.out.println();
         System.out.println("## 테이블 목록");
         final int size = tables.size();
         printLine(TOP_LINE, size);
@@ -26,6 +28,7 @@ public class OutputView {
     }
 
     public static void printMenus(final List<Menu> menus) {
+        System.out.println();
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
