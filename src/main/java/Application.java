@@ -8,8 +8,8 @@ import view.OutputView;
 import java.util.List;
 
 public class Application {
-    final static List<Table> tables = TableRepository.tables();
-    final static List<Menu> menus = MenuRepository.menus();
+    private final static List<Table> tables = TableRepository.tables();
+    private final static List<Menu> menus = MenuRepository.menus();
 
     public static void main(String[] args) {
         while (true) {
