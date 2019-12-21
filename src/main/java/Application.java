@@ -1,4 +1,4 @@
-import domain.Function;
+import domain.function.Function;
 import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
@@ -12,13 +12,14 @@ import java.util.List;
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
-        POS pos = new POS();
         OutputView.printFunctions();
+
+        final List<Table> tables = TableRepository.tables();
+        POS pos = new POS(tables);
 
         final int functionNumber = getInputFunctionNumber();
         final Function selectedFunction = pos.selectFunction(functionNumber);
 
-        final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 
         final int tableNumber = InputView.inputTableNumber();
