@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Order implements OrderService {
+    private static final int ZERO = 0;
     private Map<Menu, Integer> order;
 
     public Order() {
@@ -35,6 +36,14 @@ public class Order implements OrderService {
         return order.keySet().stream().filter(Menu::isChicken).collect(Collectors.toList());
     }
 
+    private List<Menu> filteredNonZeroMenu() {
+        return order.keySet().stream().filter(this::isOrdered).collect(Collectors.toList());
+    }
+
+    private boolean isOrdered(Menu menu) {
+        return order.get(menu) != ZERO;
+    }
+
     @Override
     public void changeQuantity(Menu menu, int quantityToAdd) {
         // TODO: 메뉴 개수 관련 예외처리
@@ -43,8 +52,11 @@ public class Order implements OrderService {
 
     @Override
     public String toString() {
-        return "Order{" +
-            "order=" + order +
-            '}';
+        StringBuilder sb = new StringBuilder();
+        for (Menu menu : filteredNonZeroMenu()) {
+            sb.append(menu.getName()).append(" ").append(order.get(menu)).append(" ")
+                .append(order.get(menu) * menu.getPrice()).append("\n");
+        }
+        return sb.toString();
     }
 }

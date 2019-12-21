@@ -48,17 +48,16 @@ public class ChickenHouse {
     private void pay(int tableNumber) {
         Table table = TableRepository.findByNumber(tableNumber);
         Cashier cashier = new Cashier(restaurant.getOrder(table));
-        OutputView.printOrders(tableNumber);
-        int payMethod = InputView.inputPayMethod(tableNumber);
-        int total = 0;
-        if (payMethod == 1) {
-            total = cashier.discountByChickenQuantity().getAmount();
-        }
-        if (payMethod == 2) {
-            total = cashier.discountByCash().getAmount();
-        }
-        System.out.println(total + "원");
+        OutputView.printOrders(restaurant.getOrder(table));
+        OutputView.printTotal(payBy(cashier, InputView.inputPayMethod(tableNumber)));
         restaurant.clearTable(table);
         start();
+    }
+
+    private double payBy(Cashier cashier, int payMethod) {
+        if (payMethod == 1) {
+            return cashier.discountByChickenQuantity().getAmount();
+        }
+        return cashier.discountByCash().getAmount();
     }
 }

@@ -1,6 +1,7 @@
 package view;
 
 import domain.Menu;
+import domain.Order;
 import domain.Table;
 
 import java.util.List;
@@ -47,9 +48,12 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printOrders(int tableNumber) {
-        StringBuilder sb = new StringBuilder("메뉴 수량 금액\n");
-        // TODO: tableNumber 로 테이블을 찾고 Order 출력
+    public static void printOrders(Order order) {
+        StringBuilder sb = new StringBuilder("메뉴 수량 금액\n").append(order);
         System.out.println(sb.toString());
+    }
+
+    public static void printTotal(double amount) {
+        System.out.println("## 최종 결제할 금액\n" + (int) amount + "원");
     }
 }
