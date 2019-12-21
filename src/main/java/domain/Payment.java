@@ -1,5 +1,10 @@
 package domain;
 
+/**
+ * @author KIMSIYOUNG
+ * @apiNote 현금 및 카드로 결제할 때 사용 할, 결제수단 enum입니다.
+ * @sicne 2019-12-21
+ */
 public enum Payment {
     CREDIT_CARD(1, 1),
     CASH(2, 0.95);

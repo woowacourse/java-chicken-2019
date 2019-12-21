@@ -4,9 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @author KIMSIYOUNG
+ * @apiNote 주문한, 메뉴의 정보를 골라보기 위한 주문된메뉴 클래스입니다.
+ * @since 2019-12-21
+ */
 public class OrderedMenu {
     private static final int SEVEN = 7;
     private static final int MAX_ORDER = 99;
+
     private Table table;
     private Menu menu;
     private int count;
@@ -21,12 +27,12 @@ public class OrderedMenu {
         return count;
     }
 
-    public boolean canOrder(int howMany) {
-        return count + howMany <= MAX_ORDER;
-    }
-
     public int getMenuId() {
         return menu.getNumber();
+    }
+
+    public boolean canOrderMore(int howMany) {
+        return count + howMany <= MAX_ORDER;
     }
 
     public double sumOfEachMenu() {
@@ -42,7 +48,7 @@ public class OrderedMenu {
     }
 
     public void addJustCount(int howMany) {
-        count += howMany;
+        count += howMany;   //  같은 메뉴인 경우, 수량만을 증가 시키기 위한 메서드입니다.
     }
 
     @Override
@@ -51,7 +57,7 @@ public class OrderedMenu {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o) {   //  같은 메뉴인지를, 판별하기 위해 Count 변수 제외하고 비교하는 equals입니다.
         if (this == o) return true;
         if (!(o instanceof OrderedMenu)) return false;
         OrderedMenu that = (OrderedMenu) o;

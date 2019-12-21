@@ -6,6 +6,11 @@ import domain.Table;
 
 import java.util.List;
 
+/**
+ * @author KIMSIYOUNG
+ * @apiNote 출력을 담당하는 클래스로, 사용자에게 보여지는 부분을 담당합니다.
+ * @since 2019-12-21
+ */
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";

@@ -42,10 +42,10 @@ public class Table {
     private boolean alreadyHasTheMenu(int howMany, OrderedMenu orderMenu) {
         OrderedMenu existMenu = menus.stream()
                 .filter(s -> s.equals(orderMenu)).findFirst().get();
-        if (existMenu.canOrder(howMany)) {
+        if (existMenu.canOrderMore(howMany)) {
             existMenu.addJustCount(howMany);
         }
-        if (!existMenu.canOrder(howMany)) {
+        if (!existMenu.canOrderMore(howMany)) {
             OutputView.printAmountError();
         }
         return true;
@@ -57,7 +57,7 @@ public class Table {
             chickenCount = getChickenCount(chickenCount, menu);
         }
         int chickenAmountForDiscount = (chickenCount / DISCOUNT_MEASURE) * DISCOUNT_AMOUNT;
-        return totalMoney - chickenAmountForDiscount;
+        return totalMoney - chickenAmountForDiscount;   // 현금 할인율이 적용되지 않은 Sum을 구하는 메서드입니다.
     }
 
     private int getChickenCount(int chickenCount, OrderedMenu menu) {
@@ -65,16 +65,16 @@ public class Table {
             chickenCount += menu.getCount();
         }
         totalMoney += menu.sumOfEachMenu();
-        return chickenCount;
+        return chickenCount;    //  치킨 수를 통해, 할인을 하기위한 메서드입니다.
+    }
+
+    public double getTotalMoneyWithPayment(Payment payment) {
+        return payment.calculateWithPayment(sumOfMenus());  //  현금 할인 여부까지 정의된 총 금액입니다.
     }
 
 
     @Override
     public String toString() {
         return Integer.toString(number);
-    }
-
-    public double getTotalMoneyWithPayment(Payment payment) {
-        return payment.calculateWithPayment(sumOfMenus());
     }
 }
