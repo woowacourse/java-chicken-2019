@@ -17,6 +17,7 @@ public class Application {
         application.mainMenu();
         application.tableMenu(tables);
         application.menuMenu(menus);
+        application.quantityMenu();
     }
 
     private int mainMenu() {
@@ -35,9 +36,14 @@ public class Application {
         return tableNumber;
     }
 
-    private int  menuMenu(List<Menu> menus) {
+    private int menuMenu(List<Menu> menus) {
         OutputView.printMenus(menus);
         int menuNumber = InputView.inputMenuNumber();
         return menuNumber;
+    }
+
+    private int quantityMenu() {
+        int quantityNumber = InputView.inputQuantityNumber();
+        return quantityNumber;
     }
 }

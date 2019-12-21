@@ -10,14 +10,16 @@ import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
-    private static final List<Integer> MAIN_MENU_NUMBER = new ArrayList<Integer>(Arrays.asList(new Integer[]{1, 2, 3}));
+    private static final int MAIN_MENU = 3;
     private static final List<Integer> TABLE_NUMBERS = TableRepository.tableNumbers();
     private static final List<Integer> MENU_NUMBER = MenuRepository.menuNumbers();
+    private static final int QUANTITY = 99;
 
     public static int inputMainMenuNumber() {
         System.out.println("\n## 원하는 기능을 선택하세요.");
         String printErrorMessage = "\n## 원하는 기능을 기능 번호로 다시 선택해주세요.";
-        return inputNumber(printErrorMessage, MAIN_MENU_NUMBER);
+        List<Integer> mainMenuNumber = createNumberList(MAIN_MENU);
+        return inputNumber(printErrorMessage, mainMenuNumber);
     }
 
     public static int inputTableNumber() {
@@ -30,6 +32,21 @@ public class InputView {
         System.out.println("\n## 등록할 메뉴를 선택하세요.");
         String printErrorMessage = "\n## 등록할 메뉴를 주문할 메뉴 번호로 다시 선택해주세요.";
         return inputNumber(printErrorMessage, MENU_NUMBER);
+    }
+
+    public static int inputQuantityNumber() {
+        System.out.println("\n## 메뉴의 수량을 입력하세요.");
+        String printErrorMessage = "\n## 메뉴의 수량은 (숫자로) 1 ~ 최대 " + QUANTITY + "까지 입력 가능합니다.";
+        List<Integer> quantityNumber = createNumberList(QUANTITY);
+        return inputNumber(printErrorMessage, quantityNumber);
+    }
+
+    private static List<Integer> createNumberList(int number) {
+        List<Integer> numberList = new ArrayList<Integer>();
+        for (int i = 1; i <= number; i++) {
+            numberList.add(i);
+        }
+        return numberList;
     }
 
     private static int inputNumber(String printErrorMessage, List<Integer> numberBounds) {
