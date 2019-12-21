@@ -21,4 +21,16 @@ public class MenuRepository {
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
     }
+
+    private static boolean contain(int menuId) {
+        return menus.stream()
+                .anyMatch(table -> table.isMatch(menuId));
+    }
+
+    public static int checkExistMenu(int menuId) {
+        if (!contain(menuId)) {
+            throw new IllegalArgumentException();
+        }
+        return menuId;
+    }
 }
