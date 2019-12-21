@@ -1,8 +1,5 @@
 package view;
 
-import domain.Table;
-import sun.tools.jconsole.Tab;
-
 import java.util.Scanner;
 
 public class InputView {

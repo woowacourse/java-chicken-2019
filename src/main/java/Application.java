@@ -64,7 +64,9 @@ public class Application {
         int tableNum = selectTable();
         Table table = TableRepository.getTableByNum(tableNum);
         OutputView.printOrderHistory(table);
-        InputView.inputPayment(tableNum);
+        Payment payment = new Payment(InputView.inputPayment(tableNum));
+        double price = table.sum(payment.isCash());
+        OutputView.printResult(price);
     }
 
 }

@@ -2,7 +2,7 @@ package domain;
 
 public class Order {
     private final Menu menu;
-    private final int amount;
+    private final int amount; // 수량
 
     public Order(Menu menu, int amount) {
         if (amount > 99) {
@@ -18,6 +18,14 @@ public class Order {
     public int price()
     {
         return menu.price() * amount;
+    }
+
+    public boolean isChicken() {
+        return menu.isChicken();
+    }
+
+    public int amount() {
+        return amount;
     }
 
     public String toString() {

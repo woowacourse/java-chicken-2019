@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class ShoppingBasket {
+    private static final int ONE_CHICKEN_DISCOUNT = 10000;
     private Queue<Order> orderQueue;
 
     public ShoppingBasket() {
@@ -14,13 +15,21 @@ public class ShoppingBasket {
         orderQueue.offer(order);
     }
 
+    /**
+     * @return 할인을 포함한 가격을 반환한다.
+     */
     public int sum() {
         int sum = 0;
+        int chicken = 0;
+        int discount = 0;
         for (Order order: orderQueue) {
+            if (order.isChicken()) {
+                chicken += order.amount();
+            }
             sum += order.price();
         }
-
-        return sum;
+        discount = chicken / 10;
+        return sum - discount * ONE_CHICKEN_DISCOUNT;
     }
 
     public void clear() {

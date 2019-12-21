@@ -23,7 +23,10 @@ public class Table {
         shoppingBasket.offer(order);
     }
 
-    public int sum() {
+    public double sum(boolean isCash) {
+        if (isCash) {
+            return shoppingBasket.sum() * 0.95;
+        }
         return shoppingBasket.sum();
     }
 
