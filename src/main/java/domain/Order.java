@@ -45,7 +45,7 @@ public class Order {
             return false;
         int menuCount = Integer.parseInt(input);
 
-        if (table.getTableMenuCount() + menuCount > MenuRepository.get_MAX_MENU_COUNT()){
+        if (table.getTotalMenuCount() + menuCount > MenuRepository.get_MAX_MENU_COUNT()){
             System.out.println("주문 가능한 수량을 초과했습니다.");
             return false;
         }
@@ -53,7 +53,7 @@ public class Order {
     }
 
     boolean impossibleToOrder() {
-        if (table.getTableMenuCount() >= MenuRepository.get_MAX_MENU_COUNT()) {
+        if (table.getTotalMenuCount() >= MenuRepository.get_MAX_MENU_COUNT()) {
             System.out.println("주문 가능한 수량을 이미 초과하여 주문할 수 없습니다.\n");
             return true;
         }

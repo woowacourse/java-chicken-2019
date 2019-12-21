@@ -33,7 +33,7 @@ public class Table {
         return count;
     }
 
-    public int getTableMenuCount() {
+    public int getTotalMenuCount() {
         return menus.size();
     }
 

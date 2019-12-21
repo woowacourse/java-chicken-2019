@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    // TODO 구현 진행
     static final List<Table> tables = TableRepository.tables();
     static final List<Menu> menus = MenuRepository.menus();
 
@@ -19,6 +18,7 @@ public class Application {
                 break;
             OrderOrPay(programIndex);
         }
+        checkEveryTablePayment();
         System.out.println("프로그램을 종료합니다.");
     }
 
@@ -61,5 +61,14 @@ public class Application {
 
     public List<Menu> getMenus() {
         return menus;
+    }
+
+    public static void checkEveryTablePayment() {
+        for (int i = 0; i < tables.size(); i++) {
+            if (tables.get(i).getTotalMenuCount() > 0) {
+                System.out.println("아직 결제하지 않은 테이블이 있습니다.");
+                return;
+            }
+        }
     }
 }

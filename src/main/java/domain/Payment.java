@@ -71,7 +71,7 @@ public class Payment {
     }
 
     private boolean validateOrderedMenu() {
-        if (table.getTableMenuCount() <= 0) {
+        if (table.getTotalMenuCount() <= 0) {
             System.out.println("주문 내역이 없습니다.\n");
             return false;
         }
