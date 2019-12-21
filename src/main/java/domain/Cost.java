@@ -4,7 +4,7 @@ public class Cost {
 	public static final Cost ZERO = new Cost(0);
 
 	private static final int MIN_PRICE_VALUE = 0;
-	private static final double ORIGIN_PRICE_RATE = 100.0;
+	private static final int ORIGIN_PRICE_RATE = 100;
 	private static final int CHICKEN_DISCOUNT_EA = 10;
 	private static final int CHICKEN_DISCOUNT_PRICE = 10_000;
 
@@ -21,11 +21,11 @@ public class Cost {
 		return new Cost(price + cost.price);
 	}
 
-	public Cost getDisCountedPrice(double discountRate) {
+	public Cost getDisCountedPrice(int discountRate) {
 		return new Cost(getDiscountedPriceByRate(discountRate));
 	}
 
-	private int getDiscountedPriceByRate(double discountRate) {
+	private int getDiscountedPriceByRate(int discountRate) {
 		return (int)((price * (ORIGIN_PRICE_RATE - discountRate)) / ORIGIN_PRICE_RATE);
 	}
 

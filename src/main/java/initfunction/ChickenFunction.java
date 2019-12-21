@@ -24,8 +24,6 @@ public abstract class ChickenFunction {
 
 	protected void addOrderToTotalOrder(Table table, Order order) {
 		TOTAL_ORDERS.addOrder(table, order);
-		System.out.println(table);
-		System.out.println(order);
 	}
 
 	protected void printAllTable() {

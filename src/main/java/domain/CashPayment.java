@@ -1,7 +1,7 @@
 package domain;
 
-public class CashPayment implements Payment{
-	private static final double CASH_DISCOUNT_RATE = 5.0;
+public class CashPayment implements Payment {
+	private static final int CASH_DISCOUNT_RATE = 5;
 
 	@Override
 	public Cost getCostByPaymentMethod(Cost costs) {

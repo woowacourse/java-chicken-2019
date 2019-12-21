@@ -11,8 +11,6 @@ public class Orders {
 
 	public void add(Order order) {
 		orders.add(order);
-		System.out.println(orders);
-		System.out.println(order);
 	}
 
 	public void removeAll() {
