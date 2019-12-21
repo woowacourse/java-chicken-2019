@@ -44,6 +44,7 @@ public class OutputView {
     }
 
     public static void printPurchaseInfo(Cost cost) {
+        System.out.println("## 최종 결제할 금액");
         System.out.println(cost);
     }
 }

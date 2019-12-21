@@ -19,10 +19,6 @@ public class Cost {
 		return new Cost(price + cost.price);
 	}
 
-	public int getPrice() {
-		return price;
-	}
-
 	public Cost getDisCountedPrice(double discountRate) {
 		return new Cost(discountedPrice(discountRate));
 	}

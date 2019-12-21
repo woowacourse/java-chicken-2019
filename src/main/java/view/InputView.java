@@ -4,25 +4,24 @@ import java.util.Scanner;
 
 import domain.Menu;
 import domain.MenuRepository;
-import domain.Order;
 import domain.Payment;
 import domain.PaymentFactory;
 import domain.Table;
 import domain.TableRepository;
+import flow.ChickenFunction;
+import flow.FunctionFactory;
 import util.ValidateUtil;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int inputFunctionId() {
+    public static ChickenFunction inputFunction() {
         try {
             System.out.println("## 원하는 기능을 선택하세요.");
-            int data = inputInt();
-            ValidateUtil.validateFunctionId(data);
-            return data;
+            return FunctionFactory.getInstance(inputInt());
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            return inputFunctionId();
+            return inputFunction();
         }
     }
 
