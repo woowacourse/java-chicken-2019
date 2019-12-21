@@ -19,4 +19,22 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static void addMenuAtTable(int tableNum, Order order) {
+        Table table = getTableByNum(tableNum);
+        table.offer(order);
+    }
+
+    private static Table getTableByNum(int num) {
+        if (num < 1 || num == 4 || num == 7 || num > 8) {
+            throw new IllegalArgumentException("테이블 번호는 1,2,3,5,6,8 중 하나여야 합니다.");
+        }
+        if (num < 4) {
+            return tables.get(num - 1);
+        }
+        if (num < 7) {
+            return tables.get(num - 2);
+        }
+        return tables.get(num - 3);
+    }
 }

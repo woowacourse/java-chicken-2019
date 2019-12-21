@@ -2,19 +2,19 @@ package domain;
 
 public class Order {
     private final Menu menu;
-    private final int num;
+    private final int amount;
 
-    public Order(Menu menu, int num) {
+    public Order(Menu menu, int amount) {
         this.menu = menu;
-        this.num = num;
+        this.amount = amount;
     }
 
     public int price()
     {
-        return menu.price() * num;
+        return menu.price() * amount;
     }
 
     public String toString() {
-        return menu.name() + ' ' + num + ' ' + price();
+        return menu.name() + ' ' + amount + ' ' + price();
     }
 }

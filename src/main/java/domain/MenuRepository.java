@@ -21,4 +21,18 @@ public class MenuRepository {
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
     }
+
+    public static Menu getMenuByNum(int num) {
+        if (num < 1 || num > 22) {
+            throw new IllegalArgumentException("메뉴는 1,2,3,4,5,6,21,22번 이어야합니다.");
+        }
+        if (num > 6 && num < 21) {
+            throw new IllegalArgumentException("메뉴는 1,2,3,4,5,6,21,22번 이어야합니다.");
+        }
+
+        if (num < 7) {
+            return menus.get(num - 1);
+        }
+        return menus.get(num - 15);
+    }
 }
