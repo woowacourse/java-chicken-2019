@@ -77,10 +77,8 @@ public class Order {
     /**
      * 생성자 호출 시 메뉴의 목록(Store에서 만든 메뉴 목록)을 받는다.
      * 이 목록에 맞춰서 orderList를 만든다.
-     *
-     * @param menus 새로 만들 주문리스트에서 사용할 총 메뉴의 목록
      */
-    public Order(List<Menu> menus){
+    public Order(){
         orderList = new ArrayList<>();
     }
 
@@ -92,7 +90,7 @@ public class Order {
      * @param menu 주문할 메뉴의 정보를 담은 객체
      * @param number 주문할 갯수
      */
-    public void orderMenu(Menu menu, int number){
+    public void addOrder(Menu menu, int number){
         for(MenuWithNumber order : orderList) {
             if(order.isSameMenu(menu)){
                 order.addMenuNumber(menu, number);
