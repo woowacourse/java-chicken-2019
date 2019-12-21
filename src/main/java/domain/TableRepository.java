@@ -19,4 +19,13 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+    
+    public static void addMenu(int tableNumber, int menuNumber, int menuCount) {
+    	for (Table table : tables) {
+			if(table.getNumber() == tableNumber) {
+				table.addMenu(menuNumber, menuCount);
+				break;
+			}
+		}
+    }
 }

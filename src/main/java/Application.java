@@ -29,28 +29,25 @@ public class Application {
 
 	private static int mainMenu() {
 		OutputView.printMainMenu();
-
 		final int mainMenuNumber = InputView.inputMainMenuNumber();
-		
 		return mainMenuNumber;
 	}
 	
 	private static void orderMenu() {
 		final List<Table> tables = TableRepository.tables();
 		OutputView.printTables(tables);
-
 		final int tableNumber = InputView.inputTableNumber();
-
 		final List<Menu> menus = MenuRepository.menus();
 		OutputView.printMenus(menus);
+		final int selectedMenu = InputView.inputMenuSelect();
+		final int menuCount = InputView.inputMenuCount();
+		TableRepository.addMenu(tableNumber, selectedMenu, menuCount);
 	}
 	
 	private static void paymentMenu() {
 		final List<Table> tables = TableRepository.tables();
 		OutputView.printTables(tables);
-		
 		final int tableNumber = InputView.inputTableNumber();
-		
 		OutputView.printTableMenu(tableNumber);
 		InputView.inputPaymentMenuNumber();
 	}
