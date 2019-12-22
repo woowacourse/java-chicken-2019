@@ -1,5 +1,4 @@
-import domain.Menu;
-import domain.MenuRepository;
+package domain;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -32,7 +31,8 @@ public class OrderList {
             Menu tmp1 = entry.getKey();
             Integer tmp2 = entry.getValue();
             if (tmp2 != 0) {
-                System.out.println(tmp1.getName() + " " + tmp2 + " " + tmp1.getPrice());
+                System.out.println(tmp1.getName() + " " + tmp2 + " "
+                        + tmp1.getPrice() * tmp2);
             }
         }
     }
@@ -54,12 +54,10 @@ public class OrderList {
 
     public int calculateDiscount(int sum, int numberOfChicken,
                                  TypeOfPayment payment) {
-
         sum -= ((numberOfChicken / 10) * 10000);
         if (payment.isCash()) {
             sum *= 0.95;
         }
         return sum;
     }
-
 }

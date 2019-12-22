@@ -1,3 +1,5 @@
+package domain;
+
 public class TypeOfPayment {
     private static final int CREDIT_CARD = 1;
     private static final int CASH = 2;

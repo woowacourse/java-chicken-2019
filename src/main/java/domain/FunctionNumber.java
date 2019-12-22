@@ -1,3 +1,5 @@
+package domain;
+
 public class FunctionNumber {
     private static final int REGISTER_ORDER = 1;
     private static final int PAYMENT = 2;
@@ -16,10 +18,6 @@ public class FunctionNumber {
 
     public boolean isRegisterOrder() {
         return functionNumber == REGISTER_ORDER;
-    }
-
-    public boolean isPayment() {
-        return functionNumber == PAYMENT;
     }
 
     public boolean isExit() {

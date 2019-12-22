@@ -1,3 +1,5 @@
+package domain;
+
 import domain.Menu;
 import domain.MenuRepository;
 

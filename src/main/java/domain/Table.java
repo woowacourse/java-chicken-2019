@@ -16,5 +16,4 @@ public class Table {
     public boolean isSameTable(Table anotherTable) {
         return this.number == anotherTable.number;
     }
-
 }

@@ -31,12 +31,4 @@ public class MenuRepository {
         }
         return null;
     }
-    /*public static boolean isThereMenu(Menu anotherMenu){
-        for(Menu menu : menus){
-            if(menu.isSameMenu(anotherMenu)){
-                return true;
-            }
-        }
-        return false;
-    }*/
 }
