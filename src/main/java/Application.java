@@ -13,7 +13,6 @@ public class Application {
 	private static final int EXIT = 3;
 
 	public static void main(String[] args) {
-		Application application = new Application();
 		Order order = new Order();
 		while (true) {
 			OutputView.printMainScreen();
@@ -22,7 +21,7 @@ public class Application {
 				order.orderMenu();
 			}
 			if (process == PAY) {
-				application.runPaymentProcess(order);
+				runPaymentProcess(order);
 			}
 			if (process == EXIT) {
 				break;
@@ -30,7 +29,7 @@ public class Application {
 		}
 	}
 
-	private void runPaymentProcess(Order order) {
+	private static void runPaymentProcess(Order order) {
 		int tableNumberToPay = InputView.inputTableNumberToPay();
 		List<OrderMenu> orderMenuList = order.getTableToPay(tableNumberToPay);
 		if (orderMenuList.isEmpty()) {
