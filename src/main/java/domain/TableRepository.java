@@ -20,12 +20,12 @@ public class TableRepository {
         return Collections.unmodifiableList(tables);
     }
 
-    public static boolean isThereTable(Table anotherTable){
+    public static Table getTable(int tableNumber){
         for(Table table : tables){
-            if(table.isSameTable(anotherTable)){
-                return true;
+            if(table.isSameTable(new Table(tableNumber))){
+                return table;
             }
         }
-        return false;
+        return null;
     }
 }

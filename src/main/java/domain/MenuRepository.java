@@ -22,12 +22,21 @@ public class MenuRepository {
         return Collections.unmodifiableList(menus);
     }
 
-    public static boolean isThereMenu(Menu anotherMenu){
+    public static Menu getMenuByNumber(int number){
+        for(Menu menu:menus){
+            if(menu.isSameMenu(new Menu(number, null, null,
+                    0))){
+                return menu;
+            }
+        }
+        return null;
+    }
+    /*public static boolean isThereMenu(Menu anotherMenu){
         for(Menu menu : menus){
             if(menu.isSameMenu(anotherMenu)){
                 return true;
             }
         }
         return false;
-    }
+    }*/
 }

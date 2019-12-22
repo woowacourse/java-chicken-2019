@@ -9,6 +9,8 @@ import javax.swing.plaf.FontUIResource;
 import java.util.List;
 
 public class Application {
+
+    private static TableOrderList tableOrderList = new TableOrderList();
     // TODO 구현 진행
     public static void main(String[] args) {
         final List<Table> tables = TableRepository.tables();
@@ -22,8 +24,8 @@ public class Application {
             }
             run(functionNumber, tables);
 
-            final List<Menu> menus = MenuRepository.menus();
-            OutputView.printMenus(menus);
+            //final List<Menu> menus = MenuRepository.menus();
+            //OutputView.printMenus(menus);
         }
     }
     public static void run(FunctionNumber functionNumber, List<Table> tables){
@@ -38,7 +40,10 @@ public class Application {
     }
     public static void registerOrder(TableNumber tableNumber,
                                      List<Table> tables ){
-
+        MenuNumber menuNumber = new MenuNumber(InputView.inputMenuNumber(),
+                InputView.inputNumberOfMenu());
+        tableOrderList.addTableOrder(tableNumber, menuNumber);
+        tableOrderList.printTableOrderList();
     }
     public static void payment(TableNumber tableNumber,
                                List<Table> tables){
