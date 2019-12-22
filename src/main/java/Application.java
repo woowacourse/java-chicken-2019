@@ -8,7 +8,6 @@ import view.OutputView;
 
 public class Application {
 	private static final String NO_ORDER_TABLE = "주문 내역이 없는 테이블 입니다.";
-	private static final boolean flag = true;
 	private static final int MENU_SELECT = 1;
 	private static final int PAY = 2;
 	private static final int EXIT = 3;
@@ -16,7 +15,7 @@ public class Application {
 	public static void main(String[] args) {
 		Application application = new Application();
 		Order order = new Order();
-		do {
+		while (true) {
 			OutputView.printMainScreen();
 			int process = InputView.inputMainProcess();
 			if (process == MENU_SELECT) {
@@ -28,7 +27,7 @@ public class Application {
 			if (process == EXIT) {
 				break;
 			}
-		} while (flag);
+		}
 	}
 
 	private void runPaymentProcess(Order order) {
