@@ -50,7 +50,7 @@ public class Order {
 			.collect(Collectors.toList());
 	}
 
-	private List<Integer> getOccupiedTableNumbers() {
+	public List<Integer> getOccupiedTableNumbers() {
 		return orderMenuList.stream()
 			.map(orderMenu -> orderMenu.getOrderTable().getNumber())
 			.collect(Collectors.toList());

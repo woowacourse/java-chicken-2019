@@ -29,7 +29,7 @@ public class Pay {
 			payment = payMoney - chickenDiscount;
 		}
 		if (paymentType == CASH) {
-			payment = (payMoney * CASH_DISCOUNT) - chickenDiscount;
+			payment = (payMoney - chickenDiscount) * CASH_DISCOUNT;
 		}
 		if (payment < ZERO) {
 			return ZERO;

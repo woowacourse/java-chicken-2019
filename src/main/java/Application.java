@@ -1,6 +1,8 @@
 import java.util.List;
 
 import domain.OrderMenu;
+import domain.Table;
+import domain.TableRepository;
 import order.Order;
 import pay.Pay;
 import view.InputView;
@@ -30,6 +32,9 @@ public class Application {
 	}
 
 	private static void runPaymentProcess(Order order) {
+		final List<Table> tables = TableRepository.tables();
+		List<Integer> occupiedTableNumbers = order.getOccupiedTableNumbers();
+		OutputView.printTables(tables, occupiedTableNumbers);
 		int tableNumberToPay = InputView.inputTableNumberToPay();
 		List<OrderMenu> orderMenuList = order.getTableToPay(tableNumberToPay);
 		if (orderMenuList.isEmpty()) {
@@ -38,6 +43,5 @@ public class Application {
 		}
 		Pay.pay(orderMenuList, tableNumberToPay);
 		order.emptyPaidTable(tableNumberToPay);
-
 	}
 }
