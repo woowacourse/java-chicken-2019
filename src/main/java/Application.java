@@ -37,5 +37,7 @@ public class Application {
 			return;
 		}
 		Pay.pay(orderMenuList, tableNumberToPay);
+		order.emptyPaidTable(tableNumberToPay);
+
 	}
 }

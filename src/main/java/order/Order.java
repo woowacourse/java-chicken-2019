@@ -55,4 +55,10 @@ public class Order {
 			.map(orderMenu -> orderMenu.getOrderTable().getNumber())
 			.collect(Collectors.toList());
 	}
+
+	public void emptyPaidTable(int tableNumber) {
+		orderMenuList = orderMenuList.stream()
+			.filter(orderMenu -> !orderMenu.containTableNumber(tableNumber))
+			.collect(Collectors.toList());
+	}
 }
