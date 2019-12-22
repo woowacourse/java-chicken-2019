@@ -14,24 +14,41 @@ public class Pay {
 	public static void pay(List<OrderMenu> orderMenuList, int tableNumber) {
 		printOrderList(orderMenuList);
 		printTableNumber(tableNumber);
+		int chickenDiscount = getChickenDiscount(orderMenuList);
 		int paymentType = InputView.inputPaymentType();
 		int payMoney = getTotalMoneyToPay(orderMenuList);
-		printPaymentResult(paymentType, payMoney);
+		printPaymentResult(paymentType, payMoney, chickenDiscount);
 	}
 
-	private static double getPayment(int paymentType, int payMoney) {
+	private static double getPayment(int paymentType, int payMoney, int chickenDiscount) {
 		double payment = 0;
 
 		if (paymentType == CREDIT_CARD) {
-			payment = payMoney;
+			payment = payMoney - chickenDiscount;
 		}
 		if (paymentType == CASH) {
-			payment = payMoney * CASH_DISCOUNT;
+			payment = (payMoney * CASH_DISCOUNT) - chickenDiscount;
 		}
 		if (payment < 0) {
 			return 0;
 		}
 		return payment;
+	}
+
+	private static int getChickenDiscount(List<OrderMenu> orderMenuList) {
+		int chickenNumber = getNumberOfChickenMenu(orderMenuList);
+		int discountQuantity = chickenNumber / 10;
+		if (discountQuantity > 0) {
+			return discountQuantity * CHICKEN_DISCOUNT;
+		}
+		return 0;
+	}
+
+	private static int getNumberOfChickenMenu(List<OrderMenu> orderMenuList) {
+		return orderMenuList.stream()
+			.map(orderMenu -> orderMenu.getChickenMenuNumber())
+			.reduce(Integer::sum)
+			.get();
 	}
 
 	private static int getTotalMoneyToPay(List<OrderMenu> orderMenuList) {
@@ -50,8 +67,8 @@ public class Pay {
 		System.out.println(tableNumber + "번 테이블의 결제를 진행합니다.");
 	}
 
-	private static void printPaymentResult(int paymentType, int payMoney) {
-		double payment = getPayment(paymentType, payMoney);
+	private static void printPaymentResult(int paymentType, int payMoney, int chickenDiscount) {
+		double payment = getPayment(paymentType, payMoney, chickenDiscount);
 		System.out.println("최종 결제한 금액은 " + (int)payment + "원 입니다.");
 	}
 
