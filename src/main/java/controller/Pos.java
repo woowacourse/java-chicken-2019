@@ -92,15 +92,20 @@ public class Pos {
     return table.hasOrdered();
   }
 
-  private void validatePay(Table table) throws Exception {
-    if (!hasOrdered(table)) {
-      throw new Exception("주문이 존재하지 않습니다.");
-    }
+  private boolean validatePay(Table table) {
+    return hasOrdered(table);
   }
 
   private void validatePay() throws Exception {
+    boolean ordered = false;
     for (Table table : tables) {
-      validatePay(table);
+      if(validatePay(table)){
+        ordered = true;
+      }
+    }
+
+    if(!ordered){
+      throw new Exception("주문이 존재하지 않습니다.");
     }
   }
 
