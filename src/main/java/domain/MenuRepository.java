@@ -22,10 +22,10 @@ public class MenuRepository {
         return Collections.unmodifiableList(menus);
     }
 
-    public static Menu getMenuByNumber(int number){
-        for(Menu menu:menus){
-            if(menu.isSameMenu(new Menu(number, null, null,
-                    0))){
+    public static Menu getMenuByNumber(int number) {
+        for (Menu menu : menus) {
+            if (menu.isSameMenu(new Menu(number, null, null,
+                    0))) {
                 return menu;
             }
         }

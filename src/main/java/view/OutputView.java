@@ -9,9 +9,9 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BOTTOM_LINE_ORDERED = "└ ￦ ┘";
 
-
-    public static void mainDisplay(){
+    public static void mainDisplay() {
         System.out.println("\n##메인화면");
         System.out.println("1 - 주문등록");
         System.out.println("2 - 결제하기");
@@ -46,7 +46,16 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printExitProgram(){
+    public static void printOrderList() {
+        System.out.println("\n## 주문 내역");
+        System.out.println("메뉴 수량 금액");
+    }
+
+    public static void printFinalPrice() {
+        System.out.println("\n## 최종 결제할 금액");
+    }
+
+    public static void printExitProgram() {
         System.out.println("프로그램을 종료합니다.");
     }
 }

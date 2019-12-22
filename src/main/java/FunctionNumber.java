@@ -14,11 +14,11 @@ public class FunctionNumber {
         this.functionNumber = functionNumber;
     }
 
-    public boolean isRegisterOrder(){
+    public boolean isRegisterOrder() {
         return functionNumber == REGISTER_ORDER;
     }
 
-    public boolean isPayment(){
+    public boolean isPayment() {
         return functionNumber == PAYMENT;
     }
 

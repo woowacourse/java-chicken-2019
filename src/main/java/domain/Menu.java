@@ -18,7 +18,19 @@ public class Menu {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
 
-    public boolean isSameMenu(Menu anotherMenu){
+    public boolean isSameMenu(Menu anotherMenu) {
         return this.number == anotherMenu.number;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isChicken() {
+        return category == Category.CHICKEN;
     }
 }

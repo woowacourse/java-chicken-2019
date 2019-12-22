@@ -20,9 +20,9 @@ public class TableRepository {
         return Collections.unmodifiableList(tables);
     }
 
-    public static Table getTable(int tableNumber){
-        for(Table table : tables){
-            if(table.isSameTable(new Table(tableNumber))){
+    public static Table getTable(int tableNumber) {
+        for (Table table : tables) {
+            if (table.isSameTable(new Table(tableNumber))) {
                 return table;
             }
         }

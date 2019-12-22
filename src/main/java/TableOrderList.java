@@ -7,30 +7,34 @@ import java.util.*;
 public class TableOrderList {
     private final LinkedHashMap<Table, OrderList> tableOrderList;
 
-    public TableOrderList(){
+    public TableOrderList() {
         List<Table> tables = TableRepository.tables();
         tableOrderList = new LinkedHashMap<>();
-        for(Table table : tables){
+        for (Table table : tables) {
             tableOrderList.put(table, new OrderList());
         }
     }
 
-    public void printTableOrderList(){
-        Set<Map.Entry<Table, OrderList>> set = tableOrderList.entrySet();
-        Iterator<Map.Entry<Table,OrderList>> iterator = set.iterator();
-        while(iterator.hasNext()){
-            Map.Entry<Table,OrderList> entry = iterator.next();
-            Table table = entry.getKey();
-            OrderList orderList = entry.getValue();
-            System.out.println(table +":");
-            orderList.printOrderList();
-        }
+    public void printTableOrderList(TableNumber tableNumber) {
+        OrderList orderList = tableOrderList.get(tableNumber.getTable());
+        orderList.printOrderList();
     }
 
-    public void addTableOrder(TableNumber table, MenuNumber menu){
+    public void addTableOrder(TableNumber table, MenuNumber menu) {
         Table tableInstance = table.getTable();
         OrderList orderList = tableOrderList.get(tableInstance);
         orderList.addOrderList(menu);
         tableOrderList.put(tableInstance, orderList);
+    }
+
+    public int calculateTableSum(TableNumber table, TypeOfPayment payment) {
+        OrderList orderList = tableOrderList.get(table.getTable());
+        int sum = orderList.calculatePriceSum(payment);
+        deleteOrderList(table);
+        return sum;
+    }
+
+    public void deleteOrderList(TableNumber table) {
+        tableOrderList.put(table.getTable(), new OrderList());
     }
 }
