@@ -10,6 +10,10 @@ public class OrderMenu extends Menu {
 		this.numberOfMenu = numberOfMenu;
 	}
 
+	public Table getOrderTable() {
+		return orderTable;
+	}
+
 	private int getNumberOfMenu() {
 		return numberOfMenu;
 	}

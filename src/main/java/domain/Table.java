@@ -7,6 +7,10 @@ public class Table {
 		this.number = number;
 	}
 
+	public int getNumber() {
+		return number;
+	}
+
 	boolean containTableNumber(int tableNumber) {
 		return this.number == tableNumber;
 	}

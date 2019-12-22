@@ -19,7 +19,8 @@ public class Order {
 
 	public void orderMenu() {
 		final List<Table> tables = TableRepository.tables();
-		OutputView.printTables(tables);
+		List<Integer> occupiedTableNumbers = getOccupiedTableNumbers();
+		OutputView.printTables(tables, occupiedTableNumbers);
 		final int tableNumber = InputView.inputTableNumber();
 		final List<Menu> menus = MenuRepository.menus();
 		OutputView.printMenus(menus);
@@ -46,6 +47,12 @@ public class Order {
 	public List<OrderMenu> getTableToPay(int tableNumber) {
 		return orderMenuList.stream()
 			.filter(orderMenu -> orderMenu.containTableNumber(tableNumber))
+			.collect(Collectors.toList());
+	}
+
+	private List<Integer> getOccupiedTableNumbers() {
+		return orderMenuList.stream()
+			.map(orderMenu -> orderMenu.getOrderTable().getNumber())
 			.collect(Collectors.toList());
 	}
 }
