@@ -19,6 +19,7 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String CHECKED_BOTTOM_LINE = "└ * ┘";
     private static final String MAIN_PAGE = "## 메인화면";
     private static final String PRINT_MAIN_FUNCTION = "1 - 주문등록 \n2 - 결제하기 \n3 - 프로그램 종료";
     private static final String ASK_TO_CHOOSE_MAIN_FUNCTION = "\n## 원하는 기능을 선택하세요.";
@@ -32,12 +33,20 @@ public class OutputView {
     private static final String TABLE_LIST = "## 테이블 목록";
 
 
-    public static void printTables(final List<Table> tables) {
+    public static void printTables(final List<Table> tables, final List<Table> orderedTables) {
+        String checkingBottomLine = "";
+        for (Table table : tables) {
+            if (table.isInTables(orderedTables)){
+                checkingBottomLine += CHECKED_BOTTOM_LINE;
+                continue;
+            }
+            checkingBottomLine += BOTTOM_LINE;
+        }
         System.out.println(TABLE_LIST);
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        System.out.println(checkingBottomLine);
     }
 
     public static void printMenus(final List<Menu> menus) {
