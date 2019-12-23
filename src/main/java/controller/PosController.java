@@ -7,7 +7,6 @@ package controller;
 import domain.*;
 import view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static view.InputView.getMainFunctionNumber;
@@ -17,7 +16,7 @@ public class PosController {
     private static final int THREE = 3;
     List<Table> tables = TableRepository.tables();
     List<Menu> menus = MenuRepository.menus();
-    private List<OrderedTable> orderedTables = new ArrayList<>();
+    private List<Table> orderedTables;
 
     public void posController() {
         OutputView.printMainPage();
@@ -41,13 +40,19 @@ public class PosController {
         if (inputNumber == ONE) {
             OrderController orderController = new OrderController();
             orderedTables = orderController.orderController(tables, menus);
-
+            // test
+            for (Table orderedTable : orderedTables) {
+                System.out.println(orderedTable.getNumber() + "table num");
+                for (Order order : orderedTable.getOrders()) {
+                    System.out.println(order.getOrderNumber() + order.getOrderName() + "order num, name");
+                    System.out.println(order.getQuantity() + "Quantity");
+                }
+            }
             return;
         }
 
         PaymentController paymentController = new PaymentController();
         paymentController.paymentController(orderedTables);
-
 
     }
 }

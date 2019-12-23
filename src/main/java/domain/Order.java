@@ -6,10 +6,10 @@ package domain;
 
 public class Order extends MenuRepository {
     private Menu menu;
-    private int quantity;
+    private Quantity quantity;
 
-    public Order(Menu inputMenu, int inputQuantity) {
-        this.menu = inputMenu;
+    public Order(Menu inputMenu, Quantity inputQuantity) {
+        menu = inputMenu;
         quantity = inputQuantity;
     }
 
@@ -17,16 +17,20 @@ public class Order extends MenuRepository {
         return menu.getNumber();
     }
 
+    public String getOrderName() {
+        return menu.getName();
+    }
+
     public int getQuantity() {
-        return this.quantity;
+        return this.quantity.getQuantity();
     }
 
     public void addQuantity(int addedQuantity) {
-        this.quantity += addedQuantity;
+        this.quantity.addQuantity(addedQuantity);
     }
 
-    public boolean isSameOrder(int inputMenuNumber) {
-        return menu.getNumber() == inputMenuNumber;
+    public boolean isSameOrder(Order inputOrder) {
+        return menu.getNumber() == inputOrder.menu.getNumber();
     }
 
 }

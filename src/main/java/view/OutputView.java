@@ -5,10 +5,8 @@
 package view;
 
 import domain.Menu;
-import domain.OrderedTable;
 import domain.Table;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OutputView {
@@ -35,20 +33,6 @@ public class OutputView {
         printTableNumbers(tables);
         printLine(BOTTOM_LINE, size);
     }
-
-    public static void printOrderedTables(List<OrderedTable> orderedTables, List<Table> tables) {
-        List<Integer> orderedTableNumbers = new ArrayList<>();
-        for (OrderedTable orderedTable : orderedTables) {
-            orderedTableNumbers.add(orderedTable.getTableNumber());
-        }
-        System.out.println(TABLE_LIST);
-        final int size = tables.size();
-        printLine(TOP_LINE, size);
-        printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
-
-    }
-
 
     public static void printMenus(final List<Menu> menus) {
         for (final Menu menu : menus) {

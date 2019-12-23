@@ -5,15 +5,16 @@
 package validation;
 
 import domain.MenuRepository;
+import domain.Quantity;
 import domain.TableRepository;
 import view.OutputView;
 
+import static domain.Quantity.checkOrderQuantity;
+
 public class InputValidator {
-    private static final int ZERO = 0;
     private static final int ONE = 1;
     private static final int TWO = 2;
     private static final int THREE = 3;
-    private static final int HUNDRED = 100;
 
     public static boolean inputMainFunctionValidator(int inputInt) {
         if (inputInt == ONE || inputInt == TWO || inputInt == THREE) {
@@ -40,7 +41,7 @@ public class InputValidator {
     }
 
     public static boolean inputOrderQuantityValidator(int inputInt) {
-        if (inputInt <= ZERO || inputInt >= HUNDRED) {
+        if (!checkOrderQuantity(inputInt)) {
             OutputView.askReenterOrderQuantity();
             return false;
         }
