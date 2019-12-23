@@ -1,5 +1,15 @@
+/**
+ * Copyright (c) 2019 Seungwan Park,
+ * All rights reserved.
+ */
 package domain;
 
+/**
+ * @author Seungwan Park, github.com/toneyparky
+ * @version 1.0
+ * @apiNote 주문하는 양에 관한 클래스입니다. 원시타입의 포장.
+ * @since : 2019.12.23 월요일
+ */
 public class Quantity {
     private static final int MIN_ORDER_QUANTITY = 1;
     private static final int MAX_ORDER_QUANTITY = 99;

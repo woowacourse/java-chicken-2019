@@ -11,6 +11,12 @@ import java.util.List;
 
 import static view.InputView.getMainFunctionNumber;
 
+/**
+ * @author Seungwan Park, github.com/toneyparky
+ * @version 1.0
+ * @apiNote 포스기를 컨트롤하는 클래스입니다.
+ * @since : 2019.12.23 월요일
+ */
 public class PosController {
     private static final int ONE = 1;
     private static final int THREE = 3;

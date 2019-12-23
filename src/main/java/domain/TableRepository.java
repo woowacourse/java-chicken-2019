@@ -8,6 +8,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author Seungwan Park, github.com/toneyparky
+ * @version 1.0
+ * @apiNote 치킨집이 보유한 테이블들에 대한 클래스입니다.
+ * @since : 2019.12.23 월요일
+ */
 public class TableRepository {
     private static final List<Table> tables = new ArrayList<>();
 

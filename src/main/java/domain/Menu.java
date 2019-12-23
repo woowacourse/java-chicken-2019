@@ -4,6 +4,12 @@
  */
 package domain;
 
+/**
+ * @author Seungwan Park, github.com/toneyparky
+ * @version 1.0
+ * @apiNote 메뉴를 만드는 클래스입니다.
+ * @since : 2019.12.23 월요일
+ */
 public class Menu {
     private final int number;
     private final String name;

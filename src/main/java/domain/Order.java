@@ -4,6 +4,12 @@
  */
 package domain;
 
+/**
+ * @author Seungwan Park, github.com/toneyparky
+ * @version 1.0
+ * @apiNote 주문에 관한 클래스입니다.
+ * @since : 2019.12.23 월요일
+ */
 public class Order extends MenuRepository {
     private Menu menu;
     private Quantity quantity;

@@ -8,6 +8,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author Seungwan Park, github.com/toneyparky
+ * @version 1.0
+ * @apiNote 치킨집에 있는 메뉴들이 들어있는 클래스입니다.
+ * @since : 2019.12.23 월요일
+ */
 public class MenuRepository {
     private static final List<Menu> menus = new ArrayList<>();
 

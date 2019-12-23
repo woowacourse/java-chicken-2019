@@ -13,7 +13,12 @@ import java.util.List;
 import static domain.MenuRepository.getMenu;
 import static view.InputView.*;
 
-
+/**
+ * @author Seungwan Park, github.com/toneyparky
+ * @version 1.0
+ * @apiNote 주문을 컨트롤하는 클래스입니다. (1번 기능)
+ * @since : 2019.12.23 월요일
+ */
 public class OrderController {
 
     public static List<Table> orderedTables = new ArrayList<>();

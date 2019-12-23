@@ -7,6 +7,12 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Seungwan Park, github.com/toneyparky
+ * @version 1.0
+ * @apiNote 테이블에 관한 클래스입니다. 주문이 되면 안에 필드로 들어갑니다.
+ * @since : 2019.12.23 월요일
+ */
 public class Table {
     private final int number;
     private final List<Order> orders = new ArrayList<>();

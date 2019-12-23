@@ -9,6 +9,12 @@ import validation.InputValidator;
 
 import java.util.Scanner;
 
+/**
+ * @author Seungwan Park, github.com/toneyparky
+ * @version 1.0
+ * @apiNote 모든 입력문을 담당하는 클래스입니다.
+ * @since : 2019.12.23 월요일
+ */
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
