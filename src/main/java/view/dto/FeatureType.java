@@ -2,8 +2,8 @@ package view.dto;
 
 public class FeatureType {
     private static final int ONE = 1;
-    private static final int TWO = 1;
-    private static final int THREE = 1;
+    private static final int TWO = 2;
+    private static final int THREE = 3;
     private int type;
 
     public FeatureType(int featureType) {
