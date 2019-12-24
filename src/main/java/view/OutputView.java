@@ -19,6 +19,7 @@ public class OutputView {
     public static final String MESSAGE_WON = "원";
     public static final String MESSAGE_SELECT_RIGHT_PAYMENT_METHOD = "화면에 표시된 결제방법 중 하나를 선택하세요";
     public static final String MESSAGE_NOT_RIGHT_AMOUNT = "1에서 99 사이의 수량만 주문가능합니다.";
+    public static final String MESSAGE_NO_MENU = "테이블에 결재할 메뉴가 없습니다";
 
     public static void printTables(final Tables tables) {
         System.out.println("## 테이블 목록");
@@ -103,5 +104,9 @@ public class OutputView {
 
     public static void printInputMenuQuantityException() {
         System.out.println(MESSAGE_NOT_RIGHT_AMOUNT);
+    }
+
+    public static void printMessageNoMenu() {
+        System.out.println(MESSAGE_NO_MENU);
     }
 }

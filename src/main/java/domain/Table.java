@@ -3,7 +3,7 @@ package domain;
 import java.util.*;
 
 public class Table {
-    public static final String MESSAGE_NO_MENU = "테이블에 결재할 메뉴가 없습니다";
+
     public static final String SPACE = " ";
     public static final String DELIMITER_MENU_LINE = "\n";
     public static final int COUNT_NO_MENU = 0;
@@ -35,9 +35,6 @@ public class Table {
     public String getMenus() {
         StringJoiner sj = new StringJoiner(DELIMITER_MENU_LINE);
         Set<Menu> menuKinds = new HashSet<Menu>(menus);
-        if (menus.size() == COUNT_NO_MENU) {
-            return MESSAGE_NO_MENU;
-        }
         for (Menu menu : menuKinds) {
             String menupriceLine = menu.getName() + SPACE + getMenuAmount(menu) + SPACE + menu.getPrice(getMenuAmount(menu));
             sj.add(menupriceLine);

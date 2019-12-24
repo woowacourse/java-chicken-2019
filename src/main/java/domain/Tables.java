@@ -51,7 +51,7 @@ public class Tables {
         }
     }
 
-    private Table getTable(int tableNumber) {
+    public Table getTable(int tableNumber) {
         List<Table> table;
         table = tables.stream().filter(p -> p.isEqualNumber(tableNumber)).collect(Collectors.toList());
         return table.get(0);
