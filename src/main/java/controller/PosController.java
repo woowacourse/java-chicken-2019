@@ -26,9 +26,9 @@ public class PosController {
     private List<Table> orderedTables = new ArrayList<>();
 
     public void posController() {
-        OutputView.printMainPage();
         int funcDecideNumber;
         do {
+            OutputView.printMainPage();
             funcDecideNumber = setFunction();
             chooseOrderOrPay(funcDecideNumber);
         } while (funcDecideNumber != THREE);
