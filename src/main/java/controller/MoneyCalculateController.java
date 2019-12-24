@@ -5,6 +5,7 @@
 package controller;
 
 import domain.Table;
+import view.OutputView;
 
 /**
  * @author Seungwan Park, github.com/toneyparky
@@ -13,9 +14,20 @@ import domain.Table;
  * @since : 2019.12.23 월요일
  */
 public class MoneyCalculateController {
+    private static final double POINT_ZERO_FIVE = 0.05;
+    private static final int TWO = 2;
 
-    public static Table calculateMoney(int paymentMethod, Table payingTable) {
-        return new Table(1); // test
+
+    public static void calculateMoney(int paymentMethod, Table payingTable) {
+        int orderedPrice = payingTable.getOrderedPrice();
+
+        if (paymentMethod == TWO) {
+            orderedPrice -= (int)(orderedPrice * POINT_ZERO_FIVE);
+            OutputView.printTotalPrice(orderedPrice);
+            return;
+        }
+        OutputView.printTotalPrice(orderedPrice);
     }
+
 
 }

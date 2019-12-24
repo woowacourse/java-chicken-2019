@@ -39,6 +39,7 @@ public class OutputView {
     private static final String NO_ORDERED_TABLES_GO_BACK_TO_MAIN = "주문된 테이블이 없습니다. 초기화면으로 돌아갑니다.\n";
     private static final String N_TABLE_WILL_BE_PAYED = "## %s번 테이블의 결제를 진행합니다.\n";
     private static final String CARD_OR_CASH = "## 신용 카드는 1번, 현금은 2번";
+    private static final String TOTAL_PAYING_PRICE = "## 최종 결제할 금액\n";
 
 
     public static void printTables(final List<Table> tables, List<Table> orderedTables) {
@@ -144,5 +145,9 @@ public class OutputView {
 
     public static void printCardOrCash() {
         System.out.println(CARD_OR_CASH);
+    }
+
+    public static void printTotalPrice(int totalPrice) {
+        System.out.println(TOTAL_PAYING_PRICE + totalPrice);
     }
 }

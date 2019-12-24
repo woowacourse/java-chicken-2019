@@ -11,6 +11,7 @@ package domain;
  * @since : 2019.12.23 월요일
  */
 public class Menu {
+    private static final String CHICKEN = "치킨";
     private final int number;
     private final String name;
     private final Category category;
@@ -38,5 +39,9 @@ public class Menu {
 
     public int getPrice() {
         return this.price;
+    }
+
+    public boolean isChicken() {
+        return category.getName().equals(CHICKEN);
     }
 }

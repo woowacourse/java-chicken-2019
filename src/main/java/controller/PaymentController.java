@@ -24,17 +24,19 @@ import static view.InputView.getPaymentMethod;
 public class PaymentController {
     public List<Table> orderedTables = new ArrayList<>();
 
-    public void paymentController(List<Table> tables, List<Menu> menus, List<Table> inputOrderedTables) {
+    public List<Table> paymentController(List<Table> tables, List<Menu> menus, List<Table> inputOrderedTables) {
         if (inputOrderedTables.isEmpty()) {
             OutputView.printNoOrderedTableGoBackToMain();
-            return;
+            return inputOrderedTables;
         }
         orderedTables = inputOrderedTables;
         int tableNumber = controlTableChooseForPayment(tables, orderedTables);
         OutputView.printOrderListTitle();
         printOrderList(getTable(tableNumber));
         int paymentMethod = controlPaymentMethod(tableNumber);
-        Table payedTable = MoneyCalculateController.calculateMoney(paymentMethod, getTable(tableNumber));
+        MoneyCalculateController.calculateMoney(paymentMethod, getTable(tableNumber));
+        orderedTables.remove(getTable(tableNumber));
+        return orderedTables;
     }
 
     public int controlTableChooseForPayment(List<Table> tables, List<Table> orderedTables) {

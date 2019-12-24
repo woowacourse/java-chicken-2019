@@ -35,11 +35,11 @@ public class Order extends MenuRepository {
         this.quantity.addQuantity(addedQuantity);
     }
 
-    public boolean isSameOrder(Order inputOrder) {
-        return menu.getNumber() == inputOrder.menu.getNumber();
-    }
-
     public int getPrice() {
         return this.menu.getPrice();
+    }
+
+    public boolean isChicken() {
+        return menu.isChicken();
     }
 }

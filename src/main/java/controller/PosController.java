@@ -47,19 +47,11 @@ public class PosController {
         if (inputNumber == ONE) {
             OrderController orderController = new OrderController();
             orderedTables = orderController.orderController(tables, menus);
-            // test
-            for (Table orderedTable : orderedTables) {
-                System.out.println(orderedTable.getNumber() + "table num");
-                for (Order order : orderedTable.getOrders()) {
-                    System.out.println(order.getOrderNumber() + order.getOrderName() + "order num, name");
-                    System.out.println(order.getQuantity() + "Quantity");
-                }
-            }
             return;
         }
 
         PaymentController paymentController = new PaymentController();
-        paymentController.paymentController(tables, menus, orderedTables);
+        orderedTables = paymentController.paymentController(tables, menus, orderedTables);
 
     }
 }

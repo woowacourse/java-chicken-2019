@@ -30,7 +30,7 @@ public class TableRepository {
         return Collections.unmodifiableList(tables);
     }
 
-    public static boolean hasThisNumberOfTable(int inputNumber) { // TODO refactor needed.
+    public static boolean hasThisNumberOfTable(int inputNumber) {
         List<Integer> tableNumberList = new ArrayList<>();
         for (Table table : tables) {
             tableNumberList.add(table.getNumber());

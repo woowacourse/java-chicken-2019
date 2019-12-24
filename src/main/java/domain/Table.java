@@ -14,6 +14,9 @@ import java.util.List;
  * @since : 2019.12.23 월요일
  */
 public class Table {
+    private final int ZERO = 0;
+    private final int TEN = 10;
+    private final int TEN_THOUSAND = 10000;
     private final int number;
     private final List<Order> orders = new ArrayList<>();
 
@@ -70,6 +73,22 @@ public class Table {
             }
         }
         return false;
+    }
+
+    public int getOrderedPrice() {
+        int orderedPrice = ZERO;
+        for (Order order : orders) {
+            if (order.getQuantity() < TEN) {
+                orderedPrice += order.getPrice() * order.getQuantity();
+                continue;
+            }
+            if (order.isChicken()) {
+                orderedPrice += order.getPrice() * order.getQuantity() - TEN_THOUSAND * (int) (order.getQuantity() / TEN);
+                continue;
+            }
+            orderedPrice += order.getPrice() * order.getQuantity();
+        }
+        return orderedPrice;
     }
 
 }
