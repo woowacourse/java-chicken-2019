@@ -17,6 +17,8 @@ public class OutputView {
     public static final String MESSAGE_ORDER_LIST_ORDER = "메뉴 수량 금액";
     public static final String MESSAGE_FINAL_PAYMENT = "## 최종 결제할 금액";
     public static final String MESSAGE_WON = "원";
+    public static final String MESSAGE_SELECT_RIGHT_PAYMENT_METHOD = "화면에 표시된 결제방법 중 하나를 선택하세요";
+    public static final String MESSAGE_NOT_RIGHT_AMOUNT = "1에서 99 사이의 수량만 주문가능합니다.";
 
     public static void printTables(final Tables tables) {
         System.out.println("## 테이블 목록");
@@ -87,12 +89,19 @@ public class OutputView {
         System.out.println(MESSAGE_ORDER_LIST);
         System.out.println(MESSAGE_ORDER_LIST_ORDER);
         System.out.println(tables.getTableMenu(tableNumber));
-        InputView.inputNothing();
 
     }
 
     public static void printFinalPrice(int tablePrice) {
         System.out.println(MESSAGE_FINAL_PAYMENT);
         System.out.println(tablePrice + MESSAGE_WON);
+    }
+
+    public static void printInputPaymentMethodException() {
+        System.out.println(MESSAGE_SELECT_RIGHT_PAYMENT_METHOD);
+    }
+
+    public static void printInputMenuQuantityException() {
+        System.out.println(MESSAGE_NOT_RIGHT_AMOUNT);
     }
 }

@@ -14,10 +14,19 @@ public class ValidateUtility {
     }
 
     public static boolean validateMenuQuantity(int menuQuantityNumber) {
-        return menuQuantityNumber > 0 && menuQuantityNumber < 100;
+        if (menuQuantityNumber > 0 && menuQuantityNumber < 100) {
+            return true;
+        }
+        OutputView.printInputMenuQuantityException();
+        return false;
     }
 
     public static boolean validatePaymentMethod(int paymentMethod) {
-        return paymentMethod == 1 || paymentMethod == 2;
+        if (paymentMethod == 1 || paymentMethod == 2) {
+            return true;
+        }
+        OutputView.printInputPaymentMethodException();
+        return false;
+
     }
 }

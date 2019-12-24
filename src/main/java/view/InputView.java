@@ -63,11 +63,6 @@ public class InputView {
         return paymentMethod;
     }
 
-
-    public static void inputNothing() {
-        scanner.nextLine();
-    }
-
     private static int inputInteger() {
         String input;
         do {
