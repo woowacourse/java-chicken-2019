@@ -39,4 +39,7 @@ public class Order extends MenuRepository {
         return menu.getNumber() == inputOrder.menu.getNumber();
     }
 
+    public int getPrice() {
+        return this.menu.getPrice();
+    }
 }

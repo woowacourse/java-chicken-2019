@@ -5,8 +5,10 @@
 
 package view;
 
+import domain.Table;
 import validation.InputValidator;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -32,7 +34,7 @@ public class InputView {
         do {
             OutputView.printMainFunction();
             inputInt = getInputInt();
-        } while (!InputValidator.inputMainFunctionValidator(inputInt));
+        } while (!InputValidator.validateInputMainFunction(inputInt));
         return inputInt;
     }
 
@@ -40,7 +42,7 @@ public class InputView {
         int inputInt;
         do {
             inputInt = getInputInt();
-        } while (!InputValidator.inputTableNumberValidator(inputInt));
+        } while (!InputValidator.validateInputTableNumber(inputInt));
         return inputInt;
     }
 
@@ -48,7 +50,7 @@ public class InputView {
         int inputInt;
         do {
             inputInt = getInputInt();
-        } while (!InputValidator.inputMenuNumberValidator(inputInt));
+        } while (!InputValidator.validateInputMenuNumber(inputInt));
         return inputInt;
     }
 
@@ -56,10 +58,24 @@ public class InputView {
         int inputInt;
         do {
             inputInt = getInputInt();
-        } while (!InputValidator.inputOrderQuantityValidator(inputInt));
+        } while (!InputValidator.validateInputOrderQuantity(inputInt));
         return inputInt;
     }
 
+    public static int getTableNumberForPayment(List<Table> inputOrderedTables) {
+        int inputInt;
+        do {
+            inputInt = getInputInt();
+        } while (!InputValidator.validateInputTableNumber(inputInt) || !InputValidator.isInputTableOrdered(inputInt, inputOrderedTables));
+        return inputInt;
+    }
 
+    public static int getPaymentMethod() {
+        int inputInt;
+        do {
+            inputInt = getInputInt();
+        } while (!InputValidator.validateInputPaymentMethodNumber(inputInt));
+        return inputInt;
+    }
 
 }

@@ -63,5 +63,13 @@ public class Table {
         return orders;
     }
 
+    public boolean isInTables(List<Table> tables) {
+        for (Table table : tables) {
+            if(this.isSameTable(table.getNumber())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

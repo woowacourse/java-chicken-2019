@@ -4,6 +4,8 @@
  */
 package controller;
 
+import domain.Table;
+
 /**
  * @author Seungwan Park, github.com/toneyparky
  * @version 1.0
@@ -11,4 +13,9 @@ package controller;
  * @since : 2019.12.23 월요일
  */
 public class MoneyCalculateController {
+
+    public static Table calculateMoney(int paymentMethod, Table payingTable) {
+        return new Table(1); // test
+    }
+
 }

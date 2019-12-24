@@ -24,7 +24,7 @@ public class OrderController {
     public static List<Table> orderedTables = new ArrayList<>();
 
     public List<Table> orderController(List<Table> tables, List<Menu> menus) {
-        int tableNumber = controlTableChoose(tables);
+        int tableNumber = controlTableChoose(tables, orderedTables);
         int menuNumber = controlMenuChoose(menus);
         Menu newMenu = getMenu(menuNumber);
 
@@ -46,8 +46,8 @@ public class OrderController {
         return orderedTable;
     }
 
-    public int controlTableChoose(List<Table> tables) {
-        OutputView.printTables(tables);
+    public int controlTableChoose(List<Table> tables, List<Table> orderedTables) {
+        OutputView.printTables(tables, orderedTables);
         OutputView.askToChooseTableNumber();
         return getTableNumber();
     }
