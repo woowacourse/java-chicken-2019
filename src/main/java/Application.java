@@ -1,4 +1,5 @@
 import controller.OrderController;
+import controller.PaymentController;
 import domain.MainMenu;
 import domain.MainMenuRepository;
 import domain.TableRepository;
@@ -22,6 +23,10 @@ public class Application {
             if (mainMenuNumber == 1) {
                 OrderController orderController = new OrderController(tables);
                 orderController.run();
+            }
+            if (mainMenuNumber == 2) {
+                PaymentController paymentController = new PaymentController(tables);
+                paymentController.run();
             }
         } while (mainMenuNumber != 3);
 

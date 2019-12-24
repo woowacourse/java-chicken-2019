@@ -8,6 +8,9 @@ import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
+    public static final String MESSAGE_SHARP = "## ";
+    public static final String MESSAGE_START_PAYMENT = "번 테이블의 결제를 진행합니다.";
+    public static final String MESSAGE_SELECT_PAYMENT_METHOD = "## 신용카드는 1번, 현금은 2번";
 
     public static int inputTableNumber(Tables tables) {
         int tableNumber = 0;
@@ -47,6 +50,22 @@ public class InputView {
         } while (!ValidateUtility.validateMenuQuantity(menuQuantityNumber));
 
         return menuQuantityNumber;
+    }
+
+    public static int inputPaymentMethod(int tableNumber) {
+        int paymentMethod = 0;
+        System.out.println(MESSAGE_SHARP + tableNumber + MESSAGE_START_PAYMENT);
+        System.out.println(MESSAGE_SELECT_PAYMENT_METHOD);
+        do {
+            paymentMethod = inputInteger();
+        } while (!ValidateUtility.validatePaymentMethod(paymentMethod));
+
+        return paymentMethod;
+    }
+
+
+    public static void inputNothing() {
+        scanner.nextLine();
     }
 
     private static int inputInteger() {

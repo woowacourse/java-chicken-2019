@@ -57,4 +57,15 @@ public class Tables {
         return table.get(0);
     }
 
+    public String getTableMenu(int tableNumber) {
+        return getTable(tableNumber).getMenus();
+    }
+
+    public void payTableMenu(int tableNumber, int paymentMethod) {
+        int tablePrice = getTable((tableNumber)).getPrice();
+        if (paymentMethod == 2) {
+            tablePrice = (int) (tablePrice * 0.95);
+        }
+        OutputView.printFinalPrice(tablePrice);
+    }
 }

@@ -18,14 +18,10 @@ public class OrderController {
     public void run() {
         OutputView.printTables(tables);
         final int tableNumber = InputView.inputTableNumber(tables);
-
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
-
         final Menu menu = MenuRepository.getMenu(InputView.inputMenuNumber());
-
         final int menuQuantity = InputView.inputMenuQuantity();
-
         tables.addMenu(tableNumber, menu, menuQuantity);
     }
 
