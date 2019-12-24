@@ -19,13 +19,4 @@ public class MainMenuRepository {
         return Collections.unmodifiableList(mainMenus);
     }
 
-    public static Boolean isRightInput(int inputNumber) {
-        for (MainMenu mainMenu : mainMenus) {
-            if (mainMenu.isEqualNumber(inputNumber)) {
-                return true;
-            }
-        }
-        OutputView.printInputMenuNumberException();
-        return false;
-    }
 }

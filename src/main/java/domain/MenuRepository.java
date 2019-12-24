@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class MenuRepository {
 
     private static final List<Menu> menus = new ArrayList<>();
+    public static final int MENU_INDEX = 0;
 
     static {
         menus.add(new Menu(1, "후라이드", Category.CHICKEN, 16_000));
@@ -39,6 +40,6 @@ public class MenuRepository {
     public static Menu getMenu(int menuNumber) {
         List<Menu> menu;
         menu = menus.stream().filter(p -> p.isEqualNumber(menuNumber)).collect(Collectors.toList());
-        return menu.get(0);
+        return menu.get(MENU_INDEX);
     }
 }

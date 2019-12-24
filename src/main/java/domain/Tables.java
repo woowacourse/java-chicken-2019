@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 import static view.OutputView.*;
 
 public class Tables {
+    public static final int TABLEE_INDEX = 0;
+    public static final int CASH_INPUT = 2;
+    public static final double CASH_DISCOUNT = 0.95;
     private List<Table> tables;
 
     public Tables(List<Table> tables) {
@@ -54,7 +57,7 @@ public class Tables {
     public Table getTable(int tableNumber) {
         List<Table> table;
         table = tables.stream().filter(p -> p.isEqualNumber(tableNumber)).collect(Collectors.toList());
-        return table.get(0);
+        return table.get(TABLEE_INDEX);
     }
 
     public String getTableMenu(int tableNumber) {
@@ -62,10 +65,12 @@ public class Tables {
     }
 
     public void payTableMenu(int tableNumber, int paymentMethod) {
-        int tablePrice = getTable((tableNumber)).getPrice();
-        if (paymentMethod == 2) {
-            tablePrice = (int) (tablePrice * 0.95);
+        Table payTable = getTable(tableNumber);
+        int tablePrice = payTable.getPrice();
+        if (paymentMethod == CASH_INPUT) {
+            tablePrice = (int) (tablePrice * CASH_DISCOUNT);
         }
         OutputView.printFinalPrice(tablePrice);
+        payTable.clear();
     }
 }

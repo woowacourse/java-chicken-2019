@@ -20,7 +20,6 @@ public class PaymentController {
         }
         OutputView.printOrderList(tables, tableNumber);
         final int paymentMethod = InputView.inputPaymentMethod(tableNumber);
-        // TODO 처리할 테이블이 없을 때 처리
         tables.payTableMenu(tableNumber, paymentMethod);
         System.out.println();
 

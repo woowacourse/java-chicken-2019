@@ -3,6 +3,12 @@ package utility;
 import view.OutputView;
 
 public class ValidateUtility {
+
+    public static final int MENU_INPUT_FLOOR = 0;
+    public static final int MENU_INPUT_CEILING = 100;
+    public static final int CREDIT_CARD = 1;
+    public static final int CASH = 2;
+
     public static boolean checkInteger(String inputString) {
         try {
             Integer.parseInt(inputString);
@@ -14,7 +20,7 @@ public class ValidateUtility {
     }
 
     public static boolean validateMenuQuantity(int menuQuantityNumber) {
-        if (menuQuantityNumber > 0 && menuQuantityNumber < 100) {
+        if (menuQuantityNumber > MENU_INPUT_FLOOR && menuQuantityNumber < MENU_INPUT_CEILING) {
             return true;
         }
         OutputView.printInputMenuQuantityException();
@@ -22,7 +28,7 @@ public class ValidateUtility {
     }
 
     public static boolean validatePaymentMethod(int paymentMethod) {
-        if (paymentMethod == 1 || paymentMethod == 2) {
+        if (paymentMethod == CREDIT_CARD || paymentMethod == CASH) {
             return true;
         }
         OutputView.printInputPaymentMethodException();
