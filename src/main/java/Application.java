@@ -1,5 +1,6 @@
 import domain.Menu;
 import domain.MenuRepository;
+import domain.PaymentMethod;
 import domain.PosFunction;
 import domain.Table;
 import domain.TableRepository;
@@ -79,6 +80,14 @@ public class Application {
 
         OutputView.printOrderHistory(table.getOrderHistory());
 
+        final PaymentMethod paymentMethod = readPaymentMethodOf(table);
 
+        OutputView.printFinalPaymentAmount(table.getPaymentAmount());
+        table.pay(paymentMethod);
+    }
+
+    private static PaymentMethod readPaymentMethodOf(Table table) {
+        OutputView.printMakingPaymentMessage(table.getNumber());
+        return PaymentMethod.of(InputView.inputPaymentMethod());
     }
 }

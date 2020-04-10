@@ -1,7 +1,6 @@
 package domain;
 
 import java.util.Arrays;
-import view.IllegalUserInputException;
 
 public enum PaymentMethod {
     CREDIT_CARD(1),
@@ -13,11 +12,11 @@ public enum PaymentMethod {
         this.code = code;
     }
 
-    public PaymentMethod of(int code) {
+    public static PaymentMethod of(int code) {
         return Arrays.stream(values())
             .filter(paymentMethod -> paymentMethod.code == code)
             .findFirst()
             .orElseThrow(() ->
-                new IllegalUserInputException("존재하지 않는 결제방식 번호입니다."));
+                new IllegalArgumentException("존재하지 않는 결제방식 번호입니다."));
     }
 }

@@ -26,6 +26,11 @@ public class InputView {
         return readIntegerByOneLine();
     }
 
+    public static int inputPaymentMethod() {
+        System.out.println("## 신용카드는 1번, 현금은 2번");
+        return readIntegerByOneLine();
+    }
+
     private static int readIntegerByOneLine() {
         try {
             return Integer.parseInt(scanner.nextLine());

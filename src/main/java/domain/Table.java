@@ -28,9 +28,14 @@ public class Table {
         return Collections.unmodifiableMap(orderHistory);
     }
 
-    @Override
-    public String toString() {
-        return Integer.toString(number);
+    public int getPaymentAmount() {
+        return orderHistory.keySet().stream()
+            .mapToInt(Menu::getPrice)
+            .sum();
+    }
+
+    public void pay(PaymentMethod paymentMethod) {
+        this.orderHistory.clear();
     }
 
     public boolean isNumber(int number) {
@@ -39,5 +44,10 @@ public class Table {
 
     public int getNumber() {
         return this.number;
+    }
+
+    @Override
+    public String toString() {
+        return Integer.toString(number);
     }
 }

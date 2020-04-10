@@ -25,7 +25,7 @@ public class OutputView {
         final int size = tableNumbers.size();
         printTopLine(size);
         printTableNumbers(tableNumbers);
-        printBottomLine(size, orderedTableNumbers);
+        printBottomLine(tableNumbers, orderedTableNumbers);
     }
 
     private static void printTopLine(final int count) {
@@ -42,8 +42,10 @@ public class OutputView {
         System.out.println();
     }
 
-    private static void printBottomLine(int count, List<Integer> orderedTableNumbers) {
-        for (int tableNumber = 1; tableNumber <= count; tableNumber++) {
+    private static void printBottomLine(List<Integer> tableNumbers,
+        List<Integer> orderedTableNumbers) {
+
+        for (Integer tableNumber : tableNumbers) {
             printOneTableBottomLine(orderedTableNumbers.contains(tableNumber));
         }
         System.out.println();
@@ -68,5 +70,14 @@ public class OutputView {
         orderHistory.forEach((menu, count) ->
             System.out.println(menu.getName() + "\t" + count + "\t" + menu.getPrice())
         );
+    }
+
+    public static void printMakingPaymentMessage(int tableNumber) {
+        System.out.println(tableNumber + "번 테이블의 결제를 진행합니다.");
+    }
+
+    public static void printFinalPaymentAmount(int paymentAmount) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(paymentAmount + "원");
     }
 }
