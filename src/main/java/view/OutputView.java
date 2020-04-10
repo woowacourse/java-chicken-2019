@@ -1,14 +1,23 @@
 package view;
 
 import domain.Menu;
+import domain.PosFunction;
 import domain.Table;
-
 import java.util.List;
 
 public class OutputView {
+
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+
+    public static void printPosFunctions(final List<PosFunction> posFunctions) {
+        System.out.println("## 메인 화면");
+        posFunctions.forEach(
+            posFunction -> System.out.println(
+                posFunction.getCode() + " - " + posFunction.toString()));
+        System.out.println();
+    }
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
