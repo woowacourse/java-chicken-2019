@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 
 class TableTest {
 
+    private Table table = new Table(1);
+
     @Test
     void registerMenu() {
-        Table table = new Table(1);
-
         Menu testMenu1 = new Menu(1, "가짜메뉴1", Category.CHICKEN, 1_000);
         Menu testMenu2 = new Menu(2, "가짜메뉴2", Category.CHICKEN, 1_3990);
 
@@ -24,5 +24,16 @@ class TableTest {
         expected.put(testMenu2, 3);
 
         assertThat(table.getOrderHistory()).isEqualTo(expected);
+    }
+
+    @Test
+    void isNumber() {
+        assertThat(table.isNumber(1)).isTrue();
+        assertThat(table.isNumber(5)).isFalse();
+    }
+
+    @Test
+    void testToString() {
+        assertThat(table.toString()).isEqualTo(1 + "");
     }
 }
