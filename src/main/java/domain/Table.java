@@ -36,4 +36,8 @@ public class Table {
     public boolean isNumber(int number) {
         return this.number == number;
     }
+
+    public int getNumber() {
+        return this.number;
+    }
 }

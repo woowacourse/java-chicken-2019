@@ -3,8 +3,8 @@ import domain.MenuRepository;
 import domain.PosFunction;
 import domain.Table;
 import domain.TableRepository;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import view.IllegalUserInputException;
 import view.InputView;
 import view.OutputView;
@@ -18,7 +18,7 @@ public class Application {
         PosFunction posFunction;
 
         do {
-            OutputView.printPosFunctions(Arrays.asList(PosFunction.values()));
+            OutputView.printPosFunctions(PosFunction.getPosFunctionsByCodeKoreanMap());
             posFunction = PosFunction.of(InputView.inputPosFunction());
 
             if (posFunction == PosFunction.ORDER_REGISTRATION) {
@@ -31,13 +31,28 @@ public class Application {
     }
 
     private static void register_order() {
-        OutputView.printTables(tables);
+        OutputView.printTables(getTableNumbers(), getOrderedTableNumbers());
         final Table table = readTable();
 
         OutputView.printMenus(menus);
         final Menu menuToRegister = readMenu();
 
         table.registerMenu(menuToRegister, InputView.inputMenuCount());
+    }
+
+    private static List<Integer> getTableNumbers() {
+        return tables.stream()
+            .mapToInt(Table::getNumber)
+            .boxed()
+            .collect(Collectors.toList());
+    }
+
+    private static List<Integer> getOrderedTableNumbers() {
+        return tables.stream()
+            .filter(Table::hasOrdered)
+            .mapToInt(Table::getNumber)
+            .boxed()
+            .collect(Collectors.toList());
     }
 
     private static Table readTable() {

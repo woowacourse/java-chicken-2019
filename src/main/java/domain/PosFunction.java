@@ -1,6 +1,9 @@
 package domain;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public enum PosFunction {
     ORDER_REGISTRATION(1, "주문등록"),
@@ -24,6 +27,16 @@ public enum PosFunction {
 
     public int getCode() {
         return this.code;
+    }
+
+    public static Map<Integer, String> getPosFunctionsByCodeKoreanMap() {
+        Map<Integer, String> posFunctions = new HashMap<>();
+
+        Arrays.stream(PosFunction.values())
+            .forEach(posFunction ->
+                posFunctions.put(posFunction.code, posFunction.korean));
+
+        return Collections.unmodifiableMap(posFunctions);
     }
 
     @Override
