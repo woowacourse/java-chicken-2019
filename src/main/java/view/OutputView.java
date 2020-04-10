@@ -84,4 +84,8 @@ public class OutputView {
         System.out.println(paymentAmount + "원");
         System.out.println();
     }
+
+    public static void printExceptionMessage(String exceptionMessage) {
+        System.out.println(exceptionMessage);
+    }
 }
