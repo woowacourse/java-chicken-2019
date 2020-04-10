@@ -56,20 +56,27 @@ public class Application {
     }
 
     private static Table readTable() {
+        int tableNumber = InputView.inputTableNumber();
+
         return tables.stream()
-            .filter(table -> table.isNumber(InputView.inputTableNumber()))
+            .filter(table -> table.isNumber(tableNumber))
             .findFirst()
             .orElseThrow(() -> new IllegalUserInputException("존재하지 않는 테이블입니다."));
     }
 
     private static Menu readMenu() {
+        int menuNumber = InputView.inputMenuNumber();
+
         return menus.stream()
-            .filter(targetMenu -> targetMenu.isNumber(InputView.inputMenuNumber()))
+            .filter(targetMenu -> targetMenu.isNumber(menuNumber))
             .findFirst()
             .orElseThrow(() -> new IllegalUserInputException("존재하지 않는 메뉴입니다."));
     }
 
     private static void pay() {
+        OutputView.printTables(getTableNumbers(), getOrderedTableNumbers());
+        final Table table = readTable();
 
+        OutputView.printOrderHistory(table.getOrderHistory());
     }
 }

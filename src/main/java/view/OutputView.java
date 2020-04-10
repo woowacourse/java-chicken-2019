@@ -62,4 +62,11 @@ public class OutputView {
             System.out.println(menu);
         }
     }
+
+    public static void printOrderHistory(final Map<Menu, Integer> orderHistory) {
+        System.out.println("메뉴\t수량\t금액");
+        orderHistory.forEach((menu, count) ->
+            System.out.println(menu.getName() + "\t" + count + "\t" + menu.getPrice())
+        );
+    }
 }
