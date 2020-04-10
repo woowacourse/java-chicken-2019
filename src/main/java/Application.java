@@ -78,5 +78,7 @@ public class Application {
         final Table table = readTable();
 
         OutputView.printOrderHistory(table.getOrderHistory());
+
+
     }
 }
