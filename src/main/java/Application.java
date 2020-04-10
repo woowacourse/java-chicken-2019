@@ -34,6 +34,11 @@ public class Application {
 
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
+
+        final int menuNumber = InputView.inputMenuNumber();
+        final int menuCount = InputView.inputMenuCount();
+
+
     }
 
     private static void pay() {

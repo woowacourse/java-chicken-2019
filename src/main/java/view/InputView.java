@@ -16,6 +16,16 @@ public class InputView {
         return readIntegerByOneLine();
     }
 
+    public static int inputMenuNumber() {
+        System.out.println("## 등록할 메뉴를 선택하세요.");
+        return readIntegerByOneLine();
+    }
+
+    public static int inputMenuCount() {
+        System.out.println("## 메뉴의 수량을 선택하세요.");
+        return readIntegerByOneLine();
+    }
+
     private static int readIntegerByOneLine() {
         try {
             return Integer.parseInt(scanner.nextLine());
