@@ -15,7 +15,7 @@ public class OutputView {
         System.out.println("## 메인 화면");
         posFunctions.forEach(
             (key, value) -> System.out.println(key + " - " + value));
-        System.out.println();
+        System.out.println("\n");
     }
 
     public static void printTables(final List<Integer> tableNumbers,
@@ -26,6 +26,7 @@ public class OutputView {
         printTopLine(size);
         printTableNumbers(tableNumbers);
         printBottomLine(tableNumbers, orderedTableNumbers);
+        System.out.println();
     }
 
     private static void printTopLine(final int count) {
@@ -63,6 +64,7 @@ public class OutputView {
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
+        System.out.println();
     }
 
     public static void printOrderHistory(final Map<Menu, Integer> orderHistory) {
@@ -70,6 +72,7 @@ public class OutputView {
         orderHistory.forEach((menu, count) ->
             System.out.println(menu.getName() + "\t" + count + "\t" + menu.getPrice())
         );
+        System.out.println();
     }
 
     public static void printMakingPaymentMessage(int tableNumber) {
@@ -79,5 +82,6 @@ public class OutputView {
     public static void printFinalPaymentAmount(int paymentAmount) {
         System.out.println("## 최종 결제할 금액");
         System.out.println(paymentAmount + "원");
+        System.out.println();
     }
 }
