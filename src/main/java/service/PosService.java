@@ -62,6 +62,7 @@ public class PosService {
     public static void pay() {
         OutputView.printTables(getTableNumbers(), getOrderedTableNumbers());
         final Table table = readTable();
+        table.validatePayable();
 
         OutputView.printOrderHistory(table.getOrderHistory());
 
