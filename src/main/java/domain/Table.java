@@ -29,13 +29,21 @@ public class Table {
     }
 
     public int getPaymentAmount() {
+        validatePayable();
         return orderHistory.keySet().stream()
             .mapToInt(Menu::getPrice)
             .sum();
     }
 
     public void pay(PaymentMethod paymentMethod) {
+        validatePayable();
         this.orderHistory.clear();
+    }
+
+    public void validatePayable() {
+        if (!hasOrdered()) {
+            throw new IllegalStateException("결제할 주문내역이 없습니다.");
+        }
     }
 
     public boolean isNumber(int number) {
