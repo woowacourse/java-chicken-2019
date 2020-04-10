@@ -4,11 +4,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TableTest {
 
-    private Table table = new Table(1);
+    private Table table;
+
+    @BeforeEach
+    void setUp() {
+        table = new Table(1);
+    }
 
     @Test
     void registerMenu() {
@@ -35,5 +41,14 @@ class TableTest {
     @Test
     void testToString() {
         assertThat(table.toString()).isEqualTo(1 + "");
+    }
+
+    @Test
+    void hasOrdered() {
+        assertThat(table.hasOrdered()).isFalse();
+
+        Menu testMenu = new Menu(1, "가짜메뉴", Category.CHICKEN, 1_3990);
+        table.registerMenu(testMenu, 1);
+        assertThat(table.hasOrdered()).isTrue();
     }
 }

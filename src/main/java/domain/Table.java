@@ -20,6 +20,10 @@ public class Table {
         orderHistory.put(menu, orderHistory.get(menu) + menuCount);
     }
 
+    public boolean hasOrdered() {
+        return !orderHistory.isEmpty();
+    }
+
     public Map<Menu, Integer> getOrderHistory() {
         return Collections.unmodifiableMap(orderHistory);
     }

@@ -37,9 +37,7 @@ public class Application {
         OutputView.printMenus(menus);
         final Menu menuToRegister = readMenu();
 
-        final int menuCount = InputView.inputMenuCount();
-
-        table.registerMenu(menuToRegister, menuCount);
+        table.registerMenu(menuToRegister, InputView.inputMenuCount());
     }
 
     private static Table readTable() {
