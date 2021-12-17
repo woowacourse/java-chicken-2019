@@ -7,6 +7,10 @@ public class Converter {
 		return Integer.parseInt(moneyString);
 	}
 
+	public static String getString(int count) {
+		return Integer.toString(count);
+	}
+
 	// spilt 코드
 	// public static ArrayList<Beverage> getBeverages(String beverageString) {
 	// 	ArrayList<Beverage> beverages = new ArrayList<>();

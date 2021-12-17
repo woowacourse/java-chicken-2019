@@ -1,12 +1,10 @@
 package domain;
 
-import template.utils.validator.TemplateValidator;
-
 public class ModelTemplate {
 	private int model;
 
 	public ModelTemplate(String model) {
-		new TemplateValidator(model);
+
 		// 컨버터 이용해 값 적절하게 변경
 	}
 
