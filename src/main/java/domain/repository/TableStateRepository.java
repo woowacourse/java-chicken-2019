@@ -23,8 +23,13 @@ public class TableStateRepository {
 		return tableStates.get(tableNum);
 	}
 
+	public static void deleteTableState(int tableNum) {
+		tableStates.remove(tableNum);
+	}
+
 	public String toString() {
-		return "테이블 넘버 " + TableStateRepository.tableStates.toString().substring(1, TableStateRepository.tableStates.toString().length()-1);
+		return "테이블 넘버 " + TableStateRepository.tableStates.toString()
+			.substring(1, TableStateRepository.tableStates.toString().length() - 1);
 	}
 }
 

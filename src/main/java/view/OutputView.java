@@ -2,7 +2,9 @@ package view;
 
 import domain.Menu;
 import domain.Table;
+import domain.repository.TableStateRepository;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class OutputView {
@@ -10,6 +12,9 @@ public class OutputView {
 	private static final String TABLE_FORMAT = "| %s |";
 	private static final String BOTTOM_LINE = "└ ─ ┘";
 	public static final String ERROR = "[ERROR] ";
+	public static final String PAY = "## 최종 결제할 금액\n%d원\n";
+	public static final String TABLE_MENUS = "## 주문 내역\n"
+		+ "메뉴 수량 금액";
 
 	public static void printMainList() {
 		System.out.println("## 메인화면\n"
@@ -53,7 +58,20 @@ public class OutputView {
 		printBreak();
 	}
 
+	public static void printPayMoney(int payMoney) {
+		System.out.printf(PAY, payMoney);
+		printBreak();
+	}
+
 	public static void printBreak() {
 		System.out.println();
+	}
+
+	public static void printTableMenus(int tableNumber) {
+		System.out.println(TABLE_MENUS);
+		for (String menu : TableStateRepository.getUser(tableNumber).getMenus()) {
+			System.out.println(menu);
+		}
+		printBreak();
 	}
 }

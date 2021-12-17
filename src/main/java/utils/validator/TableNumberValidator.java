@@ -7,18 +7,18 @@ import utils.Constants;
 import utils.Converter;
 
 public class TableNumberValidator {
-	private final String tableNumber;
+	protected final String tableNumber;
 
 	public TableNumberValidator(String tableNumber) {
 		this.tableNumber = tableNumber;
 		validate();
 	}
 
-	private void validate() {
+	protected void validate() {
 		isRightString();
 	}
 
-	private void isRightString() {
+	protected void isRightString() {
 		if (Arrays.stream(TableRepository.TABLE_NUMS).noneMatch(num -> num == Converter.getInt(tableNumber))) {
 			throw new IllegalArgumentException(Constants.ERROR_TABLE_NUMBER_PATTERN);
 		}

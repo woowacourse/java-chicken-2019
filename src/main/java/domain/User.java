@@ -1,20 +1,15 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import domain.repository.MenuRepository;
 
 public class User {
-	private final int tableNum;
 	private final ArrayList<MenuState> menus = new ArrayList<>();
 
-	public User(int tableNum, int menuNum, int menuCount) {
-		this.tableNum = tableNum;
+	public User(int menuNum, int menuCount) {
 		this.menus.add(new MenuState(MenuRepository.getMenuByNum(menuNum), menuCount));
-	}
-
-	public int getTableNum() {
-		return tableNum;
 	}
 
 	public void addMenu(int menuNum, int menuCount) {
@@ -30,8 +25,19 @@ public class User {
 		state.addCount(menuCount);
 	}
 
+	public String[] getMenus() {
+		return menus.stream().map(MenuState::toString).toArray(String[]::new);
+	}
+
+	public int getNoDiscountPay() {
+		return menus.stream()
+			.mapToInt(menuState -> menuState.menu.getPrice() * menuState.getCount()
+				- (menuState.getCount() / 10) * 10000)
+			.sum();
+	}
+
 	@Override
 	public String toString() {
-		return "user-테이블" + tableNum + " : " + menus;
+		return "user-" + menus;
 	}
 }

@@ -12,13 +12,16 @@ public class MenuState {
 		this.count = count;
 	}
 
-	@Override
-	public String toString() {
-		return "MenuState{" + "menu=" + menu + ", count=" + count + '}';
+	public int getCount() {
+		return count;
 	}
 
 	public void addCount(int count) {
 		new MenuCountValidator(this.count + count);
 		this.count += count;
+	}
+	@Override
+	public String toString() {
+		return menu.getName() + " " + count + " " + menu.getPrice();
 	}
 }

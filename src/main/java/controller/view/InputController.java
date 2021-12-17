@@ -1,11 +1,12 @@
 package controller.view;
 
-import domain.Table;
 import utils.Converter;
 import utils.validator.MainNumberValidator;
 import utils.validator.MenuCountValidator;
 import utils.validator.MenuNumberValidator;
+import utils.validator.PayNumberValidator;
 import utils.validator.TableNumberValidator;
+import utils.validator.TablePayNumberValidator;
 import view.InputView;
 import view.OutputView;
 
@@ -21,6 +22,17 @@ public class InputController {
 		}
 	}
 
+	public static int getPayNumber() {
+		try {
+			String numString = InputView.inputPayNumber();
+			new PayNumberValidator(numString);
+			return Converter.getInt(numString);
+		} catch (IllegalArgumentException e) {
+			OutputView.printError(e.getMessage());
+			return getPayNumber();
+		}
+	}
+
 	public static int getTableNumber() {
 		try {
 			String numString = InputView.inputTableNumber();
@@ -29,6 +41,17 @@ public class InputController {
 		} catch (IllegalArgumentException e) {
 			OutputView.printError(e.getMessage());
 			return getTableNumber();
+		}
+	}
+
+	public static int getPayTableNumber() {
+		try {
+			String numString = InputView.inputTableNumber();
+			new TablePayNumberValidator(numString);
+			return Converter.getInt(numString);
+		} catch (IllegalArgumentException e) {
+			OutputView.printError(e.getMessage());
+			return getPayTableNumber();
 		}
 	}
 
