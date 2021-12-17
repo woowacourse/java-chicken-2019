@@ -3,14 +3,10 @@ package utils;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
-import domain.Menu;
 import domain.repository.MenuRepository;
 import domain.repository.TableRepository;
 
 public class Constants {
-	// 단위 상수
-	public static final String CONSTANT = "상수";
-
 	// 정규식
 	public static final Pattern PATTERN_MAIN_NUM = Pattern.compile("^[123]$");
 	public static final Pattern PATTERN_COUNT_NUM = Pattern.compile("^[1-9][0-9]?$");

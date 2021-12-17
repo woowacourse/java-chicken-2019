@@ -14,16 +14,18 @@ public class OutputView {
 	public static final String PAY = "## 최종 결제할 금액\n%d원\n";
 	public static final String TABLE_MENUS = "## 주문 내역\n"
 		+ "메뉴 수량 금액";
+	public static final String MAIN_LIST = "## 메인화면\n"
+		+ "1 - 주문등록\n"
+		+ "2 - 결제하기\n"
+		+ "3 - 프로그램 종료\n";
+	public static final String TABLE_LIST = "## 테이블 목록";
 
 	public static void printMainList() {
-		System.out.println("## 메인화면\n"
-			+ "1 - 주문등록\n"
-			+ "2 - 결제하기\n"
-			+ "3 - 프로그램 종료\n");
+		System.out.println(MAIN_LIST);
 	}
 
 	public static void printTables(final List<Table> tables) {
-		System.out.println("## 테이블 목록");
+		System.out.println(TABLE_LIST);
 		final int size = tables.size();
 		printLine(TOP_LINE, size);
 		printTableNumbers(tables);
