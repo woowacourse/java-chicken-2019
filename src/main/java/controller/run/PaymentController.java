@@ -13,17 +13,17 @@ public class PaymentController {
 		TableStateRepository.deleteTableState(tableNumber);
 	}
 
-	private void printPay(int tableNumber, int payNumber) {
-		if (payNumber == 1) {
-			OutputView.printPayMoney(Calculate.getDiscountPay(tableNumber));
-		}
-		if (payNumber == 2) {
-			OutputView.printPayMoney(Calculate.getCashPay(tableNumber));
-		}
-	}
-
 	private int getPayTableNumber() {
 		OutputView.printTables(TableRepository.tables());
 		return InputController.getPayTableNumber();
+	}
+
+	private void printPay(int tableNumber, int payNumber) {
+		if (payNumber == 1) {
+			OutputView.printPayMoney(CalculateController.getDiscountPay(tableNumber));
+		}
+		if (payNumber == 2) {
+			OutputView.printPayMoney(CalculateController.getCashPay(tableNumber));
+		}
 	}
 }

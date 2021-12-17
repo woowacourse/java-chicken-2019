@@ -2,7 +2,7 @@ package controller.run;
 
 import domain.repository.TableStateRepository;
 
-public class Calculate {
+public class CalculateController {
 	public static int getDiscountPay(int tableNum) {
 		return TableStateRepository.getUser(tableNum).getNoDiscountPay();
 	}

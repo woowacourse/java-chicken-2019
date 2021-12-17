@@ -31,8 +31,12 @@ public class User {
 
 	public int getNoDiscountPay() {
 		return menus.stream()
+			.filter(menuState -> menuState.menu.getNumber() < 20)
 			.mapToInt(menuState -> menuState.menu.getPrice() * menuState.getCount()
 				- (menuState.getCount() / 10) * 10000)
+			.sum() + menus.stream()
+			.filter(menuState -> menuState.menu.getNumber() >= 20)
+			.mapToInt(menuState -> menuState.menu.getPrice() * menuState.getCount())
 			.sum();
 	}
 

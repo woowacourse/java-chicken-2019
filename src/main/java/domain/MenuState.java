@@ -20,8 +20,9 @@ public class MenuState {
 		new MenuCountValidator(this.count + count);
 		this.count += count;
 	}
+
 	@Override
 	public String toString() {
-		return menu.getName() + " " + count + " " + menu.getPrice();
+		return menu.getName() + " " + count + " " + menu.getPrice() * count;
 	}
 }
