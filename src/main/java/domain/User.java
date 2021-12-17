@@ -1,9 +1,9 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.stream.Stream;
 
 import domain.repository.MenuRepository;
+import utils.Constants;
 
 public class User {
 	private final ArrayList<MenuState> menus = new ArrayList<>();
@@ -31,18 +31,13 @@ public class User {
 
 	public int getNoDiscountPay() {
 		return menus.stream()
-			.filter(menuState -> menuState.menu.getNumber() < 20)
+			.filter(menuState -> menuState.menu.getCategory().equals(Category.CHICKEN))
 			.mapToInt(menuState -> menuState.menu.getPrice() * menuState.getCount()
-				- (menuState.getCount() / 10) * 10000)
+				- (menuState.getCount() / Constants.DIVIDER) * Constants.DISCOUNT_MONEY_UNIT)
 			.sum()
 			+ menus.stream()
-			.filter(menuState -> menuState.menu.getNumber() >= 20)
+			.filter(menuState -> menuState.menu.getCategory().equals(Category.BEVERAGE))
 			.mapToInt(menuState -> menuState.menu.getPrice() * menuState.getCount())
 			.sum();
-	}
-
-	@Override
-	public String toString() {
-		return "user-" + menus;
 	}
 }
