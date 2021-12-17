@@ -29,11 +29,6 @@ public class OrderController {
 		return InputController.getTableNumber();
 	}
 
-	private int getPayTableNumber() {
-		OutputView.printTables(TableRepository.tables());
-		return InputController.getPayTableNumber();
-	}
-
 	private int getMenuNumber() {
 		OutputView.printMenus(MenuRepository.menus());
 		return InputController.getMenuNumber();

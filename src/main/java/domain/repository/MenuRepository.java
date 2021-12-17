@@ -1,16 +1,15 @@
 package domain.repository;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import domain.Category;
 import domain.Menu;
-import domain.Table;
 
 public class MenuRepository {
 	private static final List<Menu> menus = new ArrayList<>();
+	public static final String NO_THIS_MENU = "해당 숫자의 메뉴가 없습니다.";
 
 	static {
 		menus.add(new Menu(1, "후라이드", Category.CHICKEN, 16_000));
@@ -30,7 +29,7 @@ public class MenuRepository {
 	public static Menu getMenuByNum(int num) {
 		return menus.stream().filter(menu -> menu.getNumber() == num)
 			.findFirst()
-			.orElseThrow(() -> new IllegalArgumentException("해당 숫자의 메뉴가 없습니다."));
+			.orElseThrow(() -> new IllegalArgumentException(NO_THIS_MENU));
 	}
 
 	public static final int[] MENU_NUMS = menus.stream().mapToInt(Menu::getNumber).toArray();

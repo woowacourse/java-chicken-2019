@@ -42,11 +42,5 @@ public class TableRepository {
 	public static User getUser(int tableNum) {
 		return tableStates.get(tableNum);
 	}
-
-	@Override
-	public String toString() {
-		return "테이블 넘버 " + TableRepository.tableStates.toString()
-			.substring(1, TableRepository.tableStates.toString().length() - 1);
-	}
 }
 
