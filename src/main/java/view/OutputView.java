@@ -2,9 +2,8 @@ package view;
 
 import domain.Menu;
 import domain.Table;
-import domain.repository.TableStateRepository;
+import domain.repository.TableRepository;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class OutputView {
@@ -69,7 +68,7 @@ public class OutputView {
 
 	public static void printTableMenus(int tableNumber) {
 		System.out.println(TABLE_MENUS);
-		for (String menu : TableStateRepository.getUser(tableNumber).getMenus()) {
+		for (String menu : TableRepository.getUser(tableNumber).getMenus()) {
 			System.out.println(menu);
 		}
 		printBreak();

@@ -4,7 +4,6 @@ import controller.view.InputController;
 import domain.User;
 import domain.repository.MenuRepository;
 import domain.repository.TableRepository;
-import domain.repository.TableStateRepository;
 import view.OutputView;
 
 public class OrderController {
@@ -18,11 +17,11 @@ public class OrderController {
 	}
 
 	private void setTable(int tableNumber, int menuNumber, int menuCount) {
-		if (TableStateRepository.isUserEmpty(tableNumber)) {
-			TableStateRepository.initiateTableUser(tableNumber, new User(menuNumber, menuCount));
+		if (TableRepository.isUserEmpty(tableNumber)) {
+			TableRepository.initiateTableUser(tableNumber, new User(menuNumber, menuCount));
 			return;
 		}
-		TableStateRepository.getUser(tableNumber).addMenu(menuNumber, menuCount);
+		TableRepository.getUser(tableNumber).addMenu(menuNumber, menuCount);
 	}
 
 	private int getTableNumber() {

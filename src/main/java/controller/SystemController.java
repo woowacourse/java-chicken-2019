@@ -3,11 +3,11 @@ package controller;
 import controller.run.OrderController;
 import controller.run.PaymentController;
 import controller.view.InputController;
-import domain.repository.TableStateRepository;
+import domain.repository.TableRepository;
 import view.OutputView;
 
-public class Controller {
-	public Controller() {
+public class SystemController {
+	public SystemController() {
 		run();
 	}
 
@@ -23,7 +23,7 @@ public class Controller {
 		if (mainNumber == 3) {
 			return;
 		}
-		System.out.println(new TableStateRepository());
+		System.out.println(new TableRepository());
 		run();
 	}
 }

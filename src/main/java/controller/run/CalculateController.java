@@ -1,10 +1,10 @@
 package controller.run;
 
-import domain.repository.TableStateRepository;
+import domain.repository.TableRepository;
 
 public class CalculateController {
 	public static int getDiscountPay(int tableNum) {
-		return TableStateRepository.getUser(tableNum).getNoDiscountPay();
+		return TableRepository.getUser(tableNum).getNoDiscountPay();
 	}
 
 	public static int getCashPay(int tableNum) {

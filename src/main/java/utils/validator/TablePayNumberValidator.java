@@ -1,6 +1,6 @@
 package utils.validator;
 
-import domain.repository.TableStateRepository;
+import domain.repository.TableRepository;
 import utils.Constants;
 import utils.Converter;
 
@@ -16,7 +16,7 @@ public class TablePayNumberValidator extends TableNumberValidator {
 	}
 
 	protected void isIn() {
-		if (TableStateRepository.isUserEmpty(Converter.getInt(tableNumber))) {
+		if (TableRepository.isUserEmpty(Converter.getInt(tableNumber))) {
 			throw new IllegalArgumentException(Constants.TABLE_IS_NOT_IN);
 		}
 	}

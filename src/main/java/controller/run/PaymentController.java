@@ -1,16 +1,21 @@
 package controller.run;
 
+import java.util.Arrays;
+
 import controller.view.InputController;
 import domain.repository.TableRepository;
-import domain.repository.TableStateRepository;
 import view.OutputView;
 
 public class PaymentController {
 	public void run() {
+		if (Arrays.stream(TableRepository.TABLE_NUMS).allMatch(TableRepository::isUserEmpty)) {
+			OutputView.printError("결제 가능한 테이블이 없다.");
+			return;
+		}
 		int tableNumber = getPayTableNumber();
 		OutputView.printTableMenus(tableNumber);
 		printPay(tableNumber, InputController.getPayNumber());
-		TableStateRepository.deleteTableState(tableNumber);
+		TableRepository.deleteTableState(tableNumber);
 	}
 
 	private int getPayTableNumber() {

@@ -12,7 +12,6 @@ public class Constants {
 	public static final String CONSTANT = "상수";
 
 	// 정규식
-	// 사이트: https://regexr.com/5mhou
 	public static final Pattern PATTERN_MAIN_NUM = Pattern.compile("^[123]$");
 	public static final Pattern PATTERN_COUNT_NUM = Pattern.compile("^[1-9][0-9]?$");
 	public static final Pattern PATTERN_PAY_NUM = Pattern.compile("^[12]$");
